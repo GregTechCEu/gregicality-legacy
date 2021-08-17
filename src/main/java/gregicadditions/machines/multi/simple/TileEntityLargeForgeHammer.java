@@ -114,10 +114,10 @@ public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockControll
         return (getRecipeMapIndex() == 0) ? Textures.FORGE_HAMMER_OVERLAY : Textures.COMPRESSOR_OVERLAY;
     }
 
-    private class LargeForgeHammerLogic extends LargeSimpleMultiblockRecipeLogic {
+    private class LargeForgeHammerLogic extends MultiRecipeMapMultiblockRecipeLogic {
 
         public LargeForgeHammerLogic(RecipeMapMultiblockController tileEntity, int EUtPercentage, int durationPercentage, int chancePercentage, int stack) {
-            super(tileEntity, EUtPercentage, durationPercentage, chancePercentage, stack);
+            super(tileEntity, EUtPercentage, durationPercentage, chancePercentage, stack, ((MultiRecipeMapMultiblockController) tileEntity).getRecipeMaps());
         }
 
         @Override
