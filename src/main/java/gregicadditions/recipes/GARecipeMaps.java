@@ -2,7 +2,6 @@ package gregicadditions.recipes;
 
 import crafttweaker.annotations.ZenRegister;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
 import gregicadditions.recipes.impl.LargeRecipeBuilder;
 import gregicadditions.recipes.impl.*;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
@@ -24,12 +23,6 @@ import stanhebben.zenscript.annotations.ZenProperty;
 public class GARecipeMaps {
 
     // Simple Recipe Maps ==============================================================================================
-
-    @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> SIEVE_RECIPES = new SieveRecipeMap("electric_sieve",
-            2, 2, 1, 54, 0, 0, 0, 0, new SimpleRecipeBuilder())
-            .setProgressBar(GuiTextures.PROGRESS_BAR_SIFT, ProgressWidget.MoveType.HORIZONTAL);
-
 
     @ZenProperty
     public static final RecipeMap<SimpleRecipeBuilder> ATTRACTOR_RECIPES = new RecipeMap<>("attractor",

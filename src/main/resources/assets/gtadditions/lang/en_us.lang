@@ -3376,12 +3376,6 @@ gtadditions.machine.convert_forge.max.4.name=Forge Energy Converter (MAX)
 gtadditions.machine.convert_forge.max.9.name=Forge Energy Converter (MAX)
 gtadditions.machine.convert_forge.max.16.name=Forge Energy Converter (MAX)
 
-item.material.oreprefix.oreChunk=%s Ore Chunk
-item.material.oreprefix.oreNetherChunk=%s Ore Chunk
-item.material.oreprefix.oreEnderChunk=%s Ore Chunk
-item.material.oreprefix.oreFineChunk=Fine %s Ore Chunk
-item.material.oreprefix.oreDense=Dense %s Ore
-
 item.material.oreprefix.oreRich=Rich %s Ore
 item.material.oreprefix.oreRichBlackgranite=Rich Granite %s Ore
 item.material.oreprefix.oreRichRedgranite=Rich Granite %s Ore
@@ -3414,17 +3408,6 @@ item.material.oreprefix.seed=%s Seed
 item.material.oreprefix.essence=%s Essence
 item.material.oreprefix.crop=%s crop
 
-
-
-gtadditions.machine.sieve.lv.name=Basic Electric Sieve
-gtadditions.machine.sieve.mv.name=Advanced Electric Sieve
-gtadditions.machine.sieve.hv.name=Advanced Electric Sieve II
-gtadditions.machine.sieve.ev.name=Advanced Electric Sieve III
-gtadditions.machine.sieve.iv.name=Elite Electric Sieve
-gtadditions.machine.sieve.luv.name=Elite Electric Sieve II
-gtadditions.machine.sieve.zpm.name=Elite Electric Sieve III
-gtadditions.machine.sieve.uv.name=Elite Electric Sieve IV
-
 gtadditions.machine.rock_breaker.lv.name=Basic Electric Rock Breaker
 gtadditions.machine.rock_breaker.mv.name=Advanced Electric Rock Breaker
 gtadditions.machine.rock_breaker.hv.name=Advanced Electric Rock Breaker II
@@ -3447,15 +3430,6 @@ gtadditions.machine.pump.steam.name=Steam Pump
 gtadditions.machine.sieve.steam.name=Steam Sieve
 gtadditions.machine.steam_mixer.name=Steam Mixer
 gtadditions.machine.steam_miner.name=Steam Chunk Miner
-
-gtadditions.machine.rock_breaker.steam.name=Steam Rock Breaker
-item.material.oreprefix.oreSandyChunk=Sandy %s Ore Chunk
-
-item.gbpebble.basalt.name=Basalt Pebble
-item.gbpebble.black_granite.name=Black Granite Pebble
-item.gbpebble.marble.name=Marble Pebble
-item.gbpebble.red_granite.name=Red Granite Pebble
-
 
 gtadditions.machine.transformer.lv.4.name=Low Voltage Transformer 4 Amps
 gtadditions.machine.transformer.lv.8.name=Low Voltage Transformer 8 Amps
