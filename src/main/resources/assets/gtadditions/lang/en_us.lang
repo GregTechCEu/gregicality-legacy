@@ -4573,6 +4573,7 @@ gtadditions.multiblock.large_chemical_reactor.tooltip.5=Coils above §e5400K§7 
 gtadditions.multiblock.pyrolyse_oven.tooltip.1=For every tier higher of coil used, this multiblock will process one more recipe at a time.
 gtadditions.multiblock.pyrolyse_oven.tooltip.2=The coil's energy discount also applies to this multiblock as well.
 
-gtadditions.multiblock.electric_blast_furnace.tooltip.1=For every 900K that the coils can handle above a recipe's temperature, a small EU/t discount is applied.
-gtadditions.multiblock.electric_blast_furnace.tooltip.2=For every 1800K above the recipe's temperature, the EU/t may be increased by 4x, while the duration may be decreased by 4x, if there is enough power.
+gtadditions.multiblock.electric_blast_furnace.tooltip.1=For every §a900K§7 above the recipe temperature, a multiplicative §a95%%§7 energy multiplier is applied pre-overclocking.
+gtadditions.multiblock.electric_blast_furnace.tooltip.2=For every §a1800K§7 above the recipe temperature, one overclock becomes §a100%%§7 efficient.
+gtadditions.multiblock.electric_blast_furnace.tooltip.3=For every voltage tier above §aMV§7, temperature is increased by §a100K§7.
 

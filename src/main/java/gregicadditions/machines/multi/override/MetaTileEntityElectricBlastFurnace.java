@@ -165,6 +165,7 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 		super.addInformation(stack, player, tooltip, advanced);
 		tooltip.add(I18n.format("gtadditions.multiblock.electric_blast_furnace.tooltip.1"));
 		tooltip.add(I18n.format("gtadditions.multiblock.electric_blast_furnace.tooltip.2"));
+		tooltip.add(I18n.format("gtadditions.multiblock.electric_blast_furnace.tooltip.3"));
 	}
 
 	@Nonnull
