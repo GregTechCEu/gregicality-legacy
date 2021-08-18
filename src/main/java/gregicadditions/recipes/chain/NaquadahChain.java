@@ -701,7 +701,7 @@ public class NaquadahChain {
                 .fluidInputs(LightENaquadahFuel.getFluid(300))
                 .fluidInputs(NaquadriaSolution.getFluid(200))
                 .input(dust, Rutherfordium)
-                .fluidInputs(Plutonium244Isotope.getMaterial().getFluid(144))
+                .fluidInputs(Plutonium244.getMaterial().getFluid(144))
                 .fluidOutputs(HyperFuelI.getFluid(2000))
                 .EUt(1920)
                 .duration(200)

@@ -6,6 +6,7 @@ import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.info.MaterialFlag;
 
+import static gregtech.api.unification.Elements.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregicadditions.GAMaterials.*;
@@ -2964,10 +2965,34 @@ public class GAFirstDegreeMaterials {
                 .build();
 
         FluorinatedEthylenePropylene = new Material.Builder(3852, "fluorinated_ethylene_propylene")
-                .ingot(1).fluid
+                .ingot(1).fluid()
                 .color(0xc8c8c8).iconSet(DULL)
                 .flags(GENERATE_PLATE, FLAMMABLE, NO_SMASHING, DISABLE_DECOMPOSITION)
                 .components(Carbon, 5, Fluorine, 10)
+                .build();
+
+        MetastableOganesson = new Material.Builder(3853, "metastable_oganesson")
+                .ingot(7)
+                .color(0xE61C24).iconSet(SHINY)
+                .flags(GA_CORE_METAL)
+                .components(Oganesson)
+                .blastTemp(10380)
+                .build();
+
+        MetastableFlerovium = new Material.Builder(3854, "metastable_flerovium")
+                .ingot(7)
+                .color(0x521973).iconSet(SHINY)
+                .flags(GA_CORE_METAL)
+                .components(Flerovium)
+                .blastTemp(10990)
+                .build();
+
+        MetastableHassium = new Material.Builder(3855, "metastable_hassium")
+                .ingot(6)
+                .color(0x2D3A9D).iconSet(SHINY)
+                .flags(GA_CORE_METAL)
+                .components(Hassium)
+                .blastTemp(11240)
                 .build();
     }
 }

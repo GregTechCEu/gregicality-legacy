@@ -526,7 +526,7 @@ public class FusionElementsChain {
 
         // Should technically be Pu242
         FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(150000000)
-                .fluidInputs(Plutonium244Isotope.getMaterial().getFluid(16))
+                .fluidInputs(Plutonium244.getMaterial().getFluid(16))
                 .fluidInputs(Neon.getFluid(16))
                 .fluidOutputs(Rutherfordium.getFluid(16))
                 .buildAndRegister();

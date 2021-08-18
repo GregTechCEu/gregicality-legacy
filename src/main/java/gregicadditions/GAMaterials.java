@@ -6,7 +6,6 @@ import gregtech.api.unification.material.IMaterialHandler;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.material.properties.WireProperties;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import net.minecraft.util.text.TextFormatting;
@@ -49,31 +48,32 @@ public class GAMaterials implements IMaterialHandler {
     public static Material MetastableFlerovium;
     public static Material MetastableHassium;
 
-    public static Material Protactinium;
-    public static Material UraniumRadioactive;
-    public static Material Neptunium;
-    public static Material PlutoniumRadioactive;
-    public static Material Curium;
-    public static Material Berkelium;
-    public static Material Californium;
-    public static Material Einsteinium;
-    public static Material Fermium;
-    public static Material Mendelevium;
+    public static Material Carbon12;
+    public static Material Carbon13;
+    public static Material Nitrogen14;
+    public static Material Nitrogen15;
+    public static Material Calcium44;
+    public static Material Ytterbium178;
+    public static Material Chromium48;
+    public static Material Iron52;
+    public static Material Nickel56;
+    public static Material Titanium44;
+    public static Material Titanium50;
 
     // NUCLEAR MATERIALS
     // Thorium
     public static Material ThoriumRadioactive;
-    public static Material Thorium232Isotope;
+    public static Material Thorium232;
     public static Material Thorium233;
 
     // Protactinium
     public static Material Protactinium233;
 
     // Uranium
-    public static Material Uranium238Isotope;
+//    public static Material Uranium238Isotope;
     public static Material Uranium233;
     public static Material Uranium234;
-    public static Material Uranium235Isotope;
+//    public static Material Uranium235Isotope;
     public static Material Uranium239;
 
     // Neptunium
@@ -82,10 +82,9 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Neptunium239;
 
     // Plutonium
-    //public static Material Plutonium239; todo remove, is in CEu
     public static Material Plutonium240;
-    public static Material Plutonium241Isotope;
-    public static Material Plutonium244Isotope;
+//    public static Material Plutonium241Isotope;
+    public static Material Plutonium244;
     public static Material Plutonium245;
 
     // Americium
@@ -130,25 +129,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Mendelevium261;
     public static Material Mendelevium263;
 
-    public static SimpleFluidMaterial Carbon12 = new SimpleFluidMaterial("carbon_12", Carbon.materialRGB, "C_12");
-    public static SimpleFluidMaterial Carbon13 = new SimpleFluidMaterial("carbon_13", Carbon.materialRGB, "C_13");
-    public static SimpleFluidMaterial Nitrogen14 = new SimpleFluidMaterial("nitrogen_14", Nitrogen.materialRGB, "N_14");
-    public static SimpleFluidMaterial Nitrogen15 = new SimpleFluidMaterial("nitrogen_15", Nitrogen.materialRGB, "N_15");
-    public static SimpleFluidMaterial Calcium44 = new SimpleFluidMaterial("calcium_44", Calcium.materialRGB, "Ca_44");
-    public static SimpleFluidMaterial Ytterbium178 = new SimpleFluidMaterial("ytterbium_178", Ytterbium.materialRGB, "Yb_178");
-    public static SimpleFluidMaterial Chromium48 = new SimpleFluidMaterial("chromium48", Chrome.materialRGB, true, "Cr_48");
-    public static SimpleFluidMaterial Iron52 = new SimpleFluidMaterial("iron52", Iron.materialRGB, true, "Fe_52");
-    public static SimpleFluidMaterial Nickel56 = new SimpleFluidMaterial("nickel56", Nickel.materialRGB, true, "Ni_56");
-    public static SimpleFluidMaterial Titanium44 = new SimpleFluidMaterial("titanium44", Titanium.materialRGB, true, "Ti_44");
-    //public static SimpleFluidMaterial PlasmaChromium48 = new SimpleFluidMaterial("chromium48_plasma", Chrome.materialRGB);
-    //public static SimpleFluidMaterial PlasmaIron52 = new SimpleFluidMaterial("iron52_plasma", Iron.materialRGB);
-    //public static SimpleFluidMaterial PlasmaNickel56 = new SimpleFluidMaterial("nickel56_plasma", Nickel.materialRGB);
-    //public static SimpleFluidMaterial PlasmaTitanium44 = new SimpleFluidMaterial("titanium44_plasma", Titanium.materialRGB);
-
-    public static FluidMaterial LiquidOxygen = new FluidMaterial(919, "liquid_oxygen", 0x81FFFD, MaterialIconSet.FLUID, of(new MaterialStack(Oxygen, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(54);
-    public static FluidMaterial LiquidHydrogen = new FluidMaterial(917, "liquid_hydrogen", 0x3AFFC6, MaterialIconSet.FLUID, of(new MaterialStack(Hydrogen, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(14);
-
-
     //todo move to ceu
     public static FluidMaterial FishOil = new FluidMaterial(999, "fish_oil", 14467421, MaterialIconSet.FLUID, ImmutableList.of(new MaterialStack(RareEarth, 1)), GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static IngotMaterial MVSuperconductorBase = new IngotMaterial(976, "mv_superconductor_base", 0x535353, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Cadmium, 5), new MaterialStack(Magnesium, 1), new MaterialStack(Oxygen, 6)), GA_STD_METAL, null, 1200);
@@ -185,6 +165,8 @@ public class GAMaterials implements IMaterialHandler {
     public static FluidMaterial CoalTarOil = new FluidMaterial(936, "coal_tar_oil", 0xB5B553, MaterialIconSet.FLUID, of(new MaterialStack(CoalTar, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static FluidMaterial SulfuricCoalTarOil = new FluidMaterial(935, "sulfuric_coal_tar_oil", 0xFFFFAD, MaterialIconSet.FLUID, of(new MaterialStack(CoalTarOil, 1), new MaterialStack(SulfuricAcid, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
     public static FluidMaterial AquaRegia = new FluidMaterial(899, "aqua_regia", 0xFFB132, MaterialIconSet.FLUID, of(new MaterialStack(NitricAcid, 1), new MaterialStack(HydrochloricAcid, 1)), DISABLE_DECOMPOSITION);
+    public static FluidMaterial LiquidOxygen = new FluidMaterial(919, "liquid_oxygen", 0x81FFFD, MaterialIconSet.FLUID, of(new MaterialStack(Oxygen, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(54);
+    public static FluidMaterial LiquidHydrogen = new FluidMaterial(917, "liquid_hydrogen", 0x3AFFC6, MaterialIconSet.FLUID, of(new MaterialStack(Hydrogen, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(14);
 
 
     // First Degree Materials
@@ -345,7 +327,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material AmmoniumSulfate;
     public static Material AmmoniumPerrhenate;
     public static Material ElectronDegenerateRheniumPlasma;
-    public static Material LiquidHelium;
     public static Material BoricAcid;
     public static Material FluoroBoricAcid;
     public static Material BoronFluoride;
@@ -625,9 +606,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material PotassiumNitrite;
     public static Material HydroxylammoniumSulfate;
     public static Material Legendarium;
-    public static IngotMaterial Polyimide = new IngotMaterial(992, "polyimide", 0xFF7F50, MaterialIconSet.DULL, 1, of(new MaterialStack(Carbon, 22), new MaterialStack(Hydrogen, 12), new MaterialStack(Nitrogen, 2), new MaterialStack(Oxygen, 6)), GENERATE_PLATE | FLAMMABLE | NO_SMASHING | SMELT_INTO_FLUID | DISABLE_DECOMPOSITION);
-    public static IngotMaterial FluorinatedEthylenePropylene = new IngotMaterial(988, "fluorinated_ethylene_propylene", 0xC8C8C8, MaterialIconSet.DULL, 1, of(new MaterialStack(Carbon, 5), new MaterialStack(Fluorine, 10)), GENERATE_PLATE | FLAMMABLE | NO_SMASHING | SMELT_INTO_FLUID | DISABLE_DECOMPOSITION);
-
+    public static Material Polyimide;
+    public static Material FluorinatedEthylenePropylene;
 
     // Second Degree Materials
     public static Material PalladiumAmmonia;
@@ -1589,10 +1569,10 @@ public class GAMaterials implements IMaterialHandler {
         Thorium.addFlag(GENERATE_LONG_ROD);
         Uranium235.addFlag(GENERATE_LONG_ROD);
 
-        Thorium232Isotope.fertile = true;
-        Thorium232Isotope.isotopeDecay.put(Thorium233, 100);
-        Thorium232Isotope.isotopeDecay.put(Protactinium233, 1000);
-        Thorium232Isotope.isotopeDecay.put(Uranium233, 8900);
+        Thorium232.fertile = true;
+        Thorium232.isotopeDecay.put(Thorium233, 100);
+        Thorium232.isotopeDecay.put(Protactinium233, 1000);
+        Thorium232.isotopeDecay.put(Uranium233, 8900);
 
         Thorium233.isotopeDecay.put(Protactinium233, 9000);
 
@@ -1631,22 +1611,22 @@ public class GAMaterials implements IMaterialHandler {
         Neptunium235.isotopeDecay.put(Uranium235Isotope, 9000);
 
         //plutonium
-        PlutoniumRadioactive.composition.put(Plutonium244Isotope, 9890);
+        PlutoniumRadioactive.composition.put(Plutonium244, 9890);
         PlutoniumRadioactive.composition.put(Plutonium241Isotope, 100);
         PlutoniumRadioactive.composition.put(Plutonium240, 10);
 
         Plutonium241Isotope.fissile = true;
         Plutonium239.fissile = true;
         Plutonium240.fertile = true;
-        Plutonium244Isotope.fertile = true;
+        Plutonium244.fertile = true;
 
         Plutonium241Isotope.baseHeat = 13;
         Plutonium239.baseHeat = 10;
 
         Plutonium240.isotopeDecay.put(Plutonium241Isotope, 9000);
-        Plutonium244Isotope.isotopeDecay.put(Plutonium245, 100);
-        Plutonium244Isotope.isotopeDecay.put(Americium245, 1000);
-        Plutonium244Isotope.isotopeDecay.put(Curium245, 8900);
+        Plutonium244.isotopeDecay.put(Plutonium245, 100);
+        Plutonium244.isotopeDecay.put(Americium245, 1000);
+        Plutonium244.isotopeDecay.put(Curium245, 8900);
         Plutonium245.isotopeDecay.put(Americium245, 9000);
 
         //Americium
