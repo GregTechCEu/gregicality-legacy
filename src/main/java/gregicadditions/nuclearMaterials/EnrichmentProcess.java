@@ -1,7 +1,7 @@
 package gregicadditions.nuclearMaterials;
 
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -16,9 +16,9 @@ public class EnrichmentProcess {
     public Fluid depletedFuelNitrateSolution;
     public Fluid hexafluorideSteamCracked;
 
-    protected IngotMaterial material;
+    protected Material material;
 
-    public IngotMaterial getMaterial() {
+    public Material getMaterial() {
         return material;
     }
 

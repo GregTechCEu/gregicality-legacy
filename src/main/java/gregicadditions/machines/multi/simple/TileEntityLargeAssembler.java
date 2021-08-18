@@ -28,7 +28,7 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockController {
 

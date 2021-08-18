@@ -59,7 +59,7 @@ public class TileEntityLargeArcFurnace extends MultiRecipeMapMultiblockControlle
                 .where('p', pumpPredicate())
                 .where('C', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL)))
                 .where('#', (tile) -> true)
-                .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
+                .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
                 .build();
     }
 

@@ -18,6 +18,7 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -42,12 +43,12 @@ public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockC
 
 	public TileEntityAdvancedChemicalReactor(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId,
-				GARecipeMaps.LARGE_CHEMICAL_RECIPES,
+				RecipeMaps.LARGE_CHEMICAL_RECIPES,
 				GAConfig.multis.advancedChemicalReactor.euPercentage,
 				GAConfig.multis.advancedChemicalReactor.durationPercentage,
 				GAConfig.multis.advancedChemicalReactor.chancedBoostPercentage,
 				GAConfig.multis.advancedChemicalReactor.stack,
-				new RecipeMap[]{GARecipeMaps.LARGE_CHEMICAL_RECIPES, GARecipeMaps.CHEMICAL_PLANT_RECIPES});
+				new RecipeMap[]{RecipeMaps.LARGE_CHEMICAL_RECIPES, GARecipeMaps.CHEMICAL_PLANT_RECIPES});
 		this.recipeMapWorkable = new AdvancedChemicalReactorWorkableHandler(this);
 	}
 

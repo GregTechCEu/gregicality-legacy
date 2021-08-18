@@ -237,9 +237,8 @@ public class GATileEntities {
         MAINTENANCE_HATCH[1] = GregTechAPI.registerMetaTileEntity(4214, new MetaTileEntityMaintenanceHatch(location("auto_maintenance_hatch"), 5));
         MAINTENANCE_HATCH[2] = GregTechAPI.registerMetaTileEntity(4215, new MetaTileEntityMaintenanceHatch(location("fullauto_maintenance_hatch"), 9));
 
-        id = 4215;
         for (int i = 1; i <= MUFFLER_HATCH.length; i++)
-            MUFFLER_HATCH[i - 1] = GregTechAPI.registerMetaTileEntity(id + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GTValues.VN[i].toLowerCase()), i));
+            MUFFLER_HATCH[i - 1] = GregTechAPI.registerMetaTileEntity(4215 + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GTValues.VN[i].toLowerCase()), i));
 
         ADVANCED_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(4224, new TileEntityAdvancedChemicalReactor(location("advanced_chemical_reactor")));
         LARGE_BREWERY = GregTechAPI.registerMetaTileEntity(4225, new TileEntityLargeBrewery(location("large_brewery"), RecipeMaps.BREWING_RECIPES));

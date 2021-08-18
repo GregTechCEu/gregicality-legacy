@@ -49,7 +49,7 @@ public class MetaTileEntityMegaVacuumFreezer extends MegaMultiblockRecipeMapCont
                 .where('X', abilityPartPredicate(ALLOWED_ABILITIES).or(statePredicate(getCasingState())))
                 .where('F', frameworkPredicate().or(frameworkPredicate2()))
                 .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
-                .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
+                .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
                 .where('#', (tile) -> true)
                 .where('A', isAirPredicate())
                 .build();

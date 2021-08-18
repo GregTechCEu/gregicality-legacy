@@ -15,8 +15,9 @@ import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
-import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+
 import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
+import static gregtech.api.util.RelativeDirection.*;
 
 public class MetaTileEntityMegaDistillationTower extends MegaMultiblockRecipeMapController {
 

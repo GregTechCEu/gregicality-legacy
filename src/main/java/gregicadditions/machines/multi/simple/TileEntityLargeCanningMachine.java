@@ -37,7 +37,7 @@ public class TileEntityLargeCanningMachine extends MultiRecipeMapMultiblockContr
 
     public TileEntityLargeCanningMachine(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, GAConfig.multis.largeCanningMachine.euPercentage, GAConfig.multis.largeCanningMachine.durationPercentage, GAConfig.multis.largeCanningMachine.chancedBoostPercentage, GAConfig.multis.largeCanningMachine.stack,
-                new RecipeMap[]{RecipeMaps.CANNER_RECIPES, RecipeMaps.FLUID_CANNER_RECIPES, RecipeMaps.FLUID_SOLIDFICATION_RECIPES});
+                new RecipeMap[]{RecipeMaps.CANNER_RECIPES, RecipeMaps.FLUID_SOLIDFICATION_RECIPES});
     }
 
     @Override
@@ -47,11 +47,10 @@ public class TileEntityLargeCanningMachine extends MultiRecipeMapMultiblockContr
 
     @Override
     public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
-        switch(recipeMapIndex) {
-            case 1: return Textures.FLUID_CANNER_OVERLAY;
-            case 2: return Textures.FLUID_SOLIDIFIER_OVERLAY;
-            default: return Textures.CANNER_OVERLAY;
+        if (recipeMapIndex == 1) {
+            return Textures.FLUID_SOLIDIFIER_OVERLAY;
         }
+        return Textures.CANNER_OVERLAY;
     }
 
     @Override
@@ -99,10 +98,9 @@ public class TileEntityLargeCanningMachine extends MultiRecipeMapMultiblockContr
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        switch (this.getRecipeMapIndex()) {
-            case 1: return Textures.FLUID_CANNER_OVERLAY;
-            case 2: return Textures.FLUID_SOLIDIFIER_OVERLAY;
-            default: return Textures.CANNER_OVERLAY;
+        if (this.getRecipeMapIndex() == 1) {
+            return Textures.FLUID_SOLIDIFIER_OVERLAY;
         }
+        return Textures.CANNER_OVERLAY;
     }
 }

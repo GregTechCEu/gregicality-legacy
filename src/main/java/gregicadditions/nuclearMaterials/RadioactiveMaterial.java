@@ -3,8 +3,8 @@ package gregicadditions.nuclearMaterials;
 import com.google.common.collect.ImmutableList;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.Element;
-import gregtech.api.unification.material.MaterialIconSet;
-import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.stack.MaterialStack;
 
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import static gregicadditions.GAMaterials.*;
 
 public class RadioactiveMaterial extends EnrichmentProcess {
 
-    public static Map<IngotMaterial, RadioactiveMaterial> REGISTRY = new HashMap<>();
+    public static Map<Material, RadioactiveMaterial> REGISTRY = new HashMap<>();
 
 
     public final Map<IsotopeMaterial, Integer> composition = new HashMap<>(3);
@@ -27,9 +27,9 @@ public class RadioactiveMaterial extends EnrichmentProcess {
 
     }
 
-    public RadioactiveMaterial(IngotMaterial from) {
+    public RadioactiveMaterial(Material from) {
         this.material = from;
-        this.material.addFlag(GENERATE_NUCLEAR_COMPOUND | DISABLE_REPLICATION | GENERATE_METAL_CASING);
+        this.material.addFlag(GENERATE_NUCLEAR_COMPOUND); // disable_replication
         REGISTRY.put(from, this);
     }
 

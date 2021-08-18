@@ -5,7 +5,7 @@ import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
-import gregtech.api.unification.material.type.FluidMaterial;
+import gregtech.api.unification.material.Material;
 import gregtech.common.ConfigHolder;
 import gregtech.common.MetaFluids;
 import net.minecraft.nbt.NBTTagCompound;
@@ -80,8 +80,8 @@ public class HotCoolantTurbineWorkableHandler extends HotCoolantRecipeLogic {
     private void addOutputFluids(HotCoolantRecipe currentRecipe, int fuelAmountUsed) {
         if (largeTurbine.turbineType == MetaTileEntityHotCoolantTurbine.TurbineType.HOT_COOLANT) {
             if (fuelAmountUsed > 0) {
-                FluidMaterial material = MetaFluids.getMaterialFromFluid(currentRecipe.getRecipeFluid().getFluid());
-                if (material != null) {
+                Material material = MetaFluids.getMaterialFromFluid(currentRecipe.getRecipeFluid().getFluid());
+                if (material != null && material.hasFluid()) {
                     largeTurbine.exportFluidHandler.fill(material.getFluid(fuelAmountUsed), true);
                 }
             }

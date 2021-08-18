@@ -31,21 +31,21 @@ public class GAEnums {
     public static class GAMaterialIconType {
 
         //nuclear stuff
-        public final static MaterialIconType dioxide = createMaterialIconType("dioxide");
-        public final static MaterialIconType nitride = createMaterialIconType("nitride");
-        public final static MaterialIconType nitrite = createMaterialIconType("nitrite");
-        public final static MaterialIconType hexafluoride = createMaterialIconType("hexafluoride");
-        public final static MaterialIconType carbide = createMaterialIconType("carbide");
-        public final static MaterialIconType zirconiumAlloy = createMaterialIconType("zirconiumAlloy");
-        public final static MaterialIconType oxide = createMaterialIconType("oxide");
-        public final static MaterialIconType nuclearFuel = createMaterialIconType("nuclearFuel");
-        public final static MaterialIconType depletedFuel = createMaterialIconType("depletedFuel");
-        public final static MaterialIconType fuelTRISO = createMaterialIconType("fuelTriso");
-        public final static MaterialIconType depletedFuelTRISO = createMaterialIconType("depletedFuelTriso");
+        //public final static MaterialIconType dioxide = new MaterialIconType("dioxide");
+        //public final static MaterialIconType nitride = new MaterialIconType("nitride");
+        //public final static MaterialIconType nitrite = new MaterialIconType("nitrite");
+        //public final static MaterialIconType hexafluoride = new MaterialIconType("hexafluoride");
+        //public final static MaterialIconType carbide = new MaterialIconType("carbide");
+        //public final static MaterialIconType zirconiumAlloy = new MaterialIconType("zirconiumAlloy");
+        //public final static MaterialIconType oxide = new MaterialIconType("oxide");
+        //public final static MaterialIconType nuclearFuel = new MaterialIconType("nuclearFuel");
+        //public final static MaterialIconType depletedFuel = new MaterialIconType("depletedFuel");
+        //public final static MaterialIconType fuelTRISO = new MaterialIconType("fuelTriso");
+        //public final static MaterialIconType depletedFuelTRISO = new MaterialIconType("depletedFuelTriso");
     }
 
     public static class GAOrePrefix {
-
+/*
         //nuclear stuff
         public static final OrePrefix dioxide = new OrePrefix("dioxide", M / 3, null, GAMaterialIconType.dioxide, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
         public static final OrePrefix hexafluoride = new OrePrefix("hexafluoride", M / 7, null, GAMaterialIconType.hexafluoride, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
@@ -65,7 +65,7 @@ public class GAEnums {
         public static final OrePrefix depletedFuelOxide = new OrePrefix("depletedFuelOxide", M / 2, null, GAMaterialIconType.depletedFuel, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
         public static final OrePrefix depletedFuelTRISO = new OrePrefix("depletedFuelTRISO", M / 4, null, GAMaterialIconType.depletedFuelTRISO, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
         public static final OrePrefix depletedFuel = new OrePrefix("depletedFuel", M, null, GAMaterialIconType.depletedFuel, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
-
+*/
         public static final OrePrefix opticalFiberHex = new OrePrefix("opticalFiberHex", M * 8, null, null, ENABLE_UNIFICATION, null);
         public static final OrePrefix opticalFiberOctal = new OrePrefix("opticalFiberOctal", M * 4, null, null, ENABLE_UNIFICATION, null);
         public static final OrePrefix opticalFiberQuadruple = new OrePrefix("opticalFiberQuadruple", M * 2, null, null, ENABLE_UNIFICATION, null);
@@ -74,7 +74,7 @@ public class GAEnums {
     }
 
     public static void onConstruction() {
-
+/*
         if (GAConfig.GT6.addCurvedPlates) OrePrefix.plateCurved.setGenerationCondition(mat -> mat.hasFlag(GENERATE_PLATE));
         MetaItems.addOrePrefix(dioxide, hexafluoride, nitrite, nitride, carbide, zirconiumAlloy, oxide,
                 fuelNitride, fuelCarbide, fuelZirconiumAlloy, fuelOxide, fuelPure, fuelTRISO,
@@ -85,48 +85,38 @@ public class GAEnums {
         EnumHelper.addEnum(MetaFluids.FluidState.class, "HEXACHLORIDE", new Class[]{String.class}, "gregtech.fluid.hexachloride");
         EnumHelper.addEnum(MetaFluids.FluidState.class, "DEPLETED_FUEL_NITRATE_SOLUTION", new Class[]{String.class}, "gregtech.fluid.depleted_fuel_nitrate_solution");
         EnumHelper.addEnum(MetaFluids.FluidState.class, "HEXAFLUORIDE_STEAM_CRACKED", new Class[]{String.class}, "gregtech.fluid.hexafluoride_steam_cracked");
-        EnumHelper.addEnum(MetaFluids.FluidType.class, "HOT", new Class[]{String.class, Function.class}, "hot.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HOT"));
-        EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXAFLUORIDE", new Class[]{String.class, Function.class}, "hexafluoride.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXAFLUORIDE"));
-        EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXACHLORIDE", new Class[]{String.class, Function.class}, "hexachloride.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXACHLORIDE"));
-        EnumHelper.addEnum(MetaFluids.FluidType.class, "DEPLETED_FUEL_NITRATE_SOLUTION", new Class[]{String.class, Function.class}, "depleted_fuel_nitrate_solution.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("DEPLETED_FUEL_NITRATE_SOLUTION"));
-        EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXAFLUORIDE_STEAM_CRACKED", new Class[]{String.class, Function.class}, "hexafluoride_steam_cracked.", (Function<FluidMaterial, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXAFLUORIDE_STEAM_CRACKED"));
-
+        EnumHelper.addEnum(MetaFluids.FluidType.class, "HOT", new Class[]{String.class, Function.class}, "hot.", (Function<Material, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HOT"));
+        EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXAFLUORIDE", new Class[]{String.class, Function.class}, "hexafluoride.", (Function<Material, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXAFLUORIDE"));
+        EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXACHLORIDE", new Class[]{String.class, Function.class}, "hexachloride.", (Function<Material, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXACHLORIDE"));
+        EnumHelper.addEnum(MetaFluids.FluidType.class, "DEPLETED_FUEL_NITRATE_SOLUTION", new Class[]{String.class, Function.class}, "depleted_fuel_nitrate_solution.", (Function<Material, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("DEPLETED_FUEL_NITRATE_SOLUTION"));
+        EnumHelper.addEnum(MetaFluids.FluidType.class, "HEXAFLUORIDE_STEAM_CRACKED", new Class[]{String.class, Function.class}, "hexafluoride_steam_cracked.", (Function<Material, MetaFluids.FluidState>) material -> MetaFluids.FluidState.valueOf("HEXAFLUORIDE_STEAM_CRACKED"));
+*/
         String[] stoneTypes = {"", "Blackgranite", "Redgranite", "Marble", "Basalt", "Sand", "Gravel", "Netherrack", "Endstone"};
         Material[] secondaryMaterials = {Materials.Stone, Materials.GraniteBlack, Materials.GraniteRed, Materials.Marble,
                 Materials.Basalt, Materials.SiliconDioxide, Materials.Flint, Materials.Netherrack, Materials.Endstone};
 
+        // todo this still needs to be redone, but at least "works" now
         for (int i = 0; i < stoneTypes.length; i++) {
-            EnumHelper.addEnum(MaterialIconType.class, "oreRich" + stoneTypes[i], new Class[0]);
-            EnumHelper.addEnum(OrePrefix.class, "oreRich" + stoneTypes[i],
-                    new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                    "Rich " + stoneTypes[i] + " Ore", M * 2, null, MaterialIconType.valueOf("oreRich" + stoneTypes[i]), ENABLE_UNIFICATION, null);
-            OrePrefix.valueOf("oreRich" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
-            RICH_ORES.add(OrePrefix.valueOf("oreRich" + stoneTypes[i]));
+            MaterialIconType current = new MaterialIconType("oreRich" + stoneTypes[i]);
+            OrePrefix currentPrefix = new OrePrefix("oreRich" + stoneTypes[i], M * 2, null, current, ENABLE_UNIFICATION, null);
+            currentPrefix.addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
+            RICH_ORES.add(currentPrefix);
 
-            EnumHelper.addEnum(MaterialIconType.class, "orePoor" + stoneTypes[i], new Class[0]);
-            EnumHelper.addEnum(OrePrefix.class, "orePoor" + stoneTypes[i],
-                    new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                    "Poor " + stoneTypes[i] + " Ore", M / 2, null, MaterialIconType.valueOf("orePoor" + stoneTypes[i]), ENABLE_UNIFICATION, null);
-            OrePrefix.valueOf("orePoor" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
-            POOR_ORES.add(OrePrefix.valueOf("orePoor" + stoneTypes[i]));
+            current = new MaterialIconType("orePoor" + stoneTypes[i]);
+            currentPrefix = new OrePrefix("orePoor" + stoneTypes[i], M / 2, null, current, ENABLE_UNIFICATION, null);
+            currentPrefix.addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
+            POOR_ORES.add(currentPrefix);
 
-            EnumHelper.addEnum(MaterialIconType.class, "orePure" + stoneTypes[i], new Class[0]);
-            EnumHelper.addEnum(OrePrefix.class, "orePure" + stoneTypes[i],
-                    new Class[]{String.class, long.class, Material.class, MaterialIconType.class, long.class, Predicate.class},
-                    "Pure " + stoneTypes[i] + " Ore", M * 4, null, MaterialIconType.valueOf("orePure" + stoneTypes[i]), ENABLE_UNIFICATION, null);
-            OrePrefix.valueOf("orePure" + stoneTypes[i]).addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
-            PURE_ORES.add(OrePrefix.valueOf("orePure" + stoneTypes[i]));
+            current = new MaterialIconType("orePure" + stoneTypes[i]);
+            currentPrefix = new OrePrefix("orePure" + stoneTypes[i], M * 4, null, current, ENABLE_UNIFICATION, null);
+            currentPrefix.addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
+            PURE_ORES.add(currentPrefix);
         }
     }
 
     public static final Predicate<Material> dust = mat -> mat.hasProperty(PropertyKey.DUST);
     public static final Predicate<Material> ingot = mat -> mat.hasProperty(PropertyKey.INGOT);
-    public static final Predicate<Material> isNuclear = mat -> mat.hasFlag(GENERATE_NUCLEAR_COMPOUND);
-
-    public static MaterialIconType createMaterialIconType(String name) {
-        EnumHelper.addEnum(MaterialIconType.class, name, new Class[0]);
-        return MaterialIconType.valueOf(name);
-    }
+    //public static final Predicate<Material> isNuclear = mat -> mat.hasFlag(GENERATE_NUCLEAR_COMPOUND);
 
     public enum EnumIonsGroups {
 
