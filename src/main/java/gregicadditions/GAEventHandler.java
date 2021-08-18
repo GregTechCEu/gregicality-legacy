@@ -11,6 +11,7 @@ import gregicadditions.network.KeysPacket;
 import gregicadditions.network.NetworkHandler;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
+import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;

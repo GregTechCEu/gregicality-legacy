@@ -1,15 +1,10 @@
 package gregicadditions.machines;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
-import gregicadditions.machines.energyconverter.MetaTileEntityEnergyConverter;
-import gregicadditions.machines.energyconverter.utils.ConverterType;
-import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregicadditions.machines.multi.*;
 import gregicadditions.machines.multi.advance.*;
 import gregicadditions.machines.multi.advance.hyper.*;
@@ -52,7 +47,6 @@ public class GATileEntities {
     public static MetaTileEntityCentralMonitor CENTRAL_MONITOR; // todo move to CEu
     public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3]; // todo move to CEu
     public static MetaTileEntityRockBreaker[] ROCK_BREAKER = new MetaTileEntityRockBreaker[8]; // todo move to CEu
-    public static ListMultimap<EnergyConverterType, MetaTileEntityEnergyConverter> ENERGY_CONVERTER = ArrayListMultimap.create(); // todo move to CEu and rewrite
     public static MetaTileEntityBatteryTower BATTERY_TOWER; // todo move to CEu, and rework
     public static MetaTileEntityFluidDrillingPlant[] FLUID_DRILLING_PLANT = new MetaTileEntityFluidDrillingPlant[3]; // todo move to CEu
     public static List<MetaTileEntityMultiFluidHatch> INPUT_HATCH_MULTI = new ArrayList<>(); // todo move to CEu
@@ -193,17 +187,6 @@ public class GATileEntities {
         ROCKET_GENERATOR[4] = GregTechAPI.registerMetaTileEntity(2237, new SimpleGeneratorMetaTileEntity(location("rocket_generator.mk2"), GARecipeMaps.ROCKET_FUEL_RECIPES, ClientHandler.ROCKET_OVERLAY, 5));
         ROCKET_GENERATOR[5] = GregTechAPI.registerMetaTileEntity(2238, new SimpleGeneratorMetaTileEntity(location("rocket_generator.mk3"), GARecipeMaps.ROCKET_FUEL_RECIPES, ClientHandler.ROCKET_OVERLAY, 6));
 
-        int id = 2900;
-        for (final ConverterType t : ConverterType.values()) {
-            for (int tier = t.getMinTier(); tier < t.getMaxTier(); ++tier) {
-                for (int value : GAConfig.EnergyConversion.values) {
-                    final String vn = GTValues.VN[tier].toLowerCase();
-                    ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + value), tier, t.getGTEUToForgeType(), value)));
-                    ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + value), tier, t.getForgeToGTEUType(), value)));
-                }
-            }
-        }
-
         ROTOR_HOLDER[0] = GregTechAPI.registerMetaTileEntity(3208, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.hv"), GTValues.HV, 1.1f));
         ROTOR_HOLDER[1] = GregTechAPI.registerMetaTileEntity(3209, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.luv"), GTValues.LuV, 1.35f));
         ROTOR_HOLDER[2] = GregTechAPI.registerMetaTileEntity(3210, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.uhv"), GTValues.UHV, 1.7f));
@@ -237,17 +220,6 @@ public class GATileEntities {
 
 
         SOLAR_FLUID_SAMPLER = GregTechAPI.registerMetaTileEntity(4024, new MetaTileEntitySolarSampler(location("solar_fluid_sampler")));
-        for (final ConverterType t : ConverterType.values()) {
-            for (int tier = t.getMaxTier(); tier < GTValues.V.length - 1; ++tier) {
-                for (int value : GAConfig.EnergyConversion.values) {
-                    final String vn = GTValues.VN[tier].toLowerCase();
-                    Long voltage = (long) (GTValues.V[tier] * value * GAConfig.EnergyConversion.RATIO);
-                    if (voltage.compareTo((long) Integer.MAX_VALUE) > 0) continue;
-                    ENERGY_CONVERTER.put(t.getGTEUToForgeType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getGTEUToForgeType() + "." + vn + "." + value), tier, t.getGTEUToForgeType(), value)));
-                    ENERGY_CONVERTER.put(t.getForgeToGTEUType(), GregTechAPI.registerMetaTileEntity(id++, new MetaTileEntityEnergyConverter(location(t.getForgeToGTEUType() + "." + vn + "." + value), tier, t.getForgeToGTEUType(), value)));
-                }
-            }
-        }
 
         LARGE_LASER_ENGRAVER = GregTechAPI.registerMetaTileEntity(4137, new TileEntityLargeLaserEngraver(location("large_laser_engraver")));
         BIO_REACTOR = GregTechAPI.registerMetaTileEntity(4170, new MetaTileEntityBioReactor(location("bio_reactor")));

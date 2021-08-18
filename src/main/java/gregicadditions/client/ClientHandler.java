@@ -1,7 +1,6 @@
 package gregicadditions.client;
 
 import gregicadditions.Gregicality;
-import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregtech.api.GTValues;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -82,7 +81,6 @@ public class ClientHandler {
     public static SimpleOverlayRenderer STEAM_MINER_OVERLAY = new SimpleOverlayRenderer("overlay/machine/overlay_steam_miner");
     public static SimpleOverlayRenderer CHUNK_MINER_OVERLAY = new SimpleOverlayRenderer("overlay/machine/overlay_chunk_miner");
     public static final TextureArea COAL_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze/overlay_bronze_coal.png");
-    public static final Map<EnergyConverterType, SimpleOverlayRenderer> CONVERTER_FACES = new HashMap<>();
     public static final TextureArea BRONZE_DISPLAY = TextureArea.fullImage("textures/gui/steam/bronze_display.png");
     public static final TextureArea BRONZE_IN_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_in_slot_overlay.png");
     public static final TextureArea BRONZE_OUT_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_out_slot_overlay.png");
@@ -129,9 +127,6 @@ public class ClientHandler {
 
 
     static {
-        for (final EnergyConverterType t : EnergyConverterType.values()) {
-            CONVERTER_FACES.put(t, new SimpleOverlayRenderer("overlay/machine/converter/" + t.toString().toLowerCase()));
-        }
         for (int i = 0; i < VOLTAGE_CASINGS.length; i++) {
             String voltageName = GTValues.VN[i].toLowerCase();
             VOLTAGE_CASINGS[i] = new SimpleSidedCubeRenderer("casings/voltage/" + voltageName);

@@ -7,7 +7,6 @@ import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
-import gregicadditions.integrations.opencomputers.OpenComputersCommonProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;

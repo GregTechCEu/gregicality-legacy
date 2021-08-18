@@ -2,8 +2,6 @@ package gregicadditions.recipes.categories.machines;
 
 import gregicadditions.item.*;
 import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
-import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
@@ -126,13 +124,6 @@ public class MachineCraftingRecipes {
     }
 
     private static void misc() {
-
-        // Energy Converters
-        for (final EnergyConverterType type : EnergyConverterType.values()) {
-            if (GATileEntities.ENERGY_CONVERTER.containsKey(type)) {
-                GATileEntities.ENERGY_CONVERTER.get(type).forEach(EnergyConverterCraftingHelper.HELPER.logic(type));
-            }
-        }
 
         // Hot Coolant Rotor Holders
         ModHandler.addShapedRecipe("ga_rotor_holder_hv",  GATileEntities.ROTOR_HOLDER[0].getStackForm(), "WHW", "WRW", "WWW", 'H', MetaTileEntities.HULL[HV].getStackForm(),  'W', new UnificationEntry(wireGtHex, Gold),                 'R', new UnificationEntry(gear, BlackSteel));
