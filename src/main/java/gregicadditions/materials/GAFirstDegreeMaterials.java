@@ -88,7 +88,13 @@ public class GAFirstDegreeMaterials {
                 .components(Bismuth, 2, Tellurium, 1, Oxygen, 2)
                 .build();
 
-        //todo free id 3511
+        AmmoniumPersulfate = new Material.Builder(3511, "ammonium_persulfate")
+                .fluid()
+                .color(0x6464F5)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Nitrogen, 2, Hydrogen, 8, Sulfur, 2, Oxygen, 8)
+                .build()
+                .setFormula("(NH4)2S2O8", true);
 
         PlatinumSalt = new Material.Builder(3512, "platinum_salt")
                 .dust()

@@ -160,6 +160,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material AluminoSilicateWool;
     public static Material Dibismusthydroborate;
     public static Material BismuthTelluride;
+    public static Material AmmoniumPersulfate;
     public static Material YttriumOxide;
     public static Material PlatinumSalt;
     public static Material PlatinumSaltRefined;
@@ -928,7 +929,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material HydrogenCrackedDMF;
     public static Material Oct1ene;
     public static Material CetaneTrimethylAmmoniumBromide;
-    public static Material AmmoniumPersulfate;
     public static Material ButylLithium;
     public static Material Acetaldehyde;
     public static Material Benzaldehyde;

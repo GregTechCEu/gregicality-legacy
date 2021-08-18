@@ -398,81 +398,566 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("C7H6Br2", true);
 
-        public static SimpleFluidMaterial AceticAnhydride = new SimpleFluidMaterial("acetic_anhydride", 0xD5DDDF, "(CH3CO)2O");
-        public static SimpleFluidMaterial Isochloropropane = new SimpleFluidMaterial("isochloropropane", 0xD5DD95, "CH3CClCH3");
-        public static SimpleFluidMaterial Resorcinol = new SimpleFluidMaterial("resorcinol", 0xD5DDBE, "C6H6O2");
-        public static SimpleFluidMaterial Dinitrodipropanyloxybenzene = new SimpleFluidMaterial("dinitrodipropanyloxybenzene", 0x83945F, "C12H16O2(NO2)2");
-        public static SimpleFluidMaterial Naphthaldehyde = new SimpleFluidMaterial("napthaldehyde", 0xBCA853, "C10H7CHO");
-        public static SimpleFluidMaterial Diisopropylcarbodiimide = new SimpleFluidMaterial("diisopropylcarbodiimide", 0xA0CFFE, "C7H14N2");
-        public static SimpleFluidMaterial Pyridine = new SimpleFluidMaterial("pyridine", (Ammonia.materialRGB+Formaldehyde.rgb)/2, "C5H5N");
-        public static SimpleFluidMaterial Phenylpentanoicacid = new SimpleFluidMaterial("phenylpentanoicacid", (Butene.materialRGB+CarbonMonoxde.materialRGB)/2, "C11H14O2");
-        public static SimpleFluidMaterial Dimethylsulfide = new SimpleFluidMaterial("dimethylsulfide", (Methanol.materialRGB+HydrogenSulfide.materialRGB)/2, "(CH3)2S");
-        public static SimpleFluidMaterial BenzoylChloride = new SimpleFluidMaterial("benzoyl_chloride", (Toluene.materialRGB+ThionylChloride.rgb)/2, "C7H5ClO");
-        public static SimpleFluidMaterial PCBA = new SimpleFluidMaterial("pcba", (Chlorobenzene.materialRGB+Dimethylsulfide.rgb+Phenylpentanoicacid.rgb)/3, "C72H14O2");
-        public static SimpleFluidMaterial PCBS = new SimpleFluidMaterial("pcbs", (Styrene.materialRGB+PCBA.rgb-40)/2, "C80H21O2");
-        public static SimpleFluidMaterial Ferrocene = new SimpleFluidMaterial("ferrocene", (Water.materialRGB+Chlorine.materialRGB+Iron.materialRGB)/3, "C10H10Fe");
-        public static SimpleFluidMaterial Ferrocenylfulleropyrrolidine = new SimpleFluidMaterial("ferrocenylfulleropyrddolidine", (Ferrocene.rgb+Ethylene.materialRGB+ CarbonMonoxde.materialRGB)/3, "C74H19FeN");
-        public static SimpleFluidMaterial Hydroquinone = new SimpleFluidMaterial("hydroquinone", (Oxygen.materialRGB+Propene.materialRGB)/2, "C6H4(OH)2");
-        public static SimpleFluidMaterial SodiumAcetate = new SimpleFluidMaterial("sodium_acetate", (Sodium.materialRGB+AceticAnhydride.rgb)/2, "C2H3NaO2");
-        public static SimpleFluidMaterial Methylamine = new SimpleFluidMaterial("methylamine", (Methanol.materialRGB+Ammonia.materialRGB)/2, "CH3NH2");
-        public static SimpleFluidMaterial IsopropylAlcohol = new SimpleFluidMaterial("isopropyl_alcohol", (Water.materialRGB+Propene.materialRGB)/2, "C3H8O");
-        public static SimpleFluidMaterial RichNitrogenMix = new SimpleFluidMaterial("rich_nitrogen_mix", 0x6891d8, "H2O(CH4)?");
-        public static SimpleFluidMaterial OxidisedNitrogenMix = new SimpleFluidMaterial("oxidised_nitrogen_mix", 0x708ACD, "(H2O)2(CH4)??");
-        public static SimpleFluidMaterial PurifiedNitrogenMix = new SimpleFluidMaterial("purified_nitrogen_mix", 0x6891d8, "(H2O)2(CH4)?");
-        public static SimpleFluidMaterial CarbonatedEthanolamine = new SimpleFluidMaterial("carbonated_ethanolamine", 0x6f7d87, "H2NCH2CH2OHC");
-        public static SimpleFluidMaterial AmmoniaRichMix = new SimpleFluidMaterial("ammonia_rich_mix", 0x2f5d99, "NH3((H2O)2(CH4)?)");
-        public static SimpleFluidMaterial KeroseneIodineSolution = new SimpleFluidMaterial("kerosene_iodine_solution", 0x08081c, "C12H26I");
-        public static SimpleFluidMaterial MesitylOxide = new SimpleFluidMaterial("mesityl_oxide", Acetone.materialRGB-10, "C6H10O");
-        public static SimpleFluidMaterial MethylIsobutylKetone = new SimpleFluidMaterial("methyl_isobutyl_ketone", (MesitylOxide.rgb+WaterAgarMix.rgb)/2, "C6H12O");
-        public static SimpleFluidMaterial ThiocyanicAcid = new SimpleFluidMaterial("thiocyanic_acid", 0xfcfc30, "HSCN");
-        public static SimpleFluidMaterial Diethylether = new SimpleFluidMaterial("diethylether", AcidifiedPolyphenolMix.rgb-20, "(C2H5)2O");
-        public static SimpleFluidMaterial TannicAcid = new SimpleFluidMaterial("tannic_acid", (Diethylether.rgb+AcidifiedPolyphenolMix.rgb)/4, "C76H52O46");
-        public static SimpleFluidMaterial AcryloNitrile = new SimpleFluidMaterial("acrylonitrile", 0x9999ff, "CH2CHCN");
-        public static SimpleFluidMaterial SodiumThiocyanate = new SimpleFluidMaterial("sodium_thiocyanate", (Sodium.materialRGB+Sulfur.materialRGB)/2, "NaSCN");
-        public static SimpleFluidMaterial PolyacrylonitrileSolution = new SimpleFluidMaterial("polyacrylonitrile_solution", 0x9999ff, "(C3H3N)n(NaSCN)");
-        public static SimpleFluidMaterial MethylFormate = new SimpleFluidMaterial("methyl_formate", 0Xff9999, "HCOOCH3");
-        public static SimpleFluidMaterial WetFormamide = new SimpleFluidMaterial("wet_formamide", 0x33CCFF, "(H2O)CH3NO");
-        public static SimpleFluidMaterial Formamide = new SimpleFluidMaterial("formamide", 0x33CCFF, "CH3NO");
-        public static SimpleFluidMaterial AmineMixture = new SimpleFluidMaterial("amine_mixture", (Methanol.materialRGB-20+Ammonia.materialRGB-10)/2, "(NH3)CH4");
-        public static SimpleFluidMaterial DimethylthiocarbamoilChloride = new SimpleFluidMaterial("dimethylthiocarbamoil_chloride", 0xd9ff26, "(CH3)2NC(S)Cl");
-        public static SimpleFluidMaterial Trimethylamine = new SimpleFluidMaterial("trimetylamine", (Dimethylamine.materialRGB+20), "(CH3)3N");
-        public static SimpleFluidMaterial Mercaphenol = new SimpleFluidMaterial("mercaphenol", 0xbaaf18, "C6H6OS");
-        public static SimpleFluidMaterial Dimethylformamide = new SimpleFluidMaterial("dimethylformamide", 0x42bdff, "(CH3)2NCH");
-        public static SimpleFluidMaterial HydrogenCrackedDMF = new SimpleFluidMaterial("hydrogen_cracked_dmf", 0x42bdff, "(C6H6OS)H");
-        public static SimpleFluidMaterial Oct1ene = new SimpleFluidMaterial("1_octene", 0x7e8778, "C8H16");
-        public static SimpleFluidMaterial CetaneTrimethylAmmoniumBromide = new SimpleFluidMaterial("cetane_trimethyl_ammonium_bromide", 0xb9c1c9, "C19H42BrN");
-        public static SimpleFluidMaterial AmmoniumPersulfate = new SimpleFluidMaterial("ammonium_persulfate", 0x6464f5, "(NH4)2S2O8");
-        public static SimpleFluidMaterial ButylLithium = new SimpleFluidMaterial("butyl_lithium", (Butane.materialRGB+Lithium.materialRGB)/2, "C4H9Li");
-        public static SimpleFluidMaterial Acetaldehyde = new SimpleFluidMaterial("acetaldehyde", 0xFF9933, "C2H4O");
-        public static SimpleFluidMaterial Benzaldehyde = new SimpleFluidMaterial("benzaldehyde", 0xb26f22, "C7H6O");
-        public static SimpleFluidMaterial Dibenzylideneacetone = new SimpleFluidMaterial("dibenzylideneacetone", 0Xcc6699, "C17H14O");
-        public static SimpleFluidMaterial TrimethyltinChloride = new SimpleFluidMaterial("trimethyltin_chloride", 0x8c8075, "(CH3)3SnCl");
-        public static SimpleFluidMaterial Cyclooctadiene = new SimpleFluidMaterial("cyclooctadiene", 0x33CC33, "C8H12");
-        public static SimpleFluidMaterial NbTaSeparationMixture = new SimpleFluidMaterial("nbta_separation_mixture", 0xbcac93, "C18H39O5P");
-        public static SimpleFluidMaterial WetEthyleneOxide = new SimpleFluidMaterial("wet_etylene_oxide", 0x90b3ff, "(H2O)C2H4O");
-        public static SimpleFluidMaterial EthyleneGlycol = new SimpleFluidMaterial("ethylene_glycol", 0x8080fa, "C2H6O2");
-        public static SimpleFluidMaterial Chloroethanol = new SimpleFluidMaterial("chloroethanol", 0xcfb050, "C2H5ClO");
-        public static SimpleFluidMaterial Choline = new SimpleFluidMaterial("choline", 0x63e45f, "C5H14NO");
-        public static SimpleFluidMaterial ViscoelasticPolyurethane = new SimpleFluidMaterial("viscoelastic_polyurethane", 0xeffcef, "C17H16N2O4?");
-        public static SimpleFluidMaterial ViscoelasticPolyurethaneFoam = new SimpleFluidMaterial("viscoelastic_polyurethane_foam", 0xeffcef, "C17H16N2O4?");
-        public static SimpleFluidMaterial TolueneDiisocyanate = new SimpleFluidMaterial("toluene_diisocyanate", 0xbaf6ca, "C9H6N2O2");
-        public static SimpleFluidMaterial Aminophenol = new SimpleFluidMaterial("aminophenol", 0xafca3a, "C6H4(OH)(NH2)");
-        public static SimpleFluidMaterial Hydroxyquinoline = new SimpleFluidMaterial("hydroxyquinoline", 0x3a9a71, "C9H7NO");
-        public static SimpleFluidMaterial Perbromothiophene = new SimpleFluidMaterial("perbromothiophene", 0x87cc17, "C4Br4S");
-        public static SimpleFluidMaterial Dimethylthiophene = new SimpleFluidMaterial("dimethylthiophene", 0x90ff43, "C4H2(CH3)2S");
-        public static SimpleFluidMaterial EDOT = new SimpleFluidMaterial("ethylenedioxythiophene", 0x7a9996, "C2H4O2C4H2S");
-        public static SimpleFluidMaterial CitricAcid = new SimpleFluidMaterial("citric_acid", 0xffcc00, "C6H8O7");
-        public static SimpleFluidMaterial OxalicAcid = new SimpleFluidMaterial("oxalic_acid", 0x4aaae2, "HOOCCOOH");
-        public static SimpleFluidMaterial Trimethylchlorosilane = new SimpleFluidMaterial("trimethylchlorosilane", Dimethyldichlorosilane.materialRGB, "(CH3)3SiCl");
-        public static SimpleFluidMaterial Dibromoacrolein = new SimpleFluidMaterial("dibromoacrolein", 0x4a4a4a, "C2H2Br2O2");
-        public static SimpleFluidMaterial Bromohydrothiine = new SimpleFluidMaterial("bromodihydrothiine", 0x40ff3a, "C4H4S2Br2");
-        public static SimpleFluidMaterial Lithiumthiinediselenide = new SimpleFluidMaterial("lithiumthiinediselenide", 0x7ada00, "C4H4S2Li2Se2");
-        public static SimpleFluidMaterial Bromobutane = new SimpleFluidMaterial("bromobutane", 0xff3333, "CH3(CH2)3Br");
-        public static SimpleFluidMaterial Biperfluoromethanedisulfide = new SimpleFluidMaterial("biperfluoromethanedisulfide", 0x3ada40, "C2F6S2");
-        public static SimpleFluidMaterial BariumTriflateSolution = new SimpleFluidMaterial("barium_triflate_solution", (Barium.materialRGB+Fluorine.materialRGB)/2, "(H2O)3(Hg)C2BaF6O6S2");
-        public static SimpleFluidMaterial BariumStrontiumAcetateSolution = new SimpleFluidMaterial("basr_acetate_solution", 0x9a9b98, "C2H3BaO2Sr");
-        public static SimpleFluidMaterial TitaniumIsopropoxide = new SimpleFluidMaterial("titanium_isopropoxide", 0xFF0066, "Ti(OCH(CH3)2)4");
-        public static SimpleFluidMaterial BariumStrontiumTitanatePreparation = new SimpleFluidMaterial("basr_titanate_preparation", 0xFF0066, "(BaTiO3)C2H3BaO2Sr");
+        AceticAnhydride = new Material.Builder(6548, "acetic_anhydride")
+                .fluid()
+                .color(0xD5DDDF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 6, Oxygen, 3)
+                .build()
+                .setFormula("(CH3CO)2O", true);
+
+        Isochloropropane = new Material.Builder(6549, "isochloropropane")
+                .fluid()
+                .color(0xD5DD95)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 7, Chlorine, 1)
+                .build()
+                .setFormula("CH3CClCH3", true);
+
+        Resorcinol = new Material.Builder(6550, "resorcinol")
+                .fluid()
+                .color(0xD5DDBE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 6, Oxygen, 2)
+                .build()
+                .setFormula("C6H6O2", true);
+
+        Dinitrodipropanyloxybenzene = new Material.Builder(6551, "dinitrodipropanyloxybenzene")
+                .fluid()
+                .color(0x83945F)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 12, Hydrogen, 16, Oxygen, 2, NitrogenDioxide, 2)
+                .build()
+                .setFormula("C12H16O2(NO2)2", true);
+
+        Naphthaldehyde = new Material.Builder(6552, "napthaldehyde")
+                .fluid()
+                .color(0xBCA853)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 11, Hydrogen, 7, Oxygen, 1)
+                .build()
+                .setFormula("C10H7CHO", true);
+
+        Diisopropylcarbodiimide = new Material.Builder(6553, "diisopropylcarbodiimide")
+                .fluid()
+                .color(0xA0CFFE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 14, Nitrogen, 2)
+                .build()
+                .setFormula("C7H14N2", true);
+
+        Pyridine = new Material.Builder(6554, "pyridine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Hydrogen, 5, Nitrogen, 1)
+                .build()
+                .setFormula("C5H5N", true);
+
+        Phenylpentanoicacid = new Material.Builder(6555, "phenylpentanoicacid")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 11, Hydrogen, 14, Oxygen, 2)
+                .build()
+                .setFormula("C11H14O2", true);
+
+        Dimethylsulfide = new Material.Builder(6556, "dimethylsulfide")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 6, Sulfur, 1)
+                .build()
+                .setFormula("(CH3)2S", true);
+
+        BenzoylChloride = new Material.Builder(6557, "benzoyl_chloride")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 5, Chlorine, 1, Oxygen, 1)
+                .build()
+                .setFormula("C7H5ClO", true);
+
+        PCBA = new Material.Builder(6558, "pcba")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fullerene, 1, Carbon, 12, Hydrogen, 14, Oxygen, 2)
+                .build()
+                .setFormula("C72H14O2", true);
+
+        PCBS = new Material.Builder(6559, "pcbs")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fullerene, 1, Carbon, 20, Hydrogen, 21, Oxygen, 2)
+                .build()
+                .setFormula("C80H21O2", true);
+
+        Ferrocene = new Material.Builder(6560, "ferrocene")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 10, Iron, 1)
+                .build()
+                .setFormula("C10H10Fe", true);
+
+        Ferrocenylfulleropyrrolidine = new Material.Builder(6561, "ferrocenylfulleropyrddolidine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fullerene, 1, Carbon, 14, Hydrogen, 19, Iron, 1, Nitrogen, 1)
+                .build()
+                .setFormula("C74H19FeN", true);
+
+        Hydroquinone = new Material.Builder(6562, "hydroquinone")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 6, Oxygen, 2)
+                .build()
+                .setFormula("C6H4(OH)2", true);
+
+        SodiumAcetate = new Material.Builder(6563, "sodium_acetate")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 3, Sodium, 1, Oxygen, 2)
+                .build()
+                .setFormula("C2H3NaO2", true);
+
+        Methylamine = new Material.Builder(6564, "methylamine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1, Hydrogen, 5, Nitrogen, 1)
+                .build()
+                .setFormula("CH3NH2", true);
+
+        IsopropylAlcohol = new Material.Builder(6565, "isopropyl_alcohol")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 8, Oxygen, 1)
+                .build()
+                .setFormula("C3H8O", true);
+
+        RichNitrogenMix = new Material.Builder(6566, "rich_nitrogen_mix")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Water, 1, Methane, 1, RareEarth, 1)
+                .build()
+                .setFormula("H2O(CH4)?", true);
+
+        OxidisedNitrogenMix = new Material.Builder(6567, "oxidised_nitrogen_mix")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Water, 2, Methane, 1, RareEarth, 2)
+                .build()
+                .setFormula("(H2O)2(CH4)??", true);
+
+        PurifiedNitrogenMix = new Material.Builder(6568, "purified_nitrogen_mix")
+                .fluid()
+                .color(0x6891D8)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Water, 2, Methane, 1, RareEarth, 1)
+                .build()
+                .setFormula("(H2O)2(CH4)?", true);
+
+        CarbonatedEthanolamine = new Material.Builder(6569, "carbonated_ethanolamine")
+                .fluid()
+                .color(0x6F7D87)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Hydrogen, 7, Nitrogen, 1, Carbon, 3)
+                .build()
+                .setFormula("H2NCH2CH2OHC", true);
+
+        AmmoniaRichMix = new Material.Builder(6570, "ammonia_rich_mix")
+                .fluid()
+                .color(0x2F5D99)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Ammonia, 1, PurifiedNitrogenMix, 1)
+                .build()
+                .setFormula("NH3((H2O)2(CH4)?)", true);
+
+        KeroseneIodineSolution = new Material.Builder(6571, "kerosene_iodine_solution")
+                .fluid()
+                .color(0x08081C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Kerosene, 1, Iodine, 1)
+                .build()
+                .setFormula("C12H26I", true);
+
+        MesitylOxide = new Material.Builder(6572, "mesityl_oxide")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 10, Oxygen, 1)
+                .build();
+
+        MethylIsobutylKetone = new Material.Builder(6573, "methyl_isobutyl_ketone")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 12, Oxygen, 1)
+                .build();
+
+        ThiocyanicAcid = new Material.Builder(6574, "thiocyanic_acid")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Hydrogen, 1, Sulfur, 1, Carbon, 1, Nitrogen, 1)
+                .build();
+
+        Diethylether = new Material.Builder(6575, "diethylether")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 10, Oxygen, 1)
+                .build()
+                .setFormula("(C2H5)2O", true);
+
+        TannicAcid = new Material.Builder(6576, "tannic_acid")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 76, Hydrogen, 52, Oxygen, 46)
+                .build();
+
+        AcryloNitrile = new Material.Builder(6577, "acrylonitrile")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 3, Nitrogen, 1)
+                .build()
+                .setFormula("CH2CHCN", true);
+
+        SodiumThiocyanate = new Material.Builder(6578, "sodium_thiocyanate")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Sodium, 1, Sulfur, 1, Carbon, 1, Nitrogen, 1)
+                .build();
+
+        PolyacrylonitrileSolution = new Material.Builder(6579, "polyacrylonitrile_solution")
+                .fluid()
+                .color(0x9999FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(AcryloNitrile, 1, SodiumThiocyanate, 1)
+                .build()
+                .setFormula("(C3H3N)n(NaSCN)", true);
+
+        MethylFormate = new Material.Builder(6580, "methyl_formate")
+                .fluid()
+                .color(0xFF9999)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Hydrogen, 4, Carbon, 2, Oxygen, 2)
+                .build()
+                .setFormula("HCOOCH3", true);
+
+        Formamide = new Material.Builder(6581, "formamide")
+                .fluid()
+                .color(0x33CCFF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1, Hydrogen, 3, Nitrogen, 1, Oxygen, 1)
+                .build()
+                .setFormula("CH3NO", true);
+
+        WetFormamide = new Material.Builder(6582, "wet_formamide")
+                .fluid()
+                .color(0x33BBFF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Water, 1, Formamide, 1)
+                .build()
+                .setFormula("(H2O)CH3NO", true);
+
+        AmineMixture = new Material.Builder(6583, "amine_mixture")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Ammonia, 1, Methane, 1)
+                .build()
+                .setFormula("(NH3)CH4", true);
+
+        DimethylthiocarbamoilChloride = new Material.Builder(6584, "dimethylthiocarbamoil_chloride")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 6, Nitrogen, 1, Sulfur, 1, Chlorine, 1)
+                .build()
+                .setFormula("(CH3)2NC(S)Cl", true);
+
+        Trimethylamine = new Material.Builder(6585, "trimetylamine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 9, Nitrogen, 1)
+                .build()
+                .setFormula("(CH3)3N", true);
+
+        Mercaphenol = new Material.Builder(6586, "mercaphenol")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 6, Oxygen, 1, Sulfur, 1)
+                .build()
+                .setFormula("C6H6OS", true);
+
+        Dimethylformamide = new Material.Builder(6587, "dimethylformamide")
+                .fluid()
+                .color(0x42BDFF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 7, Nitrogen, 1)
+                .build()
+                .setFormula("(CH3)2NCH", true);
+
+        HydrogenCrackedDMF = new Material.Builder(6588, "hydrogen_cracked_dmf")
+                .fluid()
+                .color(0x62BDFF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 7, Oxygen, 1, Sulfur, 1)
+                .build()
+                .setFormula("(C6H6OS)H", true);
+
+        Oct1ene = new Material.Builder(6589, "1_octene")
+                .fluid()
+                .color(0x62BDFF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 16)
+                .build();
+
+        CetaneTrimethylAmmoniumBromide = new Material.Builder(6590, "cetane_trimethyl_ammonium_bromide")
+                .fluid()
+                .color(0xB9C1C9)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 19, Hydrogen, 32, Bromine, 1, Nitrogen, 1)
+                .build()
+                .setFormula("C19H42BrN", true);
+
+        Acetaldehyde = new Material.Builder(6591, "acetaldehyde")
+                .fluid()
+                .color(0xFF9933)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 4, Oxygen, 1)
+                .build();
+
+        Benzaldehyde = new Material.Builder(6592, "benzaldehyde")
+                .fluid()
+                .color(0xB26F22)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 6, Oxygen, 1)
+                .build();
+
+        Dibenzylideneacetone = new Material.Builder(6593, "dibenzylideneacetone")
+                .fluid()
+                .color(0xCC6699)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 17, Hydrogen, 14, Oxygen, 1)
+                .build();
+
+        TrimethyltinChloride = new Material.Builder(6594, "trimethyltin_chloride")
+                .fluid()
+                .color(0x8C8075)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 9, Tin, 1, Chlorine, 1)
+                .build()
+                .setFormula("(CH3)3SnCl", true);
+
+        Cyclooctadiene = new Material.Builder(6595, "cyclooctadiene")
+                .fluid()
+                .color(0x33CC33)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 12)
+                .build();
+
+        NbTaSeparationMixture = new Material.Builder(6596, "nbta_separation_mixture")
+                .fluid()
+                .color(0xBCAC93)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 18, Hydrogen, 39, Oxygen, 5, Phosphorus)
+                .build();
+
+        WetEthyleneOxide = new Material.Builder(6597, "wet_etylene_oxide")
+                .fluid()
+                .color(0x90B3FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Water, 1, Carbon, 2, Hydrogen, 4, Oxygen, 1)
+                .build();
+
+        EthyleneGlycol = new Material.Builder(6598, "ethylene_glycol")
+                .fluid()
+                .color(0x8080FA)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 6, Oxygen, 2)
+                .build();
+
+        Chloroethanol = new Material.Builder(6599, "chloroethanol")
+                .fluid()
+                .color(0xCFB050)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 5, Chlorine, 1, Oxygen, 1)
+                .build();
+
+        Choline = new Material.Builder(6600, "choline")
+                .fluid()
+                .color(0x63E45F)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Hydrogen, 14, Nitrogen, 1, Oxygen, 1)
+                .build();
+
+        ViscoelasticPolyurethane = new Material.Builder(6601, "viscoelastic_polyurethane")
+                .fluid()
+                .color(0xEFFCEF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 17, Hydrogen, 16, Nitrogen, 2, Oxygen, 4)
+                .build();
+
+        ViscoelasticPolyurethaneFoam = new Material.Builder(6602, "viscoelastic_polyurethane_foam")
+                .fluid()
+                .color(0xEFFEEF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 17, Hydrogen, 16, Nitrogen, 2, Oxygen, 4, RareEarth, 1)
+                .build();
+
+        TolueneDiisocyanate = new Material.Builder(6603, "toluene_diisocyanate")
+                .fluid()
+                .color(0xBAF6CA)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 9, Hydrogen, 6, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        Aminophenol = new Material.Builder(6604, "aminophenol")
+                .fluid()
+                .color(0xAFCA3A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 7, Nitrogen, 1, Oxygen, 1)
+                .build()
+                .setFormula("C6H4(OH)(NH2)", true);
+
+        Hydroxyquinoline = new Material.Builder(6605, "hydroxyquinoline")
+                .fluid()
+                .color(0x3A9A71)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 9, Hydrogen, 7, Nitrogen, 1, Oxygen, 1)
+                .build();
+
+        Perbromothiophene = new Material.Builder(6606, "perbromothiophene")
+                .fluid()
+                .color(0x87CC17)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Bromine, 4, Sulfur, 1)
+                .build();
+
+        Dimethylthiophene = new Material.Builder(6607, "dimethylthiophene")
+                .fluid()
+                .color(0x90FF43)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 8, Sulfur, 1)
+                .build()
+                .setFormula("C4H2(CH3)2S", true);
+
+        EDOT = new Material.Builder(6608, "ethylenedioxythiophene")
+                .fluid()
+                .color(0x7A9996)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 6, Oxygen, 2, Sulfur, 1)
+                .build()
+                .setFormula("C2H4O2C4H2S", true);
+
+        CitricAcid = new Material.Builder(6609, "citric_acid")
+                .fluid()
+                .color(0xFFCC00)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 8, Oxygen, 7)
+                .build()
+                .setFormula("C2H4O2C4H2S", true);
+
+        OxalicAcid = new Material.Builder(6610, "oxalic_acid")
+                .fluid()
+                .color(0x4AAAE2)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 2, Oxygen, 4)
+                .build()
+                .setFormula("HOOCCOOH", true);
+
+        Trimethylchlorosilane = new Material.Builder(6611, "trimethylchlorosilane")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 9, Silicon, 1, Chlorine, 1)
+                .build()
+                .setFormula("(CH3)3SiCl", true);
+
+        Dibromoacrolein = new Material.Builder(6612, "dibromoacrolein")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 2, Bromine, 2, Oxygen, 2)
+                .build();
+
+        Bromohydrothiine = new Material.Builder(6613, "bromodihydrothiine")
+                .fluid()
+                .color(0x40FF3A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 4, Sulfur, 2, Bromine, 2)
+                .build();
+
+        Lithiumthiinediselenide = new Material.Builder(6614, "lithiumthiinediselenide")
+                .fluid()
+                .color(0x7ADA00)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 4, Sulfur, 2, Lithium, 2, Selenium, 2)
+                .build();
+
+        Bromobutane = new Material.Builder(6615, "bromobutane")
+                .fluid()
+                .color(0xFF3333)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 9, Bromine, 1)
+                .build()
+                .setFormula("CH3(CH2)3Br", true);
+
+        Biperfluoromethanedisulfide = new Material.Builder(6616, "biperfluoromethanedisulfide")
+                .fluid()
+                .color(0x3ADA40)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Fluorine, 6, Sulfur, 2)
+                .build();
+
+        BariumTriflateSolution = new Material.Builder(6617, "barium_triflate_solution")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Water, 3, Mercury, 1, Carbon, 2, Barium, 1, Fluorine, 6, Oxygen, 6, Sulfur, 2)
+                .build()
+                .setFormula("(H2O)3(Hg)C2BaF6O6S2", true);
+
+        BariumStrontiumAcetateSolution = new Material.Builder(6618, "basr_acetate_solution")
+                .fluid()
+                .color(0x9A9B98)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 3, Barium, 1, Oxygen, 2, Strontium, 1)
+                .build();
+
+        TitaniumIsopropoxide = new Material.Builder(6619, "titanium_isopropoxide")
+                .fluid()
+                .color(0xFF0066)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Titanium, 1, Carbon, 12, Hydrogen, 28, Oxygen, 4)
+                .build()
+                .setFormula("Ti(OCH(CH3)2)4", true);
+
+        BariumStrontiumTitanatePreparation = new Material.Builder(6620, "basr_titanate_preparation")
+                .fluid()
+                .color(0xFF2266)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(BariumTitanate, 1, Carbon, 2, Hydrogen, 3, Barium, 1, Oxygen, 2, Strontium, 1)
+                .build()
+                .setFormula("(BaTiO3)C2H3BaO2Sr", true);
+
+
         public static SimpleFluidMaterial Chloroethane = new SimpleFluidMaterial("chloroethane", 0x33aa33, "CH3CH2Cl");
         public static SimpleFluidMaterial IsopropylAcetate = new SimpleFluidMaterial("isopropyl_acetate", (Strontium.materialRGB+IsopropylAlcohol.rgb+Water.materialRGB)/3, "(CH3)2CHCOOCH3");
         public static SimpleFluidMaterial ChlorinatedSolvents = new SimpleFluidMaterial("chlorinated_solvents",0x40804c, "(CH4)2Cl5");
