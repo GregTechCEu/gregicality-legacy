@@ -2,8 +2,8 @@ package gregicadditions.integrations.mysticalagriculture.block;
 
 import gregtech.api.model.AbstractBlockModelFactory;
 import gregtech.api.model.ResourcePackHook;
-import gregtech.api.unification.material.MaterialIconType;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialIconType;
 import net.minecraft.block.Block;
 
 public class CropBlockModelFactory extends AbstractBlockModelFactory {
@@ -25,6 +25,6 @@ public class CropBlockModelFactory extends AbstractBlockModelFactory {
         Material material = ((MaterialBlockCrop) block).getMaterial();
 
         return blockStateSample.replace("$LAST_AGE$", VARIANT_DEFINITION
-                .replace("$TEXTURE$", MaterialIconType.valueOf("crop").getBlockPath(material.materialIconSet).toString()));
+                .replace("$TEXTURE$", MaterialIconType.crop.getBlockPath(material.getMaterialIconSet()).toString()));
     }
 }

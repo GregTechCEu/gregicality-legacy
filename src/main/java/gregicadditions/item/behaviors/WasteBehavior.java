@@ -2,7 +2,7 @@ package gregicadditions.item.behaviors;
 
 import gregtech.api.items.metaitem.stats.IItemColorProvider;
 import gregtech.api.items.metaitem.stats.IItemNameProvider;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Material;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -28,7 +28,7 @@ public class WasteBehavior implements IItemColorProvider, IItemNameProvider {
         if (color != 0) {
             return color;
         }
-        int colorValue = material.materialRGB;
+        int colorValue = material.getMaterialRGB();
         int colorOffset = 0x25;
         int r = (colorValue >> 16) & 0xFF;
         int g = (colorValue >> 8) & 0xFF;

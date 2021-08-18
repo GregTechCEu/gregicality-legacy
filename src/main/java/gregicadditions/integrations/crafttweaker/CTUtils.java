@@ -6,15 +6,12 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.liquid.ILiquidStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
-import gregicadditions.materials.SimpleDustMaterial;
-import gregicadditions.materials.SimpleFluidMaterial;
 import gregicadditions.utils.GALog;
 import gregicadditions.worldgen.PumpjackHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -27,6 +24,7 @@ import java.util.stream.Collectors;
 
 @ZenClass("mods.gtadditions.recipe.Utils")
 @ZenRegister
+@SuppressWarnings("unused")
 public class CTUtils {
 
 
@@ -82,16 +80,6 @@ public class CTUtils {
         for (Recipe recipe : recipesToRemove) {
             recipeMap.removeRecipe(recipe);
         }
-    }
-
-    @ZenMethod("registerDust")
-    public static void registerDust(String name, short id, int rgb, String materialIconSet) {
-        new SimpleDustMaterial(name, rgb, id, MaterialIconSet.valueOf(materialIconSet));
-    }
-
-    @ZenMethod("registerFluid")
-    public static void registerFluid(String name, int rgb, @Optional String tooltip) {
-        new SimpleFluidMaterial(name, rgb, tooltip);
     }
 
     @ZenMethod

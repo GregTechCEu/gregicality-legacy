@@ -168,7 +168,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        int recipeRequiredTemp = recipe.getRecipePropertyStorage().getRecipePropertyValue(BlastTemperatureProperty.getInstance(), 0);
+        int recipeRequiredTemp = recipe.getProperty(BlastTemperatureProperty.getInstance(), 0);
         return this.blastFurnaceTemperature >= recipeRequiredTemp;
     }
 
@@ -191,7 +191,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
 
         @Override
         protected void setupRecipe(Recipe recipe) {
-            int[] resultOverclock = this.calculateOverclock(recipe.getEUt(), getMaxVoltage(), recipe.getDuration(), recipe.getRecipePropertyStorage().getRecipePropertyValue(BlastTemperatureProperty.getInstance(), 0));
+            int[] resultOverclock = this.calculateOverclock(recipe.getEUt(), getMaxVoltage(), recipe.getDuration(), recipe.getProperty(BlastTemperatureProperty.getInstance(), 0));
             this.progressTime = 1;
             this.setMaxProgress(resultOverclock[1]);
             this.recipeEUt = resultOverclock[0];

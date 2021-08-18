@@ -45,7 +45,7 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
                 .where('S', selfPredicate())
                 .where('#', isAirPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
+                .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
                 .where('M', abilityPartPredicate(GregicalityCapabilities.MUFFLER_HATCH))
                 .build();
     }

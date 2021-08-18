@@ -7,9 +7,8 @@ import forestry.api.genetics.IGenome;
 import forestry.api.genetics.IMutationCondition;
 import forestry.core.tiles.TileUtil;
 import forestry.core.utils.Translator;
-import gregicadditions.materials.SimpleFluidMaterial;
-import gregtech.api.unification.material.type.FluidMaterial;
-import net.minecraft.client.resources.I18n;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -33,10 +32,8 @@ public class MutationConditionFluid implements IMutationCondition {
         for (Object obj : objects){
             if (obj instanceof Fluid)
                 conditions.add((Fluid) obj);
-            else if (obj instanceof FluidMaterial)
-                conditions.add(((FluidMaterial) obj).getMaterialFluid());
-            else if (obj instanceof SimpleFluidMaterial)
-                conditions.add(((SimpleFluidMaterial) obj).fluid);
+            else if (obj instanceof Material)
+                conditions.add(((Material) obj).getProperty(PropertyKey.FLUID).getFluid());
             else if (obj instanceof FluidStack)
                 conditions.add(((FluidStack) obj).getFluid());
         }

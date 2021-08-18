@@ -1,7 +1,7 @@
 package gregicadditions.integrations.mysticalagriculture.block;
 
 import com.blakebr0.mysticalagriculture.blocks.crop.BlockMysticalCrop;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Material;
 
 import java.util.HashMap;
 import java.util.Map;

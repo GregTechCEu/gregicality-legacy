@@ -5,7 +5,7 @@ import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import com.blakebr0.mysticalagriculture.items.ItemSeed;
 import com.blakebr0.mysticalagriculture.lib.Tooltips;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Material;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -55,7 +55,7 @@ public class ItemTierSeed extends ItemSeed implements IColoredItem {
 
     @Override
     public int color() {
-        return material.materialRGB;
+        return material.getMaterialRGB();
     }
 
 }

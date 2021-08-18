@@ -16,10 +16,9 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.DustMaterial;
-import gregtech.api.unification.material.type.GemMaterial;
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.MaterialRegistry;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -48,8 +47,8 @@ public class MysticalAgricultureItems {
     public static void preInit1() {
         final ModRegistry registry = MysticalCommonProxy.REGISTRY;
 
-        for (Material material : Material.MATERIAL_REGISTRY) {
-            if (!(material instanceof DustMaterial)) {
+        for (Material material : MaterialRegistry.MATERIAL_REGISTRY) {
+            if (!material.hasProperty(PropertyKey.DUST)) {
                 continue;
             }
             MaterialBlockCrop materialBlockCrop = new MaterialBlockCrop(material.toString() + ".crop", material);
@@ -63,7 +62,7 @@ public class MysticalAgricultureItems {
 
     public static void preInit2() {
         final ModRegistry registry = MysticalCommonProxy.REGISTRY;
-        for (Material material : Material.MATERIAL_REGISTRY) {
+        for (Material material : MaterialRegistry.MATERIAL_REGISTRY) {
             if (CropType.SEEDS.get(material) == null) {
                 continue;
             }
@@ -89,11 +88,11 @@ public class MysticalAgricultureItems {
 
     public static void registerOreDict() {
         CropType.SEEDS.forEach((material, itemSeeds) -> {
-            OreDictUnifier.registerOre(new ItemStack(itemSeeds, 1), OrePrefix.valueOf("seed"), material);
+            OreDictUnifier.registerOre(new ItemStack(itemSeeds, 1), OrePrefix.seed, material);
             OreDictUnifier.registerOre(new ItemStack(itemSeeds, 1), "seedsTier" + itemSeeds.getTier());
         });
         ESSENCES.forEach((material, item) -> {
-            OreDictUnifier.registerOre(new ItemStack(item, 1), OrePrefix.valueOf("essence"), material);
+            OreDictUnifier.registerOre(new ItemStack(item, 1), OrePrefix.essence, material);
         });
     }
 
@@ -252,8 +251,8 @@ public class MysticalAgricultureItems {
         });
 
         CROPS.values().stream().distinct().forEach(block -> {
-            Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, worldIn, pos, tintIndex) -> ((MaterialBlockCrop) (state.getBlock())).getMaterial().materialRGB, block);
-            Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> ((MaterialBlockCrop) (((ItemBlock) stack.getItem()).getBlock())).getMaterial().materialRGB, block);
+            Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((state, worldIn, pos, tintIndex) -> ((MaterialBlockCrop) (state.getBlock())).getMaterial().getMaterialRGB(), block);
+            Minecraft.getMinecraft().getItemColors().registerItemColorHandler((stack, tintIndex) -> ((MaterialBlockCrop) (((ItemBlock) stack.getItem()).getBlock())).getMaterial().getMaterialRGB(), block);
         });
     }
 
@@ -263,7 +262,7 @@ public class MysticalAgricultureItems {
         });
 
         ESSENCES.forEach((material, essence) -> {
-            ModelLoader.setCustomModelResourceLocation(essence, 0, new ModelResourceLocation(OrePrefix.valueOf("essence").materialIconType.getItemModelPath(material.materialIconSet), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(essence, 0, new ModelResourceLocation(OrePrefix.essence.materialIconType.getItemModelPath(material.getMaterialIconSet()), "inventory"));
         });
         CROPS.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
     }

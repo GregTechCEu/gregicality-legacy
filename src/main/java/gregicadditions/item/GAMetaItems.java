@@ -8,7 +8,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import static gregicadditions.GAMaterials.Snow;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.WOODEN_FORM_BRICK;
 
@@ -506,8 +505,6 @@ public class GAMetaItems {
 
     public static void registerOreDict() {
         // Misc OreDictionary Additions
-        OreDictUnifier.registerOre(new ItemStack(Items.SNOWBALL), dust, Snow);
-        OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
         OreDictionary.registerOre("formWood", WOODEN_FORM_BRICK.getStackForm());
         OreDictionary.registerOre("ingotPyroliticCarbon", PYROLYTIC_CARBON.getStackForm()); // for NC compatibility
     }

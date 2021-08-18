@@ -14,8 +14,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.List;
 
-import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregtech.api.unification.material.Materials.Bohrium;
 
 public class VoidMinerInfo3 extends MultiblockInfoPage {
 

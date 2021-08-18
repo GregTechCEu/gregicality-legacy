@@ -2,7 +2,6 @@ package gregicadditions.integrations.opencomputers.driver.multi;
 
 import gregicadditions.integrations.opencomputers.driver.environment.EnvironmentMetaTileEntity;
 import gregicadditions.machines.TileEntityWorldAccelerator;
-import gregicadditions.machines.multi.TileEntityFusionReactor;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
@@ -13,7 +12,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
 public class DriverTEWorldAccelerator extends DriverSidedTileEntity {
     @Override

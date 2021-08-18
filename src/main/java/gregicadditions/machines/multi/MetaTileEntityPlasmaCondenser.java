@@ -129,6 +129,6 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.PLASMA_ARC_FURNACE_OVERLAY;
+        return Textures.ARC_FURNACE_OVERLAY;
     }
 }

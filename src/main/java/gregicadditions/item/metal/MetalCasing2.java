@@ -1,10 +1,9 @@
 package gregicadditions.item.metal;
 
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.Material;
 import gregtech.common.blocks.VariantBlock;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.IStringSerializable;
@@ -18,7 +17,7 @@ import static gregtech.api.unification.material.Materials.*;
 public class MetalCasing2 extends VariantBlock<MetalCasing2.CasingType> {
 
     public MetalCasing2() {
-        super(Material.IRON);
+        super(net.minecraft.block.material.Material.IRON);
         setTranslationKey("ga_metal_casing_2");
         setHardness(5.0f);
         setResistance(10.0f);
@@ -49,9 +48,9 @@ public class MetalCasing2 extends VariantBlock<MetalCasing2.CasingType> {
 
 
         private final String name;
-        private final IngotMaterial material;
+        private final Material material;
 
-        CasingType(String name, IngotMaterial material) {
+        CasingType(String name, Material material) {
             this.name = name;
             this.material = material;
         }
@@ -61,7 +60,7 @@ public class MetalCasing2 extends VariantBlock<MetalCasing2.CasingType> {
             return this.name;
         }
 
-        public IngotMaterial getMaterial() { return this.material; }
+        public Material getMaterial() { return this.material; }
 
         public ICubeRenderer getTexture() {
             switch (name) {

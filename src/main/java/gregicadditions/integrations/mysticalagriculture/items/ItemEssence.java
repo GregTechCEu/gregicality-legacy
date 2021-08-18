@@ -2,7 +2,7 @@ package gregicadditions.integrations.mysticalagriculture.items;
 
 import com.blakebr0.cucumber.iface.IColoredItem;
 import com.blakebr0.cucumber.item.ItemBase;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Material;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,6 +25,6 @@ public class ItemEssence extends ItemBase implements IColoredItem {
 
     @Override
     public int color() {
-        return material.materialRGB;
+        return material.getMaterialRGB();
     }
 }

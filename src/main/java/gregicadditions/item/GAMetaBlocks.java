@@ -20,7 +20,10 @@ import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable
 import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregtech.api.GTValues;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.MaterialRegistry;
 import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.ore.StoneType;
 import gregtech.api.unification.ore.StoneTypes;
@@ -96,9 +99,9 @@ public class GAMetaBlocks {
 
     public static void init() {
         if (GAConfig.Misc.oreVariants) {
-            for (Material mat : Material.MATERIAL_REGISTRY) {
-                if (mat instanceof DustMaterial && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)) {
-                    createOreBlock((DustMaterial) mat);
+            for (Material mat : MaterialRegistry.MATERIAL_REGISTRY) {
+                if (mat.hasProperty(PropertyKey.ORE)) {
+                    createOreBlock(mat);
                 }
             }
         }
@@ -201,7 +204,7 @@ public class GAMetaBlocks {
         registerTileEntity();
     }
 
-    private static void createOreBlock(DustMaterial material) {
+    private static void createOreBlock(Material material) {
         if (GAConfig.Misc.oreVariantsStoneTypes) {
             StoneType[] stoneTypeBuffer = new StoneType[16];
             int generationIndex = 0;
@@ -225,10 +228,10 @@ public class GAMetaBlocks {
         return Arrays.copyOfRange(src, 0, nullIndex == -1 ? src.length : nullIndex);
     }
 
-    private static void createOreBlock(DustMaterial material, StoneType[] stoneTypes, int index) {
+    private static void createOreBlock(Material material, StoneType[] stoneTypes, int index) {
         String[] orePrefixes = {"Rich", "Poor", "Pure"};
         for (String orePrefix : orePrefixes) {
-            GABlockOre block = new GABlockOre(material, stoneTypes, OrePrefix.valueOf("ore" + orePrefix));
+            GABlockOre block = new GABlockOre(material, stoneTypes, OrePrefix.getPrefix("ore" + orePrefix));
             block.setRegistryName("gregtech:" + orePrefix.toLowerCase() + "_ore_" + material + "_" + index);
             block.setTranslationKey(orePrefix.toLowerCase() + "_ore_block");
             GA_ORES.add(block);
@@ -323,11 +326,11 @@ public class GAMetaBlocks {
 
     public static void registerOreDict() {
         for (GABlockOre blockOre : GA_ORES) {
-            DustMaterial mat = blockOre.material;
+            Material mat = blockOre.material;
             for (StoneType stoneType : blockOre.STONE_TYPE.getAllowedValues()) {
                 ItemStack normalStack = blockOre.getItem(blockOre.getDefaultState().withProperty(blockOre.STONE_TYPE, stoneType));
-                OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? blockOre.getOrePrefix() :
-                        OrePrefix.valueOf(blockOre.getOrePrefix().name() + stoneType.processingPrefix.name().substring(3));
+                OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? blockOre.orePrefix :
+                        OrePrefix.getPrefix(blockOre.orePrefix.name() + stoneType.processingPrefix.name().substring(3));
                 OreDictUnifier.registerOre(normalStack, orePrefix, mat);
             }
         }

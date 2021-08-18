@@ -1,10 +1,10 @@
 package gregicadditions.item.metal;
 
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.type.IngotMaterial;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.VariantBlock;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.IStringSerializable;
@@ -17,7 +17,7 @@ import static gregicadditions.client.ClientHandler.*;
 public class MetalCasing1 extends VariantBlock<MetalCasing1.CasingType> {
 
     public MetalCasing1() {
-        super(Material.IRON);
+        super(net.minecraft.block.material.Material.IRON);
         setTranslationKey("ga_metal_casing_1");
         setHardness(5.0f);
         setResistance(10.0f);
@@ -48,12 +48,12 @@ public class MetalCasing1 extends VariantBlock<MetalCasing1.CasingType> {
         TUMBAGA("casing_tumbaga", Tumbaga),
         TALONITE("casing_talonite", Talonite),
         ZIRCONIUM_CARBIDE("casing_zirconium_carbide", ZirconiumCarbide),
-        POTIN("casing_potin", Potin);
+        POTIN("casing_potin", Materials.Potin);
 
         private final String name;
-        private final IngotMaterial material;
+        private final Material material;
 
-        CasingType(String name, IngotMaterial material) {
+        CasingType(String name, Material material) {
             this.name = name;
             this.material = material;
         }
@@ -63,7 +63,7 @@ public class MetalCasing1 extends VariantBlock<MetalCasing1.CasingType> {
             return this.name;
         }
 
-        public IngotMaterial getMaterial() { return this.material; }
+        public Material getMaterial() { return this.material; }
 
         public ICubeRenderer getTexture() {
             switch (name) {

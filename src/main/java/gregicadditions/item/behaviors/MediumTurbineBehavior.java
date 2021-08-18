@@ -1,7 +1,8 @@
 package gregicadditions.item.behaviors;
 
-import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.material.type.SolidMaterial;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
+import gregtech.api.unification.material.properties.ToolProperty;
 import gregtech.common.items.behaviors.TurbineRotorBehavior;
 import net.minecraft.item.ItemStack;
 
@@ -11,12 +12,12 @@ public class MediumTurbineBehavior extends TurbineRotorBehavior {
 
     @Override
     public int getPartMaxDurability(ItemStack itemStack) {
-        IngotMaterial material = getPartMaterial(itemStack);
-        return material.toolDurability * TOOL_DURABILITY_MULTIPLIER;
+        ToolProperty property = getPartMaterial(itemStack).getProperty(PropertyKey.TOOL);
+        return property.toolDurability * TOOL_DURABILITY_MULTIPLIER;
     }
 
     public double getRotorEfficiency(ItemStack itemStack) {
-        SolidMaterial primaryMaterial = getPartMaterial(itemStack);
-        return primaryMaterial == null ? 0.01 : primaryMaterial.toolSpeed / 24.0;
+        Material primaryMaterial = getPartMaterial(itemStack);
+        return primaryMaterial == null ? 0.01 : primaryMaterial.getProperty(PropertyKey.TOOL).toolSpeed / 24.0;
     }
 }

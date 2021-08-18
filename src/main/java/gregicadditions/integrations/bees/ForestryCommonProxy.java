@@ -21,6 +21,7 @@ import gregicadditions.integrations.bees.effects.GTBeesEffects;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GregTechAPI;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
+import gregtech.api.recipes.MatchingMode;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMaps;
@@ -52,8 +53,8 @@ import java.util.stream.Collectors;
 
 import static gregicadditions.machines.GATileEntities.location;
 import static gregicadditions.recipes.helper.HelperMethods.registerMachineRecipe;
-import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
-import static gregicadditions.recipes.helper.GACraftingComponents.*;
+import static gregtech.api.recipes.GTRecipeHandler.removeRecipesByInputs;
+import static gregtech.loaders.recipe.CraftingComponent.*;
 
 @Mod.EventBusSubscriber()
 public class ForestryCommonProxy {
@@ -79,7 +80,7 @@ public class ForestryCommonProxy {
         if (!GAConfig.GTBees.EnableGTCEBees || !Loader.isModLoaded(GAValues.MODID_FR)) return;
         GTBeesEffects.initEffects();
         GTBees.initBees();
-        registerMachineRecipe(BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE_SINGLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
+        registerMachineRecipe(BEE_ATTRACTOR, "CGC", "FMF", "SPS", 'M', HULL, 'C', CABLE, 'G', GLASS, 'F', ModuleCore.getItems().impregnatedCasing.getItemStack(), 'S', CIRCUIT, 'P', PUMP);
 
         if (GAConfig.GTBees.GenerateCentrifugeRecipes)
             for (ICentrifugeRecipe recipe : RecipeManagers.centrifugeManager.recipes()) {
@@ -96,16 +97,16 @@ public class ForestryCommonProxy {
         if (GAConfig.GTBees.GenerateExtractorRecipes) {
 
             //Fix Seed oil recipes not having the amounts properly copied from the Forestry Squeezer
-            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.WHEAT_SEEDS));
-            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.MELON_SEEDS));
-            removeRecipesByInputs(RecipeMaps.FLUID_EXTRACTION_RECIPES, new ItemStack(Items.PUMPKIN_SEEDS));
+            removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES, new ItemStack(Items.WHEAT_SEEDS));
+            removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES, new ItemStack(Items.MELON_SEEDS));
+            removeRecipesByInputs(RecipeMaps.EXTRACTOR_RECIPES, new ItemStack(Items.PUMPKIN_SEEDS));
 
             for (ISqueezerRecipe recipe : RecipeManagers.squeezerManager.recipes()) {
                 if (recipe.getResources().size() != 1 || recipe.getResources().get(0).getItem() instanceof ItemFluidContainerForestry)
                     continue;
-                if (RecipeMaps.FLUID_EXTRACTION_RECIPES.findRecipe(Integer.MAX_VALUE, recipe.getResources(), Collections.emptyList(), Integer.MAX_VALUE) != null)
+                if (RecipeMaps.EXTRACTOR_RECIPES.findRecipe(Integer.MAX_VALUE, recipe.getResources(), Collections.emptyList(), Integer.MAX_VALUE, MatchingMode.DEFAULT) != null)
                     continue;
-                SimpleRecipeBuilder builder = RecipeMaps.FLUID_EXTRACTION_RECIPES.recipeBuilder();
+                SimpleRecipeBuilder builder = RecipeMaps.EXTRACTOR_RECIPES.recipeBuilder();
                 builder.inputs(recipe.getResources().get(0).copy());
                 if (!recipe.getRemnants().isEmpty())
                     builder.chancedOutput(recipe.getRemnants().copy(), (int) (recipe.getRemnantsChance() * Recipe.getMaxChancedValue()), 1000);
