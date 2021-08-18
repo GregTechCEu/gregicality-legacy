@@ -487,7 +487,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material NbTaContainingDust;
     public static Material IronSulfate;
     public static Material StrontiumCarbonate;
-    public static Material SodiumBicarbonate;
     public static Material SodiumHypochlorite;
     public static Material CopperGalliumIndiumMix;
     public static Material LanthanumCalciumManganate;

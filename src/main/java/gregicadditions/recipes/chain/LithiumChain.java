@@ -2,7 +2,6 @@ package gregicadditions.recipes.chain;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -13,20 +12,20 @@ public class LithiumChain {
         // LiAlSi2O6 = LiAlSi2O6
         BLAST_RECIPES.recipeBuilder().duration(80).EUt(120).blastFurnaceTemp(1400)
                 .input(dust, Spodumene, 4)
-                .outputs(RoastedSpodumene.getItemStack())
+                .output(dust, RoastedSpodumene)
                 .buildAndRegister();
 
         // KLi3Al4F2O10 + CaO = CaF2 + (KLi3Al4O10)O
         BLAST_RECIPES.recipeBuilder().duration(160).EUt(120).blastFurnaceTemp(1400)
                 .input(dust, Lepidolite, 8)
                 .input(dust, Quicklime, 2)
-                .outputs(RoastedLepidolite.getItemStack())
+                .output(dust, RoastedLepidolite)
                 .output(dust, Fluorite, 3)
                 .buildAndRegister();
 
         // LiAlSi2O6 + H2SO4 = [LiAlO2 + H2SO4] + 2SiO2
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .inputs(RoastedSpodumene.getItemStack())
+                .input(dust, RoastedSpodumene)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(1000))
                 .output(dust, SiliconDioxide, 6)
@@ -34,12 +33,12 @@ public class LithiumChain {
 
         // (KLi3Al4O10)O + Al + 3H2SO4 = 3[LiAlO2 + H2SO4] + Al2O3 + K2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(120)
-                .inputs(RoastedLepidolite.getItemStack())
+                .input(dust, RoastedLepidolite)
                 .input(dust, Aluminium)
                 .fluidInputs(SulfuricAcid.getFluid(3000))
                 .fluidOutputs(DissolvedLithiumOre.getFluid(3000))
                 .output(dust, Potash, 3)
-                .outputs(Alumina.getItemStack(5))
+                .output(dust, Alumina, 5)
                 .buildAndRegister();
 
         // 2[LiAlO2 + H2SO4] + H2SO4 + CO2 = Al2(SO4)3 + [Li2CO3 + H2O] + 2H2O
@@ -47,14 +46,14 @@ public class LithiumChain {
                 .fluidInputs(DissolvedLithiumOre.getFluid(2000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(CarbonDioxide.getFluid(1000))
-                .outputs(AluminiumSulfate.getItemStack(17))
+                .output(dust, AluminiumSulfate, 17)
                 .fluidOutputs(LithiumCarbonateSolution.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
         // K2SO4 -> 2K + S + 4O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
-                .inputs(PotassiumSulfate.getItemStack(7))
+                .input(dust, PotassiumSulfate, 7)
                 .output(dust, Potassium, 2)
                 .output(dust, Sulfur)
                 .fluidOutputs(Oxygen.getFluid(4000))
@@ -62,7 +61,7 @@ public class LithiumChain {
 
         // Al2(SO4)3 = 2Al + 3S + 12O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(180).EUt(120)
-                .inputs(AluminiumSulfate.getItemStack(17))
+                .input(dust, AluminiumSulfate, 17)
                 .output(dust, Aluminium, 2)
                 .output(dust, Sulfur, 3)
                 .fluidOutputs(Oxygen.getFluid(12000))
@@ -91,7 +90,7 @@ public class LithiumChain {
                 .fluidInputs(SulfuricAcid.getFluid(3000))
                 .output(dust, LithiumFluoride, 4)
                 .output(dust, Potash, 3)
-                .outputs(AluminiumSulfate.getItemStack(17))
+                .output(dust, AluminiumSulfate, 17)
                 .buildAndRegister();
 
         // Combined Step - Spodumene
@@ -99,7 +98,7 @@ public class LithiumChain {
                 .input(dust, Spodumene, 8)
                 .fluidInputs(SulfuricAcid.getFluid(3000))
                 .output(dust, SiliconDioxide, 12)
-                .outputs(AluminiumSulfate.getItemStack(17))
+                .output(dust, AluminiumSulfate, 17)
                 .output(dust, Lithium, 2)
                 .buildAndRegister();
     }

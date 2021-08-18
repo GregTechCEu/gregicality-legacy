@@ -15,8 +15,8 @@ public class CombinedChains {
         // 10C10H8 + 10C8H10 -> 3C60H30 + 90H (H voided)
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(40).EUt(31457280) // UIV
                 .fluidInputs(Naphthalene.getFluid(10000))
-                .fluidInputs(EthylBenzene.getFluid(10000))
-                .outputs(UnfoldedFullerene.getItemStack(3))
+                .fluidInputs(Ethylbenzene.getFluid(10000))
+                .output(dust, UnfoldedFullerene, 3)
                 .buildAndRegister();
 
 
@@ -25,7 +25,7 @@ public class CombinedChains {
         // Naquadric Compound [Nq] + KHSO5 + 2H -> Nq + KOH + H2SO4
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(50).EUt(491520) // UV
                 .input(dust, NaquadricCompound)
-                .inputs(PotassiumPeroxymonosulfate.getItemStack(8))
+                .input(dust, PotassiumPeroxymonosulfate, 8)
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .output(dust, Naquadah)
                 .fluidOutputs(PotassiumHydroxide.getFluid(1000))
@@ -79,7 +79,7 @@ public class CombinedChains {
                 .fluidInputs(Ethylene.getFluid(2000))
                 .fluidInputs(Propene.getFluid(1000))
                 .notConsumable(HydrochloricAcid.getFluid(0))
-                .fluidOutputs(Epoxid.getFluid(1000))
+                .fluidOutputs(Epoxy.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
@@ -130,7 +130,7 @@ public class CombinedChains {
         // Zylon
         // C6H6O2 + 2HNO3 + C8H10 -> C14H6N2O2 + 6H2O
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(30).EUt(31457280) // UIV
-                .notConsumable(AuPdCCatalyst.getItemStack())
+                .notConsumable(dustTiny, AuPdCCatalyst)
                 .fluidInputs(Resorcinol.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(2000))
                 .fluidInputs(OrthoXylene.getFluid(1000))
@@ -141,25 +141,25 @@ public class CombinedChains {
         // Fullerene Polymer Matrix
         // 2Pd + 2CH3COOH + 2C10H10Fe + 2C60 + C2H4 + 2C3H7NO2 -> 2PdC60 + 4O
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(503316480) // UXV
-                .inputs(Fullerene.getItemStack(2))
-                .inputs(Sarcosine.getItemStack(26))
+                .input(dust, Fullerene, 2)
+                .input(dust, Sarcosine, 26)
                 .input(dust, Palladium, 2)
                 .fluidInputs(Ferrocene.getFluid(2000))
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(AceticAcid.getFluid(2000))
-                .notConsumable(SodiumEthoxide.getItemStack())
-                .notConsumable(AluminiumChloride.getItemStack())
-                .notConsumable(Chloroform)
-                .notConsumable(Toluene)
-                .outputs(PdFullereneMatrix.getItemStack(2))
+                .notConsumable(dust, SodiumEthoxide)
+                .notConsumable(dust, AluminiumChloride)
+                .notConsumable(Chloroform.getFluid())
+                .notConsumable(Toluene.getFluid())
+                .output(dust, PdFullereneMatrix, 2)
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
 
         // 7C8H8 + 8CH2Cl2 + 8C60 + 8C11H14O2 + 8C2H6S + 8C6H5Cl -> 8C7H8 + 8H2S + 8C80H21O2 + 24HCl
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(503316480) // UXV
-                .notConsumable(Dimethylaminopyridine.getItemStack())
-                .inputs(Fullerene.getItemStack(8))
+                .notConsumable(dust, Dimethylaminopyridine)
+                .input(dust, Fullerene, 8)
                 .fluidInputs(Styrene.getFluid(7000))
                 .fluidInputs(Dichloromethane.getFluid(8000))
                 .fluidInputs(Phenylpentanoicacid.getFluid(8000))

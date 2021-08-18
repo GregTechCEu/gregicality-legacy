@@ -1,14 +1,12 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
-import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -22,7 +20,7 @@ public class TungstenChain {
         if (GAConfig.Misc.tungstenProcess) {
 
             // Hot Tungstencarbide
-            removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(ingot, Tungsten), OreDictUnifier.get(dust, Carbon)});
+            GTRecipeHandler.removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(ingot, Tungsten), OreDictUnifier.get(dust, Carbon));
 
 
             // WCa2O4 + 2NaOH + H2O2 -> 2Ca(OH)2 + Na2WO4
@@ -30,7 +28,7 @@ public class TungstenChain {
                     .input(dust, Scheelite, 7)
                     .input(dust, SodiumHydroxide, 6)
                     .fluidInputs(HydrogenPeroxide.getFluid(1000))
-                    .outputs(CalciumHydroxide.getItemStack(10))
+                    .output(dust, CalciumHydroxide, 10)
                     .fluidOutputs(SodiumTungstate.getFluid(1000))
                     .EUt(480)
                     .duration(110)
@@ -40,7 +38,7 @@ public class TungstenChain {
             MIXER_RECIPES.recipeBuilder()
                     .input(dust, Tungstate, 7)
                     .input(dust, SodiumHydroxide, 6)
-                    .outputs(LithiumHydroxide.getItemStack(6))
+                    .output(dust, LithiumHydroxide, 6)
                     .fluidOutputs(SodiumTungstate.getFluid(1000))
                     .EUt(480)
                     .duration(160)
@@ -49,7 +47,7 @@ public class TungstenChain {
             // LiOH + H2O -> LiOH(H2O)
             MIXER_RECIPES.recipeBuilder()
                     .fluidInputs(Water.getFluid(1000))
-                    .inputs(LithiumHydroxide.getItemStack(3))
+                    .input(dust, LithiumHydroxide, 3)
                     .fluidOutputs(LithiumHydroxideSolution.getFluid(1000))
                     .EUt(30)
                     .duration(60)
@@ -77,7 +75,7 @@ public class TungstenChain {
                     .input(dust, CalciumTungstate, 6)
                     .fluidInputs(Water.getFluid(2000))
                     .output(dust, TungsticAcid, 7)
-                    .outputs(CalciumHydroxide.getItemStack(5))
+                    .output(dust, CalciumHydroxide, 5)
                     .EUt(480)
                     .duration(150)
                     .buildAndRegister();

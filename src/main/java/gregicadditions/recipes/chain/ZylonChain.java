@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -43,7 +42,7 @@ public class ZylonChain {
                 .fluidOutputs(Bromine.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(HydrogenPeroxide.getFluid(1000))
-                .outputs(Terephthalaldehyde.getItemStack(16))
+                .output(dust, Terephthalaldehyde, 16)
                 .EUt(7680)
                 .duration(50)
                 .buildAndRegister();
@@ -53,7 +52,7 @@ public class ZylonChain {
                 .input(dust, Gold)
                 .input(dust, Palladium)
                 .input(dust, Carbon)
-                .outputs(AuPdCCatalyst.getItemStack(3))
+                .output(dust, AuPdCCatalyst, 3)
                 .EUt(2000000)
                 .duration(60)
                 .buildAndRegister();
@@ -83,7 +82,7 @@ public class ZylonChain {
                 .fluidInputs(AceticAnhydride.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(2000))
                 .fluidInputs(Propene.getFluid(1000))
-                .inputs(SodiumOxide.getItemStack(3))
+                .input(dust, SodiumOxide, 3)
                 .fluidOutputs(Dinitrodipropanyloxybenzene.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(AceticAcid.getFluid(1000))
@@ -103,9 +102,9 @@ public class ZylonChain {
         // C12H16O2(NO2)2 + C8H6O2 -> C20H22N2O2 + 6O
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Dinitrodipropanyloxybenzene.getFluid(1000))
-                .inputs(Terephthalaldehyde.getItemStack(16))
-                .notConsumable(AuPdCCatalyst.getItemStack())
-                .outputs(PreZylon.getItemStack())
+                .input(dust, Terephthalaldehyde, 16)
+                .notConsumable(dust, AuPdCCatalyst)
+                .output(dust, PreZylon)
                 .fluidOutputs(Oxygen.getFluid(6000))
                 .EUt(1966080)
                 .duration(50)
@@ -113,7 +112,7 @@ public class ZylonChain {
 
         // C20H22N2O2 -> 2C3H8 + C14H6N2O2
         BLAST_RECIPES.recipeBuilder()
-                .inputs(PreZylon.getItemStack())
+                .input(dust, PreZylon)
                 .fluidOutputs(Propane.getFluid(2000))
                 .output(dust, Zylon)
                 .EUt(120)

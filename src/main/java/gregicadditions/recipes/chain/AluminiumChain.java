@@ -13,15 +13,15 @@ public class AluminiumChain {
 
         // 2Al(OH)3 -> Al2O3 + 3H2O
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(120).blastFurnaceTemp(1100)
-                .inputs(AluminiumHydroxide.getItemStack(14))
-                .outputs(Alumina.getItemStack(5))
+                .input(dust, AluminiumHydroxide, 14)
+                .output(dust, Alumina, 5)
                 .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
         // 6NaOH + Al2O3 + 12HF -> 2Na3AlF6 + 9H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(120)
                 .input(dust, SodiumHydroxide, 18)
-                .inputs(Alumina.getItemStack(5))
+                .input(dust, Alumina, 5)
                 .fluidInputs(HydrofluoricAcid.getFluid(12000))
                 .fluidOutputs(SodiumHexafluoroaluminate.getFluid(2000))
                 .fluidOutputs(Water.getFluid(9000))
@@ -29,18 +29,18 @@ public class AluminiumChain {
 
         // 2Al2O3 + Na3AlF6 -> 4Al + 3NaF + AlF3 + 6O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120)
-                .inputs(Alumina.getItemStack(10))
+                .input(dust, Alumina, 10)
                 .fluidInputs(SodiumHexafluoroaluminate.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(6000))
                 .output(dust, Aluminium, 4)
                 .output(dust, SodiumFluoride, 6)
-                .outputs(AluminiumTrifluoride.getItemStack(4))
+                .output(dust, AluminiumTrifluoride, 4)
                 .buildAndRegister();
 
         // 3NaF + AlF3 -> Na3AlF6
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(120)
                 .input(dust, SodiumFluoride, 6)
-                .inputs(AluminiumTrifluoride.getItemStack(4))
+                .input(dust, AluminiumTrifluoride, 4)
                 .fluidOutputs(SodiumHexafluoroaluminate.getFluid(1000))
                 .buildAndRegister();
 
@@ -70,14 +70,14 @@ public class AluminiumChain {
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .fluidInputs(PureAluminiumHydroxideSolution.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(0))
-                .outputs(AluminiumHydroxide.getItemStack(7))
+                .output(dust, AluminiumHydroxide, 7)
                 .buildAndRegister();
 
         // [Al(OH)3 + H2O] = Al(OH)3 + H2O
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(240)
                 .fluidInputs(PureAluminiumHydroxideSolution.getFluid(8000))
                 .notConsumable(new IntCircuitIngredient(1))
-                .outputs(AluminiumHydroxide.getItemStack(56))
+                .output(dust, AluminiumHydroxide, 56)
                 .buildAndRegister();
 
         // 8 Red Mud [Contains Total: 4TiO2 + 24Na + 12H] + 8HCl = 8 Neutralized Mud [Contains Total: 4TiO2 + 24Na + 12H + 8HCl] --- This is supposed to be 1B output
@@ -99,7 +99,7 @@ public class AluminiumChain {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(480)
                 .fluidInputs(FerricREEChloride.getFluid(2000))
                 .fluidOutputs(RareEarthChloridesSolution.getFluid(1000))
-                .fluidOutputs(IronChloride.getFluid(1000))
+                .fluidOutputs(Iron3Chloride.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(11000))
                 .buildAndRegister();
 

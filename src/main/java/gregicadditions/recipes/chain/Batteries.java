@@ -22,8 +22,8 @@ public class Batteries {
                 .input(dust, Garnierite, 8)
                 .fluidInputs(SulfuricAcid.getFluid(3000))
                 .fluidInputs(PotassiumHydroxide.getFluid(6000))
-                .outputs(PotassiumSulfate.getItemStack(21))
-                .outputs(NickelOxideHydroxide.getItemStack(16))
+                .output(dust, PotassiumSulfate, 21)
+                .output(dust, NickelOxideHydroxide, 16)
                 .buildAndRegister();
 
         // 2Co + Li2CO3(H2O) -> 2LiCoO + CO + H2O (H2O lost to dehydrator)
@@ -31,25 +31,25 @@ public class Batteries {
                 .input(dust, Cobalt, 2)
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
                 .notConsumable(Oxygen.getFluid(0))
-                .outputs(LithiumCobaltOxide.getItemStack(6))
-                .fluidOutputs(CarbonMonoxde.getFluid(1000))
+                .output(dust, LithiumCobaltOxide, 6)
+                .fluidOutputs(CarbonMonoxide.getFluid(1000))
                 .buildAndRegister();
 
         // BaO6S2C2F6 + Li2CO3(H2O) -> BaCO3 + 2LiCSO3F3 + H2O (H2O lost to dehydrator)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(220).EUt(480)
-                .inputs(BariumTriflate.getItemStack(17))
+                .input(dust, BariumTriflate, 17)
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
-                .outputs(BariumCarbonate.getItemStack(5))
-                .outputs(LithiumTriflate.getItemStack(20))
+                .output(dust, BariumCarbonate, 5)
+                .output(dust, LithiumTriflate, 20)
                 .buildAndRegister();
 
         // Algae + 6Na2CO3(H2O) -> 4C6H10O5 + 2C5H10O5 + 6NaC6H7O6(H2O) + 6CO2 + 6H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(1920)
-                .inputs(BrownAlgae.getItemStack(10))
+                .input(dust, BrownAlgae, 10)
                 .notConsumable(dust, Diatomite)
                 .fluidInputs(SodiumCarbonateSolution.getFluid(6000))
-                .outputs(Cellulose.getItemStack(84))
-                .outputs(Xylose.getItemStack(20))
+                .output(dust, Cellulose, 84)
+                .output(dust, Xylose, 20)
                 .fluidOutputs(Biomass.getFluid(540))
                 .fluidOutputs(SodiumAlginateSolution.getFluid(6000))
                 .fluidOutputs(CarbonDioxide.getFluid(6000))
@@ -60,7 +60,7 @@ public class Batteries {
         MIXER_RECIPES.recipeBuilder().duration(290).EUt(30)
                 .fluidInputs(SodiumAlginateSolution.getFluid(2000))
                 .input(dust, CalciumChloride, 3)
-                .outputs(CalciumAlginate.getItemStack(39))
+                .output(dust, CalciumAlginate, 39)
                 .fluidOutputs(SaltWater.getFluid(4000))
                 .buildAndRegister();
 
@@ -71,7 +71,7 @@ public class Batteries {
                 .fluidInputs(CetaneTrimethylAmmoniumBromide.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(3000))
                 .outputs(SiliconNanoparticles.getItemStack())
-                .fluidOutputs(CarbonMonoxde.getFluid(2000))
+                .fluidOutputs(CarbonMonoxide.getFluid(2000))
                 .fluidOutputs(NitrogenDioxide.getFluid(4000))
                 .fluidOutputs(HydrobromicAcid.getFluid(1000))
                 .fluidOutputs(Acetaldehyde.getFluid(25000))

@@ -51,7 +51,7 @@ public class GoldChain {
 
         // Step 2 recovery (16 nuggets per PM)
         ELECTROLYZER_RECIPES.recipeBuilder()
-                .inputs(GoldLeach.getItemStack(4))
+                .input(dust, GoldLeach, 4)
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .output(dust, Copper, 3)
@@ -65,7 +65,7 @@ public class GoldChain {
         // other byproducts from the chain, which are compacted from the older versions of the chain.
         // Cu3? -> 3Cu + Fe + Ni + Ag + Pb
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(30).duration(80)
-                .inputs(CopperLeach.getItemStack(4))
+                .input(dust, CopperLeach, 4)
                 .output(dust, Copper, 3)
                 .chancedOutput(OreDictUnifier.get(dust, Lead), 1500, 500)
                 .chancedOutput(OreDictUnifier.get(dust, Iron), 1200, 400)
@@ -107,16 +107,16 @@ public class GoldChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(80)
                 .input(ingot, GoldAlloy, 4)
                 .fluidInputs(NitricAcid.getFluid(1000))
-                .outputs(GoldLeach.getItemStack(4))
+                .output(dust, GoldLeach, 4)
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
         // STEP 3
         // Cu3Au?(OH) + HCl -> HAuCl(OH) + Cu3?
         CHEMICAL_RECIPES.recipeBuilder().duration(80)
-                .inputs(GoldLeach.getItemStack(4))
+                .input(dust, GoldLeach, 4)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .outputs(CopperLeach.getItemStack(4))
+                .output(dust, CopperLeach, 4)
                 .fluidOutputs(ChloroauricAcid.getFluid(1000))
                 .buildAndRegister();
 

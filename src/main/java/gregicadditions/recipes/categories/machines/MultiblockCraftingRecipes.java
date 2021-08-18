@@ -391,22 +391,22 @@ public class MultiblockCraftingRecipes {
                 .outputs(QUBIT_COMPUTER.getStackForm()).buildAndRegister();
 
         // Nuclear Reactor
-        ModHandler.addShapedRecipe("ga_boiling_water_thorium_reactor", NUCLEAR_REACTOR.getStackForm(),
-                "GCG", "IHI", "PCP",
-                'H', HULL[EV].getStackForm(),
-                'C', new UnificationEntry(plateDense, Thorium),
-                'P', new UnificationEntry(plate, HastelloyN),
-                'G', new UnificationEntry(gear, HastelloyN),
-                'I', MetaItems.ROBOT_ARM_EV);
+        //ModHandler.addShapedRecipe("ga_boiling_water_thorium_reactor", NUCLEAR_REACTOR.getStackForm(),
+        //        "GCG", "IHI", "PCP",
+        //        'H', HULL[EV].getStackForm(),
+        //        'C', new UnificationEntry(plateDense, Thorium),
+        //        'P', new UnificationEntry(plate, HastelloyN),
+        //        'G', new UnificationEntry(gear, HastelloyN),
+        //        'I', MetaItems.ROBOT_ARM_EV);
 
         // Nuclear Breeder Reactor
-        ModHandler.addShapedRecipe("ga_boiling_water_uranium_reactor", NUCLEAR_BREEDER.getStackForm(),
-                "GCG", "IHI", "PCP",
-                'H', HULL[IV].getStackForm(),
-                'C', new UnificationEntry(plateDense, Uranium235),
-                'P', new UnificationEntry(plate, HastelloyN),
-                'G', new UnificationEntry(gear, HastelloyN),
-                'I', ROBOT_ARM_IV);
+        //ModHandler.addShapedRecipe("ga_boiling_water_uranium_reactor", NUCLEAR_BREEDER.getStackForm(),
+        //        "GCG", "IHI", "PCP",
+        //        'H', HULL[IV].getStackForm(),
+        //        'C', new UnificationEntry(plateDense, Uranium235),
+        //        'P', new UnificationEntry(plate, HastelloyN),
+        //        'G', new UnificationEntry(gear, HastelloyN),
+        //        'I', ROBOT_ARM_IV);
 
         // Large Miner Mk1
         ModHandler.addShapedRecipe("ga_large_miner.basic", LARGE_MINER[0].getStackForm(),
@@ -471,19 +471,19 @@ public class MultiblockCraftingRecipes {
                 'P', GAMetaBlocks.METAL_CASING_1.getItemVariant(MetalCasing1.CasingType.TALONITE));
 
         // Gas Centrifuge
-        ModHandler.addShapedRecipe("ga_gas_centrifuge", GAS_CENTRIFUGE.getStackForm(),
-                "PCP", "CHC", "PCP",
-                'H', HULL[EV].getStackForm(),
-                'C', ELECTRIC_MOTOR_EV.getStackForm(),
-                'P', ELECTRIC_PUMP_EV);
+        //ModHandler.addShapedRecipe("ga_gas_centrifuge", GAS_CENTRIFUGE.getStackForm(),
+        //        "PCP", "CHC", "PCP",
+        //        'H', HULL[EV].getStackForm(),
+        //        'C', ELECTRIC_MOTOR_EV.getStackForm(),
+        //        'P', ELECTRIC_PUMP_EV);
 
         // Hot Coolant Turbine
-        ModHandler.addShapedRecipe("ga_large_hot_coolant_turbine", GATileEntities.HOT_COOLANT_TURBINE.getStackForm(),
-                "PSP", "SAS", "CSC",
-                'S', new UnificationEntry(gear, Stellite),
-                'P', new UnificationEntry(circuit, Advanced),
-                'A', HULL[EV].getStackForm(),
-                'C', new UnificationEntry(pipeLarge, Ultimet));
+        //ModHandler.addShapedRecipe("ga_large_hot_coolant_turbine", GATileEntities.HOT_COOLANT_TURBINE.getStackForm(),
+        //        "PSP", "SAS", "CSC",
+        //        'S', new UnificationEntry(gear, Stellite),
+        //        'P', new UnificationEntry(circuit, Advanced),
+        //        'A', HULL[EV].getStackForm(),
+        //        'C', new UnificationEntry(pipeLarge, Ultimet));
 
         // Electric Implosion Compressor
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(48000).EUt(491520)

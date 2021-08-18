@@ -34,7 +34,7 @@ public class WormholeGeneratorChain {
                 .fluidOutputs(FreeElectronGas.getFluid(1000))
                 .buildAndRegister();
 
-        FLUID_CANNER_RECIPES.recipeBuilder().duration(200).EUt(50000)
+        CANNER_RECIPES.recipeBuilder().duration(200).EUt(50000)
                 .inputs(TRIPLET_NEUTRONIUM_SPHERE.getStackForm())
                 .fluidInputs(FreeAlphaGas.getFluid(1000))
                 .outputs(CHARGED_TRIPLET_NEUTRONIUM_SPHERE.getStackForm())
@@ -71,7 +71,7 @@ public class WormholeGeneratorChain {
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(63))
                 .buildAndRegister();
 
-        FLUID_CANNER_RECIPES.recipeBuilder().duration(40).EUt(100000)
+        CANNER_RECIPES.recipeBuilder().duration(40).EUt(100000)
                 .fluidInputs(FreeElectronGas.getFluid(1000))
                 .inputs(CONTAINED_KERR_NEWMANN_SINGULARITY.getStackForm())
                 .outputs(CONTAINED_KERR_SINGULARITY.getStackForm())
