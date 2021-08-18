@@ -1,20 +1,11 @@
 package gregicadditions.client;
 
-import gregicadditions.Gregicality;
-import gregtech.api.GTValues;
 import gregtech.api.gui.resources.TextureArea;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.OrientedOverlayRenderer.OverlayFace;
 import gregtech.api.render.SimpleCubeRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
-import gregtech.api.render.SimpleSidedCubeRenderer;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.relauncher.Side;
 
-import java.util.HashMap;
-import java.util.Map;
-
-@EventBusSubscriber(modid = Gregicality.MODID, value = Side.CLIENT)
 public class ClientHandler {
 
     // Multiblock Casing
@@ -28,7 +19,6 @@ public class ClientHandler {
     public static SimpleCubeRenderer FUSION_TEXTURE = new SimpleCubeRenderer("casings/fusion/machine_casing_fusion_glass");
     public static SimpleCubeRenderer BIO_REACTOR = new SimpleCubeRenderer("casings/solid/bio_reactor_casing");
     public static SimpleCubeRenderer LASER_ENGRAVER = new SimpleCubeRenderer("casings/solid/laser_engraver_casing");
-    public static SimpleSidedCubeRenderer[] VOLTAGE_CASINGS = new SimpleSidedCubeRenderer[15];
     public static SimpleCubeRenderer THORIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/thorium");
     public static SimpleCubeRenderer PROTACTINIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/protactinium");
     public static SimpleCubeRenderer URANIUM_CASING = new SimpleCubeRenderer("casings/metal_casings/uranium");
@@ -80,7 +70,6 @@ public class ClientHandler {
     public static OrientedOverlayRenderer STEAM_MIXER_OVERLAY = new OrientedOverlayRenderer("machines/steam_mixer", OverlayFace.FRONT, OverlayFace.SIDE, OverlayFace.TOP);
     public static SimpleOverlayRenderer STEAM_MINER_OVERLAY = new SimpleOverlayRenderer("overlay/machine/overlay_steam_miner");
     public static SimpleOverlayRenderer CHUNK_MINER_OVERLAY = new SimpleOverlayRenderer("overlay/machine/overlay_chunk_miner");
-    public static final TextureArea COAL_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze/overlay_bronze_coal.png");
     public static final TextureArea BRONZE_DISPLAY = TextureArea.fullImage("textures/gui/steam/bronze_display.png");
     public static final TextureArea BRONZE_IN_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_in_slot_overlay.png");
     public static final TextureArea BRONZE_OUT_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_out_slot_overlay.png");
@@ -96,8 +85,6 @@ public class ClientHandler {
     public static OrientedOverlayRenderer QUBIT_COMPUTER_OVERLAY = new OrientedOverlayRenderer("machines/qubit_computer", OverlayFace.FRONT);
     public static OrientedOverlayRenderer NUCLEAR_REACTOR_OVERLAY = new OrientedOverlayRenderer("machines/nuclear_reactor", OverlayFace.FRONT);
     public static OrientedOverlayRenderer ADVANCED_ALLOY_OVERLAY = new OrientedOverlayRenderer("machines/advanced_alloy_smelter", OverlayFace.FRONT);
-    public static SimpleOverlayRenderer HIGH_ENERGY_IN = new SimpleOverlayRenderer("overlay/machine/transformer/overlay_energy_in");
-    public static SimpleOverlayRenderer HIGH_ENERGY_OUT = new SimpleOverlayRenderer("overlay/machine/transformer/overlay_energy_out");
     public static SimpleOverlayRenderer MAINTENANCE_OVERLAY = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_maintenance");
     public static SimpleOverlayRenderer MAINTENANCE_OVERLAY_TAPED = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_maintenance_taped");
     public static SimpleOverlayRenderer AUTO_MAINTENANCE_OVERLAY = new SimpleOverlayRenderer("overlay/machine/maintenance/overlay_auto_maintenance");
@@ -124,14 +111,4 @@ public class ClientHandler {
 
     // Slot Overlays
     public static final TextureArea DISASSEMBLER_IN_OVERLAY = TextureArea.fullImage("textures/gui/overlay/disassembler_in_slot_overlay.png");
-
-
-    static {
-        for (int i = 0; i < VOLTAGE_CASINGS.length; i++) {
-            String voltageName = GTValues.VN[i].toLowerCase();
-            VOLTAGE_CASINGS[i] = new SimpleSidedCubeRenderer("casings/voltage/" + voltageName);
-        }
-    }
-
-
 }

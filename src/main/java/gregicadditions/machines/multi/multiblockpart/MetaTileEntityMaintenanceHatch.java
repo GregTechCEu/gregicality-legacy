@@ -343,7 +343,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
     @Override
     public ICubeRenderer getBaseTexture() {
         MultiblockControllerBase controller = getController();
-        return controller == null ? getTier() == 9 ? ClientHandler.VOLTAGE_CASINGS[getTier()] : Textures.VOLTAGE_CASINGS[getTier()] : controller.getBaseTexture(this);
+        return controller == null ? Textures.VOLTAGE_CASINGS[getTier()] : controller.getBaseTexture(this);
     }
 
     /**

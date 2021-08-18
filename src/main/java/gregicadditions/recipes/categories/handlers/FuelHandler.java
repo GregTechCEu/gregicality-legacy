@@ -6,7 +6,6 @@ import gregtech.api.unification.material.Materials;
 import net.minecraftforge.fml.common.Loader;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.fluid.GAMetaFluids.getHotFluid;
 import static gregtech.api.GTValues.*;
 import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
@@ -44,13 +43,13 @@ public class FuelHandler {
         registerSteamGeneratorFuel(Steam.getFluid(640), 10, LV);
 
         // Nuclear Reactor Turbine
-        registerHotCoolantTurbineFuel(getHotFluid(Steam,                570), Steam,                1, EV);
-        registerHotCoolantTurbineFuel(getHotFluid(Deuterium,            240), Deuterium,            1, EV);
-        registerHotCoolantTurbineFuel(getHotFluid(SodiumPotassiumAlloy, 120), SodiumPotassiumAlloy, 1, EV);
-        registerHotCoolantTurbineFuel(getHotFluid(Sodium,               100), Sodium,               1, EV);
-        registerHotCoolantTurbineFuel(getHotFluid(FLiNaK,                50), FLiNaK,               1, EV);
-        registerHotCoolantTurbineFuel(getHotFluid(FLiBe,                 55), FLiBe,                1, EV);
-        registerHotCoolantTurbineFuel(getHotFluid(LeadBismuthEutectic,   60), LeadBismuthEutectic,  1, EV);
+        //registerHotCoolantTurbineFuel(getHotFluid(Steam,                570), Steam,                1, EV);
+        //registerHotCoolantTurbineFuel(getHotFluid(Deuterium,            240), Deuterium,            1, EV);
+        //registerHotCoolantTurbineFuel(getHotFluid(SodiumPotassiumAlloy, 120), SodiumPotassiumAlloy, 1, EV);
+        //registerHotCoolantTurbineFuel(getHotFluid(Sodium,               100), Sodium,               1, EV);
+        //registerHotCoolantTurbineFuel(getHotFluid(FLiNaK,                50), FLiNaK,               1, EV);
+        //registerHotCoolantTurbineFuel(getHotFluid(FLiBe,                 55), FLiBe,                1, EV);
+        //registerHotCoolantTurbineFuel(getHotFluid(LeadBismuthEutectic,   60), LeadBismuthEutectic,  1, EV);
 
         registerHotCoolantTurbineFuel(SupercriticalSteam               .getFluid(570), Steam,                10000, EV);
         registerHotCoolantTurbineFuel(SupercriticalDeuterium           .getFluid(240), Deuterium,            10000, EV);
