@@ -15,7 +15,6 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -34,18 +33,17 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class TileEntityLargeExtractor extends MultiRecipeMapMultiblockController {
+public class TileEntityLargeExtractor extends LargeSimpleRecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
 
-    public TileEntityLargeExtractor(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, recipeMap, GAConfig.multis.largeExtractor.euPercentage, GAConfig.multis.largeExtractor.durationPercentage, GAConfig.multis.largeExtractor.chancedBoostPercentage, GAConfig.multis.largeExtractor.stack,
-                new RecipeMap[]{RecipeMaps.FLUID_EXTRACTION_RECIPES, RecipeMaps.EXTRACTOR_RECIPES});
+    public TileEntityLargeExtractor(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.EXTRACTOR_RECIPES, GAConfig.multis.largeExtractor.euPercentage, GAConfig.multis.largeExtractor.durationPercentage, GAConfig.multis.largeExtractor.chancedBoostPercentage, GAConfig.multis.largeExtractor.stack);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new TileEntityLargeExtractor(metaTileEntityId, RecipeMaps.FLUID_EXTRACTION_RECIPES);
+        return new TileEntityLargeExtractor(metaTileEntityId);
     }
 
     @Override
@@ -99,11 +97,6 @@ public class TileEntityLargeExtractor extends MultiRecipeMapMultiblockController
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return (getRecipeMapIndex() == 0) ? Textures.FLUID_EXTRACTOR_OVERLAY : Textures.EXTRACTOR_OVERLAY;
-    }
-
-    @Override
-    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
-        return (getRecipeMapIndex() == 0) ? Textures.FLUID_EXTRACTOR_OVERLAY : Textures.EXTRACTOR_OVERLAY;
+        return Textures.EXTRACTOR_OVERLAY;
     }
 }

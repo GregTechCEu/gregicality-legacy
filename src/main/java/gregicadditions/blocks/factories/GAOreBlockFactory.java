@@ -49,7 +49,7 @@ public class GAOreBlockFactory extends AbstractBlockModelFactory {
 
     @Override
     protected String fillSample(Block block, String blockStateSample) {
-        MaterialIconType ore = MaterialIconType.valueOf("ore" + orePrefix.substring(0, 1).toUpperCase() + orePrefix.substring(1));
+        MaterialIconType ore = MaterialIconType.ICON_TYPES.get("ore" + orePrefix.substring(0, 1).toUpperCase() + orePrefix.substring(1));
         return blockStateSample
                 .replace("$STONE_TYPES$", COMMA_JOINER.join(((BlockOre) block).STONE_TYPE.getAllowedValues().stream()
                         .map(stoneType -> VARIANT_DEFINITION

@@ -9,7 +9,6 @@ import gregicadditions.item.components.*;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
-import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -18,12 +17,10 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -46,7 +43,7 @@ public class TileEntityLargeMassFabricator extends LargeSimpleRecipeMapMultibloc
     }
 
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new TileEntityLargeMassFabricator(this.metaTileEntityId, GARecipeMaps.MASS_FAB_RECIPES);
+        return new TileEntityLargeMassFabricator(this.metaTileEntityId, RecipeMaps.MASS_FABRICATOR_RECIPES);
     }
 
     @Override
@@ -67,8 +64,8 @@ public class TileEntityLargeMassFabricator extends LargeSimpleRecipeMapMultibloc
                 .where('C', statePredicate(getCasingState()))
                 .where('P', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
                 .where('p', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
-                .where('G', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
-                .where('c', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR)))
+                .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
+                .where('c', statePredicate(MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR)))
                 .where('F', fieldGenPredicate())
                 .where('U', pumpPredicate())
                 .where('s', sensorPredicate())

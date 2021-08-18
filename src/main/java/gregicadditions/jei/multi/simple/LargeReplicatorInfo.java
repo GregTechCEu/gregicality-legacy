@@ -10,7 +10,7 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.uumatter.TileEntityLargeReplicator;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.BlockFusionCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -64,7 +64,7 @@ public class LargeReplicatorInfo extends MultiblockInfoPage {
                 .where('P', GAMetaBlocks.PUMP_CASING.getDefaultState())
                 .where('s', GAMetaBlocks.SENSOR_CASING.getDefaultState())
                 .where('E', GAMetaBlocks.EMITTER_CASING.getDefaultState())
-                .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR));
+                .where('C', MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR));
         shapeInfo.add(builder.build());
         return Lists.newArrayList(shapeInfo);
     }

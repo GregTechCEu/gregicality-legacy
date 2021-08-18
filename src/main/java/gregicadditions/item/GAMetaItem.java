@@ -141,7 +141,7 @@ public class GAMetaItem extends StandardMetaItem {
         FREEDOM_WRENCH = addItem(309, "freedom_wrench")
                 .setMaxStackSize(1)
                 .addComponents(new FreedomWrenchBehaviour());
-
+/*
         PROTACTINIUM_WASTE = addItem(311, "waste.nuclear").addComponents(new WasteBehavior(Protactinium.getMaterial()));
         NUCLEAR_WASTE = addItem(312, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.global", 0xDEDEDE));
         THORIUM_WASTE = addItem(313, "waste.nuclear").addComponents(new WasteBehavior(Thorium));
@@ -164,7 +164,7 @@ public class GAMetaItem extends StandardMetaItem {
         NUCLEAR_WASTE_HEAVY_METAL = addItem(330, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.heavy_metal", 0x738198));
         NUCLEAR_WASTE_METALOID = addItem(331, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.metaloid", 0xD16D4F));
         NUCLEAR_WASTE_REACTIVE_NONMETAL = addItem(332, "waste.nuclear").addComponents(new WasteBehavior("waste.nuclear.nonmetal", 0xD1CB4F));
-
+*/
 
         WAFER_DUBNIUM = addItem(333, "wafer.dubnium");
         WAFER_RUTHERFORDIUM = addItem(334, "wafer.rutherfordium");
@@ -432,7 +432,7 @@ public class GAMetaItem extends StandardMetaItem {
         COSMIC_MESH = addItem(568,"cosmic.mesh");
         COSMIC_FABRIC = addItem(569,"cosmic.fabric");
         ROD_FIELD_SHAPE = addItem(570, "rod.field.shape");
-
+/*
         ThoriumRadioactive.waste = THORIUM_WASTE;
         Protactinium.waste = PROTACTINIUM_WASTE;
         UraniumRadioactive.waste = URANIUM_WASTE;
@@ -445,7 +445,7 @@ public class GAMetaItem extends StandardMetaItem {
         Einsteinium.waste = EINSTEINIUM_WASTE;
         Fermium.waste = FERMIUM_WASTE;
         Mendelevium.waste = MENDELEVIUM_WASTE;
-
+*/
         COLOURED_LEDS = addItem(578, "coloured.leds");
         DISPLAY = addItem(579, "display");
 

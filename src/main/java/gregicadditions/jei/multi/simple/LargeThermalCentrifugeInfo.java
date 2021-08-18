@@ -40,8 +40,6 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         List<MultiblockShapeInfo> shapeInfo = new ArrayList<>();
         for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
-            if (coilType.equals(BlockWireCoil.CoilType.SUPERCONDUCTOR) || coilType.equals(BlockWireCoil.CoilType.FUSION_COIL))
-                continue;
 
             shapeInfo.add(MultiblockShapeInfo.builder()
                     .aisle("#XXX#", "#XGX#", "#XXX#", "#####")
@@ -84,7 +82,7 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
         for (MotorCasing.CasingType casingType : MotorCasing.CasingType.values()) {
             this.addBlockTooltip(GAMetaBlocks.MOTOR_CASING.getItemVariant(casingType), componentCasingTooltip);
         }
-        this.addBlockTooltip(MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING), casingTooltip2);
+        this.addBlockTooltip(MetaBlocks.MULTIBLOCK_CASING.getItemVariant(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING), casingTooltip2);
     }
 
     @Override

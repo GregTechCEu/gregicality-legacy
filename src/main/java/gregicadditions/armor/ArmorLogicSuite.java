@@ -73,8 +73,8 @@ public abstract class ArmorLogicSuite implements ISpecialArmorLogic {
 
     @Override
     public void addToolComponents(ArmorMetaValueItem mvi) {
-//		mvi.addStats(ElectricStats.createElectricItem(maxCapacity, tier));
-        mvi.addStats(new ElectricStats(maxCapacity, tier, true, false) {
+//		mvi.addComponents(ElectricStats.createElectricItem(maxCapacity, tier));
+        mvi.addComponents(new ElectricStats(maxCapacity, tier, true, false) {
             @Override
             public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
                 return onRightClick(world, player, hand);

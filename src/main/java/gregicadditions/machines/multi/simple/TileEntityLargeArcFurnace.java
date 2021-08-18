@@ -11,7 +11,6 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
-import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
@@ -29,18 +28,17 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class TileEntityLargeArcFurnace extends MultiRecipeMapMultiblockController {
+public class TileEntityLargeArcFurnace extends LargeSimpleRecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
 
-    public TileEntityLargeArcFurnace(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
-        super(metaTileEntityId, recipeMap, GAConfig.multis.largeArcFurnace.euPercentage, GAConfig.multis.largeArcFurnace.durationPercentage, GAConfig.multis.largeArcFurnace.chancedBoostPercentage, GAConfig.multis.largeArcFurnace.stack,
-                new RecipeMap[]{RecipeMaps.ARC_FURNACE_RECIPES, RecipeMaps.PLASMA_ARC_FURNACE_RECIPES});
+    public TileEntityLargeArcFurnace(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, RecipeMaps.ARC_FURNACE_RECIPES, GAConfig.multis.largeArcFurnace.euPercentage, GAConfig.multis.largeArcFurnace.durationPercentage, GAConfig.multis.largeArcFurnace.chancedBoostPercentage, GAConfig.multis.largeArcFurnace.stack);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new TileEntityLargeArcFurnace(metaTileEntityId, RecipeMaps.ARC_FURNACE_RECIPES);
+        return new TileEntityLargeArcFurnace(metaTileEntityId);
     }
 
     @Override
@@ -93,11 +91,6 @@ public class TileEntityLargeArcFurnace extends MultiRecipeMapMultiblockControlle
     @Nonnull
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {
-        return (getRecipeMapIndex() == 0) ? Textures.ARC_FURNACE_OVERLAY : Textures.PLASMA_ARC_FURNACE_OVERLAY;
-    }
-
-    @Override
-    public OrientedOverlayRenderer getRecipeMapOverlay(int recipeMapIndex) {
-        return (getRecipeMapIndex() == 0) ? Textures.ARC_FURNACE_OVERLAY : Textures.PLASMA_ARC_FURNACE_OVERLAY;
+        return Textures.ARC_FURNACE_OVERLAY;
     }
 }

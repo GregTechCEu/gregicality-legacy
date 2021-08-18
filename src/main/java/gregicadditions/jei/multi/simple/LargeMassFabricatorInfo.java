@@ -7,10 +7,7 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.uumatter.TileEntityLargeMassFabricator;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -44,7 +41,7 @@ public class LargeMassFabricatorInfo extends MultiblockInfoPage {
                 .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('X', TileEntityLargeMassFabricator.casingState)
                 .where('#', Blocks.AIR.getDefaultState())
-                .where('c', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR))
+                .where('c', MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR))
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
                 .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.LV], EnumFacing.EAST)
                 .where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.LV], EnumFacing.SOUTH)

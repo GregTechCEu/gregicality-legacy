@@ -184,13 +184,13 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
     public void update() {
         super.update();
         if (this.screen.getWorld().isRemote) {
-            if (partIndex > 0 && fakeModularUIContainer == null && this.screen.getTimer() % 20 == 0) {
+            if (partIndex > 0 && fakeModularUIContainer == null && this.screen.getOffsetTimer() % 20 == 0) {
                 createFakeGui();
             }
             if (fakeModularGui != null)
                 fakeModularGui.updateScreen();
         } else {
-            if (partIndex > 0 && this.screen.getTimer() % 20 == 0) {
+            if (partIndex > 0 && this.screen.getOffsetTimer() % 20 == 0) {
                 if (fakeModularUIContainer != null && getRealMTE() == null) {
                     this.writePluginData(1, buf->{
                         buf.writeVarInt(this.partIndex);

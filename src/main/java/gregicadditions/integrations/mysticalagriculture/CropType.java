@@ -15,7 +15,6 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gregicadditions.GAMaterials.QuartzSand;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems.CROPS;
 import static gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems.ESSENCES;
@@ -350,7 +349,7 @@ public final class CropType {
         SEEDS.put(Polonium, new ItemTierSeed(CROPS.get(Polonium), Polonium, 4));
         SEEDS.put(Copernicium, new ItemTierSeed(CROPS.get(Copernicium), Copernicium, 6));
         SEEDS.put(PreciousMetal, new ItemTierSeed(CROPS.get(PreciousMetal), PreciousMetal, 3));
-        SEEDS.put(UraniumRadioactive.getMaterial(), new ItemTierSeed(CROPS.get(UraniumRadioactive.getMaterial()), UraniumRadioactive.getMaterial(), 4));
+        //SEEDS.put(UraniumRadioactive.getMaterial(), new ItemTierSeed(CROPS.get(UraniumRadioactive.getMaterial()), UraniumRadioactive.getMaterial(), 4));
 //        SEEDS.put(FLiNaK,new ItemTierSeed(CROPS.get(FLiNaK),FLiNaK,5));
 //        SEEDS.put(FLiBe,new ItemTierSeed(CROPS.get(FLiBe),FLiBe,5));
 //        SEEDS.put(LeadBismuthEutectic,new ItemTierSeed(CROPS.get(LeadBismuthEutectic),LeadBismuthEutectic,5));

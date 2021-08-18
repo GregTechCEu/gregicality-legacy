@@ -27,7 +27,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.util.GTUtility;
-import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.BlockFusionCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -122,7 +122,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('x', statePredicate(getSecondaryCasingState()))
                 .where('C', statePredicate(MetaBlocks.FRAMES.get(GAMaterials.BlackTitanium).getDefaultState()))
-                .where('c', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR)))
+                .where('c', statePredicate(MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR)))
                 .where('F', fieldGenPredicate())
                 .where('E', emitterPredicate())
                 .where('s', sensorPredicate())

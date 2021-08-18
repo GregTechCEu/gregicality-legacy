@@ -619,7 +619,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
                         packetBuffer.writeLong(energyCapability);
                     });
                 }
-                if (this.coverHolder.getTimer() % 20 == 0) { //per second
+                if (this.coverHolder.getOffsetTimer() % 20 == 0) { //per second
                     writeUpdateData(5, packetBuffer -> {
                         packetBuffer.writeLong(energyInputPerDur);
                         packetBuffer.writeLong(energyOutputPerDur);
@@ -654,7 +654,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
                         packetBuffer.writeBoolean(isWorkingEnable);
                     });
                 }
-                if (this.coverHolder.getTimer() % 20 == 0) {
+                if (this.coverHolder.getOffsetTimer() % 20 == 0) {
                     IEnergyContainer energyContainer = this.getEnergyCapability();
                     if (energyContainer != null) {
                         if (energyStored != energyContainer.getEnergyStored() || energyCapability != energyContainer.getEnergyCapacity()) {
@@ -1013,7 +1013,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
     private void renderMachineMode(float partialTicks) {
         int color = energyCapability > 10 * energyStored ? 0XFFFF2F39 : isWorkingEnable ? 0XFF00FF00 : 0XFFFF662E;
         if (isActive && maxProgress != 0) {
-            float offset = ((this.coverHolder.getTimer() % 20 + partialTicks) * 0.875f / 20);
+            float offset = ((this.coverHolder.getOffsetTimer() % 20 + partialTicks) * 0.875f / 20);
             float start = Math.max(-0.4375f, -0.875f + 2 * offset);
             float width = Math.min(0.4375f, -0.4375f + 2 * offset) - start;
             int startAlpha = 0X00;

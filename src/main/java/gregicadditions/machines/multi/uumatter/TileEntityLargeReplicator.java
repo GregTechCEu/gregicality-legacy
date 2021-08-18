@@ -11,7 +11,6 @@ import gregicadditions.item.components.SensorCasing;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
-import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -20,9 +19,10 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
-import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.BlockFusionCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -46,7 +46,7 @@ public class TileEntityLargeReplicator extends LargeSimpleRecipeMapMultiblockCon
     }
 
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new TileEntityLargeReplicator(this.metaTileEntityId, GARecipeMaps.REPLICATOR_RECIPES);
+        return new TileEntityLargeReplicator(this.metaTileEntityId, RecipeMaps.REPLICATOR_RECIPES);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class TileEntityLargeReplicator extends LargeSimpleRecipeMapMultiblockCon
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('C', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.SUPERCONDUCTOR)))
+                .where('C', statePredicate(MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR)))
                 .where('F', fieldGenPredicate())
                 .where('P', pumpPredicate())
                 .where('s', sensorPredicate())

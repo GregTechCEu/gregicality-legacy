@@ -1,9 +1,6 @@
 package gregicadditions.integrations.mysticalagriculture;
 
-import gregtech.api.unification.material.MaterialIconType;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.DustMaterial;
-import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -12,7 +9,7 @@ import java.util.function.Predicate;
 public class MysticalAgricultureEnum {
 
     public static void preInit() {
-        EnumHelper.addEnum(MaterialIconType.class, "seed", new Class[0]);
+        /*EnumHelper.addEnum(MaterialIconType.class, "seed", new Class[0]);
         EnumHelper.addEnum(MaterialIconType.class, "crop", new Class[0]);
         EnumHelper.addEnum(MaterialIconType.class, "essence", new Class[0]);
 
@@ -38,14 +35,14 @@ public class MysticalAgricultureEnum {
         ignoreMysticalAgriculture(Materials.Paper);
         ignoreMysticalAgriculture(Materials.Glass);
         ignoreMysticalAgriculture(Materials.Wood);
-        ignoreMysticalAgriculture(Materials.Wheat);
+        ignoreMysticalAgriculture(Materials.Wheat);*/
 
     }
 
     public static void ignoreMysticalAgriculture(Material material) {
-        OrePrefix.valueOf("seed").setIgnored(material);
-        OrePrefix.valueOf("crop").setIgnored(material);
-        OrePrefix.valueOf("essence").setIgnored(material);
+        OrePrefix.getPrefix("seed").setIgnored(material);
+        OrePrefix.getPrefix("crop").setIgnored(material);
+        OrePrefix.getPrefix("essence").setIgnored(material);
 
     }
 

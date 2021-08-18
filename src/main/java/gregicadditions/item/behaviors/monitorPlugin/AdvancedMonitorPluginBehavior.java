@@ -180,7 +180,7 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
     @Override
     public void update() {
         super.update();
-        if (this.screen.getTimer() % 20 == 0) {
+        if (this.screen.getOffsetTimer() % 20 == 0) {
             if (this.screen.getWorld().isRemote) { // check connections
                 if (worldSceneRenderer == null && validPos != null && validPos.size() > 0) {
                     createWorldScene();

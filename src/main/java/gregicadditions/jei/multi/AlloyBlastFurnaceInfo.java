@@ -34,8 +34,6 @@ public class AlloyBlastFurnaceInfo extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         List<MultiblockShapeInfo> shape = new ArrayList<>();
         for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
-            if (coilType.equals(BlockWireCoil.CoilType.SUPERCONDUCTOR) || coilType.equals(BlockWireCoil.CoilType.FUSION_COIL))
-                continue;
 
             shape.add(GAMultiblockShapeInfo.builder().aisle("#EXX#", "#ccc#", "#ccc#", "#XXX#")
                     .aisle("MXXXX", "cCCCc", "cCCCc", "XXXXX")
