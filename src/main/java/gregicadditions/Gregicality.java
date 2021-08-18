@@ -66,9 +66,6 @@ public class Gregicality {
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.bees.ForestryClientProxy", serverSide = "gregicadditions.integrations.bees.ForestryCommonProxy")
     public static ForestryCommonProxy forestryProxy;
 
-    @SidedProxy(modId = MODID, clientSide = "gregicadditions.integrations.opencomputers.OpenComputersCommonProxy", serverSide = "gregicadditions.integrations.opencomputers.OpenComputersCommonProxy")
-    public static OpenComputersCommonProxy openComputersProxy;
-
     @SidedProxy(modId = MODID, clientSide = "gregicadditions.ClientProxy", serverSide = "gregicadditions.CommonProxy")
     public static CommonProxy proxy;
 
@@ -111,9 +108,6 @@ public class Gregicality {
         if (GTValues.isModLoaded(GTValues.MODID_TOP)) {
             GALog.logger.info("TheOneProbe found. Enabling integration...");
             TheOneProbeCompatibility.registerCompatibility();
-        }
-        if (Loader.isModLoaded(GAValues.MODID_OC)) {
-            openComputersProxy.init();
         }
         CoverBehaviors.init();
         GAConfig.addConfigReservoirs(GAConfig.extraction.reservoirs);

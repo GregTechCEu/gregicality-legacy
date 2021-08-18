@@ -83,10 +83,6 @@ repositories {
         setUrl("https://maven.tterrag.com/")
     }
     maven {
-        name = "OpenComputers"
-        setUrl("https://maven.cil.li/")
-    }
-    maven {
         name = "McJtyLib, XNet"
         setUrl("http://maven.k-4u.nl")
     }
@@ -109,11 +105,7 @@ dependencies {
     "provided"("slimeknights:TConstruct:$mcVersion-${config["ticon.version"]}")
     "provided"("com.github.mcjty:xnet:$shortVersion-${config["xnet.version"]}")
     "provided"("com.github.mcjty:mcjtylib:$shortVersion-${config["mcjtylib.version"]}")
-    "provided"("li.cil.oc:OpenComputers:MC$mcVersion-${config["oc.version"]}")
     "provided"("binnie:binnie-mods-$mcVersion:${config["binnie.version"]}")
-    "provided"("exnihilocreatio:exnihilocreatio:$mcVersion-${config["exnihilo.version"]}") {
-        isTransitive = false
-    }
 
     "provided"(files("libs/gregtech-1.12.2-2.0.0.1180-alpha.jar"))
     // Change to "compile" to add one of these to game
