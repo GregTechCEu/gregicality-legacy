@@ -168,7 +168,7 @@ public class MagnetoRecipes {
         // Magneto Resonatic Dust
         MIXER_RECIPES.recipeBuilder().duration(1080).EUt(20)
                 .input(dust, Prasiolite, 3)
-                .input(dust, BismuthTellurite, 4)
+                .input(dust, BismuthTelluride, 4)
                 .input(dust, CubicZirconia)
                 .input(dust, SteelMagnetic)
                 .output(dust, MagnetoResonatic, 9)
@@ -186,14 +186,14 @@ public class MagnetoRecipes {
         CHEMICAL_RECIPES.recipeBuilder().duration(161).EUt(60)
                 .input(dust, Bismuth, 2)
                 .input(dust, Tellurium, 3)
-                .output(dust, BismuthTellurite, 5)
+                .output(dust, BismuthTelluride, 5)
                 .buildAndRegister();
 
         // Circuit Compound
         MIXER_RECIPES.recipeBuilder().duration(982).EUt(15)
                 .input(dust, IndiumGalliumPhosphide)
                 .input(dust, Dibismusthydroborate, 3)
-                .input(dust, BismuthTellurite, 2)
+                .input(dust, BismuthTelluride, 2)
                 .output(dust, CircuitCompoundMK3, 6)
                 .buildAndRegister();
 

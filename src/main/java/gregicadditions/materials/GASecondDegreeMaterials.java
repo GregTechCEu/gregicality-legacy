@@ -1,26 +1,18 @@
 package gregicadditions.materials;
 
-import com.google.common.collect.ImmutableList;
 import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.stack.MaterialStack;
 
-import gregicadditions.GAMaterials;
-import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.Materials;
 
+import static gregicadditions.materials.GAMaterialFlags.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
 
 import static com.google.common.collect.ImmutableList.of;
 import static gregicadditions.GAEnums.EnumIonsGroups.*;
-import static gregicadditions.GAEnums.EnumIonsGroups.CARBONATE;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.Chlorine;
-import static gregtech.api.unification.material.info.MaterialFlags.DISABLE_DECOMPOSITION;
-import static gregtech.api.unification.material.info.MaterialFlags.GENERATE_PLATE;
+import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 public class GASecondDegreeMaterials {
 
@@ -80,7 +72,7 @@ public class GASecondDegreeMaterials {
         CircuitCompoundMK3 = new Material.Builder(11507, "circuit_compound_mkc")
                 .dust()
                 .color(0x003316).iconSet(SAND)
-                .components(IndiumGalliumPhosphide, 1, Dibismusthydroborate, 3, BismuthTellurite, 2)
+                .components(IndiumGalliumPhosphide, 1, Dibismusthydroborate, 3, BismuthTelluride, 2)
                 .build();
 
         Zirkelite = new Material.Builder(11508, "zirkelite")
@@ -181,7 +173,8 @@ public class GASecondDegreeMaterials {
                 .color(0x23524A).iconSet(METALLIC)
                 .flags(GA_EXT2_METAL, DISABLE_DECOMPOSITION)
                 .components(Lead, 3, Platinum, 1, EnderPearl, 1)
-                .toolStats(8.0F, 3.0F, 1280)
+                .toolStats(8.0F, 3.0F, 1280, 52)
+                .fluidPipeProperties(1500, 650, true)
                 .blastTemp(4500)
                 .build();
 
@@ -222,6 +215,7 @@ public class GASecondDegreeMaterials {
                 .color(0x0D0D60).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(HastelloyN, 8, Naquadah, 4, Samarium, 2, Tungsten, 4, Argon, 2, Aluminium, 6, Nickel, 8, Carbon, 2)
+                .fluidPipeProperties(23000, 2000, true)
                 .blastTemp(9865)
                 .build();
 
@@ -230,6 +224,7 @@ public class GASecondDegreeMaterials {
                 .color(0xB4B414).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(Chrome, 13, Nickel, 3, Molybdenum, 2, Copper, 10, Tungsten, 2, Steel, 20)
+                .fluidPipeProperties(15000, 1750, true)
                 .blastTemp(6100)
                 .build();
 

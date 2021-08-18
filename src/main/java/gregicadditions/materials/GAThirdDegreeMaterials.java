@@ -6,9 +6,9 @@ import gregtech.api.unification.material.info.MaterialIconSet;
 
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.materials.GAMaterialFlags.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
-import static gregtech.api.unification.material.info.MaterialFlags.NO_SMELTING;
 
 public class GAThirdDegreeMaterials {
 

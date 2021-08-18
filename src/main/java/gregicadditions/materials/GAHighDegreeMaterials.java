@@ -1,8 +1,8 @@
 package gregicadditions.materials;
 
-import gregicadditions.GAMaterials;
 import gregtech.api.unification.material.Material;
 
+import static gregicadditions.materials.GAMaterialFlags.*;
 import static gregtech.api.unification.material.Material.FluidType;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
@@ -35,7 +35,7 @@ public class GAHighDegreeMaterials {
                 .ingot().fluid()
                 .color(0xA5F564).iconSet(SHINY)
                 .components(HastelloyX78, 5, NiobiumNitride, 2, Tritanium, 4, TungstenCarbide, 4, Promethium, 4, Mendelevium261, 1)
-                .flags(GAMaterials.GA_EXT2_METAL, DISABLE_DECOMPOSITION) // GENERATE_METAL_CASING
+                .flags(GA_EXT2_METAL, DISABLE_DECOMPOSITION) // GENERATE_METAL_CASING
                 .blastTemp(12400)
                 .build();
 
@@ -57,7 +57,7 @@ public class GAHighDegreeMaterials {
         RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate = new Material.Builder(18506, "rhenium_hassium_thallium_isophtaloylbisdiethylthiourea")
                 .dust()
                 .color(0xA26A8B).iconSet(SHINY)
-                //.components("ReHsTlC60PN12H84S6O12F6") todo :omegaweary:
+                .components(Rhenium, 1, Hassium, 1, Thallium, 1, Fullerene, 1, Phosphorus, 1, Nitrogen, 12, Hydrogen, 84, SulfurDioxide, 6, Fluorine, 6)
                 .build();
 
 
@@ -72,10 +72,11 @@ public class GAHighDegreeMaterials {
         HDCS = new Material.Builder(19001, "hdcs")
                 .ingot(5).fluid()
                 .color(0x334433).iconSet(SHINY)
-                .components(TungstenSteel, 12, HSSS, 9, HSSG, 6, Ruridit, 3, MagnetoResonatic, 2, Plutonium239, 1) // todo check this Plutonium, needs to be the std one
+                .components(TungstenSteel, 12, HSSS, 9, HSSG, 6, Ruridit, 3, MagnetoResonatic, 2, Plutonium239, 1)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION, GENERATE_ROUND)
                 .blastTemp(9900)
-                .build();
+                .build()
+                .setFormula("(FeW)12(((FeW)5CrMo2V)6CoMnSi)9((FeW)5CrMo2V)6(Ru2Ir)3((((SiO2)5Fe)3(Bi2Te3)4ZrO2Fe)2Pu");
 
 
         // Sixth Degree Materials, 19500-19999

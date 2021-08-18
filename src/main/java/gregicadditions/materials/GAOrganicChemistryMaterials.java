@@ -28,9 +28,6 @@ import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
 public class GAOrganicChemistryMaterials {
 
     public static void register() {
-
-
-
         Anthracene = new Material.Builder(6500, "anthracene")
                 .fluid()
                 .color(0xA2ACA2)
