@@ -162,6 +162,7 @@ public class RecipeHandler {
         QuantumDotsChain.init();
         HNIWChain.init();
         TriniumChain.init();
+        TaraniumChain.init();
     }
 
     /**
