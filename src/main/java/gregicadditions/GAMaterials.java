@@ -1,6 +1,7 @@
 package gregicadditions;
 
 import com.google.common.collect.ImmutableList;
+import gregicadditions.item.GAOredictItem;
 import gregicadditions.materials.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.unification.Element;
@@ -17,6 +18,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import static com.google.common.collect.ImmutableList.of;
+import static gregicadditions.GAEnums.EnumIonsGroups.*;
 import static gregtech.api.unification.Element.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.type.DustMaterial.MatFlags.*;
@@ -28,7 +30,6 @@ import static gregtech.api.unification.material.type.IngotMaterial.MatFlags.*;
 import static gregtech.api.unification.material.type.Material.MatFlags.*;
 import static gregtech.api.unification.material.type.SolidMaterial.MatFlags.*;
 import static gregtech.api.util.GTUtility.createFlag;
-import static gregicadditions.GAEnums.EnumIonsGroups.*;
 
 @IMaterialHandler.RegisterMaterialHandler
 public class GAMaterials implements IMaterialHandler {
@@ -981,6 +982,25 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial ChlorodiisopropylPhosphine = new SimpleFluidMaterial("chlorodiisopropyl_phosphine", 0xa2c122);
     public static final SimpleFluidMaterial FumingNitricAcid = new SimpleFluidMaterial("fuming_nitric_acid", NitricAcid.materialRGB, "HNO3");
     public static final SimpleFluidMaterial AcetylChloride = new SimpleFluidMaterial("acetyl_chloride", AceticAcid.materialRGB, "C2H3OCl");
+    public static final SimpleFluidMaterial DirtyHexafluorosilicicAcid = new SimpleFluidMaterial("dirty_hexafluorosilicic_acid",(Stone.materialRGB+FluorosilicicAcid.rgb/2), "H2SiF6?");
+    public static final SimpleFluidMaterial DiluteHexafluorosilicicAcid = new SimpleFluidMaterial("dilute_hexafluorosilicic_acid", (Water.materialRGB*2+FluorosilicicAcid.rgb)/3,"(H2O)2(H2SiF6)");
+    public static final SimpleFluidMaterial Dioxygendifluoride = new SimpleFluidMaterial("dioxygen_difluoride", 0x32bdaf, "FOOF");
+    public static final SimpleFluidMaterial DiluteHydrofluoricAcid = new SimpleFluidMaterial("dilute_hydrofluoric_acid", (Water.materialRGB+HydrofluoricAcid.materialRGB)/3,"(H2O)(HF)");
+    public static final SimpleFluidMaterial OxydisedResidualSolution = new SimpleFluidMaterial("oxydised_residual_solution", 0x23ad7f);
+    public static final SimpleFluidMaterial TritiumHydride = new SimpleFluidMaterial("tritium_hydride",Tritium.materialRGB, "TH");
+    public static final SimpleFluidMaterial Helium3Hydride = new SimpleFluidMaterial("helium_iii_hydride", Helium3.materialRGB, "He_3H");
+    public static final SimpleFluidMaterial UltraacidicResidueSolution = new SimpleFluidMaterial("ultraacidic_residue_solution", (FluoroantimonicAcid.rgb+Helium3Hydride.rgb)/2);
+    public static final SimpleFluidMaterial XenicAcid = new SimpleFluidMaterial("xenic_acid", 0x5a4c9c, "H2XeO4");
+    public static final SimpleFluidMaterial DustyLiquidHelium3 = new SimpleFluidMaterial("dusty_liquid_helium3", 2*Helium3.materialRGB/3+Taranium.materialRGB/5);
+    public static final SimpleFluidMaterial TaraniumEnrichedLHelium3 = new SimpleFluidMaterial("taranium_enriched_liquid_helium3", Helium3.materialRGB/2+Taranium.materialRGB/2);
+    public static final SimpleFluidMaterial TaraniumSemidepletedLHelium3 = new SimpleFluidMaterial("taranium_semidepleted_liquid_helium3", 2*Helium3.materialRGB/3+Taranium.materialRGB/5);
+    public static final SimpleFluidMaterial TaraniumDepletedLHelium3 = new SimpleFluidMaterial("taranium_depleted_liquid_helium3",Helium3.materialRGB*5/6+Taranium.materialRGB/8);
+    public static final SimpleFluidMaterial TaraniumRichDustyHeliumPlasma = new SimpleFluidMaterial("taranium_rich_dusty_helium_plasma", Helium.materialRGB/2+Taranium.materialRGB/2, 10000);
+    public static final SimpleFluidMaterial TaraniumDepletedHeliumPlasma = new SimpleFluidMaterial("taranium_rich_dusty_helium_plasma", Helium.materialRGB/2+Taranium.materialRGB/2, true);
+    public static final SimpleFluidMaterial TaraniumRichHelium4 = new SimpleFluidMaterial("taranium_rich_helium_4", Helium.materialRGB/2+Taranium.materialRGB, true);
+    public static final SimpleFluidMaterial TaraniumPoorLiquidHelium = new SimpleFluidMaterial("taranium_poor_liquid_helium", Helium3.materialRGB*6/7+Taranium.materialRGB/14);
+
+
 
 
 
@@ -1418,6 +1438,21 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial PhosphorousPentasulfide = new SimpleDustMaterial("phosphorous_pentasulfide", 0xEBAD24, (short) 941, MaterialIconSet.DULL, "P4S10");
     public static final SimpleDustMaterial PureCrystallineNitricAcid = new SimpleDustMaterial("crystalline_nitric_acid", NitricAcid.materialRGB, (short) 942, MaterialIconSet.ROUGH, "HNO3");
     public static final SimpleDustMaterial IridiumCyclooctadienylChloride = new SimpleDustMaterial("iridium_cyclooctadienyl_chloride", (Dichlorocycloctadieneplatinium.rgb+Iridium.materialRGB)/2, (short) 943, MaterialIconSet.SHINY, "Ir(C8H8)2Cl");
+    public static final SimpleDustMaterial StoneResidueDust = new SimpleDustMaterial("stone_residue_dust", Stone.materialRGB/5*3, (short) 944, MaterialIconSet.ROUGH);
+    public static final SimpleDustMaterial DiamagneticResidues = new SimpleDustMaterial("diamagnetic_residues", (Calcium.materialRGB+Zinc.materialRGB+Copper.materialRGB+Gallium.materialRGB+Beryllium.materialRGB+Tin.materialRGB)/15, (short) 945, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial HeavyDiamagneticResidues = new SimpleDustMaterial("heavy_diamagnetic_residues", (Lead.materialRGB+Mercury.materialRGB+Cadmium.materialRGB+Indium.materialRGB+Gold.materialRGB+Bismuth.materialRGB)/15, (short) 946, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ParamagneticResidues = new SimpleDustMaterial("paramagnetic_residues", (Sodium.materialRGB+Potassium.materialRGB+Magnesium.materialRGB+Titanium.materialRGB+Vanadium.materialRGB+Manganese.materialRGB)/15, (short) 947, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial HeavyParamagneticResidues = new SimpleDustMaterial("heavy_paramagnetic_residues", (Thorium.materialRGB+Thallium.materialRGB+Uranium.materialRGB+Tungsten.materialRGB+Hafnium.materialRGB+Tantalum.materialRGB)/15, (short) 948, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial FerromagneticResidues = new SimpleDustMaterial("ferromagnetic_residues", (Iron.materialRGB+Nickel.materialRGB+Cobalt.materialRGB)/7, (short) 949, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial HeavyFerromagneticResidues = new SimpleDustMaterial("heavy_ferromagnetic_residues", DysprosiumOxide.rgb*3/11, (short) 950, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial UncommonResidues = new SimpleDustMaterial("uncommon_residues", (Triniite.materialRGB+NaquadriaticTaranium.materialRGB+PreciousMetals.rgb)/5, (short) 951, MaterialIconSet.FINE);
+    public static final SimpleDustMaterial PartiallyOxydisedResidues = new SimpleDustMaterial("partially_oxydised_residues", StoneResidueDust.rgb+Dioxygendifluoride.rgb, (short) 952, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial MetallicResidues = new SimpleDustMaterial("metallic_residues", (DiamagneticResidues.rgb+ParamagneticResidues.rgb+ FerromagneticResidues.rgb+UncommonResidues.rgb/3)/4, (short) 953 ,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial HeavyMetallicResidues = new SimpleDustMaterial("heavy_metallic_residues", (HeavyDiamagneticResidues.rgb+HeavyParamagneticResidues.rgb+HeavyFerromagneticResidues.rgb+UncommonResidues.rgb/3)/4, (short) 954 ,MaterialIconSet.DULL);
+    public static final SimpleDustMaterial OxydisedResidues = new SimpleDustMaterial("oxydised_residues", (DiamagneticResidues.rgb+ParamagneticResidues.rgb+ FerromagneticResidues.rgb+0x9f0000)/4, (short) 955, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial HeavyOxydisedResidues = new SimpleDustMaterial("heavy_oxydised_residues", (DiamagneticResidues.rgb+ParamagneticResidues.rgb+ FerromagneticResidues.rgb+0x9f0000)/4, (short) 956, MaterialIconSet.DULL);
+    public static final SimpleDustMaterial ExoticHeavyResidues = new SimpleDustMaterial("exotic_heavy_residues",NitratedTriniiteSolution.rgb,(short) 957, MaterialIconSet.SHINY);
+    public static final SimpleDustMaterial CleanInertResidues = new SimpleDustMaterial("clean_inert_residues", (Taranium.materialRGB+Xenon.materialRGB)/2, (short) 958, MaterialIconSet.SHINY);
 
     public static final IngotMaterial Quantum = new IngotMaterial(857, "quantum", 0x0f0f0f, MaterialIconSet.SHINY, 7, of(new MaterialStack(Stellite, 15), new MaterialStack(Jasper, 5), new MaterialStack(Gallium, 5), new MaterialStack(Americium241.getMaterial(), 5), new MaterialStack(Palladium, 5), new MaterialStack(Bismuth, 5), new MaterialStack(Germanium, 5), new SimpleDustMaterialStack(SiliconCarbide, 5)), CORE_METAL | DISABLE_DECOMPOSITION | DISABLE_REPLICATION | GENERATE_METAL_CASING | DISABLE_AUTOGENERATED_MIXER_RECIPE, null, 25000);
     public static final IngotMaterial UVSuperconductorBase = new IngotMaterial(745, "uv_superconductor_base", 0xe0d207, MaterialIconSet.SHINY, 1, ImmutableList.of(new MaterialStack(Naquadria, 4), new MaterialStack(Osmiridium, 3), new MaterialStack(Rutherfordium, 1), new MaterialStack(Samarium, 1)), STD_METAL, null, 8900);
@@ -1432,7 +1467,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final IngotMaterial UMVSuperconductor = new IngotMaterial(724, "umv_superconductor", 0x883afc, MaterialIconSet.SHINY, 1, of(new MaterialStack(UMVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION | DISABLE_AUTOGENERATED_MIXER_RECIPE);
     public static final IngotMaterial UXVSuperconductorBase = new IngotMaterial(723, "uxv_superconductor_base", 0xe34b5a, MaterialIconSet.SHINY, 1, of(new MaterialStack(Neutronium, 4), new SimpleDustMaterialStack(Legendarium, 5), new SimpleDustMaterialStack(ActiniumSuperhydride,5), new SimpleDustMaterialStack(LanthanumFullereneNanotubes, 4), new SimpleDustMaterialStack(RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 12)), STD_METAL | DISABLE_DECOMPOSITION | DISABLE_AUTOGENERATED_MIXER_RECIPE, null, 100000);
     public static final IngotMaterial UXVSuperconductor = new IngotMaterial(722, "uxv_superconductor", 0xe34b5a, MaterialIconSet.SHINY, 1, of(new MaterialStack(UXVSuperconductorBase, 1), new MaterialStack(Nitrogen, 1)), DISABLE_DECOMPOSITION | DISABLE_AUTOGENERATED_MIXER_RECIPE);
-
+    public static final DustMaterial InertResidues = new DustMaterial(721, "inert_residues", 0x61587a, MaterialIconSet.SHINY, 1, of(), 0);
 
     public static Material UEV = new MarkerMaterial("UEV");
     public static Material UIV = new MarkerMaterial("UIV");
@@ -1521,6 +1556,8 @@ public class GAMaterials implements IMaterialHandler {
         Argon.addFlag(GENERATE_PLASMA);
         Calcium.addFlag(GENERATE_PLASMA);
         Titanium.addFlag(GENERATE_PLASMA);
+        Hydrogen.addFlag(GENERATE_PLASMA);
+        Helium3.addFlag(GENERATE_PLASMA);
 
         // Decomposition
         Barite.addFlag(DISABLE_DECOMPOSITION);
