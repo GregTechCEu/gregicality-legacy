@@ -6,6 +6,7 @@ import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.Invar;
 
 public class ElectricBlastFurnaceInfo extends MultiblockInfoPage {
 
@@ -36,16 +36,18 @@ public class ElectricBlastFurnaceInfo extends MultiblockInfoPage {
 
 				shapeInfo.add(MultiblockShapeInfo.builder()
 						.aisle("IFX", "CCC", "CCC", "XXX")
-						.aisle("SXE", "C#C", "C#C", "XXX")
-						.aisle("ODX", "CCC", "CCC", "XXX")
-						.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
+						.aisle("SXE", "C#C", "C#C", "XHX")
+						.aisle("ODM", "CCC", "CCC", "XXX")
+						.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+						.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+						.where('H', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
 						.where('C', MetaBlocks.WIRE_COIL.getState(coilType))
 						.where('S', GATileEntities.ELECTRIC_BLAST_FURNACE, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
 						.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
 						.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
 						.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.NORTH)
-						.where('D', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
+						.where('D', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
 						.where('#', Blocks.AIR.getDefaultState())
 						.build());
 			}
@@ -55,16 +57,18 @@ public class ElectricBlastFurnaceInfo extends MultiblockInfoPage {
 
 				shapeInfo.add(MultiblockShapeInfo.builder()
 						.aisle("IFX", "CCC", "CCC", "XXX")
-						.aisle("SXE", "C#C", "C#C", "XXX")
-						.aisle("ODX", "CCC", "CCC", "XXX")
-						.where('X', GAMetaBlocks.getMetalCasingBlockState(Invar))
+						.aisle("SXE", "C#C", "C#C", "XHX")
+						.aisle("ODM", "CCC", "CCC", "XXX")
+						.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
+						.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+						.where('H', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
 						.where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
 						.where('S', GATileEntities.ELECTRIC_BLAST_FURNACE, EnumFacing.WEST)
 						.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.MV], EnumFacing.EAST)
 						.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
 						.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.WEST)
 						.where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.NORTH)
-						.where('D', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
+						.where('D', MetaTileEntities.FLUID_EXPORT_HATCH[GAValues.LV], EnumFacing.SOUTH)
 						.where('#', Blocks.AIR.getDefaultState())
 						.build());
 			}

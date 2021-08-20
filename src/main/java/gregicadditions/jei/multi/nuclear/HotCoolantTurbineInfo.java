@@ -41,14 +41,14 @@ public class HotCoolantTurbineInfo extends MultiblockInfoPage {
         holder.setMetaTileEntity(GATileEntities.ROTOR_HOLDER[2]);
         holder.getMetaTileEntity().setFrontFacing(EnumFacing.WEST);
         ItemStack rotorStack = MetaItems.TURBINE_ROTOR.getStackForm();
-        //noinspection ConstantConditions
         TurbineRotorBehavior.getInstanceFor(rotorStack).setPartMaterial(rotorStack, Materials.Darmstadtium);
         ((MetaTileEntityRotorHolderForNuclearCoolant) holder.getMetaTileEntity()).getRotorInventory().setStackInSlot(0, rotorStack);
         MultiblockShapeInfo.Builder shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("CCCC", "CIOC", "CCCC")
                 .aisle("CCCC", "R##D", "CCCC")
-                .aisle("CCCC", "CSCC", "CCCC")
+                .aisle("CCCC", "CSMC", "CCCC")
                 .where('S', turbine, EnumFacing.SOUTH)
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                 .where('C', turbine.turbineType.casingState)
                 .where('R', new BlockInfo(MetaBlocks.MACHINE.getDefaultState(), holder))
                 .where('D', MetaTileEntities.ENERGY_OUTPUT_HATCH[GAValues.EV], EnumFacing.EAST)
@@ -64,7 +64,7 @@ public class HotCoolantTurbineInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gregtech.multiblock.large_turbine.description")};
+        return new String[]{I18n.format("gtadditions.machine.hot_coolant_turbine.description")};
     }
 
 }

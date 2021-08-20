@@ -7,6 +7,7 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeCircuitAssemblyLine;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -23,7 +24,6 @@ import net.minecraft.util.text.TextFormatting;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregtech.api.unification.material.Materials.Steel;
 
 public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
 
@@ -43,9 +43,10 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
                 if (num == 1) builder.aisle("CIC", "RTR", "GAG");
                 else builder.aisle("CIC", "RTR", "GAG");
             }
-            builder.aisle("FIC", "RTR", "GSG")
+            builder.aisle("FIM", "RTR", "GSG")
                     .where('S', GATileEntities.LARGE_CIRCUIT_ASSEMBLY_LINE, EnumFacing.SOUTH)
-                    .where('C', GAMetaBlocks.getMetalCasingBlockState(Steel))
+                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                    .where('C', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                     .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.DOWN)
                     .where('Y', MetaTileEntities.ENERGY_INPUT_HATCH[4], EnumFacing.NORTH)
@@ -77,5 +78,10 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
         }
     }
 
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.9f;
+    }
 
 }

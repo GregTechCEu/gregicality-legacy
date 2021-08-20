@@ -1,9 +1,9 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.ConveyorCasing;
@@ -19,6 +19,8 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockTurbineCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -38,25 +40,23 @@ public class TileEntityLargeLaserEngraver extends LargeSimpleRecipeMapMultiblock
     }
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS,
-            MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY};
+            MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX","XXX","#T#")
-                .aisle("XCX", "G#G","XEX","#T#")
-                .aisle("XCX", "G#G","XEX","#T#")
-                .aisle("XCX", "G#G","XEX","#T#")
+                .aisle("XXX", "GCG","XEX","#T#").setRepeatable(3, 6)
                 .aisle("XXX", "XSX","XXX","#T#")
-                .setAmountAtLeast('L', 22)
+                .setAmountAtLeast('L', 18)
                 .where('S', selfPredicate())
                 .where('L', statePredicate(getCasingState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('#', isAirPredicate())
+                .where('#', (tile) -> true)
                 .where('C', conveyorPredicate())
                 .where('E', emitterPredicate())
-                .where('T', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING)))
+                .where('T', statePredicate(MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.IRIDIUM_GLASS)))
                 .build();
     }

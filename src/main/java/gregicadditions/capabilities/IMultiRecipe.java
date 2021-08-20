@@ -4,6 +4,6 @@ import gregtech.api.recipes.RecipeMap;
 
 public interface IMultiRecipe {
 
-    RecipeMap<?>[] getRecipes();
-    int getCurrentRecipe();
+    RecipeMap<?>[] getRecipeMaps();
+    int getRecipeMapIndex();
 }

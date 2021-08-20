@@ -1,8 +1,8 @@
 package gregicadditions.machines.multi.nuclear;
 
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
-import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -11,17 +11,17 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import static gregicadditions.recipes.GARecipeMaps.GAS_CENTRIFUGE_RECIPES;
-import static gregtech.api.unification.material.Materials.StainlessSteel;
-import static gregtech.api.unification.material.Materials.Steel;
+import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 
 public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     public MetaTileEntityGasCentrifuge(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GAS_CENTRIFUGE_RECIPES);
@@ -50,11 +50,11 @@ public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController
 
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Steel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     public IBlockState getBaseState() {
-        return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
     }
 
     public IBlockState getVentCasing() {
@@ -63,7 +63,7 @@ public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(StainlessSteel);
+        return CLEAN_STAINLESS_STEEL_CASING;
     }
 
     @Override

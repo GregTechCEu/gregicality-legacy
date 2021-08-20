@@ -24,7 +24,7 @@ public class WorldGenRegister {
 
     public static void init() throws IOException {
         long time = System.currentTimeMillis();
-        GALog.logger.info("WorldGen init started");
+        GALog.logger.info("WorldGen preInit2 started");
 
         try {
             WorldGenRegister.removeGTConfigs();
@@ -41,7 +41,7 @@ public class WorldGenRegister {
 //        GregicalityLogger.logger.info("Reloading ore vein definitions to use our block filler");
 //        WorldGenRegistry.INSTANCE.reinitializeRegisteredVeins();
         float t = (System.currentTimeMillis() * 1.0F) / (time * 1.0F);
-        GALog.logger.info(String.format("WorldGen init finished for %.3f seconds", t));
+        GALog.logger.info(String.format("WorldGen preInit2 finished for %.3f seconds", t));
     }
 
     private static void removeGTConfigs() throws IOException {

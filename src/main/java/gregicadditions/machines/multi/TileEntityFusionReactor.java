@@ -2,7 +2,6 @@ package gregicadditions.machines.multi;
 
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
-import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GAFusionCasing;
@@ -17,6 +16,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
@@ -43,7 +43,7 @@ import java.util.List;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 
-public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
+public class TileEntityFusionReactor extends RecipeMapMultiblockController {
     private final int tier;
     private EnergyContainerList inputEnergyContainers;
     private long heat = 0; // defined in TileEntityFusionReactor but serialized in FusionRecipeLogic
@@ -72,7 +72,7 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
         return FactoryBlockPattern.start(LEFT, DOWN, BACK)
                 .aisle("###############", "######OCO######", "###############")
                 .aisle("######ICI######", "####CCcccCC####", "######ICI######")
-                .aisle("####CC###CC####", "###EccOCOccE###", "####CC###CC####")
+                .aisle("####CC###CC####", "###EccOSOccE###", "####CC###CC####")
                 .aisle("###C#######C###", "##EcEC###CEcE##", "###C#######C###")
                 .aisle("##C#########C##", "#CcE#######EcC#", "##C#########C##")
                 .aisle("##C#########C##", "#CcC#######CcC#", "##C#########C##")
@@ -84,7 +84,7 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
                 .aisle("###C#######C###", "##EcEC###CEcE##", "###C#######C###")
                 .aisle("####CC###CC####", "###EccOCOccE###", "####CC###CC####")
                 .aisle("######ICI######", "####CCcccCC####", "######ICI######")
-                .aisle("###############", "######OSO######", "###############")
+                .aisle("###############", "######OCO######", "###############")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
                 .where('c', statePredicate(getCoilState()))
@@ -204,15 +204,15 @@ public class TileEntityFusionReactor extends GARecipeMapMultiblockController {
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         switch (tier) {
             case 6: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "1,600,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "160,000,000"));
                 break;
             }
             case 7: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "3,200,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "320,000,000"));
                 break;
             }
             case 8: {
-                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "6,400,000"));
+                tooltip.add(I18n.format("gtadditions.multiblock.fusion_reactor.tooltip.1", "640,000,000"));
                 break;
             }
         }
