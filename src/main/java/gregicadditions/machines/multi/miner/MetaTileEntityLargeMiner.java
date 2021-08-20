@@ -5,12 +5,13 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
+import gregicadditions.GAConfig;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
-import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
-import gregtech.api.GTValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
+import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -20,17 +21,14 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
-import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.MetaTileEntities;
-import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityEnergyHatch;
 import gregtech.common.tools.ToolUtility;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -61,14 +59,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.IntStream;
 
+import static gregicadditions.client.ClientHandler.*;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
+import static gregtech.api.unification.material.Materials.*;
 
-public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implements Miner {
+public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implements Miner { //todo maintenance in miner algorithm overhaul
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+
     public final Miner.Type type;
-    private final Material material;
+    private final IBlockState casingState;
+    private final ICubeRenderer casingTexture;
+    private Material material;
     private AtomicLong x = new AtomicLong(Long.MAX_VALUE), y = new AtomicLong(Long.MAX_VALUE), z = new AtomicLong(Long.MAX_VALUE);
     private AtomicInteger currentChunk = new AtomicInteger(0);
     private IEnergyContainer energyContainer;
@@ -81,10 +84,35 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     protected boolean wasActiveAndNeedsUpdate;
 
 
-    public MetaTileEntityLargeMiner(ResourceLocation metaTileEntityId, Miner.Type type, Material material) {
+    public MetaTileEntityLargeMiner(ResourceLocation metaTileEntityId, Miner.Type type) {
         super(metaTileEntityId);
         this.type = type;
-        this.material = material;
+        switch (this.type) {
+            case LARGE: {
+                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.largeMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_G));
+                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSS_G_CASING);
+
+                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSSG);
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSG;
+                break;
+            }
+            case ADVANCE: {
+                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S));
+                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSS_S_CASING);
+
+                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSSS);
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSS;
+                break;
+            }
+            default: {
+                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.basicMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.BLACK_STEEL));
+                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
+
+                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
+                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : BlackSteel;
+                break;
+            }
+        }
         reinitializeStructurePattern();
     }
 
@@ -116,7 +144,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
 
     public boolean drainEnergy() {
         long energyDrain = GAValues.V[Math.max(GAValues.EV, GAUtility.getTierByVoltage(energyContainer.getInputVoltage()))];
-        FluidStack drillingFluid = Materials.DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
+        FluidStack drillingFluid = DrillingFluid.getFluid(type.drillingFluidConsumePerTick);
         FluidStack canDrain = importFluidHandler.drain(drillingFluid, false);
         if (energyContainer.getEnergyStored() >= energyDrain && canDrain != null && canDrain.amount == type.drillingFluidConsumePerTick) {
             energyContainer.removeEnergy(energyContainer.getInputVoltage());
@@ -201,7 +229,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             }
 
 
-            if (!getWorld().isRemote && getTimer() % 5 == 0) {
+            if (!getWorld().isRemote && getOffsetTimer() % 5 == 0) {
                 pushItemsIntoNearbyHandlers(getFrontFacing());
             }
         }
@@ -212,21 +240,16 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     protected BlockPattern createStructurePattern() {
         return material == null || type == null ? null : FactoryBlockPattern.start()
                 .aisle("F###F", "F###F", "PPPPP", "#####", "#####", "#####", "#####", "#####", "#####", "#####")
-                .aisle("#####", "#####", "PPPPP", "#CEC#", "#####", "#####", "#####", "#####", "#####", "#####")
+                .aisle("#####", "#####", "PPPPP", "#CCC#", "#####", "#####", "#####", "#####", "#####", "#####")
                 .aisle("#####", "#####", "PPPPP", "#CPC#", "#FFF#", "#FFF#", "#FFF#", "##F##", "##F##", "##F##")
                 .aisle("#####", "#####", "PPPPP", "#CSC#", "#####", "#####", "#####", "#####", "#####", "#####")
                 .aisle("F###F", "F###F", "PPPPP", "#####", "#####", "#####", "#####", "#####", "#####", "#####")
+                .setAmountAtLeast('L', 3)
                 .where('S', selfPredicate())
-                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS)))
+                .where('L', statePredicate(getCasingState()))
+                .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('P', statePredicate(getCasingState()))
-                .where('E', tilePredicate((state, tile) -> {
-                    for (int i = GTValues.EV; i < GTValues.V.length; i++) {
-                        if (tile.metaTileEntityId.equals(MetaTileEntities.ENERGY_INPUT_HATCH[i].metaTileEntityId))
-                            return true;
-                    }
-                    return false;
-                }).or(tilePredicate((state, tile) -> tile instanceof GAMetaTileEntityEnergyHatch && !((GAMetaTileEntityEnergyHatch) tile).isExportHatch())))
-                .where('F', statePredicate(MetaBlocks.FRAMES.get(material).getDefaultState()))
+                .where('F', statePredicate(MetaBlocks.FRAMES.get((SolidMaterial) getMaterial()).getDefaultState()))
                 .where('#', blockWorldState -> true)
                 .build();
     }
@@ -245,7 +268,7 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.format("gtadditions.machine.miner.multi.description", type.chunk, type.chunk, type.fortuneString));
-        tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(Materials.DrillingFluid.getFluid(0).getUnlocalizedName())));
+        tooltip.add(I18n.format("gtadditions.machine.miner.fluid_usage", type.drillingFluidConsumePerTick, I18n.format(DrillingFluid.getFluid(0).getUnlocalizedName())));
     }
 
     @Override
@@ -262,25 +285,27 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
             textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.mode"));
             if (done)
                 textList.add(new TextComponentTranslation("gregtech.multiblock.large_miner.done", getNbBlock()).setStyle(new Style().setColor(TextFormatting.GREEN)));
-
-
         }
 
         super.addDisplayText(textList);
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(material);
+        return casingState;
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(material);
+        return casingTexture;
+    }
+
+    public Material getMaterial() {
+        return material;
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new MetaTileEntityLargeMiner(metaTileEntityId, getType(), material);
+        return new MetaTileEntityLargeMiner(metaTileEntityId, getType());
     }
 
     @Override
@@ -327,10 +352,6 @@ public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implemen
     public void receiveInitialSyncData(PacketBuffer buf) {
         super.receiveInitialSyncData(buf);
         this.isActive = buf.readBoolean();
-    }
-
-    public Material getMaterial() {
-        return material;
     }
 
     @Override

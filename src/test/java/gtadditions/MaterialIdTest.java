@@ -31,7 +31,7 @@ public class MaterialIdTest {
         // Bootstrap the GTCE Material System
         GTLog.init(LogManager.getLogger(GTValues.MODID)); // yes this was necessary
         Materials.register();
-        GAEnums.preInit();
+        GAEnums.onConstruction();
         GAMaterials gaMaterials = new GAMaterials();
         gaMaterials.onMaterialsInit();
         Material.freezeRegistry();
@@ -42,6 +42,7 @@ public class MaterialIdTest {
         MetaBlocks.init();
         GAMetaBlocks.init();
         MetaTileEntities.init();
+        GAEnums.preInit();
         GATileEntities.init();
     }
 

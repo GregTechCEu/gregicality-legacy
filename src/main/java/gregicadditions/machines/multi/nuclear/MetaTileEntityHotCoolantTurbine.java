@@ -1,8 +1,8 @@
 package gregicadditions.machines.multi.nuclear;
 
-import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.impl.HotCoolantMultiblockController;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
 import gregicadditions.machines.multi.impl.HotCoolantTurbineWorkableHandler;
@@ -29,15 +29,18 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.List;
 
-public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockController {
+import static gregicadditions.client.ClientHandler.MARAGING_STEEL_250_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
-    public static final MultiblockAbility<MetaTileEntityRotorHolderForNuclearCoolant> ABILITY_ROTOR_HOLDER = new MultiblockAbility();
+public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockController { //todo maintenance when turbines are overhauled
+
+    public static final MultiblockAbility<MetaTileEntityRotorHolderForNuclearCoolant> ABILITY_ROTOR_HOLDER = new MultiblockAbility<>();
 
     private static final int MIN_DURABILITY_TO_WARN = 10;
 
     public enum TurbineType {
 
-        HOT_COOLANT(GARecipeMaps.HOT_COOLANT_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(GAMaterials.MaragingSteel250), GAMetaBlocks.METAL_CASING.get(GAMaterials.MaragingSteel250), true);
+        HOT_COOLANT(GARecipeMaps.HOT_COOLANT_TURBINE_FUELS, METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250), MARAGING_STEEL_250_CASING, true);
 
         public final HotCoolantRecipeMap recipeMap;
         public final IBlockState casingState;
@@ -148,17 +151,17 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
 
     public MultiblockAbility[] getAllowedAbilities() {
         return turbineType.hasOutputHatch ?
-                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS} :
-                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS};
+                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH} :
+                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
     }
 
     public IBlockState getCasingState() {
-        return turbineType.casingState;
+        return METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return turbineType.casingRenderer;
+        return MARAGING_STEEL_250_CASING;
     }
 
 }

@@ -2,7 +2,7 @@ package gregicadditions.jei.multi.advance;
 
 import com.google.common.collect.Lists;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -14,7 +14,7 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.List;
 
-import static gregicadditions.GAMaterials.IncoloyMA956;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class CryogenicFreezerInfo  extends MultiblockInfoPage {
     @Override
@@ -26,10 +26,11 @@ public class CryogenicFreezerInfo  extends MultiblockInfoPage {
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("XXX", "BXH", "XXX")
-                .aisle("XXX", "C#E", "XXX")
+                .aisle("MXX", "C#E", "XXX")
                 .aisle("XXX", "IXF", "XXX")
                 .where('C', GATileEntities.CRYOGENIC_FREEZER, EnumFacing.WEST)
-                .where('X', GAMetaBlocks.getMetalCasingBlockState(IncoloyMA956))
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.INCOLOY_MA956))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.HV], EnumFacing.SOUTH)
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[GAValues.HV], EnumFacing.SOUTH)

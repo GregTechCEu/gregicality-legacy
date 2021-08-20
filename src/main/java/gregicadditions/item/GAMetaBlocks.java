@@ -11,6 +11,9 @@ import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
+import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
+import gregicadditions.item.metal.NuclearCasing;
 import gregicadditions.pipelike.opticalfiber.BlockOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
@@ -89,6 +92,13 @@ public class GAMetaBlocks {
     public static PumpCasing PUMP_CASING;
     public static RobotArmCasing ROBOT_ARM_CASING;
     public static SensorCasing SENSOR_CASING;
+
+    //metal casing
+    public static MetalCasing1 METAL_CASING_1;
+    public static MetalCasing2 METAL_CASING_2;
+
+    //nuclear casing
+    public static NuclearCasing NUCLEAR_CASING;
 
     public static Map<IngotMaterial, GAMetalCasing> METAL_CASING = new HashMap<>();
 
@@ -176,6 +186,15 @@ public class GAMetaBlocks {
         EMITTER_CASING = new EmitterCasing();
         EMITTER_CASING.setRegistryName("ga_emitter_casing");
 
+        METAL_CASING_1 = new MetalCasing1();
+        METAL_CASING_1.setRegistryName("ga_metal_casing_1");
+
+        METAL_CASING_2 = new MetalCasing2();
+        METAL_CASING_2.setRegistryName("ga_metal_casing_2");
+
+        NUCLEAR_CASING = new NuclearCasing();
+        NUCLEAR_CASING.setRegistryName("ga_nuclear_casing");
+
         OPTICAL_FIBER = new BlockOpticalFiber();
         OPTICAL_FIBER.setRegistryName("ga_cable");
 
@@ -226,16 +245,6 @@ public class GAMetaBlocks {
 
         createMachineCasing();
         registerTileEntity();
-        EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "STEAM_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.STEAM_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.Steel), GAMetaBlocks.METAL_CASING.get(Materials.Steel), true);
-        EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "GAS_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.GAS_TURBINE_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.StainlessSteel), GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel), false);
-        EnumHelper.addEnum(MetaTileEntityLargeTurbine.TurbineType.class, "PLASMA_OVERRIDE",
-                new Class[]{FuelRecipeMap.class, IBlockState.class, ICubeRenderer.class, boolean.class},
-                RecipeMaps.PLASMA_GENERATOR_FUELS, GAMetaBlocks.getMetalCasingBlockState(Materials.TungstenSteel), GAMetaBlocks.METAL_CASING.get(Materials.TungstenSteel), true);
-
     }
 
     private static void createOreBlock(DustMaterial material) {
@@ -309,6 +318,9 @@ public class GAMetaBlocks {
         registerItemModel(PUMP_CASING);
         registerItemModel(ROBOT_ARM_CASING);
         registerItemModel(SENSOR_CASING);
+        registerItemModel(METAL_CASING_1);
+        registerItemModel(METAL_CASING_2);
+        registerItemModel(NUCLEAR_CASING);
         METAL_CASING.values().stream().distinct().forEach(GAMetaBlocks::registerItemModel);
         GA_ORES.stream().distinct().forEach(GAMetaBlocks::registerItemModel);
     }

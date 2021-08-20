@@ -7,13 +7,12 @@ import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
-import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.item.metal.MetalCasing2;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerList;
@@ -28,16 +27,11 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.render.Textures;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -54,7 +48,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
+import static gregicadditions.client.ClientHandler.QUANTUM_CASING;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
+
+public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase { //todo maintenance, controller turns on when running
 
     public MetaTileEntityCosmicRayDetector(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
@@ -68,11 +65,11 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
             return;
         }
 
-        if (getTimer() % 20 == 4) {
+        if (getOffsetTimer() % 20 == 4) {
             canSeeSky = canSeeSky();
         }
         if (canSeeSky && !hasEnoughEnergy) {
-            if (getTimer() % 20 == 8) {
+            if (getOffsetTimer() % 20 == 8) {
                 hasEnoughEnergy = drainEnergy();
             }
         }
@@ -92,7 +89,8 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.INPUT_ENERGY,
+            GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     private long maxVoltage = 0;
@@ -264,16 +262,16 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     }
 
     private IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(GAMaterials.Quantum);
+        return METAL_CASING_2.getState(MetalCasing2.CasingType.QUANTUM);
     }
 
     private IBlockState getSecondaryCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(Materials.Tritanium);
+        return METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GAMetaBlocks.METAL_CASING.get(GAMaterials.Quantum);
+        return QUANTUM_CASING;
     }
 
     @Override

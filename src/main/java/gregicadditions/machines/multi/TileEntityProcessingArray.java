@@ -1,16 +1,14 @@
 package gregicadditions.machines.multi;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
 import gregicadditions.GAValues;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.ControllerSlotMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.RecipeMapMultiblockWithSlotController;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.utils.Tuple;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.GregTechAPI;
-import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -25,26 +23,30 @@ import gregtech.api.recipes.Recipe.ChanceEntry;
 import gregtech.api.recipes.builders.*;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.util.GTUtility;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.event.HoverEvent;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
+import javax.annotation.Nullable;
 import java.util.*;
 
-import static gregtech.api.unification.material.Materials.TungstenSteel;
+import static gregtech.api.render.Textures.ROBUST_TUNGSTENSTEEL_CASING;
 
-public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotController {
+public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotController { //todo staged removal
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     public TileEntityProcessingArray(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.PROCESSING_ARRAY_RECIPES, ITieredMetaTileEntity.class);
@@ -66,12 +68,12 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
     }
 
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(TungstenSteel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart arg0) {
-        return GAMetaBlocks.METAL_CASING.get(TungstenSteel);
+        return ROBUST_TUNGSTENSTEEL_CASING;
     }
 
     @Override
@@ -80,42 +82,22 @@ public class TileEntityProcessingArray extends RecipeMapMultiblockWithSlotContro
     }
 
     @Override
-    protected void addDisplayText(List<ITextComponent> textList) {
-        if (isStructureFormed()) {
-            IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
-            if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
-                long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
-                textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
-            }
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtadditions.machine.removal.universal"));
+    }
 
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
+
+        if (isStructureFormed()) {
             String myRecipeMap = "recipemap." + ((ProcessingArrayWorkable) recipeMapWorkable).recipeMapName + ".name";
             if (myRecipeMap != null) {
                 textList.add(new TextComponentTranslation("gtadditions.machine.pa.display1", myRecipeMap).setStyle(new Style().setColor(TextFormatting.GOLD)));
                 textList.add(new TextComponentTranslation("gtadditions.machine.pa.display2",
                         Math.min(getStackInSlot().getCount(), GAConfig.multis.processingArray.processingArrayMachineLimit)).setStyle(new Style().setColor(TextFormatting.AQUA)));
             }
-
-            if (!recipeMapWorkable.isWorkingEnabled()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
-
-            } else if (recipeMapWorkable.isActive()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
-                int currentProgress = (int) (recipeMapWorkable.getProgressPercent() * 100);
-                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
-            } else {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
-            }
-
-            if (recipeMapWorkable.isHasNotEnoughEnergy()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
-            }
-        } else {
-            ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip");
-            tooltip.setStyle(new Style().setColor(TextFormatting.GRAY));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.invalid_structure")
-                    .setStyle(new Style().setColor(TextFormatting.RED)
-                            .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
         }
     }
 

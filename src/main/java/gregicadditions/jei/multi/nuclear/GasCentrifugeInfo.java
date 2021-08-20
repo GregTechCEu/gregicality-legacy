@@ -2,21 +2,20 @@ package gregicadditions.jei.multi.nuclear;
 
 import com.google.common.collect.Lists;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.StainlessSteel;
-import static gregtech.api.unification.material.Materials.Steel;
 
 public class GasCentrifugeInfo extends MultiblockInfoPage {
     @Override
@@ -27,14 +26,15 @@ public class GasCentrifugeInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo.Builder shapeInfo = MultiblockShapeInfo.builder()
-                .aisle("#FEY#", "#YSY#", "#####", "#####", "#####", "#####", "#####")
+                .aisle("#FEM#", "#YSY#", "#####", "#####", "#####", "#####", "#####")
                 .aisle("OYYYY", "YYYYY", "#ZCZ#", "#Z#Z#", "#Z#Z#", "#Z#Z#", "#Z#Z#")
                 .aisle("OYYYY", "YYYYY", "#CCC#", "#####", "#####", "#####", "#####")
                 .aisle("OYYYY", "YYYYY", "#ZCZ#", "#Z#Z#", "#Z#Z#", "#Z#Z#", "#Z#Z#")
                 .aisle("#IYY#", "#YYY#", "#####", "#####", "#####", "#####", "#####")
                 .where('S', GATileEntities.GAS_CENTRIFUGE, EnumFacing.NORTH)
-                .where('Y', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
-                .where('Z', GAMetaBlocks.getMetalCasingBlockState(Steel))
+                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
+                .where('Y', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
+                .where('Z', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                 .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))
                 .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.WEST)
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.LV], EnumFacing.NORTH)
@@ -46,6 +46,12 @@ public class GasCentrifugeInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[] {"Temporary Placeholder"};
+        return new String[] {I18n.format("gtadditions.multiblock.gas_centrifuge.description")};
+    }
+
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.6f;
     }
 }

@@ -6,6 +6,7 @@ import gregicadditions.capabilities.IQubitContainer;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.capabilities.impl.QubitConsumeRecipeLogic;
 import gregicadditions.capabilities.impl.QubitContainerList;
+import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
 import net.minecraft.util.ResourceLocation;
@@ -23,6 +24,10 @@ public abstract class QubitRecipeMapMultiblockController extends GARecipeMapMult
 
     public QubitRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap);
+    }
+
+    public QubitRecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap, boolean hasMaintenance) {
+        super(metaTileEntityId, recipeMap, false, hasMaintenance, true);
     }
 
     public IQubitContainer getInputQubitContainer() {

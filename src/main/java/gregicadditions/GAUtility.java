@@ -14,9 +14,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class GAUtility {
@@ -55,6 +53,16 @@ public class GAUtility {
         if (value < start)
             return start;
         return Math.min(value, end);
+    }
+
+    /**
+     * Safely cast a Long to an Int without overflow.
+     *
+     * @param v The Long value to cast to an Int.
+     * @return v, casted to Int, or Integer.MAX_VALUE if it would overflow.
+     */
+    public static int safeCastLongToInt(long v) {
+        return v > Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) v;
     }
 
     public static void checkRecipeConflicts() {

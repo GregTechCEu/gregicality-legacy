@@ -11,6 +11,8 @@ import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -383,7 +385,7 @@ public class MetaItemRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1200000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 2))
                 .input(wireFine, Gold, 4)
-                .input(gtMetalCasing, Aluminium)
+                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .inputs(LASER_DIODE.getStackForm())
                 .input(circuit, Ultimate)
                 .outputs(LASER_COOLING_UNIT.getStackForm())
@@ -393,7 +395,7 @@ public class MetaItemRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().duration(480).EUt(1000000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 3))
                 .input(wireGtDouble, UVSuperconductor, 2)
-                .input(gtMetalCasing, Aluminium)
+                .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .outputs(MAGNETIC_TRAP.getStackForm())
                 .buildAndRegister();
 
