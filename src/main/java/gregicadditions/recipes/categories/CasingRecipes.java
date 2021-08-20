@@ -513,7 +513,7 @@ public class CasingRecipes {
 
     private static void multiblockCasings() {
 
-        // Tungstensteel Gearbox Casing
+        // Assembly Line Gearbox Casing
         ModHandler.addShapedRecipe("assline_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLY_LINE_CASING, 2),
                 "PhP", "AFA", "PwP",
                 'P', new UnificationEntry(plate, Steel),
@@ -747,11 +747,26 @@ public class CasingRecipes {
 
         // Engine Intake Casing
         removeRecipeByName("gregtech:engine_intake_casing");
-        ModHandler.addShapedRecipe("ga_engine_intake_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ENGINE_INTAKE_CASING),
+        ModHandler.addShapedRecipe("ga_engine_intake_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ENGINE_INTAKE_CASING, 2),
                 "PhP", "RFR", "PwP",
                 'R', new UnificationEntry(pipeMedium, Titanium),
                 'F', MetaBlocks.METAL_CASING.getItemVariant(TITANIUM_STABLE),
                 'P', new UnificationEntry(rotor, Titanium));
+
+        // Tungstensteel Gear Box Casing
+        ModHandler.addShapedRecipe("tungstensteel_gearbox", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TUNGSTENSTEEL_GEARBOX_CASING, 2),
+                "PhP", "GFG", "PwP",
+                'P', new UnificationEntry(plate, TungstenSteel),
+                'G', new UnificationEntry(gear, TungstenSteel),
+                'F', new UnificationEntry(frameGt, TungstenSteel));
+
+        ASSEMBLER_RECIPES.recipeBuilder()
+                .input(plate, TungstenSteel, 4)
+                .input(gear, TungstenSteel, 2)
+                .input(frameGt, TungstenSteel)
+                .circuitMeta(4)
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TUNGSTENSTEEL_GEARBOX_CASING, 2))
+                .duration(100).EUt(30).buildAndRegister();
     }
 
     private static void componentCasings() {
