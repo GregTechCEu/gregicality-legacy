@@ -115,9 +115,8 @@ public class MetaTileEntityMultiFurnace extends GARecipeMapMultiblockController 
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        BlockWireCoil.CoilType coilType = context.getOrDefault("CoilType", BlockWireCoil.CoilType.CUPRONICKEL);
-        this.heatingCoilLevel = coilType.getLevel();
-        this.heatingCoilDiscount = coilType.getEnergyDiscount();
+        this.heatingCoilLevel = context.getOrDefault("heatingCoilLevel", 0);
+        this.heatingCoilDiscount = context.getOrDefault("heatingCoilDiscount", 0);
     }
 
     @Override
