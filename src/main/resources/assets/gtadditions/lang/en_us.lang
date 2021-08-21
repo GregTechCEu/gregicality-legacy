@@ -878,7 +878,8 @@ metaitem.crude_hexanitrohexaaxaisowurtzitane.name=Crude Hexanitrohexaaxaisowurtz
 metaitem.californiumtrioxide.name=Californium Trioxide
 metaitem.californiumtrichloride.name=Californium Trichloride
 metaitem.iridiumtrioxide.name=Iridium Trioxide
-
+metaitem.iridium_cyclooctadienyl_chloride_dimer.name=Irium Cyclooctadienyl Chloride Dimer
+metaitem.finely_powdered_rutile.name=Finely Powdered Rutile
 metaitem.unstable.star.name=Unstable Star
 
 metaitem.tool.prospect.mv.name=Prospector MV
@@ -2021,7 +2022,6 @@ tile.ga_fusion_casing.adv_fusion_casing.name=Advanced Fusion Casing MK I
 tile.ga_fusion_casing.fusion_blanket.name=Advanced Fusion Blanket
 tile.ga_fusion_casing.blanket_base.name=Advanced Fusion Blanket Base
 tile.ga_fusion_casing.breeding_blanket.name=Advanced Breeding Blanket
-tile.ga_multiblock_casing2.laser_engraver_casing.name=Laser Engraver Casing
 tile.ga_simple_block.superheavy_block.name=Superheavy Block
 tile.ga_explosive.taranium_charge.name=Taranium Charge
 tile.ga_explosive.naquadria_charge.name=Naquadria Charge
@@ -4238,7 +4238,7 @@ fluid.tetrafluoroboric_acid=Tetrafluoroboric Acid
 fluid.apatite_acidic_leach=Apatite Acidic Leach
 fluid.fluoroapatite_acidic_leach=Fluoropatite Acidic Leach
 fluid.hydroiodic_acid=Hydroiodic Acid
-
+fluid.chlorodiisopropyl_phosphine=Chlorodiisopropyl Phosphine
 fluid.kanthal_molten=Molten Kanthal
 fluid.nichrome_molten=Molten Nichrome
 fluid.niobium_nitride_molten=Molten Niobium Nitride

@@ -131,7 +131,7 @@ public class Dyes {
                 .outputs(FinelyPowderedRutile.getItemStack())
                 .buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(310).EUt(32)
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(310).EUt(30)
                 .inputs(FinelyPowderedRutile.getItemStack())
                 .notConsumable(SHAPE_MOLD_PLATE)
                 .output(plate, Rutile)

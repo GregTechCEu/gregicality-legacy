@@ -37,11 +37,12 @@ public class FullereneChain {
                 .EUt(125)
                 .buildAndRegister();
 
+        //2 NaBr + H3PO4 -> 2 HBr + Na2HPO4
         CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(SodiumBromide.getItemStack(2))
-                .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidOutputs(HydrobromicAcid.getFluid(1000))
-                .output(dust, SodiumBisulfate, 7)
+                .inputs(SodiumBromide.getItemStack(4))
+                .fluidInputs(PhosphoricAcid.getFluid(1000))
+                .fluidOutputs(HydrobromicAcid.getFluid(2000))
+                .outputs(DisodiumPhosphate.getItemStack(8))
                 .duration(190)
                 .EUt(125)
                 .buildAndRegister();
@@ -261,19 +262,17 @@ public class FullereneChain {
                 .buildAndRegister();
 
         // C10H10Fe + C60 + C3H7NO2 + CHCl3 + 3 NaOC2H5 ->
-        // 3 NaCl + 3 C2H5OH + [C63H15NFe] + CO2 + H2O
-
+        // 3 NaCl + 3 C2H5OH + [C63H15NFe] + CO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Fullerene.getItemStack())
                 .inputs(Sarcosine.getItemStack(13))
                 .inputs(SodiumEthoxide.getItemStack(27))
                 .fluidInputs(Chloroform.getFluid(1000))
                 .fluidInputs(Ferrocene.getFluid(1000))
-                .notConsumable(AluminiumChloride.getItemStack())
+                .notConsumable(TitaniumTetrachloride)
                 .notConsumable(Toluene)
                 .output(dust, Salt, 6)
                 .fluidOutputs(Ferrocenylfulleropyrrolidine.getFluid(1000))
-                .fluidOutputs(Water.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .fluidOutputs(Ethanol.getFluid(3000))
                 .EUt(500000)
@@ -460,7 +459,7 @@ public class FullereneChain {
                 .fluidInputs(Dichloromethane.getFluid(1000))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .fluidOutputs(PCBS.getFluid(1000))
-                .EUt(524288)
+                .EUt(500000)
                 .duration(400)
                 .buildAndRegister();
 
