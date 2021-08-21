@@ -1570,6 +1570,7 @@ gtadditions.multiblock.large_electrolyzer.description=Larger version of the Elec
 gtadditions.machine.large_extruder.name=Large Extruder
 gtadditions.multiblock.large_extruder.description=Larger version of the Extruder. Can be extended up to 4 blocks longer to accommodate extra hatches.
 gtadditions.machine.large_centrifuge.name=Large Centrifuge
+gtadditions.multiblock.large_centrifuge.description=The Large Centrifuge is a multiblock version of the Centrifuge. Requires at least 16 primary casings.
 gtadditions.machine.large_chemical_reactor.name=Large Chemical Reactor
 gtadditions.multiblock.large_chemical_reactor.description=The Large Chemical Reactor performs reactions at larger scales with 100%% or greater overclocking efficiency.
 gtadditions.machine.large_cutting.name=Large Cutting Machine
