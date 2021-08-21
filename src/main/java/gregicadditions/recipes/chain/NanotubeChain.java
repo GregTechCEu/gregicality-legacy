@@ -190,7 +190,7 @@ public class NanotubeChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(130).EUt(480)
                 .fluidInputs(Cyclooctadiene.getFluid(1000))
                 .inputs(PotassiumTetrachloroplatinate.getItemStack(7))
-                .outputs(Dichlorocycloctadieneplatinium.getItemStack(23))
+                .outputs(Dichlorocycloctadieneplatinum.getItemStack(23))
                 .output(dust, RockSalt, 4)
                 .buildAndRegister();
 
@@ -199,7 +199,7 @@ public class NanotubeChain {
                 .notConsumable(Bipyridine.getItemStack())
                 .notConsumable(PalladiumBisDibenzylidieneacetone.getItemStack())
                 .inputs(Diiodobiphenyl.getItemStack(4))
-                .inputs(Dichlorocycloctadieneplatinium.getItemStack(23))
+                .inputs(Dichlorocycloctadieneplatinum.getItemStack(23))
                 .input(dust, Carbon, 8)
                 .fluidInputs(Silvertetrafluoroborate.getFluid(4000))
                 .fluidInputs(TrimethyltinChloride.getFluid(4000))

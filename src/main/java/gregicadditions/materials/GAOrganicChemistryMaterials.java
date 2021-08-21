@@ -1,25 +1,12 @@
 package gregicadditions.materials;
 
-import gregicadditions.GAMaterials;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.Materials;
 
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.*;
-
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.stack.MaterialStack;
-
-import static com.google.common.collect.ImmutableList.of;
-import static gregicadditions.GAMaterials.GA_CORE_METAL;
-import static gregicadditions.GAMaterials.MetastableHassium;
-import static gregtech.api.unification.Elements.Hs;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
 
 // Organic Chemistry Materials
@@ -957,190 +944,1333 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("(BaTiO3)C2H3BaO2Sr", true);
 
+        Chloroethane = new Material.Builder(6621, "chloroethane")
+                .fluid()
+                .color(0x33AA33)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 5, Chlorine, 1)
+                .build()
+                .setFormula("CH3CH2Cl", true);
 
-        public static SimpleFluidMaterial Chloroethane = new SimpleFluidMaterial("chloroethane", 0x33aa33, "CH3CH2Cl");
-        public static SimpleFluidMaterial IsopropylAcetate = new SimpleFluidMaterial("isopropyl_acetate", (Strontium.materialRGB+IsopropylAlcohol.rgb+Water.materialRGB)/3, "(CH3)2CHCOOCH3");
-        public static SimpleFluidMaterial ChlorinatedSolvents = new SimpleFluidMaterial("chlorinated_solvents",0x40804c, "(CH4)2Cl5");
-        public static SimpleFluidMaterial Dichloromethane = new SimpleFluidMaterial("dichloromethane", Chloromethane.materialRGB-10, "CH2Cl2");
-        public static SimpleFluidMaterial ButanolGas = new SimpleFluidMaterial("butanol_gas",Butanol.rgb+20, "C4H9OH");
-        public static SimpleFluidMaterial Tributylamine = new SimpleFluidMaterial("tributylamine",0x801a80, "(C4H9)3N");
-        public static SimpleFluidMaterial CrudeAluminaSolution = new SimpleFluidMaterial("crude_alumina_solution", (Aluminium.materialRGB-30), "(Al(NO3)3)2(CH2Cl2)(C12H27N)");
-        public static SimpleFluidMaterial AluminaSolution = new SimpleFluidMaterial("alumina_solution", (Aluminium.materialRGB-15), "(Al2O3)(CH2Cl2)(C12H27N)2");
-        public static SimpleFluidMaterial AmmoniumCyanate = new SimpleFluidMaterial("ammonium_cyanate",0x3a5dcf, "NH4CNO");
-        public static SimpleFluidMaterial Ethylenediamine = new SimpleFluidMaterial("ethylenediamine", Ethanolamine.rgb, "C2H4(NH2)2");
-        public static SimpleFluidMaterial EDTASolution = new SimpleFluidMaterial("edta_solution",0x0026d9, "(C10H16N2O8)3(C2H8N2)O2");
-        public static SimpleFluidMaterial EDTA = new SimpleFluidMaterial("edta",0x0026d9, "C10H16N2O8");
-        public static SimpleFluidMaterial Glycine = new SimpleFluidMaterial("glycine", (Ethylenediamine.rgb+Formaldehyde.rgb)/2, "NH2CH2COOH");
-        public static SimpleFluidMaterial Nitrotoluene = new SimpleFluidMaterial("nitrotoluene",0xfcca00, "C7H7NO2");
-        public static SimpleFluidMaterial Naphthylamine = new SimpleFluidMaterial("naphthylamine",0xe3e81c, "C10H9N");
-        public static SimpleFluidMaterial Acetoacetanilide = new SimpleFluidMaterial("acetoacetanilide",0xffffc2, "C10H11NO2");
-        public static SimpleFluidMaterial Quinizarin = new SimpleFluidMaterial("quinizarin",0x3c5a2c0, "C14H8O4");
-        public static SimpleFluidMaterial Toluenesulfonate = new SimpleFluidMaterial("toluenesulfonate",0x8f8f00, "C7H7SO3Na");
-        public static SimpleFluidMaterial Isopropylsuccinate = new SimpleFluidMaterial("isopropylsuccinate",0xb26680, "C7H12O4");
-        public static SimpleFluidMaterial MaleicAnhydride = new SimpleFluidMaterial("maleic_anhydride",0x3c20ad, "C4H2O3");
-        public static SimpleFluidMaterial Benzonitrile = new SimpleFluidMaterial("benzonitrile",0x2c2c9c, "C7H5N");
-        public static SimpleFluidMaterial AmmoniumNiobiumOxalateSolution = new SimpleFluidMaterial("ammonium_niobium_oxalate_solution",0x6c6cac, "(NH4)C10Nb2O20");
-        public static SimpleFluidMaterial DielectricMirrorFormationMix = new SimpleFluidMaterial("dielectric_mirror_formation_mix",0xff992c, "MgF2ZnSTa2Ti(C2H6O8)");
-        public static SimpleFluidMaterial Iodobenzene = new SimpleFluidMaterial("iodobenzene",0x2c2c6c0, "C6H5I");
-        public static SimpleFluidMaterial Amino3phenol = new SimpleFluidMaterial("3_aminophenol",Aminophenol.rgb, "C6H7NO");
-        public static SimpleFluidMaterial Dimethylnaphthalene = new SimpleFluidMaterial("dimethylnaphthalene",0xe34fb0, "C12H12");
-        public static SimpleFluidMaterial IodineMonochloride = new SimpleFluidMaterial("iodine_monochloride",0x004c4c, "ICl");
-        public static SimpleFluidMaterial AcetylatingReagent = new SimpleFluidMaterial("acetylating_reagent",0x8d5e63, "C9H12Si(MgBr)2");
-        public static SimpleFluidMaterial Dihydroiodotetracene = new SimpleFluidMaterial("dihydroiodotetracene",0x5c4d38, "H2C18H11I");
-        public static SimpleFluidMaterial Dichlorodicyanobenzoquinone = new SimpleFluidMaterial("dichlorodicyanobenzoquinone",0x3a2aba, "C8Cl2N2O2");
-        public static SimpleFluidMaterial Dichlorodicyanohydroquinone = new SimpleFluidMaterial("dichlorodicyanohidroquinone",0x3a2aba, "C8Cl2N2(OH)2");
-        public static SimpleFluidMaterial IodobenzoicAcid = new SimpleFluidMaterial("iodobenzoic_acid",0x2cac6c0, "C7H5IO2");
-        public static SimpleFluidMaterial Methoxybenzaldehyde = new SimpleFluidMaterial("methoxybenzaldehyde",0x3c3a7a, "C8H8O2");
-        public static SimpleFluidMaterial Butylaniline = new SimpleFluidMaterial("butylaniline", Aniline.rgb, "C10H15N");
-        public static SimpleFluidMaterial MBBA = new SimpleFluidMaterial("mbba",0xfa30fa, "C18H21NO");
-        public static SimpleFluidMaterial PotassiumEthoxide = new SimpleFluidMaterial("potassium_ethoxide",Ethanol.materialRGB, "C2H5KO");
-        public static SimpleFluidMaterial TetraethylammoniumBromide = new SimpleFluidMaterial("tetraethylammonium_bromide",0xcc33ff, "C8H20NBr");
-        public static SimpleFluidMaterial Hexanediol = new SimpleFluidMaterial("hexanediol", EthyleneGlycol.rgb, "C6H14O2");
-        public static SimpleFluidMaterial Hexamethylenediamine = new SimpleFluidMaterial("hexamethylenediamine",Ethylenediamine.rgb, "C6H16N2");
-        public static SimpleFluidMaterial Tertbutanol = new SimpleFluidMaterial("tertbutanol",0xcccc2c, "C4H10O");
-        public static SimpleFluidMaterial Triaminoethaneamine = new SimpleFluidMaterial("triaminoethaneamine",0x6f7d87, "(NH2CH2CH2)3N");
-        public static SimpleFluidMaterial TertButylAzidoformate = new SimpleFluidMaterial("tertbuthylcarbonylazide",0x888818, "C5H9N3O2");
-        public static SimpleFluidMaterial AminatedFullerene = new SimpleFluidMaterial("aminated_fullerene",0x2c2caa, "C60N12H12");
-        public static SimpleFluidMaterial Azafullerene = new SimpleFluidMaterial("azafullerene",0x8a7a1a, "C60N12H12");
-        public static SimpleFluidMaterial Ethylamine = new SimpleFluidMaterial("ethylamine",Ethylenediamine.rgb, "C2H5NH2");
-        public static SimpleFluidMaterial Trimethylsilane = new SimpleFluidMaterial("trimethylsilane",Trimethylchlorosilane.rgb, "C3H10Si");
-        public static SimpleFluidMaterial Phenylsodium = new SimpleFluidMaterial("phenylsodium",0x2c2cc8, "C6H5Na");
-        public static SimpleFluidMaterial Difluoroaniline = new SimpleFluidMaterial("difluoroaniline",0x3fac4a, "C6H5F2N");
-        public static SimpleFluidMaterial Succinaldehyde = new SimpleFluidMaterial("succinaldehyde",0x7c6d9a, "C4H6O2");
-        public static SimpleFluidMaterial NDifluorophenylpyrrole = new SimpleFluidMaterial("n_difluorophenylpyrrole",0x3a9aa9, "C10H7F2N");
-        public static SimpleFluidMaterial PhotopolymerSolution = new SimpleFluidMaterial("photopolymer_solution",0x8a526d, "C149H97N10O2(TiBF20)");
-        public static SimpleFluidMaterial GlucoseIronSolution = new SimpleFluidMaterial("glucose_iron_solution", (Sugar.materialRGB+Iron.materialRGB)/2, "(C6H12O6)FeCl3");
-        public static SimpleFluidMaterial Methylethanolamine = new SimpleFluidMaterial("methylethanolamine",0x6a3baa, "C3H9NO");
-        public static SimpleFluidMaterial Methylguanidine = new SimpleFluidMaterial("methylguanidine",0x5a9a3c, "C2H7N3");
-        public static SimpleFluidMaterial Methylnitronitrosoguanidine = new SimpleFluidMaterial("methylnitronitrosoguanidine",0x68b15d, "C2H5N5O3");
-        public static SimpleFluidMaterial IsoamylAlcohol = new SimpleFluidMaterial("isoamyl_alcohol",0xcaba77, "C5H12O");
-        public static SimpleFluidMaterial Octanol = new SimpleFluidMaterial("octanol",0xa2b8c2, "C8H18O");
-        public static SimpleFluidMaterial Trioctylamine = new SimpleFluidMaterial("trioctylamine",0x87a2bc, "C24H51N");
-        public static SimpleFluidMaterial RheniumSeparationMixture = new SimpleFluidMaterial("rhenium_separation_mixture",0xed2c3a, "C11H24");
-        public static SimpleFluidMaterial AcetylsulfanilylChloride = new SimpleFluidMaterial("acetylsulfanilyl_chloride", (Aniline.rgb + AceticAnhydride.rgb + ChlorosulfonicAcid.rgb)/3, "C8H8ClNO3S");
-        public static SimpleFluidMaterial BenzoylPeroxide = new SimpleFluidMaterial("benzoyl_peroxide", (Barium.materialRGB + BenzoylChloride.rgb)/2, "C14H10O4");
-        public static SimpleFluidMaterial Propadiene = new SimpleFluidMaterial("propadiene", (Butanol.rgb-20), "C3H4");
-        public static SimpleFluidMaterial PhenylenedioxydiaceticAcid = new SimpleFluidMaterial("phenylenedioxydiacetic_acid", 0x99546a, "C10H10O6");
-        public static SimpleFluidMaterial Diethylthiourea = new SimpleFluidMaterial("diethylthiourea", 0x2acaa4, "(C2H5NH)2CS");
-        public static SimpleFluidMaterial Isophthaloylbisdiethylthiourea = new SimpleFluidMaterial("isophthaloylbisdiethylthiourea", 0x8a7b9c, "C18H26N4O2S2");
-        public static SimpleFluidMaterial SodiumAlginateSolution = new SimpleFluidMaterial("sodium_alginate_solution",0xca8642, "NaC6H7O6");
-        public static SimpleFluidMaterial AscorbicAcid = new SimpleFluidMaterial("ascorbic_acid",0xe6cd00, "C6H8O6");
-        public static SimpleFluidMaterial DehydroascorbicAcid = new SimpleFluidMaterial("dehydroascorbic_acid",0xe6cd00, "C6H6O6");
-        public static SimpleFluidMaterial Cyclopentadiene = new SimpleFluidMaterial("cyclopentadiene", Cyclooctadiene.rgb, "C5H6");
-        public static SimpleFluidMaterial Oxydianiline = new SimpleFluidMaterial("oxydianiline", 0xF0E130, "C12H12N2O");
-        public static SimpleFluidMaterial PolyamicAcid = new SimpleFluidMaterial("polyamic_acid", 0xFFAE42, "C22H14N2O7");
-        public static SimpleFluidMaterial Hexafluoropropylene = new SimpleFluidMaterial("hexafluoropropylene", 0x111111, "C3F6");
-        public static SimpleFluidMaterial Dimethylether = new SimpleFluidMaterial("dimethylether", 0xe6cd11, "C2H6O");
-        public static SimpleFluidMaterial Dimethoxyethane = new SimpleFluidMaterial("dimethoxyethane", 0x2acbb4, "C4H10O2");
-        public static SimpleFluidMaterial LithiumCyclopentadienide = new SimpleFluidMaterial("lithiumcyclopentadienide", 0x95556a, "LiC5H5");
-        public static SimpleFluidMaterial CaliforniumCyclopentadienide = new SimpleFluidMaterial("californiumcyclopentadienide", 0x94445b, "C15H15Cf");
-        public static SimpleFluidMaterial StearicAcid = new SimpleFluidMaterial("stearicacid", 0x2bbbb4, "C18H36O2");
-        public static SimpleFluidMaterial Trioctylphosphine = new SimpleFluidMaterial("trioctylphosphine", 0xF1E130, "C24H51P");
-        public static SimpleFluidMaterial Toluidine = new SimpleFluidMaterial("toluidine",(Toluene.materialRGB+ Aniline.rgb)/2,"C7H9N");
-        public static SimpleFluidMaterial HydroxylamineHydrochloride = new SimpleFluidMaterial("hydroxylamine_hydrochloride", ((Barium.materialRGB+Chlorine.materialRGB)/2 + 0xF0EAD6)/2, "HONH2HCl");
-        public static SimpleFluidMaterial Glyoxal = new SimpleFluidMaterial("glyoxal", 0xf2f068, "C2H2O2");
-        public static SimpleFluidMaterial BenzylChloride = new SimpleFluidMaterial("benzyl_chloride", 0xaef7fc, "C7H7Cl");
-        public static SimpleFluidMaterial Benzylamine = new SimpleFluidMaterial("benzylamine", 0x5c8082, "C7H9N");
-        public static SimpleFluidMaterial Tetrahydrofuran = new SimpleFluidMaterial("tetrahydrofuran", 0xb7ebcd, "(CH2)4O");
-        public static SimpleFluidMaterial Triethylamine = new SimpleFluidMaterial("triethylamine", Ethylenediamine.rgb, "N(CH2CH3)3");
-        public static SimpleDustMaterial BetaPinene = new SimpleDustMaterial("beta_pinene", 0x61ad6b, (short) 25, MaterialIconSet.DULL, "C10H16");
-        public static SimpleDustMaterial Glutamine = new SimpleDustMaterial("glutamine", 0xede9b4, (short) 27, MaterialIconSet.DULL,"C5H10N2O3");
-        public static SimpleDustMaterial PotassiumCyanide = new SimpleDustMaterial("potassium_cyanide", (Potassium.materialRGB+Nitrogen.materialRGB)/2, (short) 63, MaterialIconSet.ROUGH, "KCN");
-        public static SimpleDustMaterial SuccinicAcid = new SimpleDustMaterial("succinic_acid", (MaleicAnhydride.rgb+Water.materialRGB+Hydrogen.materialRGB)/3, (short) 64, MaterialIconSet.ROUGH, "C4H6O4");
-        public static SimpleDustMaterial Succinimide = new SimpleDustMaterial("succinimide", (SuccinicAcid.rgb+Ammonia.materialRGB)/2, (short) 65, MaterialIconSet.METALLIC, "C4H5NO2");
-        public static SimpleDustMaterial Bromosuccinimide = new SimpleDustMaterial("bromo_succinimide", (Succinimide.rgb+Bromine.materialRGB)/2, (short) 66, MaterialIconSet.METALLIC, "C4H4BrNO2");
-        public static SimpleDustMaterial Benzophenanthrenylacetonitrile = new SimpleDustMaterial("benzophenanthrenylacetonitrile", (Naphthaldehyde.rgb+Ethylene.materialRGB-20)/2, (short) 67, MaterialIconSet.ROUGH, "C20H13N");
-        public static SimpleDustMaterial UnfoldedFullerene = new SimpleDustMaterial("unfolded_fullerene", (Benzophenanthrenylacetonitrile.rgb+Oxygen.materialRGB)/2, (short) 68, MaterialIconSet.DULL, "C60H30");
-        public static SimpleDustMaterial Fullerene = new SimpleDustMaterial("fullerene", (UnfoldedFullerene.rgb-20), (short) 69, MaterialIconSet.METALLIC, "C60");
-        public static SimpleDustMaterial TiAlChloride = new SimpleDustMaterial("tial_chloride", (Titanium.materialRGB+Aluminium.materialRGB+Chlorine.materialRGB)/3, (short) 70, MaterialIconSet.DULL, "TiAlCl7");
-        public static SimpleDustMaterial Dimethylaminopyridine = new SimpleDustMaterial("dimethylaminopyridine", (Dimethylamine.materialRGB+Pyridine.rgb)/2, (short) 71, MaterialIconSet.ROUGH, "(CH3)2NC5H4N");
-        public static SimpleDustMaterial SodiumEthoxide = new SimpleDustMaterial("sodium_ethoxide", (Ethanol.materialRGB+ SodiumHydroxide.materialRGB)/2, (short) 73, MaterialIconSet.METALLIC, "C2H5ONa");
-        public static SimpleDustMaterial Sarcosine = new SimpleDustMaterial("sarcosine", (Glycine.rgb+Oxygen.materialRGB)/2, (short) 75, MaterialIconSet.SHINY, "C3H7NO2");
-        public static SimpleDustMaterial Difluorobenzophenone = new SimpleDustMaterial("difluorobenzophenone", (FluoroBenzene.rgb+Fluorotoluene.rgb)/2, (short) 78, MaterialIconSet.SHINY, "(FC6H4)2CO");
-        public static SimpleDustMaterial PdFullereneMatrix = new SimpleDustMaterial("pd_fullerene_matrix", (Palladium.materialRGB+Fullerene.rgb)/2, (short) 80, MaterialIconSet.SHINY, "PdC60");
-        public static SimpleDustMaterial Terephthalaldehyde = new SimpleDustMaterial("terephthalaldehyde", (Dibromomethylbenzene.rgb+SulfuricAcid.materialRGB)/2, (short) 81, MaterialIconSet.FINE, "C8H6O2");
-        public static SimpleDustMaterial PreZylon = new SimpleDustMaterial("pre_zylon", (Terephthalaldehyde.rgb+Dinitrodipropanyloxybenzene.rgb)/2, (short) 82, MaterialIconSet.FINE, "C20H22N2O2");
-        public static SimpleDustMaterial Cyanonaphthalene = new SimpleDustMaterial("cyanonaphthalene", (SodiumCyanide.rgb+ Naphthalene.materialRGB)/2, (short) 84, MaterialIconSet.FINE, "C11H7N");
-        public static SimpleDustMaterial Triphenylphosphine = new SimpleDustMaterial("triphenylphosphine", (Chlorobenzene.materialRGB+PhosphorusTrichloride.rgb)/2, (short) 86, MaterialIconSet.ROUGH, "(C6H5)3P");
-        public static SimpleDustMaterial Methylbenzophenanthrene = new SimpleDustMaterial("methylbenzophenanthrene", (Naphthaldehyde.rgb+EthylBenzene.materialRGB)/2, (short) 87, MaterialIconSet.FINE, "C19H14");
-        public static SimpleDustMaterial AcrylicFibers = new SimpleDustMaterial("acrylic_fibers", 0xfdfdfb, (short) 135, MaterialIconSet.FINE, "(C5O2H8)n");
-        public static SimpleDustMaterial Glucosamine = new SimpleDustMaterial("glucosamine", (Cellulose.rgb+Water.materialRGB)/2, (short) 145, MaterialIconSet.FINE, "C6H13NO5");
-        public static SimpleDustMaterial PolystyreneNanoParticles = new SimpleDustMaterial("polystryrene_nanoparticles", 0x888079, (short) 149, MaterialIconSet.FINE, "(C8H8)n");
-        public static SimpleDustMaterial Fructose = new SimpleDustMaterial("fructose", (Cellulose.rgb+Sugar.materialRGB)/2, (short) 165, MaterialIconSet.ROUGH, "C6H12O6");
-        public static SimpleDustMaterial Glucose = new SimpleDustMaterial("glucose", (Sugar.materialRGB+5), (short) 166, MaterialIconSet.ROUGH, "C6H12O6");
-        public static SimpleDustMaterial Biphenyl = new SimpleDustMaterial("biphenyl", 0x003366, (short) 155, MaterialIconSet.SHINY, "C12H10");
-        public static SimpleDustMaterial Diiodobiphenyl = new SimpleDustMaterial("diiodobiphenyl", 0x000f66, (short) 156, MaterialIconSet.ROUGH, "C12H8I2");
-        public static SimpleDustMaterial Bipyridine = new SimpleDustMaterial("bipyridine", 0X978662, (short) 170, MaterialIconSet.FINE, "C10H8N2");
-        public static SimpleDustMaterial PalladiumBisDibenzylidieneacetone = new SimpleDustMaterial("palladium_bisdibenzylidieneacetone", 0Xbe81a0, (short) 158, MaterialIconSet.ROUGH, "C51H42O3Pd2");
-        public static SimpleDustMaterial NickelTriphenylPhosphite = new SimpleDustMaterial("nickel_triphenyl_phosphite", 0xd9d973, (short) 160, MaterialIconSet.SHINY, "C36H30Cl2NiP2");
-        public static SimpleDustMaterial Dichlorocycloctadieneplatinium = new SimpleDustMaterial("dichlorocyclooctadieneplatinium", 0xe0f78a, (short) 161, MaterialIconSet.SHINY, "C8H12Cl2Pt");
-        public static SimpleDustMaterial GrapheneNanotubeMix = new SimpleDustMaterial("graphene_nanotube_mix", 0x2c2c2c, (short) 162, MaterialIconSet.ROUGH, "(C)C?");
-        public static SimpleDustMaterial GrapheneAlignedCNT = new SimpleDustMaterial("graphene_aligned_cnt", 0x2c2c2c, (short) 163, MaterialIconSet.SHINY, "(C)C30H20");
-        public static SimpleDustMaterial DehydratedLignite = new SimpleDustMaterial("dehydrated_lignite", 0x5c4020, (short) 196, MaterialIconSet.DULL, "C2(H2O)4C?");
-        public static SimpleDustMaterial BCEPellet = new SimpleDustMaterial("bce_pellet", 0x3c3020, (short) 197, MaterialIconSet.LIGNITE, "C2(H2O)4C"); //todo coal burn time
-        public static SimpleDustMaterial ActiniumOxalate = new SimpleDustMaterial("actinium_oxalate", Actinium.materialRGB, (short) 210, MaterialIconSet.SHINY, "Ac(CO2)4");
-        public static SimpleDustMaterial LanthanumFullereneMix = new SimpleDustMaterial("lanthanum_fullerene_mix", 0xdfcafa, (short) 212, MaterialIconSet.SHINY, "(C60)2La2?");
-        public static SimpleDustMaterial LanthanumEmbeddedFullerene = new SimpleDustMaterial("lanthanum_embedded_fullerene", 0x99cc00, (short) 213, MaterialIconSet.SHINY, "(C60)2La2");
-        public static SimpleDustMaterial BariumTriflate = new SimpleDustMaterial("barium_triflate", (Barium.materialRGB+Fluorine.materialRGB)/2, (short) 227, MaterialIconSet.SHINY, "Ba(OSO2CF3)2");
-        public static SimpleDustMaterial ScandiumTriflate = new SimpleDustMaterial("scandium_triflate", 0xdfcfcf, (short) 228, MaterialIconSet.SHINY, "Sc(OSO2CF3)3");
-        public static SimpleDustMaterial TitaniumCyclopentadienyl = new SimpleDustMaterial("titanium_cyclopentadienyl", 0xbc30bc, (short) 230, MaterialIconSet.SHINY, "C5H5Cl3Ti");
-        public static SimpleDustMaterial BETS = new SimpleDustMaterial("bets", 0x7ada00, (short) 253, MaterialIconSet.SHINY, "C10H8S4Se4");
-        public static SimpleDustMaterial Urea = new SimpleDustMaterial("urea",0x30cf20,(short) 271,MaterialIconSet.ROUGH, "CH4N2O");
-        public static SimpleDustMaterial PotassiumFerrocyanide = new SimpleDustMaterial("potassium_ferrocyanide",0x0000ff,(short) 293,MaterialIconSet.ROUGH, "K4Fe(CN)6(H2O)3");
-        public static SimpleDustMaterial PrussianBlue = new SimpleDustMaterial("prussian_blue",0x0000ff,(short) 294,MaterialIconSet.DULL, "Fe4[Fe(CN)6]3");
-        public static SimpleDustMaterial DiaminostilbenedisulfonicAcid = new SimpleDustMaterial("diaminostilbenedisulfonic_acid",0xffffff,(short) 299,MaterialIconSet.DULL, "C14H14N2O6S2");
-        public static SimpleDustMaterial Nigrosin = new SimpleDustMaterial("nigrosin",0x000000,(short) 300,MaterialIconSet.DULL, "C36H26N5ClNa2S2O6");
-        public static SimpleDustMaterial DirectBrown = new SimpleDustMaterial("direct_brown",0x663300,(short) 301,MaterialIconSet.DULL, "C26H19N6NaO3S");
-        public static SimpleDustMaterial DianilineterephthalicAcid = new SimpleDustMaterial("dianilineterephthalic_acid",0xff0000,(short) 302,MaterialIconSet.DULL, "C20H16N2O4");
-        public static SimpleDustMaterial Quinacridone = new SimpleDustMaterial("quinacridone",0xff0000,(short) 303,MaterialIconSet.DULL, "C20H12N2O2");
-        public static SimpleDustMaterial DiarylideYellow = new SimpleDustMaterial("diarylide_yellow",0xffff00,(short) 304,MaterialIconSet.DULL, "C32H26Cl2N6O4");
-        public static SimpleDustMaterial AlizarineCyanineGreen = new SimpleDustMaterial("alizarine_cyanine_green",0x00ff00,(short) 305,MaterialIconSet.DULL, "C28H20N2Na2O8S2");
-        public static SimpleDustMaterial Aminoanthraquinone = new SimpleDustMaterial("aminoanthraquinone",0x0000ff,(short) 306,MaterialIconSet.DULL, "C14H9NO2");
-        public static SimpleDustMaterial IndanthroneBlue = new SimpleDustMaterial("indanthrone_blue",0x0000ff,(short) 307,MaterialIconSet.DULL, "C28H14N2O2");
-        public static SimpleDustMaterial Diketopyrrolopyrrole = new SimpleDustMaterial("diketopyrrolopyrrole",0xff6600,(short) 308,MaterialIconSet.DULL, "C18H12N2O2");
-        public static SimpleDustMaterial Mauveine = new SimpleDustMaterial("mauveine",0x660066,(short) 309,MaterialIconSet.DULL, "C26H23N4");
-        public static SimpleDustMaterial Indigo = new SimpleDustMaterial("indigo",0x0000ff,(short) 310,MaterialIconSet.DULL, "C16H10N2O2");
-        public static SimpleDustMaterial Tetrabromoindigo = new SimpleDustMaterial("tetrabromoindigo",0x00ff00,(short) 311,MaterialIconSet.DULL, "C16H6Br2N2O2");
-        public static SimpleDustMaterial CyanIndigoDye = new SimpleDustMaterial("cyan_indigo_dye",0x009999,(short) 312,MaterialIconSet.DULL, "(C16H10N2O2)2Br2");
-        public static SimpleDustMaterial Fluorescein = new SimpleDustMaterial("fluorescein",0x990000,(short) 313,MaterialIconSet.DULL, "C20H12O5");
-        public static SimpleDustMaterial Erythrosine = new SimpleDustMaterial("erythrosine",0xff00ff,(short) 314,MaterialIconSet.DULL, "C20H6I4Na2O5");
-        public static SimpleDustMaterial SodiumSulfanilate = new SimpleDustMaterial("sodium_sulfanilate",0xe49879,(short) 317,MaterialIconSet.SHINY, "C6H6NNaO3S");
-        public static SimpleDustMaterial Anthraquinone = new SimpleDustMaterial("anthraquinone",0xfff782,(short) 320,MaterialIconSet.ROUGH, "C14H8O2");
-        public static SimpleDustMaterial PalladiumAcetate = new SimpleDustMaterial("palladium_acetate",0xcc3300,(short) 329,MaterialIconSet.SHINY, "C4H6O4Pd");
-        public static SimpleDustMaterial RhodamineB = new SimpleDustMaterial("rhodamine_b",0xfc2020,(short) 332,MaterialIconSet.SHINY, "C28H31ClN2O3");
-        public static SimpleDustMaterial Stilbene = new SimpleDustMaterial("stilbene",0x3c9c3c,(short) 333,MaterialIconSet.SHINY, "C14H12");
-        public static SimpleDustMaterial Tetracene = new SimpleDustMaterial("tetracene",0x99801a,(short) 334,MaterialIconSet.SHINY, "C18H12");
-        public static SimpleDustMaterial DitertbutylDicarbonate = new SimpleDustMaterial("ditertbutyl_dicarbonate",0xccccf6,(short) 335, MaterialIconSet.ROUGH, "C10H18O5");
-        public static SimpleDustMaterial IBX = new SimpleDustMaterial("ibx",0x20208c,(short) 338,MaterialIconSet.SHINY, "C7H5IO4");
-        public static SimpleDustMaterial SaccharicAcid = new SimpleDustMaterial("saccharic_acid",Glucose.rgb,(short) 346,MaterialIconSet.METALLIC, "C6H10O8");
-        public static SimpleDustMaterial AdipicAcid = new SimpleDustMaterial("adipic_acid",0xda9288,(short) 347,MaterialIconSet.ROUGH, "C6H10O4");
-        public static SimpleDustMaterial TetraethylammoniumNonahydridides = new SimpleDustMaterial("tetraethylammonium_nonahydrides",0xbee8b9,(short) 348,MaterialIconSet.SHINY, "(C8H20N)(ReH9)(TcH9)");
-        public static SimpleDustMaterial PolycyclicAromaticMix = new SimpleDustMaterial("polycyclic_aromatic_mix",Tetracene.rgb,(short) 355,MaterialIconSet.ROUGH, "C18H12");
-        public static SimpleDustMaterial GrapheneOxide = new SimpleDustMaterial("graphene_oxide",Graphene.materialRGB,(short) 357,MaterialIconSet.ROUGH, "C(O2)");
-        public static SimpleDustMaterial GraphiteOxide = new SimpleDustMaterial("graphite_oxide", Graphite.materialRGB, (short) 358,MaterialIconSet.FINE, "C(O2)");
-        public static SimpleDustMaterial GrapheneGelSuspension = new SimpleDustMaterial("graphene_gel_suspension",0xadadad,(short) 360,MaterialIconSet.ROUGH, "C");
-        public static SimpleDustMaterial DryGrapheneGel = new SimpleDustMaterial("dry_graphene_gel",0x3a3ada,(short) 361,MaterialIconSet.DULL, "C");
-        public static SimpleDustMaterial MercuryAcetate = new SimpleDustMaterial("mercury_acetate",0xcc8562, (short) 369, MaterialIconSet.ROUGH, "Hg(CH3COO)2");
-        public static SimpleDustMaterial CalciumCyanamide = new SimpleDustMaterial("calcium_cyanamide", CalciumCarbide.rgb, (short) 370, MaterialIconSet.SHINY, "CaCN2");
-        public static SimpleDustMaterial Xylose = new SimpleDustMaterial("xylose", Glucose.rgb,(short) 389, MaterialIconSet.ROUGH, "C5H10O5");
-        public static SimpleDustMaterial FluorideBatteryElectrolyte = new SimpleDustMaterial("fluoride_battery_electrolyte", 0x9a628a, (short) 394, MaterialIconSet.SHINY, "La9BaF29(C8H7F)");
-        public static SimpleDustMaterial Sorbose = new SimpleDustMaterial("sorbose", Glucose.rgb, (short) 396, MaterialIconSet.DULL, "C6H12O6");
-        public static SimpleDustMaterial CalciumAlginate = new SimpleDustMaterial("calcium_alginate",0x654321, (short) 397, MaterialIconSet.ROUGH, "CaC12H14O12");
-        public static SimpleDustMaterial BETSPerrhenate = new SimpleDustMaterial("bets_perrhenate", 0x7ada00, (short) 255, MaterialIconSet.SHINY, "ReC10H8S4Se4O4");
-        public static SimpleDustMaterial Durene = new SimpleDustMaterial("durene", 0xA39C95, (short) 905, MaterialIconSet.ROUGH, "C6H2(CH3)4");
-        public static SimpleDustMaterial PyromelliticDianhydride = new SimpleDustMaterial("pyromellitic_dianhydride", 0xF0EAD6, (short) 906, MaterialIconSet.SHINY, "C6H2(C2O3)2");
-        public static SimpleDustMaterial SuccinicAnhydride = new SimpleDustMaterial("succinic_anhydride", (SuccinicAcid.rgb + AceticAnhydride.rgb)/2, (short) 911, MaterialIconSet.DULL, "(CH2CO)2O");
-        public static SimpleDustMaterial AmmoniumAcetate = new SimpleDustMaterial("ammonium_acetate", 0xb6dee0, (short) 912, MaterialIconSet.DULL, "NH4CH3CO2");
-        public static SimpleDustMaterial Acetamide = new SimpleDustMaterial("acetamide", 0xa6bebf, (short) 913, MaterialIconSet.DULL, "CH3CONH2");
-        public static SimpleDustMaterial Acetonitrile = new SimpleDustMaterial("acetonitrile", 0xa2afb0, (short) 914, MaterialIconSet.DULL, "CH3CN");
-        public static SimpleDustMaterial NHydroxysuccinimide = new SimpleDustMaterial("n-hydroxysuccinimide", 0xdbcae3, (short) 915, MaterialIconSet.DULL, "(CH2CO)2NOH");
-        public static SimpleDustMaterial Hexabenzylhexaazaisowurtzitane = new SimpleDustMaterial("hexabenzylhexaazaisowurtzitane", 0x624573, (short) 916, MaterialIconSet.DULL, "C48N6H48");
-        public static SimpleDustMaterial SuccinimidylAcetate = new SimpleDustMaterial("succinimidyl_acetate", 0xbd93a6, (short) 917, MaterialIconSet.DULL, "C6H7NO4");
-        public static SimpleDustMaterial DibenzylTetraacetylhexaazaisowurtzitane = new SimpleDustMaterial("dibenzyltetraacetylhexaazaisowurtzitane", 0xb3c98b, (short) 918, MaterialIconSet.DULL, "C28N6H32O4");
-        public static SimpleDustMaterial HexanitroHexaaxaisowurtzitane = new SimpleDustMaterial("hexanitrohexaaxaisowurtzitane", 0x414a4f, (short) 919, MaterialIconSet.SHINY, "C6H6N12O12");
-        public static SimpleDustMaterial Hexamethylenetetramine = new SimpleDustMaterial("hexamethylenetetramine", 0x7e8d94, (short) 922, MaterialIconSet.DULL, "(CH2)6N4");
-        public static SimpleDustMaterial Tetraacetyldinitrosohexaazaisowurtzitane = new SimpleDustMaterial("tetraacetyldinitrosohexaazaisowurtzitane",(DibenzylTetraacetylhexaazaisowurtzitane.rgb+Hexabenzylhexaazaisowurtzitane.rgb)/2,(short) 924, MaterialIconSet.DULL, "C14N8H18O6");
-        public static SimpleDustMaterial CrudeHexanitroHexaaxaisowurtzitane = new SimpleDustMaterial("crude_hexanitrohexaaxaisowurtzitane", HexanitroHexaaxaisowurtzitane.rgb*5/7, (short) 925, MaterialIconSet.DULL, "C6H6N12O12");
+        IsopropylAcetate = new Material.Builder(6622, "isopropyl_acetate")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Hydrogen, 10, Oxygen, 2)
+                .build()
+                .setFormula("(CH3)2CHCOOCH3", true);
+
+        ChlorinatedSolvents = new Material.Builder(6623, "chlorinated_solvents")
+                .fluid()
+                .color(0x40804C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Methane, 2, Chlorine, 5)
+                .build();
+
+        Dichloromethane = new Material.Builder(6623, "dichloromethane")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1, Hydrogen, 2, Chlorine, 2)
+                .build();
+
+        ButanolGas = new Material.Builder(6624, "butanol_gas")
+                .fluid(Material.FluidType.GAS)
+                .colorAverage()
+                .components(Butanol, 1)
+                .build();
+
+        Tributylamine = new Material.Builder(6625, "tributylamine")
+                .fluid()
+                .color(0x801A80)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 27, Nitrogen, 1)
+                .build()
+                .setFormula("(C4H9)3N", true);
+
+        CrudeAluminaSolution = new Material.Builder(6626, "crude_alumina_solution")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(AluminiumNitrate, 2, Dichloromethane, 1, Tributylamine, 1)
+                .build();
+
+        AluminaSolution = new Material.Builder(6627, "alumina_solution")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(AluminiumNitrate, 1, Dichloromethane, 1, Tributylamine, 2)
+                .build();
+
+        AmmoniumCyanate = new Material.Builder(6628, "ammonium_cyanate")
+                .fluid()
+                .color(0x3A5DCF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Nitrogen, 2, Hydrogen, 4, Carbon, 1, Oxygen, 1)
+                .build()
+                .setFormula("NH4CNO", true);
+
+        Ethylenediamine = new Material.Builder(6629, "ethylenediamine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Ethylene, 1, Nitrogen, 2, Hydrogen, 4)
+                .build()
+                .setFormula("C2H4(NH2)2", true);
+
+        EDTA = new Material.Builder(6630, "edta")
+                .fluid()
+                .color(0x0026D9)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 16, Nitrogen, 2, Oxygen, 8)
+                .build();
+
+        EDTASolution = new Material.Builder(6631, "edta_solution")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(EDTA, 3, Carbon, 2, Hydrogen, 8, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        Glycine = new Material.Builder(6632, "glycine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Nitrogen, 1, Hydrogen, 5, Carbon, 2, Oxygen, 2)
+                .build()
+                .setFormula("NH2CH2COOH", true);
+
+        Nitrotoluene = new Material.Builder(6633, "nitrotoluene")
+                .fluid()
+                .color(0xFCCA00)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 7, Nitrogen, 1, Oxygen, 2)
+                .build()
+                .setFormula("C7H7NO2", true);
+
+        Naphthylamine = new Material.Builder(6634, "naphthylamine")
+                .fluid()
+                .color(0xE3E81C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 9, Nitrogen, 1)
+                .build();
+
+        Acetoacetanilide = new Material.Builder(6635, "acetoacetanilide")
+                .fluid()
+                .color(0xFFFFC2)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 11, NitrogenDioxide, 1)
+                .build();
+
+        Quinizarin = new Material.Builder(6636, "quinizarin")
+                .fluid()
+                .color(0x3C5A2C0)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 14, Hydrogen, 8, Oxygen, 4)
+                .build();
+
+        Toluenesulfonate = new Material.Builder(6637, "toluenesulfonate")
+                .fluid()
+                .color(0x8F8F00)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 7, Sulfur, 1, Oxygen, 3, Sodium, 1)
+                .build();
+
+        Isopropylsuccinate = new Material.Builder(6638, "isopropylsuccinate")
+                .fluid()
+                .color(0xB26680)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 12, Oxygen, 4)
+                .build();
+
+        MaleicAnhydride = new Material.Builder(6639, "maleic_anhydride")
+                .fluid()
+                .color(0x3C20AD)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 2, Oxygen, 3)
+                .build();
+
+        Benzonitrile = new Material.Builder(6640, "benzonitrile")
+                .fluid()
+                .color(0x2C2C9C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 5, Nitrogen, 1)
+                .build();
+
+        AmmoniumNiobiumOxalateSolution = new Material.Builder(6641, "ammonium_niobium_oxalate_solution")
+                .fluid()
+                .color(0x6C6CAC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Nitrogen, 1, Hydrogen, 4, Carbon, 10, Niobium, 2, Oxygen, 20)
+                .build()
+                .setFormula("(NH4)C10Nb2O20", true);
+
+        DielectricMirrorFormationMix = new Material.Builder(6642, "dielectric_mirror_formation_mix")
+                .fluid()
+                .color(0xFF992C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(MagnesiumFluoride, 1, Sphalerite, 1, Tantalum, 2, Titanium, 1, Carbon, 2, Hydrogen, 6, Oxygen, 8)
+                .build()
+                .setFormula("MgF2ZnSTa2Ti(C2H6O8)", true);
+
+        Iodobenzene = new Material.Builder(6643, "iodobenzene")
+                .fluid()
+                .color(0x2C2C6C0)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 5, Iodine, 1)
+                .build();
+
+        Amino3phenol = new Material.Builder(6644, "3_aminophenol")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 7, Nitrogen, 1, Oxygen, 1)
+                .build();
+
+        Dimethylnaphthalene = new Material.Builder(6645, "dimethylnaphthalene")
+                .fluid()
+                .color(0xE34FB0)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 12, Hydrogen, 12)
+                .build();
+
+        IodineMonochloride = new Material.Builder(6646, "iodine_monochloride")
+                .fluid()
+                .color(0x004C4C)
+                .components(Iodine, 1, Chlorine, 1)
+                .build();
+
+        AcetylatingReagent = new Material.Builder(6647, "acetylating_reagent")
+                .fluid()
+                .color(0x8D5E63)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 9, Hydrogen, 12, Silicon, 1, Magnesium, 2, Bromine, 2)
+                .build()
+                .setFormula("C9H12Si(MgBr)2", true);
+
+        Dihydroiodotetracene = new Material.Builder(6648, "dihydroiodotetracene")
+                .fluid()
+                .color(0x5C4D38)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Hydrogen, 13, Carbon, 8, Iodine, 1)
+                .build()
+                .setFormula("H2C18H11I", true);
+
+        Dichlorodicyanobenzoquinone = new Material.Builder(6649, "dichlorodicyanobenzoquinone")
+                .fluid()
+                .color(0x3A2ABA)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Chlorine, 2, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        Dichlorodicyanohydroquinone = new Material.Builder(6650, "dichlorodicyanohidroquinone")
+                .fluid()
+                .color(0x3A2ABA)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Chlorine, 2, Nitrogen, 2, Oxygen, 2, Hydrogen, 2)
+                .build()
+                .setFormula("C8Cl2N2(OH)2", true);
+
+        IodobenzoicAcid = new Material.Builder(6651, "iodobenzoic_acid")
+                .fluid()
+                .color(0x2CAC6C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 5, Iodine, 1, Oxygen, 2)
+                .build();
+
+        Methoxybenzaldehyde = new Material.Builder(6652, "methoxybenzaldehyde")
+                .fluid()
+                .color(0x3C3A7A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 8, Oxygen, 2)
+                .build();
+
+        Butylaniline = new Material.Builder(6653, "butylaniline")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 15, Nitrogen, 1)
+                .build();
+
+        MBBA = new Material.Builder(6654, "mbba")
+                .fluid()
+                .color(0xFA30FA)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 18, Hydrogen, 21, Nitrogen, 1, Oxygen, 1)
+                .build();
+
+        PotassiumEthoxide = new Material.Builder(6655, "potassium_ethoxide")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 5, Potassium, 1, Oxygen, 1)
+                .build();
+
+        TetraethylammoniumBromide = new Material.Builder(6656, "tetraethylammonium_bromide")
+                .fluid()
+                .color(0xCC33FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 20, Nitrogen, 1, Bromine, 1)
+                .build();
+
+        Hexanediol = new Material.Builder(6657, "hexanediol")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 14, Oxygen, 2)
+                .build();
+
+        Hexamethylenediamine = new Material.Builder(6658, "hexamethylenediamine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 16, Nitrogen, 2)
+                .build();
+
+        Tertbutanol = new Material.Builder(6659, "tertbutanol")
+                .fluid()
+                .color(0xCCCC2C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 10, Oxygen, 1)
+                .build();
+
+        Triaminoethaneamine = new Material.Builder(6660, "triaminoethaneamine")
+                .fluid()
+                .color(0x6F7D87)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Nitrogen, 4, Hydrogen, 18, Carbon, 6)
+                .build()
+                .setFormula("(NH2CH2CH2)3N", true);
+
+        TertButylAzidoformate = new Material.Builder(6661, "tertbuthylcarbonylazide")
+                .fluid()
+                .color(0x888818)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Hydrogen, 9, Nitrogen, 3, Oxygen, 2)
+                .build();
+
+        AminatedFullerene = new Material.Builder(6662, "aminated_fullerene")
+                .fluid()
+                .color(0x2C2CAA)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fullerene, 1, Nitrogen, 12, Hydrogen, 12)
+                .build();
+
+        Azafullerene = new Material.Builder(6663, "azafullerene")
+                .fluid()
+                .color(0x8A7A1A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fullerene, 1, Nitrogen, 12, Hydrogen, 12)
+                .build();
+
+        Ethylamine = new Material.Builder(6664, "ethylamine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 7, Nitrogen, 1)
+                .build()
+                .setFormula("C2H6NH2", true);
+
+        Trimethylsilane = new Material.Builder(6665, "trimethylsilane")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 10, Silicon, 1)
+                .build();
+
+        Phenylsodium = new Material.Builder(6666, "phenylsodium")
+                .fluid()
+                .color(0x2C2CC8)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 5, Sodium, 1)
+                .build();
+
+        Difluoroaniline = new Material.Builder(6667, "difluoroaniline")
+                .fluid()
+                .color(0x3FAC4A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 5, Fluorine, 2, Nitrogen, 1)
+                .build();
+
+        Succinaldehyde = new Material.Builder(6668, "succinaldehyde")
+                .fluid()
+                .color(0x7C6D9A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 6, Oxygen, 2)
+                .build();
+
+        NDifluorophenylpyrrole = new Material.Builder(6669, "n_difluorophenylpyrrole")
+                .fluid()
+                .color(0x3A99AA9)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 7, Fluorine, 2, Nitrogen, 1)
+                .build();
+
+        PhotopolymerSolution = new Material.Builder(6670, "photopolymer_solution")
+                .fluid()
+                .color(0x8A526D)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 149, Hydrogen, 97, Nitrogen, 10, Oxygen, 2, Titanium, 1, Boron, 1, Fluorine, 20)
+                .build()
+                .setFormula("C149H97N10O2(TiBF20)");
+
+        GlucoseIronSolution = new Material.Builder(6671, "glucose_iron_solution")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Glucose, 1, Iron3Chloride, 1)
+                .build();
+
+        Methylethanolamine = new Material.Builder(6672, "methylethanolamine")
+                .fluid()
+                .color(0x6A3BAA)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 9, Nitrogen, 1, Oxygen, 1)
+                .build();
+
+        Methylguanidine = new Material.Builder(6673, "methylguanidine")
+                .fluid()
+                .color(0x5A9A3C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 7, Nitrogen, 3)
+                .build();
+
+        Methylnitronitrosoguanidine = new Material.Builder(6674, "methylnitronitrosoguanidine")
+                .fluid()
+                .color(0x68B15D)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 5, Nitrogen, 5, Oxygen, 3)
+                .build();
+
+        IsoamylAlcohol = new Material.Builder(6675, "isoamyl_alcohol")
+                .fluid()
+                .color(0xCABA77)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Hydrogen, 12, Oxygen, 1)
+                .build();
+
+        Octanol = new Material.Builder(6676, "octanol")
+                .fluid()
+                .color(0xA2B8C2)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 18, Oxygen, 1)
+                .build();
+
+        Trioctylamine = new Material.Builder(6677, "trioctylamine")
+                .fluid()
+                .color(0x87A2Bc)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 24, Hydrogen, 51, Nitrogen, 1)
+                .build();
+
+        RheniumSeparationMixture = new Material.Builder(6678, "rhenium_separation_mixture")
+                .fluid()
+                .color(0xED2C3A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 11, Hydrogen, 24)
+                .build();
+
+        AcetylsulfanilylChloride = new Material.Builder(6679, "acetylsulfanilyl_chloride")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 8, Chlorine, 1, Nitrogen, 1, Oxygen, 3, Sulfur, 1)
+                .build();
+
+        BenzoylPeroxide = new Material.Builder(6680, "benzoyl_peroxide")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 14, Hydrogen, 10, Oxygen, 4)
+                .build();
+
+        Propadiene = new Material.Builder(6681, "propadiene")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 4)
+                .build();
+
+        PhenylenedioxydiaceticAcid = new Material.Builder(6682, "phenylenedioxydiacetic_acid")
+                .fluid()
+                .color(0x99546A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 10, Oxygen, 6)
+                .build();
+
+        Diethylthiourea = new Material.Builder(6683, "diethylthiourea")
+                .fluid()
+                .color(0x2ACAA4)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 12, Nitrogen, 2, Sulfur, 1)
+                .build()
+                .setFormula("(C2H5NH)2CS", true);
+
+        Isophthaloylbisdiethylthiourea = new Material.Builder(6685, "isophthaloylbisdiethylthiourea")
+                .fluid()
+                .color(0x8A6B9C)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 18, Hydrogen, 26, Nitrogen, 4, Oxygen, 2, Sulfur, 2)
+                .build();
+
+        SodiumAlginateSolution = new Material.Builder(6686, "sodium_alginate_solution")
+                .fluid()
+                .color(0xCA8642)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Sodium, 1, Carbon, 6, Hydrogen, 7, Oxygen, 6)
+                .build();
+
+        AscorbicAcid = new Material.Builder(6687, "ascorbic_acid")
+                .fluid()
+                .color(0xE6CD00)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 8, Oxygen, 6)
+                .build();
+
+        DehydroascorbicAcid = new Material.Builder(6688, "dehydroascorbic_acid")
+                .fluid()
+                .color(0xE6CD11)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 6, Oxygen, 6)
+                .build();
+
+        Cyclopentadiene = new Material.Builder(6689, "cyclopentadiene")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Hydrogen, 6)
+                .build();
+
+        Oxydianiline = new Material.Builder(6690, "oxydianiline")
+                .fluid()
+                .color(0xF0E130)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 12, Hydrogen, 12, Nitrogen, 2, Oxygen, 1)
+                .build();
+
+        PolyamicAcid = new Material.Builder(6691, "polyamic_acid")
+                .fluid()
+                .color(0xFFAE42)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 22, Hydrogen, 14, Nitrogen, 2, Oxygen, 7)
+                .build();
+
+        Hexafluoropropylene = new Material.Builder(6692, "hexafluoropropylene")
+                .fluid()
+                .color(0x111111)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Fluorine, 6)
+                .build();
+
+        Dimethylether = new Material.Builder(6693, "dimethylether")
+                .fluid()
+                .color(0xE6CD11)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 6, Oxygen, 1)
+                .build();
+
+        Dimethoxyethane = new Material.Builder(6694, "dimethyoxyethane")
+                .fluid()
+                .color(0x2ACBB4)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 10, Oxygen, 2)
+                .build();
+
+        LithiumCyclopentadienide = new Material.Builder(6695, "lithiumcyclopentadienide")
+                .fluid()
+                .color(0x95556A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Lithium, 1, Carbon, 5, Hydrogen, 5)
+                .build();
+
+        CaliforniumCyclopentadienide = new Material.Builder(6696, "californiumcyclopentadienide")
+                .fluid()
+                .color(0x94445B)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 15, Hydrogen, 15, Californium, 1)
+                .build();
+
+        StearicAcid = new Material.Builder(6697, "stearicacid")
+                .fluid()
+                .color(0x2BBBB4)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 18, Hydrogen, 36, Oxygen, 2)
+                .build();
+
+        Trioctylphosphine = new Material.Builder(6698, "trioctylphosphine")
+                .fluid()
+                .color(0xF1E130)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 24, Hydrogen, 51, Phosphorus, 1)
+                .build();
+
+        Toluidine = new Material.Builder(6699, "toluidine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 9, Nitrogen, 1)
+                .build();
+
+        HydroxylamineHydrochloride = new Material.Builder(6700, "hydroxylamine_hydrochloride")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Hydrogen, 4, Oxygen, 1, Nitrogen, 1, Chlorine, 1)
+                .build()
+                .setFormula("HONH2HCl", true);
+
+        Glyoxal = new Material.Builder(6701, "glyoxal")
+                .fluid()
+                .color(0xF2F068)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 2, Oxygen, 2)
+                .build();
+
+        BenzylChloride = new Material.Builder(6702, "benzyl_chloride")
+                .fluid()
+                .color(0xAEF7FC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 7, Chlorine, 1)
+                .build();
+
+        Benzylamine = new Material.Builder(6703, "benzylamine")
+                .fluid()
+                .color(0xAEF7FC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 9, Nitrogen, 1)
+                .build();
+
+        Tetrahydrofuran = new Material.Builder(6704, "tetrahydrofuran")
+                .fluid()
+                .color(0xB7EBCD)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 8, Oxygen, 1)
+                .build()
+                .setFormula("(CH2)4O", true);
+
+        Triethylamine = new Material.Builder(6705, "triethylamine")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Nitrogen, 1, Carbon, 6, Hydrogen, 15)
+                .build()
+                .setFormula("N(CH2CH3)3", true);
+
+        BetaPinene = new Material.Builder(6706, "beta_pinene")
+                .fluid()
+                .color(0x61AB6B)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 16)
+                .build();
+
+        Glutamine = new Material.Builder(6707, "glutamine")
+                .fluid()
+                .color(0xEDE9B4)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Hydrogen, 10, Nitrogen, 2, Oxygen, 3)
+                .build();
+
+        PotassiumCyanide = new Material.Builder(6708, "potassium_cyanide")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Potassium, 1, Carbon, 1, Nitrogen, 1)
+                .build();
+
+        PotassiumCyanide = new Material.Builder(6708, "potassium_cyanide")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Potassium, 1, Carbon, 1, Nitrogen, 1)
+                .build();
+
+        SuccinicAcid = new Material.Builder(6709, "succinic_acid")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 6, Oxygen, 4)
+                .build();
+        Succinimide = new Material.Builder(6710, "succinimide")
+                .fluid()
+                .colorAverage().iconSet(METALLIC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 5, Nitrogen, 1, Oxygen, 2)
+                .build();
+
+        Bromosuccinimide = new Material.Builder(6711, "bromo_succinimide")
+                .fluid()
+                .colorAverage().iconSet(METALLIC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 6, Oxygen, 4)
+                .build();
+
+        Benzophenanthrenylacetonitrile = new Material.Builder(6712, "benzophenanthrenylacetonitrile")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 20, Hydrogen, 13, Nitrogen, 1)
+                .build();
+
+        UnfoldedFullerene = new Material.Builder(6713, "unfolded_fullerene")
+                .dust()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 60, Hydrogen, 30)
+                .build();
+
+        Fullerene = new Material.Builder(6714, "fullerene")
+                .dust()
+                .colorAverage().iconSet(METALLIC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 60)
+                .build();
+
+        TiAlChloride = new Material.Builder(6715, "tial_chloride")
+                .dust()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Titanium, 1, Aluminium, 1, Chlorine, 7)
+                .build();
+
+        Dimethylaminopyridine = new Material.Builder(6716, "dimethylaminopyridine")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 11, Nitrogen, 2)
+                .build()
+                .setFormula("(CH3)2NC5H4N", true);
+
+        SodiumEthoxide = new Material.Builder(6717, "sodium_ethoxide")
+                .dust()
+                .colorAverage().iconSet(METALLIC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 5, Oxygen, 1, Sodium, 1)
+                .build();
+
+        Sarcosine = new Material.Builder(6717, "sarcosine")
+                .dust()
+                .colorAverage().iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Hydrogen, 7, Nitrogen, 1, Oxygen, 2)
+                .build();
+
+        Difluorobenzophenone = new Material.Builder(6718, "difluorobenzophenone")
+                .dust()
+                .colorAverage().iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fluorine, 2, Carbon, 13, Hydrogen, 8, Oxygen, 1)
+                .build()
+                .setFormula("(FC6H4)2CO", true);
+
+        PdFullereneMatrix = new Material.Builder(6719, "pd_fullerene_matrix")
+                .dust()
+                .colorAverage().iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Palladium, 1, Fullerene, 1)
+                .build();
+
+        Terephthalaldehyde = new Material.Builder(6720, "terephthalaldehyde")
+                .dust()
+                .colorAverage().iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 6, Oxygen, 2)
+                .build();
+
+        PreZylon = new Material.Builder(6721, "pre_zylon")
+                .dust()
+                .colorAverage().iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 20, Hydrogen, 22, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        Cyanonaphthalene = new Material.Builder(6722, "cyanonaphthalene")
+                .dust()
+                .colorAverage().iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 11, Hydrogen, 7, Nitrogen, 1)
+                .build();
+
+        Triphenylphosphine = new Material.Builder(6723, "triphenylphosphine")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 18, Hydrogen, 15, Phosphorus, 1)
+                .build()
+                .setFormula("(C6H5)3P", true);
+
+        Methylbenzophenanthrene = new Material.Builder(6724, "methylbenzophenanthrene")
+                .dust()
+                .colorAverage().iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 19, Hydrogen, 14)
+                .build();
+
+        AcrylicFibers = new Material.Builder(6725, "acrylic_fibers")
+                .dust()
+                .color(0xFDFDFB).iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Oxygen, 2, Hydrogen, 8)
+                .build();
+
+        Glucosamine = new Material.Builder(6726, "glucosamine")
+                .dust()
+                .colorAverage().iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 13, Nitrogen, 1, Oxygen, 5)
+                .build();
+
+        PolystyreneNanoParticles = new Material.Builder(6727, "polystyrene_nanoparticles")
+                .dust()
+                .color(0x888079).iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 8)
+                .build();
+
+        Fructose = new Material.Builder(6728, "fructose")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 12, Oxygen, 6)
+                .build();
+
+        Glucose = new Material.Builder(6729, "glucose")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 12, Oxygen, 6)
+                .build();
+
+        Biphenyl = new Material.Builder(6730, "biphenyl")
+                .dust()
+                .color(0x003366).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 12, Hydrogen, 10)
+                .build();
+
+        Diiodobiphenyl = new Material.Builder(6731, "diiodobiphenyl")
+                .dust()
+                .color(0x000F66).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 12, Hydrogen, 8, Iodine, 2)
+                .build();
+
+        Bipyridine = new Material.Builder(6732, "bipyridine")
+                .dust()
+                .color(0x978662).iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 8, Nitrogen, 2)
+                .build();
+
+        PalladiumBisDibenzylidieneacetone = new Material.Builder(6733, "palladium_bisdibenzylidieneacetone")
+                .dust()
+                .color(0xBE81A0).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 51, Hydrogen, 42, Oxygen, 3, Palladium, 2)
+                .build();
+
+        NickelTriphenylPhosphite = new Material.Builder(6734, "nickel_triphenyl_phosphite")
+                .dust()
+                .color(0xD9D973).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 36, Hydrogen, 30, Chlorine, 2, Nickel, 1, Phosphorus, 2)
+                .build();
+
+        Dichlorocycloctadieneplatinum = new Material.Builder(6735, "dichlorocyclooctadieneplatinum")
+                .dust()
+                .color(0xE0F78A).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 12, Chlorine, 2, Platinum, 1)
+                .build();
+
+        GrapheneNanotubeMix = new Material.Builder(6736, "graphene_nanotube_mix")
+                .dust()
+                .color(0x2C2C2C).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, RareEarth, 1)
+                .build()
+                .setFormula("(C)C?", true);
+
+        GrapheneAlignedCNT = new Material.Builder(6737, "graphene_aligned_cnt")
+                .dust()
+                .color(0x2C2C2C).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 31, Hydrogen, 20)
+                .build()
+                .setFormula("(C)C30H20", true);
+
+        DehydratedLignite = new Material.Builder(6738, "dehydrated_lignite")
+                .dust()
+                .color(0x5C4020)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Water, 4)
+                .build()
+                .setFormula("C2(H2O)4C?", true);
+
+        BCEPellet = new Material.Builder(6739, "bce_pellet")
+                .dust(2, 1600)
+                .color(0x3C3020)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 3, Water, 4)
+                .build()
+                .setFormula("C2(H2O)4C", true);
+
+        ActiniumOxalate = new Material.Builder(6740, "actinium_oxalate")
+                .dust()
+                .colorAverage().iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Actinium, 1, CarbonDioxide, 4)
+                .build();
+
+        LanthanumFullereneMix = new Material.Builder(6741, "lanthanum_fullerene_mix")
+                .dust()
+                .color(0xDFCAFA).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fullerene, 2, Lanthanum, 2, RareEarth, 1)
+                .build();
+
+        LanthanumEmbeddedFullerene = new Material.Builder(6742, "lanthanum_embedded_fullerene")
+                .dust()
+                .color(0x99CC00).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fullerene, 2, Lanthanum, 2)
+                .build();
+
+        BariumTriflate = new Material.Builder(6743, "barium_triflate")
+                .dust()
+                .colorAverage().iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Barium, 1, Oxygen, 6, Sulfur, 2, Carbon, 2, Fluorine, 6)
+                .build()
+                .setFormula("Ba(OSO2CF3)2", true);
+
+        ScandiumTriflate = new Material.Builder(6744, "scandium_triflate")
+                .dust()
+                .color(0xDFCFCF).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Scandium, 1, Oxygen, 9, Sulfur, 3, Carbon, 3, Fluorine, 9)
+                .build()
+                .setFormula("Sc(OSO2CF3)3", true);
+
+        TitaniumCyclopentadienyl = new Material.Builder(6745, "titanium_cyclopentadienyl")
+                .dust()
+                .color(0xBC30BC).iconSet(SHINY)
+                .components(Carbon, 5, Hydrogen, 5, Chlorine, 3, Titanium, 1)
+                .build();
+
+        BETS = new Material.Builder(6746, "bets")
+                .dust()
+                .color(0x7ADA00).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 8, Sulfur, 4, Selenium, 4)
+                .build();
+
+        Urea = new Material.Builder(6747, "urea")
+                .dust()
+                .color(0x30CF20).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1, Hydrogen, 4, Nitrogen, 2, Oxygen, 1)
+                .build();
+
+        PotassiumFerrocyanide = new Material.Builder(6748, "potassium_ferrocyanide")
+                .dust()
+                .color(0x0000FF).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Potassium, 4, Iron, 1, Carbon, 6, Nitrogen, 6, Water, 3)
+                .build()
+                .setFormula("K4Fe(CN)6(H2O)3", true);
+
+        PrussianBlue = new Material.Builder(6749, "prussian_blue")
+                .dust()
+                .color(0x0000FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Iron, 7, Carbon, 18, Nitrogen, 18)
+                .build()
+                .setFormula("Fe4(Fe(CN)6)3", true);
+
+        DiaminostilbenedisulfonicAcid = new Material.Builder(6750, "diaminostilbenedisulfonic_acid")
+                .dust()
+                .color(0xFFFFFF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 14, Hydrogen, 14, Nitrogen, 2, Oxygen, 6, Sulfur, 2)
+                .build();
+
+        Nigrosin = new Material.Builder(6751, "nigrosin")
+                .dust()
+                .color(0x000000)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 36, Hydrogen, 26, Nitrogen, 5, Chlorine, 1, Sodium, 2, Sulfur, 2, Oxygen, 6)
+                .build();
+
+        DirectBrown = new Material.Builder(6752, "direct_brown")
+                .dust()
+                .color(0x663300)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 26, Hydrogen, 19, Nitrogen, 6, Sodium, 1, Oxygen, 3, Sulfur, 1)
+                .build();
+
+        DianilineterephthalicAcid = new Material.Builder(6753, "dianilineterephthalic_acid")
+                .dust()
+                .color(0xFF0000)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 20, Hydrogen, 16, Nitrogen, 2, Oxygen, 4)
+                .build();
+
+        Quinacridone = new Material.Builder(6754, "quinacridone")
+                .dust()
+                .color(0xFF0000)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 20, Hydrogen, 12, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        DiarylideYellow = new Material.Builder(6755, "diarylide_yellow")
+                .dust()
+                .color(0xFFFF00)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 32, Hydrogen, 26, Chlorine, 2, Nitrogen, 6, Oxygen, 4)
+                .build();
+
+        AlizarineCyanineGreen = new Material.Builder(6756, "alizarine_cyanine_geen")
+                .dust()
+                .color(0x00FF00)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 28, Hydrogen, 20, Nitrogen, 2, Sodium, 2, Oxygen, 8, Sulfur, 2)
+                .build();
+
+        Aminoanthraquinone = new Material.Builder(6757, "aminoanthraquinone")
+                .dust()
+                .color(0x0000FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 14, Hydrogen, 9, Nitrogen, 1, Oxygen, 2)
+                .build();
+
+        IndanthroneBlue = new Material.Builder(6758, "indanthrone_blue")
+                .dust()
+                .color(0x0000FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 28, Hydrogen, 14, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        Diketopyrrolopyrrole = new Material.Builder(6759, "diketopyrrolopyrrole")
+                .dust()
+                .color(0xFF6600)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 18, Hydrogen, 12, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        Mauveine = new Material.Builder(6760, "mauveine")
+                .dust()
+                .color(0x660066)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 26, Hydrogen, 23, Nitrogen, 4)
+                .build();
+
+        Indigo = new Material.Builder(6761, "indigo")
+                .dust()
+                .color(0x0000FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 16, Hydrogen, 10, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        Tetrabromoindigo = new Material.Builder(6762, "tetrabromoindigo")
+                .dust()
+                .color(0x00FF00)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 16, Hydrogen, 6, Bromine, 2, Nitrogen, 2, Oxygen, 2)
+                .build();
+
+        CyanIndigoDye = new Material.Builder(6763, "cyan_indigo_dye")
+                .dust()
+                .color(0x009999)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 32, Hydrogen, 20, Nitrogen, 4, Oxygen, 2, Bromine, 2)
+                .build()
+                .setFormula("(C16H10N2O2)2Br2", true);
+
+        Fluorescein = new Material.Builder(6734, "fluorescein")
+                .dust()
+                .color(0x990000)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 20, Hydrogen, 12, Oxygen, 5)
+                .build();
+
+        Erythrosine = new Material.Builder(6735, "erythrosine")
+                .dust()
+                .color(0xFF00FF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 20, Hydrogen, 6, Iodine, 4, Sodium, 2, Oxygen, 5)
+                .build();
+
+        SodiumSulfanilate = new Material.Builder(6736, "sodium_sulfanilate")
+                .dust()
+                .color(0xE49879).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 6, Nitrogen, 1, Sodium, 1, Oxygen, 3, Sulfur, 1)
+                .build();
+
+        Anthraquinone = new Material.Builder(6737, "anthraquinone")
+                .dust()
+                .color(0xFFF782).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 14, Hydrogen, 8, Oxygen, 2)
+                .build();
+
+        PalladiumAcetate = new Material.Builder(6738, "palladium_acetate")
+                .dust()
+                .color(0xCC3300).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 6, Oxygen, 4, Palladium, 1)
+                .build();
+
+        RhodamineB = new Material.Builder(6739, "rhodamine_b")
+                .dust()
+                .color(0xFC2020).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 28, Hydrogen, 31, Chlorine, 1, Nitrogen, 2, Oxygen, 3)
+                .build();
+
+        Stilbene = new Material.Builder(6740, "stilbene")
+                .dust()
+                .color(0x3C9C3C).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 14, Hydrogen, 12)
+                .build();
+
+        Tetracene = new Material.Builder(6741, "tetracene")
+                .dust()
+                .color(0x99801A).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 18, Hydrogen, 12)
+                .build();
+
+        DitertbutylDicarbonate = new Material.Builder(6742, "ditertbutyl_dicarbonate")
+                .dust()
+                .color(0xCCCCF6).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 18, Oxygen, 5)
+                .build();
+
+        IBX = new Material.Builder(6743, "ibx")
+                .dust()
+                .color(0x20208C).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 7, Hydrogen, 5, Iodine, 1, Oxygen, 4)
+                .build();
+
+        SaccharicAcid = new Material.Builder(6744, "saccharic_acid")
+                .dust()
+                .colorAverage().iconSet(METALLIC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 10, Oxygen, 8)
+                .build();
+
+        AdipicAcid = new Material.Builder(6745, "adipic_acid")
+                .dust()
+                .color(0xDA9288).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 10, Oxygen, 4)
+                .build();
+
+        TetraethylammoniumNonahydridides = new Material.Builder(6746, "tetraethylammonium_nonahydrides")
+                .dust()
+                .color(0xBEE8B9).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 20, Nitrogen, Rhenium, 1, Hydrogen, 18, Technetium, 1)
+                .build()
+                .setFormula("(C8H20N)(ReH9)(TcH9)", true);
+
+        PolycyclicAromaticMix = new Material.Builder(6747, "polycyclic_aromatic_mix")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 18, Hydrogen, 12)
+                .build();
+
+        GrapheneOxide = new Material.Builder(6748, "graphene_oxide")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1, Oxygen, 2)
+                .build()
+                .setFormula("C(O2)", true);
+
+        GraphiteOxide = new Material.Builder(6749, "graphite_oxide")
+                .dust()
+                .colorAverage().iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1, Oxygen, 2)
+                .build()
+                .setFormula("C(O2)", true);
+
+        GrapheneGelSuspension = new Material.Builder(6750, "graphene_gel_suspension")
+                .dust()
+                .color(0xADADAD).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1)
+                .build();
+
+        DryGrapheneGel = new Material.Builder(6751, "dry_graphene_gel")
+                .dust()
+                .color(0x3A3ADA)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 1)
+                .build();
+
+        MercuryAcetate = new Material.Builder(6752, "mercury_acetate")
+                .dust()
+                .color(0xCC8562).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Mercury, 1, Carbon, 4, Hydrogen, 6, Oxygen, 4)
+                .build()
+                .setFormula("Hg(CH3COO)2", true);
+
+        CalciumCyanamide = new Material.Builder(6753, "calcium_cyanamide")
+                .dust()
+                .colorAverage().iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Calcium, 1, Carbon, 1, Nitrogen, 2)
+                .build();
+
+        Xylose = new Material.Builder(6754, "xylose")
+                .dust()
+                .colorAverage().iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 5, Hydrogen, 10, Oxygen, 5)
+                .build();
+
+        FluorideBatteryElectrolyte = new Material.Builder(6755, "fluoride_battery_electrolyte")
+                .dust()
+                .color(0x9A628A).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Lanthanum, 9, Barium, 1, Fluorine, 30, Carbon, 8, Hydrogen, 7)
+                .build()
+                .setFormula("La9BaF29(C8H7F)", true);
+
+        Sorbose = new Material.Builder(6756, "sorbose")
+                .dust()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 12, Oxygen, 6)
+                .build();
+
+        CalciumAlginate = new Material.Builder(6757, "calcium_alginate")
+                .dust()
+                .color(0x654321).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Calcium, 1, Carbon, 12, Hydrogen, 14, Oxygen, 12)
+                .build();
+
+        BETSPerrhenate = new Material.Builder(6758, "bets_perrhenate")
+                .dust()
+                .color(0x7ADA00).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Rhenium, 1, Carbon, 10, Hydrogen, 8, Sulfur, 4, Selenium, 4, Oxygen, 4)
+                .build();
+
+        Durene = new Material.Builder(6758, "durene")
+                .dust()
+                .color(0xA39C95).iconSet(ROUGH)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 10, Hydrogen, 14)
+                .build()
+                .setFormula("C6H2(CH3)4", true);
+
+        PyromelliticDianhydride = new Material.Builder(6759, "pyromellitic_dianhydride")
+                .dust()
+                .color(0xF0EAD6).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 8, Hydrogen, 2, Oxygen, 6)
+                .build()
+                .setFormula("C6H2(C2O3)2");
+
+        SuccinicAnhydride = new Material.Builder(6760, "succinic_anhydride")
+                .dust()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon,4, Hydrogen, 4, Oxygen, 2)
+                .build()
+                .setFormula("(CH2CO)2O", true);
+
+        AmmoniumAcetate = new Material.Builder(6761, "ammonium_acetate")
+                .dust()
+                .color(0xB6DEE0)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Nitrogen, 1, Hydrogen, 7, Carbon, 2, Oxygen, 2)
+                .build()
+                .setFormula("NH4CH3CO2", true);
+
+        Acetamide = new Material.Builder(6762, "acetamine")
+                .dust()
+                .color(0xA6BEBF)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 2, Hydrogen, 5, Oxygen, 1, Nitrogen, 1)
+                .build()
+                .setFormula("CH3CONH2", true);
+
+        Acetonitrile = new Material.Builder(6763, "acetonitrile")
+                .dust()
+                .color(0xA2AFB0)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 3, Nitrogen, 1)
+                .build()
+                .setFormula("CH3CN", true);
+
+        NHydroxysuccinimide = new Material.Builder(6764, "n-hydroxysuccinimide")
+                .dust()
+                .color(0xDBCAE3)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 5, Nitrogen, 1, Oxygen, 3)
+                .build()
+                .setFormula("(CH2CO)2NOH", true);
+
+        Hexabenzylhexaazaisowurtzitane = new Material.Builder(6765, "hexabenzylhexaazaisowurtzitane")
+                .dust()
+                .color(0x624573)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 48, Nitrogen, 6, Hydrogen, 48)
+                .build();
+
+        SuccinimidylAcetate = new Material.Builder(6766, "succinimidyl_acetate")
+                .dust()
+                .color(0xBD93A6)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 7, Nitrogen, 1, Oxygen, 4)
+                .build();
+
+        DibenzylTetraacetylhexaazaisowurtzitane = new Material.Builder(6767, "dibenzyltetraacetylhexaazaisowurtzitane")
+                .dust()
+                .color(0xB3C98B)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 28, Nitrogen, 6, Hydrogen, 32, Oxygen, 4)
+                .build();
+
+        HexanitroHexaaxaisowurtzitane = new Material.Builder(6768, "hexanitrohexaaxaisowurtzitane")
+                .dust()
+                .color(0x414A4F).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION, EXPLOSIVE)
+                .components(Carbon, 6, Hydrogen, 6, Nitrogen, 12, Oxygen, 12)
+                .build();
+
+        Hexamethylenediamine = new Material.Builder(6769, "v")
+                .dust()
+                .color(0x7E8D94)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 12, Nitrogen, 4)
+                .build()
+                .setFormula("(CH2)6N4", true);
+
+        Tetraacetyldinitrosohexaazaisowurtzitane = new Material.Builder(6770, "tetraacetyldinitrosohexaazaisowurtzitane")
+                .dust()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 14, Nitrogen, 8, Hydrogen, 18, Oxygen, 6)
+                .build();
+
+        CrudeHexanitroHexaaxaisowurtzitane = new Material.Builder(6771, "crude_hexanitrohexaaxaisowurtzitane")
+                .dust()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 6, Nitrogen, 12, Oxygen, 12)
+                .build();
 
     }
 }

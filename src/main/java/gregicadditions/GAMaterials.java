@@ -1075,7 +1075,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Bipyridine;
     public static Material PalladiumBisDibenzylidieneacetone;
     public static Material NickelTriphenylPhosphite;
-    public static Material Dichlorocycloctadieneplatinium;
+    public static Material Dichlorocycloctadieneplatinum;
     public static Material GrapheneNanotubeMix;
     public static Material GrapheneAlignedCNT;
     public static Material DehydratedLignite;
