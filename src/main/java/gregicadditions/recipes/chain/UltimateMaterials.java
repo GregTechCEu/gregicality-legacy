@@ -103,6 +103,7 @@ public class UltimateMaterials {
                 .inputs(OreDictUnifier.get(dust, Lutetium))
                 .inputs(OreDictUnifier.get(dust, Scandium))
                 .inputs(OreDictUnifier.get(dust, Yttrium))
+                .inputs(OreDictUnifier.get(dust, Dysprosium))
                 .fluidInputs(Lanthanum.getFluid(144))
                 .fluidInputs(Cerium.getFluid(144))
                 .fluidInputs(Praseodymium.getFluid(144))
