@@ -3,6 +3,7 @@ package gregicadditions.recipes.chain;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaItems.UVA_HALIDE_LAMP;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -13,14 +14,37 @@ import static gregtech.api.unification.material.MarkerMaterials.Color.Magenta;
 public class FullereneChain {
     public static void init() {
 
-        // 2NaOCN + 2C10H8 -> 2NaOH + 2C10H7CN
+        // NaCN + 2 Br + C10H8 -> NaBr + C10H7CN + HBr
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(Naphthalene.getFluid(2000))
-                .fluidInputs(SodiumCyanide.getFluid(2000))
-                .output(dust, SodiumHydroxide, 6)
-                .outputs(Cyanonaphthalene.getItemStack(38))
+                .fluidInputs(Naphthalene.getFluid(1000))
+                .fluidInputs(SodiumCyanide.getFluid(1000))
+                .fluidInputs(Bromine.getFluid(2000))
+                .outputs(SodiumBromide.getItemStack(2))
+                .notConsumable(UVA_HALIDE_LAMP)
+                .fluidOutputs(HydrobromicAcid.getFluid(1000))
+                .outputs(Cyanonaphthalene.getItemStack(19))
                 .EUt(1920)
                 .duration(80)
+                .buildAndRegister();
+
+        //HBr + Cl -> HCl + Br
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(HydrobromicAcid.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(1000))
+                .fluidOutputs(Bromine.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
+                .duration(160)
+                .EUt(125)
+                .buildAndRegister();
+
+        //2 NaBr + H3PO4 -> 2 HBr + Na2HPO4
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(SodiumBromide.getItemStack(4))
+                .fluidInputs(PhosphoricAcid.getFluid(1000))
+                .fluidOutputs(HydrobromicAcid.getFluid(2000))
+                .outputs(DisodiumPhosphate.getItemStack(8))
+                .duration(190)
+                .EUt(125)
                 .buildAndRegister();
 
         // C10H7CN + H2O + 3HCl -> C11H8O + NH4Cl + 2Cl
@@ -80,13 +104,13 @@ public class FullereneChain {
                 .duration(250)
                 .buildAndRegister();
 
-        // C60H30 + 15O -> C60 + 15H2O
+        // C60H30 + 10N -> C60 + 10NH3
         LARGE_ENGRAVER_RECIPES.recipeBuilder()
                 .notConsumable(craftingLens, Magenta)
                 .inputs(UnfoldedFullerene.getItemStack())
-                .fluidInputs(Oxygen.getFluid(15000))
+                .fluidInputs(Nitrogen.getFluid(10000))
                 .outputs(Fullerene.getItemStack())
-                .fluidOutputs(Water.getFluid(15000))
+                .fluidOutputs(Ammonia.getFluid(10000))
                 .EUt(2000000)
                 .duration(200)
                 .buildAndRegister();
@@ -237,20 +261,20 @@ public class FullereneChain {
                 .duration(50)
                 .buildAndRegister();
 
-        // 2C10H10Fe + 2C60 + C2H4 + 2C3H7NO2 + 4CO -> 2[C10H10Fe + C60 + C4H9N] + 4CO2
-        // C2H4 + 2C3H7NO2 -> 2C4H9N + 4O
-        CHEMICAL_PLANT_RECIPES.recipeBuilder()
-                .inputs(Fullerene.getItemStack(2))
-                .inputs(Sarcosine.getItemStack(26))
-                .fluidInputs(Ferrocene.getFluid(2000))
-                .fluidInputs(Ethylene.getFluid(1000))
-                .fluidInputs(CarbonMonoxde.getFluid(4000))
-                .notConsumable(SodiumEthoxide.getItemStack())
-                .notConsumable(AluminiumChloride.getItemStack())
-                .notConsumable(Chloroform)
+        // C10H10Fe + C60 + C3H7NO2 + CHCl3 + 3 NaOC2H5 ->
+        // 3 NaCl + 3 C2H5OH + [C73H15NFe] + CO2
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(Fullerene.getItemStack())
+                .inputs(Sarcosine.getItemStack(13))
+                .inputs(SodiumEthoxide.getItemStack(27))
+                .fluidInputs(Chloroform.getFluid(1000))
+                .fluidInputs(Ferrocene.getFluid(1000))
+                .notConsumable(TitaniumTetrachloride)
                 .notConsumable(Toluene)
-                .fluidOutputs(Ferrocenylfulleropyrrolidine.getFluid(2000))
-                .fluidOutputs(CarbonDioxide.getFluid(4000))
+                .output(dust, Salt, 6)
+                .fluidOutputs(Ferrocenylfulleropyrrolidine.getFluid(1000))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(Ethanol.getFluid(3000))
                 .EUt(500000)
                 .duration(750)
                 .buildAndRegister();
@@ -289,11 +313,11 @@ public class FullereneChain {
                 .duration(100)
                 .buildAndRegister();
 
-        // [C10H10Fe + C60 + C4H9N] + Pd + CH3COOH -> PdC60
+        // C73H15NFe + Pd -> PdC73H15NFe
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ferrocenylfulleropyrrolidine.getFluid(1000))
                 .input(dust, Palladium)
-                .fluidInputs(AceticAcid.getFluid(1000))
+                .notConsumable(AceticAcid)
                 .notConsumable(NitricAcid)
                 .outputs(PdFullereneMatrix.getItemStack())
                 .EUt(2000000)
@@ -334,27 +358,43 @@ public class FullereneChain {
                 .duration(160)
                 .buildAndRegister();
 
-        // 24CO + 15C4H8 + 8C6H6 -> 12C11H14O2
+        //2 I + N2H4 -> 2 N + 4 HI
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(CarbonMonoxde.getFluid(24000))
-                .fluidInputs(Butene.getFluid(15000))
-                .fluidInputs(Benzene.getFluid(8000))
-                .fluidOutputs(Phenylpentanoicacid.getFluid(12000))
-                .EUt(1920)
-                .duration(500)
+                .input(dust, Iodine, 2)
+                .fluidInputs(Hydrazine.getFluid(1000))
+                .fluidOutputs(Nitrogen.getFluid(2000))
+                .fluidOutputs(HydroiodicAcid.getFluid(4000))
+                .duration(210)
+                .EUt(500)
                 .buildAndRegister();
 
-        // C60 + C11H14O2 + C2H6S + C6H5Cl -> C72H14O2 + C7H8 + H2S + HCl
+        //C3H3N + HI + 2 H2O + C8H8 + LiAlH4 -> C11H14O2 + LiI + AlH3 + NH3 (SnMe3Cl cat.)
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(AcryloNitrile.getFluid(1000))
+                .fluidInputs(HydroiodicAcid.getFluid(1000))
+                .fluidInputs(Water.getFluid(2000))
+                .fluidInputs(Styrene.getFluid(1000))
+                .inputs(LithiumAluminiumHydride.getItemStack(6))
+                .notConsumable(TrimethyltinChloride.getFluid(100))
+                .fluidOutputs(Phenylpentanoicacid.getFluid(1000))
+                .fluidOutputs(Ammonia.getFluid(1000))
+                .outputs(AluminiumHydride.getItemStack(4))
+                .outputs(LithiumIodide.getItemStack(2))
+                .EUt(3840)
+                .duration(110)
+                .buildAndRegister();
+
+        // 2 C60 + 2 C11H14O2 + C2H6S + 2 C6H5Cl -> 2 C71H12O2 + 2 C7H8 + H2S + 2 HCl
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(Fullerene.getItemStack())
-                .fluidInputs(Phenylpentanoicacid.getFluid(1000))
+                .inputs(Fullerene.getItemStack(2))
+                .fluidInputs(Phenylpentanoicacid.getFluid(2000))
                 .fluidInputs(Dimethylsulfide.getFluid(1000))
-                .fluidInputs(Chlorobenzene.getFluid(1000))
+                .fluidInputs(Chlorobenzene.getFluid(2000))
                 .notConsumable(BenzoylPeroxide.getFluid(0))
-                .fluidOutputs(Toluene.getFluid(1000))
+                .fluidOutputs(Toluene.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .fluidOutputs(PCBA.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .fluidOutputs(PCBA.getFluid(2000))
                 .EUt(500000)
                 .duration(450)
                 .buildAndRegister();
@@ -410,19 +450,20 @@ public class FullereneChain {
                 .duration(200)
                 .buildAndRegister();
 
-         // 8C72H14O2 + 7C8H8 + 8CH2Cl2 -> 8C80H21O2 + 16HCl
+         // C71H12O2 + C8H8 + CH2Cl2 -> C80H20O2 + 2 HCl
         CHEMICAL_RECIPES.recipeBuilder()
                 .notConsumable(Dimethylaminopyridine.getItemStack())
-                .fluidInputs(PCBA.getFluid(8000))
-                .fluidInputs(Styrene.getFluid(7000))
-                .fluidInputs(Dichloromethane.getFluid(8000))
-                .fluidOutputs(HydrochloricAcid.getFluid(16000))
-                .fluidOutputs(PCBS.getFluid(8000))
-                .EUt(524288)
+                .notConsumable(Diisopropylcarbodiimide.getFluid(10))
+                .fluidInputs(PCBA.getFluid(1000))
+                .fluidInputs(Styrene.getFluid(1000))
+                .fluidInputs(Dichloromethane.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .fluidOutputs(PCBS.getFluid(1000))
+                .EUt(500000)
                 .duration(400)
                 .buildAndRegister();
 
-        // PdC60 + C80H21O2 -> [PdC60 + C80H21O2]
+        // PdC73H15NFe + C80H21O2 -> [PdC73H15NFe + C80H21O2]
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .fluidInputs(PCBS.getFluid(1000))
                 .inputs(PdFullereneMatrix.getItemStack())

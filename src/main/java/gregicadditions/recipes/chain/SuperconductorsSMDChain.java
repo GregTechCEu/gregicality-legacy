@@ -381,7 +381,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(480)
                 .inputs(StrontiumChloride.getItemStack(3))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(StrontiumSulfate.getItemStack(6))
+                .output(dust, Celestine, 6)
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
@@ -711,16 +711,19 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Helium.getFluid(24000))
                 .buildAndRegister();
 
-        // 2La + 2C60 -> La2(C60)2
+        // 2La + 2 C60H30 -> La2(C60H30)2
         MIXER_RECIPES.recipeBuilder().duration(140).EUt(30720)
                 .input(dust, Lanthanum, 2)
                 .inputs(UnfoldedFullerene.getItemStack(2))
                 .outputs(LanthanumFullereneMix.getItemStack(4))
                 .buildAndRegister();
 
+        //La2(C60H30)2 + 20 N -> La2(C60)2 + 20 NH3
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(320).EUt(1966080)
                 .inputs(LanthanumFullereneMix.getItemStack(4))
+                .fluidInputs(Nitrogen.getFluid(20000))
                 .notConsumable(craftingLens, Magenta)
+                .fluidOutputs(Ammonia.getFluid(20000))
                 .outputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .buildAndRegister();
 
@@ -934,14 +937,14 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(CarbonDioxide.getFluid(2000))
                 .buildAndRegister();
 
-        // Sg + NaOH + 5F + 2H2O -> 5HF + NaSgO3
+        // Sg + 2 NaOH + 6 F + 2H2O -> 6HF + Na2SgO4
         CHEMICAL_RECIPES.recipeBuilder().duration(820).EUt(30720)
                 .input(dust, Seaborgium)
-                .input(dust, SodiumHydroxide, 3)
-                .fluidInputs(Fluorine.getFluid(5000))
+                .input(dust, SodiumHydroxide, 6)
+                .fluidInputs(Fluorine.getFluid(6000))
                 .fluidInputs(Water.getFluid(2000))
-                .fluidOutputs(HydrofluoricAcid.getFluid(5000))
-                .outputs(SodiumSeaborgate.getItemStack(5))
+                .fluidOutputs(HydrofluoricAcid.getFluid(6000))
+                .outputs(SodiumSeaborgate.getItemStack(7))
                 .buildAndRegister();
 
         // Sr + 2Cl -> SrCl2

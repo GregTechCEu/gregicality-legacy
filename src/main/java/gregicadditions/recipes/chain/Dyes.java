@@ -12,6 +12,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.SHAPE_MOLD_PLATE;
 
 /**
  * This chain is not fully balanced. This chain is so terrible
@@ -66,19 +67,19 @@ public class Dyes {
         // 3 [3 H3PO4 + HF] + 3 HF + SiO2 + Na2CO3 -> 9 H3PO4? + [Na2SiF6 + 0.25 Fe2O3] + CO2 + 3 H2O (voided)
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(500)
                 .input(dust, SodaAsh, 6)
-                .fluidInputs(ApatiteAcidicLeach.getFluid(12000))
+                .fluidInputs(FluoroapatiteAcidicLeach.getFluid(12000))
                 .input(dust, SiliconDioxide, 3)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidOutputs(PhosphorousArsenicSolution.getFluid(3000))
-                .outputs(ApatiteSolidResidue.getItemStack(11))
+                .outputs(FluoroapatiteSolidResidue.getItemStack(11))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        // [Na2SiCl6 + 0.25 Fe2O3] + 1.5 HCl -> SiCl4 + 2 NaCl + 0.5 FeCl3 + 0.75 H2O
+        // [Na2SiF6 + 0.25 Fe2O3] + 3.5 HCl -> H2SiF6 + 2 NaCl + 0.5 FeCl3 + 0.75 H2O
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(500)
-                .fluidInputs(HydrochloricAcid.getFluid(1500))
-                .inputs(ApatiteSolidResidue.getItemStack(11))
-                .outputs(SiliconChloride.getItemStack(5))
+                .fluidInputs(HydrochloricAcid.getFluid(3500))
+                .inputs(FluoroapatiteSolidResidue.getItemStack(11))
+                .fluidOutputs(FluorosilicicAcid.getFluid(1000))
                 .output(dust, Salt, 2)
                 .fluidOutputs(IronChloride.getFluid(500))
                 .fluidOutputs(Water.getFluid(750))
@@ -123,6 +124,25 @@ public class Dyes {
                 .inputs(CadmiumSulfide.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust, Sulfur))
                 .outputs(OreDictUnifier.get(dust, Cadmium))
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(190).EUt(120)
+                .input(dust, Rutile)
+                .outputs(FinelyPowderedRutile.getItemStack())
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(310).EUt(30)
+                .inputs(FinelyPowderedRutile.getItemStack())
+                .notConsumable(SHAPE_MOLD_PLATE)
+                .output(plate, Rutile)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(450).EUt(480)
+                .inputs(FinelyPowderedRutile.getItemStack())
+                .input(dust, Carbon)
+                .fluidInputs(Chlorine.getFluid(4000))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(TitaniumTetrachloride.getFluid(1000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(320).EUt(32)
@@ -590,7 +610,7 @@ public class Dyes {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        ItemStack[][] color_dyes = {{OreDictUnifier.get(dust,Barite),OreDictUnifier.get(dust,Rutile),OreDictUnifier.get(dust,LeadNitrate), DiaminostilbenedisulfonicAcid.getItemStack()},
+        ItemStack[][] color_dyes = {{OreDictUnifier.get(dust,Barite),FinelyPowderedRutile.getItemStack(),OreDictUnifier.get(dust,LeadNitrate), DiaminostilbenedisulfonicAcid.getItemStack()},
                 {OreDictUnifier.get(dust,Carbon),OreDictUnifier.get(dust,Pyrolusite),Nigrosin.getItemStack()},
                 {RawSienna.getItemStack(),DirectBrown.getItemStack()},
                 {BurnedSienna.getItemStack(),MercuryIodide.getItemStack(),OreDictUnifier.get(dust,Cinnabar),Quinacridone.getItemStack()},
