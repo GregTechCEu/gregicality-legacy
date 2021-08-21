@@ -5,7 +5,6 @@ import gregicadditions.blocks.GABlockOre;
 import gregicadditions.client.model.ReTexturedModelLoader;
 import gregicadditions.client.renderer.OpticalFiberRenderer;
 import gregicadditions.fluid.GAMetaFluids;
-import gregicadditions.input.Keybinds;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.utils.GALog;
 import net.minecraft.block.state.IBlockState;
@@ -39,7 +38,6 @@ public class ClientProxy extends CommonProxy {
             Minecraft.getMinecraft().getFramebuffer().enableStencil();
         }
         GALog.logger.info(Minecraft.getMinecraft().getFramebuffer().isStencilEnabled());
-        Keybinds.initBinds();
         OpticalFiberRenderer.preInit();
         ModelLoaderRegistry.registerLoader(new ReTexturedModelLoader());
         TextureUtils.addIconRegister(GAMetaFluids::registerSprites);
@@ -49,7 +47,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void onLoad() throws IOException {
         super.onLoad();
-        Keybinds.registerClient();
         GAMetaBlocks.registerColors();
     }
 

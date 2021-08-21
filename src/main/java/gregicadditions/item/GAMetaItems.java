@@ -1,14 +1,8 @@
 package gregicadditions.item;
 
-import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.unification.OreDictUnifier;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.WOODEN_FORM_BRICK;
 
 public class GAMetaItems {
@@ -150,38 +144,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem MEDIUM_TURBINE_ROTOR;
     public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
 
-
-    public static ArmorMetaItem<?>.ArmorMetaValueItem NIGHTVISION_GOGGLES;
-
-    public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_CHESTPLATE;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_LEGGINS;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_BOOTS;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem NANO_MUSCLE_SUITE_HELMET;
-
-    public static ArmorMetaItem<?>.ArmorMetaValueItem QUARK_TECH_SUITE_CHESTPLATE;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem QUARK_TECH_SUITE_LEGGINS;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem QUARK_TECH_SUITE_BOOTS;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem QUARK_TECH_SUITE_HELMET;
-
-    public static ArmorMetaItem<?>.ArmorMetaValueItem SEMIFLUID_JETPACK;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem IMPELLER_JETPACK;
-
-    public static ArmorMetaItem<?>.ArmorMetaValueItem BATPACK_LV;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem BATPACK_MV;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem BATPACK_HV;
-
-    public static ArmorMetaItem<?>.ArmorMetaValueItem ADVANCED_IMPELLER_JETPACK;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem ADVANCED_NANO_MUSCLE_CHESTPLATE;
-    public static ArmorMetaItem<?>.ArmorMetaValueItem ADVANCED_QAURK_TECH_SUITE_CHESTPLATE;
-
-    public static MetaItem<?>.MetaValueItem IMPELLER_MV;
-    public static MetaItem<?>.MetaValueItem IMPELLER_HV;
-    public static MetaItem<?>.MetaValueItem GRAVITATION_ENGINE;
-    public static MetaItem<?>.MetaValueItem INSULATING_TAPE;
-
-    public static MetaItem<?>.MetaValueItem HAND_PUMP;
+    public static MetaItem<?>.MetaValueItem INSULATING_TAPE; // todo remove
     public static MetaItem<?>.MetaValueItem FREEDOM_WRENCH;
-
 
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE;
     public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_A;
@@ -499,8 +463,6 @@ public class GAMetaItems {
         item.setRegistryName("ga_meta_item");
         GAMetaTool tool = new GAMetaTool();
         tool.setRegistryName("ga_meta_tool");
-        GAMetaArmor armor = new GAMetaArmor();
-        armor.setRegistryName("ga_armor");
     }
 
     public static void registerOreDict() {

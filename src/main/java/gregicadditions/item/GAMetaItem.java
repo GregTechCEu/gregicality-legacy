@@ -129,15 +129,6 @@ public class GAMetaItem extends StandardMetaItem {
         MEDIUM_TURBINE_ROTOR = addItem(302, "medium_turbine_rotor").addComponents(new MediumTurbineBehavior());
         SMALL_TURBINE_ROTOR = addItem(303, "small_turbine_rotor").addComponents(new SmallTurbineBehavior());
 
-        IMPELLER_MV = addItem(304, "impeller.mv");
-        IMPELLER_HV = addItem(305, "impeller.hv");
-        GRAVITATION_ENGINE = addItem(306, "gravitation_engine");
-        INSULATING_TAPE = addItem(307, "insulating_tape");
-
-        HAND_PUMP = addItem(308, "hand_pump")
-                .setMaxStackSize(1)
-                .addComponents(new FluidStats(64000, Integer.MIN_VALUE, Integer.MAX_VALUE, true))
-                .addComponents(new HandPumpBehavior());
         FREEDOM_WRENCH = addItem(309, "freedom_wrench")
                 .setMaxStackSize(1)
                 .addComponents(new FreedomWrenchBehaviour());

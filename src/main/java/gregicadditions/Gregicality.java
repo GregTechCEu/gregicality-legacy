@@ -4,7 +4,6 @@ import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.blocks.factories.GAOreBlockFactory;
 import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.covers.CoverBehaviors;
-import gregicadditions.input.Keybinds;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
 import gregicadditions.integrations.tconstruct.TinkersMaterials;
@@ -78,7 +77,6 @@ public class Gregicality {
         GTValues.HT = true; // force GTCEu to register UHV+ Hulls, Casings, Basic Electric Pieces like Transformers, Bat Buffers, etc.
         NetworkHandler.preInit();
         proxy.preLoad();
-        Keybinds.register();
         GregicalityCapabilities.init();
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
 
