@@ -101,7 +101,7 @@ public class TaraniumChain {
         DISTILLATION_RECIPES.recipeBuilder()
                 .fluidInputs(DiluteHydrofluoricAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(1000))
-                .fluidOutputs(FluorosilicicAcid.getFluid(1000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(1000))
                 .duration(80)
                 .EUt(200)
                 .buildAndRegister();
@@ -259,7 +259,7 @@ public class TaraniumChain {
         ADV_FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(TaraniumEnrichedLHelium3.getFluid(1000))
                 .fluidInputs(Helium3.getFluid(1000))
-                .fluidOutputs(TaraniumRichDustyHeliumPlasma.getFluid(1000))
+                .fluidOutputs(TaraniumRichDustyHeliumPlasma.getFluid(3000))
                 .duration(160)
                 .EUt(32768)
                 .euStart(100000000)
