@@ -262,7 +262,7 @@ public class FullereneChain {
                 .buildAndRegister();
 
         // C10H10Fe + C60 + C3H7NO2 + CHCl3 + 3 NaOC2H5 ->
-        // 3 NaCl + 3 C2H5OH + [C63H15NFe] + CO2
+        // 3 NaCl + 3 C2H5OH + [C73H15NFe] + CO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Fullerene.getItemStack())
                 .inputs(Sarcosine.getItemStack(13))

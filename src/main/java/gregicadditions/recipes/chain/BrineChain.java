@@ -537,8 +537,7 @@ public class BrineChain {
                 .notConsumable(dust, BerylliumFluoride)
                 .outputs(DehydrogenationCatalyst.getItemStack(56))
                 .fluidOutputs(Cyclooctadiene.getFluid(2000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .fluidOutputs(Chlorine.getFluid(1000))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
         // C4H8 + C8H18 -> C4H10 + C8H16
