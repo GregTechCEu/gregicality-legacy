@@ -529,7 +529,7 @@ public class BrineChain {
                 .fluidOutputs(ChlorodiisopropylPhosphine.getFluid(1000))
                 .buildAndRegister();
 
-        //4 P(C3H7)2Cl + (C8H12)2Ir2Cl2 + 2 C6H6OS -> 2 IrP2C18H32SOCl + 2 C8H12 + 2 Cl + 2 HCl (divided by 2)
+        //4 P(C3H7)2Cl + (C8H12)2Ir2Cl2 + 2 C6H6OS -> 2 IrP2C18H32SOCl + 2 C8H12 + 4 HCl (divided by 2)
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1200)
                 .inputs(IridiumCyclooctadienylChlorideDimer.getItemStack(22))
                 .fluidInputs(ChlorodiisopropylPhosphine.getFluid(2000))
