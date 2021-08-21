@@ -103,6 +103,7 @@ public class UltimateMaterials {
                 .inputs(OreDictUnifier.get(dust, Lutetium))
                 .inputs(OreDictUnifier.get(dust, Scandium))
                 .inputs(OreDictUnifier.get(dust, Yttrium))
+                .inputs(OreDictUnifier.get(dust, Dysprosium))
                 .fluidInputs(Lanthanum.getFluid(144))
                 .fluidInputs(Cerium.getFluid(144))
                 .fluidInputs(Praseodymium.getFluid(144))
@@ -171,21 +172,6 @@ public class UltimateMaterials {
                 .fluidInputs(NonMetals.getFluid(15000))
                 .fluidInputs(GAMaterials.NobleGases.getFluid(6000))
                 .outputs(OreDictUnifier.get(dust, Periodicium, 115))
-                .buildAndRegister();
-
-        BLAST_ALLOY_RECIPES.recipeBuilder().duration(360).EUt(54000000)
-                .inputs(OreDictUnifier.get(dust, SuperheavyLAlloy, 7))
-                .inputs(OreDictUnifier.get(dust, SuperheavyHAlloy, 7))
-                .inputs(Alkalis.getItemStack(14))
-                .inputs(RefractoryMetals.getItemStack(7))
-                .inputs(LightTranstionMetals.getItemStack(8))
-                .inputs(PreciousMetals.getItemStack(9))
-                .inputs(PostTransitionMetals.getItemStack(14))
-                .inputs(Lanthanoids.getItemStack(15))
-                .inputs(Actinoids.getItemStack(13))
-                .fluidInputs(NonMetals.getFluid(15000))
-                .fluidInputs(GAMaterials.NobleGases.getFluid(6000))
-                .fluidOutputs(Periodicium.getFluid(16560))
                 .buildAndRegister();
 
         VACUUM_RECIPES.recipeBuilder().duration(20).EUt(30720)

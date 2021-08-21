@@ -34,6 +34,7 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -42,6 +43,9 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.apache.commons.lang3.ArrayUtils;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import java.util.List;
 
 import static gregtech.common.items.MetaItems.TOOL_DATA_STICK;
 
@@ -244,5 +248,11 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
             return GregtechTileCapabilities.CAPABILITY_CONTROLLABLE.cast(this);
         }
         return super.getCapability(capability, side);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("gtadditions.machine.solar_fluid_sampler.missing_solar"));
     }
 }

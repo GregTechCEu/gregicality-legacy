@@ -157,6 +157,13 @@ public class SingleblockCraftingRecipes {
                 'H', HULL,
                 'C', OreDictNames.chestWood);
 
+        registerMachineRecipe(GATileEntities.MUFFLER_HATCH,
+                "HM ", "PR ", "   ",
+                'H', HULL,
+                'M', MOTOR,
+                'P', PIPE,
+                'R', ROTOR);
+
         ModHandler.addShapedRecipe("ga_simple_ore_washer", GATileEntities.SIMPLE_ORE_WASHER.getStackForm(),
                 "PIP", "PTP", "PCP",
                 'C', MetaTileEntities.HULL[GTValues.LV].getStackForm(),
@@ -345,8 +352,8 @@ public class SingleblockCraftingRecipes {
         registerMachineRecipe(GATileEntities.TRANSFORMER_1_AMPS,
                 "KBB", "CM ", "KBB",
                 'M', WORSE_HULL,
-                'C', CABLE_DOUBLE,
-                'B', CABLE_DOUBLE_WORSE,
+                'C', CABLE_SINGLE,
+                'B', CABLE_SINGLE_WORSE,
                 'K', MetaItems.SMALL_COIL);
 
         registerMachineRecipe(GATileEntities.TRANSFORMER_4_AMPS,

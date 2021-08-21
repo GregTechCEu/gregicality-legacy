@@ -20,6 +20,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.multiblock.PatternMatchContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,6 +29,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -59,7 +61,7 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
         writePluginData(1, buffer -> {
             buffer.writeVarInt(this.partIndex);
         });
-        markDirty();
+        markAsDirty();
     }
 
     public MetaTileEntity getRealMTE() {
@@ -116,7 +118,7 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
             for (Widget widget : ui.guiWidgets.values()) {
                 if (widget instanceof SlotWidget) {
                     IInventory handler = ((SlotWidget) widget).getHandle().inventory;
-                    if (handler instanceof PlayerMainInvWrapper) {
+                    if (handler instanceof PlayerMainInvWrapper || handler instanceof InventoryPlayer) {
                         hasPlayerInventory = true;
                         continue;
                     }
@@ -207,9 +209,9 @@ public class FakeGuiPluginBehavior extends ProxyHolderPluginBehavior {
     }
 
     @Override
-    public void renderPlugin(float partialTicks) {
+    public void renderPlugin(float partialTicks, RayTraceResult rayTraceResult) {
         if (fakeModularGui != null) {
-            Tuple<Double, Double> result = this.screen.checkLookingAt(partialTicks);
+            Tuple<Double, Double> result = this.screen.checkLookingAt(rayTraceResult);
             if (result == null)
                 fakeModularGui.drawScreen(0, 0, partialTicks);
             else

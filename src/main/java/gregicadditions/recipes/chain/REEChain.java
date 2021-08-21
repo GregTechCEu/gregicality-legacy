@@ -139,15 +139,16 @@ public class REEChain {
                 .output(dust, SodiumHydroxide, 3)
                 .buildAndRegister();
 
-        // [REECl3 + 3 H2O] + C16H35O4P(cat.) -> [REE2O3](sep.) + 3 HCl
+
+        // 2 [REECl3 + 3 H2O] + C16H35O4P(cat.) -> [REE2O3](sep.) + 6 HCl + 3 H2O
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(RareEarthChloridesSolution.getFluid(3000))
+                .fluidInputs(RareEarthChloridesSolution.getFluid(6000))
                 .notConsumable(DiethylhexylPhosphoricAcid.getFluid(0))
                 .fluidOutputs(LaNdOxidesSolution.getFluid(250))
                 .fluidOutputs(SmGdOxidesSolution.getFluid(250))
                 .fluidOutputs(TbHoOxidesSolution.getFluid(250))
                 .fluidOutputs(ErLuOxidesSolution.getFluid(250))
-                .fluidOutputs(HydrochloricAcid.getFluid(3000))
+                .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .EUt(480)
                 .duration(600)
                 .buildAndRegister();

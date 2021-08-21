@@ -1,12 +1,9 @@
 package gregicadditions.machines.multi.override;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
-import gregicadditions.GAValues;
-import gregicadditions.item.GAHeatingCoil;
-import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
-import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -17,34 +14,37 @@ import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
-import gregtech.api.unification.material.Materials;
+import gregtech.api.render.OrientedOverlayRenderer;
+import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.event.HoverEvent;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static gregtech.api.unification.material.Materials.StainlessSteel;
+import static gregtech.api.recipes.RecipeMaps.CRACKING_RECIPES;
+import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 
-public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities.multi.electric.MetaTileEntityCrackingUnit {
+public class MetaTileEntityCrackingUnit extends GARecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
-    protected int heatingCoilLevel = 1;
-    protected int heatingCoilDiscount = 1;
+    protected int heatingCoilTier = 0;
 
     public MetaTileEntityCrackingUnit(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId);
+        super(metaTileEntityId, CRACKING_RECIPES);
         this.recipeMapWorkable = new CrackingUnitWorkable(this);
     }
 
@@ -55,8 +55,11 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
     @Override
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        this.heatingCoilLevel = context.getOrDefault("heatingCoilLevel", 0);
-        this.heatingCoilDiscount = context.getOrDefault("heatingCoilDiscount", 0);
+        BlockWireCoil.CoilType coilType = context.getOrDefault("coilType", HEATING_COILS[0]);
+        int coilTier = Arrays.asList(HEATING_COILS).indexOf(coilType);
+
+        coilTier = Math.max(0, coilTier);
+        this.heatingCoilTier = coilTier;
     }
 
     public static Predicate<BlockWorldState> heatingCoilPredicate() {
@@ -68,70 +71,22 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
             BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
             if (Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName()))
                 return false;
-            int heatingCoilDiscount = coilType.getEnergyDiscount();
-            int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
-            int heatingCoilLevel = coilType.getLevel();
-            int currentCoilLevel = blockWorldState.getMatchContext().getOrPut("heatingCoilLevel", heatingCoilLevel);
-            return currentCoilDiscount == heatingCoilDiscount && heatingCoilLevel == currentCoilLevel;
-        };
-    }
-
-    public static Predicate<BlockWorldState> heatingCoilPredicate2() {
-        return blockWorldState -> {
-            IBlockState blockState = blockWorldState.getBlockState();
-            if (!(blockState.getBlock() instanceof GAHeatingCoil))
-                return false;
-            GAHeatingCoil blockWireCoil = (GAHeatingCoil) blockState.getBlock();
-            GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
-            if (Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName()))
-                return false;
-            int heatingCoilDiscount = coilType.getEnergyDiscount();
-            int currentCoilDiscount = blockWorldState.getMatchContext().getOrPut("heatingCoilDiscount", heatingCoilDiscount);
-            int heatingCoilLevel = coilType.getLevel();
-            int currentCoilLevel = blockWorldState.getMatchContext().getOrPut("heatingCoilLevel", heatingCoilLevel);
-            return currentCoilDiscount == heatingCoilDiscount && heatingCoilLevel == currentCoilLevel;
+            BlockWireCoil.CoilType currentCoilType = blockWorldState.getMatchContext().getOrPut("coilType", coilType);
+            return coilType.equals(currentCoilType);
         };
     }
 
     @Override
     public void invalidateStructure() {
         super.invalidateStructure();
-        this.heatingCoilLevel = 1;
-        this.heatingCoilDiscount = 1;
+        this.heatingCoilTier = 0;
     }
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        if (isStructureFormed()) {
-            IEnergyContainer energyContainer = recipeMapWorkable.getEnergyContainer();
-            if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
-                long maxVoltage = energyContainer.getInputVoltage();
-                String voltageName = GAValues.VN[GAUtility.getTierByVoltage(maxVoltage)];
-                textList.add(new TextComponentTranslation("gregtech.multiblock.max_energy_per_tick", maxVoltage, voltageName));
-            }
-
-            if (!recipeMapWorkable.isWorkingEnabled()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.work_paused"));
-
-            } else if (recipeMapWorkable.isActive()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.running"));
-                int currentProgress = (int) (recipeMapWorkable.getProgressPercent() * 100);
-                textList.add(new TextComponentTranslation("gregtech.multiblock.progress", currentProgress));
-            } else {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.idling"));
-            }
-
-            if (recipeMapWorkable.isHasNotEnoughEnergy()) {
-                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
-            }
-        }
-        if (isStructureFormed()) {
-            textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_level", heatingCoilLevel));
-            textList.add(new TextComponentTranslation("gregtech.multiblock.multi_furnace.heating_coil_discount", heatingCoilDiscount));
-        } else {
-            ITextComponent tooltip = new TextComponentTranslation("gregtech.multiblock.invalid_structure.tooltip", new Object[0]);
-            tooltip.setStyle((new Style()).setColor(TextFormatting.GRAY));
-            textList.add((new TextComponentTranslation("gregtech.multiblock.invalid_structure", new Object[0])).setStyle((new Style()).setColor(TextFormatting.RED).setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, tooltip))));
+        super.addDisplayText(textList);
+        if (isStructureFormed() && !hasProblems()) {
+            textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_usage", 100 - (this.heatingCoilTier*5)).setStyle(new Style().setColor(TextFormatting.AQUA)));
         }
     }
 
@@ -146,24 +101,29 @@ public class MetaTileEntityCrackingUnit extends gregtech.common.metatileentities
                 .where('L', statePredicate(getCasingState()))
                 .where('H', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('#', isAirPredicate())
-                .where('C', heatingCoilPredicate().or(heatingCoilPredicate2()))
+                .where('C', heatingCoilPredicate())
                 .build();
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return GAMetaBlocks.METAL_CASING.get(Materials.StainlessSteel);
+        return CLEAN_STAINLESS_STEEL_CASING;
     }
 
-    @Override
     public IBlockState getCasingState() {
-        return GAMetaBlocks.getMetalCasingBlockState(StainlessSteel);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN);
+    }
+
+    @Nonnull
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return Textures.CRACKING_UNIT_OVERLAY;
     }
 
     protected class CrackingUnitWorkable extends LargeSimpleRecipeMapMultiblockController.LargeSimpleMultiblockRecipeLogic {
 
         public CrackingUnitWorkable(RecipeMapMultiblockController tileEntity) {
-            super(tileEntity, 100 / heatingCoilDiscount, 100, 100, heatingCoilLevel);
+            super(tileEntity, 100 - (heatingCoilTier*5), 100, 100, 0);
         }
 
     }

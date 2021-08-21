@@ -1,7 +1,9 @@
 package gregicadditions.jei;
 
 import gregicadditions.Gregicality;
+import gregicadditions.capabilities.impl.GAAbstractRecipeLogic;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
+import gregicadditions.machines.multi.simple.MultiRecipeMapMultiblockController;
 import gregicadditions.recipes.impl.nuclear.GTHotCoolantRecipeWrapper;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMapCategory;
@@ -93,8 +95,14 @@ public class JEIGAPlugin implements IModPlugin {
                     HotCoolantRecipeMap recipeMap = ((HotCoolantRecipeLogic) workableCapability).recipeMap;
                     registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
                 } else if (workableCapability instanceof AbstractRecipeLogic) {
-                    RecipeMap<?> recipeMap = ((AbstractRecipeLogic) workableCapability).recipeMap;
-                    registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
+                    if (metaTileEntity instanceof MultiRecipeMapMultiblockController) {
+                        for (RecipeMap<?> recipeMap : ((MultiRecipeMapMultiblockController) metaTileEntity).getRecipeMaps()) {
+                            registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
+                        }
+                    } else {
+                        RecipeMap<?> recipeMap = ((AbstractRecipeLogic) workableCapability).recipeMap;
+                        registry.addRecipeCatalyst(metaTileEntity.getStackForm(), Gregicality.MODID + ":" + recipeMap.unlocalizedName);
+                    }
                 }
             }
         }

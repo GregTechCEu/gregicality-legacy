@@ -37,7 +37,7 @@ import java.util.List;
 
 public class MetaTileEntityOutputFilteredHatch extends GAMetaTileEntityMultiblockPart implements IMultiblockAbilityPart<IFluidTank> {
 
-    private static final int INITIAL_INVENTORY_SIZE = 1000;
+    private static final int INITIAL_INVENTORY_SIZE = 8000;
     private final ItemStackHandler containerInventory;
     private FluidFilter currentFluidFilter;
     private boolean isBlacklistFilter = false;

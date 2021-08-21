@@ -1,9 +1,11 @@
 package gregicadditions;
 
+import codechicken.lib.texture.TextureUtils;
 import gregicadditions.blocks.GABlockOre;
 import gregicadditions.blocks.GAMetalCasing;
 import gregicadditions.client.model.ReTexturedModelLoader;
 import gregicadditions.client.renderer.OpticalFiberRenderer;
+import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.input.Keybinds;
 import gregicadditions.item.GADustItem;
 import gregicadditions.item.GAMetaBlocks;
@@ -58,6 +60,7 @@ public class ClientProxy extends CommonProxy {
         Keybinds.initBinds();
         OpticalFiberRenderer.preInit();
         ModelLoaderRegistry.registerLoader(new ReTexturedModelLoader());
+        TextureUtils.addIconRegister(GAMetaFluids::registerSprites);
     }
 
 

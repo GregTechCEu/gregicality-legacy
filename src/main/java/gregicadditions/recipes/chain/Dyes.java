@@ -12,6 +12,7 @@ import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.SHAPE_MOLD_PLATE;
 
 /**
  * This chain is not fully balanced. This chain is so terrible
@@ -123,6 +124,25 @@ public class Dyes {
                 .inputs(CadmiumSulfide.getItemStack(2))
                 .outputs(OreDictUnifier.get(dust, Sulfur))
                 .outputs(OreDictUnifier.get(dust, Cadmium))
+                .buildAndRegister();
+
+        MACERATOR_RECIPES.recipeBuilder().duration(190).EUt(120)
+                .input(dust, Rutile)
+                .outputs(FinelyPowderedRutile.getItemStack())
+                .buildAndRegister();
+
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(310).EUt(30)
+                .inputs(FinelyPowderedRutile.getItemStack())
+                .notConsumable(SHAPE_MOLD_PLATE)
+                .output(plate, Rutile)
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(450).EUt(480)
+                .inputs(FinelyPowderedRutile.getItemStack())
+                .input(dust, Carbon)
+                .fluidInputs(Chlorine.getFluid(4000))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .fluidOutputs(TitaniumTetrachloride.getFluid(1000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(320).EUt(32)
@@ -590,7 +610,7 @@ public class Dyes {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        ItemStack[][] color_dyes = {{OreDictUnifier.get(dust,Barite),OreDictUnifier.get(dust,Rutile),OreDictUnifier.get(dust,LeadNitrate), DiaminostilbenedisulfonicAcid.getItemStack()},
+        ItemStack[][] color_dyes = {{OreDictUnifier.get(dust,Barite),FinelyPowderedRutile.getItemStack(),OreDictUnifier.get(dust,LeadNitrate), DiaminostilbenedisulfonicAcid.getItemStack()},
                 {OreDictUnifier.get(dust,Carbon),OreDictUnifier.get(dust,Pyrolusite),Nigrosin.getItemStack()},
                 {RawSienna.getItemStack(),DirectBrown.getItemStack()},
                 {BurnedSienna.getItemStack(),MercuryIodide.getItemStack(),OreDictUnifier.get(dust,Cinnabar),Quinacridone.getItemStack()},

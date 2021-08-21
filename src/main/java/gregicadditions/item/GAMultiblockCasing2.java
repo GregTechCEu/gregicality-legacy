@@ -28,24 +28,30 @@ public class GAMultiblockCasing2 extends VariantBlock<GAMultiblockCasing2.Casing
 
     public enum CasingType implements IStringSerializable {
 
-        TIERED_HULL_UHV("tiered_hull_uhv"),
-        TIERED_HULL_UEV("tiered_hull_uev"),
-        TIERED_HULL_UIV("tiered_hull_uiv"),
-        TIERED_HULL_UMV("tiered_hull_umv"),
-        TIERED_HULL_UXV("tiered_hull_uxv"),
-        STELLAR_CONTAINMENT("stellar_containment"),
-        BIO_REACTOR("bio_reactor_casing"),
-        LASER_ENGRAVER("laser_engraver_casing");
+        TIERED_HULL_UHV("tiered_hull_uhv", 9),
+        TIERED_HULL_UEV("tiered_hull_uev", 10),
+        TIERED_HULL_UIV("tiered_hull_uiv", 11),
+        TIERED_HULL_UMV("tiered_hull_umv", 12),
+        TIERED_HULL_UXV("tiered_hull_uxv", 13),
+        STELLAR_CONTAINMENT("stellar_containment", -1),
+        BIO_REACTOR("bio_reactor_casing", -1),
+        LASER_ENGRAVER("laser_engraver_casing", -1);
 
         private final String name;
+        private final int tier;
 
-        CasingType(String name) {
+        CasingType(String name, int tier) {
             this.name = name;
+            this.tier = tier;
         }
 
         @Override
         public String getName() {
             return this.name;
+        }
+
+        public int getTier() {
+            return this.tier;
         }
 
     }

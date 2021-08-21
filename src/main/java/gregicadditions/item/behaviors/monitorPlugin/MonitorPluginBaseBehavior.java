@@ -11,6 +11,7 @@ import gregtech.api.items.gui.PlayerInventoryHolder;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.stats.IItemBehaviour;
 import gregtech.api.net.NetworkHandler;
+import gregtech.api.util.IDirtyNotifiable;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -21,6 +22,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,7 +31,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Consumer;
 
-public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemUIFactory {
+public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemUIFactory, IDirtyNotifiable {
     protected MetaTileEntityMonitorScreen screen;
     private NBTTagCompound nbtTagCompound;
 
@@ -134,7 +136,7 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
     /***
      * Server / Client (deprecated). Should be called when need to write persistence data to NBT
      */
-    protected void markDirty() {
+    public void markAsDirty() {
         if (screen != null) {
             screen.pluginDirty();
         } else if (nbtTagCompound != null){
@@ -165,7 +167,9 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
      * Client. Write rendering here
      */
     @SideOnly(Side.CLIENT)
-    abstract public void renderPlugin(float partialTicks);
+    public void renderPlugin(float partialTicks, RayTraceResult rayTraceResult){
+
+    }
 
     public static MonitorPluginBaseBehavior getBehavior(ItemStack itemStack) {
         if (itemStack.getItem() instanceof MetaItem<?>){
@@ -215,7 +219,9 @@ public abstract class MonitorPluginBaseBehavior implements IItemBehaviour, ItemU
             behavior = behavior.createPlugin();
             behavior.readFromNBT(itemStack.getOrCreateSubCompound("monitor_plugin"));
            return ModularUI.builder(GuiTextures.BOXED_BACKGROUND, 260, 210)
-                   .widget(behavior.customUI(new WidgetPluginConfig(), playerInventoryHolder, entityPlayer)).build(playerInventoryHolder, entityPlayer);
+                   .widget(behavior.customUI(new WidgetPluginConfig().setBackGround(GuiTextures.BACKGROUND), playerInventoryHolder, entityPlayer))
+                   .bindCloseListener(this::markAsDirty)
+                   .build(playerInventoryHolder, entityPlayer);
         }
         return null;
     }

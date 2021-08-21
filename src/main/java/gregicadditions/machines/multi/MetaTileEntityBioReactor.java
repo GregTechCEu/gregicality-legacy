@@ -1,5 +1,6 @@
 package gregicadditions.machines.multi;
 
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
@@ -48,22 +49,24 @@ public class MetaTileEntityBioReactor extends GARecipeMapMultiblockController {
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
     public long maxVoltage = 0;
 
 
     @Override
-    protected BlockPattern createStructurePattern() {
+    protected BlockPattern createStructurePattern() { //TODO: overhaul bioreactor mechanics in an overhaul pr
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XGGGX", "XGGGX", "XGGGX", "XXXXX")
                 .aisle("XXXXX", "G###G", "G#s#G", "G###G", "XXXXX")
                 .aisle("XXXXX", "G#P#G", "GEFEG", "G#P#G", "XXXXX")
                 .aisle("XXXXX", "G###G", "G#s#G", "G###G", "XXXXX")
                 .aisle("XXSXX", "XGGGX", "XGGGX", "XGGGX", "XXXXX")
+                .setAmountAtLeast('L', 34)
                 .where('S', selfPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('L', statePredicate(getCasingState()))
                 .where('#', isAirPredicate())
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS)))
                 .where('F', fieldGenPredicate())

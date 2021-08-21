@@ -10,6 +10,7 @@ import gregicadditions.jei.GAMultiblockShapeInfo;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ChemicalPlantInfo extends MultiblockInfoPage {
+public class ChemicalPlantInfo extends MultiblockInfoPage { //todo staged removal
     @Override
     public MultiblockControllerBase getController() {
         return GATileEntities.CHEMICAL_PLANT;
@@ -37,18 +38,20 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
                 shapeInfo.add(GAMultiblockShapeInfo.builder()
                         .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
                         .aisle("FXXXX", "RCCCR", "RCCCR", "RCCCR", "XXXXX")
-                        .aisle("FXXXX", "RCTCR", "RCTCR", "RCTCR", "XXXXX")
+                        .aisle("FXXXM", "RCTCR", "RCTCR", "RCTCR", "XXXXX")
                         .aisle("FXXXE", "RCCCR", "RCCCR", "RCCCR", "XXXXX")
                         .aisle("FISOO", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
                         .where('S', GATileEntities.CHEMICAL_PLANT, EnumFacing.SOUTH)
+                        .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.EAST)
                         .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                         .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                         .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.SOUTH)
-                        .where('X', GAMetaBlocks.getMetalCasingBlockState(Materials.Steel))
+                        .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                         .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
                         .where('R', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS))
                         .where('T', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_HV))
-                        .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.EAST).build());
+                        .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.EAST)
+                        .build());
             }
         }
         for (GAHeatingCoil.CoilType coilType : GAHeatingCoil.CoilType.values()) {
@@ -57,18 +60,20 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
                 shapeInfo.add(GAMultiblockShapeInfo.builder()
                         .aisle("XXXXX", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
                         .aisle("FXXXX", "RCCCR", "RCCCR", "RCCCR", "XXXXX")
-                        .aisle("FXXXX", "RCTCR", "RCTCR", "RCTCR", "XXXXX")
+                        .aisle("FXXXM", "RCTCR", "RCTCR", "RCTCR", "XXXXX")
                         .aisle("FXXXE", "RCCCR", "RCCCR", "RCCCR", "XXXXX")
                         .aisle("FISOO", "RRRRR", "RRRRR", "RRRRR", "XXXXX")
                         .where('S', GATileEntities.CHEMICAL_PLANT, EnumFacing.SOUTH)
+                        .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.EAST)
                         .where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
                         .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                         .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.SOUTH)
-                        .where('X', GAMetaBlocks.getMetalCasingBlockState(Materials.Steel))
+                        .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                         .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
                         .where('R', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.REINFORCED_GLASS))
                         .where('T', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_HV))
-                        .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.EAST).build());
+                        .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.EAST)
+                        .build());
             }
         }
         return shapeInfo;
@@ -77,5 +82,10 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
     @Override
     public String[] getDescription() {
         return new String[]{I18n.format("gregtech.multiblock.chemical_plant.description")};
+    }
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.7f;
     }
 }
