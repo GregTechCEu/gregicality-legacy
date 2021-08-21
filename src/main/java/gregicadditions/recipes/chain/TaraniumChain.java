@@ -1,5 +1,7 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -247,6 +249,18 @@ public class TaraniumChain {
                 .EUt(2000)
                 .buildAndRegister();
 
+        // 2 H2XeO4 -> 2 Xe + H2O + H2O2 + O3 + 2 O
+        ELECTROLYZER_RECIPES.recipeBuilder()
+                .fluidInputs(XenicAcid.getFluid(2000))
+                .fluidOutputs(Xenon.getFluid(2000))
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Ozone.getFluid(1000))
+                .fluidOutputs(HydrogenPeroxide.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(2000))
+                .duration(120)
+                .EUt(500)
+                .buildAndRegister();
+
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(DustyLiquidHelium3.getFluid(1000))
                 .fluidOutputs(TaraniumEnrichedLHelium3.getFluid(100))
@@ -261,7 +275,7 @@ public class TaraniumChain {
                 .fluidInputs(Helium3.getFluid(1000))
                 .fluidOutputs(TaraniumRichDustyHeliumPlasma.getFluid(3000))
                 .duration(160)
-                .EUt(32768)
+                .EUt(32700)
                 .euStart(100000000)
                 .euReturn(5000)
                 .coilTier(1)
@@ -327,9 +341,10 @@ public class TaraniumChain {
                 .EUt(8000)
                 .buildAndRegister();
 
-        VACUUM_RECIPES.recipeBuilder()
+        PLASMA_CONDENSER_RECIPES.recipeBuilder()
                 .fluidInputs(TaraniumRichHelium4.getPlasma(1000))
                 .fluidOutputs(TaraniumRichHelium4.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(0))
                 .duration(80)
                 .EUt(8000)
                 .buildAndRegister();

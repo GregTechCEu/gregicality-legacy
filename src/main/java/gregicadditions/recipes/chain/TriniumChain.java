@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -50,6 +51,7 @@ public class TriniumChain {
         //NaBF4 -> NaF + BF3
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(125)
                 .inputs(SodiumTetrafluoroborate.getItemStack(6))
+                .notConsumable(new IntCircuitIngredient(0))
                 .output(dust, SodiumFluoride, 2)
                 .fluidOutputs(BoronFluoride.getFluid(1000))
                 .buildAndRegister();
@@ -119,7 +121,7 @@ public class TriniumChain {
                 .buildAndRegister();
 
         ELECTROLYZER_RECIPES.recipeBuilder().duration(175).EUt(32)
-                .inputs(CaesiumNitrate.getItemStack())
+                .inputs(CaesiumNitrate.getItemStack(5))
                 .output(dust, Caesium)
                 .fluidOutputs(Nitrogen.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(3000))
@@ -147,7 +149,7 @@ public class TriniumChain {
                 .buildAndRegister();
 
         //2 Ke3Ac2Se4At4 + 8 HNO3 + 8 SO2 + NaClO4 ->  8 SeO2 + 8At + [NaCl + 4 H2O + 2 Ke3Ac2S4(NO3)4 + ?]
-        BLAST_RECIPES.recipeBuilder().duration(265).EUt(131072).blastFurnaceTemp(10000)
+        BLAST_RECIPES.recipeBuilder().duration(265).EUt(130500).blastFurnaceTemp(10000)
                 .input(dust, Triniite, 16)
                 .inputs(PureCrystallineNitricAcid.getItemStack(40))
                 .inputs(SodiumPerchlorate.getItemStack(6))
@@ -226,7 +228,7 @@ public class TriniumChain {
                 .fluidOutputs(HydrofluoricAcid.getFluid(32000))
                 .buildAndRegister();
 
-        MIXER_RECIPES.recipeBuilder().duration(160).EUt(32)
+        MIXER_RECIPES.recipeBuilder().duration(160).EUt(30)
                 .input(dust, Calcium)
                 .fluidInputs(Fluorite.getFluid(432))
                 .fluidOutputs(MoltenCalciumSalts.getFluid(1000))
@@ -242,16 +244,18 @@ public class TriniumChain {
 
         //QoL to hook up the acetylene output into the fullerene chain
 
+        //3 C2H2 -> C6H6
         FLUID_HEATER_RECIPES.recipeBuilder().duration(190).EUt(500)
                 .fluidInputs(Acetylene.getFluid(3000))
                 .notConsumable(ALUMINO_SILICATE_GLASS_TUBE.getStackForm())
                 .fluidOutputs(Benzene.getFluid(1000))
                 .buildAndRegister();
 
+        //C6H6 + 2 C2H2 -> C10H8 + 2 H
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(500)
                 .fluidInputs(Benzene.getFluid(1000))
                 .fluidInputs(Acetylene.getFluid(2000))
-                .notConsumable(OreDictUnifier.get(dust, Vinteum))
+                .notConsumable(OreDictUnifier.get(gemChipped, Jasper))
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .fluidOutputs(Naphthalene.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(2000))
@@ -303,7 +307,7 @@ public class TriniumChain {
                 .output(dust, Salt, 2)
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(4100)
+        MIXER_RECIPES.recipeBuilder().duration(290).EUt(4100)
                 .fluidInputs(ActiniumRadiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(12000))
                 .fluidOutputs(ActiniumRadiumNitrateSolution.getFluid(13000))
@@ -321,6 +325,7 @@ public class TriniumChain {
                 .fluidOutputs(Water.getFluid(13000))
                 .buildAndRegister();
 
+        //Ac(NO3)3 -> Ac + 3 N + 9 O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(210).EUt(500)
                 .inputs(ActiniumNitrate.getItemStack(13))
                 .output(dust, Actinium)
@@ -328,6 +333,7 @@ public class TriniumChain {
                 .fluidOutputs(Oxygen.getFluid(9000))
                 .buildAndRegister();
 
+        //Ra(NO3)2 -> Ra + 2 N + 6 O
         ELECTROLYZER_RECIPES.recipeBuilder().duration(160).EUt(500)
                 .inputs(RadiumNitrate.getItemStack(9))
                 .output(dust, Radium)

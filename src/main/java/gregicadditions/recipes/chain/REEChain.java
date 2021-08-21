@@ -157,7 +157,7 @@ public class REEChain {
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(LaNdOxidesSolution.getFluid(4000))
                 .chancedOutput(LanthanumOxide.getItemStack(5), 4300, 275)
-                .chancedOutput(PraseodymiumOxide.getItemStack( 5), 4300, 275)
+                .chancedOutput(PraseodymiumOxide.getItemStack(5), 4300, 275)
                 .chancedOutput(NeodymiumOxide.getItemStack(5), 4300, 275)
                 .chancedOutput(CeriumOxide.getItemStack(5), 4300, 275)
                 .EUt(480)
