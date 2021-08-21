@@ -509,11 +509,12 @@ public class BrineChain {
                 .notConsumable(SodiumPhosphomolybdate.getItemStack())
                 .notConsumable(SodiumPhosphotungstate.getItemStack())
                 .buildAndRegister();
-        //2 IrCl3 + 2 C8H12 -> (C8H12)2IrCl2 + 4 Cl
+
+        //2 IrCl3 + 2 C8H12 -> (C8H12)2Ir2Cl2 + 4 Cl
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, IridiumChloride, 8)
                 .fluidInputs(Cyclooctadiene.getFluid(2000))
-                .outputs(IridiumCyclooctadienylChloride.getItemStack(44))
+                .outputs(IridiumCyclooctadienylChlorideDimer.getItemStack(44))
                 .fluidOutputs(Chlorine.getFluid(4000))
                 .buildAndRegister();
 
@@ -538,19 +539,6 @@ public class BrineChain {
                 .fluidOutputs(Cyclooctadiene.getFluid(2000))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
-
-        //4 P(C3H7)2Cl + (C8H12)2IrCl2 + 2 C6H6OS -> 2 IrP2C18H32SOCl + 2 C8H12 + 2 Cl + 2 HCl (divided by 2)
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1200)
-                .inputs(IridiumCyclooctadienylChloride.getItemStack(22))
-                .fluidInputs(ChlorodiisopropylPhosphine.getFluid(2000))
-                .fluidInputs(Mercaptophenol.getFluid(1000))
-                .notConsumable(dust, BerylliumFluoride)
-                .outputs(DehydrogenationCatalyst.getItemStack(56))
-                .fluidOutputs(Cyclooctadiene.getFluid(2000))
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .fluidOutputs(Chlorine.getFluid(1000))
-                .buildAndRegister();
-
 
         // C4H8 + C8H18 -> C4H10 + C8H16
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(120)
