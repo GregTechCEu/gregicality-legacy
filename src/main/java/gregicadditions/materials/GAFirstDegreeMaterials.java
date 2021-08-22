@@ -2931,5 +2931,19 @@ public class GAFirstDegreeMaterials {
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Hydrogen, 1, Iodine, 1)
                 .build();
+
+        LiquidOxygen = new Material.Builder(3859, "liquid_oxygen")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Oxygen, 1)
+                .build();
+
+        LiquidHydrogen = new Material.Builder(3860, "liquid_hydrogen")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Hydrogen, 1)
+                .build();
     }
 }

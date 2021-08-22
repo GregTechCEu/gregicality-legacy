@@ -399,7 +399,6 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(240)
                 .fluidInputs(Oxygen.getFluid(2000))
                 .fluidInputs(EthylAnthraHydroQuinone.getFluid(1000))
-                .notConsumable(Anthracene)
                 .fluidOutputs(HydrogenPeroxide.getFluid(2000))
                 .fluidOutputs(EthylAnthraQuinone.getFluid(1000))
                 .buildAndRegister();
@@ -440,6 +439,14 @@ public class VariousChains {
                 .fluidInputs(Naphthalene.getFluid(4000))
                 .fluidOutputs(PhthalicAcid.getFluid(5000))
                 .fluidOutputs(Water.getFluid(1000))
+                .buildAndRegister();
+
+        // 2 C6H5F + C2H2 -> C14H10 + 2 HF
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(120)
+                .fluidInputs(FluoroBenzene.getFluid(2000))
+                .fluidInputs(Acetylene.getFluid(1000))
+                .fluidOutputs(Anthracene.getFluid(1000))
+                .fluidOutputs(HydrofluoricAcid.getFluid(2000))
                 .buildAndRegister();
     }
 
@@ -688,58 +695,10 @@ public class VariousChains {
 
     private static void coalTar() {
 
-        PYROLYSE_RECIPES.recipeBuilder().duration(1080).EUt(60)
-                .circuitMeta(20)
-                .input(gem, Lignite, 16)
-                .output(dust, Ash, 4)
-                .fluidOutputs(CoalTar.getFluid(800))
-                .buildAndRegister();
-
-        PYROLYSE_RECIPES.recipeBuilder().duration(360).EUt(120)
-                .circuitMeta(20)
-                .input(gem, Charcoal, 32)
-                .output(dust, Ash, 4)
-                .fluidOutputs(CoalTar.getFluid(800))
-                .buildAndRegister();
-        PYROLYSE_RECIPES.recipeBuilder().duration(720).EUt(120)
-                .circuitMeta(20)
-                .input(gem, Coal, 12)
-                .output(dust, Ash, 4)
-                .fluidOutputs(CoalTar.getFluid(2200))
-                .buildAndRegister();
-
-        PYROLYSE_RECIPES.recipeBuilder().duration(360).EUt(240)
-                .circuitMeta(20)
-                .input(gem, Coke, 8)
-                .output(dust, Ash, 4)
-                .fluidOutputs(CoalTar.getFluid(3400))
-                .buildAndRegister();
-
-        DISTILLATION_RECIPES.recipeBuilder().duration(900).EUt(60)
-                .fluidInputs(CoalTar.getFluid(1000))
-                .fluidOutputs(CoalTarOil.getFluid(500))
-                .fluidOutputs(Kerosene.getFluid(200))
-                .fluidOutputs(EthylBenzene.getFluid(150))
-                .fluidOutputs(Naphtha.getFluid(100))
-                .fluidOutputs(Anthracene.getFluid(50))
-                .buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder().duration(320).EUt(30)
-                .fluidInputs(SulfuricAcid.getFluid(8000))
-                .fluidInputs(CoalTarOil.getFluid(8000))
-                .fluidOutputs(SulfuricCoalTarOil.getFluid(16000))
-                .buildAndRegister();
-
-        DISTILLERY_RECIPES.recipeBuilder().duration(80).EUt(30)
-                .circuitMeta(0)
-                .fluidInputs(SulfuricCoalTarOil.getFluid(50))
-                .fluidOutputs(Naphthalene.getFluid(50))
-                .buildAndRegister();
-
-        DISTILLERY_RECIPES.recipeBuilder().duration(5).EUt(480)
+        DISTILLERY_RECIPES.recipeBuilder().duration(200).EUt(30)
+                .fluidInputs(Naphthalene.getFluid(1000))
                 .circuitMeta(1)
-                .fluidInputs(SulfuricCoalTarOil.getFluid(800))
-                .fluidOutputs(Naphthalene.getFluid(800))
+                .fluidOutputs(Kerosene.getFluid(1000))
                 .buildAndRegister();
     }
 }

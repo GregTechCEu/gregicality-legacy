@@ -99,15 +99,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Mendelevium261;
     public static Material Mendelevium263;
 
-    // todo
-    public static Material CoalTar = new Material(937, "coal_tar", 0x5E3122, MaterialIconSet.FLUID, of(new MaterialStack(Coal, 1), new MaterialStack(RareEarth, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
-    public static Material CoalTarOil = new Material(936, "coal_tar_oil", 0xB5B553, MaterialIconSet.FLUID, of(new MaterialStack(CoalTar, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
-    public static Material SulfuricCoalTarOil = new Material(935, "sulfuric_coal_tar_oil", 0xFFFFAD, MaterialIconSet.FLUID, of(new MaterialStack(CoalTarOil, 1), new MaterialStack(SulfuricAcid, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION);
-    public static Material AquaRegia = new Material(899, "aqua_regia", 0xFFB132, MaterialIconSet.FLUID, of(new MaterialStack(NitricAcid, 1), new MaterialStack(HydrochloricAcid, 1)), DISABLE_DECOMPOSITION);
-    public static Material LiquidOxygen = new Material(919, "liquid_oxygen", 0x81FFFD, MaterialIconSet.FLUID, of(new MaterialStack(Oxygen, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(54);
-    public static Material LiquidHydrogen = new Material(917, "liquid_hydrogen", 0x3AFFC6, MaterialIconSet.FLUID, of(new MaterialStack(Hydrogen, 1)), NO_RECYCLING | GENERATE_FLUID_BLOCK | DISABLE_DECOMPOSITION).setFluidTemperature(14);
-
-
     // First Degree Materials
     public static Material Hydrazine;
     public static Material HydrogenPeroxide;
@@ -531,6 +522,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Alumina;
     public static Material Triniite;
     public static Material HydroiodicAcid;
+    public static Material LiquidOxygen;
+    public static Material LiquidHydrogen;
 
 
     // Second Degree Materials
