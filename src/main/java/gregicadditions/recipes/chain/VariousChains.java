@@ -359,6 +359,38 @@ public class VariousChains {
                 .notConsumable(IntCircuitIngredient.getIntegratedCircuit(1))
                 .outputs(AluminiumChloride.getItemStack(4))
                 .buildAndRegister();
+
+        // Cd + S -> CdS
+        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(240).EUt(300)
+                .input(dust, Cadmium)
+                .input(dust, Sulfur)
+                .output(dust, CadmiumSulfide, 2)
+                .buildAndRegister();
+
+        // 2CoO + Al2O3 -> Al2Co2O5
+        BLAST_RECIPES.recipeBuilder().duration(240).EUt(125).blastFurnaceTemp(500)
+                .input(dust, CobaltOxide, 4)
+                .input(dust, Alumina, 5)
+                .output(dust, CobaltAluminate, 9)
+                .buildAndRegister();
+
+        // C7H8 + H2SO4 + NaCl -> C7H7SO3Na + (H2O)(HCl)
+        CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(950)
+                .input(dust, Salt, 2)
+                .fluidInputs(Toluene.getFluid(1000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidOutputs(Toluenesulfonate.getFluid(1000))
+                .fluidOutputs(DilutedHydrochloricAcid.getFluid(2000))
+                .buildAndRegister();
+
+        //C8H4O3 + 2 C6H6O2 -> 	C20H12O5 + 2H2O
+        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1150)
+                .input(dust, PhthalicAnhydride, 15)
+                .fluidInputs(Resorcinol.getFluid(2000))
+                .output(dust, Fluorescein, 37)
+                .fluidOutputs(Water.getFluid(2000))
+                .notConsumable(dust, ZincChloride)
+                .buildAndRegister();
     }
 
     private static void hydrogenPeroxide() {

@@ -878,13 +878,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(Y(NO3)3)6(Pr(NO3)3)2(Nd(NO3)3)2(H2O)15", true);
 
-        PhosphorousArsenicSolution = new Material.Builder(11519, "phosphorus_arsenic_solution")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Arsenic, 1, Cadmium, 1, Hydrogen, 10, Phosphorus, 10, Oxygen, 40)
-                .build()
-                .setFormula("AsCd(HPO4)10", true);
+        // Free ID 11519
 
         AmmoniumBifluorideSolution = new Material.Builder(11520, "ammonium_bifluoride_solution")
                 .fluid()
@@ -902,12 +896,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(YCl3)6(LuCl3)2(TmCl3)2(H2O)15", true);
 
-        BismuthVanadateSolution = new Material.Builder(11522, "bismuth_vanadate_solution")
-                .fluid()
-                .color(0xFFFF00)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Water, 1, BismuthVanadate, 1)
-                .build();
+        // Free ID 11522
 
         SeaborgiumDopedNanotubes = new Material.Builder(11523, "seaborgium_doped_nanotubes")
                 .fluid()
@@ -1010,21 +999,9 @@ public class GASecondDegreeMaterials {
                 .components(LeadBismuthEutectic, 1)
                 .build();
 
-        ApatiteAcidicLeach = new Material.Builder(11536, "apatite_acidic_leach")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Hydrogen, 10, Phosphorus, 3, Oxygen, 12, Chlorine, 1, RareEarth, 2)
-                .build()
-                .setFormula("H10P3O12Cl??", true);
+        // Free ID 11536
 
-        FluoroapatiteAcidicLeach = new Material.Builder(11537, "fluoroapatite_acidic_leach")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Hydrogen, 10, Phosphorus, 3, Oxygen, 12, Fluorine, 1, RareEarth, 2)
-                .build()
-                .setFormula("H10P3O12F??", true);
+        // Free ID 11537
 
         SilicaAluminaGel = new Material.Builder(11538, "silica_alumina_gel")
                 .dust()
@@ -1350,33 +1327,13 @@ public class GASecondDegreeMaterials {
                 .components(Terbium, 4, Dysprosium, 7, Iron, 10, Cobalt, 5, Boron, 2, SiliconCarbide, 1)
                 .build();
 
-        RawSienna = new Material.Builder(11582, "raw_siena")
-                .dust()
-                .color(0x663300).iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(SiliconDioxide, 1, Pyrolusite, 1, Iron, 1, Oxygen, 2)
-                .build();
+        // Free ID 11582
 
-        BurnedSienna = new Material.Builder(11583, "burned_siena")
-                .dust()
-                .color(0xFF0000)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(RawSienna, 1)
-                .build();
+        // Free ID 11583
 
-        TitaniumYellow = new Material.Builder(11584, "titanium_yellow")
-                .dust()
-                .color(0xFFFF00).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Garnierite, 1, AntimonyTrioxide, 1, Rutile, 20)
-                .build();
+        // Free ID 11584
 
-        AmmoniumManganesePhosphate = new Material.Builder(11585, "ammonium_manganese_phosphate")
-                .dust()
-                .color(0x660066).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Nitrogen, 1, Hydrogen, 4, Manganese, 1, Phosphate, 1)
-                .build();
+        // Free ID 11585
 
         PotassiumNonahydridotechnetate = new Material.Builder(11586, "potassium_nonahydridotechnetate")
                 .dust()

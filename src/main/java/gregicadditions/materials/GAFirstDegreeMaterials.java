@@ -1364,13 +1364,7 @@ public class GAFirstDegreeMaterials {
                 .build()
                 .setFormula("NH4F");
 
-        MercuryNitrate = new Material.Builder(3612, "mercury_nitrate")
-                .fluid()
-                .color(0xD6B8AD)
-                .flags(DECOMPOSITION_BY_ELECTROLYZING)
-                .components(Mercury, 1, Nitrogen, 2, Oxygen, 6)
-                .build()
-                .setFormula("Hg(NO3)2", true);
+        // Free ID 3612
 
         KryptonDifluoride = new Material.Builder(3613, "krypton_difluoride")
                 .fluid()
@@ -2465,19 +2459,9 @@ public class GAFirstDegreeMaterials {
                 .components(Caesium, 1, Bromine, 1)
                 .build();
 
-        FluoroapatiteSolidResidue = new Material.Builder(3777, "fluoroapatite_solid_residue")
-                .dust()
-                .color(0x3CB290).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Calcium, 6, Phosphorus, 1, Oxygen, 4, Silicon, 1, Oxygen, 3, Fluorine, 1)
-                .build();
+        // Free ID 3777
 
-        ApatiteSolidResidue = new Material.Builder(3778, "apatite_solid_residue")
-                .dust()
-                .color(0x3CB290).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Calcium, 6, Phosphorus, 1, Oxygen, 4, Silicon, 1, Oxygen, 3)
-                .build();
+        // Free ID 3778
 
         AmmoniumBifluoride = new Material.Builder(3779, "ammonium_bifluoride")
                 .dust()
@@ -2487,12 +2471,7 @@ public class GAFirstDegreeMaterials {
                 .build()
                 .setFormula("NH4HF2", true);
 
-        SodiumArsenate = new Material.Builder(3780, "sodium_arsenate")
-                .dust()
-                .color(0xBFFABF)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Sodium, 3, Arsenic, 1, Oxygen, 4)
-                .build();
+        // Free ID 3780
 
         PureSodiumVanadate = new Material.Builder(3781, "pure_sodium_vanadate")
                 .dust()
@@ -2516,37 +2495,15 @@ public class GAFirstDegreeMaterials {
                 .components(Cadmium, 1, Sulfur, 1)
                 .build();
 
-        BismuthVanadate = new Material.Builder(3784, "bismuth_vanadate")
-                .dust()
-                .colorAverage()
-                .flags(DECOMPOSITION_BY_ELECTROLYZING)
-                .components(Bismuth, 1, Vanadium, 1, Oxygen, 4)
-                .build();
+        // Free ID 3784
 
-        CopperArsenite = new Material.Builder(3785, "copper_arsenite")
-                .dust()
-                .color(0x66FF66).iconSet(ROUGH)
-                .components(Copper, 3, Arsenic, 2, Oxygen, 8)
-                .build()
-                .setFormula("Cu3(AsO4)2", true);
+        // Free ID 3785
 
-        MercuryIodide = new Material.Builder(3786, "mercury_iodide")
-                .dust()
-                .color(0xFF0000)
-                .components(Mercury, 1, Iodine, 2)
-                .build();
+        // Free ID 3786
 
-        CobaltZincOxide = new Material.Builder(3787, "cobalt_zinc_oxide")
-                .dust()
-                .color(0x00FFFF)
-                .components(Cobalt, 1, Zinc, 4, Oxygen, 5)
-                .build();
+        // Free ID 3787
 
-        ScheelesGreen = new Material.Builder(3788, "scheeles_green")
-                .dust()
-                .color(0x00FF00)
-                .components(Arsenic, 1, Copper, 1, Hydrogen, 1, Oxygen, 3)
-                .build();
+        // Free ID 3788
 
         CobaltAluminate = new Material.Builder(3789, "cobalt_aluminate")
                 .dust()
@@ -2554,35 +2511,15 @@ public class GAFirstDegreeMaterials {
                 .components(Aluminium, 2, Cobalt, 2, Oxygen, 5)
                 .build();
 
-        HanPurple = new Material.Builder(3790, "han_purple")
-                .dust()
-                .color(0x660066)
-                .components(Barium, 1, Copper, 1, Silicon, 2, Oxygen, 6)
-                .build();
+        // Free ID 3790
 
-        ChromeYellow = new Material.Builder(3791, "chrome_yellow")
-                .dust()
-                .color(0xFFFF00)
-                .components(Lead, 1, Chrome, 1, Oxygen, 4)
-                .build();
+        // Free ID 3791
 
-        ChromeOrange = new Material.Builder(3792, "chrome_orange")
-                .dust()
-                .color(0xFF6600)
-                .components(Lead, 2, Chrome, 1, Oxygen, 5)
-                .build();
+        // Free ID 3792
 
-        ManganeseIIIOxide = new Material.Builder(3793, "manganese_iii_oxide")
-                .dust()
-                .colorAverage()
-                .components(Manganese, 2, Oxygen, 3)
-                .build();
+        // Free ID 3793
 
-        MercuryChloride = new Material.Builder(3794, "mercury_chloride")
-                .dust()
-                .color(0xD6B8AD)
-                .components(Mercury, 1, Chlorine, 2)
-                .build();
+        // Free ID 3794
 
         LithiumHydride = new Material.Builder(3795, "lithium_hydride")
                 .dust()

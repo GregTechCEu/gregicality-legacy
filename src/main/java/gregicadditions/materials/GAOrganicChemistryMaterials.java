@@ -1032,34 +1032,13 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("NH2CH2COOH", true);
 
-        Nitrotoluene = new Material.Builder(6633, "nitrotoluene")
-                .fluid()
-                .color(0xFCCA00)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 7, Hydrogen, 7, Nitrogen, 1, Oxygen, 2)
-                .build()
-                .setFormula("C7H7NO2", true);
+        // Free ID 6633
 
-        Naphthylamine = new Material.Builder(6634, "naphthylamine")
-                .fluid()
-                .color(0xE3E81C)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 10, Hydrogen, 9, Nitrogen, 1)
-                .build();
+        // Free ID 6634
 
-        Acetoacetanilide = new Material.Builder(6635, "acetoacetanilide")
-                .fluid()
-                .color(0xFFFFC2)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 10, Hydrogen, 11, NitrogenDioxide, 1)
-                .build();
+        // Free ID 6635
 
-        Quinizarin = new Material.Builder(6636, "quinizarin")
-                .fluid()
-                .color(0x3C5A2C0)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 14, Hydrogen, 8, Oxygen, 4)
-                .build();
+        // Free ID 6636
 
         Toluenesulfonate = new Material.Builder(6637, "toluenesulfonate")
                 .fluid()
@@ -1068,26 +1047,11 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 7, Hydrogen, 7, Sulfur, 1, Oxygen, 3, Sodium, 1)
                 .build();
 
-        Isopropylsuccinate = new Material.Builder(6638, "isopropylsuccinate")
-                .fluid()
-                .color(0xB26680)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 7, Hydrogen, 12, Oxygen, 4)
-                .build();
+        // Free ID 6638
 
-        MaleicAnhydride = new Material.Builder(6639, "maleic_anhydride")
-                .fluid()
-                .color(0x3C20AD)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 4, Hydrogen, 2, Oxygen, 3)
-                .build();
+        // Free ID 6639
 
-        Benzonitrile = new Material.Builder(6640, "benzonitrile")
-                .fluid()
-                .color(0x2C2C9C)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 7, Hydrogen, 5, Nitrogen, 1)
-                .build();
+        // Free ID 6640
 
         AmmoniumNiobiumOxalateSolution = new Material.Builder(6641, "ammonium_niobium_oxalate_solution")
                 .fluid()
@@ -1496,12 +1460,7 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 24, Hydrogen, 51, Phosphorus, 1)
                 .build();
 
-        Toluidine = new Material.Builder(6699, "toluidine")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 7, Hydrogen, 9, Nitrogen, 1)
-                .build();
+        // Free ID 6699
 
         HydroxylamineHydrochloride = new Material.Builder(6700, "hydroxylamine_hydrochloride")
                 .fluid()
@@ -1863,120 +1822,37 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 1, Hydrogen, 4, Nitrogen, 2, Oxygen, 1)
                 .build();
 
-        PotassiumFerrocyanide = new Material.Builder(6748, "potassium_ferrocyanide")
-                .dust()
-                .color(0x0000FF).iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Potassium, 4, Iron, 1, Carbon, 6, Nitrogen, 6, Water, 3)
-                .build()
-                .setFormula("K4Fe(CN)6(H2O)3", true);
+        // Free ID 6748
 
-        PrussianBlue = new Material.Builder(6749, "prussian_blue")
-                .dust()
-                .color(0x0000FF)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Iron, 7, Carbon, 18, Nitrogen, 18)
-                .build()
-                .setFormula("Fe4(Fe(CN)6)3", true);
+        // Free ID 6749
 
-        DiaminostilbenedisulfonicAcid = new Material.Builder(6750, "diaminostilbenedisulfonic_acid")
-                .dust()
-                .color(0xFFFFFF)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 14, Hydrogen, 14, Nitrogen, 2, Oxygen, 6, Sulfur, 2)
-                .build();
+        // Free ID 6750
 
-        Nigrosin = new Material.Builder(6751, "nigrosin")
-                .dust()
-                .color(0x000000)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 36, Hydrogen, 26, Nitrogen, 5, Chlorine, 1, Sodium, 2, Sulfur, 2, Oxygen, 6)
-                .build();
+        // Free ID 6751
 
-        DirectBrown = new Material.Builder(6752, "direct_brown")
-                .dust()
-                .color(0x663300)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 26, Hydrogen, 19, Nitrogen, 6, Sodium, 1, Oxygen, 3, Sulfur, 1)
-                .build();
+        // Free ID 6752
 
-        DianilineterephthalicAcid = new Material.Builder(6753, "dianilineterephthalic_acid")
-                .dust()
-                .color(0xFF0000)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 20, Hydrogen, 16, Nitrogen, 2, Oxygen, 4)
-                .build();
+        // Free ID 6753
 
-        Quinacridone = new Material.Builder(6754, "quinacridone")
-                .dust()
-                .color(0xFF0000)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 20, Hydrogen, 12, Nitrogen, 2, Oxygen, 2)
-                .build();
+        // Free ID 6754
 
-        DiarylideYellow = new Material.Builder(6755, "diarylide_yellow")
-                .dust()
-                .color(0xFFFF00)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 32, Hydrogen, 26, Chlorine, 2, Nitrogen, 6, Oxygen, 4)
-                .build();
+        // Free ID 6755
 
-        AlizarineCyanineGreen = new Material.Builder(6756, "alizarine_cyanine_geen")
-                .dust()
-                .color(0x00FF00)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 28, Hydrogen, 20, Nitrogen, 2, Sodium, 2, Oxygen, 8, Sulfur, 2)
-                .build();
+        // Free ID 6756
 
-        Aminoanthraquinone = new Material.Builder(6757, "aminoanthraquinone")
-                .dust()
-                .color(0x0000FF)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 14, Hydrogen, 9, Nitrogen, 1, Oxygen, 2)
-                .build();
+        // Free ID 6757
 
-        IndanthroneBlue = new Material.Builder(6758, "indanthrone_blue")
-                .dust()
-                .color(0x0000FF)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 28, Hydrogen, 14, Nitrogen, 2, Oxygen, 2)
-                .build();
+        // Free ID 6758
 
-        Diketopyrrolopyrrole = new Material.Builder(6759, "diketopyrrolopyrrole")
-                .dust()
-                .color(0xFF6600)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 18, Hydrogen, 12, Nitrogen, 2, Oxygen, 2)
-                .build();
+        // Free ID 6759
 
-        Mauveine = new Material.Builder(6760, "mauveine")
-                .dust()
-                .color(0x660066)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 26, Hydrogen, 23, Nitrogen, 4)
-                .build();
+        // Free ID 6760
 
-        Indigo = new Material.Builder(6761, "indigo")
-                .dust()
-                .color(0x0000FF)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 16, Hydrogen, 10, Nitrogen, 2, Oxygen, 2)
-                .build();
+        // Free ID 6761
 
-        Tetrabromoindigo = new Material.Builder(6762, "tetrabromoindigo")
-                .dust()
-                .color(0x00FF00)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 16, Hydrogen, 6, Bromine, 2, Nitrogen, 2, Oxygen, 2)
-                .build();
+        // Free ID 6762
 
-        CyanIndigoDye = new Material.Builder(6763, "cyan_indigo_dye")
-                .dust()
-                .color(0x009999)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 32, Hydrogen, 20, Nitrogen, 4, Oxygen, 2, Bromine, 2)
-                .build()
-                .setFormula("(C16H10N2O2)2Br2", true);
+        // Free ID 6763
 
         Fluorescein = new Material.Builder(6734, "fluorescein")
                 .dust()
@@ -1985,26 +1861,11 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 20, Hydrogen, 12, Oxygen, 5)
                 .build();
 
-        Erythrosine = new Material.Builder(6735, "erythrosine")
-                .dust()
-                .color(0xFF00FF)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 20, Hydrogen, 6, Iodine, 4, Sodium, 2, Oxygen, 5)
-                .build();
+        // Free ID 6735
 
-        SodiumSulfanilate = new Material.Builder(6736, "sodium_sulfanilate")
-                .dust()
-                .color(0xE49879).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 6, Hydrogen, 6, Nitrogen, 1, Sodium, 1, Oxygen, 3, Sulfur, 1)
-                .build();
+        // Free ID 6736
 
-        Anthraquinone = new Material.Builder(6737, "anthraquinone")
-                .dust()
-                .color(0xFFF782).iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 14, Hydrogen, 8, Oxygen, 2)
-                .build();
+        // Free ID 6737
 
         PalladiumAcetate = new Material.Builder(6738, "palladium_acetate")
                 .dust()

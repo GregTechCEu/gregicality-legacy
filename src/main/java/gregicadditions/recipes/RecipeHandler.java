@@ -139,7 +139,6 @@ public class RecipeHandler {
         SuperconductorsSMDChain.init();
         FusionComponents.init();
         NiobiumTantalumChain.init();
-        Dyes.init();
         SensorEmitter.init();
         SeleniumChain.init();
         WormholeGeneratorChain.init();
