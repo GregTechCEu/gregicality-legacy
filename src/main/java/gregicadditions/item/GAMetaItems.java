@@ -209,6 +209,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LITHIUM_ION;
     public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LITHIUM_ION_EMPTY;
     public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LITHIUM_ION;
+
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LIS_EMPTY;
     public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LIS;
     public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS_EMPTY;

@@ -1387,13 +1387,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("S2C2(Al9Si10O50Ga)", true);
 
-        NickelOxideHydroxide = new Material.Builder(11593, "nickel_oxide_hydroxide")
-                .dust()
-                .color(0xA2F2A2).iconSet(METALLIC)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Garnierite, 1, Oxygen, 1, Hydrogen, 1)
-                .build()
-                .setFormula("NiO(OH)", true);
+        // Free ID 11593
 
         TBCCODust = new Material.Builder(11594, "tbcco_dust")
                 .dust()

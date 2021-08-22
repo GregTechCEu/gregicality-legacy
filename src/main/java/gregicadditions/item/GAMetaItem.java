@@ -188,11 +188,6 @@ public class GAMetaItem extends StandardMetaItem {
         NEURO_SUPPORT_UNIT = addItem(410, "neuro.support.unit");
         CYBER_PROCESSING_UNIT = addItem(411, "cyber.processing.unit");
 
-        BATTERY_NIMH_EMPTY = addItem(412, "nickel.metal.hydride.battery.empty");
-        BATTERY_SMALL_LITHIUM_ION_EMPTY = addItem(414, "small.lithium.ion.battery.empty");
-        BATTERY_MEDIUM_LITHIUM_ION_EMPTY = addItem(417, "medium.lithium.ion.battery.empty");
-        BATTERY_LARGE_LITHIUM_ION_EMPTY = addItem(415, "large.lithium.ion.battery.empty");
-        BATTERY_SMALL_LIS_EMPTY = addItem(418, "small.lithium.sulfide.battery.empty");
         BATTERY_MEDIUM_LIS_EMPTY = addItem(413, "medium.lithium.sulfide.battery.empty");
         BATTERY_LARGE_LIS_EMPTY = addItem(416, "large.lithium.sulfide.battery.empty");
         BATTERY_SMALL_FLUORIDE_EMPTY = addItem(419, "small.fluoride.battery.empty");
@@ -415,13 +410,6 @@ public class GAMetaItem extends StandardMetaItem {
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
         HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 
-        BATTERY_NIMH = addItem(609, "nickel.metal.hydride.battery").addComponents(ElectricStats.createRechargeableBattery(7200000, GTValues.EV)).setModelAmount(8);
-
-        BATTERY_SMALL_LITHIUM_ION = addItem(610, "small.lithium.ion.battery").addComponents(ElectricStats.createRechargeableBattery(28800000, GTValues.IV)).setModelAmount(8);
-        BATTERY_MEDIUM_LITHIUM_ION = addItem(611, "medium.lithium.ion.battery").addComponents(ElectricStats.createRechargeableBattery(115200000, GTValues.LuV)).setModelAmount(8);
-        BATTERY_LARGE_LITHIUM_ION = addItem(612, "large.lithium.ion.battery").addComponents(ElectricStats.createRechargeableBattery(460800000, GTValues.ZPM)).setModelAmount(8);
-
-        BATTERY_SMALL_LIS = addItem(613, "small.lithium.sulfide.battery").addComponents(ElectricStats.createRechargeableBattery(1843200000, GTValues.UV)).setModelAmount(8);
         BATTERY_MEDIUM_LIS = addItem(614, "medium.lithium.sulfide.battery").addComponents(ElectricStats.createRechargeableBattery(7372800000L, GTValues.UHV)).setModelAmount(8);
         BATTERY_LARGE_LIS = addItem(615, "large.lithium.sulfide.battery").addComponents(ElectricStats.createRechargeableBattery(29491200000L, GTValues.UEV)).setModelAmount(8);
 

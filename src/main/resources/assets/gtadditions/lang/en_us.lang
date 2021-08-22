@@ -49,47 +49,27 @@ metaitem.methylbenzophenanthrene.name=Methylbenzophenanthrene
 
 metaitem.large.fluoride.battery.empty.name=Large Fluoride Battery Hull
 metaitem.large.lithium.sulfide.battery.empty.name=Large Lithium Sulfide Battery Hull
-metaitem.large.lithium.ion.battery.empty.name=Large Lithium Ion Battery Hull
 metaitem.medium.fluoride.battery.empty.name=Medium Fluoride Battery Hull
 metaitem.medium.lithium.sulfide.battery.empty.name=Medium Lithium Sulfide Battery Hull
-metaitem.medium.lithium.ion.battery.empty.name=Medium Lithium Ion Battery Hull
 metaitem.small.fluoride.battery.empty.name=Small Fluoride Battery Hull
-metaitem.small.lithium.sulfide.battery.empty.name=Small Lithium Sulfide Battery Hull
-metaitem.small.lithium.ion.battery.empty.name=Small Lithium Ion Battery Hull
-metaitem.nickel.metal.hydride.battery.empty.name=Nickel Metal Hydride Battery Hull
 
 metaitem.large.fluoride.battery.empty.tooltip=An Empty UXV Battery Hull
 metaitem.large.lithium.sulfide.battery.empty.tooltip=An Empty UEV Battery Hull
-metaitem.large.lithium.ion.battery.empty.tooltip=An Empty ZPM Battery Hull
 metaitem.medium.fluoride.battery.empty.tooltip=An Empty UMV Battery Hull
 metaitem.medium.lithium.sulfide.battery.empty.tooltip=An Empty UHV Battery Hull
-metaitem.medium.lithium.ion.battery.empty.tooltip=An Empty LuV Battery Hull
 metaitem.small.fluoride.battery.empty.tooltip=An Empty UIV Battery Hull
-metaitem.small.lithium.sulfide.battery.empty.tooltip=An Empty UV Battery Hull
-metaitem.small.lithium.ion.battery.empty.tooltip=An Empty IV Battery Hull
-metaitem.nickel.metal.hydride.battery.empty.tooltip=An Empty EV Battery Hull
 
 metaitem.large.fluoride.battery.name=Large Fluoride Battery
 metaitem.large.lithium.sulfide.battery.name=Large Lithium Sulfide Battery
-metaitem.large.lithium.ion.battery.name=Large Lithium Ion Battery
 metaitem.medium.fluoride.battery.name=Medium Fluoride Battery
 metaitem.medium.lithium.sulfide.battery.name=Medium Lithium Sulfide Battery
-metaitem.medium.lithium.ion.battery.name=Medium Lithium Ion Battery
 metaitem.small.fluoride.battery.name=Small Fluoride Battery
-metaitem.small.lithium.sulfide.battery.name=Small Lithium Sulfide Battery
-metaitem.small.lithium.ion.battery.name=Small Lithium Ion Battery
-metaitem.nickel.metal.hydride.battery.name=Nickel Metal Hydride Battery
 
 metaitem.large.fluoride.battery.tooltip=Reusable
 metaitem.large.lithium.sulfide.battery.tooltip=Reusable
-metaitem.large.lithium.ion.battery.tooltip=Reusable
 metaitem.medium.fluoride.battery.tooltip=Reusable
 metaitem.medium.lithium.sulfide.battery.tooltip=Reusable
-metaitem.medium.lithium.ion.battery.tooltip=Reusable
 metaitem.small.fluoride.battery.tooltip=Reusable
-metaitem.small.lithium.sulfide.battery.tooltip=Reusable
-metaitem.small.lithium.ion.battery.tooltip=Reusable
-metaitem.nickel.metal.hydride.battery.tooltip=Reusable
 
 metaitem.electrically.wired.petri.dish.name=Electricaly Wired Petri Dish
 metaitem.neuro.support.unit.name=Neuro Support Unit

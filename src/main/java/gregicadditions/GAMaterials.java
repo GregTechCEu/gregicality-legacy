@@ -493,7 +493,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material PostTransitionMetals;
     public static Material RheniumChloride;
     public static Material AntimonyTrichloride;
-    public static Material LithiumCobaltOxide;
     public static Material LithiumTriflate;
     public static Material SiliconNanoparticles;
     public static Material Halloysite;
@@ -713,7 +712,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material PurifiedPyrochlore;
     public static Material ChargedCesiumCeriumCobaltIndium;
     public static Material SulfurCoatedHalloysite;
-    public static Material NickelOxideHydroxide;
     public static Material TBCCODust;
     public static Material StrontiumSuperconductorDust;
     public static Material FullereneSuperconductiveDust;

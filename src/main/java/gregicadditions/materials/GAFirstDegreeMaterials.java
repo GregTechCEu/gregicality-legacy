@@ -2719,11 +2719,7 @@ public class GAFirstDegreeMaterials {
                 .components(Antimony, 1, Chlorine, 3)
                 .build();
 
-        LithiumCobaltOxide = new Material.Builder(3827, "lithium_cobalt_oxide")
-                .dust()
-                .color(0xD2A4F3).iconSet(SHINY)
-                .components(Lithium, 1, Cobalt, 1, Oxygen, 1)
-                .build();
+        // Free ID 3827
 
         LithiumTriflate = new Material.Builder(3828, "lithium_triflate")
                 .dust()
