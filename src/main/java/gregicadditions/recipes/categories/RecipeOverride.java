@@ -571,55 +571,6 @@ public class RecipeOverride {
                     'P', "plankWood");
         }
 
-        // GTNH Coils
-        MIXER_RECIPES.recipeBuilder().duration(400).EUt(8)
-                .input(dust, Mica, 3)
-                .input(dust, RawRubber, 2)
-                .output(dust, MicaPulp, 5)
-                .buildAndRegister();
-
-        MIXER_RECIPES.recipeBuilder().duration(400).EUt(8)
-                .input(dust, Mica, 3)
-                .inputs(RUBBER_DROP.getStackForm())
-                .output(dust, MicaPulp, 4)
-                .buildAndRegister();
-
-        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1200).EUt(30)
-                .input(dust, Sapphire)
-                .input(dust, SiliconDioxide, 3)
-                .output(dust, AluminoSilicateWool, 2)
-                .buildAndRegister();
-
-        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1200).EUt(30)
-                .input(dust, GreenSapphire)
-                .input(dust, SiliconDioxide, 3)
-                .output(dust, AluminoSilicateWool, 2)
-                .buildAndRegister();
-
-        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(1200).EUt(30)
-                .input(dust, Ruby)
-                .input(dust, SiliconDioxide, 3)
-                .output(dust, AluminoSilicateWool, 2)
-                .buildAndRegister();
-
-        FORMING_PRESS_RECIPES.recipeBuilder().duration(400).EUt(28)
-                .input(dust, MicaPulp, 4)
-                .input(dust, Asbestos)
-                .outputs(MICA_SHEET.getStackForm(5))
-                .buildAndRegister();
-
-        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(400).EUt(30)
-                .inputs(MICA_SHEET.getStackForm(5))
-                .input(dust, SiliconDioxide, 3)
-                .outputs(MICA_INSULATOR_SHEET.getStackForm(8))
-                .buildAndRegister();
-
-        BENDER_RECIPES.recipeBuilder().duration(100).EUt(30)
-                .inputs(MICA_INSULATOR_SHEET.getStackForm())
-                .circuitMeta(0)
-                .outputs(MICA_INSULATOR_FOIL.getStackForm(4))
-                .buildAndRegister();
-
         // Ash Recipes
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, DarkAsh, 2));
         CENTRIFUGE_RECIPES.recipeBuilder().duration(250).EUt(6)

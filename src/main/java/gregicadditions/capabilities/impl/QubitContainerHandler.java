@@ -14,6 +14,8 @@ import java.util.function.Predicate;
 
 public class QubitContainerHandler extends MTETrait implements IQubitContainer {
 
+    public static final int TRAIT_ID_QBIT_CONTAINER = 10;
+
     private final long maxCapacity;
     private long qubitStored;
 
@@ -58,7 +60,7 @@ public class QubitContainerHandler extends MTETrait implements IQubitContainer {
 
     @Override
     public int getNetworkID() {
-        return GATraitNetworkIds.TRAIT_ID_QBIT_CONTAINER;
+        return TRAIT_ID_QBIT_CONTAINER;
     }
 
     @Override

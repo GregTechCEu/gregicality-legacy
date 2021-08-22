@@ -7,11 +7,7 @@ import static gregtech.common.items.MetaItems.WOODEN_FORM_BRICK;
 
 public class GAMetaItems {
 
-    public static MetaItem<?>.MetaValueItem PETRI_DISH;
-    public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY;
-    public static MetaItem<?>.MetaValueItem ENERGY_MODULE;
-    public static MetaItem<?>.MetaValueItem ENERGY_CLUSTER;
-    public static MetaItem<?>.MetaValueItem MAX_BATTERY;
+    public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY; // todo is this needed?
 
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_REFINED;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_NANO;
@@ -96,19 +92,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem NEURO_PROCESSOR;
     public static MetaItem<?>.MetaValueItem RAW_CRYSTAL_CHIP;
 
-    public static MetaItem<?>.MetaValueItem MICA_SHEET;
-    public static MetaItem<?>.MetaValueItem MICA_INSULATOR_SHEET;
-    public static MetaItem<?>.MetaValueItem MICA_INSULATOR_FOIL;
-
-    public static MetaItem<?>.MetaValueItem BASIC_BOARD;
-    public static MetaItem<?>.MetaValueItem GOOD_PHENOLIC_BOARD;
-    public static MetaItem<?>.MetaValueItem GOOD_PLASTIC_BOARD;
-    public static MetaItem<?>.MetaValueItem ADVANCED_BOARD;
-    public static MetaItem<?>.MetaValueItem EXTREME_BOARD;
-    public static MetaItem<?>.MetaValueItem ELITE_BOARD;
     public static MetaItem<?>.MetaValueItem KAPTON_BOARD;
     public static MetaItem<?>.MetaValueItem KAPTON_CIRCUIT_BOARD;
-    public static MetaItem<?>.MetaValueItem MASTER_BOARD;
 
     public static MetaItem<?>.MetaValueItem ELECTRODE_APATITE;
     public static MetaItem<?>.MetaValueItem ELECTRODE_BLAZE;
@@ -136,8 +121,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SCHEMATIC_2X2;
     public static MetaItem<?>.MetaValueItem SCHEMATIC_3X3;
     public static MetaItem<?>.MetaValueItem SCHEMATIC_DUST;
-
-    public static MetaItem<?>.MetaValueItem STEM_CELLS;
 
     public static MetaItem<?>.MetaValueItem HUGE_TURBINE_ROTOR;
     public static MetaItem<?>.MetaValueItem LARGE_TURBINE_ROTOR;
@@ -212,52 +195,59 @@ public class GAMetaItems {
 
     public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UHV;
     public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UEV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UHV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UEV;
-    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UHV;
-    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UEV;
-    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UHV;
-    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UEV;
-    public static MetaItem<?>.MetaValueItem EMITTER_UHV;
-    public static MetaItem<?>.MetaValueItem EMITTER_UEV;
-    public static MetaItem<?>.MetaValueItem SENSOR_UHV;
-    public static MetaItem<?>.MetaValueItem SENSOR_UEV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UHV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UEV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UHV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UEV;
     public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UIV;
     public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UMV;
     public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UXV;
     public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_MAX;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UIV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UMV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UXV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_MAX;
+
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UEV;
     public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UIV;
     public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UMV;
     public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_UXV;
     public static MetaItem<?>.MetaValueItem ELECTRIC_PISTON_MAX;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UIV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UMV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UXV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_MAX;
-    public static MetaItem<?>.MetaValueItem EMITTER_UIV;
-    public static MetaItem<?>.MetaValueItem EMITTER_UMV;
-    public static MetaItem<?>.MetaValueItem EMITTER_UXV;
-    public static MetaItem<?>.MetaValueItem EMITTER_MAX;
-    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UIV;
-    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UMV;
-    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UXV;
-    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_MAX;
+
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UHV;
+    public static MetaItem<?>.MetaValueItem ROBOT_ARM_UEV;
     public static MetaItem<?>.MetaValueItem ROBOT_ARM_UIV;
     public static MetaItem<?>.MetaValueItem ROBOT_ARM_UMV;
     public static MetaItem<?>.MetaValueItem ROBOT_ARM_UXV;
     public static MetaItem<?>.MetaValueItem ROBOT_ARM_MAX;
+
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UHV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UEV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UIV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UMV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_UXV;
+    public static MetaItem<?>.MetaValueItem FIELD_GENERATOR_MAX;
+
+    public static MetaItem<?>.MetaValueItem EMITTER_UHV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UEV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UIV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UMV;
+    public static MetaItem<?>.MetaValueItem EMITTER_UXV;
+    public static MetaItem<?>.MetaValueItem EMITTER_MAX;
+
+    public static MetaItem<?>.MetaValueItem SENSOR_UHV;
+    public static MetaItem<?>.MetaValueItem SENSOR_UEV;
     public static MetaItem<?>.MetaValueItem SENSOR_UIV;
     public static MetaItem<?>.MetaValueItem SENSOR_UMV;
     public static MetaItem<?>.MetaValueItem SENSOR_UXV;
     public static MetaItem<?>.MetaValueItem SENSOR_MAX;
+
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UIV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UMV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UXV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_MAX;
+
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UIV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UMV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UXV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_MAX;
 
     public static MetaItem<?>.MetaValueItem ULTRASONIC_HOMOGENIZER;
     public static MetaItem<?>.MetaValueItem STERILIZED_PETRI_DISH;

@@ -1,6 +1,7 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.common.items.MetaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
@@ -312,7 +313,7 @@ public class WetwareChain { // TODO
                 .buildAndRegister();
 
         AUTOCLAVE_RECIPES.recipeBuilder()
-                .inputs(PETRI_DISH.getStackForm())
+                .inputs(MetaItems.PETRI_DISH.getStackForm())
                 .fluidInputs(Ethanol100.getFluid(100))
                 .outputs(STERILIZED_PETRI_DISH.getStackForm())
                 .EUt(7680)
@@ -330,7 +331,7 @@ public class WetwareChain { // TODO
         CHEMICAL_BATH_RECIPES.recipeBuilder()
                 .fluidInputs(PiranhaSolution.getFluid(100))
                 .inputs(CONTAMINATED_PETRI_DISH.getStackForm())
-                .outputs(PETRI_DISH.getStackForm())
+                .outputs(MetaItems.PETRI_DISH.getStackForm())
                 .EUt(30)
                 .duration(25)
                 .buildAndRegister();
@@ -472,13 +473,13 @@ public class WetwareChain { // TODO
                 .fluidInputs(GeneTherapyFluid.getFluid(1000))
                 .EUt(30720)
                 .duration(1000)
-                .outputs(STEM_CELLS.getStackForm())
+                .outputs(MetaItems.STEM_CELLS.getStackForm())
                 .buildAndRegister();
 
         BIO_REACTOR_RECIPES.recipeBuilder()
-                .inputs(STEM_CELLS.getStackForm())
+                .inputs(MetaItems.STEM_CELLS.getStackForm())
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
-                .outputs(STEM_CELLS.getStackForm(2))
+                .outputs(MetaItems.STEM_CELLS.getStackForm(2))
                 .fluidOutputs(DepletedGrowthMedium.getFluid(500))
                 .EUt(480)
                 .duration(100)

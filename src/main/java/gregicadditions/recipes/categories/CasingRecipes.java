@@ -333,80 +333,7 @@ public class CasingRecipes {
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(FUSION_COIL_3))
                 .buildAndRegister();
 
-        // Standard Coils
-        removeRecipeByName("gregtech:heating_coil_cupronickel");
-        removeRecipeByName("gregtech:heating_coil_kanthal");
-        removeRecipeByName("gregtech:heating_coil_nichrome");
-        removeRecipeByName("gregtech:heating_coil_tungstensteel");
-        removeRecipeByName("gregtech:heating_coil_hss_g");
-        removeRecipeByName("gregtech:heating_coil_naquadah");
-        removeRecipeByName("gregtech:heating_coil_naquadah_alloy");
-        removeRecipeByName("gregtech:heating_coil_superconductor");
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Cupronickel, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Kanthal, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Nichrome, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, TungstenSteel, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, HSSG, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Naquadah, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, NaquadahAlloy, 8), getIntegratedCircuit(8));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(wireGtDouble, Superconductor, 8), getIntegratedCircuit(8));
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8)
-                .input(wireGtDouble, Cupronickel, 8)
-                .input(dust, AluminoSilicateWool, 12)
-                .fluidInputs(Tin.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(CUPRONICKEL))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(8)
-                .input(wireGtDouble, Cupronickel, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(Tin.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(CUPRONICKEL))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(30)
-                .input(wireGtDouble, Kanthal, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(Copper.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(KANTHAL))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(120)
-                .input(wireGtDouble, Nichrome, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(Aluminium.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(NICHROME))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(480)
-                .input(wireGtDouble, TungstenSteel, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(Nichrome.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(TUNGSTENSTEEL))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920)
-                .input(wireGtDouble, HSSG, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(Tungsten.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(HSS_G))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(700).EUt(4096)
-                .input(wireGtDouble, Naquadah, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(HSSG.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(NAQUADAH))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(800).EUt(7680)
-                .input(wireGtDouble, NaquadahAlloy, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(Naquadah.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(NAQUADAH_ALLOY))
-                .buildAndRegister();
-
+        // Coils
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(500000)
                 .input(wireGtDouble, TitanSteel, 8)
                 .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
@@ -433,34 +360,6 @@ public class CasingRecipes {
                 .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Cinobite.getFluid(L))
                 .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(NEUTRONIUM_COIL))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001)
-                .input(wireGtDouble, LuVSuperconductor, 64)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(64))
-                .fluidInputs(NaquadahAlloy.getFluid(L * 8))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(SUPERCONDUCTOR))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001)
-                .input(wireGtDouble, ZPMSuperconductor, 32)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(32))
-                .fluidInputs(NaquadahAlloy.getFluid(L * 4))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(SUPERCONDUCTOR))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001)
-                .input(wireGtDouble, UVSuperconductor, 16)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(16))
-                .fluidInputs(NaquadahAlloy.getFluid(L * 2))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(SUPERCONDUCTOR))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001)
-                .input(wireGtDouble, Superconductor, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
-                .fluidInputs(NaquadahAlloy.getFluid(L))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(SUPERCONDUCTOR))
                 .buildAndRegister();
     }
 

@@ -1,5 +1,6 @@
 package gregicadditions.recipes.categories.circuits.components;
 
+import gregtech.common.items.MetaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -85,7 +86,7 @@ public class WetwareComponents {
                 .inputs(SMD_RESISTOR_WETWARE.getStackForm(4))
                 .inputs(SMD_CAPACITOR_WETWARE.getStackForm(4))
                 .inputs(MASTER_BOARD.getStackForm())
-                .inputs(STEM_CELLS.getStackForm())
+                .inputs(MetaItems.STEM_CELLS.getStackForm())
                 .inputs(NEURO_SUPPORT_UNIT.getStackForm())
                 .fluidInputs(Polybenzimidazole.getFluid(L * 8))
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
@@ -97,18 +98,6 @@ public class WetwareComponents {
     }
 
     private static void bacteriaCultures() {
-
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(24)
-                .fluidInputs(Polystyrene.getFluid(L / 4))
-                .notConsumable(SHAPE_MOLD_CYLINDER.getStackForm())
-                .outputs(PETRI_DISH.getStackForm())
-                .buildAndRegister();
-
-        FLUID_SOLIDFICATION_RECIPES.recipeBuilder().duration(160).EUt(24)
-                .fluidInputs(Polytetrafluoroethylene.getFluid(L / 4))
-                .notConsumable(SHAPE_MOLD_CYLINDER.getStackForm())
-                .outputs(PETRI_DISH.getStackForm())
-                .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().EUt(7680).duration(100)
                 .input(wireFine, Titanium)

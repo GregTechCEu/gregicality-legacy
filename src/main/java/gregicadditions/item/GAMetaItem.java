@@ -9,7 +9,6 @@ import gregicadditions.item.behaviors.monitorPlugin.OnlinePicPluginBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.TextPluginBehavior;
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.ElectricStats;
-import gregtech.api.items.metaitem.FluidStats;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.Materials;
@@ -22,17 +21,13 @@ import net.minecraftforge.fml.common.Loader;
 
 import javax.annotation.Nonnull;
 
-import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.GTValues.M;
-import static gregtech.api.unification.material.Materials.Americium;
-import static gregtech.api.unification.material.Materials.Thorium;
 
 public class GAMetaItem extends StandardMetaItem {
 
     @Override
     public void registerSubItems() {
-        PETRI_DISH = addItem(23, "component.petri.dish");
 
         if (Loader.isModLoaded(GAValues.MODID_FR) && GAConfig.GT6.electrodes) {
             ELECTRODE_APATITE = addItem(108, "electrode.apatite");
@@ -124,10 +119,10 @@ public class GAMetaItem extends StandardMetaItem {
         SMD_DIODE_WETWARE = addItem(259, "component.smd.diode.wetware");
 
 
-        HUGE_TURBINE_ROTOR = addItem(300, "huge_turbine_rotor").addComponents(new HugeTurbineBehavior());
-        LARGE_TURBINE_ROTOR = addItem(301, "large_turbine_rotor").addComponents(new LargeTurbineBehavior());
-        MEDIUM_TURBINE_ROTOR = addItem(302, "medium_turbine_rotor").addComponents(new MediumTurbineBehavior());
-        SMALL_TURBINE_ROTOR = addItem(303, "small_turbine_rotor").addComponents(new SmallTurbineBehavior());
+        HUGE_TURBINE_ROTOR = addItem(300, "huge_turbine_rotor").addComponents(new GATurbineRotorBehavior(200, 8.0));
+        LARGE_TURBINE_ROTOR = addItem(301, "large_turbine_rotor").addComponents(new GATurbineRotorBehavior(150, 16.0));
+        MEDIUM_TURBINE_ROTOR = addItem(302, "medium_turbine_rotor").addComponents(new GATurbineRotorBehavior(100, 24.0));
+        SMALL_TURBINE_ROTOR = addItem(303, "small_turbine_rotor").addComponents(new GATurbineRotorBehavior(50, 32.0));
 
         FREEDOM_WRENCH = addItem(309, "freedom_wrench")
                 .setMaxStackSize(1)
@@ -478,17 +473,6 @@ public class GAMetaItem extends StandardMetaItem {
         NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
         RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
-        STEM_CELLS = addItem(18, "stemcells");
-        MICA_SHEET = addItem(26, "mica_sheet");
-        MICA_INSULATOR_SHEET = addItem(27, "mica_insulator_sheet");
-        MICA_INSULATOR_FOIL = addItem(28, "mica_insulator_foil");
-        BASIC_BOARD = addItem(29, "board.basic");
-        GOOD_PHENOLIC_BOARD = addItem(30, "board.good.phenolic");
-        GOOD_PLASTIC_BOARD = addItem(31, "board.good.plastic");
-        ADVANCED_BOARD = addItem(32, "board.advanced");
-        EXTREME_BOARD = addItem(33, "board.extreme");
-        ELITE_BOARD = addItem(34, "board.elite");
-        MASTER_BOARD = addItem(35, "board.master");
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
         HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 

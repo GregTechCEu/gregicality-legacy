@@ -1,23 +1,12 @@
 package gregicadditions.recipes.categories.circuits;
 
-import gregicadditions.GAConfig;
-import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.stack.MaterialStack;
-import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregicadditions.recipes.helper.HelperMethods.removeRecipeByName;
-import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -31,7 +20,6 @@ public class CircuitRecipes {
 
         removeGTCECircuitRecipes();
 
-        primitiveCircuits();
         electronicCircuits();
         refinedCircuits();
         microCircuits();
@@ -51,35 +39,13 @@ public class CircuitRecipes {
         WaferRecipes.init();
     }
 
-    private static void primitiveCircuits() {
-
-        // Primitive Circuit (Integrated Logic Circuit in game)
-        removeRecipeByName("gregtech:basic_circuit");
-        ModHandler.addShapedRecipe("primitive_processor", BASIC_CIRCUIT_LV.getStackForm(),
-                "RPR", "TBT", "CCC",
-                'R', RESISTOR,
-                'P', new UnificationEntry(plate, WroughtIron),
-                'T', VACUUM_TUBE,
-                'B', BASIC_BOARD,
-                'C', new UnificationEntry(cableGtSingle, RedAlloy));
-
-        // Primitive Assembly
-        removeRecipeByName("gregtech:good_circuit");
-        ModHandler.addShapedRecipe("primitive_assembly", PRIMITIVE_ASSEMBLY.getStackForm(),
-                "PCT", "CDC", "TCP",
-                'C', BASIC_CIRCUIT_LV,
-                'P', new UnificationEntry(plate, WroughtIron),
-                'D', DIODE,
-                'T', new UnificationEntry(cableGtSingle, RedAlloy));
-    }
-
     private static void electronicCircuits() {
 
         // Basic Electronic Circuit
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(16)
                 .inputs(RESISTOR.getStackForm(8))
                 .inputs(CAPACITOR.getStackForm(8))
-                .inputs(GOOD_PHENOLIC_BOARD.getStackForm())
+                .inputs(GOOD_CIRCUIT_BOARD.getStackForm())
                 .inputs(CENTRAL_PROCESSING_UNIT.getStackForm())
                 .input(wireFine, Copper, 4)
                 .outputs(BASIC_ELECTRONIC_CIRCUIT_LV.getStackForm())
@@ -88,7 +54,7 @@ public class CircuitRecipes {
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(16)
                 .inputs(SMD_RESISTOR_REFINED.getStackForm(4))
                 .inputs(SMD_CAPACITOR_REFINED.getStackForm(4))
-                .inputs(GOOD_PHENOLIC_BOARD.getStackForm())
+                .inputs(GOOD_CIRCUIT_BOARD.getStackForm())
                 .inputs(CENTRAL_PROCESSING_UNIT.getStackForm())
                 .input(wireFine, Copper, 4)
                 .outputs(BASIC_ELECTRONIC_CIRCUIT_LV.getStackForm())
@@ -140,7 +106,7 @@ public class CircuitRecipes {
                 .inputs(RESISTOR.getStackForm(8))
                 .inputs(TRANSISTOR.getStackForm(8))
                 .inputs(CAPACITOR.getStackForm(8))
-                .inputs(GOOD_PLASTIC_BOARD.getStackForm())
+                .inputs(PLASTIC_CIRCUIT_BOARD.getStackForm())
                 .inputs(CENTRAL_PROCESSING_UNIT.getStackForm())
                 .input(wireFine, TinAlloy, 2)
                 .outputs(REFINED_PROCESSOR.getStackForm(4))
@@ -150,7 +116,7 @@ public class CircuitRecipes {
                 .inputs(SMD_RESISTOR_REFINED.getStackForm(4))
                 .inputs(SMD_TRANSISTOR_REFINED.getStackForm(4))
                 .inputs(SMD_CAPACITOR_REFINED.getStackForm(4))
-                .inputs(GOOD_PLASTIC_BOARD.getStackForm())
+                .inputs(PLASTIC_CIRCUIT_BOARD.getStackForm())
                 .inputs(CENTRAL_PROCESSING_UNIT.getStackForm())
                 .input(wireFine, TinAlloy, 2)
                 .outputs(REFINED_PROCESSOR.getStackForm(4))
@@ -158,7 +124,7 @@ public class CircuitRecipes {
 
         // SoC Recipe
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(600)
-                .inputs(GOOD_PLASTIC_BOARD.getStackForm())
+                .inputs(PLASTIC_CIRCUIT_BOARD.getStackForm())
                 .inputs(SYSTEM_ON_CHIP.getStackForm())
                 .input(wireFine, TinAlloy, 8)
                 .outputs(REFINED_PROCESSOR.getStackForm(4))
@@ -170,7 +136,7 @@ public class CircuitRecipes {
                 .inputs(RESISTOR.getStackForm(8))
                 .inputs(TRANSISTOR.getStackForm(8))
                 .inputs(CAPACITOR.getStackForm(8))
-                .inputs(GOOD_PLASTIC_BOARD.getStackForm())
+                .inputs(PLASTIC_CIRCUIT_BOARD.getStackForm())
                 .input(plate, StainlessSteel)
                 .outputs(REFINED_ASSEMBLY.getStackForm())
                 .buildAndRegister();
@@ -180,7 +146,7 @@ public class CircuitRecipes {
                 .inputs(SMD_RESISTOR_REFINED.getStackForm(2))
                 .inputs(SMD_TRANSISTOR_REFINED.getStackForm(2))
                 .inputs(SMD_CAPACITOR_REFINED.getStackForm(2))
-                .inputs(GOOD_PLASTIC_BOARD.getStackForm())
+                .inputs(PLASTIC_CIRCUIT_BOARD.getStackForm())
                 .input(plate, StainlessSteel)
                 .outputs(REFINED_ASSEMBLY.getStackForm())
                 .buildAndRegister();
@@ -191,7 +157,7 @@ public class CircuitRecipes {
                 .inputs(RESISTOR.getStackForm(8))
                 .inputs(TRANSISTOR.getStackForm(8))
                 .inputs(RANDOM_ACCESS_MEMORY.getStackForm(2))
-                .inputs(GOOD_PLASTIC_BOARD.getStackForm())
+                .inputs(PLASTIC_CIRCUIT_BOARD.getStackForm())
                 .input(wireGtSingle, MVSuperconductor)
                 .outputs(REFINED_COMPUTER.getStackForm())
                 .buildAndRegister();
@@ -201,7 +167,7 @@ public class CircuitRecipes {
                 .inputs(SMD_RESISTOR_REFINED.getStackForm(2))
                 .inputs(SMD_TRANSISTOR_REFINED.getStackForm(2))
                 .inputs(RANDOM_ACCESS_MEMORY.getStackForm(2))
-                .inputs(GOOD_PLASTIC_BOARD.getStackForm())
+                .inputs(PLASTIC_CIRCUIT_BOARD.getStackForm())
                 .input(wireGtSingle, MVSuperconductor)
                 .outputs(REFINED_COMPUTER.getStackForm())
                 .buildAndRegister();
@@ -235,7 +201,7 @@ public class CircuitRecipes {
                 .inputs(SMD_RESISTOR_REFINED.getStackForm(8))
                 .inputs(SMD_TRANSISTOR_REFINED.getStackForm(8))
                 .inputs(SMD_CAPACITOR_REFINED.getStackForm(8))
-                .inputs(ADVANCED_BOARD.getStackForm())
+                .inputs(ADVANCED_CIRCUIT_BOARD.getStackForm())
                 .inputs(CENTRAL_PROCESSING_UNIT.getStackForm(2))
                 .input(wireFine, RedAlloy, 2)
                 .outputs(MICRO_PROCESSOR.getStackForm(4))
@@ -245,7 +211,7 @@ public class CircuitRecipes {
                 .inputs(SMD_RESISTOR.getStackForm(4))
                 .inputs(SMD_TRANSISTOR.getStackForm(4))
                 .inputs(SMD_CAPACITOR.getStackForm(4))
-                .inputs(ADVANCED_BOARD.getStackForm())
+                .inputs(ADVANCED_CIRCUIT_BOARD.getStackForm())
                 .inputs(CENTRAL_PROCESSING_UNIT.getStackForm(2))
                 .input(wireFine, RedAlloy, 2)
                 .outputs(MICRO_PROCESSOR.getStackForm(4))
@@ -253,7 +219,7 @@ public class CircuitRecipes {
 
         // SoC Recipe
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(2400)
-                .inputs(ADVANCED_BOARD.getStackForm())
+                .inputs(ADVANCED_CIRCUIT_BOARD.getStackForm())
                 .inputs(SYSTEM_ON_CHIP.getStackForm())
                 .input(wireFine, RedAlloy, 8)
                 .outputs(MICRO_PROCESSOR.getStackForm(4))
@@ -265,7 +231,7 @@ public class CircuitRecipes {
                 .inputs(SMD_CAPACITOR_REFINED.getStackForm(4))
                 .inputs(SMD_RESISTOR_REFINED.getStackForm(8))
                 .inputs(RANDOM_ACCESS_MEMORY.getStackForm(2))
-                .inputs(ADVANCED_BOARD.getStackForm())
+                .inputs(ADVANCED_CIRCUIT_BOARD.getStackForm())
                 .input(plate, Titanium)
                 .outputs(PROCESSOR_ASSEMBLY_HV.getStackForm())
                 .buildAndRegister();
@@ -275,7 +241,7 @@ public class CircuitRecipes {
                 .inputs(SMD_CAPACITOR.getStackForm(2))
                 .inputs(SMD_RESISTOR.getStackForm(4))
                 .inputs(RANDOM_ACCESS_MEMORY.getStackForm(2))
-                .inputs(ADVANCED_BOARD.getStackForm())
+                .inputs(ADVANCED_CIRCUIT_BOARD.getStackForm())
                 .input(plate, Titanium)
                 .outputs(PROCESSOR_ASSEMBLY_HV.getStackForm())
                 .buildAndRegister();
@@ -286,7 +252,7 @@ public class CircuitRecipes {
                 .inputs(SMD_RESISTOR_REFINED.getStackForm(8))
                 .inputs(SMD_TRANSISTOR_REFINED.getStackForm(8))
                 .inputs(RANDOM_ACCESS_MEMORY.getStackForm(8))
-                .inputs(ADVANCED_BOARD.getStackForm())
+                .inputs(ADVANCED_CIRCUIT_BOARD.getStackForm())
                 .input(wireGtSingle, HVSuperconductor)
                 .outputs(MICRO_COMPUTER.getStackForm())
                 .buildAndRegister();
@@ -296,7 +262,7 @@ public class CircuitRecipes {
                 .inputs(SMD_RESISTOR.getStackForm(4))
                 .inputs(SMD_TRANSISTOR.getStackForm(4))
                 .inputs(RANDOM_ACCESS_MEMORY.getStackForm(8))
-                .inputs(ADVANCED_BOARD.getStackForm())
+                .inputs(ADVANCED_CIRCUIT_BOARD.getStackForm())
                 .input(wireGtSingle, HVSuperconductor)
                 .outputs(MICRO_COMPUTER.getStackForm())
                 .buildAndRegister();
