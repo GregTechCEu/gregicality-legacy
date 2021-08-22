@@ -229,26 +229,5 @@ public class MetaItemRecipes {
                 'F', new ItemStack(Items.FLINT),
                 'G', new ItemStack(Blocks.GLASS),
                 'D', new ItemStack(Items.DIAMOND));
-
-        // Extruder Shapes
-        ModHandler.addShapedRecipe("shape_extruder_gear_small", SHAPE_EXTRUDER_SMALL_GEAR.getStackForm(),
-                "x S", "   ", "   ",
-                'S', SHAPE_EMPTY.getStackForm());
-
-        ModHandler.addShapedRecipe("shape_extruder_rotor", SHAPE_EXTRUDER_ROTOR.getStackForm(),
-                "  S", " x ", "   ",
-                'S', SHAPE_EMPTY.getStackForm());
-
-        FORMING_PRESS_RECIPES.recipeBuilder().duration(120).EUt(22)
-                .inputs(SHAPE_EMPTY.getStackForm())
-                .notConsumable(SHAPE_EXTRUDER_SMALL_GEAR)
-                .outputs(SHAPE_EXTRUDER_SMALL_GEAR.getStackForm())
-                .buildAndRegister();
-
-        FORMING_PRESS_RECIPES.recipeBuilder().duration(120).EUt(22)
-                .inputs(SHAPE_EMPTY.getStackForm())
-                .notConsumable(SHAPE_EXTRUDER_ROTOR)
-                .outputs(SHAPE_EXTRUDER_ROTOR.getStackForm())
-                .buildAndRegister();
     }
 }

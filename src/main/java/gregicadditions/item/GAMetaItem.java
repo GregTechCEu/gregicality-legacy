@@ -11,10 +11,7 @@ import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.ElectricStats;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.ItemMaterialInfo;
-import gregtech.api.unification.stack.MaterialStack;
 import gregtech.common.items.MetaItems;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
@@ -22,7 +19,6 @@ import net.minecraftforge.fml.common.Loader;
 import javax.annotation.Nonnull;
 
 import static gregicadditions.item.GAMetaItems.*;
-import static gregtech.api.GTValues.M;
 
 public class GAMetaItem extends StandardMetaItem {
 
@@ -370,9 +366,6 @@ public class GAMetaItem extends StandardMetaItem {
 
         KAPTON_BOARD = addItem(584, "board.kapton");
         KAPTON_CIRCUIT_BOARD = addItem(585, "board_circuit.kapton");
-
-        SHAPE_EXTRUDER_SMALL_GEAR = addItem(586, "shape.extruder.gear.small");
-        SHAPE_EXTRUDER_ROTOR = addItem(587, "shape.extruder.rotor");
 
         FULLERENE_POLYMER_MATRIX_SOFT_TUBING = addItem(588, "fullerene.polymer.matrix.soft.tubing");
         FULLERENE_POLYMER_MATRIX_FINE_TUBING = addItem(589, "fullerene.polymer.matrix.fine.tubing");

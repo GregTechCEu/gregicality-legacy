@@ -510,12 +510,6 @@ public class RecipeHandler {
                 .fluidInputs(SolderingAlloy.getFluid(32))
                 .output(rotor, material)
                 .buildAndRegister();
-
-        EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
-                    .input(ingot, material, 5)
-                    .notConsumable(SHAPE_EXTRUDER_ROTOR)
-                    .output(rotor, material)
-                    .buildAndRegister();
     }
 
     /**
@@ -663,11 +657,6 @@ public class RecipeHandler {
                     'P', new UnificationEntry(plate, material));
 
             removeRecipesByInputs(FORGE_HAMMER_RECIPES, OreDictUnifier.get(plate, material, 2));
-            EXTRUDER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(material.blastFurnaceTemperature >= 2800 ? 256 : 64)
-                    .input(ingot, material)
-                    .notConsumable(SHAPE_EXTRUDER_SMALL_GEAR.getStackForm())
-                    .output(gearSmall, material)
-                    .buildAndRegister();
 
             ALLOY_SMELTER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(30)
                     .input(ingot, material, 2)
