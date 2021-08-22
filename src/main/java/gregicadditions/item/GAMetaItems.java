@@ -33,8 +33,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_SUPRACAUSAL;
 
-    public static MetaItem<?>.MetaValueItem RAW_CRYSTAL_CHIP; // todo
-
     public static MetaItem<?>.MetaValueItem KAPTON_BOARD;
     public static MetaItem<?>.MetaValueItem KAPTON_CIRCUIT_BOARD;
 
@@ -52,11 +50,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ELECTRODE_ORCHID;
     public static MetaItem<?>.MetaValueItem ELECTRODE_RUBBER;
     public static MetaItem<?>.MetaValueItem ELECTRODE_TIN;
-
-    public static MetaItem<?>.MetaValueItem SCHEMATIC;
-    public static MetaItem<?>.MetaValueItem SCHEMATIC_2X2;
-    public static MetaItem<?>.MetaValueItem SCHEMATIC_3X3;
-    public static MetaItem<?>.MetaValueItem SCHEMATIC_DUST;
 
     public static MetaItem<?>.MetaValueItem HUGE_TURBINE_ROTOR;
     public static MetaItem<?>.MetaValueItem LARGE_TURBINE_ROTOR;

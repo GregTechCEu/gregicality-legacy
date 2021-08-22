@@ -33,17 +33,6 @@ public class MetaItemRecipes {
                 .outputs(PYROLYTIC_CARBON.getStackForm())
                 .buildAndRegister();
 
-        // Schematic
-        ASSEMBLER_RECIPES.recipeBuilder().duration(180).EUt(4)
-                .input(circuit, Basic, 2)
-                .input(plate, Steel, 2)
-                .outputs(SCHEMATIC.getStackForm())
-                .buildAndRegister();
-
-        ModHandler.addShapedRecipe("3x3_schematic", SCHEMATIC_3X3.getStackForm(),   "  d", " S ", "   ", 'S', SCHEMATIC);
-        ModHandler.addShapedRecipe("2x2_schematic", SCHEMATIC_2X2.getStackForm(),   " d ", " S ", "   ", 'S', SCHEMATIC);
-        ModHandler.addShapedRecipe("dust_schematic", SCHEMATIC_DUST.getStackForm(), "   ", " S ", "  d", 'S', SCHEMATIC);
-
         // Freedom Wrench
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(512)
                 .inputs(ELECTRIC_MOTOR_HV.getStackForm())

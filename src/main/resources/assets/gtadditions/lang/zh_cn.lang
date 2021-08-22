@@ -250,11 +250,6 @@ metaitem.nuclear.dust.dioxide.name=二氧化%s粉
 metaitem.nuclear.dust.nitrate.name=硝酸%s粉
 metaitem.nuclear.dust.hexafluoride.name=六氟化%s粉
 
-metaitem.schematic.dust.name=设计图（粉）
-metaitem.schematic.3by3.name=设计图（3x3）
-metaitem.schematic.2by2.name=设计图（2x2）
-metaitem.schematic.name=空设计图
-
 metaitem.data_stick.tooltip.empty=空区块
 metaitem.data_stick.tooltip.coords=%s: %d, %d
 metaitem.data_stick.tooltip.capacity=最大容量：%dmB

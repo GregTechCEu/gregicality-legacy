@@ -248,11 +248,6 @@ metaitem.nuclear.dust.dioxide.name=%s Dioxide Dust
 metaitem.nuclear.dust.nitrate.name=%s Nitrate Dust
 metaitem.nuclear.dust.hexafluoride.name=%s Hexafluoride Dust
 
-metaitem.schematic.dust.name=Schematic (Dust)
-metaitem.schematic.3by3.name=Schematic (3x3)
-metaitem.schematic.2by2.name=Schematic (2x2)
-metaitem.schematic.name=Blank Schematic
-
 metaitem.data_stick.tooltip.empty=Empty Chunk
 metaitem.data_stick.tooltip.coords=%s: %d, %d
 metaitem.data_stick.tooltip.capacity=Capacity: %,dmB

@@ -54,12 +54,6 @@ public class GAMetaItem extends StandardMetaItem {
         PLUGIN_TEXT = addItem(129, "plugin.text").addComponents(new TextPluginBehavior());
         COVER_DIGITAL_INTERFACE = addItem(130, "cover.digital");
 
-        SCHEMATIC = addItem(131, "schematic").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
-        SCHEMATIC_2X2 = addItem(132, "schematic.2by2").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
-        SCHEMATIC_3X3 = addItem(133, "schematic.3by3").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
-        SCHEMATIC_DUST = addItem(134, "schematic.dust").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
-
-
         HUGE_TURBINE_ROTOR = addItem(300, "huge_turbine_rotor").addComponents(new GATurbineRotorBehavior(200, 8.0));
         LARGE_TURBINE_ROTOR = addItem(301, "large_turbine_rotor").addComponents(new GATurbineRotorBehavior(150, 16.0));
         MEDIUM_TURBINE_ROTOR = addItem(302, "medium_turbine_rotor").addComponents(new GATurbineRotorBehavior(100, 24.0));
@@ -404,9 +398,7 @@ public class GAMetaItem extends StandardMetaItem {
         EXOTIC_COMPUTER = addItem(607, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
         EXOTIC_MAINFRAME = addItem(608, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
 
-        NEURO_PROCESSOR = addItem(15, "processor.neuro");
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
-        RAW_CRYSTAL_CHIP = addItem(17, "crystal.raw");
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
         HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 

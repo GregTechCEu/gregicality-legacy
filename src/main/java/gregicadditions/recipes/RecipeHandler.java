@@ -74,8 +74,6 @@ public class RecipeHandler {
 
         plateDouble.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDoublePlate);
 
-        dustSmall.addProcessingHandler(PropertyKey.DUST, RecipeHandler::processSmallDust);
-        dustTiny.addProcessingHandler(PropertyKey.DUST, RecipeHandler::processTinyDust);
         nugget.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processNugget);
 
         dust.addProcessingHandler(GemMaterial.class, RecipeHandler::processGem);
@@ -342,38 +340,6 @@ public class RecipeHandler {
                     'G', new UnificationEntry(gem, material),
                     'S', new UnificationEntry(stick, Wood));
         }
-    }
-
-    /**
-     * Tiny Dust Material Handler. Generates:
-     *
-     * + Schematic Recipes in favor of Integrated Circuit Packager Recipes
-     */
-    private static void processTinyDust(OrePrefix dustTiny, DustMaterial material) {
-
-        removeRecipesByInputs(PACKER_RECIPES, OreDictUnifier.get(dustTiny, material, 9), getIntegratedCircuit(1));
-
-        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                .input(dustTiny, material, 9)
-                .notConsumable(SCHEMATIC_DUST.getStackForm())
-                .output(dust, material)
-                .buildAndRegister();
-    }
-
-    /**
-     * Small Dust Material Handler. Generates:
-     *
-     * + Schematic Recipes in favor of Integrated Circuit Packager Recipes
-     */
-    private static void processSmallDust(OrePrefix dustSmall, DustMaterial material) {
-
-        removeRecipesByInputs(PACKER_RECIPES, OreDictUnifier.get(dustSmall, material, 4), getIntegratedCircuit(2));
-
-        PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
-                .input(dustSmall, material, 4)
-                .notConsumable(SCHEMATIC_DUST.getStackForm())
-                .output(dust, material)
-                .buildAndRegister();
     }
 
     /**
@@ -1157,7 +1123,7 @@ public class RecipeHandler {
 
         PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
                 .inputs(CountableIngredient.from(input, 9))
-                .notConsumable(SCHEMATIC_3X3.getStackForm())
+                .notConsumable(new IntCircuitIngredient(9))
                 .outputs(output)
                 .buildAndRegister();
 
@@ -1189,7 +1155,7 @@ public class RecipeHandler {
         // Add Packager 2x2 Recipes
         PACKER_RECIPES.recipeBuilder().duration(100).EUt(4)
                 .inputs(CountableIngredient.from(input, 4))
-                .notConsumable(SCHEMATIC_2X2.getStackForm())
+                .notConsumable(new IntCircuitIngredient(4))
                 .outputs(output)
                 .buildAndRegister();
     }
@@ -1226,7 +1192,7 @@ public class RecipeHandler {
 
         UNPACKER_RECIPES.recipeBuilder().duration(100).EUt(8)
                 .inputs(input)
-                .notConsumable(SCHEMATIC_3X3.getStackForm())
+                .notConsumable(new IntCircuitIngredient(1))
                 .outputs(output)
                 .buildAndRegister();
     }
