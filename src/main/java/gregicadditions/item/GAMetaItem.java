@@ -429,12 +429,6 @@ public class GAMetaItem extends StandardMetaItem {
         BATTERY_MEDIUM_FLUORIDE = addItem(617, "medium.fluoride.battery").addComponents(ElectricStats.createRechargeableBattery(471859200000L, GTValues.UMV)).setModelAmount(8);
         BATTERY_LARGE_FLUORIDE = addItem(618, "large.fluoride.battery").addComponents(ElectricStats.createRechargeableBattery(1887436800000L, GTValues.UXV)).setModelAmount(8);
 
-        GAMetaItems.PROSPECT_TOOL_MV = addItem(619, "tool.prospect.mv").addComponents(new ProspectingToolBehaviour(2, GAConfig.equipment.prospector.scanCosts[0], GAConfig.equipment.prospector.scanRadii[0], GAConfig.equipment.prospector.scanTicks[0])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[0], 2)).setMaxStackSize(1);
-        GAMetaItems.PROSPECT_TOOL_HV = addItem(620, "tool.prospect.hv").addComponents(new ProspectingToolBehaviour(3, GAConfig.equipment.prospector.scanCosts[1], GAConfig.equipment.prospector.scanRadii[1], GAConfig.equipment.prospector.scanTicks[1])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[1], 3)).setMaxStackSize(1);
-        GAMetaItems.PROSPECT_TOOL_LuV = addItem(621, "tool.prospect.luv").addComponents(new ProspectingToolBehaviour(6, GAConfig.equipment.prospector.scanCosts[2], GAConfig.equipment.prospector.scanRadii[2], GAConfig.equipment.prospector.scanTicks[2])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[2], 6)).setMaxStackSize(1);
-        GAMetaItems.PROSPECT_TOOL_ZPM = addItem(622, "tool.prospect.zpm").addComponents(new ProspectingToolBehaviour(7, GAConfig.equipment.prospector.scanCosts[3], GAConfig.equipment.prospector.scanRadii[3], GAConfig.equipment.prospector.scanTicks[3])).addComponents(ElectricStats.createElectricItem(GAConfig.equipment.prospector.energyCapacity[3], 7)).setMaxStackSize(1);
-
-        MetaItems.CRYSTAL_PROCESSOR_IV.setInvisible();
         MetaItems.TURBINE_ROTOR.setInvisible();
         MetaItems.TOOL_DATA_STICK.addComponents(new DataStickFluidSamplerBehavior());
 

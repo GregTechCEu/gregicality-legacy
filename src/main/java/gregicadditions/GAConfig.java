@@ -24,28 +24,6 @@ public class GAConfig {
         public boolean AdvancedCasingModel = true;
     }
 
-    @Config.Comment("Config Options for Native EU to FE conversion")
-    public static EnergyConversion EnergyConversion = new EnergyConversion();
-
-    public static class EnergyConversion {
-
-        @Config.Comment("Energy Converter Machine Options")
-        @Config.Name("Power converter sizes (in amperage)")
-        @Config.RequiresMcRestart
-        public int[] values = new int[]{1, 4, 9, 16};
-
-        @Config.Name("Disable GregTech EU to FE Energy Converters?")
-        @Config.RequiresMcRestart
-        public boolean disableEUtoFEConverter = true;
-
-        @Config.Name("Dusable FE to GregTech EU Energy Converters?")
-        @Config.RequiresMcRestart
-        public boolean disableFEtoEUConverter = false;
-
-        @Config.Name("Should Energy Converters require matching voltage batteries?")
-        public boolean PermitOnlyExactVoltage = false;
-    }
-
     @Config.Comment("Config options for GT6 features")
     public static GT6 GT6 = new GT6();
 
@@ -144,8 +122,6 @@ public class GAConfig {
         public boolean highTierFormingPresses = true;
         @Config.Name("Should higher tier Lathes be registered?")
         public boolean highTierLathes = true;
-        @Config.Name("Should higher tier Microwaves be registered?")
-        public boolean highTierMicrowaves = true;
         @Config.Name("Should higher tier Mixers be registered?")
         public boolean highTierMixers = true;
         @Config.Name("Should higher tier Ore Washers be registered?")
@@ -249,14 +225,6 @@ public class GAConfig {
         public boolean castingRecipes = true;
     }
 
-    @Config.Comment("Config options for exNihilo features")
-    public static ExNihilo exNihilo = new ExNihilo();
-
-    public static class ExNihilo {
-        public boolean Disable = false;
-        public boolean highTierSieve = true;
-    }
-
     @Config.Comment("Config options for Mystical Agriculture features.")
     public static MysticalAgriculture mysticalAgriculture = new MysticalAgriculture();
 
@@ -286,13 +254,6 @@ public class GAConfig {
         @Config.Name("Forestry's Ethanol and Seed Oil are used in recipes instead of GTCE's")
         public boolean ForestryIntegration = true;
 
-        @Config.Comment({"Sets HUD location", "1 - left-upper corner", "2 - right-upper corner", "3 - left-bottom corner", "4 - right-bottom corner"})
-        public byte hudLocation = 1;
-        @Config.Comment("Horizontal offset of HUD [0 ~ 100)")
-        public byte hudOffsetX = 0;
-        @Config.Comment("Vertical offset of HUD [0 ~ 100)")
-        public byte hudOffsetY = 0;
-
         @Config.Comment("List of Soldering fluid [<fluid>:<amount>] amount=[1 ~ 64000]")
         @Config.RequiresMcRestart
         public String[] solderingFluidList = new String[]{"soldering_alloy:72", "tin:144", "lead:288"};
@@ -311,12 +272,6 @@ public class GAConfig {
         @Config.Name("Tungsten Purification Process")
         @Config.RequiresMcRestart
         public boolean tungstenProcess = true;
-
-        @Config.Comment("Change replication to be quicker or longer")
-        @Config.Name("Replication time factor")
-        @Config.RangeInt(min = 1)
-        @Config.RequiresMcRestart
-        public int replicationTimeFactor = 750;
 
         @Config.Name("Enable RockBreaker high tier")
         @Config.RequiresMcRestart
@@ -350,156 +305,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean reverseAfterCT = true;
 
-    }
-
-    @Config.Comment({"Configs for Armor and Tools", "Tiers are from ULV-0 to MAX-14"})
-    public static Equipment equipment = new Equipment();
-
-    public static class Equipment {
-        @Config.Name("Nightvision Goggles")
-        public NightvisionGoggles nightvisionGoggles = new NightvisionGoggles();
-        @Config.Name("NanoMuscle Suit")
-        public NanoSuit nanoSuit = new NanoSuit();
-        @Config.Name("Advanced NanoMuscle Suit")
-        public AdvNanoSuit advNanoSuit = new AdvNanoSuit();
-        @Config.Name("QuarkTech Suit")
-        public QuarkTechSuit quarkTechSuit = new QuarkTechSuit();
-        @Config.Name("Advanced QuarkTech Suit")
-        public AdvQuarkTechSuit advQuarkTechSuit = new AdvQuarkTechSuit();
-        @Config.Name("Impeller Jetpack")
-        public ImpellerJetpack impellerJetpack = new ImpellerJetpack();
-        @Config.Name("Advanced Impeller Jetpack")
-        public AdvImpellerJetpack advImpellerJetpack = new AdvImpellerJetpack();
-        @Config.Name("Semifluid Jetpack")
-        public SemiFluidJetpack semiFluidJetpack = new SemiFluidJetpack();
-        @Config.Name("Batpack LV")
-        public BatpackLv batpackLv = new BatpackLv();
-        @Config.Name("Batpack MV")
-        public BatpackMv batpackMv = new BatpackMv();
-        @Config.Name("Batpack HV")
-        public BatpackHv batpackHv = new BatpackHv();
-        @Config.Name("Prospectors")
-        public Prospector prospector = new Prospector();
-    }
-
-    public static class NightvisionGoggles {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 2;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 400000;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int energyPerUse = 3600;
-    }
-
-    public static class NanoSuit {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 3;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 1600000;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int energyPerUse = 5000;
-    }
-
-    public static class AdvNanoSuit {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 6;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 11400000;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int energyPerUse = 5000;
-    }
-
-    public static class QuarkTechSuit {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 5;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 8000000;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int energyPerUse = 10000;
-    }
-
-    public static class AdvQuarkTechSuit {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 6;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 100000000;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int energyPerUse = 10000;
-    }
-
-    public static class ImpellerJetpack {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 3;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 2520000;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int energyPerUse = 125;
-    }
-
-    public static class AdvImpellerJetpack {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 4;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 11400000;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int energyPerUse = 512;
-    }
-
-    public static class SemiFluidJetpack {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 2;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 12000;
-    }
-
-    public static class BatpackLv {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 1;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 600000;
-    }
-
-    public static class BatpackMv {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 2;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 2400000;
-    }
-
-    public static class BatpackHv {
-        @Config.RangeInt(min = 0, max = 14)
-        @Config.RequiresMcRestart
-        public int voltageTier = 3;
-        @Config.RangeInt(min = 0)
-        @Config.RequiresMcRestart
-        public int capacity = 9600000;
     }
 
     public static Multis multis = new Multis();
@@ -1427,32 +1232,6 @@ public class GAConfig {
         public int euCost = 50;
     }
 
-    public static class Prospector {
-        @Config.Comment("The EU drain per tick that the Prospector interface is open. The values are for the MV, HV, LuV and ZPM prospectors.")
-        @Config.RequiresMcRestart
-        @Config.Name("Prospector scan cost")
-        @Config.RangeInt(min = 0)
-        public int[] scanCosts = {8, 32, 512, 2048};
-
-        @Config.Comment("The radii in chunks the prospector will scan.")
-        @Config.RequiresMcRestart
-        @Config.Name("Prospector scan radii")
-        @Config.RangeInt(min = 1)
-        public int[] scanRadii = {2, 3, 6, 7};
-
-        @Config.Comment("The ticks for the prospector to scan each chunk.")
-        @Config.RequiresMcRestart
-        @Config.Name("Prospector scan time cost")
-        @Config.RangeInt(min = 1)
-        public int[] scanTicks = {4, 3, 2, 1};
-
-        @Config.Comment("The EU capacity of the prospectors.")
-        @Config.RequiresMcRestart
-        @Config.Name("Prospector energy capacity")
-        @Config.RangeInt(min = 1000)
-        public int[] energyCapacity = {12800, 51200, 3276800, 13107200};
-    }
-
     public static class HyperReactors {
         @Config.Comment("The base EU/t production of the Hyper Reactor.")
         @Config.RequiresMcRestart
@@ -1704,6 +1483,7 @@ public class GAConfig {
         setMachineConfigs("compressor", GT5U.highTierCompressors);
         setMachineConfigs("cutter", GT5U.highTierCutters);
         setMachineConfigs("distillery", GT5U.highTierDistilleries);
+        setMachineConfigs("electric_furnace", GT5U.highTierElectricFurnace);
         setMachineConfigs("electrolyzer", GT5U.highTierElectrolyzers);
         setMachineConfigs("electromagnetic_separator", GT5U.highTierElectromagneticSeparators);
         setMachineConfigs("extractor", GT5U.highTierExtractors);

@@ -48,47 +48,6 @@ public class MetaItemRecipes {
         ModHandler.addShapedRecipe("2x2_schematic", SCHEMATIC_2X2.getStackForm(),   " d ", " S ", "   ", 'S', SCHEMATIC);
         ModHandler.addShapedRecipe("dust_schematic", SCHEMATIC_DUST.getStackForm(), "   ", " S ", "  d", 'S', SCHEMATIC);
 
-        // Prospectors
-        ModHandler.addShapedRecipe("ga_prospect_tool_mv", PROSPECT_TOOL_MV.getStackForm(),
-                "EDS", "CTC", "PBP",
-                'E', EMITTER_MV,
-                'D', new UnificationEntry(toolHeadDrill, Aluminium),
-                'S', SENSOR_MV,
-                'C', new UnificationEntry(circuit, Good),
-                'T', COVER_MACHINE_CONTROLLER,
-                'P', new UnificationEntry(plate, Aluminium),
-                'B', BATTERY_MV_SODIUM);
-
-        ModHandler.addShapedRecipe("ga_prospect_tool_hv", PROSPECT_TOOL_HV.getStackForm(),
-                "EDS", "CTC", "PBP",
-                'E', EMITTER_HV,
-                'D', new UnificationEntry(toolHeadDrill, StainlessSteel),
-                'S', SENSOR_HV,
-                'C', new UnificationEntry(circuit, Advanced),
-                'T', COVER_MACHINE_CONTROLLER,
-                'P', new UnificationEntry(plate, StainlessSteel),
-                'B', BATTERY_HV_SODIUM);
-
-        ModHandler.addShapedRecipe("ga_prospect_tool_luv", PROSPECT_TOOL_LuV.getStackForm(),
-                "EDS", "CTC", "PBP",
-                'E', EMITTER_LUV,
-                'D', new UnificationEntry(toolHeadDrill, RhodiumPlatedPalladium),
-                'S', SENSOR_LUV,
-                'C', new UnificationEntry(circuit, Master),
-                'T', COVER_MACHINE_CONTROLLER,
-                'P', new UnificationEntry(plate, RhodiumPlatedPalladium),
-                'B', BATTERY_MEDIUM_LITHIUM_ION);
-
-        ModHandler.addShapedRecipe("ga_prospect_tool_zpm", PROSPECT_TOOL_ZPM.getStackForm(),
-                "EDS", "CTC", "PBP",
-                'E', EMITTER_ZPM,
-                'D', new UnificationEntry(toolHeadDrill, HSSS),
-                'S', SENSOR_ZPM,
-                'C', new UnificationEntry(circuit, Ultimate),
-                'T', COVER_MACHINE_CONTROLLER,
-                'P', new UnificationEntry(plate, HSSS),
-                'B', BATTERY_LARGE_LITHIUM_ION);
-
         // Freedom Wrench
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(512)
                 .inputs(ELECTRIC_MOTOR_HV.getStackForm())

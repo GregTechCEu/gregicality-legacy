@@ -8,7 +8,6 @@ import codechicken.lib.vec.Matrix4;
 import codechicken.lib.vec.Rotation;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.client.renderer.RenderHelper;
-import gregicadditions.widgets.WidgetOreList;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IEnergyContainer;
@@ -45,9 +44,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.FluidTankProperties;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -1077,7 +1074,7 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
         assert fluidStack != null;
         float height = 10f / 16 * Math.max(fluidStack.amount * 1.0f / fluids[slot].getCapacity(), 0.001f);
         RenderHelper.renderFluidOverLay(-7f / 16, 0.4375f - height, 14f / 16, height, 0.002f, fluidStack, 0.8f);
-        int fluidColor = WidgetOreList.getFluidColor(fluidStack.getFluid());
+        int fluidColor = getFluidColor(fluidStack.getFluid());
         int textColor = ((fluidColor & 0xff) + ((fluidColor >> 8) & 0xff) + ((fluidColor >> 16) & 0xff)) / 3 > (255 / 2) ? 0X0 : 0XFFFFFFFF;
         RenderHelper.renderRect(-7f / 16, -7f / 16, 14f / 16, 3f / 16, 0.002f, fluidColor | (255 << 24));
         RenderHelper.renderText(0, -5.5F / 16, 0, 1.0f / (isProxy() ? 110 : 70), textColor, readAmountOrCountOrEnergy(fluidStack.amount, MODE.FLUID), true);
@@ -1110,5 +1107,13 @@ public class CoverDigitalInterface extends CoverBehavior implements IRenderMetaT
         }
 
         return new DecimalFormat("#.#").format(number * 1.0f / 1000) + units[i][unit];
+    }
+
+    public static int getFluidColor(Fluid fluid) {
+        if (fluid == FluidRegistry.WATER) {
+            return 3183823;
+        } else {
+            return fluid == FluidRegistry.LAVA ? 16766720 : fluid.getColor();
+        }
     }
 }

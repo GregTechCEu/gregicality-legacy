@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gregtech:items/metaitems/tool.prospect.mv",
-    "layer1": "gregtech:items/metaitems/tool.prospect.overlay"
-  }
-}
