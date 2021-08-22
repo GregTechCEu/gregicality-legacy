@@ -34,7 +34,7 @@ public class ExoticComponents{
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(8000)
                     .fluidInputs(fluidStack)
-                    .input(stick, Californium.getMaterial())
+                    .input(stick, Californium)
                     .input(wireFine, Pikyonium, 4)
                     .inputs(ALUMINO_SILICATE_GLASS_TUBE.getStackForm())
                     .outputs(MICROFOCUS_X_RAY_TUBE.getStackForm())
@@ -133,13 +133,13 @@ public class ExoticComponents{
         BLAST_RECIPES.recipeBuilder().duration(1800).EUt(120) //2H + 2IrO2 -> Ir2O3 + H2O
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .input(dust, IridiumDioxide, 6)
-                .outputs(IridiumTrioxide.getItemStack(5))
+                .output(dust, IridiumTrioxide, 5)
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(2000)
                 .fluidInputs(HydrochloricAcid.getFluid(6000))
-                .inputs(IridiumTrioxide.getItemStack(5))
+                .input(dust, IridiumTrioxide, 5)
                 .fluidOutputs(IridiumTrichlorideSolution.getFluid(6000))
                 .buildAndRegister();
 

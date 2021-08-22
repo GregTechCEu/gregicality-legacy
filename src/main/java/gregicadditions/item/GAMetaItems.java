@@ -9,88 +9,31 @@ public class GAMetaItems {
 
     public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY; // todo is this needed?
 
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_REFINED;
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_NANO;
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_QUANTUM;
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_EXOTIC;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_SUPRACAUSAL;
-    
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_REFINED;
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_NANO;
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_QUANTUM;
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_WETWARE;
+
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_EXOTIC;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_RESISTOR_SUPRACAUSAL;
-    
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_REFINED;
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_NANO;
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_QUANTUM;
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_WETWARE;
+
     public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_EXOTIC;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_DIODE_SUPRACAUSAL;
 
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_REFINED;
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_NANO;
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_QUANTUM;
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_WETWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_OPTICAL;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_EXOTIC;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_COSMIC;
     public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_SUPRACAUSAL;
 
-    //circuits
-    public static MetaItem<?>.MetaValueItem PRIMITIVE_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem ELECTRONIC_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem ELECTRONIC_COMPUTER;
-    public static MetaItem<?>.MetaValueItem REFINED_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem REFINED_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem REFINED_COMPUTER;
-    public static MetaItem<?>.MetaValueItem REFINED_MAINFRAME;
-    public static MetaItem<?>.MetaValueItem MICRO_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem MICRO_COMPUTER;
-    public static MetaItem<?>.MetaValueItem MICRO_MAINFRAME;
-    public static MetaItem<?>.MetaValueItem NANO_COMPUTER;
-    public static MetaItem<?>.MetaValueItem NANO_MAINFRAME;
-    public static MetaItem<?>.MetaValueItem CRYSTAL_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem CRYSTAL_COMPUTER;
-    public static MetaItem<?>.MetaValueItem CRYSTAL_MAINFRAME;
-    public static MetaItem<?>.MetaValueItem QUANTUM_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem QUANTUM_COMPUTER;
-    public static MetaItem<?>.MetaValueItem QUANTUM_MAINFRAME;
-
-    //magneto circuit
-    public static MetaItem<?>.MetaValueItem RAW_IMPRINT_SUPPORTED_BOARD;
-    public static MetaItem<?>.MetaValueItem IMPRINT_SUPPORTED_BOARD;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_ULV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_LV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_MV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_HV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_EV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_IV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_LUV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_ZPM;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UHV;
-    public static MetaItem<?>.MetaValueItem CIRCUIT_MAGNETIC_UEV;
-
-
-    public static MetaItem<?>.MetaValueItem NEURO_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem RAW_CRYSTAL_CHIP;
+    public static MetaItem<?>.MetaValueItem RAW_CRYSTAL_CHIP; // todo
 
     public static MetaItem<?>.MetaValueItem KAPTON_BOARD;
     public static MetaItem<?>.MetaValueItem KAPTON_CIRCUIT_BOARD;
@@ -180,11 +123,9 @@ public class GAMetaItems {
     
     public static MetaItem<?>.MetaValueItem WAFER_DUBNIUM;
     public static MetaItem<?>.MetaValueItem WAFER_RUTHERFORDIUM;
-    public static MetaItem<?>.MetaValueItem WAFER_NEUTRONIUM;
 
     public static MetaItem<?>.MetaValueItem BOULE_DUBNIUM;
     public static MetaItem<?>.MetaValueItem BOULE_RUTHERFORDIUM;
-    public static MetaItem<?>.MetaValueItem BOULE_NEUTRONIUM;
 
     public static MetaItem<?>.MetaValueItem UNSTABLE_STAR;
 

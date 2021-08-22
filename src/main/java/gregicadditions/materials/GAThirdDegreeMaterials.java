@@ -34,12 +34,7 @@ public class GAThirdDegreeMaterials {
                 .components(IridiumDioxide, 1, HydrochloricAcid, 1)
                 .build();
 
-        MagnetoResonatic = new Material.Builder(15503, "magneto_resonatic")
-                .gem(2)
-                .color(0xFF97FF).iconSet(MaterialIconSet.MAGNETIC)
-                .flags(DISABLE_DECOMPOSITION, FLAMMABLE , HIGH_SIFTER_OUTPUT, NO_SMELTING, GENERATE_LENS)
-                .components(Prasiolite, 3, BismuthTelluride, 6, CubicZirconia, 1, SteelMagnetic, 1)
-                .build();
+        // Free ID 15503
 
         EglinSteel = new Material.Builder(15504, "eglin_steel")
                 .ingot(6)

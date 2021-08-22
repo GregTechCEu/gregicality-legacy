@@ -281,7 +281,7 @@ public class FullereneChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(Methanol.getFluid(1000))
-                .notConsumable(dust, AluminoSilicateWool)
+                .notConsumable(dust, Alumina)
                 .notConsumable(new IntCircuitIngredient(3))
                 .fluidOutputs(Methylamine.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))

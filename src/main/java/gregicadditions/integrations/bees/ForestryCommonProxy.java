@@ -52,9 +52,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static gregicadditions.machines.GATileEntities.location;
-import static gregicadditions.recipes.helper.HelperMethods.registerMachineRecipe;
 import static gregtech.api.recipes.GTRecipeHandler.removeRecipesByInputs;
 import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
 
 @Mod.EventBusSubscriber()
 public class ForestryCommonProxy {

@@ -100,7 +100,7 @@ public class SupracausalComponents {
                 .buildAndRegister();
 
         // CTC Guidance Unit
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(134217728).qubit(32)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(134217728)//.qubit(32)
                 .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
                 .inputs(TOOL_DATA_ORB.getStackForm())
                 .inputs(NUCLEAR_CLOCK.getStackForm())

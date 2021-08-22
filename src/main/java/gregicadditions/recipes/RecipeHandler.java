@@ -4,7 +4,6 @@ import gregicadditions.GAConfig;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.materials.SimpleDustMaterialStack;
 import gregicadditions.recipes.categories.*;
 import gregicadditions.recipes.categories.circuits.CircuitRecipes;
 import gregicadditions.recipes.categories.machines.MachineCraftingRecipes;
@@ -16,8 +15,9 @@ import gregtech.api.items.toolitem.ToolMetaItem;
 import gregtech.api.recipes.*;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
-import gregtech.api.unification.material.type.*;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
@@ -37,7 +37,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -47,12 +46,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.MarkerMaterials.Color.White;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.type.DustMaterial.MatFlags.NO_SMASHING;
-import static gregtech.api.unification.material.type.GemMaterial.MatFlags.CRYSTALLISABLE;
-import static gregtech.api.unification.material.type.IngotMaterial.MatFlags.GENERATE_SMALL_GEAR;
-import static gregtech.api.unification.material.type.Material.MatFlags.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.plateCurved;
 
 /**
  * Primary Recipe Registration Class
@@ -90,9 +84,6 @@ public class RecipeHandler {
         dustTiny.addProcessingHandler(PropertyKey.DUST, RecipeHandler::processTinyDust);
         nugget.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processNugget);
 
-        if (GAConfig.GT5U.stickGT5U)
-            stick.addProcessingHandler(DustMaterial.class, RecipeHandler::processStick);
-
         dust.addProcessingHandler(GemMaterial.class, RecipeHandler::processGem);
         foil.addProcessingHandler(IngotMaterial.class, RecipeHandler::processFoil);
         rotor.addProcessingHandler(IngotMaterial.class, RecipeHandler::processRotor);
@@ -109,7 +100,7 @@ public class RecipeHandler {
         pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
 
         dust.addProcessingHandler(FluidMaterial.class, RecipeHandler::registerPlasmaCondenserRecipes);
-        ingot.addProcessingHandler(IngotMaterial.class, RecipeHandler::registerStellarForgeRecipes);
+        ingot.addProcessingHandler(PropertyKey.BLAST, RecipeHandler::registerStellarForgeRecipes);
     }
 
 
@@ -379,29 +370,6 @@ public class RecipeHandler {
                     "GG ", "GGS", "GG ",
                     'G', new UnificationEntry(gem, material),
                     'S', new UnificationEntry(stick, Wood));
-        }
-    }
-
-    /**
-     * Rod Material Handler. Generates:
-     *
-     * + GT5U Lathe Recipes if enabled (1 rod + 2 small dust)
-     *
-     * - Removes old Lathe Rod Recipes if enabled
-     */
-    private static void processStick(OrePrefix stickPrefix, DustMaterial material) {
-
-        // GT5U Lathe recipes
-        if (material instanceof GemMaterial || material instanceof IngotMaterial) {
-            OrePrefix prefix = material instanceof IngotMaterial ? ingot : gem;
-
-            removeRecipesByInputs(LATHE_RECIPES, OreDictUnifier.get(prefix, material));
-
-            LATHE_RECIPES.recipeBuilder().EUt(16).duration((int) Math.max(material.getAverageMass() * 2, 1))
-                    .input(prefix, material)
-                    .output(stickPrefix, material)
-                    .output(dustSmall, material, 2)
-                    .buildAndRegister();
         }
     }
 
@@ -990,19 +958,15 @@ public class RecipeHandler {
 
         for (Recipe recipe : mapToCopy.getRecipeList()) {
 
-            LargeRecipeBuilder largeRecipeBuilder = mapToForm.recipeBuilder()
+            mapToForm.recipeBuilder()
                     .EUt(recipe.getEUt())
                     .duration(recipe.getDuration())
                     .inputsIngredients(recipe.getInputs())
                     .outputs(recipe.getOutputs())
                     .fluidInputs(recipe.getFluidInputs())
-                    .fluidOutputs(recipe.getFluidOutputs());
-
-            // TODO Giving better way to do this in GTCE (is in CEu)
-            for (Recipe.ChanceEntry entry : recipe.getChancedOutputs())
-                largeRecipeBuilder.chancedOutput(entry.getItemStack(), entry.getChance(), entry.getBoostPerTier());
-
-            largeRecipeBuilder.buildAndRegister();
+                    .fluidOutputs(recipe.getFluidOutputs())
+                    .chancedOutputs(recipe.getChancedOutputs())
+                    .buildAndRegister();
         }
     }
 
@@ -1302,11 +1266,6 @@ public class RecipeHandler {
                 OrePrefix prefix = material instanceof DustMaterial ? dust : null;
                 processDecomposition(prefix, (FluidMaterial) material);
             }
-
-            // Matter Replication Recipes
-            if (material.element != null) {
-                matterReplication(material);
-            }
         }
     }
 
@@ -1355,79 +1314,6 @@ public class RecipeHandler {
 
         //register recipe
         builder.buildAndRegister();
-    }
-
-    /**
-     * Matter Replication Recipe Generation. Formerly was its own file.
-     */
-    private static void matterReplication(Material material) {
-
-        int mass = (int) material.getMass();
-        FluidStack uuFluid = mass % 2 == 0 ?
-                BosonicUUMatter.getFluid(mass) :
-                FermionicUUMatter.getFluid(mass);
-
-        if (((FluidMaterial) material).getMaterialFluid() != null) {
-
-            int amount = material instanceof IngotMaterial ? GTValues.L : 1000;
-
-            MASS_FAB_RECIPES.recipeBuilder()
-                    .fluidInputs(((FluidMaterial) material).getFluid(amount))
-                    .fluidOutputs(uuFluid)
-                    .fluidOutputs(FreeElectronGas.getFluid(mass))
-                    .duration(mass * GAConfig.Misc.replicationTimeFactor)
-                    .EUt(32)
-                    .buildAndRegister();
-
-            if (!material.hasFlag(DISABLE_REPLICATION)) {
-
-                REPLICATOR_RECIPES.recipeBuilder()
-                        .fluidOutputs(((FluidMaterial) material).getFluid(amount))
-                        .notConsumable(((FluidMaterial) material).getFluid(amount))
-                        .fluidInputs(uuFluid)
-                        .fluidInputs(FreeElectronGas.getFluid(mass))
-                        .duration(mass * GAConfig.Misc.replicationTimeFactor)
-                        .EUt(32)
-                        .buildAndRegister();
-
-                REPLICATOR_RECIPES.recipeBuilder()
-                        .fluidOutputs(((FluidMaterial) material).getFluid(amount))
-                        .notConsumable(((FluidMaterial) material).getFluid(amount))
-                        .fluidInputs(UUMatter.getFluid(mass))
-                        .duration(mass * GAConfig.Misc.replicationTimeFactor)
-                        .EUt(32)
-                        .buildAndRegister();
-            }
-        } else {
-
-            MASS_FAB_RECIPES.recipeBuilder()
-                    .input(dust, material)
-                    .fluidOutputs(uuFluid)
-                    .fluidOutputs(FreeElectronGas.getFluid(mass))
-                    .duration(mass * GAConfig.Misc.replicationTimeFactor)
-                    .EUt(32)
-                    .buildAndRegister();
-
-            if (!material.hasFlag(DISABLE_REPLICATION)) {
-
-                REPLICATOR_RECIPES.recipeBuilder()
-                        .output(dust, material)
-                        .notConsumable(dust, material)
-                        .fluidInputs(uuFluid)
-                        .fluidInputs(FreeElectronGas.getFluid(mass))
-                        .duration(mass * GAConfig.Misc.replicationTimeFactor)
-                        .EUt(32)
-                        .buildAndRegister();
-
-                REPLICATOR_RECIPES.recipeBuilder()
-                        .output(dust, material)
-                        .notConsumable(dust, material)
-                        .fluidInputs(UUMatter.getFluid(mass))
-                        .duration(mass * GAConfig.Misc.replicationTimeFactor)
-                        .EUt(32)
-                        .buildAndRegister();
-            }
-        }
     }
 
     /**
@@ -1581,16 +1467,16 @@ public class RecipeHandler {
      *
      * + Stellar Forge EBF recipe analogues
      */
-    private static void registerStellarForgeRecipes(OrePrefix prefix, IngotMaterial material) {
-        if (material.blastFurnaceTemperature >= 14500) {
+    private static void registerStellarForgeRecipes(OrePrefix prefix, Material material, BlastProperty property) {
+        if (property.getBlastTemperature() >= 14500) {
             int duration = Math.max(1, (int) (material.getAverageMass() * 100L));
 
             ItemStack explosive;
-            if (material.blastFurnaceTemperature >= 65000)
+            if (property.getBlastTemperature() >= 65000)
                 explosive = GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE);
-            else if (material.blastFurnaceTemperature >= 35000)
+            else if (property.getBlastTemperature() >= 35000)
                 explosive = GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE);
-            else if (material.blastFurnaceTemperature >= 22500)
+            else if (property.getBlastTemperature() >= 22500)
                 explosive =  GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE);
             else
                 explosive = GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE);

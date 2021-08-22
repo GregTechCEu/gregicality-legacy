@@ -69,6 +69,7 @@ public class GAHighDegreeMaterials {
                 .flags(DISABLE_DECOMPOSITION, EXCLUDE_BLOCK_CRAFTING_RECIPES)
                 .build();
 
+        // TODO Fix comp
         HDCS = new Material.Builder(19001, "hdcs")
                 .ingot(5).fluid()
                 .color(0x334433).iconSet(SHINY)

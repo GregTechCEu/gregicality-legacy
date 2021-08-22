@@ -82,10 +82,6 @@ repositories {
         name = "CTM"
         setUrl("https://maven.tterrag.com/")
     }
-    maven {
-        name = "McJtyLib, XNet"
-        setUrl("http://maven.k-4u.nl")
-    }
 }
 
 dependencies {
@@ -103,11 +99,9 @@ dependencies {
     "deobfProvided"("net.sengir.forestry:forestry_$mcVersion:${config["forestry.version"]}")
     "provided"("slimeknights.mantle:Mantle:$shortVersion-${config["mantle.version"]}")
     "provided"("slimeknights:TConstruct:$mcVersion-${config["ticon.version"]}")
-    "provided"("com.github.mcjty:xnet:$shortVersion-${config["xnet.version"]}")
-    "provided"("com.github.mcjty:mcjtylib:$shortVersion-${config["mcjtylib.version"]}")
     "provided"("binnie:binnie-mods-$mcVersion:${config["binnie.version"]}")
 
-    "provided"(files("libs/gregtech-1.12.2-2.0.0.1180-alpha.jar"))
+    "provided"(files("libs/gregtech-1.12.2-2.0.0.1216-alpha.jar"))
     // Change to "compile" to add one of these to game
     "provided"(files("extdeps/appliedenergistics2-rv6-stable-7.jar"))
     "compileOnly"(files("extdeps/refinedstorage-1.6.15.jar"))

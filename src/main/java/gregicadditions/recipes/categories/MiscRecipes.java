@@ -32,7 +32,7 @@ public class MiscRecipes {
                 .input(dust, Palladium, 5)
                 .input(dust, Bismuth, 5)
                 .input(dust, Germanium, 5)
-                .inputs(SiliconCarbide.getItemStack(5))
+                .input(dust, SiliconCarbide, 5)
                 .output(dust, Quantum, 50)
                 .buildAndRegister();
 
@@ -98,7 +98,7 @@ public class MiscRecipes {
                 .input(dust, Carbon)
                 .notConsumable(new IntCircuitIngredient(2))
                 .notConsumable(Argon.getFluid(0))
-                .outputs(SiliconCarbide.getItemStack(2))
+                .output(dust, SiliconCarbide, 2)
                 .buildAndRegister();
 
         // Diamond Implosion Recipe

@@ -1,10 +1,9 @@
 package gregicadditions.materials;
 
 import gregicadditions.GAConfig;
-import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.MaterialStack;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.materials.GAMaterialFlags.*;
@@ -20,31 +19,7 @@ public class GAMaterialFlagAddition {
     }
 
     private static void initGeneral() {
-        // Cables
-        // TODO
-//        MVSuperconductorBase.setCableProperties(128, 4, 2);
-//        HVSuperconductorBase.setCableProperties(512, 4, 2);
-//        EVSuperconductorBase.setCableProperties(2048, 4, 2);
-//        IVSuperconductorBase.setCableProperties(8192, 4, 2);
-//        LuVSuperconductorBase.setCableProperties(32768, 4, 2);
-//        ZPMSuperconductorBase.setCableProperties(131072, 4, 2);
-//        UVSuperconductorBase.setCableProperties(524288, 4, 2);
-
         /* TODO
-        MVSuperconductor.setCableProperties(128, 4, 0);
-        ignoreCable(MVSuperconductor);
-        HVSuperconductor.setCableProperties(512, 4, 0);
-        ignoreCable(HVSuperconductor);
-        EVSuperconductor.setCableProperties(2048, 4, 0);
-        ignoreCable(EVSuperconductor);
-        IVSuperconductor.setCableProperties(8192, 4, 0);
-        ignoreCable(IVSuperconductor);
-        LuVSuperconductor.setCableProperties(32768, 4, 0);
-        ignoreCable(LuVSuperconductor);
-        ZPMSuperconductor.setCableProperties(131072, 4, 0);
-        ignoreCable(ZPMSuperconductor);
-        UVSuperconductor.setCableProperties(524288, 4, 0);
-        ignoreCable(UVSuperconductor);
         ignoreCable(UHVSuperconductor);
         ignoreCable(UEVSuperconductor);
         ignoreCable(UIVSuperconductor);
@@ -108,9 +83,9 @@ public class GAMaterialFlagAddition {
         // Long Rods
 //        Uranium.addFlag(GENERATE_LONG_ROD);
 
-        // Core Metal todo wtf is this
-        Tritanium.addFlag(GA_CORE_METAL);
-        Duranium.addFlag(GA_CORE_METAL.toArray(new MaterialStack[0]));
+        // Core Metal
+        Tritanium.addFlag(GA_CORE_METAL.toArray(new MaterialFlag[0]));
+        Duranium.addFlag(GA_CORE_METAL.toArray(new MaterialFlag[0]));
 
         // Replication
         Naquadria.addFlag(DISABLE_REPLICATION);
@@ -120,7 +95,6 @@ public class GAMaterialFlagAddition {
         // Prefix Ignores
         OrePrefix.block.setIgnored(Pyrotheum);
         OrePrefix.block.setIgnored(Cryotheum);
-        OrePrefix.block.setIgnored(MagnetoResonatic);
 
         // Fluids
         Arsenic.setProperty(PropertyKey.FLUID, new FluidProperty());
@@ -197,7 +171,6 @@ public class GAMaterialFlagAddition {
         Powellite.addOreByProducts(Iron, Molybdenite, Potassium);
         Trona.addOreByProducts(Sodium, SodaAsh, SodaAsh);
         Mica.addOreByProducts(Potassium, Aluminium, Fluorite);
-        Prasiolite.addOreByProducts(Prasiolite, Iron, SiliconDioxide);
         Saltpeter.addOreByProducts(Salt, Potassium);
         Rhodochrosite.addOreByProducts(Calcium, Manganese);
         Zeolite.addOreByProducts(Calcium, Silicon, Aluminium);

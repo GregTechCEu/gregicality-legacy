@@ -5,9 +5,6 @@ import forestry.core.fluids.Fluids;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipe;
 import gregtech.api.GTValues;
-import gregtech.api.metatileentity.ITieredMetaTileEntity;
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.recipes.*;
 import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.ore.OrePrefix;
@@ -22,60 +19,6 @@ import java.util.*;
  * Some Helper Methods for Recipe Addition and Removal
  */
 public class HelperMethods {
-
-    /**
-     * Tiered Machine Recipe Registration method.
-     * An example of how to use it:
-     *
-     * <cr>
-     *     registerMachineRecipe(GATileEntities.DIODES,
-     *                 "CCC", "XMX", "CCC",
-     *                 'M', HULL,
-     *                 'C', CABLE_SINGLE,
-     *                 'X', MetaItems.SMALL_COIL);
-     * </cr>
-     *
-     * - The MetaTileEntity input can be an Array or a List.
-     * - The Recipe Input must be Strings of up to 3 characters.
-     * - The inputs must be in pairs of (char, [input]).
-     * - Inputs can be a:
-     *     - String representing an OreDictionary entry
-     *     - ItemStack
-     *     - {@link GACraftingComponents} or {@link gregtech.loaders.recipe.CraftingComponent}
-     *     - {@link gregtech.api.unification.stack.UnificationEntry}
-     *
-     * @param ingredientOffset The starting position in the Array or List of MetaTileEntities
-     * @param metaTileEntities The group of MetaTileEntities to register the same recipe for.
-     * @param recipe           The Recipe Layout, detailed above.
-     */
-    public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(int ingredientOffset, T[] metaTileEntities, Object... recipe) {
-        for (T metaTileEntity : metaTileEntities) {
-            if (metaTileEntity != null)
-                ModHandler.addShapedRecipe(String.format("ga_%s", metaTileEntity.getMetaName()), metaTileEntity.getStackForm(),
-                        prepareRecipe(metaTileEntity.getTier() + ingredientOffset, Arrays.copyOf(recipe, recipe.length)));
-        }
-    }
-
-    public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(T[] metaTileEntities, Object... recipe) {
-        registerMachineRecipe(0, metaTileEntities, recipe);
-    }
-
-    public static <T extends MetaTileEntity & ITieredMetaTileEntity> void registerMachineRecipe(List<T> metaTileEntities, Object... recipe) {
-        for (T mte : metaTileEntities) {
-            ModHandler.addShapedRecipe(String.format("ga_%s", mte.getMetaName()), mte.getStackForm(),
-                    prepareRecipe(mte.getTier(), Arrays.copyOf(recipe, recipe.length)));
-        }
-    }
-
-    private static Object[] prepareRecipe(int tier, Object... recipe) {
-        //Don't assume that the recipes are all 3x3. Some recipes are 1x3 shaped, which will fail if the 3x3 assumption is made
-        for (int i = 0; i < recipe.length; i++) {
-            if (recipe[i] instanceof GACraftingComponents) {
-                recipe[i] = ((GACraftingComponents) recipe[i]).getIngredient(tier);
-            }
-        }
-        return recipe;
-    }
 
     /**
      * Tests if a Crafting Table recipe has only one unique Item input.
@@ -198,27 +141,6 @@ public class HelperMethods {
     ///////////////////////////////////////////////////
     //              Fuel Recipe Helpers              //
     ///////////////////////////////////////////////////
-
-    public static void registerPlasmaFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.PLASMA_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
-    }
-
-    public static void registerDieselGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.COMBUSTION_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
-    }
-
-    public static void registerSteamGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.STEAM_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
-    }
-
-    public static void registerGasGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.GAS_TURBINE_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
-    }
-
-    public static void registerSemiFluidGeneratorFuel(FluidStack fuelStack, int duration, int tier) {
-        RecipeMaps.SEMI_FLUID_GENERATOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
-    }
-
     public static void registerNaquadahReactorFuel(FluidStack fuelStack, int duration, int tier) {
         GARecipeMaps.NAQUADAH_REACTOR_FUELS.addRecipe(new FuelRecipe(fuelStack, duration, GTValues.V[tier]));
     }

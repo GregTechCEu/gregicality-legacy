@@ -2,10 +2,10 @@ package gregicadditions.recipes.categories;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -13,18 +13,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
-import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.CLUSTER_MILL_RECIPES;
-import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.W;
+import static gregtech.api.recipes.GTRecipeHandler.removeRecipesByInputs;
+import static gregtech.api.recipes.ModHandler.removeRecipeByName;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.Materials.*;
@@ -45,7 +42,7 @@ public class RecipeOverride {
     private static void configCircuitOverride() {
 
         // Aluminium EBF
-        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Aluminium));
+        GTRecipeHandler.removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Aluminium));
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(884).blastFurnaceTemp(1700)
                 .input(dust, Aluminium)
                 .notConsumable(new IntCircuitIngredient(1))
@@ -53,28 +50,28 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Epichlorohydrin from Allyl Chloride
-        removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, SodiumHydroxide, 3)}, new FluidStack[]{HypochlorousAcid.getFluid(1000), AllylChloride.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, SodiumHydroxide, 3)}, new FluidStack[]{HypochlorousAcid.getFluid(1000), AllylChloride.getFluid(1000)});
         CHEMICAL_RECIPES.recipeBuilder().duration(480).EUt(30)
                 .input(dust, SodiumHydroxide, 3)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .fluidInputs(AllylChloride.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(2))
-                .fluidOutputs(Epichlorhydrin.getFluid(1000))
+                .fluidOutputs(Epichlorohydrin.getFluid(1000))
                 .fluidOutputs(SaltWater.getFluid(1000))
                 .buildAndRegister();
 
         // Epichlorohydrin from Glycerol
-        removeRecipesByInputs(CHEMICAL_RECIPES, Glycerol.getFluid(1000), HydrochloricAcid.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, Glycerol.getFluid(1000), HydrochloricAcid.getFluid(1000));
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(480)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Glycerol.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
-                .fluidOutputs(Epichlorhydrin.getFluid(1000))
+                .fluidOutputs(Epichlorohydrin.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
 
         // Hot Tungsten
-        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Tungsten));
+        GTRecipeHandler.removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Tungsten));
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(10980).blastFurnaceTemp(3000)
                 .input(dust, Tungsten)
                 .notConsumable(new IntCircuitIngredient(1))
@@ -82,7 +79,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Hot Lithium Titanate
-        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, LithiumTitanate));
+        GTRecipeHandler.removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, LithiumTitanate));
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(900).blastFurnaceTemp(2500)
                 .input(dust, LithiumTitanate)
                 .notConsumable(new IntCircuitIngredient(0))
@@ -90,7 +87,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Dichlorobenzene
-        removeRecipesByInputs(CHEMICAL_RECIPES, Benzene.getFluid(1000), Chlorine.getFluid(4000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, Benzene.getFluid(1000), Chlorine.getFluid(4000));
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Benzene.getFluid(1000))
@@ -100,7 +97,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Concrete
-        removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Clay), OreDictUnifier.get(dust, Stone, 3)}, new FluidStack[]{Water.getFluid(500)});
+        GTRecipeHandler.removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Clay), OreDictUnifier.get(dust, Stone, 3)}, new FluidStack[]{Water.getFluid(500)});
         MIXER_RECIPES.recipeBuilder().duration(20).EUt(16)
                 .input(dust, Clay)
                 .input(dust, Stone, 3)
@@ -110,7 +107,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Osmiridium Mixer Recipe
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, Iridium, 3), OreDictUnifier.get(dust, Osmium));
+        GTRecipeHandler.removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, Iridium, 3), OreDictUnifier.get(dust, Osmium));
         MIXER_RECIPES.recipeBuilder().EUt(30).duration(764)
                 .input(dust, Iridium, 3)
                 .input(dust, Osmium)
@@ -119,7 +116,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // HSS-G Mixer Recipe
-        removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, HSSG, 6), OreDictUnifier.get(dust, Iridium, 2), OreDictUnifier.get(dust, Osmium));
+        GTRecipeHandler.removeRecipesByInputs(MIXER_RECIPES, OreDictUnifier.get(dust, HSSG, 6), OreDictUnifier.get(dust, Iridium, 2), OreDictUnifier.get(dust, Osmium));
         MIXER_RECIPES.recipeBuilder().EUt(30).duration(1160)
                 .input(dust, HSSG, 6)
                 .input(dust, Iridium, 2)
@@ -129,7 +126,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Ethylene from Ethanol
-        removeRecipesByInputs(CHEMICAL_RECIPES, Ethanol.getFluid(1000), SulfuricAcid.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, Ethanol.getFluid(1000), SulfuricAcid.getFluid(1000));
         CHEMICAL_RECIPES.recipeBuilder().duration(1200).EUt(120)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Ethanol.getFluid(1000))
@@ -139,17 +136,17 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Chloramine from Hypochlorous Acid
-        removeRecipesByInputs(CHEMICAL_RECIPES, HypochlorousAcid.getFluid(1000), Ammonia.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, HypochlorousAcid.getFluid(1000), Ammonia.getFluid(1000));
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .fluidOutputs(Chloramine.getFluid(1000))
+                .fluidOutputs(Monochloramine.getFluid(1000))
                 .buildAndRegister();
 
         // Dimethylamine
-        removeRecipesByInputs(CHEMICAL_RECIPES, Ammonia.getFluid(1000), Methanol.getFluid(2000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, Ammonia.getFluid(1000), Methanol.getFluid(2000));
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Ammonia.getFluid(1000))
@@ -159,7 +156,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Styrene
-        removeRecipesByInputs(CHEMICAL_RECIPES, Ethylene.getFluid(1000), Benzene.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, Ethylene.getFluid(1000), Benzene.getFluid(1000));
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(30)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidInputs(Ethylene.getFluid(1000))
@@ -171,7 +168,7 @@ public class RecipeOverride {
 
     private static void brewingOverride() {
 
-        removeAllRecipes(BREWING_RECIPES);
+        GTRecipeHandler.removeAllRecipes(BREWING_RECIPES);
 
         // Honey -> Biomass
         BREWING_RECIPES.recipeBuilder().duration(1440).EUt(3)
@@ -336,18 +333,18 @@ public class RecipeOverride {
     private static void chemistryOverride() {
 
         // Add Cyclopentadiene to Steam-Cracked Naphtha Distillation
-        removeRecipesByInputs(DISTILLATION_RECIPES, SteamCrackedNaphtha.getFluid(1000));
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(5).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(6).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(7).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(8).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(9).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(10).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLATION_RECIPES, SteamCrackedNaphtha.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(5).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(6).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(7).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(8).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(9).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(10).getMatchingStacks(), new FluidStack[]{SteamCrackedNaphtha.getFluid(1000)});
 
         DISTILLATION_RECIPES.recipeBuilder().duration(120).EUt(120)
                 .fluidInputs(SteamCrackedNaphtha.getFluid(1000))
@@ -365,33 +362,15 @@ public class RecipeOverride {
                 .fluidOutputs(Cyclopentadiene.getFluid(75))
                 .buildAndRegister();
 
-        // Add Octane to Hydro-Cracked Light Fuel Distillation
-        removeRecipesByInputs(DISTILLATION_RECIPES, HydroCrackedLightFuel.getFluid(1000));
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{HydroCrackedLightFuel.getFluid(1000)});
-
-        DISTILLATION_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .fluidInputs(HydroCrackedLightFuel.getFluid(1000))
-                .fluidOutputs(Naphtha.getFluid(750))
-                .fluidOutputs(Propane.getFluid(200))
-                .fluidOutputs(Butane.getFluid(150))
-                .fluidOutputs(Ethane.getFluid(125))
-                .fluidOutputs(Methane.getFluid(125))
-                .fluidOutputs(Octane.getFluid(50))
-                .buildAndRegister();
-
         // Add Butanol to Fermented Biomass
-        removeRecipesByInputs(DISTILLATION_RECIPES, FermentedBiomass.getFluid(1000));
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(5).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
-        removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(6).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLATION_RECIPES, FermentedBiomass.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(0).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(1).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(3).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(4).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(5).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
+        GTRecipeHandler.removeRecipesByInputs(DISTILLERY_RECIPES, new IntCircuitIngredient(6).getMatchingStacks(), new FluidStack[]{FermentedBiomass.getFluid(1000)});
 
         DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180)
                 .fluidInputs(FermentedBiomass.getFluid(2000))
@@ -405,20 +384,8 @@ public class RecipeOverride {
                 .fluidOutputs(Butanol.getFluid(100))
                 .buildAndRegister();
 
-        // Putting Fermentation Base here as well to keep them together
-        DISTILLATION_RECIPES.recipeBuilder().duration(75).EUt(180)
-                .fluidInputs(FermentationBase.getFluid(2000))
-                .fluidOutputs(AceticAcid.getFluid(50))
-                .fluidOutputs(Ethanol.getFluid(600))
-                .fluidOutputs(Methanol.getFluid(150))
-                .fluidOutputs(Ammonia.getFluid(100))
-                .fluidOutputs(CarbonDioxide.getFluid(400))
-                .fluidOutputs(Methane.getFluid(600))
-                .fluidOutputs(Butanol.getFluid(100))
-                .buildAndRegister();
-
         // Fix GTCE Hypochlorous Acid Recipe
-        removeRecipesByInputs(CHEMICAL_RECIPES, Chlorine.getFluid(10000), Water.getFluid(10000), Mercury.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, Chlorine.getFluid(10000), Water.getFluid(10000), Mercury.getFluid(1000));
 
         // 10Cl + 10H2O -> 10HClO + 10H
         CHEMICAL_RECIPES.recipeBuilder().duration(600).EUt(8)
@@ -430,7 +397,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Fix GTCE Cumene Recipe
-        removeRecipesByInputs(CHEMICAL_RECIPES, Propene.getFluid(8000), Benzene.getFluid(8000), PhosphoricAcid.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, Propene.getFluid(8000), Benzene.getFluid(8000), PhosphoricAcid.getFluid(1000));
 
         // 8C3H6 + 8C6H6 -> 8C9H12
         CHEMICAL_RECIPES.recipeBuilder().duration(1920).EUt(30)
@@ -444,13 +411,13 @@ public class RecipeOverride {
     private static void gregtechOverride() {
 
         // GTNH Bricks
-        removeFurnaceRecipe(new ItemStack(Items.CLAY_BALL, 1, W));
-        removeFurnaceRecipe(COMPRESSED_CLAY.getStackForm());
-        removeRecipeByName("gregtech:brick_to_dust");
-        removeRecipeByName("gregtech:brick_block_to_dust");
-        removeRecipeByName("gregtech:compressed_clay");
-        removeRecipeByName("gtadditions:block_compress_clay");
-        removeRecipeByName("gtadditions:block_decompress_clay");
+        ModHandler.removeFurnaceSmelting(new ItemStack(Items.CLAY_BALL, 1, W));
+        ModHandler.removeFurnaceSmelting(COMPRESSED_CLAY.getStackForm());
+        ModHandler.removeRecipeByName("gregtech:brick_to_dust");
+        ModHandler.removeRecipeByName("gregtech:brick_block_to_dust");
+        ModHandler.removeRecipeByName("gregtech:compressed_clay");
+        ModHandler.removeRecipeByName("gtadditions:block_compress_clay");
+        ModHandler.removeRecipeByName("gtadditions:block_decompress_clay");
 
         ModHandler.addShapelessRecipe("clay_brick", COMPRESSED_CLAY.getStackForm(),
                 new ItemStack(Items.CLAY_BALL),
@@ -585,7 +552,7 @@ public class RecipeOverride {
                 .chancedOutput(OreDictUnifier.get(dustSmall, Quicklime, 2), 9900, 0)
                 .chancedOutput(OreDictUnifier.get(dustSmall, Potash), 6400, 0)
                 .chancedOutput(OreDictUnifier.get(dustSmall, Magnesia), 6000, 0)
-                .chancedOutput(OreDictUnifier.get(dustSmall, PhosphorousPentoxide), 500, 0)
+                .chancedOutput(OreDictUnifier.get(dustSmall, PhosphorusPentoxide), 500, 0)
                 .chancedOutput(OreDictUnifier.get(dustSmall, SodaAsh), 5000, 0)
                 .buildAndRegister();
 
@@ -676,11 +643,11 @@ public class RecipeOverride {
         MIXER_RECIPES.recipeBuilder().duration(16).EUt(120)
                 .fluidInputs(LightFuel.getFluid(5000))
                 .fluidInputs(HeavyFuel.getFluid(1000))
-                .fluidOutputs(Fuel.getFluid(6000))
+                .fluidOutputs(Diesel.getFluid(6000))
                 .buildAndRegister();
 
         // Dynamite
-        removeCraftingRecipes(DYNAMITE.getStackForm());
+        ModHandler.removeRecipes(DYNAMITE.getStackForm());
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(4)
                 .inputs(new ItemStack(Items.PAPER))
                 .inputs(new ItemStack(Items.STRING))
@@ -709,7 +676,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Sheldonite Smelting Recipe
-        removeFurnaceRecipe(OreDictUnifier.get(dust, Cooperite));
+        ModHandler.removeFurnaceSmelting(OreDictUnifier.get(dust, Cooperite));
         ModHandler.addSmeltingRecipe(OreDictUnifier.get(dust, Cooperite), OreDictUnifier.get(dust, PlatinumMetallicPowder, 2));
 
         // Sheldonite Electrolysis
@@ -758,16 +725,16 @@ public class RecipeOverride {
                 .fluidInputs(SulfuricGas.getFluid(16000))
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
-                .fluidOutputs(Gas.getFluid(16000))
+                .fluidOutputs(RefineryGas.getFluid(16000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
                 .notConsumable(dust, Molybdenite)
-                .notConsumable(CobaltAluminate.getItemStack())
+                .notConsumable(dust, CobaltAluminate)
                 .fluidInputs(SulfuricGas.getFluid(8000))
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
-                .fluidOutputs(Gas.getFluid(8000))
+                .fluidOutputs(RefineryGas.getFluid(8000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
@@ -780,7 +747,7 @@ public class RecipeOverride {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
                 .notConsumable(dust, Molybdenite)
-                .notConsumable(CobaltAluminate.getItemStack())
+                .notConsumable(dust, CobaltAluminate)
                 .fluidInputs(SulfuricNaphtha.getFluid(6000))
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
@@ -797,7 +764,7 @@ public class RecipeOverride {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
                 .notConsumable(dust, Molybdenite)
-                .notConsumable(CobaltAluminate.getItemStack())
+                .notConsumable(dust, CobaltAluminate)
                 .fluidInputs(SulfuricLightFuel.getFluid(6000))
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
@@ -814,7 +781,7 @@ public class RecipeOverride {
 
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)
                 .notConsumable(dust, Molybdenite)
-                .notConsumable(CobaltAluminate.getItemStack())
+                .notConsumable(dust, CobaltAluminate)
                 .fluidInputs(SulfuricHeavyFuel.getFluid(4000))
                 .fluidInputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
@@ -996,7 +963,7 @@ public class RecipeOverride {
                 if (!smeltingOutput.isEmpty() && smeltingOutput.getItem() == Items.COAL && smeltingOutput.getMetadata() == 1) {
                     ItemStack woodStack = stack.copy();
                     woodStack.setItemDamage(W);
-                    removeFurnaceRecipe(woodStack);
+                    ModHandler.removeFurnaceSmelting(woodStack);
                 }
             }
         }
@@ -1005,36 +972,33 @@ public class RecipeOverride {
     private static void recipeRemoval() {
 
         // Remove Conflicting Redstone Plate Recipe
-        removeRecipesByInputs(COMPRESSOR_RECIPES, OreDictUnifier.get(dust, Redstone));
+        GTRecipeHandler.removeRecipesByInputs(COMPRESSOR_RECIPES, OreDictUnifier.get(dust, Redstone));
 
-        // Remove Nuclear Processing
-        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Uranium));
-        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Plutonium));
+        // Remove Nuclear Processing TODO
+        GTRecipeHandler.removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Uranium));
+        GTRecipeHandler.removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Plutonium));
 
         // Remove Rare Earth Centrifuging
-        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, RareEarth));
+        GTRecipeHandler.removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, RareEarth));
 
         // Remove GTCE NZF Recipes
-        removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, FerriteMixture, 6)}, new FluidStack[]{Oxygen.getFluid(8000)});
-        removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Iron, 4), OreDictUnifier.get(dust, Nickel), OreDictUnifier.get(dust, Zinc)}, new FluidStack[]{Oxygen.getFluid(8000)});
+        GTRecipeHandler.removeRecipesByInputs(BLAST_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, FerriteMixture, 6)}, new FluidStack[]{Oxygen.getFluid(8000)});
+        GTRecipeHandler.removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Iron, 4), OreDictUnifier.get(dust, Nickel), OreDictUnifier.get(dust, Zinc)}, new FluidStack[]{Oxygen.getFluid(8000)});
 
         // Remove GTCE Dinitrogen Tetroxide Recipes
-        removeRecipesByInputs(CHEMICAL_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{NitrogenDioxide.getFluid(2000)});
-        removeRecipesByInputs(MIXER_RECIPES, DinitrogenTetroxide.getFluid(1000), Dimethylhydrazine.getFluid(1000));
+        GTRecipeHandler.removeRecipesByInputs(CHEMICAL_RECIPES, new IntCircuitIngredient(2).getMatchingStacks(), new FluidStack[]{NitrogenDioxide.getFluid(2000)});
+        GTRecipeHandler.removeRecipesByInputs(MIXER_RECIPES, DinitrogenTetroxide.getFluid(1000), Dimethylhydrazine.getFluid(1000));
 
         // QCD Matter progression skipping
-        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_INGOT.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L)});
-        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_NUGGET.getStackForm()}, new FluidStack[]{QCDMatter.getFluid(L)});
-        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_PLATE.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L)});
-        removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L * 9)});
+        GTRecipeHandler.removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_INGOT.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L)});
+        GTRecipeHandler.removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_NUGGET.getStackForm()}, new FluidStack[]{QCDMatter.getFluid(L)});
+        GTRecipeHandler.removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_PLATE.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L)});
+        GTRecipeHandler.removeRecipesByInputs(FLUID_SOLIDFICATION_RECIPES, new ItemStack[]{SHAPE_MOLD_BLOCK.getStackForm()},  new FluidStack[]{QCDMatter.getFluid(L * 9)});
 
         // Remove Yttrium Barium Cuprate Recipes
-        removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Copper, 3), OreDictUnifier.get(dust, Barium, 2), OreDictUnifier.get(dust, Yttrium)}, new FluidStack[]{Oxygen.getFluid(7000)});
+        GTRecipeHandler.removeRecipesByInputs(MIXER_RECIPES, new ItemStack[]{OreDictUnifier.get(dust, Copper, 3), OreDictUnifier.get(dust, Barium, 2), OreDictUnifier.get(dust, Yttrium)}, new FluidStack[]{Oxygen.getFluid(7000)});
 
         // Remove Vanilla TNT Recipe
-        removeCraftingRecipes(new ItemStack(Blocks.TNT));
-
-        // Ultimate Battery
-        removeRecipesByInputs(ASSEMBLER_RECIPES, ENERGY_LAPOTRONIC_ORB2.getStackForm(8), OreDictUnifier.get(plate, Darmstadtium, 16));
+        ModHandler.removeRecipes(new ItemStack(Blocks.TNT));
     }
 }

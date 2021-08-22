@@ -3,6 +3,7 @@ package gregicadditions.recipes.categories;
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
+import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
@@ -56,7 +57,7 @@ public class MetaItemRecipes {
                 'C', new UnificationEntry(circuit, Good),
                 'T', COVER_MACHINE_CONTROLLER,
                 'P', new UnificationEntry(plate, Aluminium),
-                'B', BATTERY_RE_MV_SODIUM);
+                'B', BATTERY_MV_SODIUM);
 
         ModHandler.addShapedRecipe("ga_prospect_tool_hv", PROSPECT_TOOL_HV.getStackForm(),
                 "EDS", "CTC", "PBP",
@@ -66,7 +67,7 @@ public class MetaItemRecipes {
                 'C', new UnificationEntry(circuit, Advanced),
                 'T', COVER_MACHINE_CONTROLLER,
                 'P', new UnificationEntry(plate, StainlessSteel),
-                'B', BATTERY_RE_HV_SODIUM);
+                'B', BATTERY_HV_SODIUM);
 
         ModHandler.addShapedRecipe("ga_prospect_tool_luv", PROSPECT_TOOL_LuV.getStackForm(),
                 "EDS", "CTC", "PBP",
@@ -109,7 +110,7 @@ public class MetaItemRecipes {
                 .outputs(EMPTY_LASER_COOLING_CONTAINER.getStackForm())
                 .buildAndRegister();
 
-        FLUID_CANNER_RECIPES.recipeBuilder().duration(280).EUt(90000)
+        CANNER_RECIPES.recipeBuilder().duration(280).EUt(90000)
                 .inputs(EMPTY_LASER_COOLING_CONTAINER.getStackForm())
                 .fluidInputs(Rubidium.getFluid(L * 2))
                 .outputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
@@ -137,13 +138,13 @@ public class MetaItemRecipes {
         // Magnetic Trap
         ASSEMBLER_RECIPES.recipeBuilder().duration(480).EUt(1000000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 3))
-                .input(wireGtDouble, UVSuperconductor, 2)
+                .input(wireGtDouble, EnrichedNaquadahTriniumEuropiumDuranide, 2)
                 .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .outputs(MAGNETIC_TRAP.getStackForm())
                 .buildAndRegister();
 
         // Gravi Star
-        removeRecipesByInputs(AUTOCLAVE_RECIPES, new ItemStack[]{new ItemStack(Items.NETHER_STAR)}, new FluidStack[]{Darmstadtium.getFluid(L * 2)});
+        GTRecipeHandler.removeRecipesByInputs(AUTOCLAVE_RECIPES, new ItemStack[]{new ItemStack(Items.NETHER_STAR)}, new FluidStack[]{Darmstadtium.getFluid(L * 2)});
         AUTOCLAVE_RECIPES.recipeBuilder().duration(480).EUt(7680)
                 .inputs(new ItemStack(Items.NETHER_STAR))
                 .fluidInputs(Dubnium.getFluid(L * 2))
@@ -217,17 +218,17 @@ public class MetaItemRecipes {
                 .buildAndRegister();
 
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .inputs(BrownAlgae.getItemStack(8))
+                .input(dust, BrownAlgae, 8)
                 .outputs(PLANT_BALL.getStackForm())
                 .buildAndRegister();
 
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .inputs(RedAlgae.getItemStack(8))
+                .input(dust, RedAlgae, 8)
                 .outputs(PLANT_BALL.getStackForm())
                 .buildAndRegister();
 
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
-                .inputs(GreenAlgae.getItemStack(8))
+                .input(dust, GreenAlgae, 8)
                 .outputs(PLANT_BALL.getStackForm())
                 .buildAndRegister();
 

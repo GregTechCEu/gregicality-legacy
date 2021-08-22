@@ -69,11 +69,7 @@ public class GASecondDegreeMaterials {
                 .components(Mica, 1, RareEarth, 1)
                 .build();
 
-        CircuitCompoundMK3 = new Material.Builder(11507, "circuit_compound_mkc")
-                .dust()
-                .color(0x003316).iconSet(SAND)
-                .components(IndiumGalliumPhosphide, 1, Dibismusthydroborate, 3, BismuthTelluride, 2)
-                .build();
+        // Free ID 11507
 
         Zirkelite = new Material.Builder(11508, "zirkelite")
                 .dust(4).ore()

@@ -4,8 +4,8 @@ import gregicadditions.machines.GATileEntities;
 import gregtech.common.items.MetaItems;
 
 import static gregicadditions.recipes.helper.GACraftingComponents.*;
-import static gregicadditions.recipes.helper.HelperMethods.*;
 import static gregtech.loaders.recipe.CraftingComponent.*;
+import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
 
 public class SingleblockCraftingRecipes {
 

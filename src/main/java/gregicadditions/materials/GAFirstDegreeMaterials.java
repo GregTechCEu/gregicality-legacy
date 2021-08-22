@@ -69,24 +69,11 @@ public class GAFirstDegreeMaterials {
                 .components(Sodium, 2, Tungsten, 1, Oxygen, 4)
                 .build();
 
-        AluminoSilicateWool = new Material.Builder(3508, "alumino_silicate_wool")
-                .dust()
-                .color(0xbbbbbb).iconSet(SAND)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Aluminium, 2, Oxygen, 3, Silicon, 1, Oxygen, 2)
-                .build();
+        // Free ID 3508
 
-        Dibismusthydroborate = new Material.Builder(3509, "dibismuthhydroborate")
-                .dust()
-                .color(0x00B749).iconSet(SAND)
-                .components(Bismuth, 2, Hydrogen, 1, Boron, 1, Oxygen, 4)
-                .build();
+        // Free ID 3509
 
-        BismuthTelluride = new Material.Builder(3510, "bismuth_telluride")
-                .dust()
-                .color(0x006B38).iconSet(SAND)
-                .components(Bismuth, 2, Tellurium, 1, Oxygen, 2)
-                .build();
+        // Free ID 3510
 
         AmmoniumPersulfate = new Material.Builder(3511, "ammonium_persulfate")
                 .fluid()
@@ -385,13 +372,7 @@ public class GAFirstDegreeMaterials {
                 .components(Zirconium, 1, Oxygen, 2)
                 .build();
 
-        Prasiolite = new Material.Builder(3456, "prasiolite")
-                .gem().ore()
-                .color(0x9EB749).iconSet(QUARTZ)
-                .flags(GENERATE_LENS)
-                .components(Silicon, 5, Oxygen, 10, Iron)
-                .build()
-                .setFormula("(SiO2)5Fe", true);
+        // Free ID 3456
 
         Zircon = new Material.Builder(3457, "zircon")
                 .gem().ore()

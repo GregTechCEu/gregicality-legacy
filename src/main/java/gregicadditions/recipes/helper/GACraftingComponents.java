@@ -6,7 +6,6 @@ import gregicadditions.item.GAMetaItems;
 import gregicadditions.item.GATransparentCasing;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.loaders.recipe.CraftingComponent;
 import gregtech.loaders.recipe.component.IComponentHandler;
@@ -176,9 +175,9 @@ public class GACraftingComponents implements IComponentHandler {
         CraftingComponent.STICK_RADIOACTIVE.appendIngredients(ImmutableMap.of(
                 2, new UnificationEntry(stick, Uranium235),
                 3, new UnificationEntry(stick, Plutonium241),
-                4, new UnificationEntry(stick, Curium247.getMaterial()),
-                5, new UnificationEntry(stick, Californium253.getMaterial()),
-                6, new UnificationEntry(stick, Fermium259.getMaterial())));
+                4, new UnificationEntry(stick, Curium247),
+                5, new UnificationEntry(stick, Californium253),
+                6, new UnificationEntry(stick, Fermium259)));
         CraftingComponent.STICK_RADIOACTIVE.appendIngredients(ImmutableMap.of(
                 7, new UnificationEntry(stick, Naquadria),
                 GTValues.FALLBACK, new UnificationEntry(stick, Tritanium)));

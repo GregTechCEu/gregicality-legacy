@@ -2,15 +2,17 @@ package gregicadditions.recipes.categories.handlers;
 
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
+import gregicadditions.recipes.helper.HelperMethods;
 import gregtech.api.unification.material.Materials;
 import net.minecraftforge.fml.common.Loader;
 
 import static gregicadditions.GAMaterials.*;
-import static gregtech.api.GTValues.*;
 import static gregicadditions.recipes.helper.HelperMethods.*;
+import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.circuit;
+import static gregtech.loaders.recipe.FuelRecipes.*;
 
 /**
  * Class for Fuel Recipe additions/overrides.
@@ -29,14 +31,14 @@ public class FuelHandler {
      * This looks like the standard material, but it will use the Forestry fluid if Forestry is loaded,
      * and if Forestry Integration is enabled.
      */
-    private static GenericFluid Ethanol = new GenericFluid(Materials.Ethanol);
-    private static GenericFluid SeedOil = new GenericFluid(Materials.SeedOil);
+    private static HelperMethods.GenericFluid Ethanol = new HelperMethods.GenericFluid(Materials.Ethanol);
+    private static HelperMethods.GenericFluid SeedOil = new HelperMethods.GenericFluid(Materials.SeedOil);
 
     public static void init() {
 
         if (Loader.isModLoaded(MODID_FR) && GAConfig.Misc.ForestryIntegration) {
-            Ethanol = new GenericFluid(Fluids.BIO_ETHANOL);
-            SeedOil = new GenericFluid(Fluids.SEED_OIL);
+            Ethanol = new HelperMethods.GenericFluid(Fluids.BIO_ETHANOL);
+            SeedOil = new HelperMethods.GenericFluid(Fluids.SEED_OIL);
         }
 
         // Steam Turbine
@@ -62,11 +64,11 @@ public class FuelHandler {
         // Gas Turbine Fuels
         registerGasGeneratorFuel(NaturalGas        .getFluid(20),    13, LV);
         registerGasGeneratorFuel(Hydrogen          .getFluid(20),    1, LV);
-        registerGasGeneratorFuel(CarbonMonoxde     .getFluid(20),    15, LV);
+        registerGasGeneratorFuel(CarbonMonoxide    .getFluid(20),    15, LV);
         registerGasGeneratorFuel(WoodGas           .getFluid(20),    15, LV);
         registerGasGeneratorFuel(SulfuricNaphtha   .getFluid( 8),    10, LV);
         registerGasGeneratorFuel(Ethylene          .getFluid( 5),    20, LV);
-        registerGasGeneratorFuel(Gas               .getFluid( 2),    10, LV);
+        registerGasGeneratorFuel(RefineryGas       .getFluid( 2),    10, LV);
         registerGasGeneratorFuel(Propene           .getFluid(10),    60, LV);
         registerGasGeneratorFuel(Butene            .getFluid(10),    80, LV);
         registerGasGeneratorFuel(Phenol            .getFluid(10),    90, LV);
@@ -76,14 +78,14 @@ public class FuelHandler {
         registerGasGeneratorFuel(LightENaquadahFuel.getFluid( 1), 10000, LV);
 
         // Diesel Generator Fluids
-        registerDieselGeneratorFuel(Oil               .getFluid(20),   10, LV);
-        registerDieselGeneratorFuel(SulfuricLightFuel .getFluid( 8),   10, LV);
-        registerDieselGeneratorFuel(BioDiesel         .getFluid( 2),   14, LV);
-        registerDieselGeneratorFuel(LightFuel         .getFluid(32),  305, LV);
-        registerDieselGeneratorFuel(Gasoline          .getFluid( 8),  135, LV);
-        registerDieselGeneratorFuel(HighOctaneGasoline.getFluid(10),  562, LV);
-        registerDieselGeneratorFuel(Octane            .getFluid(20),   45, LV);
-        registerDieselGeneratorFuel(Ethanol           .getFluid( 2),   12, LV);
+        registerCombustionGeneratorFuel(Oil               .getFluid(20),   10, LV);
+        registerCombustionGeneratorFuel(SulfuricLightFuel .getFluid( 8),   10, LV);
+        registerCombustionGeneratorFuel(BioDiesel         .getFluid( 2),   14, LV);
+        registerCombustionGeneratorFuel(LightFuel         .getFluid(32),  305, LV);
+        registerCombustionGeneratorFuel(Gasoline          .getFluid( 8),  135, LV);
+        registerCombustionGeneratorFuel(HighOctaneGasoline.getFluid(10),  562, LV);
+        registerCombustionGeneratorFuel(Octane            .getFluid(20),   45, LV);
+        registerCombustionGeneratorFuel(Ethanol           .getFluid( 2),   12, LV);
 
 
         // Plasma Generator

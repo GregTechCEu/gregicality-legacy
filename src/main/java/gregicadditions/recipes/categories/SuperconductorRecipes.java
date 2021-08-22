@@ -17,21 +17,22 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 
+// TODO Rework all of this
 public class SuperconductorRecipes {
 
     private static final Material[] SUPERCONDUCTORS = {
-            null, null, MVSuperconductor,
-            HVSuperconductor, EVSuperconductor, IVSuperconductor,
-            LuVSuperconductor, ZPMSuperconductor, UVSuperconductor,
+            null, null, null,
+            null, null, null,
+            null, null, null,
             UHVSuperconductor, UEVSuperconductor, UIVSuperconductor,
-            UMVSuperconductor, UXVSuperconductor, Superconductor};
+            UMVSuperconductor, UXVSuperconductor};
 
     private static final Material[] SUPERCONDUCTOR_BASES = {
-            null, null, MVSuperconductorBase,
-            HVSuperconductorBase, EVSuperconductorBase, IVSuperconductorBase,
-            LuVSuperconductorBase, ZPMSuperconductorBase, UVSuperconductorBase,
+            null, null, null,
+            null, null, null,
+            null, null, null,
             UHVSuperconductorBase, UEVSuperconductorBase, UIVSuperconductorBase,
-            UMVSuperconductorBase, UXVSuperconductorBase, UXVSuperconductorBase};
+            UMVSuperconductorBase, UXVSuperconductorBase};
 
     public static void init() {
 
@@ -62,62 +63,6 @@ public class SuperconductorRecipes {
                 }
             }
         } else {
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(120)
-                    .input(wireGtSingle, MVSuperconductorBase, 3)
-                    .input(pipeTinyFluid, StainlessSteel, 2)
-                    .inputs(ELECTRIC_PUMP_MV.getStackForm(2))
-                    .fluidInputs(Nitrogen.getFluid(2000))
-                    .output(wireGtSingle, MVSuperconductor, 3)
-                    .buildAndRegister();
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(256)
-                    .input(wireGtSingle, HVSuperconductorBase, 3)
-                    .input(pipeTinyFluid, Titanium, 2)
-                    .inputs(ELECTRIC_PUMP_HV.getStackForm())
-                    .fluidInputs(Nitrogen.getFluid(2000))
-                    .output(wireGtSingle, HVSuperconductor, 3)
-                    .buildAndRegister();
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(480)
-                    .input(wireGtSingle, EVSuperconductorBase, 9)
-                    .input(pipeTinyFluid, TungstenSteel, 6)
-                    .inputs(ELECTRIC_PUMP_EV.getStackForm(2))
-                    .fluidInputs(Nitrogen.getFluid(6000))
-                    .output(wireGtSingle, EVSuperconductor, 9)
-                    .buildAndRegister();
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(300).EUt(1920)
-                    .input(wireGtSingle, IVSuperconductorBase, 6)
-                    .input(pipeTinyFluid, NiobiumTitanium, 4)
-                    .inputs(ELECTRIC_PUMP_IV.getStackForm())
-                    .fluidInputs(Nitrogen.getFluid(4000))
-                    .output(wireGtSingle, IVSuperconductor, 6)
-                    .buildAndRegister();
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(7680)
-                    .input(wireGtSingle, LuVSuperconductorBase, 8)
-                    .input(pipeTinyFluid, Enderium, 5)
-                    .inputs(ELECTRIC_PUMP_LUV.getStackForm())
-                    .fluidInputs(Nitrogen.getFluid(6000))
-                    .output(wireGtSingle, LuVSuperconductor, 8)
-                    .buildAndRegister();
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(30720)
-                    .input(wireGtSingle, ZPMSuperconductorBase, 16)
-                    .input(pipeTinyFluid, Naquadah, 6)
-                    .inputs(ELECTRIC_PUMP_ZPM.getStackForm())
-                    .fluidInputs(Nitrogen.getFluid(8000))
-                    .output(wireGtSingle, ZPMSuperconductor, 16)
-                    .buildAndRegister();
-
-            ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(122880)
-                    .input(wireGtSingle, UVSuperconductorBase, 32)
-                    .input(pipeTinyFluid, Ultimet, 7)
-                    .inputs(ELECTRIC_PUMP_ZPM.getStackForm())
-                    .fluidInputs(Nitrogen.getFluid(10000))
-                    .output(wireGtSingle, UVSuperconductor, 32)
-                    .buildAndRegister();
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(500).EUt(491520)
                     .input(wireGtSingle, UHVSuperconductorBase, 32)

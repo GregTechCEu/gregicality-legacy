@@ -49,7 +49,7 @@ public class OpticalComponents {
         // SMD Resistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
                 .input(wireFine, Cinobite, 8)
-                .inputs(SodiumSeaborgate.getItemStack(5))
+                .input(dust, SodiumSeaborgate, 5)
                 .input(dust, TriniumTitanium, 4)
                 .fluidInputs(Polybenzimidazole.getFluid(L * 9))
                 .outputs(SMD_RESISTOR_OPTICAL.getStackForm(32))
@@ -94,7 +94,7 @@ public class OpticalComponents {
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(3200000)
-                .inputs(LithiumNiobateNanoparticles.getItemStack(2))
+                .input(dust, LithiumNiobateNanoparticles, 2)
                 .notConsumable(ROTATING_TRANSPARENT_SURFACE)
                 .notConsumable(ELECTRON_SOURCE)
                 .fluidInputs(Xenon.getFluid(1000))
@@ -133,30 +133,30 @@ public class OpticalComponents {
 
         // ZBLAN
         LARGE_MIXER_RECIPES.recipeBuilder().EUt(120).duration(3000)
-                .inputs(ZirconiumTetrafluoride.getItemStack(90))
-                .inputs(BariumDifluoride.getItemStack(21))
-                .inputs(LanthanumTrifluoride.getItemStack(8))
-                .inputs(AluminiumTrifluoride.getItemStack(4))
+                .input(dust, ZirconiumTetrafluoride, 90)
+                .input(dust, BariumDifluoride, 21)
+                .input(dust, LanthanumTrifluoride, 8)
+                .input(dust, AluminiumTrifluoride, 4)
                 .input(dust, SodiumFluoride, 14)
-                .outputs(ZBLANDust.getItemStack(35))
+                .output(dust, ZBLANDust, 35)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().EUt(120).duration(3000)
-                .inputs(ZBLANDust.getItemStack())
-                .inputs(ErbiumTrifluoride.getItemStack(4))
-                .outputs(ErbiumDopedZBLANDust.getItemStack(2))
+                .input(dust, ZBLANDust)
+                .input(dust, ErbiumTrifluoride, 4)
+                .output(dust, ErbiumDopedZBLANDust, 2)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
-                .inputs(ZBLANDust.getItemStack())
+                .input(dust, ZBLANDust)
                 .outputs(ZBLAN.getStackForm())
                 .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
-                .inputs(ErbiumDopedZBLANDust.getItemStack())
+                .input(dust, ErbiumDopedZBLANDust)
                 .outputs(ERBIUM_DOPED_ZBLAN.getStackForm())
                 .blastFurnaceTemp(2500)
                 .buildAndRegister();

@@ -59,65 +59,6 @@ public class GAMetaItem extends StandardMetaItem {
         SCHEMATIC_3X3 = addItem(133, "schematic.3by3").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
         SCHEMATIC_DUST = addItem(134, "schematic.dust").setMaterialInfo(new ItemMaterialInfo(new MaterialStack(Materials.Steel, M * 2)));
 
-        PRIMITIVE_ASSEMBLY = addItem(200, "circuit.assembly.primitive").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Good);
-        ELECTRONIC_ASSEMBLY = addItem(201, "circuit.assembly.electronic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Good);
-        ELECTRONIC_COMPUTER = addItem(202, "circuit.computer.electronic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Advanced);
-        REFINED_PROCESSOR = addItem(203, "circuit.processor.refined").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Basic);
-        REFINED_ASSEMBLY = addItem(204, "circuit.assembly.refined").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Good);
-        REFINED_COMPUTER = addItem(205, "circuit.computer.refined").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Advanced);
-        REFINED_MAINFRAME = addItem(206, "circuit.mainframe.refined").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Extreme);
-        MICRO_PROCESSOR = addItem(207, "circuit.processor.micro").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Good);
-        MICRO_COMPUTER = addItem(209, "circuit.computer.micro").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Extreme);
-        MICRO_MAINFRAME = addItem(208, "circuit.mainframe.micro").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
-        NANO_COMPUTER = addItem(211, "circuit.computer.nano").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
-        NANO_MAINFRAME = addItem(212, "circuit.mainframe.nano").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Master);
-        QUANTUM_ASSEMBLY = addItem(216, "circuit.assembly.quantum").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
-        QUANTUM_COMPUTER = addItem(217, "circuit.computer.quantum").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Master);
-        QUANTUM_MAINFRAME = addItem(218, "circuit.mainframe.quantum").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
-        CRYSTAL_PROCESSOR = addItem(213, "circuit.processor.crystal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
-        CRYSTAL_COMPUTER = addItem(214, "circuit.computer.crystal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
-        CRYSTAL_MAINFRAME = addItem(215, "circuit.mainframe.crystal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
-
-        CIRCUIT_MAGNETIC_ULV = addItem(220, "circuit.resonatic.ulv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Primitive);
-        CIRCUIT_MAGNETIC_LV = addItem(221, "circuit.resonatic.lv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Basic);
-        CIRCUIT_MAGNETIC_MV = addItem(222, "circuit.resonatic.mv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Good);
-        CIRCUIT_MAGNETIC_HV = addItem(223, "circuit.resonatic.hv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Advanced);
-        CIRCUIT_MAGNETIC_EV = addItem(224, "circuit.resonatic.ev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Extreme);
-        CIRCUIT_MAGNETIC_IV = addItem(225, "circuit.resonatic.iv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Elite);
-        CIRCUIT_MAGNETIC_LUV = addItem(226, "circuit.resonatic.luv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Master);
-        CIRCUIT_MAGNETIC_ZPM = addItem(227, "circuit.resonatic.zpm").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
-        CIRCUIT_MAGNETIC_UV = addItem(228, "circuit.resonatic.uv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
-        CIRCUIT_MAGNETIC_UHV = addItem(229, "circuit.resonatic.uhv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        CIRCUIT_MAGNETIC_UEV = addItem(232, "circuit.resonatic.uev").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
-        RAW_IMPRINT_SUPPORTED_BOARD = addItem(230, "board.raw.magnetic");
-        IMPRINT_SUPPORTED_BOARD = addItem(231, "board.magnetic");
-
-
-        SMD_TRANSISTOR_REFINED = addItem(240, "component.smd.transistor.refined");
-        SMD_RESISTOR_REFINED = addItem(241, "component.smd.resistor.refined");
-        SMD_CAPACITOR_REFINED = addItem(242, "component.smd.capacitor.refined");
-        SMD_DIODE_REFINED = addItem(243, "component.smd.diode.refined");
-
-        SMD_TRANSISTOR_NANO = addItem(244, "component.smd.transistor.nano");
-        SMD_RESISTOR_NANO = addItem(245, "component.smd.resistor.nano");
-        SMD_CAPACITOR_NANO = addItem(246, "component.smd.capacitor.nano");
-        SMD_DIODE_NANO = addItem(247, "component.smd.diode.nano");
-
-        SMD_TRANSISTOR_CRYSTAL = addItem(248, "component.smd.transistor.crystal");
-        SMD_CAPACITOR_CRYSTAL = addItem(249, "component.smd.capacitor.crystal");
-        SMD_RESISTOR_CRYSTAL = addItem(250, "component.smd.resistor.crystal");
-        SMD_DIODE_CRYSTAL = addItem(251, "component.smd.diode.crystal");
-
-        SMD_TRANSISTOR_QUANTUM = addItem(252, "component.smd.transistor.quantum");
-        SMD_CAPACITOR_QUANTUM = addItem(253, "component.smd.capacitor.quantum");
-        SMD_RESISTOR_QUANTUM = addItem(254, "component.smd.resistor.quantum");
-        SMD_DIODE_QUANTUM = addItem(255, "component.smd.diode.quantum");
-
-        SMD_TRANSISTOR_WETWARE = addItem(256, "component.smd.transistor.wetware");
-        SMD_CAPACITOR_WETWARE = addItem(257, "component.smd.capacitor.wetware");
-        SMD_RESISTOR_WETWARE = addItem(258, "component.smd.resistor.wetware");
-        SMD_DIODE_WETWARE = addItem(259, "component.smd.diode.wetware");
-
 
         HUGE_TURBINE_ROTOR = addItem(300, "huge_turbine_rotor").addComponents(new GATurbineRotorBehavior(200, 8.0));
         LARGE_TURBINE_ROTOR = addItem(301, "large_turbine_rotor").addComponents(new GATurbineRotorBehavior(150, 16.0));
@@ -154,7 +95,6 @@ public class GAMetaItem extends StandardMetaItem {
 
         WAFER_DUBNIUM = addItem(333, "wafer.dubnium");
         WAFER_RUTHERFORDIUM = addItem(334, "wafer.rutherfordium");
-        WAFER_NEUTRONIUM = addItem(335, "wafer.neutronium");
 
         COSMIC_PROCESSOR = addItem(336, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
         COSMIC_ASSEMBLY = addItem(337, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
@@ -163,7 +103,6 @@ public class GAMetaItem extends StandardMetaItem {
 
         BOULE_DUBNIUM = addItem(340, "boule.dubnium");
         BOULE_RUTHERFORDIUM = addItem(341, "boule.rutherfordium");
-        BOULE_NEUTRONIUM = addItem(342, "boule.neutronium");
 
         UNSTABLE_STAR = addItem(343, "unstable.star");
 
