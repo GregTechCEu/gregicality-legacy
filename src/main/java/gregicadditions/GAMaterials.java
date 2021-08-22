@@ -425,7 +425,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material SodiumHydride;
     public static Material MagnesiumSulfate;
     public static Material SodiumMolybdate;
-    public static Material StrontiumSulfate;
     public static Material StrontiumOxide;
     public static Material PalladiumChloride;
     public static Material PotassiumTetrachloroplatinate;
@@ -559,6 +558,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Polyimide;
     public static Material FluorinatedEthylenePropylene;
     public static Material Alumina;
+    public static Material Triniite;
+    public static Material HydroiodicAcid;
 
 
     // Second Degree Materials
@@ -767,6 +768,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material TlTmCesiumIodide;
     public static Material RocketFuelH8N4C2O4;
     public static Material Phosgene;
+    public static Material FinelyPowderedRutile;
 
 
 
@@ -893,9 +895,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material AmineMixture;
     public static Material DimethylthiocarbamoilChloride;
     public static Material Trimethylamine;
-    public static Material Mercaphenol;
+    public static Material Mercaptophenol;
     public static Material Dimethylformamide;
-    public static Material HydrogenCrackedDMF;
     public static Material Oct1ene;
     public static Material CetaneTrimethylAmmoniumBromide;
     public static Material ButylLithium;
@@ -1112,6 +1113,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Hexamethylenetetramine;
     public static Material Tetraacetyldinitrosohexaazaisowurtzitane;
     public static Material CrudeHexanitroHexaaxaisowurtzitane;
+    public static Material ChlorodiisopropylPhosphine;
+    public static Material IridiumCyclooctadienylChlorideDimer;
 
     // Unknown Composition Materials
     public static Material Kerosene;

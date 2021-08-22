@@ -1,5 +1,6 @@
 package gregicadditions.materials;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
@@ -300,7 +301,7 @@ public class GAFirstDegreeMaterials {
                 .build();
 
         Fluorite = new Material.Builder(3445, "fluorite")
-                .dust().ore()
+                .dust().ore().fluid()
                 .color(0x009933).iconSet(SHINY)
                 .components(Calcium, 1, Fluorine, 2)
                 .build();
@@ -1359,9 +1360,9 @@ public class GAFirstDegreeMaterials {
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Nitrogen, 1, Hydrogen, 5, Fluorine, 1)
+                .components(Nitrogen, 1, Hydrogen, 4, Fluorine, 1)
                 .build()
-                .setFormula("NH4HF");
+                .setFormula("NH4F");
 
         MercuryNitrate = new Material.Builder(3612, "mercury_nitrate")
                 .fluid()
@@ -2083,13 +2084,6 @@ public class GAFirstDegreeMaterials {
                 .components(Sodium, 2, Molybdenum, 1, Oxygen, 4)
                 .build();
 
-        StrontiumSulfate = new Material.Builder(3720, "strontium_sulfate")
-                .dust()
-                .colorAverage().iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Strontium, 1, Sulfur, 1, Oxygen, 4)
-                .build();
-
         StrontiumOxide = new Material.Builder(3721, "strontium_oxide")
                 .dust()
                 .colorAverage().iconSet(SHINY)
@@ -2166,7 +2160,7 @@ public class GAFirstDegreeMaterials {
 
         StrontiumCarbonate = new Material.Builder(3732, "strontium_carbonate")
                 .dust()
-                .colorAverage().iconSet(ROUGH)
+                .color(0xCACAC8).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Strontium, 1, Carbon, 1, Oxygen, 3)
                 .build();
@@ -2360,7 +2354,7 @@ public class GAFirstDegreeMaterials {
                 .dust()
                 .color(0x55BBD4).iconSet(SHINY)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(Sodium, 1, Seaborgium, 1, Oxygen, 3)
+                .components(Sodium, 2, Seaborgium, 1, Oxygen, 4)
                 .build();
 
         OsmiumTetroxide = new Material.Builder(3760, "osmium_tetroxide")
@@ -2985,6 +2979,20 @@ public class GAFirstDegreeMaterials {
                 .color(0x0b585c).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Aluminium, 2, Oxygen, 3)
+                .build();
+
+        Triniite = new Material.Builder(3857, "triniite")
+                .dust().ore()
+                .color(0x5F5A76).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Trinium, 3, Actinium, 3, Selenium, 4, Astatine, 4)
+                .build();
+
+        HydroiodicAcid = new Material.Builder(3858, "hydroiodic_acid")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Hydrogen, 1, Iodine, 1)
                 .build();
     }
 }

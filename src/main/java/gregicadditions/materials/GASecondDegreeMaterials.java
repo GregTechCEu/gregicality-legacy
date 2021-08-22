@@ -1,5 +1,6 @@
 package gregicadditions.materials;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.unification.material.Material;
 
 import static gregicadditions.materials.GAMaterialFlags.*;
@@ -365,15 +366,17 @@ public class GASecondDegreeMaterials {
                 .fluid()
                 .color(0xCFB37D)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(SodiumHydroxideSolution, 1, RareEarth, 1)
-                .build();
+                .components(SodiumHydroxideSolution, 1, RareEarth, 1, Oxygen, 3, Hydrogen, 3)
+                .build()
+                .setFormula("NaOH(H2O)?(OH)3", true);
 
         RareEarthChloridesSolution = new Material.Builder(11549, "rare_earth_chlorides_solution")
                 .fluid()
                 .color(0x164B45)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(RareEarthHydroxidesSolution, 1, HydrochloricAcid, 1)
-                .build();
+                .components(RareEarthHydroxidesSolution, 1, RareEarth, 1, Chlorine, 3)
+                .build()
+                .setFormula("(?Cl3)H2O", true);
 
         LaNdOxidesSolution = new Material.Builder(11550, "la_nd_oxides_solution")
                 .fluid()
@@ -1446,7 +1449,7 @@ public class GASecondDegreeMaterials {
                 .dust()
                 .color(0x45ABF4).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Ruthenium, 1, Seaborgium, 1, StrontiumSulfate, 4)
+                .components(Ruthenium, 1, Seaborgium, 1, GAMaterials.Celestine, 4)
                 .build();
 
         FullereneSuperconductiveDust = new Material.Builder(11596, "fullerene_superconductor_dust")
@@ -1504,6 +1507,13 @@ public class GASecondDegreeMaterials {
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Carbon, 1, Oxygen, 1, Chlorine, 2)
+                .build();
+
+        FinelyPowderedRutile = new Material.Builder(11604, "finely_powdered_rutile")
+                .fluid()
+                .color(0xFFFFFF).iconSet(FINE)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Rutile, 1)
                 .build();
     }
 }

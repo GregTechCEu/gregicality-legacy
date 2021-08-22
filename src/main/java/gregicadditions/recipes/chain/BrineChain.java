@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
@@ -432,7 +433,7 @@ public class BrineChain {
                 .fluidInputs(Resorcinol.getFluid(1000))
                 .fluidInputs(DimethylthiocarbamoilChloride.getFluid(1000))
                 .fluidInputs(Hydrogen.getFluid(2000))
-                .fluidOutputs(Mercaphenol.getFluid(1000))
+                .fluidOutputs(Mercaptophenol.getFluid(1000))
                 .fluidOutputs(Dimethylformamide.getFluid(1000))
                 .fluidOutputs(HypochlorousAcid.getFluid(1000))
                 .buildAndRegister();
@@ -509,7 +510,7 @@ public class BrineChain {
                 .input(dust, Iridium)
                 .fluidInputs(PhosphorusTrichloride.getFluid(2000))
                 .fluidInputs(IsopropylAlcohol.getFluid(1000))
-                .fluidInputs(Mercaphenol.getFluid(1000))
+                .fluidInputs(Mercaptophenol.getFluid(1000))
                 .outputs(DehydrogenationCatalyst.getItemStack())
                 .fluidOutputs(Chlorine.getFluid(6000))
                 .buildAndRegister();
@@ -597,7 +598,7 @@ public class BrineChain {
 
         // SrSO4 + Na2CO3 + 2C -> SrCO3 + 2CO2 + Na2S
         BLAST_RECIPES.recipeBuilder().duration(360).EUt(120).blastFurnaceTemp(1200)
-                .inputs(StrontiumSulfate.getItemStack(6))
+                .inputs(GAMaterials.Celestine.getItemStack(6))
                 .input(dust, SodaAsh, 6)
                 .input(dust, Carbon, 2)
                 .outputs(StrontiumCarbonate.getItemStack(5))

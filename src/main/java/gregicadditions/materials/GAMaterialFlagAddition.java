@@ -220,6 +220,8 @@ public class GAMaterialFlagAddition {
 
         Cooperite.oreByProducts.clear();
         Cooperite.addOreByProducts(PalladiumMetallicPowder, Nickel, IrMetalResidue);
+
+        Triniite.addOreByProducts(NaquadricCompound, Bismuth, Thallium)
     }
 
     private static void initNuclearMaterial() {

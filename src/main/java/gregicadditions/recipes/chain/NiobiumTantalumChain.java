@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
@@ -197,7 +198,7 @@ public class NiobiumTantalumChain {
                 .fluidOutputs(Water.getFluid(4000))
                 .output(dust, Barite, 3)
                 .output(dust, Gypsum, 8)
-                .outputs(StrontiumSulfate.getItemStack(6))
+                .outputs(GAMaterials.Celestine.getItemStack(6))
                 .output(dustSmall, Radium, 2)
                 .buildAndRegister();
 

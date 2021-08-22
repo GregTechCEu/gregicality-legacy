@@ -1,6 +1,7 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAEnums;
+import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.materials.SimpleDustMaterial;
@@ -381,7 +382,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(480)
                 .inputs(StrontiumChloride.getItemStack(3))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(StrontiumSulfate.getItemStack(6))
+                .outputs(GAMaterials.Celestine.getItemStack(6))
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 

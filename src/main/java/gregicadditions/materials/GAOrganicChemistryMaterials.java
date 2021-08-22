@@ -102,7 +102,7 @@ public class GAOrganicChemistryMaterials {
         CarbonNanotubes = new Material.Builder(6512, "carbon_nanotubes")
                 .ingot()
                 .color(0x2c2c2c).iconSet(SHINY)
-                .flags(EXCLUDE_BLOCK_CRAFTING_RECIPES, NO_SMASHING, GENERATE_FOIL, DISABLE_DECOMPOSITION)
+                .flags(EXCLUDE_BLOCK_CRAFTING_RECIPES, NO_SMASHING, GENERATE_FOIL, GENERATE_FINE_WIRE, DISABLE_DECOMPOSITION)
                 .components(Carbon, 1)
                 .build();
 
@@ -684,7 +684,7 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("(CH3)3N", true);
 
-        Mercaphenol = new Material.Builder(6586, "mercaphenol")
+        Mercaptophenol = new Material.Builder(6586, "mercaptophenol")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
@@ -699,14 +699,6 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 3, Hydrogen, 7, Nitrogen, 1)
                 .build()
                 .setFormula("(CH3)2NCH", true);
-
-        HydrogenCrackedDMF = new Material.Builder(6588, "hydrogen_cracked_dmf")
-                .fluid()
-                .color(0x62BDFF)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 6, Hydrogen, 7, Oxygen, 1, Sulfur, 1)
-                .build()
-                .setFormula("(C6H6OS)H", true);
 
         Oct1ene = new Material.Builder(6589, "1_octene")
                 .fluid()
@@ -2271,6 +2263,21 @@ public class GAOrganicChemistryMaterials {
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Carbon, 6, Hydrogen, 6, Nitrogen, 12, Oxygen, 12)
                 .build();
+
+        ChlorodiisopropylPhosphine = new Material.Builder(6771, "chlorodiisopropyl_phosphine")
+                .fluid()
+                .color(0xA2C122)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 14, Chlorine, 1, Phosphorus, 1)
+                .build();
+
+        IridiumCyclooctadienylChlorideDimer = new Material.Builder(6772, "iridium_cyclooctadienyl_chloride_dimer")
+                .dust()
+                .colorAverage().iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Iridium, 2, Carbon, 17, Hydrogen, 24, Chlorine, 2)
+                .build()
+                .setFormula("Ir2(C8H12)2Cl2");
 
     }
 }
