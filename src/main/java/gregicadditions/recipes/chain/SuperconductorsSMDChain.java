@@ -647,7 +647,7 @@ public class SuperconductorsSMDChain {
         ARC_FURNACE_RECIPES.recipeBuilder().duration(240).EUt(30720)
                 .inputs(PiledTBCC.getItemStack())
                 .fluidInputs(Oxygen.getFluid(1000))
-                .outputs(TBCCODust.getItemStack())
+                .outputs(TBCCO.getItemStack())
                 .buildAndRegister();
 
         // 9O + C6H12O6 -> 3C2H2O4 + 3H2O
@@ -730,7 +730,7 @@ public class SuperconductorsSMDChain {
                 .inputs(LanthanumEmbeddedFullerene.getItemStack(4))
                 .input(dust, Rubidium, 3)
                 .input(dust, Caesium, 3)
-                .outputs(FullereneSuperconductiveDust.getItemStack(10))
+                .outputs(FullereneSuperconductor.getItemStack(10))
                 .buildAndRegister();
 
         // O + Si + 3CHCl3 + 7H2O -> C3H9SiCl + 8HClO
@@ -889,7 +889,7 @@ public class SuperconductorsSMDChain {
                 .inputs(BoronFranciumCarbide.getItemStack(13))
                 .input(dust, Carbon, 2)
                 .inputs(MixedAstatideSalts.getItemStack(14))
-                .outputs(BorocarbideDust.getItemStack(29))
+                .outputs(Borocarbide.getItemStack(29))
                 .buildAndRegister();
 
         // 6I + 6[NaOH + H2O] -> NaIO3 + 5NaI + 9H2O
@@ -959,7 +959,7 @@ public class SuperconductorsSMDChain {
                 .inputs(StrontiumChloride.getItemStack(6))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .output(dust, Salt, 6)
-                .outputs(StrontiumSuperconductorDust.getItemStack(12))
+                .outputs(StrontiumSuperconductor.getItemStack(12))
                 .fluidOutputs(Chlorine.getFluid(1000))
                 .buildAndRegister();
 

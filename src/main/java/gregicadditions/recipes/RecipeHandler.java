@@ -158,7 +158,6 @@ public class RecipeHandler {
         SuperconductorRecipes.init();
         MiscRecipes.init();
         MetalCasingRecipes.init();
-        PlasmaCondenserPlasmaRecipes.init();
     }
 
     /**
@@ -1237,10 +1236,9 @@ public class RecipeHandler {
      *
      * + Plasma Condenser recipes
      */
-    private static void registerPlasmaCondenserRecipes(OrePrefix prefix, FluidMaterial material) {
-        if (material.shouldGeneratePlasma()) {
-            int fluidAmount = material instanceof DustMaterial ? GTValues.L : 100;
-            //todo this doesn't work on fluidmaterials because of gtce limitations
+    private static void registerPlasmaCondenserRecipes(OrePrefix prefix, Material material) {
+        if (material.hasProperty(PropertyKey.PLASMA)) {
+            int fluidAmount = material.hasFluid() ? GTValues.L : 100;
 
             PLASMA_CONDENSER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(960)
                     .fluidInputs(LiquidHelium.getFluid(100))

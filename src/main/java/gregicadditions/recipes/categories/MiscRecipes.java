@@ -18,7 +18,7 @@ public class MiscRecipes {
 
         // Staballoy Dust
         MIXER_RECIPES.recipeBuilder().duration(50).EUt(16)
-                .input(dust, UraniumRadioactive.getMaterial(), 9)
+                .input(dust, Uranium238, 9)
                 .input(dust, Titanium)
                 .output(dust, Staballoy, 10)
                 .buildAndRegister();
@@ -28,7 +28,7 @@ public class MiscRecipes {
                 .input(dust, Stellite, 15)
                 .input(dust, Jasper, 5)
                 .input(dust, Gallium, 5)
-                .input(dust, Americium241.getMaterial(), 5)
+                .input(dust, Americium241, 5)
                 .input(dust, Palladium, 5)
                 .input(dust, Bismuth, 5)
                 .input(dust, Germanium, 5)
@@ -106,17 +106,6 @@ public class MiscRecipes {
                 .input(dust, Diamond, 4)
                 .output(gem, Diamond, 3)
                 .output(dustTiny, DarkAsh, 2)
-                .buildAndRegister();
-
-        // Redstone and Glowstone Fluid Extraction
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(80).EUt(32)
-                .input(dust, Redstone)
-                .fluidOutputs(Redstone.getFluid(L))
-                .buildAndRegister();
-
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(80).EUt(32)
-                .input(dust, Glowstone)
-                .fluidOutputs(Glowstone.getFluid(L))
                 .buildAndRegister();
 
         // Mixing Dust Mixer Recipes

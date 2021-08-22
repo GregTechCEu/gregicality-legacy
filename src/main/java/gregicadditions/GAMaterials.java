@@ -498,7 +498,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Halloysite;
     public static Material GalliumChloride;
     public static Material LanthanumNickelOxide;
-    public static Material BorocarbideDust;
+    public static Material Borocarbide;
     public static Material HassiumChloride;
     public static Material SodiumMetavanadate;
     public static Material PotassiumPeroxymonosulfate;
@@ -712,9 +712,9 @@ public class GAMaterials implements IMaterialHandler {
     public static Material PurifiedPyrochlore;
     public static Material ChargedCesiumCeriumCobaltIndium;
     public static Material SulfurCoatedHalloysite;
-    public static Material TBCCODust;
-    public static Material StrontiumSuperconductorDust;
-    public static Material FullereneSuperconductiveDust;
+    public static Material TBCCO;
+    public static Material StrontiumSuperconductor;
+    public static Material FullereneSuperconductor;
     public static Material GoldLeach;
     public static Material IridiumTrichlorideSolution;
     public static Material Quantum;

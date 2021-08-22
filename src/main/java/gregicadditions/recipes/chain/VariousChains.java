@@ -49,7 +49,7 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().duration(90).EUt(120)
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .input(dust, SodiumHydroxide, 3)
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(1))
                 .fluidOutputs(Water.getFluid(1000))
                 .outputs(SodiumHypochlorite.getItemStack(3))
                 .buildAndRegister();
@@ -416,14 +416,6 @@ public class VariousChains {
                 .fluidInputs(EthylBenzene.getFluid(1000))
                 .fluidOutputs(EthylAnthraQuinone.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
-                .buildAndRegister();
-
-        // C2H4 + C6H6 -> C8H10
-        CHEMICAL_RECIPES.recipeBuilder().duration(300).EUt(60)
-                .notConsumable(new IntCircuitIngredient(1))
-                .fluidInputs(Ethylene.getFluid(1000))
-                .fluidInputs(Benzene.getFluid(1000))
-                .fluidOutputs(EthylBenzene.getFluid(1000))
                 .buildAndRegister();
 
         // C8H6O4 -> C8H4O3 + H2O (H2O voided - Dehydrator)

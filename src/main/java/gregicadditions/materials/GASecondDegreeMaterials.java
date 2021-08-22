@@ -1389,21 +1389,21 @@ public class GASecondDegreeMaterials {
 
         // Free ID 11593
 
-        TBCCODust = new Material.Builder(11594, "tbcco_dust")
+        TBCCO = new Material.Builder(11594, "tbcco")
                 .dust()
                 .color(0x669900).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Thallium, 1, Barium, 2, Calcium, 2, Copper, 3, Oxygen, 10)
                 .build();
 
-        StrontiumSuperconductorDust = new Material.Builder(11595, "strontium_superconductor_dust")
+        StrontiumSuperconductor = new Material.Builder(11595, "strontium_superconductor_dust")
                 .dust()
                 .color(0x45ABF4).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Ruthenium, 1, Seaborgium, 1, GAMaterials.Celestine, 4)
                 .build();
 
-        FullereneSuperconductiveDust = new Material.Builder(11596, "fullerene_superconductor_dust")
+        FullereneSuperconductor = new Material.Builder(11596, "fullerene_superconductor")
                 .dust()
                 .color(0x99CC00).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)

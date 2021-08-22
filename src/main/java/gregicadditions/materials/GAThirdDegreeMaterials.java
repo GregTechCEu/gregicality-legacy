@@ -3,7 +3,6 @@ package gregicadditions.materials;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.stack.MaterialStack;
 
 
 import static com.google.common.collect.ImmutableList.of;
@@ -146,7 +145,7 @@ public class GAThirdDegreeMaterials {
                 .ingot()
                 .color(0x359FFC)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(TBCCODust, 4, StrontiumSuperconductorDust, 4, Taranium, 1)
+                .components(TBCCO, 4, StrontiumSuperconductor, 4, Taranium, 1)
                 .cableProperties(GTValues.V[GTValues.UHV], 24, 0, true)
                 .blastTemp(10600)
                 .build();
@@ -164,7 +163,7 @@ public class GAThirdDegreeMaterials {
                 .ingot()
                 .color(0x8BF743)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(BorocarbideDust, 2, FullereneSuperconductiveDust, 1, MetastableOganesson, 2, ProtoAdamantium, 2)
+                .components(Borocarbide, 2, FullereneSuperconductor, 1, MetastableOganesson, 2, ProtoAdamantium, 2)
                 .cableProperties(GTValues.V[GTValues.UIV], 48, 0, true)
                 .blastTemp(11600)
                 .build();

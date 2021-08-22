@@ -1,6 +1,5 @@
 package gregicadditions.materials;
 
-import gregicadditions.GAMaterials;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.Materials;
@@ -2754,7 +2753,7 @@ public class GAFirstDegreeMaterials {
                 .components(Lanthanum, 2, Nickel, 1, Oxygen, 4)
                 .build();
 
-        BorocarbideDust = new Material.Builder(3833, "borocarbide_dust")
+        Borocarbide = new Material.Builder(3833, "borocarbide")
                 .dust()
                 .color(0x9A9A2A).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)

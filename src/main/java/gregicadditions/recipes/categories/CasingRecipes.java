@@ -119,7 +119,7 @@ public class CasingRecipes {
                 .input(plate, IncoloyMA956, 8)
                 .input(cableGtOctal, Platinum)
                 .inputs(MetaTileEntities.HULL[LuV].getStackForm())
-                .fluidInputs(Uranium238Isotope.getMaterial().getFluid(L * 10))
+                .fluidInputs(Uranium238.getFluid(L * 10))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TIERED_HULL_LUV))
                 .buildAndRegister();
 
@@ -129,7 +129,7 @@ public class CasingRecipes {
                 .input(plate, BabbittAlloy, 8)
                 .input(cableGtOctal, NiobiumTitanium)
                 .inputs(MetaTileEntities.HULL[GTValues.ZPM].getStackForm())
-                .fluidInputs(Plutonium244.getMaterial().getFluid(L * 10))
+                .fluidInputs(Plutonium244.getFluid(L * 10))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(TIERED_HULL_ZPM))
                 .buildAndRegister();
 
@@ -301,6 +301,7 @@ public class CasingRecipes {
     }
 
     private static void coilCasings() {
+        //todo fusion materials
 
         // Fusion Coil Recipes
         ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(30720).duration(400)
@@ -365,42 +366,6 @@ public class CasingRecipes {
 
     private static void multiblockCasings() {
 
-        // Tungstensteel Gearbox Casing
-        ModHandler.addShapedRecipe("assline_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLY_LINE_CASING, 2),
-                "PhP", "AFA", "PwP",
-                'P', new UnificationEntry(plate, Steel),
-                'A', ROBOT_ARM_IV,
-                'F', new UnificationEntry(frameGt, TungstenSteel));
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(8000)
-                .inputs(ROBOT_ARM_IV.getStackForm(2))
-                .input(plate, Steel, 4)
-                .input(frameGt, TungstenSteel)
-                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLY_LINE_CASING, 2))
-                .buildAndRegister();
-
-        // Assembly Line Casing
-        removeRecipeByName("gregtech:casing_assembler_casing");
-        ModHandler.addShapedRecipe("ga_assembler_casing", MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLER_CASING, 3),
-                "CCC", "CFC", "CMC",
-                'C', new UnificationEntry(circuit, Elite),
-                'F', new UnificationEntry(frameGt, TungstenSteel),
-                'M', ELECTRIC_MOTOR_IV);
-
-        // Large Chemical Reactor Casing
-        ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(2000)
-                .inputs(MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID))
-                .fluidInputs(Polytetrafluoroethylene.getFluid(216))
-                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(CHEMICALLY_INERT))
-                .buildAndRegister();
-
-        // PTFE Pipe Casing
-        ModHandler.addShapedRecipe("ga_ptfe_pipe_casing", GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(PTFE_PIPE),
-                "SPS", "PFP", "SPS",
-                'S', new UnificationEntry(plate, Polytetrafluoroethylene),
-                'P', new UnificationEntry(pipeMedium, Polytetrafluoroethylene),
-                'F', new UnificationEntry(frameGt, Polytetrafluoroethylene));
-
         // Reactor Casing
         FORMING_PRESS_RECIPES.recipeBuilder().duration(1500).EUt(500)
                 .input(plateDense, Lead, 9)
@@ -427,71 +392,8 @@ public class CasingRecipes {
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(LASER_ENGRAVER))
                 .buildAndRegister();
 
-        // GTCE Casings
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Invar, 6), OreDictUnifier.get(frameGt, Invar));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Steel, 6), OreDictUnifier.get(frameGt, Steel));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Aluminium, 6), OreDictUnifier.get(frameGt, Aluminium));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, StainlessSteel, 6), OreDictUnifier.get(frameGt, StainlessSteel));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, Titanium, 6), OreDictUnifier.get(frameGt, Titanium));
-        removeRecipesByInputs(ASSEMBLER_RECIPES, OreDictUnifier.get(plate, TungstenSteel, 6), OreDictUnifier.get(frameGt, TungstenSteel));
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .circuitMeta(30)
-                .input(plate, Bronze, 6)
-                .inputs(new ItemStack(Blocks.BRICK_BLOCK))
-                .outputs(MetaBlocks.METAL_CASING.getItemVariant(BRONZE_BRICKS, 3))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .circuitMeta(30)
-                .input(plate, Invar, 6)
-                .input(frameGt, Invar)
-                .outputs(MetaBlocks.METAL_CASING.getItemVariant(INVAR_HEATPROOF, 3))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .circuitMeta(30)
-                .input(plate, Steel, 6)
-                .input(frameGt, Steel)
-                .outputs(MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID, 3))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .circuitMeta(30)
-                .input(plate, Aluminium, 6)
-                .input(frameGt, Aluminium)
-                .outputs(MetaBlocks.METAL_CASING.getItemVariant(ALUMINIUM_FROSTPROOF, 3))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .circuitMeta(30)
-                .input(plate, StainlessSteel, 6)
-                .input(frameGt, StainlessSteel)
-                .outputs(MetaBlocks.METAL_CASING.getItemVariant(STAINLESS_CLEAN, 3))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .circuitMeta(30)
-                .input(plate, Titanium, 6)
-                .input(frameGt, Titanium)
-                .outputs(MetaBlocks.METAL_CASING.getItemVariant(TITANIUM_STABLE, 3))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50)
-                .circuitMeta(30)
-                .input(plate, TungstenSteel, 6)
-                .input(frameGt, TungstenSteel)
-                .outputs(MetaBlocks.METAL_CASING.getItemVariant(TUNGSTENSTEEL_ROBUST, 3))
-                .buildAndRegister();
-
         // Fusion Casing Recipes
-        ModHandler.addShapedRecipe("fusion_casing_1", MetaBlocks.MULTIBLOCK_CASING.getItemVariant(FUSION_CASING),
-                "PhP", "PHP", "PwP",
-                'P', new UnificationEntry(plate, TungstenSteel),
-                'H', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV));
-
-        // Assembler Recipe for MK1 Fusion Casing added by GTCE
-
+        //todo fusion materials
         ModHandler.addShapedRecipe("fusion_casing_2", MetaBlocks.MULTIBLOCK_CASING.getItemVariant(FUSION_CASING_MK2),
                 "PhP", "PHP", "PwP",
                 'P', new UnificationEntry(plate, Rutherfordium),
@@ -596,16 +498,9 @@ public class CasingRecipes {
                 .input(frameGt, Bohrium, 5)
                 .outputs(GAMetaBlocks.QUANTUM_CASING.getItemVariant(COMPUTER, 3))
                 .buildAndRegister();
-
-        // Engine Intake Casing
-        removeRecipeByName("gregtech:engine_intake_casing");
-        ModHandler.addShapedRecipe("ga_engine_intake_casing", MetaBlocks.MULTIBLOCK_CASING.getItemVariant(ENGINE_INTAKE_CASING),
-                "PhP", "RFR", "PwP",
-                'R', new UnificationEntry(pipeNormalFluid, Titanium),
-                'F', MetaBlocks.METAL_CASING.getItemVariant(TITANIUM_STABLE),
-                'P', new UnificationEntry(rotor, Titanium));
     }
 
+    //todo convert to gtce components
     private static void componentCasings() {
 
         Arrays.stream(EmitterCasing.CasingType.values()).forEach(casing ->
