@@ -72,13 +72,7 @@ public class RecipeHandler {
         ingot.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processIngot);
         plateDense.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDensePlate);
 
-        if (GAConfig.GT6.addCurvedPlates)
-            plateCurved.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processPlateCurved);
-
         plateDouble.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDoublePlate);
-
-        if (GAConfig.GT6.BendingCylinders)
-            ring.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processRing);
 
         dustSmall.addProcessingHandler(PropertyKey.DUST, RecipeHandler::processSmallDust);
         dustTiny.addProcessingHandler(PropertyKey.DUST, RecipeHandler::processTinyDust);
@@ -93,11 +87,6 @@ public class RecipeHandler {
         gearSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processGearSmall);
         gear.addProcessingHandler(IngotMaterial.class, RecipeHandler::processGear);
         ingotHot.addProcessingHandler(IngotMaterial.class, RecipeHandler::processIngotHot);
-
-        pipeTiny.addProcessingHandler(IngotMaterial.class, RecipeHandler::processTinyPipe);
-        pipeSmall.addProcessingHandler(IngotMaterial.class, RecipeHandler::processSmallPipe);
-        pipeMedium.addProcessingHandler(IngotMaterial.class, RecipeHandler::processMediumPipe);
-        pipeLarge.addProcessingHandler(IngotMaterial.class, RecipeHandler::processLargePipe);
 
         dust.addProcessingHandler(FluidMaterial.class, RecipeHandler::registerPlasmaCondenserRecipes);
         ingot.addProcessingHandler(PropertyKey.BLAST, RecipeHandler::registerStellarForgeRecipes);
@@ -202,22 +191,6 @@ public class RecipeHandler {
 
         // Ingot Composition
         processIngotComposition(material);
-
-        // Tools
-        if (!material.hasFlag(NO_SMASHING) && material.toolDurability > 0) {
-
-            // Bending Cylinders
-            if (GAConfig.GT6.BendingCylinders) {
-
-                ModHandler.addShapedRecipe(String.format("cylinder_%s", material.toString()), ((ToolMetaItem<?>.MetaToolValueItem) BENDING_CYLINDER).getStackForm(material),
-                        "sfh", "XXX", "XXX",
-                        'X', new UnificationEntry(ingot, material));
-
-                ModHandler.addShapedRecipe(String.format("small_cylinder_%s", material.toString()), ((ToolMetaItem<?>.MetaToolValueItem) SMALL_BENDING_CYLINDER).getStackForm(material),
-                        "sfh", "XXX",
-                        'X', new UnificationEntry(ingot, material));
-            }
-        }
 
         ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(8).duration((int) material.getAverageMass())
                 .input(ingot, material)
@@ -425,25 +398,6 @@ public class RecipeHandler {
     }
 
     /**
-     * Ring Material Handler. Generates:
-     *
-     * + Bending Cylinder Ring Recipes if enabled
-     *
-     * - Removes old Handcrafting Ring Recipes if enabled
-     */
-    private static void processRing(OrePrefix ring, IngotMaterial material) {
-        if (!material.hasFlag(NO_SMASHING)) {
-
-            removeCraftingRecipes(OreDictUnifier.get(ring, material));
-
-            ModHandler.addShapedRecipe(String.format("rod_to_ring_%s", material.toString()), OreDictUnifier.get(ring, material),
-                    "hS", " C",
-                    'S', new UnificationEntry(stick, material),
-                    'C', "craftingToolBendingCylinderSmall");
-        }
-    }
-
-    /**
      * Foil Material Handler. Generates:
      *
      * + Bending Cylinder Foil Recipes if enabled
@@ -457,19 +411,9 @@ public class RecipeHandler {
             // Handcrafting foils
             if (!material.hasFlag(NO_SMASHING)) {
 
-                if (GAConfig.GT6.BendingCylinders) {
-
-                    ModHandler.addShapedRecipe(String.format("foil_%s", material.toString()), OreDictUnifier.get(foil, material, 2),
-                            "hPC",
-                            'P', new UnificationEntry(plate, material),
-                            'C', "craftingToolBendingCylinder");
-
-                } else {
-
-                    ModHandler.addShapedRecipe(String.format("foil_%s", material.toString()), OreDictUnifier.get(foil, material, 2),
-                            "hP ",
-                            'P', new UnificationEntry(plate, material));
-                }
+                ModHandler.addShapedRecipe(String.format("foil_%s", material.toString()), OreDictUnifier.get(foil, material, 2),
+                        "hP ",
+                        'P', new UnificationEntry(plate, material));
             }
         }
     }
@@ -578,71 +522,6 @@ public class RecipeHandler {
                 .buildAndRegister();
     }
 
-
-    /**
-     * Curved Plate Material Handler. Generates:
-     *
-     * + Curved Plate Recipes if enabled, Handcrafting and Machine
-     * + Curved Plate Rotor Recipes if enabled
-     * + Curved Plate Pipe Recipes if enabled
-     * + Curved Plate Unification Recipes
-     */
-    private static void processPlateCurved(OrePrefix plateCurved, IngotMaterial material) {
-
-        //if (GAConfig.GT6.BendingCurvedPlates && GAConfig.GT6.BendingCylinders)
-
-        // Register Curved Plate recipes
-        if (!material.hasFlag(NO_SMASHING)) {
-            if (GAConfig.GT6.BendingCylinders) {
-
-                ModHandler.addShapedRecipe(String.format("curved_plate_%s", material.toString()), OreDictUnifier.get(plateCurved, material),
-                        "h", "P", "C",
-                        'P', new UnificationEntry(plate, material),
-                        'C', "craftingToolBendingCylinder");
-            } else {
-
-                ModHandler.addShapedRecipe(String.format("curved_plate_%s", material.toString()), OreDictUnifier.get(plateCurved, material),
-                        "h", "P", "f",
-                        'P', new UnificationEntry(plate, material));
-            }
-
-            ModHandler.addShapedRecipe(String.format("flatten_plate_%s", material.toString()), OreDictUnifier.get(plate, material),
-                    "h", "C",
-                    'C', new UnificationEntry(plateCurved, material));
-        }
-
-        BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getAverageMass())
-                .input(plate, material)
-                .circuitMeta(1)
-                .output(plateCurved, material)
-                .buildAndRegister();
-
-        BENDER_RECIPES.recipeBuilder().EUt(24).duration((int) material.getAverageMass())
-                .input(plateCurved, material)
-                .circuitMeta(0)
-                .output(plate, material)
-                .buildAndRegister();
-
-        // Unification Recipes
-        int voltageMultiplier = material.blastFurnaceTemperature == 0 ? 1 : material.blastFurnaceTemperature > 2000 ? 16 : 4;
-
-        // Uncrafting Recipes
-        MACERATOR_RECIPES.recipeBuilder().EUt(8 * voltageMultiplier).duration(30)
-                .input(plateCurved, material)
-                .output(dust, material)
-                .buildAndRegister();
-
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(32 * voltageMultiplier).duration(80)
-                .input(plateCurved, material)
-                .fluidOutputs(material.getFluid(L))
-                .buildAndRegister();
-
-        ARC_FURNACE_RECIPES.recipeBuilder().EUt(30 * voltageMultiplier).duration(85)
-                .input(plateCurved, material)
-                .output(ingot, material.arcSmeltInto == null ? material : material.arcSmeltInto)
-                .buildAndRegister();
-    }
-
     /**
      * Rotor Material Handler. Generates:
      *
@@ -652,18 +531,16 @@ public class RecipeHandler {
      */
     private static void processRotor(OrePrefix rotor, IngotMaterial material) {
 
-        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
-
         removeCraftingRecipes(OreDictUnifier.get(rotor, material));
 
         ModHandler.addShapedRecipe(String.format("ga_rotor_%s", material.toString()), OreDictUnifier.get(rotor, material),
                 "ChC", "SRf", "CdC",
-                'C', new UnificationEntry(plateOrCurved, material),
+                'C', new UnificationEntry(plate, material),
                 'S', new UnificationEntry(screw, material),
                 'R', new UnificationEntry(ring, material));
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(240).EUt(24)
-                .input(plateOrCurved, material, 4)
+                .input(plate, material, 4)
                 .input(ring, material)
                 .fluidInputs(SolderingAlloy.getFluid(32))
                 .output(rotor, material)
@@ -674,92 +551,6 @@ public class RecipeHandler {
                     .notConsumable(SHAPE_EXTRUDER_ROTOR)
                     .output(rotor, material)
                     .buildAndRegister();
-    }
-
-    /**
-     * Tiny Pipe Material Handler. Generates:
-     *
-     * + Tiny Pipe Handcrafting Recipes
-     */
-    private static void processTinyPipe(OrePrefix prefix, IngotMaterial material) {
-
-        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
-
-        if (GAConfig.GT6.BendingCylinders)
-
-            ModHandler.addShapedRecipe(String.format("pipe_ga_tiny_%s", material.toString()), OreDictUnifier.get(pipeTiny, material, 8),
-                    "PPP", "hCw", "PPP",
-                    'P', new UnificationEntry(plateOrCurved, material),
-                    'C', "craftingToolBendingCylinder");
-        else
-            ModHandler.addShapedRecipe(String.format("pipe_ga_tiny_%s", material.toString()), OreDictUnifier.get(pipeTiny, material, 8),
-                    "PPP", "h w", "PPP",
-                    'P', new UnificationEntry(plateOrCurved, material));
-    }
-
-    /**
-     * Small Pipe Material Handler. Generates:
-     *
-     * + Small Pipe Handcrafting Recipes
-     */
-    private static void processSmallPipe(OrePrefix prefix, IngotMaterial material) {
-
-        removeCraftingRecipes(OreDictUnifier.get(pipeSmall, material, 4));
-        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
-
-        if (GAConfig.GT6.BendingCylinders)
-
-            ModHandler.addShapedRecipe(String.format("pipe_ga_small_%s", material.toString()), OreDictUnifier.get(pipeSmall, material, 4),
-                    "PwP", "PCP", "PhP",
-                    'P', new UnificationEntry(plateOrCurved, material),
-                    'C', "craftingToolBendingCylinder");
-        else
-            ModHandler.addShapedRecipe(String.format("pipe_ga_small_%s", material.toString()), OreDictUnifier.get(pipeSmall, material, 4),
-                    "PwP", "P P", "PhP",
-                    'P', new UnificationEntry(plateOrCurved, material));
-    }
-
-    /**
-     * Medium Pipe Material Handler. Generates:
-     *
-     * + Medium Pipe Handcrafting Recipes
-     */
-    private static void processMediumPipe(OrePrefix prefix, IngotMaterial material) {
-
-        removeCraftingRecipes(OreDictUnifier.get(pipeMedium, material, 2));
-        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
-
-        if (GAConfig.GT6.BendingCylinders)
-
-            ModHandler.addShapedRecipe(String.format("pipe_ga_%s", material.toString()), OreDictUnifier.get(pipeMedium, material, 2),
-                    "PPP", "wCh", "PPP",
-                    'P', new UnificationEntry(plateOrCurved, material),
-                    'C', "craftingToolBendingCylinder");
-        else
-            ModHandler.addShapedRecipe(String.format("pipe_ga_%s", material.toString()), OreDictUnifier.get(pipeMedium, material, 2),
-                    "PPP", "w h", "PPP",
-                    'P', new UnificationEntry(plateOrCurved, material));
-    }
-
-    /**
-     * Large Pipe Material Handler. Generates:
-     *
-     * + Large Pipe Handcrafting Recipes
-     */
-    private static void processLargePipe(OrePrefix prefix, IngotMaterial material) {
-
-        OrePrefix plateOrCurved = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
-
-        if (GAConfig.GT6.BendingCylinders)
-
-            ModHandler.addShapedRecipe(String.format("pipe_ga_large_%s", material.toString()), OreDictUnifier.get(pipeLarge, material),
-                    "PhP", "PCP", "PwP",
-                    'P', new UnificationEntry(plateOrCurved, material),
-                    'C', "craftingToolBendingCylinder");
-        else
-            ModHandler.addShapedRecipe(String.format("pipe_ga_large_%s", material.toString()), OreDictUnifier.get(pipeLarge, material),
-                    "PhP", "P P", "PwP",
-                    'P', new UnificationEntry(plateOrCurved, material));
     }
 
     /**

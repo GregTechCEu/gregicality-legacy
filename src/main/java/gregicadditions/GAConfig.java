@@ -29,14 +29,6 @@ public class GAConfig {
 
     public static class GT6 {
 
-        @Config.Comment("Require Bending Cylinders for some components like Rings and Pipes")
-        @Config.Name("Enable Bending Cylinders")
-        public boolean BendingCylinders = true;
-
-        @Config.Comment("Add Curved Plates for Pipes, Rotors, and some late game component recipes")
-        @Config.Name("Enable Curved Plates")
-        public boolean addCurvedPlates = true;
-
         @Config.Comment("Set this to false to disable the support for Forestry Electron Tubes")
         @Config.Name("Should Electrodes be registered?")
         public boolean electrodes = true;

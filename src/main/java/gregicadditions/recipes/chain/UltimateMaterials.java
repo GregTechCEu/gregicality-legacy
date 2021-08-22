@@ -197,18 +197,13 @@ public class UltimateMaterials {
                 .fluidOutputs(Nitrogen.getFluid(1000))
                 .buildAndRegister();
 
-        OrePrefix plateB = plate;
-        if (GAConfig.GT6.addCurvedPlates) {
-            plateB = plateCurved;
-        }
-
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(150).EUt(15000000)
                 .input(frameGt, QCDMatter)
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_4))
                 .inputs(ELECTRIC_PUMP_UMV.getStackForm(2))
                 .input(circuit, MarkerMaterials.Tier.Insane)
-                .input(pipeLarge, Neutronium, 4)
-                .input(plateB, Neutronium, 12)
+                .input(pipeLargeFluid, Neutronium, 4)
+                .input(plate, Neutronium, 12)
                 .fluidInputs(ProtoAdamantium.getFluid(2592))
                 .fluidInputs(Taranium.getFluid(1584))
                 .outputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
@@ -224,7 +219,7 @@ public class UltimateMaterials {
                 .fluidOutputs(DenseNeutronPlasma.getFluid(6000))
                 .buildAndRegister();
 
-        FLUID_CANNER_RECIPES.recipeBuilder().duration(90).EUt(62500000)
+        CANNER_RECIPES.recipeBuilder().duration(90).EUt(62500000)
                 .inputs(EXTREMELY_DURABLE_PLASMA_CELL.getStackForm())
                 .fluidInputs(DenseNeutronPlasma.getFluid(1000))
                 .outputs(DENSE_NEUTRON_PLASMA_CELL.getStackForm())
@@ -267,7 +262,7 @@ public class UltimateMaterials {
                 .fluidOutputs(CosmicMeshPlasma.getFluid(1000))
                 .buildAndRegister();
 
-        FLUID_CANNER_RECIPES.recipeBuilder().duration(90).EUt(125000000)
+        CANNER_RECIPES.recipeBuilder().duration(90).EUt(125000000)
                 .inputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
                 .fluidInputs(CosmicMeshPlasma.getFluid(1000))
                 .outputs(COSMIC_MESH_CONTAINMENT_UNIT.getStackForm())

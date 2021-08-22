@@ -144,15 +144,9 @@ public class Batteries {
                 .fluidOutputs(Ammonia.getFluid(4000))
                 .buildAndRegister();
 
-        OrePrefix plateB;
-        if (GAConfig.GT6.addCurvedPlates)
-            plateB = plateCurved;
-        else
-            plateB = plate;
-
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plateB, Seaborgium, 4)
-                .input(plateB, Naquadria, 6)
+                .input(plate, Seaborgium, 4)
+                .input(plate, Naquadria, 6)
                 .input(cableGtSingle, AbyssalAlloy, 8)
                 .inputs(NANOSILICON_CATHODE.getStackForm(2))
                 .input(dust, SulfurCoatedHalloysite, 6)
@@ -162,9 +156,9 @@ public class Batteries {
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plateB, Bohrium, 4)
+                .input(plate, Bohrium, 4)
                 .input(cableGtSingle, TitanSteel, 8)
-                .input(plateB, NaquadriaticTaranium, 2)
+                .input(plate, NaquadriaticTaranium, 2)
                 .inputs(NANOSILICON_CATHODE.getStackForm(4))
                 .input(dust, SulfurCoatedHalloysite, 9)
                 .EUt(30720 * 64)
@@ -173,9 +167,9 @@ public class Batteries {
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plateB, Quantum, 4)
+                .input(plate, Quantum, 4)
                 .input(cableGtSingle, BlackTitanium, 8)
-                .input(plateB, NaquadriaticTaranium, 4)
+                .input(plate, NaquadriaticTaranium, 4)
                 .input(plate, Neutronium)
                 .input(dust, LanthanumNickelOxide, 7)
                 .EUt(122880 * 4)
@@ -184,7 +178,7 @@ public class Batteries {
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plateB, Neutronium, 6)
+                .input(plate, Neutronium, 6)
                 .input(cableGtSingle, Neutronium, 8)
                 .input(plate, Neutronium, 2)
                 .input(dust, LanthanumNickelOxide, 14)
@@ -194,9 +188,9 @@ public class Batteries {
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder()
-                .input(plateB, CosmicNeutronium, 4)
+                .input(plate, CosmicNeutronium, 4)
                 .input(cableGtSingle, NeutroniumLegendariumSuperhydride, 8)
-                .input(plateB, Neutronium, 6)
+                .input(plate, Neutronium, 6)
                 .input(plate, Neutronium, 4)
                 .input(dust, LanthanumNickelOxide, 28)
                 .EUt(122880 * 64)

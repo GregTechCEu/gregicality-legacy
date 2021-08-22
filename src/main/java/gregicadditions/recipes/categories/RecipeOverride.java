@@ -501,43 +501,6 @@ public class RecipeOverride {
                 .outputs(new ItemStack(Items.DYE, 4, 15))
                 .buildAndRegister();
 
-        // Wood Pipes
-        if (GAConfig.GT6.BendingCylinders) {
-            removeCraftingRecipes(OreDictUnifier.get(pipeSmall, Wood, 4));
-            removeCraftingRecipes(OreDictUnifier.get(pipeMedium, Wood, 2));
-
-            ModHandler.addShapedRecipe("pipe_ga_tiny_wood", OreDictUnifier.get(pipeTiny, Wood, 8),
-                    "PPP", "hCw", "PPP",
-                    'P', "plankWood",
-                    'C', "craftingToolBendingCylinder");
-
-            ModHandler.addShapedRecipe("pipe_ga_small_wood", OreDictUnifier.get(pipeSmall, Wood, 4),
-                    "PsP", "PCP", "PhP",
-                    'P', "plankWood",
-                    'C', "craftingToolBendingCylinder");
-
-            ModHandler.addShapedRecipe("pipe_ga_wood", OreDictUnifier.get(pipeMedium, Wood, 2),
-                    "PPP", "sCh", "PPP",
-                    'P', "plankWood",
-                    'C', "craftingToolBendingCylinder");
-
-            ModHandler.addShapedRecipe("pipe_ga_large_wood", OreDictUnifier.get(pipeLarge, Wood),
-                    "PhP", "PCP", "PsP",
-                    'P', "plankWood",
-                    'C', "craftingToolBendingCylinder");
-
-        } else {
-
-            // Only add Tiny and Large Wood Pipes if Bending Cylinders are not enabled
-            ModHandler.addShapedRecipe("pipe_ga_tiny_wood", OreDictUnifier.get(pipeTiny, Wood, 8),
-                    "PPP", "h w", "PPP",
-                    'P', "plankWood");
-
-            ModHandler.addShapedRecipe("pipe_ga_large_wood", OreDictUnifier.get(pipeLarge, Wood),
-                    "PhP", "P P", "PsP",
-                    'P', "plankWood");
-        }
-
         // Ash Recipes
         removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, DarkAsh, 2));
         CENTRIFUGE_RECIPES.recipeBuilder().duration(250).EUt(6)
@@ -806,80 +769,6 @@ public class RecipeOverride {
     }
 
     private static void vanillaOverride() {
-
-        if (GAConfig.GT6.addCurvedPlates) {
-
-            // Buckets
-            removeRecipeByName("gregtech:iron_bucket");
-            ModHandler.addShapedRecipe("bucket", new ItemStack(Items.BUCKET),
-                    "ChC", " P ",
-                    'C', new UnificationEntry(plateCurved, Iron),
-                    'P', new UnificationEntry(plate, Iron));
-
-            removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(plate, Iron, 12), getIntegratedCircuit(1));
-            ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(4)
-                    .input(plateCurved, Iron, 2)
-                    .input(plate, Iron)
-                    .outputs(new ItemStack(Items.BUCKET))
-                    .buildAndRegister();
-
-            removeRecipesByInputs(BENDER_RECIPES, OreDictUnifier.get(plate, WroughtIron, 12), getIntegratedCircuit(1));
-            ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(4)
-                    .input(plateCurved, WroughtIron, 2)
-                    .input(plate, WroughtIron)
-                    .outputs(new ItemStack(Items.BUCKET))
-                    .buildAndRegister();
-
-            // Iron Armor
-            removeRecipeByName("minecraft:iron_helmet");
-            ModHandler.addShapedRecipe("iron_helmet", new ItemStack(Items.IRON_HELMET),
-                    "PPP", "ChC",
-                    'P', new UnificationEntry(plate, Iron),
-                    'C', new UnificationEntry(plateCurved, Iron));
-
-            removeRecipeByName("minecraft:iron_chestplate");
-            ModHandler.addShapedRecipe("iron_chestplate", new ItemStack(Items.IRON_CHESTPLATE),
-                    "PhP", "CPC", "CPC",
-                    'P', new UnificationEntry(plate, Iron),
-                    'C', new UnificationEntry(plateCurved, Iron));
-
-            removeRecipeByName("minecraft:iron_leggings");
-            ModHandler.addShapedRecipe("iron_leggings", new ItemStack(Items.IRON_LEGGINGS),
-                    "PCP", "ChC", "C C",
-                    'P', new UnificationEntry(plate, Iron),
-                    'C', new UnificationEntry(plateCurved, Iron));
-
-            removeRecipeByName("minecraft:iron_boots");
-            ModHandler.addShapedRecipe("iron_boots", new ItemStack(Items.IRON_BOOTS),
-                    "P P", "ChC",
-                    'P', new UnificationEntry(plate, Iron),
-                    'C', new UnificationEntry(plateCurved, Iron));
-
-            // Gold Armor
-            removeRecipeByName("minecraft:golden_helmet");
-            ModHandler.addShapedRecipe("golden_helmet", new ItemStack(Items.GOLDEN_HELMET),
-                    "PPP", "ChC",
-                    'P', new UnificationEntry(plate, Gold),
-                    'C', new UnificationEntry(plateCurved, Gold));
-
-            removeRecipeByName("minecraft:golden_chestplate");
-            ModHandler.addShapedRecipe("golden_chestplate", new ItemStack(Items.GOLDEN_CHESTPLATE),
-                    "PhP", "CPC", "CPC",
-                    'P', new UnificationEntry(plate, Gold),
-                    'C', new UnificationEntry(plateCurved, Gold));
-
-            removeRecipeByName("minecraft:golden_leggings");
-            ModHandler.addShapedRecipe("golden_leggings", new ItemStack(Items.GOLDEN_LEGGINGS),
-                    "PCP", "ChC", "C C",
-                    'P', new UnificationEntry(plate, Gold),
-                    'C', new UnificationEntry(plateCurved, Gold));
-
-            removeRecipeByName("minecraft:golden_boots");
-            ModHandler.addShapedRecipe("golden_boots", new ItemStack(Items.GOLDEN_BOOTS),
-                    "P P", "ChC",
-                    'P', new UnificationEntry(plate, Gold),
-                    'C', new UnificationEntry(plateCurved, Gold));
-        }
 
         // Chain Armor
         ModHandler.addShapedRecipe("chain_helmet", new ItemStack(Items.CHAINMAIL_HELMET),

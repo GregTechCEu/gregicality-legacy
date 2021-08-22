@@ -1,9 +1,7 @@
 package gregicadditions.recipes.categories.handlers;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
 import gregicadditions.item.GAMetaItems;
-import gregicadditions.item.GAMetaTool;
 import gregtech.api.GTValues;
 import gregtech.api.GregTechAPI;
 import gregtech.api.capability.IEnergyContainer;
@@ -137,7 +135,7 @@ public class DisassemblyHandler {
                 ItemStack[] itemStacks = ingredient.getMatchingStacks();
 
                 // Add ash in empty spaces and in place of tools to preserve item order
-                if (itemStacks.length == 0 || itemStacks[0].getItem() instanceof MetaTool || itemStacks[0].getItem() instanceof GAMetaTool)
+                if (itemStacks.length == 0 || itemStacks[0].getItem() instanceof MetaTool)
                     outputItems.add(OreDictUnifier.get(dustTiny, Ash));
 
                 // Check for if a circuit needs to be replaced, otherwise insert the ItemStack

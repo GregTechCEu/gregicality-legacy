@@ -1,12 +1,10 @@
 package gregicadditions.recipes.categories;
 
-import gregicadditions.GAConfig;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -26,8 +24,6 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
 
 public class MetaItemRecipes {
-
-    private static final OrePrefix plateB = GAConfig.GT6.addCurvedPlates ? plateCurved : plate;
 
     public static void init() {
 
@@ -59,8 +55,8 @@ public class MetaItemRecipes {
 
         // Cooling Containers
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
-                .input(plateB, Steel, 64)
-                .input(plateB, Steel, 64)
+                .input(plate, Steel, 64)
+                .input(plate, Steel, 64)
                 .input(plate, Steel, 64)
                 .input(plate, Steel, 64)
                 .inputs(LASER_COOLING_UNIT.getStackForm())

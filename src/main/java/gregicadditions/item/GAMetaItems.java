@@ -53,9 +53,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ELECTRODE_RUBBER;
     public static MetaItem<?>.MetaValueItem ELECTRODE_TIN;
 
-    public static MetaItem<?>.MetaValueItem BENDING_CYLINDER;
-    public static MetaItem<?>.MetaValueItem SMALL_BENDING_CYLINDER;
-
     public static MetaItem<?>.MetaValueItem SCHEMATIC;
     public static MetaItem<?>.MetaValueItem SCHEMATIC_2X2;
     public static MetaItem<?>.MetaValueItem SCHEMATIC_3X3;
@@ -389,8 +386,6 @@ public class GAMetaItems {
     public static void init() {
         GAMetaItem item = new GAMetaItem();
         item.setRegistryName("ga_meta_item");
-        GAMetaTool tool = new GAMetaTool();
-        tool.setRegistryName("ga_meta_tool");
     }
 
     public static void registerOreDict() {

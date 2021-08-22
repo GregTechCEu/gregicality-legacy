@@ -1,14 +1,11 @@
 package gregicadditions.recipes.chain;
 
-import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GASimpleBlock;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 
-import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -16,7 +13,6 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.GELLED_TOLUENE;
-
 
 public class UHVMaterials {
     public static void init() {
@@ -27,8 +23,8 @@ public class UHVMaterials {
                 .input(plate, Uranium238Isotope.getMaterial(), 1)
                 .input(bolt, Osmium, 1)
                 .input(bolt, Titanium, 4)
-                .inputs(HexanitroHexaaxaisowurtzitane.getItemStack())
-                .fluidInputs(Glyceryl.getFluid(1000))
+                .input(dust, HexanitroHexaaxaisowurtzitane)
+                .fluidInputs(GlycerylTrinitrate.getFluid(1000))
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
                 .EUt(1966080)
                 .duration(100)
@@ -42,7 +38,7 @@ public class UHVMaterials {
                 .duration(20)
                 .buildAndRegister();
 
-        FLUID_CANNER_RECIPES.recipeBuilder()
+        CANNER_RECIPES.recipeBuilder()
                 .inputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(ElectronDegenerateRheniumPlasma.getFluid(1000))
                 .outputs(RHENIUM_PLASMA_CONTAINMENT_CELL.getStackForm())
@@ -68,16 +64,11 @@ public class UHVMaterials {
                 .duration(20)
                 .buildAndRegister();
       
-        OrePrefix plateB = plate;
-        if (GAConfig.GT6.addCurvedPlates) {
-            plateB = plateCurved;
-        }
-      
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, NeodymiumMagnetic, 2)
                 .input(wireGtSingle, UVSuperconductor, 16)
-                .input(pipeLarge, Ultimet, 4)
-                .input(plateB, NaquadahAlloy, 8)
+                .input(pipeLargeFluid, Ultimet, 4)
+                .input(plate, NaquadahAlloy, 8)
                 .fluidInputs(Titanium.getFluid(2592))
                 .fluidInputs(NaquadahEnriched.getFluid(1584))
                 .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
@@ -86,13 +77,13 @@ public class UHVMaterials {
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
-                .input(plate, Mendelevium.getMaterial())
+                .input(plate, Mendelevium)
                 .inputs(GELLED_TOLUENE.getStackForm(4))
                 .input(stickLong, NaquadriaticTaranium)
                 .input(dust, Taranium)
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
                 .fluidInputs(Tritanium.getFluid(144))
-                .fluidInputs(Glyceryl.getFluid(2500))
+                .fluidInputs(GlycerylTrinitrate.getFluid(2500))
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
                 .EUt(125000000)
                 .duration(5)
@@ -125,7 +116,7 @@ public class UHVMaterials {
                 .duration(10)
                 .buildAndRegister();
 
-        FLUID_CANNER_RECIPES.recipeBuilder()
+        CANNER_RECIPES.recipeBuilder()
                 .inputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .fluidInputs(NeutronPlasma.getFluid(1000))
                 .outputs(NEUTRON_PLASMA_CONTAINMENT_CELL.getStackForm())
