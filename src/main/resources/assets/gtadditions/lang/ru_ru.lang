@@ -1215,7 +1215,6 @@ metaitem.circuit.computer.bioware.tooltip=§b§oUHV миркосхема
 metaitem.circuit.mainframe.bioware.name=Биологический мейнфрейм
 metaitem.circuit.mainframe.bioware.tooltip=§b§oUEV микросхема
 
-metaitem.hot_iron_ingot.name=Горячий слиток железа
 metaitem.plate.field.shape.name=Форма поля
 metaitem.wafer.aram.name=лист ARAM
 metaitem.plate.aram.name=ARAM
@@ -1882,19 +1881,6 @@ metaitem.gallium_chloride.name=Хлорид галлия
 metaitem.copper_leach.name=Выщелоченная медь
 metaitem.gold_leach.name=Выщелоченная Золото
 
-metaitem.tool.prospect.mv.name=Рудоискатель MV
-metaitem.tool.prospect.hv.name=Рудоискатель HV
-metaitem.tool.prospect.luv.name=Рудоискатель LuV
-metaitem.tool.prospect.zpm.name=Рудоискатель ZPM
-metaitem.tool.prospect.mode.0=Режим: руда
-metaitem.tool.prospect.mode.1=Режим: подземная нефть
-metaitem.tool.prospect.mode.default=Режим: ОШИБКА
-metaitem.tool.prospect.gui.title=Рудоискатель
-metaitem.tool.prospect.gui.list=Все ресурсы
-metaitem.tool.prospect.tooltips.ore=Статистика руд
-metaitem.tool.prospect.tooltips.fluid=Статистика жидкостей
-metaitem.tool.prospect.low_power=Недостаточно заряда!
-
 metaitem.freedom_wrench.name=Свободный гаечный ключ
 metaitem.freedom_wrench.mode.0=Режим: предпросмотр
 metaitem.freedom_wrench.mode.1=Режим: перспектива
@@ -2135,36 +2121,21 @@ gtadditions.multiblock.fusion_reactor.tooltip.1=EU для старта: %s
 
 metaitem.large.fluoride.battery.empty.name=Корпус большой фторидной батареи 
 metaitem.large.lithium.sulfide.battery.empty.name=Корпус большой сульфидно-натриевой батареи
-metaitem.large.lithium.ion.battery.empty.name=Корпус большой литий-ионной батареи
 metaitem.medium.fluoride.battery.empty.name=Корпус средней фторидной батареи
 metaitem.medium.lithium.sulfide.battery.empty.name=Корпус средней сульфидно-натриевой батареи
-metaitem.medium.lithium.ion.battery.empty.name=Корпус средней литий-ионной батареи
 metaitem.small.fluoride.battery.empty.name=Корпус маленькой фторидной батареи
-metaitem.small.lithium.sulfide.battery.empty.name=Корпус маленькой сульфидно-натриевой батареи
-metaitem.small.lithium.ion.battery.empty.name=Корпус маленькой литий-ионной батареи
-metaitem.nickel.metal.hydride.battery.empty.name=Корпус никель-металлогидридной батареи 
 
 metaitem.large.fluoride.battery.empty.tooltip=Пустой корпус UXV батареи
 metaitem.large.lithium.sulfide.battery.empty.tooltip=Пустой корпус UEV батареи
-metaitem.large.lithium.ion.battery.empty.tooltip=Пустой корпус ZPM батареи
 metaitem.medium.fluoride.battery.empty.tooltip=Пустой корпус UMV батареи
 metaitem.medium.lithium.sulfide.battery.empty.tooltip=Пустой корпус UHV батареи
-metaitem.medium.lithium.ion.battery.empty.tooltip=Пустой корпус LuV батареи
 metaitem.small.fluoride.battery.empty.tooltip=Пустой корпус UIV батареи
-metaitem.small.lithium.sulfide.battery.empty.tooltip=Пустой корпус UV батареи
-metaitem.small.lithium.ion.battery.empty.tooltip=Пустой корпус IV батареи
-metaitem.nickel.metal.hydride.battery.empty.tooltip=Пустой корпус EV батареи
 
 metaitem.large.fluoride.battery.name=Большая фторидная батарея
 metaitem.large.lithium.sulfide.battery.name=Большая сульфидно-натриевая батарея
-metaitem.large.lithium.ion.battery.name=Большая литий-ионная батарея
 metaitem.medium.fluoride.battery.name=Среднаяя фторидная батарея
 metaitem.medium.lithium.sulfide.battery.name=Средняя сульфидно-натриевая батарея
-metaitem.medium.lithium.ion.battery.name=Средняя литий-ионная батарея
 metaitem.small.fluoride.battery.name=Малая фторидная батарея
-metaitem.small.lithium.sulfide.battery.name=Малая сульфидно-натриевая батарея
-metaitem.small.lithium.ion.battery.name=Малая литий-ионная батарея
-metaitem.nickel.metal.hydride.battery.name=Никель-металлогидридная батарея
 
 metaitem.copper_gallium_indium_mix.name=Смесь меди, галлия и индия 
 metaitem.copper_gallium_indium_selenide.name=Селенид меди, галлия и индия 
@@ -2363,14 +2334,9 @@ gtadditions.machine.steam_miner.name=Паровой выкапыватель ч�
 
 metaitem.large.fluoride.battery.tooltip=Повторно-используемая
 metaitem.large.lithium.sulfide.battery.tooltip=Повторно-используемая
-metaitem.large.lithium.ion.battery.tooltip=Повторно-используемая
 metaitem.medium.fluoride.battery.tooltip=Повторно-используемая
 metaitem.medium.lithium.sulfide.battery.tooltip=Повторно-используемая
-metaitem.medium.lithium.ion.battery.tooltip=Повторно-используемая
 metaitem.small.fluoride.battery.tooltip=Повторно-используемая
-metaitem.small.lithium.sulfide.battery.tooltip=Повторно-используемая
-metaitem.small.lithium.ion.battery.tooltip=Повторно-используемая
-metaitem.nickel.metal.hydride.battery.tooltip=Повторно-используемая
 
 metaitem.anodic_slime.name=Анодная слизь 
 metaitem.tellurium_oxide.name=Оксид теллура
@@ -2492,62 +2458,6 @@ metaitem.barium_oxide.name=Оксид бария
 metaitem.barium_aluminate.name=Алюминат бария
 
 gtadditions.machine.large_laser_engraver.name=Большой лазерный гравировщик
-
-gtadditions.converter.energy.fe=FE
-gtadditions.converter.energy.gteu=GTEU
-gtadditions.converter.energy.simple.fe=FE
-gtadditions.converter.energy.simple.gteu=EU
-
-gtadditions.converter.energy_out=Максимум %s на выход: §e%d FE§7/tick
-gtadditions.converter.energy_in=Максимум %s на вход: §e%d FE§7/tick
-gtadditions.converter.description=Конвертирует %s в %s
-gtadditions.convert_gteu=Конвертирует EU в FE
-gtadditions.convert_forge=Конвертирует FE в EU
-gtadditions.converter.disabled=§cОтключен
-
-gtadditions.machine.convert_forge.uhv.1.name=FE конвертатор (UHV)
-gtadditions.machine.convert_forge.uhv.4.name=FE конвертатор (UHV)
-gtadditions.machine.convert_forge.uhv.9.name=FE конвертатор (UHV)
-gtadditions.machine.convert_forge.uhv.16.name=FE конвертатор (UHV)
-
-gtadditions.machine.convert_gteu.uhv.1.name=GTEU конвертатор (UHV)
-gtadditions.machine.convert_gteu.uhv.4.name=GTEU конвертатор (UHV)
-gtadditions.machine.convert_gteu.uhv.9.name=GTEU конвертатор (UHV)
-gtadditions.machine.convert_gteu.uhv.16.name=GTEU конвертатор (UHV)
-
-gtadditions.machine.convert_forge.uev.1.name=FE конвертатор (UEV)
-gtadditions.machine.convert_forge.uev.4.name=FE конвертатор (UEV)
-gtadditions.machine.convert_forge.uev.9.name=FE конвертатор (UEV)
-gtadditions.machine.convert_forge.uev.16.name=FE конвертатор (UEV)
-
-gtadditions.machine.convert_gteu.uev.1.name=GTEU конвертатор (UEV)
-gtadditions.machine.convert_gteu.uev.4.name=GTEU конвертатор (UEV)
-gtadditions.machine.convert_gteu.uev.9.name=GTEU конвертатор (UEV)
-gtadditions.machine.convert_gteu.uev.16.name=GTEU конвертатор (UEV)
-
-gtadditions.machine.convert_forge.uiv.1.name=FE конвертатор (UIV)
-gtadditions.machine.convert_forge.uiv.4.name=FE конвертатор (UIV)
-gtadditions.machine.convert_forge.uiv.9.name=FE конвертатор (UIV)
-gtadditions.machine.convert_forge.uiv.16.name=FE конвертатор (UIV)
-
-gtadditions.machine.convert_gteu.uiv.1.name=GTEU конвертатор (UIV)
-gtadditions.machine.convert_gteu.uiv.4.name=GTEU конвертатор (UIV)
-gtadditions.machine.convert_gteu.uiv.9.name=GTEU конвертатор (UIV)
-gtadditions.machine.convert_gteu.uiv.16.name=GTEU конвертатор (UIV)
-
-gtadditions.machine.convert_forge.umv.1.name=FE конвертатор (UMV)
-gtadditions.machine.convert_forge.umv.4.name=FE конвертатор (UMV)
-gtadditions.machine.convert_forge.umv.9.name=FE конвертатор (UMV)
-gtadditions.machine.convert_forge.umv.16.name=FE конвертатор (UMV)
-
-gtadditions.machine.convert_gteu.umv.1.name=GTEU конвертатор (UMV)
-gtadditions.machine.convert_gteu.umv.4.name=GTEU конвертатор (UMV)
-gtadditions.machine.convert_gteu.umv.9.name=GTEU конвертатор (UMV)
-gtadditions.machine.convert_gteu.umv.16.name=GTEU конвертатор (UMV)
-
-gtadditions.machine.convert_gteu.uxv.1.name=GTEU конвертатор (UXV)
-gtadditions.machine.convert_forge.uxv.1.name=FE конвертатор (UXV)
-
 
 gregtech.multiblock.large_transformer.input=На вход: %s EU / %s Ампер
 gregtech.multiblock.large_transformer.output=На выход: %s EU / %s Ампер

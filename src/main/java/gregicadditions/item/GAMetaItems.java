@@ -238,8 +238,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem CLADDED_OPTICAL_FIBER_CORE;
 
     public static MetaItem<?>.MetaValueItem PYROLYTIC_CARBON;
-    public static MetaItem<?>.MetaValueItem HOT_IRON_INGOT;
-    
+
     public static MetaItem<?>.MetaValueItem ACRYLIC_YARN;
     public static MetaItem<?>.MetaValueItem RAPIDLY_ROTATING_CRUCIBLE;
     public static MetaItem<?>.MetaValueItem HEAVY_METAL_ABSORBING_YARN;

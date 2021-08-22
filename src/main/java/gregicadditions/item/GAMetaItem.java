@@ -393,7 +393,6 @@ public class GAMetaItem extends StandardMetaItem {
 
         PYROLYTIC_CARBON = addItem(16, "pyrolytic_carbon");
         COMPRESSED_COKE_CLAY = addItem(36, "compressed.coke.clay");
-        HOT_IRON_INGOT = addItem(37, "hot_iron_ingot");
 
         BATTERY_MEDIUM_LIS = addItem(614, "medium.lithium.sulfide.battery").addComponents(ElectricStats.createRechargeableBattery(7372800000L, GTValues.UHV)).setModelAmount(8);
         BATTERY_LARGE_LIS = addItem(615, "large.lithium.sulfide.battery").addComponents(ElectricStats.createRechargeableBattery(29491200000L, GTValues.UEV)).setModelAmount(8);

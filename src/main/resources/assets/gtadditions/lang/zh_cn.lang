@@ -1,7 +1,6 @@
 
 metaitem.boule.rutherfordium.name=鑪掺杂的单晶硅
 metaitem.boule.dubnium.name=钅杜掺杂的单晶硅
-metaitem.hot_iron_ingot.name=热铁锭
 metaitem.plate.field.shape.name=板状形态力场
 metaitem.wafer.aram.name=ARAM晶圆
 metaitem.plate.aram.name=ARAM
@@ -45,47 +44,27 @@ metaitem.methylbenzophenanthrene.name=甲基苯并菲
 
 metaitem.large.fluoride.battery.empty.name=大型氟化物电池外壳
 metaitem.large.lithium.sulfide.battery.empty.name=大型硫化锂电池外壳
-metaitem.large.lithium.ion.battery.empty.name=大型锂离子电池外壳
 metaitem.medium.fluoride.battery.empty.name=中型氟化物电池外壳
 metaitem.medium.lithium.sulfide.battery.empty.name=中型硫化锂电池外壳
-metaitem.medium.lithium.ion.battery.empty.name=中型锂离子电池外壳
 metaitem.small.fluoride.battery.empty.name=小型氟化物电池外壳
-metaitem.small.lithium.sulfide.battery.empty.name=小型硫化锂电池外壳
-metaitem.small.lithium.ion.battery.empty.name=小型锂离子电池外壳
-metaitem.nickel.metal.hydride.battery.empty.name=镍氢电池外壳
 
 metaitem.large.fluoride.battery.empty.tooltip=一个空的 UXV 级电池
 metaitem.large.lithium.sulfide.battery.empty.tooltip=一个空的 UEV 级电池
-metaitem.large.lithium.ion.battery.empty.tooltip=一个空的 ZPM 级电池
 metaitem.medium.fluoride.battery.empty.tooltip=一个空的 UMV 级电池
 metaitem.medium.lithium.sulfide.battery.empty.tooltip=一个空的 UHV 级电池
-metaitem.medium.lithium.ion.battery.empty.tooltip=一个空的 LuV 级电池
 metaitem.small.fluoride.battery.empty.tooltip=一个空的 UIV 级电池
-metaitem.small.lithium.sulfide.battery.empty.tooltip=一个空的 UV 级电池
-metaitem.small.lithium.ion.battery.empty.tooltip=一个空的 IV 级电池
-metaitem.nickel.metal.hydride.battery.empty.tooltip=一个空的 EV 级电池
 
 metaitem.large.fluoride.battery.name=大型氟化物电池
 metaitem.large.lithium.sulfide.battery.name=大型硫化锂电池
-metaitem.large.lithium.ion.battery.name=大型锂离子电池
 metaitem.medium.fluoride.battery.name=中型氟化物电池
 metaitem.medium.lithium.sulfide.battery.name=中型硫化锂电池
-metaitem.medium.lithium.ion.battery.name=中型锂离子电池
 metaitem.small.fluoride.battery.name=小型氟化物电池
-metaitem.small.lithium.sulfide.battery.name=小型硫化锂电池
-metaitem.small.lithium.ion.battery.name=小型锂离子电池
-metaitem.nickel.metal.hydride.battery.name=镍氢电池
 
 metaitem.large.fluoride.battery.tooltip=可充电电池
 metaitem.large.lithium.sulfide.battery.tooltip=可充电电池
-metaitem.large.lithium.ion.battery.tooltip=可充电电池
 metaitem.medium.fluoride.battery.tooltip=可充电电池
 metaitem.medium.lithium.sulfide.battery.tooltip=可充电电池
-metaitem.medium.lithium.ion.battery.tooltip=可充电电池
 metaitem.small.fluoride.battery.tooltip=可充电电池
-metaitem.small.lithium.sulfide.battery.tooltip=可充电电池
-metaitem.small.lithium.ion.battery.tooltip=可充电电池
-metaitem.nickel.metal.hydride.battery.tooltip=可充电电池
 
 
 metaitem.electrically.wired.petri.dish.name=电信号培养皿
@@ -628,19 +607,6 @@ metaitem.calcium_alginate.name=海藻酸钙
 metaitem.nickel_oxide_hydroxide.name=羟基氧化镍
 
 metaitem.unstable.star.name=易变之星
-
-metaitem.tool.prospect.mv.name=勘探仪（MV）
-metaitem.tool.prospect.hv.name=勘探仪（HV）
-metaitem.tool.prospect.luv.name=勘探仪（LuV）
-metaitem.tool.prospect.zpm.name=勘探仪（ZPM）
-metaitem.tool.prospect.mode.0=模式设置：矿石
-metaitem.tool.prospect.mode.1=模式设置：地下油田
-metaitem.tool.prospect.mode.default=模式设置：错误
-metaitem.tool.prospect.gui.title=勘探仪
-metaitem.tool.prospect.gui.list=所有资源
-metaitem.tool.prospect.tooltips.ore=矿石统计
-metaitem.tool.prospect.tooltips.fluid=流体统计
-metaitem.tool.prospect.low_power=电量不足！
 
 #//////////////COVER + MONITOR + PLUGIN/////////////////
 metaitem.plugin.tooltips.1=可以安装插件来使用更多功能

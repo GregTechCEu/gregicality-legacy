@@ -4,7 +4,6 @@ metaitem.board_circuit.kapton.name=瘋狂的電路板
 metaitem.board_circuit.kapton.tooltip=雙聚合物！
 metaitem.boule.rutherfordium.name=鑪摻雜的單晶硅
 metaitem.boule.dubnium.name=钅杜摻雜的單晶硅
-metaitem.hot_iron_ingot.name=熱鐵錠
 metaitem.plate.field.shape.name=板狀形態力場
 metaitem.wafer.aram.name=ARAM晶圓
 metaitem.plate.aram.name=ARAM
@@ -46,47 +45,27 @@ metaitem.methylbenzophenanthrene.name=甲基苯并菲
 
 metaitem.large.fluoride.battery.empty.name=大型氟化物電池外殼
 metaitem.large.lithium.sulfide.battery.empty.name=大型硫化鋰電池外殼
-metaitem.large.lithium.ion.battery.empty.name=大型鋰離子電池外殼
 metaitem.medium.fluoride.battery.empty.name=中型氟化物電池外殼
 metaitem.medium.lithium.sulfide.battery.empty.name=中型硫化鋰電池外殼
-metaitem.medium.lithium.ion.battery.empty.name=中型鋰離子電池外殼
 metaitem.small.fluoride.battery.empty.name=小型氟化物電池外殼
-metaitem.small.lithium.sulfide.battery.empty.name=小型硫化鋰電池外殼
-metaitem.small.lithium.ion.battery.empty.name=小型鋰離子電池外殼
-metaitem.nickel.metal.hydride.battery.empty.name=鎳氫電池外殼
 
 metaitem.large.fluoride.battery.empty.tooltip=一個空的 UXV 級電池
 metaitem.large.lithium.sulfide.battery.empty.tooltip=一個空的 UEV 級電池
-metaitem.large.lithium.ion.battery.empty.tooltip=一個空的 ZPM 級電池
 metaitem.medium.fluoride.battery.empty.tooltip=一個空的 UMV 級電池
 metaitem.medium.lithium.sulfide.battery.empty.tooltip=一個空的 UHV 級電池
-metaitem.medium.lithium.ion.battery.empty.tooltip=一個空的 LuV 級電池
 metaitem.small.fluoride.battery.empty.tooltip=一個空的 UIV 級電池
-metaitem.small.lithium.sulfide.battery.empty.tooltip=一個空的 UV 級電池
-metaitem.small.lithium.ion.battery.empty.tooltip=一個空的 IV 級電池
-metaitem.nickel.metal.hydride.battery.empty.tooltip=一個空的 EV 級電池
 
 metaitem.large.fluoride.battery.name=大型氟化物電池
 metaitem.large.lithium.sulfide.battery.name=大型硫化鋰電池
-metaitem.large.lithium.ion.battery.name=大型鋰離子電池
 metaitem.medium.fluoride.battery.name=中型氟化物電池
 metaitem.medium.lithium.sulfide.battery.name=中型硫化鋰電池
-metaitem.medium.lithium.ion.battery.name=中型鋰離子電池
 metaitem.small.fluoride.battery.name=小型氟化物電池
-metaitem.small.lithium.sulfide.battery.name=小型硫化鋰電池
-metaitem.small.lithium.ion.battery.name=小型鋰離子電池
-metaitem.nickel.metal.hydride.battery.name=鎳氫電池
 
 metaitem.large.fluoride.battery.tooltip=可充電電池
 metaitem.large.lithium.sulfide.battery.tooltip=可充電電池
-metaitem.large.lithium.ion.battery.tooltip=可充電電池
 metaitem.medium.fluoride.battery.tooltip=可充電電池
 metaitem.medium.lithium.sulfide.battery.tooltip=可充電電池
-metaitem.medium.lithium.ion.battery.tooltip=可充電電池
 metaitem.small.fluoride.battery.tooltip=可充電電池
-metaitem.small.lithium.sulfide.battery.tooltip=可充電電池
-metaitem.small.lithium.ion.battery.tooltip=可充電電池
-metaitem.nickel.metal.hydride.battery.tooltip=可充電電池
 
 
 metaitem.electrically.wired.petri.dish.name=電信號培養皿
@@ -682,19 +661,6 @@ metaitem.tetraacetyldinitrosohexaazaisowurtzitane.name=四乙酰二亞硝基六�
 metaitem.crude_hexanitrohexaaxaisowurtzitane.name=粗六硝基六軸異武茲烷
 
 metaitem.unstable.star.name=易變之星
-
-metaitem.tool.prospect.mv.name=勘探儀（MV）
-metaitem.tool.prospect.hv.name=勘探儀（HV）
-metaitem.tool.prospect.luv.name=勘探儀（LuV）
-metaitem.tool.prospect.zpm.name=勘探儀（ZPM）
-metaitem.tool.prospect.mode.0=模式設置：礦石
-metaitem.tool.prospect.mode.1=模式設置：地下油田
-metaitem.tool.prospect.mode.default=模式設置：錯誤
-metaitem.tool.prospect.gui.title=勘探儀
-metaitem.tool.prospect.gui.list=所有資源
-metaitem.tool.prospect.tooltips.ore=礦石統計
-metaitem.tool.prospect.tooltips.fluid=流體統計
-metaitem.tool.prospect.low_power=電量不足！
 
 #//////////////COVER + MONITOR + PLUGIN/////////////////
 metaitem.plugin.tooltips.1=可以安裝插件來使用更多功能

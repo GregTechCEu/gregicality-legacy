@@ -102,19 +102,6 @@ public class MetaItemRecipes {
                 .outputs(UNSTABLE_STAR.getStackForm())
                 .buildAndRegister();
 
-        // Hot Wrought Iron
-        ModHandler.addSmeltingRecipe(new UnificationEntry(ingot, Iron),
-                HOT_IRON_INGOT.getStackForm());
-
-        ModHandler.addShapelessRecipe("ga_wrought", OreDictUnifier.get(ingot, WroughtIron),
-                'h',
-                HOT_IRON_INGOT.getStackForm());
-
-        FORGE_HAMMER_RECIPES.recipeBuilder().EUt(8).duration(16)
-                .inputs(HOT_IRON_INGOT.getStackForm())
-                .output(ingot, WroughtIron)
-                .buildAndRegister();
-
         // Plant Balls
         COMPRESSOR_RECIPES.recipeBuilder().duration(300).EUt(2)
                 .input("listAllmushroom", 8)
