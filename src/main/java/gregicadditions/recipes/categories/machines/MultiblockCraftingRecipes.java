@@ -1,6 +1,7 @@
 package gregicadditions.recipes.categories.machines;
 
 import gregicadditions.GAConfig;
+import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
@@ -9,7 +10,6 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.*;
-import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -93,10 +93,10 @@ public class MultiblockCraftingRecipes {
                 .fluidInputs(Polyetheretherketone.getFluid(2592))
                 .inputs(SENSOR_UHV.getStackForm(2))
                 .inputs(ELECTRIC_MOTOR_UHV.getStackForm(8))
-                .input(wireGtSingle, UHVSuperconductor, 64)
-                .input(wireGtSingle, UHVSuperconductor, 64)
-                .input(wireGtSingle, UHVSuperconductor, 64)
-                .input(wireGtSingle, UHVSuperconductor, 64)
+                .input(wireGtSingle, GAMaterials.StrontiumTaraniumTBCCO, 64)
+                .input(wireGtSingle, GAMaterials.StrontiumTaraniumTBCCO, 64)
+                .input(wireGtSingle, GAMaterials.StrontiumTaraniumTBCCO, 64)
+                .input(wireGtSingle, GAMaterials.StrontiumTaraniumTBCCO, 64)
                 .inputs(VOID_MINER[0].getStackForm())
                 .input(circuit, Infinite, 4)
                 .input(gear, Incoloy813, 4)
@@ -114,10 +114,10 @@ public class MultiblockCraftingRecipes {
                 .fluidInputs(Zylon.getFluid(L * 18))
                 .inputs(SENSOR_UEV.getStackForm(2))
                 .inputs(ELECTRIC_MOTOR_UEV.getStackForm(8))
-                .input(wireGtSingle, UEVSuperconductor, 64)
-                .input(wireGtSingle, UEVSuperconductor, 64)
-                .input(wireGtSingle, UEVSuperconductor, 64)
-                .input(wireGtSingle, UEVSuperconductor, 64)
+                .input(wireGtSingle, ActiniumVibraniumBETSSuperhydride, 64)
+                .input(wireGtSingle, ActiniumVibraniumBETSSuperhydride, 64)
+                .input(wireGtSingle, ActiniumVibraniumBETSSuperhydride, 64)
+                .input(wireGtSingle, ActiniumVibraniumBETSSuperhydride, 64)
                 .inputs(VOID_MINER[1].getStackForm())
                 .input(circuit, UEV, 4)
                 .input(gear, HastelloyX78, 4)

@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
 
@@ -52,7 +53,7 @@ public class WormholeGeneratorChain {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(800000)
                 .fluidInputs(Tritanium.getFluid(144))
                 .input(stick, NaquadahAlloy, 4)
-                .input(wireGtSingle, UHVSuperconductor, 2)
+                .input(wireGtSingle, GAMaterials.StrontiumTaraniumTBCCO, 2)
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
                 .inputs(EMITTER_UHV.getStackForm(2))
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(4))

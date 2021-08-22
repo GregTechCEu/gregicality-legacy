@@ -1,18 +1,14 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
-import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
-import net.minecraft.item.ItemStack;
 
-import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.*;
 
 public class Batteries {
     public static void init() {
@@ -271,7 +267,7 @@ public class Batteries {
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plateB, CosmicNeutronium, 4)
-                .input(cableGtSingle, UXVSuperconductor, 8)
+                .input(cableGtSingle, NeutroniumLegendariumSuperhydride, 8)
                 .input(plateB, Neutronium, 6)
                 .input(plate, Neutronium, 4)
                 .inputs(LanthanumNickelOxide.getItemStack(28))

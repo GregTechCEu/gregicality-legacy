@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
@@ -45,7 +46,7 @@ public class FusionComponents {
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
-                .input(wireGtOctal, UHVSuperconductor, 4)
+                .input(wireGtOctal, GAMaterials.StrontiumTaraniumTBCCO, 4)
                 .input(plate, Bohrium, 2)
                 .input(plate, Fermium.getMaterial(), 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(16))
@@ -56,7 +57,7 @@ public class FusionComponents {
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
-                .input(wireGtOctal, UEVSuperconductor, 4)
+                .input(wireGtOctal, ActiniumVibraniumBETSSuperhydride, 4)
                 .input(plate, Vibranium, 2)
                 .input(plate, Mendelevium.getMaterial(), 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(64))

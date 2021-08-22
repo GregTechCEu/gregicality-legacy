@@ -3,8 +3,10 @@ package gregicadditions.materials;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
+import gregtech.api.unification.stack.MaterialStack;
 
 
+import static com.google.common.collect.ImmutableList.of;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.materials.GAMaterialFlags.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -138,6 +140,51 @@ public class GAThirdDegreeMaterials {
                 .color(LanthanumFullereneMix.getMaterialRGB()*3/5).iconSet(MaterialIconSet.SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Lanthanum, 2, Fullerene, 2 , CarbonNanotubes, 1)
+                .build();
+
+        StrontiumTaraniumTBCCO = new Material.Builder(15518, "strontium_taranium_tbcco")
+                .ingot()
+                .color(0x359FFC)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(TBCCODust, 4, StrontiumSuperconductorDust, 4, Taranium, 1)
+                .cableProperties(GTValues.V[GTValues.UHV], 24, 0, true)
+                .blastTemp(10600)
+                .build();
+
+        ActiniumVibraniumBETSSuperhydride = new Material.Builder(15519, "actinium_vibranium_bets_superhydride")
+                .ingot()
+                .color(0x954FE0)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(ActiniumSuperhydride, 1, BETSPerrhenate, 1, Vibranium, 1, Quantum, 1, TriniumTitanium, 1)
+                .cableProperties(GTValues.V[GTValues.UEV], 32, 0, true)
+                .blastTemp(11500)
+                .build();
+
+        ProtoFullereneBorocarbide = new Material.Builder(15520, "proto_fullerene_borocarbide")
+                .ingot()
+                .color(0x8BF743)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(BorocarbideDust, 2, FullereneSuperconductiveDust, 1, MetastableOganesson, 2, ProtoAdamantium, 2)
+                .cableProperties(GTValues.V[GTValues.UIV], 48, 0, true)
+                .blastTemp(11600)
+                .build();
+
+        SuperheavyChargedBlackTitanium = new Material.Builder(11521, "superheavy_charged_black_titanium")
+                .ingot()
+                .color(0x883AFC)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(BlackTitanium, 3, SuperheavyHAlloy, 2, ChargedCesiumCeriumCobaltIndium, 3, RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 6)
+                .cableProperties(GTValues.V[GTValues.UMV], 64, 0, true)
+                .blastTemp(12000)
+                .build();
+
+        NeutroniumLegendariumSuperhydride = new Material.Builder(11522, "neutronium_legendarium_superhydride")
+                .ingot()
+                .color(0xE34B5A)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Neutronium, 4, Legendarium, 5, ActiniumSuperhydride, 5, LanthanumFullereneNanotubes, 4, RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 12)
+                .cableProperties(GTValues.V[GTValues.UXV], 128, 0, true)
+                .blastTemp(14000)
                 .build();
 
     }
