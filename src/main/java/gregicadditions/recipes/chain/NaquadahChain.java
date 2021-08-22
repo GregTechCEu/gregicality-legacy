@@ -228,14 +228,14 @@ public class NaquadahChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(CaesiumFluoride.getFluid(1000))
                 .fluidInputs(XenonTrioxide.getFluid(1000))
-                .fluidOutputs(CesiumXenontrioxideFluoride.getFluid(1000))
+                .fluidOutputs(CaesiumXenontrioxideFluoride.getFluid(1000))
                 .EUt(120)
                 .duration(100)
                 .buildAndRegister();
 
         // CsXeO3F + Radon Naquadriaoctafluoride [RnNqF8] = RnO3 + NqCsXeF9
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(CesiumXenontrioxideFluoride.getFluid(1000))
+                .fluidInputs(CaesiumXenontrioxideFluoride.getFluid(1000))
                 .fluidInputs(RadonNaquadriaoctafluoride.getFluid(1000))
                 .fluidOutputs(RadonTrioxide.getFluid(1000))
                 .fluidOutputs(NaquadriaCaesiumXenonNonfluoride.getFluid(1000))

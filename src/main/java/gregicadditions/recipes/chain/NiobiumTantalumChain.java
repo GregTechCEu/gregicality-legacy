@@ -228,7 +228,7 @@ public class NiobiumTantalumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(120)
                 .fluidInputs(OxypentafluoroNiobate.getFluid(1000))
                 .input(dust, PotassiumFluoride, 4)
-                .outputs(PotasssiumFluoroNiobate.getItemStack(10))
+                .outputs(PotassiumFluoroNiobate.getItemStack(10))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
@@ -242,7 +242,7 @@ public class NiobiumTantalumChain {
 
         // K2NbF7 + 5Na -> 5NaF + 2KF + Nb
         ELECTROLYZER_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .inputs(PotasssiumFluoroNiobate.getItemStack(10))
+                .inputs(PotassiumFluoroNiobate.getItemStack(10))
                 .fluidInputs(Sodium.getFluid(5000))
                 .output(dust, SodiumFluoride, 10)
                 .output(dust, PotassiumFluoride, 4)

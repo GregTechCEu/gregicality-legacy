@@ -593,7 +593,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material NaquadricSolution;
     public static Material EnrichedNaquadricSolution;
     public static Material NaquadriaticSolution;
-    public static Material CesiumXenontrioxideFluoride;
+    public static Material CaesiumXenontrioxideFluoride;
     public static Material NitrylFluoride;
     public static Material NitrosoniumOctafluoroxenate;
     public static Material NaquadriaCesiumfluoride;
@@ -687,7 +687,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material BismuthVanadateSolution;
     public static Material SeaborgiumDopedNanotubes;
     public static Material FullereneDopedNanotubes;
-    public static Material LiquidZBLAN;
+    public static Material LiquidZBLAN; //todo overhaul this
     public static Material GrapheneOxidationSolution;
     public static Material SupercriticalCO2;
     public static Material LiquidEnrichedHelium;
@@ -734,7 +734,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material TantaliteMinorOxideResidue;
     public static Material LeachedPyrochlore;
     public static Material AcidicLeachedPyrochlore;
-    public static Material PotasssiumFluoroNiobate;
+    public static Material PotassiumFluoroNiobate;
     public static Material PotasssiumFluoroTantalate;
     public static Material BariumPeroxide;
     public static Material CopperGalliumIndiumSelenide;
