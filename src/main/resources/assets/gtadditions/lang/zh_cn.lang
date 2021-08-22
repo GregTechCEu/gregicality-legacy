@@ -1165,10 +1165,6 @@ tile.cell_casing.tooltip.1=在§a储能塔§7中使用
 tile.cell_casing.tooltip.2=    储能：§e%d
 tile.cell_casing.tooltip.3=    电压等级：§e%s
 
-
-metaitem.tool.bending_cylinder.name=%s弯曲绕筒
-metaitem.tool.bending_cylinder_small.name=小型%s弯曲绕筒
-
 recipemap.large_thermal_centifuge.name=大型热离离心机
 recipemap.large_assembler.name=大型组装机
 recipemap.large_electrolyzer.name=大型电解机
@@ -1751,8 +1747,6 @@ gtadditions.multiblock.drilling_rig.chunk_remaining=区块流体余量：%dB
 gtadditions.multiblock.drilling_rig.fluid=当前抽取流体：%s
 gtadditions.multiblock.drilling_rig.replenish=补充率：%dmB/sec
 
-item.material.oreprefix.plateCurved=弯曲%s板
-item.material.oreprefix.ingotDouble=双重%s锭
 item.material.oreprefix.nitrite=亚硝酸%s
 item.material.oreprefix.dioxide=二氧化%s
 item.material.oreprefix.hexafluoride=六氟化%s

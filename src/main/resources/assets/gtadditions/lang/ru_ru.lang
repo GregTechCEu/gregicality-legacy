@@ -25,9 +25,6 @@ gtadditions.machine.naquadah_reactor.mk4.name=Наквадах реактор Mk
 
 tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Корпус сборочного конвеера
 
-metaitem.tool.bending_cylinder.name=%s гнущий цилиндр
-metaitem.tool.bending_cylinder_small.name=Малый %s гнущий цилиндр
-
 recipemap.naquadah_reactor.name=Топливо для наквадах реактора
 
 recipemap.plasma_generator.name=Топливо для плазменной турбины
@@ -1246,8 +1243,6 @@ metaitem.circuit.resonatic.uhv.name=UHV магнето-резонирующая 
 metaitem.circuit.resonatic.uhv.tooltip=§b§oUHV Микросхема
 metaitem.circuit.resonatic.uev.name=UEV магнето-резонирующая микросхема
 metaitem.circuit.resonatic.uev.tooltip=§b§oUEV Микросхема
-item.material.oreprefix.plateCurved=Изогнутый %s лист
-item.material.oreprefix.ingotDouble=Двойной %s слиток
 item.material.oreprefix.nitrite=%s нитрит
 item.material.oreprefix.dioxide=%s диоксид
 item.material.oreprefix.hexafluoride=%s гексафторид

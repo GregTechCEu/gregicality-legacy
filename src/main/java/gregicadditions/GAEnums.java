@@ -75,7 +75,6 @@ public class GAEnums {
 
     public static void onConstruction() {
 /*
-        if (GAConfig.GT6.addCurvedPlates) OrePrefix.plateCurved.setGenerationCondition(mat -> mat.hasFlag(GENERATE_PLATE));
         MetaItems.addOrePrefix(dioxide, hexafluoride, nitrite, nitride, carbide, zirconiumAlloy, oxide,
                 fuelNitride, fuelCarbide, fuelZirconiumAlloy, fuelOxide, fuelPure, fuelTRISO,
                 depletedFuelNitride, depletedFuelZirconiumAlloy, depletedFuelOxide, depletedFuelTRISO, depletedFuel);

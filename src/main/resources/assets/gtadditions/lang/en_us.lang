@@ -1341,9 +1341,6 @@ tile.cell_casing.tooltip.1=Used in §aBattery Tower§7
 tile.cell_casing.tooltip.2=    Internal Energy Capacity: §9%,d
 tile.cell_casing.tooltip.3=    Max Tier: §9%s
 
-metaitem.tool.bending_cylinder.name=%s Bending Cylinder
-metaitem.tool.bending_cylinder_small.name=Small %s Bending Cylinder
-
 recipemap.large_thermal_centifuge.name=Large Thermal Centrifuge
 recipemap.large_assembler.name=Large Assembler
 recipemap.large_electrolyzer.name=Large Electrolyzer
@@ -2061,8 +2058,6 @@ gtadditions.multiblock.preview.left_or_right=Can only be placed in the second la
 gtadditions.multiblock.preview.rear_output=Can only be placed in the second layer in the center of the back face
 gtadditions.multiblock.preview.location_end=Can only be placed at the very end
 
-item.material.oreprefix.plateCurved=Curved %s Plate
-item.material.oreprefix.ingotDouble=Double %s Ingot
 item.material.oreprefix.nitrite=%s Nitrite
 item.material.oreprefix.dioxide=%s Dioxide
 item.material.oreprefix.hexafluoride=%s Hexafluoride

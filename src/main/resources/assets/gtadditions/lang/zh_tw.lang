@@ -1236,10 +1236,6 @@ tile.cell_casing.tooltip.1=在§a儲能塔§7中使用
 tile.cell_casing.tooltip.2=    儲能：§e%d
 tile.cell_casing.tooltip.3=    電壓等級：§e%s
 
-
-metaitem.tool.bending_cylinder.name=%s彎曲繞筒
-metaitem.tool.bending_cylinder_small.name=小型%s彎曲繞筒
-
 recipemap.large_thermal_centifuge.name=大型熱離離心機
 recipemap.large_assembler.name=大型組裝機
 recipemap.large_electrolyzer.name=大型電解機
@@ -1890,8 +1886,6 @@ gtadditions.multiblock.battery_tower.input=EU/t input: %s
 gtadditions.multiblock.battery_tower.output=EU/t output: %s
 gtadditions.multiblock.battery_tower.passive_drain=Passive EU loss per tick: %s
 
-item.material.oreprefix.plateCurved=彎曲%s板
-item.material.oreprefix.ingotDouble=雙重%s錠
 item.material.oreprefix.nitrite=亞硝酸%s
 item.material.oreprefix.dioxide=二氧化%s
 item.material.oreprefix.hexafluoride=六氟化%s
