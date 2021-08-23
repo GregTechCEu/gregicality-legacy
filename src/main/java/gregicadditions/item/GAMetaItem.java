@@ -125,37 +125,38 @@ public class GAMetaItem extends StandardMetaItem {
 
         // SMDs: IDs 100-199
         SMD_TRANSISTOR_BIOWARE = addItem(100, "component.smd.transistor.bioware");
-        SMD_CAPACITOR_BIOWARE = addItem(101, "component.smd.capacitor.bioware");
-        SMD_RESISTOR_BIOWARE = addItem(102, "component.smd.resistor.bioware");
+        SMD_RESISTOR_BIOWARE = addItem(101, "component.smd.resistor.bioware");
+        SMD_CAPACITOR_BIOWARE = addItem(102, "component.smd.capacitor.bioware");
         SMD_DIODE_BIOWARE = addItem(103, "component.smd.diode.bioware");
 
-        SMD_CAPACITOR_OPTICAL = addItem(104,"smd_capacitor_optical");
-        SMD_DIODE_OPTICAL = addItem(105,"smd_diode_optical");
-        SMD_RESISTOR_OPTICAL = addItem(106,"smd_resistor_optical");
-        SMD_TRANSISTOR_OPTICAL = addItem(107,"smd_transistor_optical");
+        SMD_TRANSISTOR_OPTICAL = addItem(104,"smd_transistor_optical");
+        SMD_RESISTOR_OPTICAL = addItem(105,"smd_resistor_optical");
+        SMD_CAPACITOR_OPTICAL = addItem(106,"smd_capacitor_optical");
+        SMD_DIODE_OPTICAL = addItem(107,"smd_diode_optical");
 
-        SMD_CAPACITOR_EXOTIC = addItem(108, "component.smd.capacitor.exotic");
+        SMD_TRANSISTOR_EXOTIC = addItem(108, "component.smd.transistor.exotic");
         SMD_RESISTOR_EXOTIC = addItem(109, "component.smd.resistor.exotic");
-        SMD_DIODE_EXOTIC = addItem(110, "component.smd.diode.exotic");
-        SMD_TRANSISTOR_EXOTIC = addItem(111, "component.smd.transistor.exotic");
+        SMD_CAPACITOR_EXOTIC = addItem(110, "component.smd.capacitor.exotic");
+        SMD_DIODE_EXOTIC = addItem(111, "component.smd.diode.exotic");
 
-        SMD_CAPACITOR_COSMIC = addItem(112,"smd_capacitor_cosmic");
-        SMD_DIODE_COSMIC = addItem(113,"smd_diode_cosmic");
-        SMD_RESISTOR_COSMIC = addItem(114,"smd_resistor_cosmic");
-        SMD_TRANSISTOR_COSMIC = addItem(115,"smd_transistor_cosmic");
+        SMD_TRANSISTOR_COSMIC = addItem(112,"smd_transistor_cosmic");
+        SMD_RESISTOR_COSMIC = addItem(113,"smd_resistor_cosmic");
+        SMD_CAPACITOR_COSMIC = addItem(114,"smd_capacitor_cosmic");
+        SMD_DIODE_COSMIC = addItem(115,"smd_diode_cosmic");
 
-        SMD_CAPACITOR_SUPRACAUSAL = addItem(116, "smd.capacitor.supracausal");
+        SMD_TRANSISTOR_SUPRACAUSAL = addItem(116, "smd.transistor.supracausal");
         SMD_RESISTOR_SUPRACAUSAL = addItem(117, "smd.resistor.supracausal");
-        SMD_DIODE_SUPRACAUSAL = addItem(118, "smd.diode.supracausal");
-        SMD_TRANSISTOR_SUPRACAUSAL = addItem(119, "smd.transistor.supracausal");
+        SMD_CAPACITOR_SUPRACAUSAL = addItem(118, "smd.capacitor.supracausal");
+        SMD_DIODE_SUPRACAUSAL = addItem(119, "smd.diode.supracausal");
 
         // Wafers and Boules: IDs 200-299
         BOULE_DUBNIUM = addItem(200, "boule.dubnium");
         BOULE_RUTHERFORDIUM = addItem(201, "boule.rutherfordium");
-        NDYAG_BOULE = addItem(202,"ndyag_boule");
-        HASSIUM_BOULE = addItem(203,"hassium_boule");
+        HASSIUM_BOULE = addItem(202,"hassium_boule");
+        NDYAG_BOULE = addItem(203,"ndyag_boule");
         PRHOYLF_BOULE = addItem(204,"prhoylf_boule");
         LUTMYVO_BOULE = addItem(205,"lutmyvo_boule");
+        PERIODICALLY_POLED_LITHIUM_NIOBATE_BOULE = addItem(206,"periodically_poled_lithium_niobate_boule");
 
         WAFER_DUBNIUM = addItem(220, "wafer.dubnium");
         WAFER_RUTHERFORDIUM = addItem(221, "wafer.rutherfordium");
@@ -180,7 +181,7 @@ public class GAMetaItem extends StandardMetaItem {
         OPTICAL_SOC = addItem(264,"optical_soc");
         EXOTIC_CHIP = addItem(265, "exotic.chip");
 
-        // Boards: IDs 300-324
+        // Circuit Boards: IDs 300-324
         KAPTON_BOARD = addItem(300, "board.kapton");
         KAPTON_CIRCUIT_BOARD = addItem(301, "board_circuit.kapton");
 
@@ -214,16 +215,15 @@ public class GAMetaItem extends StandardMetaItem {
         HOT_ANNEALED_ZBLAN_INGOT = addItem(402, "hot_annealed_zblan_ingot");
         ZBLAN_FIBER = addItem(403, "zblan_fiber");
         ERBIUM_DOPED_ZBLAN = addItem(404, "erbium_doped_zblan");
-
         CLADDED_OPTICAL_FIBER_CORE = addItem(405, "cladded_optical_fiber_core");
+
         LOW_FREQUENCY_LASER = addItem(406,"low_frequency_laser");
         MEDIUM_FREQUENCY_LASER = addItem(407,"medium_frequency_laser");
         HIGH_FREQUENCY_LASER = addItem(408,"high_frequency_laser");
-        PERIODICALLY_POLED_LITHIUM_NIOBATE_BOULE = addItem(409,"periodically_poled_lithium_niobate_boule");
-        HIGHLY_REFLECTIVE_MIRROR = addItem(410,"highly_reflective_mirror");
-        NON_LINEAR_OPTICAL_LENS = addItem(411,"non_linear_optical_lens");
-        ROTATING_TRANSPARENT_SURFACE = addItem(412,"rotating_transparent_surface");
-        ELECTRON_SOURCE = addItem(413,"electron_source");
+        HIGHLY_REFLECTIVE_MIRROR = addItem(409,"highly_reflective_mirror");
+        NON_LINEAR_OPTICAL_LENS = addItem(410,"non_linear_optical_lens");
+        ROTATING_TRANSPARENT_SURFACE = addItem(411,"rotating_transparent_surface");
+        ELECTRON_SOURCE = addItem(412,"electron_source");
 
         // Exotic Process Items: IDs 450-499
         FULLERENE_POLYMER_MATRIX_SOFT_TUBING = addItem(450, "fullerene.polymer.matrix.soft.tubing");
@@ -231,7 +231,6 @@ public class GAMetaItem extends StandardMetaItem {
         X_RAY_WAVEGUIDE = addItem(452, "xray.waveguide");
         MICROFOCUS_X_RAY_TUBE = addItem(453, "microfocus.xray.tube");
         X_RAY_MIRROR_PLATE = addItem(454, "xray.mirror.plate");
-
         EXCITATION_MAINTAINER = addItem(455, "excitation.maintainer");
         CRYOGENIC_INTERFACE = addItem(456, "cryogenic.interface");
         RYDBERG_SPINORIAL_ASSEMBLY = addItem(457, "rydberg.spinorial.assembly");
@@ -243,7 +242,6 @@ public class GAMetaItem extends StandardMetaItem {
         SCINTILLATOR = addItem(502,"scintillator");
         LEPTON_TRAP_CRYSTAL =  addItem(503,"lepton_trap_crystal");
         HASSIUM_SEED_CRYSTAL = addItem(504, "hassium_seed_crystal");
-
         GRATING_LITHOGRAPHY_MASK = addItem(505, "grating_lithography_mask");
         DIFFRACTOR_GRATING_MIRROR = addItem(506,"diffractor_grating_mirror");
         ULTRASHORT_PULSE_LASER = addItem(507,"ultrashort_pulse_laser");
@@ -281,14 +279,14 @@ public class GAMetaItem extends StandardMetaItem {
         PLASMA_CONTAINMENT_CELL = addItem(651, "plasma.containment.cell");
         RHENIUM_PLASMA_CONTAINMENT_CELL = addItem(652, "rhenium.plasma.containment.cell");
         DEGENERATE_RHENIUM_PLATE = addItem(653, "degenerate.rhenium.plate");
-        DEGENERATE_RHENIUM_DUST = addItem(654, "degenerate.rhenium.dust");
-        PLATE_FIELD_SHAPE = addItem(655, "plate.field.shape");
-        LASER_DIODE = addItem(656,"laser_diode");
-        LASER_COOLING_UNIT = addItem(657,"laser_cooling_unit");
-        MAGNETIC_TRAP = addItem(658,"magnetic_trap");
-        EMPTY_LASER_COOLING_CONTAINER = addItem(659,"empty_laser_cooling_container");
-        BOSE_EINSTEIN_COOLING_CONTAINER = addItem(660,"bose_einstein_cooling_container");
-
+        PLATE_FIELD_SHAPE = addItem(654, "plate.field.shape");
+        LASER_DIODE = addItem(655,"laser_diode");
+        LASER_COOLING_UNIT = addItem(656,"laser_cooling_unit");
+        MAGNETIC_TRAP = addItem(657,"magnetic_trap");
+        EMPTY_LASER_COOLING_CONTAINER = addItem(658,"empty_laser_cooling_container");
+        BOSE_EINSTEIN_COOLING_CONTAINER = addItem(659,"bose_einstein_cooling_container");
+        NEUTRON_PLASMA_CONTAINMENT_CELL = addItem(650, "neutron.plasma.containment.cell");
+        INGOT_FIELD_SHAPE = addItem(651, "ingot.field.shape");
 
         ////////////////////////////////////
         //    Batteries: IDs 1000-1099    //
@@ -324,6 +322,7 @@ public class GAMetaItem extends StandardMetaItem {
         PYROLYTIC_CARBON = addItem(1300, "pyrolytic_carbon");
         COMPRESSED_COKE_CLAY = addItem(1301, "compressed.coke.clay"); // todo
         GRAPHENE_IRON_PLATE = addItem(1302,"graphene_iron_plate");
+        MEMORY_FOAM_BLOCK = addItem(1303,"memory_foam_block");
 
         // Brine
         RAPIDLY_ROTATING_CRUCIBLE = addItem(1400, "rapidly_rotating_crucible");
@@ -333,11 +332,10 @@ public class GAMetaItem extends StandardMetaItem {
         BORON_SATURATED_YARN = addItem(1404, "boron_saturated_yarn");
         LITHIUM_SIEVE = addItem(1405, "lithium_sieve");
         LITHIUM_SATURATED_LITHIUM_SIEVE = addItem(1406, "lithium_saturated_lithium_sieve");
-        NANOTOME = addItem(1407, "nanotome");
         ACRYLIC_YARN = addItem(1408, "acrylic_yarn");
-        NEUTRON_PLASMA_CONTAINMENT_CELL = addItem(1409, "neutron.plasma.containment.cell");
-        INGOT_FIELD_SHAPE = addItem(1410, "ingot.field.shape");
-        MEMORY_FOAM_BLOCK = addItem(1411,"memory_foam_block");
+
+        // Nanotubes
+        NANOTOME = addItem(1450, "nanotome");
 
         // SuperconductorSMD
         ALUMINO_SILICATE_GLASS_TUBE = addItem(1500,"alumino_silicate_glass_tube");

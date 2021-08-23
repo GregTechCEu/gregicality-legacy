@@ -7,118 +7,23 @@ import static gregtech.common.items.MetaItems.WOODEN_FORM_BRICK;
 
 public class GAMetaItems {
 
-    public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY; // todo is this needed?
+    ////////////////////////////////////
+    //           Components           //
+    ////////////////////////////////////
 
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_OPTICAL;
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_EXOTIC;
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_COSMIC;
-    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_SUPRACAUSAL;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UIV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UMV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UXV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_MAX;
 
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_OPTICAL;
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_EXOTIC;
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_COSMIC;
-    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_SUPRACAUSAL;
-
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_OPTICAL;
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_EXOTIC;
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_COSMIC;
-    public static MetaItem<?>.MetaValueItem SMD_DIODE_SUPRACAUSAL;
-
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_OPTICAL;
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_EXOTIC;
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_COSMIC;
-    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_SUPRACAUSAL;
-
-    public static MetaItem<?>.MetaValueItem KAPTON_BOARD;
-    public static MetaItem<?>.MetaValueItem KAPTON_CIRCUIT_BOARD;
-
-    public static MetaItem<?>.MetaValueItem ELECTRODE_APATITE;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_BLAZE;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_BRONZE;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_COPPER;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_DIAMOND;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_EMERALD;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_ENDER;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_GOLD;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_IRON;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_LAPIS;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_OBSIDIAN;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_ORCHID;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_RUBBER;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_TIN;
-
-    public static MetaItem<?>.MetaValueItem HUGE_TURBINE_ROTOR;
-    public static MetaItem<?>.MetaValueItem LARGE_TURBINE_ROTOR;
-    public static MetaItem<?>.MetaValueItem MEDIUM_TURBINE_ROTOR;
-    public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
-
-    public static MetaItem<?>.MetaValueItem INSULATING_TAPE; // todo remove
-    public static MetaItem<?>.MetaValueItem FREEDOM_WRENCH;
-
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_A;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_B;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_ALKALINE;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_A;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_B;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_C;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_HEAVY_METAL;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METALOID;
-    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_REACTIVE_NONMETAL;
-    public static MetaItem<?>.MetaValueItem THORIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem PROTACTINIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem URANIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem NEPTUNIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem PLUTONIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem AMERICIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem CURIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem BERKELIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem CALIFORNIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem EINSTEINIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
-    public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
-
-    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem COSMIC_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem COSMIC_COMPUTER;
-    public static MetaItem<?>.MetaValueItem COSMIC_MAINFRAME;
-
-    public static MetaItem<?>.MetaValueItem BIOWARE_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem BIOWARE_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem BIOWARE_COMPUTER;
-    public static MetaItem<?>.MetaValueItem BIOWARE_MAINFRAME;
-
-    public static MetaItem<?>.MetaValueItem OPTICAL_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem OPTICAL_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem OPTICAL_COMPUTER;
-    public static MetaItem<?>.MetaValueItem OPTICAL_MAINFRAME;
-
-    public static MetaItem<?>.MetaValueItem EXOTIC_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem EXOTIC_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem EXOTIC_COMPUTER;
-    public static MetaItem<?>.MetaValueItem EXOTIC_MAINFRAME;
-
-    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSOR;
-    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_COMPUTER;
-    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_MAINFRAME;
-    
-    public static MetaItem<?>.MetaValueItem WAFER_DUBNIUM;
-    public static MetaItem<?>.MetaValueItem WAFER_RUTHERFORDIUM;
-
-    public static MetaItem<?>.MetaValueItem BOULE_DUBNIUM;
-    public static MetaItem<?>.MetaValueItem BOULE_RUTHERFORDIUM;
-
-    public static MetaItem<?>.MetaValueItem UNSTABLE_STAR;
-
-    public static MetaItem<?>.MetaValueItem HYPERIUM_ESSENCE;
-    public static MetaItem<?>.MetaValueItem HYPERIUM_SEED;
-    public static MetaItem<?>.MetaValueItem LUDICIUM_ESSENCE;
-    public static MetaItem<?>.MetaValueItem LUDICIUM_SEED;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UHV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UEV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UIV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UMV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UXV;
+    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_MAX;
 
     public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UHV;
     public static MetaItem<?>.MetaValueItem CONVEYOR_MODULE_UEV;
@@ -162,28 +67,118 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SENSOR_UXV;
     public static MetaItem<?>.MetaValueItem SENSOR_MAX;
 
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UHV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UEV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UIV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UMV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_UXV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_PUMP_MAX;
+    ////////////////////////////////////
+    //            Circuits            //
+    ////////////////////////////////////
 
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UHV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UEV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UIV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UMV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_UXV;
-    public static MetaItem<?>.MetaValueItem ELECTRIC_MOTOR_MAX;
+    public static MetaItem<?>.MetaValueItem BIOWARE_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem BIOWARE_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem BIOWARE_COMPUTER;
+    public static MetaItem<?>.MetaValueItem BIOWARE_MAINFRAME;
 
+    public static MetaItem<?>.MetaValueItem OPTICAL_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem OPTICAL_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem OPTICAL_COMPUTER;
+    public static MetaItem<?>.MetaValueItem OPTICAL_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem EXOTIC_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem EXOTIC_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem EXOTIC_COMPUTER;
+    public static MetaItem<?>.MetaValueItem EXOTIC_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem COSMIC_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem COSMIC_COMPUTER;
+    public static MetaItem<?>.MetaValueItem COSMIC_MAINFRAME;
+
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSOR;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_COMPUTER;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_MAINFRAME;
+
+    ////////////////////////////////////
+    //       Circuit Components       //
+    ////////////////////////////////////
+
+    // SMDs
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_BIOWARE;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_BIOWARE;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_BIOWARE;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_BIOWARE;
+
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_OPTICAL;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_OPTICAL;
+
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_EXOTIC;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_EXOTIC;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_EXOTIC;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_EXOTIC;
+
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_COSMIC;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_COSMIC;
+
+    public static MetaItem<?>.MetaValueItem SMD_TRANSISTOR_SUPRACAUSAL;
+    public static MetaItem<?>.MetaValueItem SMD_RESISTOR_SUPRACAUSAL;
+    public static MetaItem<?>.MetaValueItem SMD_CAPACITOR_SUPRACAUSAL;
+    public static MetaItem<?>.MetaValueItem SMD_DIODE_SUPRACAUSAL;
+
+    // Wafers and Boules
+    public static MetaItem<?>.MetaValueItem BOULE_DUBNIUM;
+    public static MetaItem<?>.MetaValueItem BOULE_RUTHERFORDIUM;
+    public static MetaItem<?>.MetaValueItem HASSIUM_BOULE;
+    public static MetaItem<?>.MetaValueItem NDYAG_BOULE;
+    public static MetaItem<?>.MetaValueItem PRHOYLF_BOULE;
+    public static MetaItem<?>.MetaValueItem LUTMYVO_BOULE;
+    public static MetaItem<?>.MetaValueItem PERIODICALLY_POLED_LITHIUM_NIOBATE_BOULE;
+
+    public static MetaItem<?>.MetaValueItem WAFER_DUBNIUM;
+    public static MetaItem<?>.MetaValueItem WAFER_RUTHERFORDIUM;
+    public static MetaItem<?>.MetaValueItem HASSIUM_WAFER;
+    public static MetaItem<?>.MetaValueItem COATED_HASSIUM_WAFER;
+    public static MetaItem<?>.MetaValueItem PHOTOCOATED_HASSIUM_WAFER;
+    public static MetaItem<?>.MetaValueItem NDYAG_ROD;
+    public static MetaItem<?>.MetaValueItem PRHOYLF_ROD;
+    public static MetaItem<?>.MetaValueItem LUTMYVO_ROD;
+    public static MetaItem<?>.MetaValueItem ARAM_WAFER;
+    public static MetaItem<?>.MetaValueItem HASOC_WAFER;
+    public static MetaItem<?>.MetaValueItem UHASOC_WAFER;
+    public static MetaItem<?>.MetaValueItem UHPIC_WAFER;
+    public static MetaItem<?>.MetaValueItem OPTICAL_SOC_WAFER;
+    public static MetaItem<?>.MetaValueItem UNTREATED_EXOTIC_WAFER;
+    public static MetaItem<?>.MetaValueItem EXOTIC_WAFER;
+
+    public static MetaItem<?>.MetaValueItem ARAM;
+    public static MetaItem<?>.MetaValueItem HASOC;
+    public static MetaItem<?>.MetaValueItem UHASOC;
+    public static MetaItem<?>.MetaValueItem UHPIC;
+    public static MetaItem<?>.MetaValueItem OPTICAL_SOC;
+    public static MetaItem<?>.MetaValueItem EXOTIC_CHIP;
+
+    // Circuit Boards
+    public static MetaItem<?>.MetaValueItem KAPTON_BOARD;
+    public static MetaItem<?>.MetaValueItem KAPTON_CIRCUIT_BOARD;
+
+    // Circuit Cores
+    public static MetaItem<?>.MetaValueItem NEURO_SUPPORT_UNIT;
+    public static MetaItem<?>.MetaValueItem CYBER_PROCESSING_UNIT;
+    public static MetaItem<?>.MetaValueItem OPTICAL_PROCESSING_CORE;
+    public static MetaItem<?>.MetaValueItem EXOTIC_PROCESSING_CORE;
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_UNIT_CORE;
+    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_CORE;
+    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSING_CORE;
+
+    // Wetware/Bioware Process Items
     public static MetaItem<?>.MetaValueItem ULTRASONIC_HOMOGENIZER;
     public static MetaItem<?>.MetaValueItem STERILIZED_PETRI_DISH;
     public static MetaItem<?>.MetaValueItem CONTAMINATED_PETRI_DISH;
     public static MetaItem<?>.MetaValueItem ELECTRICALLY_WIRED_PETRI_DISH;
     public static MetaItem<?>.MetaValueItem CLEAN_CULTURE;
     public static MetaItem<?>.MetaValueItem PIEZOELECTRIC_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem NEURO_SUPPORT_UNIT;
-    public static MetaItem<?>.MetaValueItem CYBER_PROCESSING_UNIT;
+
     public static MetaItem<?>.MetaValueItem SHEWANELLA_CULTURE;
     public static MetaItem<?>.MetaValueItem STREPTOCOCCUS_CULTURE;
     public static MetaItem<?>.MetaValueItem ESCHERICHIA_CULTURE;
@@ -191,34 +186,7 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem BREVIBACTERIUM_CULTURE;
     public static MetaItem<?>.MetaValueItem CUPRIVADUS_CULTURE;
 
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LIS_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LIS;
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_FLUORIDE_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_FLUORIDE;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_FLUORIDE_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_FLUORIDE;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_FLUORIDE_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_FLUORIDE;
-
-    public static MetaItem<?>.MetaValueItem HASOC;
-    public static MetaItem<?>.MetaValueItem HASOC_WAFER;
-    public static MetaItem<?>.MetaValueItem UHASOC;
-    public static MetaItem<?>.MetaValueItem UHASOC_WAFER;
-    public static MetaItem<?>.MetaValueItem UHPIC;
-    public static MetaItem<?>.MetaValueItem UHPIC_WAFER;
-    public static MetaItem<?>.MetaValueItem ARAM;
-    public static MetaItem<?>.MetaValueItem ARAM_WAFER;
-
-    public static MetaItem<?>.MetaValueItem PLATE_FIELD_SHAPE;
-    public static MetaItem<?>.MetaValueItem INGOT_FIELD_SHAPE;
-    public static MetaItem<?>.MetaValueItem PLASMA_CONTAINMENT_CELL;
-    public static MetaItem<?>.MetaValueItem RHENIUM_PLASMA_CONTAINMENT_CELL;
-    public static MetaItem<?>.MetaValueItem NEUTRON_PLASMA_CONTAINMENT_CELL;
-    public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_PLATE;
-    public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_DUST;
-
+    // Optical Process Items
     public static MetaItem<?>.MetaValueItem ZBLAN;
     public static MetaItem<?>.MetaValueItem ZBLAN_INGOT;
     public static MetaItem<?>.MetaValueItem HOT_ANNEALED_ZBLAN_INGOT;
@@ -226,61 +194,36 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem ERBIUM_DOPED_ZBLAN;
     public static MetaItem<?>.MetaValueItem CLADDED_OPTICAL_FIBER_CORE;
 
-    public static MetaItem<?>.MetaValueItem PYROLYTIC_CARBON;
-
-    public static MetaItem<?>.MetaValueItem ACRYLIC_YARN;
-    public static MetaItem<?>.MetaValueItem RAPIDLY_ROTATING_CRUCIBLE;
-    public static MetaItem<?>.MetaValueItem HEAVY_METAL_ABSORBING_YARN;
-    public static MetaItem<?>.MetaValueItem URANIUM_SATURATED_YARN;
-    public static MetaItem<?>.MetaValueItem BORON_RETAINING_YARN;
-    public static MetaItem<?>.MetaValueItem BORON_SATURATED_YARN;
-    public static MetaItem<?>.MetaValueItem LITHIUM_SIEVE;
-    public static MetaItem<?>.MetaValueItem LITHIUM_SATURATED_LITHIUM_SIEVE;
-    public static MetaItem<?>.MetaValueItem NANOTOME;
-    public static MetaItem<?>.MetaValueItem MEMORY_FOAM_BLOCK;
-    public static MetaItem<?>.MetaValueItem LASER_DIODE;
-    public static MetaItem<?>.MetaValueItem LASER_COOLING_UNIT;
-    public static MetaItem<?>.MetaValueItem MAGNETIC_TRAP;
-    public static MetaItem<?>.MetaValueItem EMPTY_LASER_COOLING_CONTAINER;
-    public static MetaItem<?>.MetaValueItem BOSE_EINSTEIN_COOLING_CONTAINER;
-
-    public static MetaItem<?>.MetaValueItem ALUMINO_SILICATE_GLASS_TUBE;
-    public static MetaItem<?>.MetaValueItem INDUCTOR;
-    public static MetaItem<?>.MetaValueItem BALLAST;
-    public static MetaItem<?>.MetaValueItem UVA_LAMP_CORE;
-    public static MetaItem<?>.MetaValueItem BLUE_LAMP_CORE;
-    public static MetaItem<?>.MetaValueItem GREEN_LAMP_CORE;
-    public static MetaItem<?>.MetaValueItem RED_LAMP_CORE;
-    public static MetaItem<?>.MetaValueItem WHITE_LAMP_CORE;
-    public static MetaItem<?>.MetaValueItem UVA_HALIDE_LAMP;
-    public static MetaItem<?>.MetaValueItem BLUE_HALIDE_LAMP;
-    public static MetaItem<?>.MetaValueItem GREEN_HALIDE_LAMP;
-    public static MetaItem<?>.MetaValueItem RED_HALIDE_LAMP;
-    public static MetaItem<?>.MetaValueItem WHITE_HALIDE_LAMP;
-    public static MetaItem<?>.MetaValueItem ACTINIUM_PLASMA_CONTAINMENT_CELL;
-
-    public static MetaItem<?>.MetaValueItem NDYAG_BOULE;
-    public static MetaItem<?>.MetaValueItem PRHOYLF_BOULE;
-    public static MetaItem<?>.MetaValueItem LUTMYVO_BOULE;
-    public static MetaItem<?>.MetaValueItem NDYAG_ROD;
-    public static MetaItem<?>.MetaValueItem PRHOYLF_ROD;
-    public static MetaItem<?>.MetaValueItem LUTMYVO_ROD;
     public static MetaItem<?>.MetaValueItem LOW_FREQUENCY_LASER;
     public static MetaItem<?>.MetaValueItem MEDIUM_FREQUENCY_LASER;
     public static MetaItem<?>.MetaValueItem HIGH_FREQUENCY_LASER;
-    public static MetaItem<?>.MetaValueItem PERIODICALLY_POLED_LITHIUM_NIOBATE_BOULE;
     public static MetaItem<?>.MetaValueItem NON_LINEAR_OPTICAL_LENS;
     public static MetaItem<?>.MetaValueItem HIGHLY_REFLECTIVE_MIRROR;
     public static MetaItem<?>.MetaValueItem ROTATING_TRANSPARENT_SURFACE;
     public static MetaItem<?>.MetaValueItem ELECTRON_SOURCE;
-    public static MetaItem<?>.MetaValueItem OPTICAL_SOC;
-    public static MetaItem<?>.MetaValueItem OPTICAL_SOC_WAFER;
-    public static MetaItem<?>.MetaValueItem OPTICAL_PROCESSING_CORE;
 
-    public static MetaItem<?>.MetaValueItem PEEK_POLYAMIDE_FOIL;
-    public static MetaItem<?>.MetaValueItem HIGHLY_INSULATING_FOIL;
-    public static MetaItem<?>.MetaValueItem INSULATION_WIRE_ASSEMBLY;
+    // Exotic Process Items
+    public static MetaItem<?>.MetaValueItem FULLERENE_POLYMER_MATRIX_SOFT_TUBING;
+    public static MetaItem<?>.MetaValueItem FULLERENE_POLYMER_MATRIX_FINE_TUBING;
+    public static MetaItem<?>.MetaValueItem X_RAY_WAVEGUIDE;
+    public static MetaItem<?>.MetaValueItem MICROFOCUS_X_RAY_TUBE;
+    public static MetaItem<?>.MetaValueItem X_RAY_MIRROR_PLATE;
+    public static MetaItem<?>.MetaValueItem EXCITATION_MAINTAINER;
+    public static MetaItem<?>.MetaValueItem CRYOGENIC_INTERFACE;
+    public static MetaItem<?>.MetaValueItem RYDBERG_SPINORIAL_ASSEMBLY;
+    public static MetaItem<?>.MetaValueItem X_RAY_LASER;
 
+    // Cosmic Process Items
+    public static MetaItem<?>.MetaValueItem AEROGRAPHENE;
+    public static MetaItem<?>.MetaValueItem SCINTILLATOR_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem SCINTILLATOR;
+    public static MetaItem<?>.MetaValueItem LEPTON_TRAP_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem HASSIUM_SEED_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem GRATING_LITHOGRAPHY_MASK;
+    public static MetaItem<?>.MetaValueItem DIFFRACTOR_GRATING_MIRROR;
+    public static MetaItem<?>.MetaValueItem ULTRASHORT_PULSE_LASER;
+
+    // Supracausal Process Items
     public static MetaItem<?>.MetaValueItem NEUTRONIUM_SPHERE;
     public static MetaItem<?>.MetaValueItem TRIPLET_NEUTRONIUM_SPHERE;
     public static MetaItem<?>.MetaValueItem CHARGED_TRIPLET_NEUTRONIUM_SPHERE;
@@ -296,27 +239,10 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem SEPARATION_ELECTROMAGNET;
     public static MetaItem<?>.MetaValueItem SPHERE_FIELD_SHAPE;
 
-    public static MetaItem<?>.MetaValueItem AEROGRAPHENE;
-    public static MetaItem<?>.MetaValueItem SCINTILLATOR_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem SCINTILLATOR;
-    public static MetaItem<?>.MetaValueItem LEPTON_TRAP_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem HASSIUM_SEED_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem HASSIUM_BOULE;
-    public static MetaItem<?>.MetaValueItem HASSIUM_WAFER;
-    public static MetaItem<?>.MetaValueItem COATED_HASSIUM_WAFER;
-    public static MetaItem<?>.MetaValueItem PHOTOCOATED_HASSIUM_WAFER;
-    public static MetaItem<?>.MetaValueItem GRATING_LITHOGRAPHY_MASK;
-    public static MetaItem<?>.MetaValueItem DIFFRACTOR_GRATING_MIRROR;
-    public static MetaItem<?>.MetaValueItem ULTRASHORT_PULSE_LASER;
-    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_UNIT_CORE;
-    public static MetaItem<?>.MetaValueItem COSMIC_PROCESSING_CORE;
-    public static MetaItem<?>.MetaValueItem GRAPHENE_IRON_PLATE;
-
     public static MetaItem<?>.MetaValueItem TOPOLOGICAL_MANIPULATOR_UNIT;
     public static MetaItem<?>.MetaValueItem RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM;
     public static MetaItem<?>.MetaValueItem GRAVITON_TRANSDUCER;
     public static MetaItem<?>.MetaValueItem NUCLEAR_CLOCK;
-    public static MetaItem<?>.MetaValueItem SUPRACAUSAL_PROCESSING_CORE;
     public static MetaItem<?>.MetaValueItem MANIFOLD_OSCILLATORY_POWER_CELL;
     public static MetaItem<?>.MetaValueItem QCD_PROTECTIVE_PLATING;
     public static MetaItem<?>.MetaValueItem CTC_GUIDANCE_UNIT;
@@ -324,6 +250,22 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem EIGENFOLDED_KERR_MANIFOLD;
     public static MetaItem<?>.MetaValueItem CTC_COMPUTATIONAL_UNIT;
     public static MetaItem<?>.MetaValueItem RECURSIVELY_FOLDED_NEGATIVE_SPACE;
+
+    // Misc Circuit Components
+    public static MetaItem<?>.MetaValueItem UNSTABLE_STAR;
+
+    public static MetaItem<?>.MetaValueItem PLATE_FIELD_SHAPE;
+    public static MetaItem<?>.MetaValueItem INGOT_FIELD_SHAPE;
+    public static MetaItem<?>.MetaValueItem PLASMA_CONTAINMENT_CELL;
+    public static MetaItem<?>.MetaValueItem RHENIUM_PLASMA_CONTAINMENT_CELL;
+    public static MetaItem<?>.MetaValueItem NEUTRON_PLASMA_CONTAINMENT_CELL;
+    public static MetaItem<?>.MetaValueItem DEGENERATE_RHENIUM_PLATE;
+
+    public static MetaItem<?>.MetaValueItem LASER_DIODE;
+    public static MetaItem<?>.MetaValueItem LASER_COOLING_UNIT;
+    public static MetaItem<?>.MetaValueItem MAGNETIC_TRAP;
+    public static MetaItem<?>.MetaValueItem EMPTY_LASER_COOLING_CONTAINER;
+    public static MetaItem<?>.MetaValueItem BOSE_EINSTEIN_COOLING_CONTAINER;
 
     public static MetaItem<?>.MetaValueItem WIRE_FIELD_SHAPE;
     public static MetaItem<?>.MetaValueItem EXTREMELY_DURABLE_PLASMA_CELL;
@@ -334,32 +276,138 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COSMIC_FABRIC;
     public static MetaItem<?>.MetaValueItem COSMIC_MESH;
     public static MetaItem<?>.MetaValueItem ROD_FIELD_SHAPE;
-    // monitor
+
+    ///////////////////////////////////
+    //           Batteries           //
+    ///////////////////////////////////
+
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LIS_EMPTY;
+
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_FLUORIDE_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_FLUORIDE_EMPTY;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_FLUORIDE_EMPTY;
+
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LIS;
+
+    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_FLUORIDE;
+    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_FLUORIDE;
+    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_FLUORIDE;
+
+    ////////////////////////////////////
+    //         Misc MetaItems         //
+    ////////////////////////////////////
+
+    // Tools
+    public static MetaItem<?>.MetaValueItem HUGE_TURBINE_ROTOR;
+    public static MetaItem<?>.MetaValueItem LARGE_TURBINE_ROTOR;
+    public static MetaItem<?>.MetaValueItem MEDIUM_TURBINE_ROTOR;
+    public static MetaItem<?>.MetaValueItem SMALL_TURBINE_ROTOR;
+
+    // Misc
+    public static MetaItem<?>.MetaValueItem PYROLYTIC_CARBON;
+    public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY; // todo is this needed?
+    public static MetaItem<?>.MetaValueItem GRAPHENE_IRON_PLATE;
+    public static MetaItem<?>.MetaValueItem MEMORY_FOAM_BLOCK;
+
+    // Brine
+    public static MetaItem<?>.MetaValueItem RAPIDLY_ROTATING_CRUCIBLE;
+    public static MetaItem<?>.MetaValueItem HEAVY_METAL_ABSORBING_YARN;
+    public static MetaItem<?>.MetaValueItem URANIUM_SATURATED_YARN;
+    public static MetaItem<?>.MetaValueItem BORON_RETAINING_YARN;
+    public static MetaItem<?>.MetaValueItem BORON_SATURATED_YARN;
+    public static MetaItem<?>.MetaValueItem LITHIUM_SIEVE;
+    public static MetaItem<?>.MetaValueItem LITHIUM_SATURATED_LITHIUM_SIEVE;
+    public static MetaItem<?>.MetaValueItem ACRYLIC_YARN;
+
+    // Nanotubes
+    public static MetaItem<?>.MetaValueItem NANOTOME;
+
+    // SuperconductorSMD
+    public static MetaItem<?>.MetaValueItem ALUMINO_SILICATE_GLASS_TUBE;
+    public static MetaItem<?>.MetaValueItem INDUCTOR;
+    public static MetaItem<?>.MetaValueItem BALLAST;
+    public static MetaItem<?>.MetaValueItem UVA_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem BLUE_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem GREEN_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem RED_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem WHITE_LAMP_CORE;
+    public static MetaItem<?>.MetaValueItem UVA_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem BLUE_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem GREEN_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem RED_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem WHITE_HALIDE_LAMP;
+    public static MetaItem<?>.MetaValueItem ACTINIUM_PLASMA_CONTAINMENT_CELL;
+
+    // Insulation Wire Assembly
+    public static MetaItem<?>.MetaValueItem PEEK_POLYAMIDE_FOIL;
+    public static MetaItem<?>.MetaValueItem HIGHLY_INSULATING_FOIL;
+    public static MetaItem<?>.MetaValueItem INSULATION_WIRE_ASSEMBLY;
+
+    // Batteries
+    public static MetaItem<?>.MetaValueItem CHARGED_LEPTON_TRAP_CRYSTAL;
+    public static MetaItem<?>.MetaValueItem NANOSILICON_CATHODE;
+
+    ////////////////////////////////////
+    //              TODO              //
+    ////////////////////////////////////
+
+    // TODO Move to CEu
+    public static MetaItem<?>.MetaValueItem COLOURED_LEDS;
+    public static MetaItem<?>.MetaValueItem DISPLAY;
     public static MetaItem<?>.MetaValueItem COVER_DIGITAL_INTERFACE;
     public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
     public static MetaItem<?>.MetaValueItem PLUGIN_ONLINE_PIC;
     public static MetaItem<?>.MetaValueItem PLUGIN_FAKE_GUI;
     public static MetaItem<?>.MetaValueItem PLUGIN_ADVANCED_MONITOR;
+    public static MetaItem<?>.MetaValueItem FREEDOM_WRENCH;
 
-    public static MetaItem<?>.MetaValueItem COLOURED_LEDS;
-    public static MetaItem<?>.MetaValueItem DISPLAY;
 
-    public static MetaItem<?>.MetaValueItem CHARGED_LEPTON_TRAP_CRYSTAL;
-    public static MetaItem<?>.MetaValueItem NANOSILICON_CATHODE;
+    // TODO Move to Gregification
+    public static MetaItem<?>.MetaValueItem ELECTRODE_APATITE;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_BLAZE;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_BRONZE;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_COPPER;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_DIAMOND;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_EMERALD;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_ENDER;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_GOLD;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_IRON;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_LAPIS;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_OBSIDIAN;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_ORCHID;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_RUBBER;
+    public static MetaItem<?>.MetaValueItem ELECTRODE_TIN;
 
-    public static MetaItem<?>.MetaValueItem FULLERENE_POLYMER_MATRIX_SOFT_TUBING;
-    public static MetaItem<?>.MetaValueItem FULLERENE_POLYMER_MATRIX_FINE_TUBING;
-    public static MetaItem<?>.MetaValueItem X_RAY_WAVEGUIDE;
-    public static MetaItem<?>.MetaValueItem MICROFOCUS_X_RAY_TUBE;
-    public static MetaItem<?>.MetaValueItem X_RAY_MIRROR_PLATE;
-    public static MetaItem<?>.MetaValueItem UNTREATED_EXOTIC_WAFER;
-    public static MetaItem<?>.MetaValueItem EXOTIC_WAFER;
-    public static MetaItem<?>.MetaValueItem EXOTIC_CHIP;
-    public static MetaItem<?>.MetaValueItem EXCITATION_MAINTAINER;
-    public static MetaItem<?>.MetaValueItem CRYOGENIC_INTERFACE;
-    public static MetaItem<?>.MetaValueItem RYDBERG_SPINORIAL_ASSEMBLY;
-    public static MetaItem<?>.MetaValueItem X_RAY_LASER;
-    public static MetaItem<?>.MetaValueItem EXOTIC_PROCESSING_CORE;
+    public static MetaItem<?>.MetaValueItem HYPERIUM_ESSENCE;
+    public static MetaItem<?>.MetaValueItem HYPERIUM_SEED;
+    public static MetaItem<?>.MetaValueItem LUDICIUM_ESSENCE;
+    public static MetaItem<?>.MetaValueItem LUDICIUM_SEED;
+
+    // TODO Nuclear Rework
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_A;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_LANTHANIDE_B;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_ALKALINE;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_A;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_B;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METAL_C;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_HEAVY_METAL;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_METALOID;
+    public static MetaItem<?>.MetaValueItem NUCLEAR_WASTE_REACTIVE_NONMETAL;
+    public static MetaItem<?>.MetaValueItem THORIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem PROTACTINIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem URANIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem NEPTUNIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem PLUTONIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem AMERICIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem CURIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem BERKELIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem CALIFORNIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem EINSTEINIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem FERMIUM_WASTE;
+    public static MetaItem<?>.MetaValueItem MENDELEVIUM_WASTE;
 
     public static void init() {
         GAMetaItem item = new GAMetaItem();
