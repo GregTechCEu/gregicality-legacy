@@ -1524,14 +1524,7 @@ public class GAOrganicChemistryMaterials {
         PotassiumCyanide = new Material.Builder(6708, "potassium_cyanide")
                 .fluid()
                 .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Potassium, 1, Carbon, 1, Nitrogen, 1)
-                .build();
-
-        PotassiumCyanide = new Material.Builder(6708, "potassium_cyanide")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Potassium, 1, Carbon, 1, Nitrogen, 1)
                 .build();
 

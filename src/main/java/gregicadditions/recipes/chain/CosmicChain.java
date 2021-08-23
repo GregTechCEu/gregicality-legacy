@@ -94,8 +94,8 @@ public class CosmicChain { // TODO
 
         // LiAlH4 + C4H6O4 -> C4H6O2 + Li + Al + 2H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(15360)
-                .inputs(LithiumAluminiumHydride.getItemStack(4))
-                .inputs(SuccinicAcid.getItemStack(14))
+                .input(dust, LithiumAluminiumHydride, 4)
+                .input(dust, SuccinicAcid, 14)
                 .fluidOutputs(Succinaldehyde.getFluid(1000))
                 .output(dust, Lithium)
                 .output(dust, Aluminium)
@@ -108,7 +108,7 @@ public class CosmicChain { // TODO
                 .fluidInputs(Hydrogen.getFluid(1000))
                 .fluidInputs(Dichlorobenzene.getFluid(1000))
                 .fluidInputs(Nitrogen.getFluid(1000))
-                .notConsumable(AluminiumChloride.getItemStack())
+                .notConsumable(dust, AluminiumChloride)
                 .output(dust, RockSalt, 4)
                 .fluidOutputs(Difluoroaniline.getFluid(1000))
                 .buildAndRegister();
@@ -117,7 +117,7 @@ public class CosmicChain { // TODO
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(480)
                 .fluidInputs(Difluoroaniline.getFluid(1000))
                 .fluidInputs(Succinaldehyde.getFluid(1000))
-                .notConsumable(dust, PhosphorousPentoxide)
+                .notConsumable(dust, PhosphorusPentoxide)
                 .fluidOutputs(NDifluorophenylpyrrole.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
@@ -128,37 +128,37 @@ public class CosmicChain { // TODO
                 .fluidInputs(Silvertetrafluoroborate.getFluid(2000))
                 .fluidInputs(Phenylsodium.getFluid(8000))
                 .fluidInputs(TetraethylammoniumBromide.getFluid(2000))
-                .inputs(SilverPerchlorate.getItemStack(6))
-                .inputs(TitaniumCyclopentadienyl.getItemStack(14))
+                .input(dust, SilverPerchlorate, 6)
+                .input(dust, TitaniumCyclopentadienyl, 14)
                 .fluidInputs(NDifluorophenylpyrrole.getFluid(8000))
                 .output(dust, SilverChloride, 4)
-                .outputs(SodiumBromide.getItemStack(4))
+                .output(dust, SodiumBromide, 4)
                 .fluidOutputs(SaltWater.getFluid(6000))
                 .fluidOutputs(PhotopolymerSolution.getFluid(6000))
                 .buildAndRegister();
 
         // 3NaClO -> 2NaCl + NaClO3
         ELECTROLYZER_RECIPES.recipeBuilder().duration(210).EUt(120)
-                .inputs(SodiumHypochlorite.getItemStack(9))
+                .input(dust, SodiumHypochlorite, 9)
                 .output(dust, Salt, 4)
-                .outputs(SodiumChlorate.getItemStack(5))
+                .output(dust, SodiumChlorate, 5)
                 .buildAndRegister();
 
         // NaClO3 + H2O2 -> NaClO4 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(120)
-                .inputs(SodiumChlorate.getItemStack(5))
+                .input(dust, SodiumChlorate, 5)
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
-                .outputs(SodiumPerchlorate.getItemStack(6))
+                .output(dust, SodiumPerchlorate, 6)
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         // Ag2O + 2NaClO4 + HCl -> 2AgClO4 + Na2O + dil.HCl
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(480)
                 .input(dust, SilverOxide, 3)
-                .inputs(SodiumPerchlorate.getItemStack(12))
+                .input(dust, SodiumPerchlorate, 12)
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .outputs(SilverPerchlorate.getItemStack(12))
-                .outputs(SodiumOxide.getItemStack(3))
+                .output(dust, SilverPerchlorate, 12)
+                .output(dust, SodiumOxide, 3)
                 .fluidOutputs(DilutedHydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
 
@@ -176,21 +176,21 @@ public class CosmicChain { // TODO
                 .input(dust, SilverOxide, 3)
                 .input(dust, Carbon)
                 .output(ingot, Silver, 2)
-                .fluidOutputs(CarbonMonoxde.getFluid(1000))
+                .fluidOutputs(CarbonMonoxide.getFluid(1000))
                 .buildAndRegister();
 
         // Ge + 2S -> GeS2
         CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(120)
                 .input(dust, Germanium)
                 .input(dust, Sulfur, 2)
-                .outputs(GermaniumSulfide.getItemStack(3))
+                .output(dust, GermaniumSulfide, 3)
                 .buildAndRegister();
 
         // GeS2 + 6O -> GeO2 + 2SO2
         BLAST_RECIPES.recipeBuilder().duration(240).EUt(120).blastFurnaceTemp(2500)
-                .inputs(GermaniumSulfide.getItemStack(3))
+                .input(dust, GermaniumSulfide, 3)
                 .fluidInputs(Oxygen.getFluid(6000))
-                .outputs(GermaniumOxide.getItemStack(3))
+                .output(dust, GermaniumOxide, 3)
                 .fluidOutputs(SulfurDioxide.getFluid(2000))
                 .buildAndRegister();
 
@@ -199,43 +199,43 @@ public class CosmicChain { // TODO
                 .input(dust, TungstenCarbide, 2)
                 .fluidInputs(Oxygen.getFluid(4000))
                 .output(dust, TungstenTrioxide, 4)
-                .fluidOutputs(CarbonMonoxde.getFluid(1000))
+                .fluidOutputs(CarbonMonoxide.getFluid(1000))
                 .buildAndRegister();
 
         // CdS + WO3 + 3O -> CdWO4 + SO2
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(120).blastFurnaceTemp(2800)
-                .inputs(CadmiumSulfide.getItemStack(2))
+                .input(dust, CadmiumSulfide, 2)
                 .input(dust, TungstenTrioxide, 4)
                 .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(CadmiumTungstate.getItemStack(6))
+                .output(dust, CadmiumTungstate, 6)
                 .fluidOutputs(SulfurDioxide.getFluid(1000))
                 .buildAndRegister();
 
         // CsI + Tm + Tl -> CsITmTl
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(120).blastFurnaceTemp(2853)
-                .inputs(CaesiumIodide.getItemStack())
+                .input(dust, CaesiumIodide)
                 .input(dustSmall, Thulium, 2)
                 .input(dustSmall, Thallium, 2)
-                .outputs(TlTmCesiumIodide.getItemStack(2))
+                .output(dust, TlTmCesiumIodide, 2)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(7680)
                 .fluidInputs(Anthracene.getFluid(1000))
-                .inputs(Tetracene.getItemStack(2))
-                .outputs(PolycyclicAromaticMix.getItemStack(3))
+                .input(dust, Tetracene, 2)
+                .output(dust, PolycyclicAromaticMix, 3)
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(340).EUt(120)
                 .input(dust, Caesium)
                 .input(dust, Iodine)
-                .outputs(CaesiumIodide.getItemStack(2))
+                .output(dust, CaesiumIodide, 2)
                 .buildAndRegister();
 
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(500000)
                 .fluidInputs(BismuthNitrateSoluton.getFluid(4000))
-                .inputs(GermaniumOxide.getItemStack(3))
+                .input(dust, GermaniumOxide, 3)
                 .notConsumable(LOW_FREQUENCY_LASER.getStackForm())
-                .outputs(BismuthGermanate.getItemStack(33))
+                .output(dust, BismuthGermanate, 33)
                 .output(dust, Potash, 18)
                 .fluidOutputs(NitrogenDioxide.getFluid(12000))
                 .fluidOutputs(Water.getFluid(4000))

@@ -634,6 +634,13 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Hydrogen.getFluid(6000))
                 .buildAndRegister();
 
+        // YBa2Cu3O6 + O -> YBa2Cu3O7
+        ARC_FURNACE_RECIPES.recipeBuilder().duration(2509).EUt(7680)
+                .input(dust, WellMixedYBCOxides, 12)
+                .fluidInputs(Oxygen.getFluid(1000))
+                .output(ingotHot, YttriumBariumCuprate, 13)
+                .buildAndRegister();
+
         // 2Th + 2Ba + 3Cu + 2Ca -> TBCC
         ASSEMBLER_RECIPES.recipeBuilder().duration(360).EUt(122880)
                 .input(foil, Thallium, 2)

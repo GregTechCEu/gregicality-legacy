@@ -7,12 +7,12 @@ import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
 import gregicadditions.machines.GATileEntities;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -21,23 +21,23 @@ import static gregtech.common.items.MetaItems.*;
 public class FusionComponents {
     public static void init() {
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(500000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(500000)
                 .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1))
                 .inputs(OreDictUnifier.get(plate, TantalumHafniumSeaborgiumCarbide, 8))
-                .inputs(OreDictUnifier.get(plate, Einsteinium.getMaterial(), 8))
+                .inputs(OreDictUnifier.get(plate, Einsteinium, 8))
                 .inputs(FIELD_GENERATOR_UV.getStackForm(2))
                 .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64))
                 .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64))
-                .inputs(OreDictUnifier.get(wireGtQuadruple, UVSuperconductor, 64))
+                .inputs(OreDictUnifier.get(wireGtQuadruple, EnrichedNaquadahTriniumEuropiumDuranide, 64))
                 .input(circuit, MarkerMaterials.Tier.Infinite, 4)
                 .fluidInputs(SolderingAlloy.getFluid(2880 * 2))
                 .outputs(GATileEntities.ADVANCED_FUSION_REACTOR.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
-                .input(wireGtOctal, UVSuperconductor, 4)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
+                .input(wireGtOctal, EnrichedNaquadahTriniumEuropiumDuranide, 4)
                 .input(plate, TantalumHafniumSeaborgiumCarbide, 2)
-                .input(plate, Einsteinium.getMaterial(), 4)
+                .input(plate, Einsteinium, 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(4))
                 .input(circuit, MarkerMaterials.Tier.Infinite)
                 .inputs(FIELD_GENERATOR_UV.getStackForm())
@@ -45,10 +45,10 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_1, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
                 .input(wireGtOctal, GAMaterials.StrontiumTaraniumTBCCO, 4)
                 .input(plate, Bohrium, 2)
-                .input(plate, Fermium.getMaterial(), 4)
+                .input(plate, Fermium, 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(16))
                 .input(circuit, MarkerMaterials.Tier.Ultra)
                 .inputs(FIELD_GENERATOR_UHV.getStackForm())
@@ -56,10 +56,10 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_2, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
                 .input(wireGtOctal, ActiniumVibraniumBETSSuperhydride, 4)
                 .input(plate, Vibranium, 2)
-                .input(plate, Mendelevium.getMaterial(), 4)
+                .input(plate, Mendelevium, 4)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(64))
                 .input(circuit, MarkerMaterials.Tier.Insane)
                 .inputs(FIELD_GENERATOR_UEV.getStackForm())
@@ -67,7 +67,7 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_3, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(frameGt, TungstenSteel, 4)
                 .input(plate, TungstenSteel, 16)
                 .input(plate, Tungsten, 32)
@@ -79,7 +79,7 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.DIVERTOR_CASING.getItemVariant(GADivertorCasing.CasingType.DIVERTOR_1, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
                 .input(frameGt, TungstenSteel, 8)
                 .input(plate, TungstenSteel, 32)
                 .input(plate, TungstenTitaniumCarbide, 32)
@@ -91,7 +91,7 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.DIVERTOR_CASING.getItemVariant(GADivertorCasing.CasingType.DIVERTOR_2, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
                 .input(frameGt, TungstenSteel, 16)
                 .input(plate, TungstenSteel, 64)
                 .input(plate, TitanSteel, 32)
@@ -103,10 +103,10 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.DIVERTOR_CASING.getItemVariant(GADivertorCasing.CasingType.DIVERTOR_3, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(frameGt, StainlessSteel, 8)
                 .input(plate, StainlessSteel, 32)
-                .input(pipeTiny, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
                 .input(screw, LithiumTitanate, 16)
                 .inputs(ELECTRIC_PUMP_UHV.getStackForm())
                 .inputs(SENSOR_UHV.getStackForm())
@@ -115,11 +115,11 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.VACUUM_CASING.getItemVariant(GAVacuumCasing.CasingType.VACUUM_1, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
                 .input(frameGt, StainlessSteel, 16)
                 .input(plate, StainlessSteel, 64)
-                .input(pipeTiny, Copper, 64)
-                .input(pipeTiny, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
                 .input(screw, LithiumTitanate, 32)
                 .inputs(ELECTRIC_PUMP_UEV.getStackForm())
                 .inputs(SENSOR_UEV.getStackForm())
@@ -128,14 +128,14 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.VACUUM_CASING.getItemVariant(GAVacuumCasing.CasingType.VACUUM_2, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
                 .input(frameGt, StainlessSteel, 32)
                 .input(plate, StainlessSteel, 64)
                 .input(plate, StainlessSteel, 64)
-                .input(pipeTiny, Copper, 64)
-                .input(pipeTiny, Copper, 64)
-                .input(pipeTiny, Copper, 64)
-                .input(pipeTiny, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
                 .input(screw, LithiumTitanate, 64)
                 .inputs(ELECTRIC_PUMP_UIV.getStackForm())
                 .inputs(SENSOR_UIV.getStackForm())
@@ -144,10 +144,10 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.VACUUM_CASING.getItemVariant(GAVacuumCasing.CasingType.VACUUM_3, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)
                 .input(frameGt, StainlessSteel, 8)
                 .input(plate, Titanium, 32)
-                .input(pipeTiny, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
                 .input(screw, LithiumTitanate, 16)
                 .inputs(ELECTRIC_PUMP_UHV.getStackForm())
                 .inputs(SENSOR_UHV.getStackForm())
@@ -156,11 +156,11 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.CRYOSTAT_CASING.getItemVariant(GACryostatCasing.CasingType.CRYOSTAT_1, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(2000000)
                 .input(frameGt, StainlessSteel, 16)
                 .input(plate, Nitinol60, 32)
-                .input(pipeTiny, Copper, 64)
-                .input(pipeTiny, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
                 .input(screw, LithiumTitanate, 32)
                 .inputs(ELECTRIC_PUMP_UEV.getStackForm())
                 .inputs(SENSOR_UEV.getStackForm())
@@ -169,14 +169,14 @@ public class FusionComponents {
                 .outputs(GAMetaBlocks.CRYOSTAT_CASING.getItemVariant(GACryostatCasing.CasingType.CRYOSTAT_2, 4))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
+        RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(8000000)
                 .input(frameGt, StainlessSteel, 32)
                 .input(plate, TungstenTitaniumCarbide, 32)
                 .input(plate, TungstenTitaniumCarbide, 32)
-                .input(pipeTiny, Copper, 64)
-                .input(pipeTiny, Copper, 64)
-                .input(pipeTiny, Copper, 64)
-                .input(pipeTiny, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
+                .input(pipeTinyFluid, Copper, 64)
                 .input(screw, LithiumTitanate, 64)
                 .inputs(ELECTRIC_PUMP_UIV.getStackForm())
                 .inputs(SENSOR_UIV.getStackForm())
@@ -196,7 +196,7 @@ public class FusionComponents {
                 .fluidInputs(SolderingAlloy.getFluid(576))
                 .input(plate, TungstenTitaniumCarbide, 4)
                 .input(frameGt, TungstenTitaniumCarbide)
-                .input(pipeSmall, Zeron100, 4)
+                .input(pipeSmallFluid, Zeron100, 4)
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.BLANKET_BASE))
                 .buildAndRegister();
 

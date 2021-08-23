@@ -1,6 +1,7 @@
 package gregicadditions.recipes.chain;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
+import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -46,6 +47,13 @@ public class NaquadahChain {
                 .fluidOutputs(Chlorine.getFluid(1000))
                 .EUt(480)
                 .duration(100)
+                .buildAndRegister();
+
+        // 2Sb + 3O = Sb2O3
+        ARC_FURNACE_RECIPES.recipeBuilder().EUt(30).duration(60)
+                .input(dust, Antimony, 2)
+                .fluidInputs(Oxygen.getFluid(3000))
+                .outputs(OreDictUnifier.get(dust, AntimonyTrioxide, 5))
                 .buildAndRegister();
 
         // Sb2O3 + 6HF = 2SbF3 + 3H2O

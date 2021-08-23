@@ -30,7 +30,7 @@ public class FusionElementsChain {
 
         // CO + Li2O2(H2O) -> Li2CO3(H2O)
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(30)
-                .fluidInputs(CarbonMonoxde.getFluid(1000))
+                .fluidInputs(CarbonMonoxide.getFluid(1000))
                 .fluidInputs(LithiumPeroxideSolution.getFluid(1000))
                 .fluidOutputs(LithiumCarbonateSolution.getFluid(1000))
                 .buildAndRegister();
@@ -54,12 +54,12 @@ public class FusionElementsChain {
                 .fluidInputs(TitaniumTetrachloride.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(2000))
                 .fluidOutputs(Chlorine.getFluid(4000))
-                .outputs(TitaniumNitrate.getItemStack(17))
+                .output(dust, TitaniumNitrate, 17)
                 .buildAndRegister();
 
         // Ti(NO3)4 + 2NaOH + Li2CO3(H2O) -> 4HNO3 + Li2TiO3 + Na2CO3
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(120).blastFurnaceTemp(3100)
-                .inputs(TitaniumNitrate.getItemStack(17))
+                .input(dust, TitaniumNitrate, 17)
                 .input(dust, SodiumHydroxide, 6)
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
                 .fluidOutputs(NitricAcid.getFluid(4000))
@@ -150,7 +150,7 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(120)
-                .blastFurnaceTemp(Titanium.blastFurnaceTemperature)
+                .blastFurnaceTemp(Titanium.getBlastTemperature())
                 .fluidInputs(Titanium50Tetrafluoride.getFluid(1000))
                 .input(dust, Sodium, 4)
                 .output(ingotHot, Titanium50)
@@ -159,12 +159,12 @@ public class FusionElementsChain {
 
         MIXER_RECIPES.recipeBuilder().duration(120).EUt(7680)
                 .fluidInputs(Titanium50.getFluid(288))
-                .fluidInputs(Californium252.getMaterial().getFluid(288))
+                .fluidInputs(Californium252.getFluid(288))
                 .fluidOutputs(OgannesonBreedingBase.getFluid(2000))
                 .buildAndRegister();
 
         ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(600000)
-                .fluidInputs(Curium250.getMaterial().getFluid(36))
+                .fluidInputs(Curium250.getFluid(36))
                 .fluidInputs(OgannesonBreedingBase.getFluid(125))
                 .fluidOutputs(HotMetastableOganesson.getFluid(125))
                 .coilTier(2).euStart(2500000000L).euReturn(50)
@@ -179,30 +179,30 @@ public class FusionElementsChain {
         BLAST_RECIPES.recipeBuilder().duration(350).EUt(120).blastFurnaceTemp(3000)
                 .input(dust, Hafnium)
                 .input(dust, Graphite)
-                .outputs(HafniumCarbide.getItemStack(2))
+                .output(dust, HafniumCarbide, 2)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(120).blastFurnaceTemp(2500)
                 .input(dust, Tantalum)
                 .input(dust, Graphite)
-                .outputs(TantalumCarbide.getItemStack(2))
+                .output(dust, TantalumCarbide, 2)
                 .buildAndRegister();
 
         // NaSgO3 + Cl + 4C -> SgC + NaCl + 3CO
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(120).blastFurnaceTemp(3000)
-                .inputs(SodiumSeaborgate.getItemStack(5))
+                .input(dust, SodiumSeaborgate, 5)
                 .fluidInputs(Chlorine.getFluid(1000))
                 .input(dust, Carbon, 4)
-                .outputs(SeaborgiumCarbide.getItemStack(2))
+                .output(dust, SeaborgiumCarbide, 2)
                 .output(dust, Salt, 2)
-                .fluidOutputs(CarbonMonoxde.getFluid(3000))
+                .fluidOutputs(CarbonMonoxide.getFluid(3000))
                 .buildAndRegister();
 
         // 12TaC + 3HfC + SgC -> Ta12Hf3SgC16
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(120).blastFurnaceTemp(6200)
-                .inputs(TantalumCarbide.getItemStack(24))
-                .inputs(HafniumCarbide.getItemStack(6))
-                .inputs(SeaborgiumCarbide.getItemStack(2))
+                .input(dust, TantalumCarbide, 24)
+                .input(dust, HafniumCarbide, 6)
+                .input(dust, SeaborgiumCarbide, 2)
                 .output(ingotHot, TantalumHafniumSeaborgiumCarbide, 32)
                 .buildAndRegister();
     }
@@ -297,8 +297,8 @@ public class FusionElementsChain {
 
         // Flerovium Production
         ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(600000).coilTier(2).euStart(2500000000L).euReturn(50)
-                .fluidInputs(Uranium.getFluid(125))
-                .fluidInputs(Uranium.getFluid(125))
+                .fluidInputs(Uranium238.getFluid(125))
+                .fluidInputs(Uranium238.getFluid(125))
                 .fluidOutputs(QuassifissioningPlasma.getFluid(125))
                 .buildAndRegister();
 
@@ -312,7 +312,7 @@ public class FusionElementsChain {
 
         // Other Advanced Fusion Materials
         ADV_FUSION_RECIPES.recipeBuilder().duration(50).EUt(1000000).euStart(1000000000).coilTier(1).euReturn(40)
-                .fluidInputs(Curium247.getMaterial().getFluid(144))
+                .fluidInputs(Curium247.getFluid(144))
                 .fluidInputs(Sodium.getFluid(144))
                 .fluidOutputs(Bohrium.getFluid(288))
                 .buildAndRegister();
@@ -342,13 +342,13 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).coilTier(2).euStart(2080000000).euReturn(40)
-                .fluidInputs(Plutonium.getFluid(144))
+                .fluidInputs(Plutonium239.getFluid(144))
                 .fluidInputs(Titanium.getFluid(144))
                 .fluidOutputs(Livermorium.getFluid(288))
                 .buildAndRegister();
 
         ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).coilTier(2).euStart(2080000000).euReturn(40)
-                .fluidInputs(Neptunium.getMaterial().getFluid(144))
+                .fluidInputs(Neptunium.getFluid(144))
                 .fluidInputs(Titanium.getFluid(144))
                 .fluidOutputs(Moscovium.getFluid(288))
                 .buildAndRegister();
@@ -435,7 +435,7 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder().duration(64).EUt(32768).EUToStart(300000000)
-                .fluidInputs(Plutonium.getFluid(16))
+                .fluidInputs(Plutonium239.getFluid(16))
                 .fluidInputs(Thorium.getFluid(16))
                 .fluidOutputs(Naquadah.getFluid(16))
                 .buildAndRegister();
@@ -455,19 +455,19 @@ public class FusionElementsChain {
         FUSION_RECIPES.recipeBuilder().duration(64).EUt(49152).EUToStart(240000000)
                 .fluidInputs(Mercury.getFluid(16))
                 .fluidInputs(Magnesium.getFluid(16))
-                .fluidOutputs(Uranium.getFluid(16))
+                .fluidOutputs(Uranium238.getFluid(16))
                 .buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder().duration(64).EUt(49152).EUToStart(240000000)
                 .fluidInputs(Gold.getFluid(16))
                 .fluidInputs(Aluminium.getFluid(16))
-                .fluidOutputs(Uranium.getFluid(16))
+                .fluidOutputs(Uranium238.getFluid(16))
                 .buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder().duration(128).EUt(8192).EUToStart(120000000)
-                .fluidInputs(Uranium.getFluid(16))
+                .fluidInputs(Uranium238.getFluid(16))
                 .fluidInputs(Helium.getFluid(16))
-                .fluidOutputs(Plutonium.getFluid(16))
+                .fluidOutputs(Plutonium239.getFluid(16))
                 .buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder().duration(128).EUt(49152).EUToStart(480000000)
@@ -526,7 +526,7 @@ public class FusionElementsChain {
 
         // Should technically be Pu242
         FUSION_RECIPES.recipeBuilder().duration(64).EUt(24576).EUToStart(150000000)
-                .fluidInputs(Plutonium244.getMaterial().getFluid(16))
+                .fluidInputs(Plutonium244.getFluid(16))
                 .fluidInputs(Neon.getFluid(16))
                 .fluidOutputs(Rutherfordium.getFluid(16))
                 .buildAndRegister();
@@ -538,13 +538,13 @@ public class FusionElementsChain {
                 .buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder().duration(96).EUt(49152).EUToStart(200000000)
-                .fluidInputs(Americium243.getMaterial().getFluid(16))
+                .fluidInputs(Americium243.getFluid(16))
                 .fluidInputs(Neon.getFluid(16))
                 .fluidOutputs(Dubnium.getFluid(16))
                 .buildAndRegister();
 
         FUSION_RECIPES.recipeBuilder().duration(100).EUt(75000).EUToStart(400000000)
-                .fluidInputs(Plutonium.getFluid(144))
+                .fluidInputs(Plutonium239.getFluid(144))
                 .fluidInputs(Calcium.getFluid(144))
                 .fluidOutputs(Seaborgium.getFluid(288))
                 .buildAndRegister();
