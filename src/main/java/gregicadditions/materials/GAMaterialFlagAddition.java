@@ -125,10 +125,6 @@ public class GAMaterialFlagAddition {
         GlauconiteSand.setProperty(PropertyKey.ORE, new OreProperty());
         Niter.setProperty(PropertyKey.ORE, new OreProperty());
 
-        // Direct Smelting todo in CEu
-        BasalticMineralSand.setDirectSmelting(Iron);
-        GraniticMineralSand.setDirectSmelting(Iron);
-        Cooperite.disableDirectSmelting = true;
 
         // Ore Multiplier
         PreciousMetal.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
@@ -146,82 +142,116 @@ public class GAMaterialFlagAddition {
         IrMetalResidue.setProperty(PropertyKey.ORE, property);
         Witherite.setProperty(PropertyKey.ORE, property);
 
-        // Byproducts todo in CEu
-        Salt.addOreByProducts(Borax);
-        RockSalt.addOreByProducts(Borax);
-        Lepidolite.addOreByProducts(Boron);
-        Zirkelite.addOreByProducts(Thorium, Zirconium, Cerium);
-        Caliche.addOreByProducts(Niter, Saltpeter, Lepidolite);
-        Zircon.addOreByProducts(Cobalt, Lead, Uranium238);
-        PreciousMetal.addOreByProducts(Lead, Silver, Nickel);
-        Pyrochlore.addOreByProducts(Apatite, Calcite, Niobium);
-        Uranium238.addOreByProducts(Lead, Uranium238, Thorium);
-        Alunite.addOreByProducts(Zinc, Gallium, Iron);
-        Fluorite.addOreByProducts(Calcium);
-        FluoroApatite.addOreByProducts(Apatite, Fluorite, Phosphorus);
-        BandedIron.addOreByProducts(Magnetite, Calcium, Magnesium, SiliconDioxide);
-        Soapstone.addOreByProducts(SiliconDioxide, Magnesium, Calcite, Talc);
-        Dolomite.addOreByProducts(Dolomite, Calcium, Magnesium);
-        Wollastonite.addOreByProducts(Calcite, SiliconDioxide, Calcite, SiliconDioxide);
-        Kyanite.addOreByProducts(Talc, Aluminium, Silicon);
-        Kaolinite.addOreByProducts(Clay, Clay, SiliconDioxide, Kaolinite);
-        Gypsum.addOreByProducts(Sulfur, Calcite, Salt);
-        Talc.addOreByProducts(Clay, Clay, Carbon);
-        Wulfenite.addOreByProducts(Iron, Manganese, Manganese, Lead);
-        Powellite.addOreByProducts(Iron, Molybdenite, Potassium);
-        Trona.addOreByProducts(Sodium, SodaAsh, SodaAsh);
-        Mica.addOreByProducts(Potassium, Aluminium, Fluorite);
-        Saltpeter.addOreByProducts(Salt, Potassium);
-        Rhodochrosite.addOreByProducts(Calcium, Manganese);
-        Zeolite.addOreByProducts(Calcium, Silicon, Aluminium);
-        Columbite.addOreByProducts(Iron, Manganese, Niobium);
-        Barytocalcite.addOreByProducts(Calcite, Magnesium, Barite);
-        Witherite.addOreByProducts(Calcite, Barite, Lead);
-        Arsenopyrite.addOreByProducts(Iron, Cobaltite, Cobalt);
-        Gallite.addOreByProducts(Sulfur, Copper, Copper, Gallium);
-        Celestine.addOreByProducts(Gypsum, Calcite, Calcite, Strontium);
-        Bowieite.addOreByProducts(Nickel, PlatinumMetallicPowder, RarestMetalResidue, CrudeRhodiumMetal);
-        EnrichedNaquadricCompound.addOreByProducts(NaquadricCompound, NaquadriaticCompound);
-        NaquadricCompound.addOreByProducts(EnrichedNaquadricCompound);
-        PlatinumMetallicPowder.addOreByProducts(Nickel, IrMetalResidue, RarestMetalResidue, PlatinumMetallicPowder);
-        RarestMetalResidue.addOreByProducts(IrMetalResidue, IrMetalResidue, IrMetalResidue, RarestMetalResidue);
-        IrMetalResidue.addOreByProducts(PlatinumMetallicPowder, RarestMetalResidue);
+        // Direct Smelting
+        property = Cooperite.getProperty(PropertyKey.ORE);
+        property.setDirectSmeltResult(null);
+
+        // Byproducts
+        property = Zirkelite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Thorium, Zirconium, Cerium);
+
+        property = Caliche.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Niter, Saltpeter, Lepidolite);
+
+        property = Zircon.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Cobalt, Lead, Uranium238);
+
+        property = PreciousMetal.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Lead, Silver, Nickel);
+
+        property = Pyrochlore.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Apatite, Calcite, Niobium);
+
+        property = Uranium238.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Lead, Uranium238, Thorium);
+
+        property = Alunite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Zinc, Gallium, Iron);
+
+        property = Fluorite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Calcium);
+
+        property = FluoroApatite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Apatite, Fluorite, Phosphorus);
+
+        property = Rhodochrosite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Calcium, Manganese);
+
+        property = Columbite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Iron, Manganese, Niobium);
+
+        property = Barytocalcite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Calcite, Magnesium, Barite);
+
+        property = Witherite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Calcite, Barite, Lead);
+
+        property = Arsenopyrite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Iron, Cobaltite, Cobalt);
+
+        property = Gallite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Sulfur, Copper, Copper, Gallium);
+
+        property = Celestine.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Gypsum, Calcite, Calcite, Strontium);
+
+        property = Bowieite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Nickel, PlatinumMetallicPowder, RarestMetalResidue, CrudeRhodiumMetal);
+
+        property = EnrichedNaquadricCompound.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(NaquadricCompound, NaquadriaticCompound);
+
+        property = NaquadricCompound.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(EnrichedNaquadricCompound);
+
+        property = PlatinumMetallicPowder.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Nickel, IrMetalResidue, RarestMetalResidue, PlatinumMetallicPowder);
+
+        property = RarestMetalResidue.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(IrMetalResidue, IrMetalResidue, IrMetalResidue, RarestMetalResidue);
+
+        property = IrMetalResidue.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(PlatinumMetallicPowder, RarestMetalResidue);
 
         // Byproduct Overrides
-        Bornite.oreByProducts.clear();
-        Bornite.addOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
+        property = Mica.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Apatite, Fluorite, Phosphorus);
 
-        Chalcopyrite.oreByProducts.clear();
-        Chalcopyrite.addOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
+        property = Bornite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
 
-        Copper.oreByProducts.clear();
-        Copper.addOreByProducts(Cobalt, PreciousMetal, Nickel);
+        property = Chalcopyrite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
 
-        Glowstone.oreByProducts.clear();
-        Glowstone.addOreByProducts(Redstone, PreciousMetal);
+        property = Copper.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Cobalt, PreciousMetal, Nickel);
 
-        Magnetite.oreByProducts.clear();
-        Magnetite.addOreByProducts(Iron, PreciousMetal);
+        property = Glowstone.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Redstone, PreciousMetal);
 
-        Pitchblende.oreByProducts.clear();
-        Pitchblende.addOreByProducts(Thorium, UraniumRadioactive.getMaterial(), Lead);
+        property = Magnetite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Iron, PreciousMetal);
 
-        Nickel.oreByProducts.clear();
-        Nickel.addOreByProducts(Cobalt, PlatinumMetallicPowder, Iron);
+        property = Pitchblende.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Thorium, Uranium238, Lead); //todo nuclear rework
 
-        Iridium.oreByProducts.clear();
-        Iridium.addOreByProducts(PlatinumMetallicPowder, RarestMetalResidue);
+        property = Nickel.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Cobalt, PlatinumMetallicPowder, Iron);
 
-        Platinum.oreByProducts.clear();
-        Platinum.addOreByProducts(Nickel, IrMetalResidue);
+        property = Iridium.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(PlatinumMetallicPowder, RarestMetalResidue);
 
-        Osmium.oreByProducts.clear();
-        Osmium.addOreByProducts(IrMetalResidue);
+        property = Platinum.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(Nickel, IrMetalResidue);
 
-        Cooperite.oreByProducts.clear();
-        Cooperite.addOreByProducts(PalladiumMetallicPowder, Nickel, IrMetalResidue);
+        property = Osmium.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(IrMetalResidue);
 
-        Triniite.addOreByProducts(NaquadricCompound, Bismuth, Thallium)
+        property = Cooperite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(PalladiumMetallicPowder, Nickel, IrMetalResidue);
+
+        property = Triniite.getProperty(PropertyKey.ORE);
+        property.setOreByProducts(NaquadricCompound, Bismuth, Thallium);
     }
 
     private static void initNuclearMaterial() {
