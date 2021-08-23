@@ -59,9 +59,9 @@ public class TileEntityLargeMassFabricator extends LargeSimpleRecipeMapMultibloc
                 .aisle("XXSXX", "#P#P#", "#P#P#", "#P#P#", "XXXXX")
                 .setAmountAtLeast('L', 10)
                 .where('S', selfPredicate())
-                .where('L', statePredicate(getCasingState()))
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('C', statePredicate(getCasingState()))
+                .where('L', statePredicate(casingState))
+                .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('C', statePredicate(casingState))
                 .where('P', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
                 .where('p', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
                 .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
@@ -75,17 +75,11 @@ public class TileEntityLargeMassFabricator extends LargeSimpleRecipeMapMultibloc
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMassFabricator.casingMaterial, defaultCasingState);
-
-
-    public IBlockState getCasingState() {
-        return casingState;
-    }
+    private static final IBlockState casingState = GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM);
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMassFabricator.casingMaterial, ClientHandler.TRITANIUM_CASING);
+        return ClientHandler.TRITANIUM_CASING;
     }
 
     @Override

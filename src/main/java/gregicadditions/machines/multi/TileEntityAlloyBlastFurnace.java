@@ -97,8 +97,6 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
                 return false;
             BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
             BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
-            if (Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName()))
-                return false;
 
             int blastFurnaceTemperature = coilType.getCoilTemperature();
             int currentTemperature = blockWorldState.getMatchContext().getOrPut("blastFurnaceTemperature", blastFurnaceTemperature);
@@ -116,8 +114,6 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
                 return false;
             GAHeatingCoil blockWireCoil = (GAHeatingCoil) blockState.getBlock();
             GAHeatingCoil.CoilType coilType = blockWireCoil.getState(blockState);
-            if (Arrays.asList(GAConfig.multis.heatingCoils.gregicalityheatingCoilsBlacklist).contains(coilType.getName()))
-                return false;
             int blastFurnaceTemperature = coilType.getCoilTemperature();
             int currentTemperature = blockWorldState.getMatchContext().getOrPut("blastFurnaceTemperature", blastFurnaceTemperature);
 

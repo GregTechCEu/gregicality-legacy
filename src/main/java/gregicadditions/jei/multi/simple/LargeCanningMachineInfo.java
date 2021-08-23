@@ -8,6 +8,7 @@ import gregicadditions.machines.multi.simple.TileEntityLargeCanningMachine;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -38,7 +39,7 @@ public class LargeCanningMachineInfo extends MultiblockInfoPage {
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
                     .where('S', GATileEntities.LARGE_CANNING_MACHINE, EnumFacing.SOUTH)
                     .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
-                    .where('X', TileEntityLargeCanningMachine.casingState)
+                    .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)

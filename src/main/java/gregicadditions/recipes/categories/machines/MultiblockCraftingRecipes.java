@@ -1,6 +1,5 @@
 package gregicadditions.recipes.categories.machines;
 
-import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
@@ -460,7 +459,7 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, Elite, 4)
                 .input(stickLong, Cupronickel, 32)
                 .inputs(ELECTRIC_MOTOR_IV.getStackForm(4))
-                .outputs(ADVANCED_CHEMICAL_REACTOR.getStackForm())
+                .outputs(CHEMICAL_PLANT.getStackForm())
                 .buildAndRegister();
 
         // Battery Tower

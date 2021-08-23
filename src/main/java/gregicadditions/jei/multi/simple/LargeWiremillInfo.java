@@ -47,7 +47,7 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_WIREMILL, EnumFacing.SOUTH)
 					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-					.where('X', TileEntityLargeWiremill.casingState)
+					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('G', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
@@ -67,8 +67,7 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
 
 		ITextComponent casingTooltip = new TextComponentTranslation("gregtech.multiblock.preview.limit", 8).setStyle(new Style().setColor(TextFormatting.RED));
 
-		ItemStack defaultCasingStack = METAL_CASING_1.getItemVariant(MetalCasing1.CasingType.MARAGING_STEEL_250);
-		ItemStack casingStack = CasingUtils.getConfigCasingItemStack(GAConfig.multis.largeWiremill.casingMaterial, defaultCasingStack);
+		ItemStack casingStack = METAL_CASING_1.getItemVariant(MetalCasing1.CasingType.MARAGING_STEEL_250);
 
 		this.addBlockTooltip(casingStack, casingTooltip);
 

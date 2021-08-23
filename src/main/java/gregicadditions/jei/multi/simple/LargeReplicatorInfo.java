@@ -6,6 +6,7 @@ import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.uumatter.TileEntityLargeReplicator;
 import gregtech.api.GTValues;
@@ -54,7 +55,7 @@ public class LargeReplicatorInfo extends MultiblockInfoPage {
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.NORTH)
                 .where('S', GATileEntities.LARGE_REPLICATOR, EnumFacing.SOUTH)
                 .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-                .where('X', TileEntityLargeReplicator.casingState)
+                .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.EAST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.EAST)

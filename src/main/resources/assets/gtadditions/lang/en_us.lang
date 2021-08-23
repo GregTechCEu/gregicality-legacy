@@ -774,7 +774,6 @@ gtadditions.machine.large_transformer.name=Large Transformer
 gtadditions.machine.void_miner.name=Void Ore Miner
 gtadditions.multiblock.void_miner.description=The Void Ore Miner produces massive amounts of ores at very fast rates.
 gtadditions.machine.advanced_distillation_tower.name=Advanced Distillation Tower
-gtadditions.machine.chemical_plant.name=Chemical Plant
 gtadditions.machine.large_rocket_engine.name=Large Rocket Engine
 gtadditions.machine.alloy_blast_furnace.name=Alloy Blast Furnace
 gtadditions.multiblock.alloy_blast_furnace.description=Faster Than the Electric Blast Furnace at creating molten alloys.
@@ -791,8 +790,8 @@ gtadditions.machine.advanced_fusion_reactor.name=Advanced Fusion Reactor Compute
 gtadditions.machine.multiblock.description=The Advanced Fusion Reactor performs high level fusion reactions. It also turns a coolant into a hot version.
 gtadditions.machine.central_monitor.name=Central Monitor
 gtadditions.machine.monitor_screen.name=Monitor Screen
-gtadditions.machine.advanced_chemical_reactor.name=Advanced Chemical Reactor
-gtadditions.multiblock.advanced_chemical_reactor.description=The Advanced Chemical Reactor functions as a parallel Large Chemical Reactor and non-parallel Chemical Plant.
+gtadditions.machine.chemical_plant.name=Chemical Plant
+gtadditions.multiblock.chemical_plant.description=The Chemical Plant functions as a parallel Large Chemical Reactor or a non-parallel Chemical Plant.
 gtadditions.machine.large_brewery.name=Large Brewery
 gtadditions.multiblock.large_brewery.description=The Large Brewery is a multiblock version of the Brewery, Fermenter, and Chemical Dehydrator.
 gtadditions.machine.large_electromagnet.name=Large Electromagnet
@@ -1735,7 +1734,6 @@ item.ga_essence.material.name=%s Essence
 
 gtadditions.multiblock.battery_tower.description=The Battery Tower can be 4-16 layers high. You can put energy hatches anywhere, and the hatch tier cannot be higher than the tier of the cell casings.
 gregtech.multiblock.large_forge_hammer.description=Uses 1mb of Lubricant per parallel recipe to process items.
-gregtech.multiblock.chemical_plant.description=The Chemical Plant is a 5x5 structure with Tiered Casings which define the maximum voltage tier of the multiblock.
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". It is a complex Assembling Machine used for creating advanced crafting components.
 gregtech.multiblock.large_circuit_assembly.description=The Large Circuit Assembly Line is used to create high tier circuits.
@@ -1807,7 +1805,6 @@ gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distil
 gregtech.multiblock.advanced_distillation_tower.description2=2 Modes:
 gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => Max 8 Parallel, 2 per overclock
 gregtech.multiblock.advanced_distillation_tower.description4=    Distillery & Fluid Heater => Max 64 Parallel, 8 per overclock
-gtadditions.multiblock.chemical_plant.tooltip=Better coils provide an increasing speed bonus.
 gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amounts of power.
 gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as quickly as you can supply it.
 gtadditions.multiblock.large_rocket_engine.tooltip.3=It Consumes 37500mB of Air and 10mB of Carbon Dioxide per Second.

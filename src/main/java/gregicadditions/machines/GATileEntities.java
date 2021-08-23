@@ -106,7 +106,7 @@ public class GATileEntities {
     public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
     public static MetaTileEntityMufflerHatch[] MUFFLER_HATCH = new MetaTileEntityMufflerHatch[8];
     public static TileEntitySteamMiner STEAM_MINER;
-    public static TileEntityAdvancedChemicalReactor ADVANCED_CHEMICAL_REACTOR;
+    public static TileEntityChemicalPlant CHEMICAL_PLANT;
     public static TileEntityLargeBrewery LARGE_BREWERY;
     public static TileEntityLargeElectromagnet LARGE_ELECTROMAGNET;
     public static TileEntityLargeExtractor LARGE_EXTRACTOR;
@@ -242,7 +242,7 @@ public class GATileEntities {
         for (int i = 1; i <= MUFFLER_HATCH.length; i++)
             MUFFLER_HATCH[i - 1] = GregTechAPI.registerMetaTileEntity(4215 + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GTValues.VN[i].toLowerCase()), i));
 
-        ADVANCED_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(4224, new TileEntityAdvancedChemicalReactor(location("advanced_chemical_reactor")));
+        CHEMICAL_PLANT = GregTechAPI.registerMetaTileEntity(4224, new TileEntityChemicalPlant(location("chemical_plant")));
         LARGE_BREWERY = GregTechAPI.registerMetaTileEntity(4225, new TileEntityLargeBrewery(location("large_brewery"), RecipeMaps.BREWING_RECIPES));
         LARGE_ELECTROMAGNET = GregTechAPI.registerMetaTileEntity(4226, new TileEntityLargeElectromagnet(location("large_electromagnet"), RecipeMaps.POLARIZER_RECIPES));
         LARGE_EXTRACTOR = GregTechAPI.registerMetaTileEntity(4227, new TileEntityLargeExtractor(location("large_extractor")));

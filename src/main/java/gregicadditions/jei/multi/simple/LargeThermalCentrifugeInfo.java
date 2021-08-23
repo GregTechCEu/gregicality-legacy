@@ -3,6 +3,7 @@ package gregicadditions.jei.multi.simple;
 import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.CasingUtils;
@@ -28,6 +29,7 @@ import net.minecraft.util.text.TextFormatting;
 import java.util.ArrayList;
 import java.util.List;
 
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
@@ -50,7 +52,7 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                     .where('S', GATileEntities.LARGE_THERMAL_CENTRIFUGE, EnumFacing.WEST)
                     .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
-                    .where('X', TileEntityLargeThermalCentrifuge.casingState)
+                    .where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.RED_STEEL))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
@@ -74,8 +76,7 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
         ITextComponent casingTooltip1 = new TextComponentTranslation("gregtech.multiblock.preview.limit", 12).setStyle(new Style().setColor(TextFormatting.RED));
         ITextComponent casingTooltip2 = new TextComponentTranslation("gregtech.multiblock.preview.limit", 12).setStyle(new Style().setColor(TextFormatting.RED));
 
-        ItemStack defaultCasingStack = METAL_CASING_2.getItemVariant(MetalCasing2.CasingType.RED_STEEL);
-        ItemStack casingStack = CasingUtils.getConfigCasingItemStack(GAConfig.multis.largeThermalCentrifuge.casingMaterial, defaultCasingStack);
+        ItemStack casingStack = METAL_CASING_2.getItemVariant(MetalCasing2.CasingType.RED_STEEL);
 
         this.addBlockTooltip(casingStack, casingTooltip1);
 

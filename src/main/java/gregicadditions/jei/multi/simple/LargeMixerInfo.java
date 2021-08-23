@@ -2,6 +2,7 @@ package gregicadditions.jei.multi.simple;
 
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeMixer;
 import gregtech.api.GTValues;
@@ -15,6 +16,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class LargeMixerInfo extends MultiblockInfoPage {
 	@Override
@@ -40,7 +43,7 @@ public class LargeMixerInfo extends MultiblockInfoPage {
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.LV], EnumFacing.EAST)
 					.where('o', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.LV], EnumFacing.EAST)
-					.where('X', TileEntityLargeMixer.casingState)
+					.where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY))
 					.where('Y', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState());

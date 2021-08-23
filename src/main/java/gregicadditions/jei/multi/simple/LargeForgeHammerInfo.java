@@ -2,6 +2,7 @@ package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeForgeHammer;
 import gregtech.api.GTValues;
@@ -15,6 +16,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class LargeForgeHammerInfo extends MultiblockInfoPage {
     @Override
@@ -32,7 +35,7 @@ public class LargeForgeHammerInfo extends MultiblockInfoPage {
                 builder.aisle("OXX", "X#X", "IpX", "XXX");
             }
             builder.where('S', GATileEntities.LARGE_FORGE_HAMMER, EnumFacing.NORTH)
-                    .where('X', TileEntityLargeForgeHammer.casingState)
+                    .where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.IRON))
                     .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)

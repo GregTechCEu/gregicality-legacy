@@ -50,25 +50,19 @@ public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockContr
 				.aisle("XXXX", "XSXX", "XXX#")
 				.setAmountAtLeast('L', 9)
 				.where('S', selfPredicate())
-				.where('L', statePredicate(getCasingState()))
-				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('L', statePredicate(casingState))
+				.where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
 				.where('#', (tile) -> true)
 				.where('P', pistonPredicate())
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.INCONEL_625);
-	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeExtruder.casingMaterial, defaultCasingState);
-
-
-	public IBlockState getCasingState() {
-		return casingState;
-	}
+	private static final IBlockState casingState = METAL_CASING_1.getState(MetalCasing1.CasingType.INCONEL_625);
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeExtruder.casingMaterial, INCONEL_625_CASING);
+		return INCONEL_625_CASING;
 	}
 
 	@Override

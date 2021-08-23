@@ -56,8 +56,8 @@ public class TileEntityLargeExtractor extends LargeSimpleRecipeMapMultiblockCont
                 .aisle("XXXXX", "X###X", "X###X", "XXXXX")
                 .setAmountAtLeast('L', 12)
                 .where('S', selfPredicate())
-                .where('L', statePredicate(getCasingState()))
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('L', statePredicate(casingState))
+                .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('p', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)))
                 .where('#', (tile) -> true)
                 .where('P', pumpPredicate())
@@ -65,17 +65,11 @@ public class TileEntityLargeExtractor extends LargeSimpleRecipeMapMultiblockCont
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeExtractor.casingMaterial, defaultCasingState);
-
-
-    public IBlockState getCasingState() {
-        return casingState;
-    }
+    private static final IBlockState casingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE);
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeExtractor.casingMaterial, ClientHandler.TALONITE_CASING);
+        return ClientHandler.TALONITE_CASING;
     }
 
     @Override

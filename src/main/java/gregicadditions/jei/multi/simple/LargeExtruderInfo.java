@@ -2,6 +2,7 @@ package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeExtruder;
 import gregtech.api.GTValues;
@@ -17,6 +18,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class LargeExtruderInfo extends MultiblockInfoPage {
 	@Override
@@ -37,7 +40,7 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_EXTRUDER, EnumFacing.SOUTH)
 					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-					.where('X', TileEntityLargeExtruder.casingState)
+					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.INCONEL_625))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)

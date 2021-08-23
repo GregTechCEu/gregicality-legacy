@@ -69,8 +69,8 @@ public class TileEntityLargeReplicator extends LargeSimpleRecipeMapMultiblockCon
                 .aisle("#####XXEXX#####", "#####XXEXX#####", "#######X#######")
                 .setAmountAtLeast('L', 10)
                 .where('S', selfPredicate())
-                .where('L', statePredicate(getCasingState()))
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('L', statePredicate(casingState))
+                .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', statePredicate(MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR)))
                 .where('F', fieldGenPredicate())
                 .where('P', pumpPredicate())
@@ -80,17 +80,11 @@ public class TileEntityLargeReplicator extends LargeSimpleRecipeMapMultiblockCon
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeReplicator.casingMaterial, defaultCasingState);
-
-
-    public IBlockState getCasingState() {
-        return casingState;
-    }
+    private static final IBlockState casingState = GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM);
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeReplicator.casingMaterial, ClientHandler.TRITANIUM_CASING);
+        return ClientHandler.TRITANIUM_CASING;
     }
 
     @Override

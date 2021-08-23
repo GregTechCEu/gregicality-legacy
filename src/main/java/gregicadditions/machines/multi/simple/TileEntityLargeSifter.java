@@ -51,8 +51,8 @@ public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockControl
 				.aisle("XXXXX", "PXSXP", "XXXXX")
 				.setAmountAtLeast('L', 9)
 				.where('S', selfPredicate())
-				.where('L', statePredicate(getCasingState()))
-				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('L', statePredicate(casingState))
+				.where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
 				.where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
 				.where('#', isAirPredicate())
@@ -60,17 +60,11 @@ public class TileEntityLargeSifter extends LargeSimpleRecipeMapMultiblockControl
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.EGLIN_STEEL);
-	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeSifter.casingMaterial, defaultCasingState);
-
-
-	public IBlockState getCasingState() {
-		return casingState;
-	}
+	private static final IBlockState casingState = METAL_CASING_1.getState(MetalCasing1.CasingType.EGLIN_STEEL);
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeSifter.casingMaterial, EGLIN_STEEL_CASING);
+		return EGLIN_STEEL_CASING;
 	}
 
 	@Override

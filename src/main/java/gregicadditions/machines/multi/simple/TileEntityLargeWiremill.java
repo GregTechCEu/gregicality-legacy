@@ -50,25 +50,19 @@ public class TileEntityLargeWiremill extends LargeSimpleRecipeMapMultiblockContr
 				.aisle("XXX##", "XSX##", "XXX##")
 				.setAmountAtLeast('L', 8)
 				.where('S', selfPredicate())
-				.where('L', statePredicate(getCasingState()))
-				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('L', statePredicate(casingState))
+				.where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('#', (tile) -> true)
 				.where('G', statePredicate(MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX)))
 				.where('M', motorPredicate())
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250);
-	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeWiremill.casingMaterial, defaultCasingState);
-
-
-	public IBlockState getCasingState() {
-		return casingState;
-	}
+	private static final IBlockState casingState = METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250);
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeWiremill.casingMaterial, MARAGING_STEEL_250_CASING);
+		return MARAGING_STEEL_250_CASING;
 	}
 
 	@Override

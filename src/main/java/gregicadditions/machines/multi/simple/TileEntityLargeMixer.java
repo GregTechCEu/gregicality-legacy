@@ -58,8 +58,7 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMixer.casingMaterial, defaultCasingState);
+    private static final IBlockState casingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY);
 
 
     public IBlockState getCasingState() {
@@ -68,7 +67,7 @@ public class TileEntityLargeMixer extends LargeSimpleRecipeMapMultiblockControll
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMixer.casingMaterial, STABALLOY_CASING);
+        return STABALLOY_CASING;
     }
 
     @Override

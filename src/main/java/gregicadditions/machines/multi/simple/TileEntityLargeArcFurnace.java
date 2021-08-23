@@ -51,8 +51,8 @@ public class TileEntityLargeArcFurnace extends LargeSimpleRecipeMapMultiblockCon
                 .aisle("#XXX#", "#XSX#", "#XXX#")
                 .setAmountAtLeast('L', 10)
                 .where('S', selfPredicate())
-                .where('L', statePredicate(getCasingState()))
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('L', statePredicate(casingState))
+                .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE)))
                 .where('p', pumpPredicate())
                 .where('C', statePredicate(MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL)))
@@ -61,17 +61,11 @@ public class TileEntityLargeArcFurnace extends LargeSimpleRecipeMapMultiblockCon
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeArcFurnace.casingMaterial, defaultCasingState);
-
-
-    public IBlockState getCasingState() {
-        return casingState;
-    }
+    private static final IBlockState casingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF);
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeArcFurnace.casingMaterial, Textures.HEAT_PROOF_CASING);
+        return Textures.HEAT_PROOF_CASING;
     }
 
     @Override

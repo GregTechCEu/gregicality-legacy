@@ -53,9 +53,9 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 				.setAmountAtLeast('L', 16)
 				.setAmountAtLeast('H', 3)
 				.where('S', selfPredicate())
-				.where('L', statePredicate(getCasingState()))
+				.where('L', statePredicate(casingState))
 				.where('H', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
-				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE)))
 				.where('G', abilityPartPredicate(GregicalityCapabilities.MUFFLER_HATCH).or(statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))))
 				.where('M', motorPredicate())
@@ -64,17 +64,11 @@ public class TileEntityLargeCentrifuge extends LargeSimpleRecipeMapMultiblockCon
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA);
-	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeCentrifuge.casingMaterial, defaultCasingState);
-
-
-	public IBlockState getCasingState() {
-		return casingState;
-	}
+	private static final IBlockState casingState = METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA);
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeCentrifuge.casingMaterial, TUMBAGA_CASING);
+		return TUMBAGA_CASING;
 	}
 
 	@Override

@@ -63,8 +63,8 @@ public class TileEntityLargeBrewery extends MultiRecipeMapMultiblockController {
                 .aisle("#XXX#", "#XSX#", "#XGX#", "#XXX#", "#####")
                 .setAmountAtLeast('L', 14)
                 .where('S', selfPredicate())
-                .where('L', statePredicate(getCasingState()))
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('L', statePredicate(casingState))
+                .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('p', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS)))
                 .where('A', isAirPredicate())
@@ -75,16 +75,11 @@ public class TileEntityLargeBrewery extends MultiRecipeMapMultiblockController {
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeBrewery.casingMaterial, defaultCasingState);
-
-    public IBlockState getCasingState() {
-        return casingState;
-    }
+    private static final IBlockState casingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM);
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeBrewery.casingMaterial, ClientHandler.GRISIUM_CASING);
+        return ClientHandler.GRISIUM_CASING;
     }
 
     @Override

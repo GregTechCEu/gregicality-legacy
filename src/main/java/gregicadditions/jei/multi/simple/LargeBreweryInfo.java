@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeBrewery;
 import gregtech.api.GTValues;
@@ -36,7 +37,7 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .where('S', GATileEntities.LARGE_BREWERY, EnumFacing.SOUTH)
                 .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-                .where('X', TileEntityLargeBrewery.casingState)
+                .where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM))
                 .where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)

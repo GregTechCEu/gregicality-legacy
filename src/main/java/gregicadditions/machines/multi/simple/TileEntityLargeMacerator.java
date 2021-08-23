@@ -49,25 +49,20 @@ public class TileEntityLargeMacerator extends LargeSimpleRecipeMapMultiblockCont
 				.aisle("XSX", "XXX","XXX","XXX", "XXX", "XXX")
 				.setAmountAtLeast('L', 10)
 				.where('S', selfPredicate())
-				.where('L', statePredicate(getCasingState()))
-				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('L', statePredicate(casingState))
+				.where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('#', isAirPredicate())
 				.where('M', motorPredicate())
 				.where('P', pistonPredicate())
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE);
-	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMacerator.casingMaterial, defaultCasingState);
+	private static final IBlockState casingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE);
 
-
-	public IBlockState getCasingState() {
-		return casingState;
-	}
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMacerator.casingMaterial, STELLITE_CASING);
+		return STELLITE_CASING;
 	}
 
 	@Override

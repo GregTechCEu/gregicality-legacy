@@ -56,8 +56,8 @@ public class TileEntityLargeElectromagnet extends MultiRecipeMapMultiblockContro
                 .aisle("#XXX#", "#XSX#", "#XXX#")
                 .setAmountAtLeast('L', 8)
                 .where('S', selfPredicate())
-                .where('L', statePredicate(getCasingState()))
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('L', statePredicate(casingState))
+                .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .where('F', fieldGenPredicate())
@@ -65,17 +65,11 @@ public class TileEntityLargeElectromagnet extends MultiRecipeMapMultiblockContro
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeElectromagnet.casingMaterial, defaultCasingState);
-
-
-    public IBlockState getCasingState() {
-        return casingState;
-    }
+    private static final IBlockState casingState = GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY);
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeElectromagnet.casingMaterial, ClientHandler.BABBITT_ALLOY_CASING);
+        return ClientHandler.BABBITT_ALLOY_CASING;
     }
 
     @Override

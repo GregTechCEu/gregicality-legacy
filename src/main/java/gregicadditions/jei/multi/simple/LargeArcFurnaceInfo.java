@@ -6,10 +6,7 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeArcFurnace;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
-import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
-import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -19,6 +16,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregtech.common.blocks.MetaBlocks.METAL_CASING;
 
 public class LargeArcFurnaceInfo extends MultiblockInfoPage {
     @Override
@@ -39,7 +38,7 @@ public class LargeArcFurnaceInfo extends MultiblockInfoPage {
                 .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL))
                 .where('S', GATileEntities.LARGE_ARC_FURNACE, EnumFacing.SOUTH)
                 .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-                .where('X', TileEntityLargeArcFurnace.casingState)
+                .where('X', METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)
                 .where('i', MetaTileEntities.FLUID_IMPORT_HATCH[GTValues.LV], EnumFacing.SOUTH)

@@ -77,8 +77,7 @@ public class TileEntityLargeBenderAndForming extends MultiRecipeMapMultiblockCon
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeBenderAndForming.casingMaterial, defaultCasingState);
+    private static final IBlockState casingState = MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
 
 
     public IBlockState getCasingState() {
@@ -87,7 +86,7 @@ public class TileEntityLargeBenderAndForming extends MultiRecipeMapMultiblockCon
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeBenderAndForming.casingMaterial, STABLE_TITANIUM_CASING);
+        return STABLE_TITANIUM_CASING;
     }
 
     @Override

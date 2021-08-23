@@ -60,25 +60,19 @@ public class TileEntityLargeWashingPlant extends MultiRecipeMapMultiblockControl
                 .aisle("XXMXX", "XXSXX", "XXXXX")
                 .setAmountAtLeast('L', 9)
                 .where('S', selfPredicate())
-                .where('L', statePredicate(getCasingState()))
-                .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+                .where('L', statePredicate(casingState))
+                .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)))
                 .where('#', statePredicate(Blocks.WATER.getDefaultState()))
                 .where('M', motorPredicate())
                 .build();
     }
 
-    private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeWashingPlant.casingMaterial, defaultCasingState);
-
-
-    public IBlockState getCasingState() {
-        return casingState;
-    }
+    private static final IBlockState casingState = METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM);
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeWashingPlant.casingMaterial, GRISIUM_CASING);
+        return GRISIUM_CASING;
     }
 
     @Override

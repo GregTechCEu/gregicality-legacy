@@ -9,6 +9,7 @@ import gregicadditions.machines.multi.simple.TileEntityLargeBenderAndForming;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -23,6 +24,8 @@ import net.minecraft.util.text.TextFormatting;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregtech.common.blocks.MetaBlocks.METAL_CASING;
 
 public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
     @Override
@@ -43,7 +46,7 @@ public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
                     .where('S', GATileEntities.LARGE_BENDER_AND_FORMING, EnumFacing.SOUTH)
                     .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-                    .where('X', TileEntityLargeBenderAndForming.casingState)
+                    .where('X', METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('i', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.EAST)

@@ -2,6 +2,7 @@ package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeMacerator;
 import gregtech.api.GTValues;
@@ -15,6 +16,8 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class LargeMaceratorInfo extends MultiblockInfoPage {
 	@Override
@@ -32,7 +35,7 @@ public class LargeMaceratorInfo extends MultiblockInfoPage {
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_MACERATOR, EnumFacing.SOUTH)
 					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-					.where('X', TileEntityLargeMacerator.casingState)
+					.where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.SOUTH)

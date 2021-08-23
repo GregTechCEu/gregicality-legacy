@@ -87,8 +87,7 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
         maxVoltage = this.energyContainer.getInputVoltage();
     }
 
-    private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.distillationTower.casingMaterial, defaultCasingState);
+    public static final IBlockState casingState = METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY);
 
 
     public IBlockState getCasingState() {
@@ -97,7 +96,7 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.distillationTower.casingMaterial, BABBITT_ALLOY_CASING);
+        return BABBITT_ALLOY_CASING;
     }
 
     @Override

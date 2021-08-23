@@ -5,6 +5,7 @@ import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.metal.MetalCasing1;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -24,8 +25,9 @@ import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-import static gregicadditions.client.ClientHandler.POTIN_CASING;
+import static gregicadditions.client.ClientHandler.*;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockController {
 
@@ -49,8 +51,8 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 				.aisle("XXXXX", "XXSXX", "XXCXX", "XX#XX")
 				.setAmountAtLeast('L', 12)
 				.where('S', selfPredicate())
-				.where('L', statePredicate(getCasingState()))
-				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('L', statePredicate(casingState))
+				.where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)))
 				.where('#', isAirPredicate())
 				.where('M', motorPredicate())
@@ -67,17 +69,11 @@ public class TileEntityLargeElectrolyzer extends LargeSimpleRecipeMapMultiblockC
 		maxVoltage = (long) (Math.pow(4, min) * 8);
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_1.getState(MetalCasing1.CasingType.POTIN);
-	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeElectrolyzer.casingMaterial, defaultCasingState);
-
-
-	public IBlockState getCasingState() {
-		return casingState;
-	}
+	private static final IBlockState casingState = METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE);
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeElectrolyzer.casingMaterial, POTIN_CASING);
+		return TALONITE_CASING;
 	}
 
 	@Nonnull

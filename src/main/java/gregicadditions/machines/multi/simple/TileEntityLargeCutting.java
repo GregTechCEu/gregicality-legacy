@@ -66,8 +66,7 @@ public class TileEntityLargeCutting extends MultiRecipeMapMultiblockController {
 				.build();
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE);
-	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeCutting.casingMaterial, defaultCasingState);
+	private static final IBlockState casingState = METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE);
 
 
 	public IBlockState getCasingState() {
@@ -76,7 +75,7 @@ public class TileEntityLargeCutting extends MultiRecipeMapMultiblockController {
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeCutting.casingMaterial, STELLITE_CASING);
+		return STELLITE_CASING;
 	}
 
 	@Override

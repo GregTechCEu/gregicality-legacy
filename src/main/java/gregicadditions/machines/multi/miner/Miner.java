@@ -52,7 +52,7 @@ public interface Miner {
         return 1L;
     }
 
-    List orePrefixes = Arrays.asList(OrePrefix.ore, OrePrefix.valueOf("oreRich"), OrePrefix.valueOf("orePoor"), OrePrefix.valueOf("orePure"));
+    List orePrefixes = Arrays.asList(OrePrefix.ore, OrePrefix.getPrefix("oreRich"), OrePrefix.getPrefix("orePoor"), OrePrefix.getPrefix("orePure"));
 
     static List<BlockPos> getBlockToMinePerChunk(Miner miner, AtomicLong x, AtomicLong y, AtomicLong z, ChunkPos chunkPos) {
         List<BlockPos> blocks = new ArrayList<>();

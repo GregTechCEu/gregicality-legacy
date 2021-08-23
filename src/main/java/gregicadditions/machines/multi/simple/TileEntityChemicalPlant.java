@@ -22,7 +22,7 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.common.metatileentities.multi.electric.MetaTileEntityLargeChemicalReactor;
+import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -36,25 +36,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockController { //todo chemical plant coil requirements
+public class TileEntityChemicalPlant extends MultiRecipeMapMultiblockController { //todo chemical plant coil requirements
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
 
 
-	public TileEntityAdvancedChemicalReactor(ResourceLocation metaTileEntityId) {
+	public TileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId,
 				RecipeMaps.LARGE_CHEMICAL_RECIPES,
-				GAConfig.multis.advancedChemicalReactor.euPercentage,
-				GAConfig.multis.advancedChemicalReactor.durationPercentage,
-				GAConfig.multis.advancedChemicalReactor.chancedBoostPercentage,
-				GAConfig.multis.advancedChemicalReactor.stack,
+				GAConfig.multis.chemicalPlant.euPercentage,
+				GAConfig.multis.chemicalPlant.durationPercentage,
+				GAConfig.multis.chemicalPlant.chancedBoostPercentage,
+				GAConfig.multis.chemicalPlant.stack,
 				new RecipeMap[]{RecipeMaps.LARGE_CHEMICAL_RECIPES, GARecipeMaps.CHEMICAL_PLANT_RECIPES});
 		this.recipeMapWorkable = new AdvancedChemicalReactorWorkableHandler(this);
 	}
 
 	@Override
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new TileEntityAdvancedChemicalReactor(metaTileEntityId);
+		return new TileEntityChemicalPlant(metaTileEntityId);
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockC
 				.where('S', selfPredicate())
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-				.where('C', MetaTileEntityLargeChemicalReactor.heatingCoilPredicate()) // todo
+				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
 				.where('P', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
 				.where('#', (tile) -> true)
 				.where('M', motorPredicate())
@@ -114,16 +114,16 @@ public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockC
 
 		public AdvancedChemicalReactorWorkableHandler(RecipeMapMultiblockController tileEntity) {
 			super(tileEntity,
-					GAConfig.multis.advancedChemicalReactor.euPercentage,
-					GAConfig.multis.advancedChemicalReactor.durationPercentage,
-					GAConfig.multis.advancedChemicalReactor.chancedBoostPercentage,
-					GAConfig.multis.advancedChemicalReactor.stack,
-					((TileEntityAdvancedChemicalReactor) tileEntity).recipeMaps);
+					GAConfig.multis.chemicalPlant.euPercentage,
+					GAConfig.multis.chemicalPlant.durationPercentage,
+					GAConfig.multis.chemicalPlant.chancedBoostPercentage,
+					GAConfig.multis.chemicalPlant.stack,
+					((TileEntityChemicalPlant) tileEntity).recipeMaps);
 		}
 
 		@Override
 		protected int getMinRatioItem(Set<ItemStack> countIngredients, Recipe r, int maxItemsLimit) {
-			if (((TileEntityAdvancedChemicalReactor) metaTileEntity).getRecipeMapIndex() == 1)
+			if (((TileEntityChemicalPlant) metaTileEntity).getRecipeMapIndex() == 1)
 				return 1;
 			int minMultiplier = Integer.MAX_VALUE;
 			for (CountableIngredient ci : r.getInputs()) {
@@ -145,7 +145,7 @@ public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockC
 
 		@Override
 		protected int getMinRatioFluid(Map<String, Integer> countFluid, Recipe r, int maxItemsLimit) {
-			if (((TileEntityAdvancedChemicalReactor) metaTileEntity).getRecipeMapIndex() == 1)
+			if (((TileEntityChemicalPlant) metaTileEntity).getRecipeMapIndex() == 1)
 				return 1;
 			int minMultiplier = Integer.MAX_VALUE;
 			for (FluidStack fs : r.getFluidInputs()) {

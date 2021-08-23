@@ -77,8 +77,7 @@ public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockControll
         super.addInformation(stack, player, tooltip, advanced);
     }
 
-    private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.IRON);
-    public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeForgeHammer.casingMaterial, defaultCasingState);
+    private static final IBlockState casingState = METAL_CASING_2.getState(MetalCasing2.CasingType.IRON);
 
 
     public IBlockState getCasingState() {
@@ -87,7 +86,7 @@ public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockControll
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeForgeHammer.casingMaterial, IRON_CASING);
+        return IRON_CASING;
     }
 
     @Override

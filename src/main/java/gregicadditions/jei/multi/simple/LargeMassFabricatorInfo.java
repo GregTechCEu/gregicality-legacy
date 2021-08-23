@@ -3,6 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.uumatter.TileEntityLargeMassFabricator;
 import gregtech.api.GTValues;
@@ -39,7 +40,7 @@ public class LargeMassFabricatorInfo extends MultiblockInfoPage {
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .where('S', GATileEntities.LARGE_MASS_FABRICATOR, EnumFacing.SOUTH)
                 .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
-                .where('X', TileEntityLargeMassFabricator.casingState)
+                .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('c', MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR))
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)

@@ -3,6 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.PistonCasing;
+import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeSifter;
 import gregtech.api.GTValues;
@@ -23,6 +24,8 @@ import net.minecraft.util.text.TextFormatting;
 import java.util.ArrayList;
 import java.util.List;
 
+import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
+
 public class LargeSifterInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
@@ -42,7 +45,7 @@ public class LargeSifterInfo extends MultiblockInfoPage {
 					.where('S', GATileEntities.LARGE_SIFTER, EnumFacing.WEST)
 					.where('G', MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
 					.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
-					.where('X', TileEntityLargeSifter.casingState)
+					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.EGLIN_STEEL))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)

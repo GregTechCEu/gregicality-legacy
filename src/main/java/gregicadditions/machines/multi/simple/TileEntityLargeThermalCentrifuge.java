@@ -68,9 +68,9 @@ public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultib
 				.setAmountAtLeast('L', 12)
 				.setAmountAtLeast('G', 3)
 				.where('S', selfPredicate())
-				.where('L', statePredicate(getCasingState()))
+				.where('L', statePredicate(casingState))
 				.where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
-				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
+				.where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', heatingCoilPredicate())
 				.where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE)))
 				.where('H', abilityPartPredicate(GregicalityCapabilities.MUFFLER_HATCH).or(statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))))
@@ -87,8 +87,6 @@ public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultib
 				return false;
 			BlockWireCoil blockWireCoil = (BlockWireCoil) blockState.getBlock();
 			BlockWireCoil.CoilType coilType = blockWireCoil.getState(blockState);
-			if (Arrays.asList(GAConfig.multis.heatingCoils.gtceHeatingCoilsBlacklist).contains(coilType.getName()))
-				return false;
 
 			int blastFurnaceTemperature = coilType.getCoilTemperature();
 			int currentTemperature = blockWorldState.getMatchContext().getOrPut("blastFurnaceTemperature", blastFurnaceTemperature);
@@ -99,17 +97,11 @@ public class TileEntityLargeThermalCentrifuge extends LargeSimpleRecipeMapMultib
 		};
 	}
 
-	private static final IBlockState defaultCasingState = METAL_CASING_2.getState(MetalCasing2.CasingType.RED_STEEL);
-	public static final IBlockState casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeThermalCentrifuge.casingMaterial, defaultCasingState);
-
-
-	public IBlockState getCasingState() {
-		return casingState;
-	}
+	private static final IBlockState casingState = METAL_CASING_2.getState(MetalCasing2.CasingType.RED_STEEL);
 
 	@Override
 	public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-		return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeThermalCentrifuge.casingMaterial, RED_STEEL_CASING);
+		return RED_STEEL_CASING;
 	}
 
 	@Override

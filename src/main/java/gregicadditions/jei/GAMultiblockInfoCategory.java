@@ -8,7 +8,6 @@ import gregicadditions.jei.multi.mega.MegaBlastFurnaceInfo;
 import gregicadditions.jei.multi.mega.MegaDistillationTowerInfo;
 import gregicadditions.jei.multi.mega.MegaVacuumFreezerInfo;
 import gregicadditions.jei.multi.miner.*;
-import gregicadditions.jei.multi.nuclear.*;
 import gregicadditions.jei.multi.quantum.*;
 import gregicadditions.jei.multi.simple.*;
 import gregicadditions.machines.GATileEntities;
@@ -89,7 +88,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("large_replicator", new MultiblockInfoRecipeWrapper(new LargeReplicatorInfo()))
                     .put("large_mass_fabricator", new MultiblockInfoRecipeWrapper(new LargeMassFabricatorInfo()))
                     .put("large_arc_furnace", new MultiblockInfoRecipeWrapper(new LargeArcFurnaceInfo()))
-                    .put("advanced_chemical_reactor", new MultiblockInfoRecipeWrapper(new AdvancedChemicalReactorInfo()))
+                    .put("advanced_chemical_reactor", new MultiblockInfoRecipeWrapper(new ChemicalPlantInfo()))
                     .put("large_canner", new MultiblockInfoRecipeWrapper(new LargeCanningMachineInfo()))
                     .put("large_brewery", new MultiblockInfoRecipeWrapper(new LargeBreweryInfo()))
                     .put("large_electromagnet", new MultiblockInfoRecipeWrapper(new LargeElectromagnetInfo()))
