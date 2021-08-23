@@ -18,77 +18,77 @@ public class NuclearChain {
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(30)
                 .inputs(THORIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 560, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Protactinium233.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium, 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Protactinium233, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium238, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(60)
                 .inputs(URANIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 760, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium, 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Neptunium.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Uranium238, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Neptunium, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(120)
                 .inputs(NEPTUNIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 1000, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Neptunium.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, PlutoniumRadioactive.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Neptunium, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Plutonium239, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(240)
                 .inputs(PLUTONIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 1330, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, PlutoniumRadioactive.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, AmericiumRadioactive.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Plutonium239, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, AmericiumRadioactive, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(480)
                 .inputs(AMERICIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 1780, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, AmericiumRadioactive.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Curium.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, AmericiumRadioactive, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Curium, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(960)
                 .inputs(CURIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 2370, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Curium.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Berkelium.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Curium, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Berkelium, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(1920)
                 .inputs(BERKELIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 3160, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Berkelium.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Californium.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Berkelium, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Californium, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(3840)
                 .inputs(CALIFORNIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 4220, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Californium.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Einsteinium.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Californium, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Einsteinium, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(7680)
                 .inputs(EINSTEINIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 5630, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Einsteinium.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Fermium.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Einsteinium, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Fermium, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(15360)
                 .inputs(FERMIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 7500, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Fermium.getMaterial(), 1), 8000, 200)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 3), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Fermium, 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium, 3), 8000, 200)
                 .buildAndRegister();
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(30720)
                 .inputs(MENDELEVIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 10000, 0)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Mendelevium, 1), 8000, 200)
                 .buildAndRegister();
 
         // 3K + 7Na -> Na7K3
@@ -167,28 +167,28 @@ public class NuclearChain {
                 .output(dust, LeadBismuthEutectic, 10)
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(30).duration(200)
+        EXTRACTOR_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .input(dust, LeadBismuthEutectic)
                 .fluidOutputs(LeadBismuthEutectic.getFluid(144))
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(30).duration(200)
+        EXTRACTOR_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .input(dust, FLiBe)
                 .fluidOutputs(FLiBe.getFluid(144))
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(30).duration(100)
+        EXTRACTOR_RECIPES.recipeBuilder().EUt(30).duration(100)
                 .input(dust, FLiNaK)
                 .fluidOutputs(FLiNaK.getFluid(144))
                 .buildAndRegister();
 
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().EUt(30).duration(160)
+        EXTRACTOR_RECIPES.recipeBuilder().EUt(30).duration(160)
                 .input(dust, SodiumPotassiumAlloy)
                 .fluidOutputs(SodiumPotassiumAlloy.getFluid(144))
                 .buildAndRegister();
 
-        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium233.getMaterial()), OreDictUnifier.get(ingot, Protactinium.getMaterial()));
-        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium.getMaterial()), OreDictUnifier.get(ingot, Protactinium233.getMaterial()));
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium233), OreDictUnifier.get(ingot, Protactinium));
+        ModHandler.addSmeltingRecipe(OreDictUnifier.get(ingot, Protactinium), OreDictUnifier.get(ingot, Protactinium233));
 
 
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().EUt(32).duration(300)

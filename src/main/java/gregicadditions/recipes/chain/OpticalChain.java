@@ -19,35 +19,35 @@ public class OpticalChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(100)
                 .input(dust, Zirconium)
                 .fluidInputs(Fluorine.getFluid(4000))
-                .outputs(ZirconiumTetrafluoride.getItemStack(5))
+                .output(dust, ZirconiumTetrafluoride, 5)
                 .buildAndRegister();
 
         // Ba + 2F -> BaF2
         CHEMICAL_RECIPES.recipeBuilder().duration(100)
                 .input(dust, Barium)
                 .fluidInputs(Fluorine.getFluid(2000))
-                .outputs(BariumDifluoride.getItemStack(3))
+                .output(dust, BariumDifluoride, 3)
                 .buildAndRegister();
 
         // La + 3F -> LaF3
         CHEMICAL_RECIPES.recipeBuilder().duration(100)
                 .input(dust, Lanthanum)
                 .fluidInputs(Fluorine.getFluid(3000))
-                .outputs(LanthanumTrifluoride.getItemStack(4))
+                .output(dust, LanthanumTrifluoride, 4)
                 .buildAndRegister();
 
         // Al + 3F -> AlF3
         CHEMICAL_RECIPES.recipeBuilder().duration(100)
                 .input(dust, Aluminium)
                 .fluidInputs(Fluorine.getFluid(3000))
-                .outputs(AluminiumTrifluoride.getItemStack(4))
+                .output(dust, AluminiumTrifluoride, 4)
                 .buildAndRegister();
 
         // Er + 3F -> ErF3
         CHEMICAL_RECIPES.recipeBuilder().duration(100)
                 .input(dust, Erbium)
                 .fluidInputs(Fluorine.getFluid(3000))
-                .outputs(ErbiumTrifluoride.getItemStack(4))
+                .output(dust, ErbiumTrifluoride, 4)
                 .buildAndRegister();
 
         // Si + 4F -> SiF4
@@ -79,13 +79,13 @@ public class OpticalChain {
         CENTRIFUGE_RECIPES.recipeBuilder().duration(340).EUt(120)
                 .fluidInputs(AmmoniumFluoride.getFluid(2000))
                 .fluidOutputs(Ammonia.getFluid(1000))
-                .outputs(AmmoniumBifluoride.getItemStack(8))
+                .output(dust, AmmoniumBifluoride, 8)
                 .buildAndRegister();
 
         // H2O + NH4HF2 -> [NH4HF2 + H2O]
         MIXER_RECIPES.recipeBuilder().duration(140).EUt(30)
                 .fluidInputs(DistilledWater.getFluid(1000))
-                .inputs(AmmoniumBifluoride.getItemStack(8))
+                .input(dust, AmmoniumBifluoride, 8)
                 .fluidOutputs(AmmoniumBifluorideSolution.getFluid(1000))
                 .buildAndRegister();
 
@@ -99,10 +99,10 @@ public class OpticalChain {
 
         // NH4VO3 + NaCl + Na2O -> Na3VO4 + NH4Cl
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(120).blastFurnaceTemp(700)
-                .inputs(AmmoniumVanadate.getItemStack(9))
+                .input(dust, AmmoniumVanadate, 9)
                 .input(dust, Salt, 2)
-                .inputs(SodiumOxide.getItemStack(3))
-                .outputs(PureSodiumVanadate.getItemStack(8))
+                .input(dust, SodiumOxide, 3)
+                .output(dust, PureSodiumVanadate, 8)
                 .fluidOutputs(AmmoniumChloride.getFluid(1000))
                 .buildAndRegister();
 
@@ -111,69 +111,62 @@ public class OpticalChain {
                 .notConsumable(new IntCircuitIngredient(1))
                 .input(dust, Sodium, 2)
                 .fluidInputs(Oxygen.getFluid(1000))
-                .outputs(SodiumOxide.getItemStack(3))
+                .output(dust, SodiumOxide, 3)
                 .buildAndRegister();
 
         // 3Y2O3 + Lu2O3 + Tm2O3 + 30HCl -> [6YCl3 + 2LuCl3 + 2TmCl3 + 15H2O]
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(15360)
                 .input(dust, YttriumOxide,15)
-                .inputs(LutetiumOxide.getItemStack(5))
-                .inputs(ThuliumOxide.getItemStack(5))
+                .input(dust, LutetiumOxide, 5)
+                .input(dust, ThuliumOxide, 5)
                 .fluidInputs(HydrochloricAcid.getFluid(30000))
                 .fluidOutputs(LuTmYChlorideSolution.getFluid(30000))
                 .buildAndRegister();
 
         // NaVO3 + NH4Cl + H2O -> NH4VO3 + NaCl(H2O)
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(120)
-                .inputs(SodiumMetavanadate.getItemStack(5))
+                .input(dust, SodiumMetavanadate, 5)
                 .fluidInputs(Water.getFluid(1000))
                 .fluidInputs(AmmoniumChloride.getFluid(1000))
-                .outputs(AmmoniumVanadate.getItemStack(9))
+                .output(dust, AmmoniumVanadate, 9)
                 .fluidOutputs(SaltWater.getFluid(1000))
                 .buildAndRegister();
 
         // [6YCl3 + 2LuCl3 + 2TmCl3 + 15H2O] + Na3VO4 + 2CH4N2O -> LuTmYVO Precipitate + 0.9Cl
         CHEMICAL_RECIPES.recipeBuilder().duration(320).EUt(480)
                 .fluidInputs(LuTmYChlorideSolution.getFluid(1000))
-                .inputs(PureSodiumVanadate.getItemStack(8))
-                .inputs(Urea.getItemStack(16))
+                .input(dust, PureSodiumVanadate, 8)
+                .input(dust, Urea, 16)
                 .fluidOutputs(Chlorine.getFluid(900))
-                .outputs(LuTmYVOPrecipitate.getItemStack())
+                .output(dust, LuTmYVOPrecipitate)
                 .buildAndRegister();
 
         // LuTmYVO Precipitate + C2H6O -> LuTmYVO Nanoparticles + 3NaCl + (NH4)2CO3 + C3H6
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(200).EUt(7680)
-                .inputs(LuTmYVOPrecipitate.getItemStack())
+                .input(dust, LuTmYVOPrecipitate)
                 .fluidInputs(Ethanol100.getFluid(1000))
-                .outputs(LuTmYVONanoparticles.getItemStack())
+                .output(dust, LuTmYVONanoparticles)
                 .output(dust, Salt, 6)
-                .outputs(AmmoniumCarbonate.getItemStack(14))
+                .output(dust, AmmoniumCarbonate, 14)
                 .fluidOutputs(Propene.getFluid(1000))
                 .buildAndRegister();
 
         // (NH4)2CO3 + Ca + NaH + 2O -> 2NH3 + Ca(OH)2 + NaHCO3
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(120).blastFurnaceTemp(700)
-                .inputs(AmmoniumCarbonate.getItemStack(14))
-                .inputs(SodiumHydride.getItemStack(2))
+                .input(dust, AmmoniumCarbonate, 14)
+                .input(dust, SodiumHydride, 2)
                 .input(dust, Calcium)
                 .fluidInputs(Oxygen.getFluid(2000))
                 .fluidOutputs(Ammonia.getFluid(2000))
-                .outputs(SodiumBicarbonate.getItemStack(6))
-                .outputs(CalciumHydroxide.getItemStack(5))
-                .buildAndRegister();
-
-        // NaH -> Na + H
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(240).EUt(30)
-                .inputs(SodiumHydride.getItemStack(2))
-                .output(dust, Sodium)
-                .fluidOutputs(Hydrogen.getFluid(1000))
+                .output(dust, SodiumBicarbonate, 6)
+                .output(dust, CalciumHydroxide, 5)
                 .buildAndRegister();
 
         // MgF2 + ZnS + Ta2O5 + TiO2 + C2H5OH -> Dielectric Mirror Formation Mix
         MIXER_RECIPES.recipeBuilder().duration(270).EUt(983040)
-                .inputs(MagnesiumFluoride.getItemStack(3))
-                .inputs(ZincSulfide.getItemStack(2))
-                .inputs(TantalumOxide.getItemStack(7))
+                .input(dust, MagnesiumFluoride, 3)
+                .input(dust, ZincSulfide, 2)
+                .input(dust, TantalumOxide, 7)
                 .input(dust, Rutile, 3)
                 .fluidInputs(Ethanol.getFluid(1000))
                 .fluidOutputs(DielectricMirrorFormationMix.getFluid(1000))
@@ -185,20 +178,20 @@ public class OpticalChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(120)
                 .input(dust, Niobium)
                 .fluidInputs(Chlorine.getFluid(5000))
-                .outputs(NiobiumChloride.getItemStack(6))
+                .output(dust, NiobiumChloride, 6)
                 .buildAndRegister();
 
         // LiAlH4 -> LiH + AlH3
         BLAST_RECIPES.recipeBuilder().duration(260).EUt(120).blastFurnaceTemp(1600)
-                .inputs(LithiumAluminiumHydride.getItemStack(6))
-                .outputs(LithiumHydride.getItemStack(2))
-                .outputs(AluminiumHydride.getItemStack(4))
+                .input(dust, LithiumAluminiumHydride, 6)
+                .output(dust, LithiumHydride, 2)
+                .output(dust, AluminiumHydride, 4)
                 .buildAndRegister();
 
         // NbCl5 + LiH + 2H2O2 -> LiNbO4 + 5HCl
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(120).blastFurnaceTemp(4500)
-                .inputs(NiobiumChloride.getItemStack(6))
-                .inputs(LithiumHydride.getItemStack(2))
+                .input(dust, NiobiumChloride, 6)
+                .input(dust, LithiumHydride, 2)
                 .notConsumable(dust, Hafnium)
                 .fluidInputs(HydrogenPeroxide.getFluid(2000))
                 .output(ingotHot, LithiumNiobate, 6)
@@ -208,14 +201,14 @@ public class OpticalChain {
         // 5NaOH + NbCl5 -> 5NaCl + H5NbO5
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(120)
                 .input(dust, SodiumHydroxide, 15)
-                .inputs(NiobiumChloride.getItemStack(6))
+                .input(dust, NiobiumChloride, 6)
                 .output(dust, Salt, 10)
-                .outputs(NiobiumHydroxide.getItemStack(11))
+                .output(dust, NiobiumHydroxide, 11)
                 .buildAndRegister();
 
         // 2H5NbO5 + 5C2H2O4 + NH3 + Na -> 9H2O + [C10Nb2O20 + NH4] + NaOH
         CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(480)
-                .inputs(NiobiumHydroxide.getItemStack(22))
+                .input(dust, NiobiumHydroxide, 22)
                 .input(dust, Sodium)
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(OxalicAcid.getFluid(5000))
@@ -228,14 +221,14 @@ public class OpticalChain {
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(260).EUt(491520)
                 .input(dust, LithiumNiobate, 12)
                 .fluidInputs(AmmoniumNiobiumOxalateSolution.getFluid(1000))
-                .outputs(LithiumNiobateNanoparticles.getItemStack(3))
+                .output(dust, LithiumNiobateNanoparticles, 3)
                 .buildAndRegister();
 
         // MgO + NH4HF2 -> MgF2 + NH3 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Magnesia, 2)
-                .inputs(AmmoniumBifluoride.getItemStack(8))
-                .outputs(MagnesiumFluoride.getItemStack(3))
+                .input(dust, AmmoniumBifluoride, 8)
+                .output(dust, MagnesiumFluoride, 3)
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
@@ -251,7 +244,7 @@ public class OpticalChain {
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(120).blastFurnaceTemp(4600)
                 .input(dust, Zinc)
                 .input(dust, Sulfur)
-                .outputs(ZincSulfide.getItemStack(2))
+                .output(dust, ZincSulfide, 2)
                 .buildAndRegister();
 
         // NH4NO3 -> NH3 + HNO3
@@ -293,26 +286,26 @@ public class OpticalChain {
         // O + 3C2H5NO2 + 2HBr + 2CsOH -> 2CsBr + 2H2O + 2C3H7NO2 + HNO3
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
-                .inputs(CaesiumHydroxide.getItemStack(6))
+                .input(dust, CaesiumHydroxide, 6)
                 .fluidInputs(Glycine.getFluid(3000))
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidInputs(HydrobromicAcid.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(NitricAcid.getFluid(1000))
-                .outputs(CaesiumBromide.getItemStack(4))
-                .outputs(Sarcosine.getItemStack(26))
+                .output(dust, CaesiumBromide, 4)
+                .output(dust, Sarcosine, 26)
                 .buildAndRegister();
 
         // 2Cs + H2O2 -> 2CsOH
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(180).EUt(120)
                 .input(dust, Caesium, 2)
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
-                .outputs(CaesiumHydroxide.getItemStack(6))
+                .output(dust, CaesiumHydroxide, 6)
                 .buildAndRegister();
 
         // CsBr -> Cs + Br
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(120)
-                .inputs(CaesiumBromide.getItemStack(2))
+                .input(dust, CaesiumBromide, 2)
                 .fluidOutputs(Bromine.getFluid(1000))
                 .output(dust, Caesium)
                 .buildAndRegister();
@@ -321,7 +314,7 @@ public class OpticalChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .input(dust, Praseodymium, 2)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(PraseodymiumOxide.getItemStack(5))
+                .output(dust, PraseodymiumOxide, 5)
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
@@ -330,7 +323,7 @@ public class OpticalChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .input(dust, Holmium, 2)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(HolmiumOxide.getItemStack(5))
+                .output(dust, HolmiumOxide, 5)
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
@@ -339,7 +332,7 @@ public class OpticalChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .input(dust, Neodymium, 2)
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .outputs(NeodymiumOxide.getItemStack(5))
+                .output(dust, NeodymiumOxide, 5)
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
@@ -356,8 +349,8 @@ public class OpticalChain {
         // 3Y2O3 + Pr2O3 + Ho2O3 + 30HNO3 -> [6Y(NO3)3 + 2Pr(NO3)3 + 2Ho(NO3)3 + 15H2O]
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(15360)
                 .input(dust, YttriumOxide,15)
-                .inputs(PraseodymiumOxide.getItemStack(5))
-                .inputs(HolmiumOxide.getItemStack(5))
+                .input(dust, PraseodymiumOxide, 5)
+                .input(dust, HolmiumOxide, 5)
                 .fluidInputs(NitricAcid.getFluid(30000))
                 .fluidOutputs(PrYHoNitrateSolution.getFluid(30000))
                 .buildAndRegister();
@@ -366,12 +359,12 @@ public class OpticalChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(7680)
                 .input(dust, LithiumFluoride, 2)
                 .input(dust, Beryllium)
-                .inputs(AmmoniumBifluoride.getItemStack(16))
+                .input(dust, AmmoniumBifluoride, 16)
                 .fluidInputs(PrYHoNitrateSolution.getFluid(2000))
-                .fluidInputs(CarbonMonoxde.getFluid(1000))
+                .fluidInputs(CarbonMonoxide.getFluid(1000))
                 .notConsumable(CetaneTrimethylAmmoniumBromide.getFluid(0))
                 .notConsumable(EDTA.getFluid(0))
-                .outputs(PrHoYLFNanoparticles.getItemStack(2))
+                .output(dust, PrHoYLFNanoparticles, 2)
                 .output(dust, BerylliumFluoride, 3)
                 .fluidOutputs(AmmoniumNitrate.getFluid(2000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(2000))
@@ -412,15 +405,15 @@ public class OpticalChain {
 
         // Al2O3 + 6HNO3 -> 2Al(NO3)3 + 3H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(30)
-                .inputs(Alumina.getItemStack(5))
+                .input(dust, Alumina, 5)
                 .fluidInputs(NitricAcid.getFluid(6000))
-                .outputs(AluminiumNitrate.getItemStack(26))
+                .output(dust, AluminiumNitrate, 26)
                 .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
         // 2Al(NO3)3 + CH2Cl2 + C12H27N -> [2Al(NO3)3 + CH2Cl2 + C12H27N]
         CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(120)
-                .inputs(AluminiumNitrate.getItemStack(26))
+                .input(dust, AluminiumNitrate, 26)
                 .fluidInputs(Dichloromethane.getFluid(1000))
                 .fluidInputs(Tributylamine.getFluid(1000))
                 .fluidOutputs(CrudeAluminaSolution.getFluid(1000))
@@ -441,25 +434,25 @@ public class OpticalChain {
                 .fluidInputs(Ammonia.getFluid(5000))
                 .fluidInputs(HydrogenCyanide.getFluid(5000))
                 .fluidInputs(SulfuricAcid.getFluid(3000))
-                .inputs(PotassiumPermanganate.getItemStack(12))
+                .input(dust, PotassiumPermanganate, 12)
                 .fluidOutputs(Water.getFluid(3000))
-                .outputs(ManganeseSulfate.getItemStack(12))
-                .outputs(PotassiumSulfate.getItemStack(7))
+                .output(dust, ManganeseSulfate, 12)
+                .output(dust, PotassiumSulfate, 7)
                 .fluidOutputs(AmmoniumCyanate.getFluid(5000))
                 .buildAndRegister();
 
         // NH4CNO -> CH4N2O
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(320).EUt(480)
                 .fluidInputs(AmmoniumCyanate.getFluid(1000))
-                .outputs(Urea.getItemStack(8))
+                .output(dust, Urea, 8)
                 .buildAndRegister();
 
         // 3K2MnO4 + 2H2O -> MnO2 + 2KMnO4 + 4KOH
         BLAST_RECIPES.recipeBuilder().duration(250).EUt(120).blastFurnaceTemp(720)
-                .inputs(PotassiumManganate.getItemStack(21))
+                .input(dust, PotassiumManganate, 21)
                 .fluidInputs(Water.getFluid(2000))
                 .output(dust, Pyrolusite, 3)
-                .outputs(PotassiumPermanganate.getItemStack(12))
+                .output(dust, PotassiumPermanganate, 12)
                 .fluidOutputs(PotassiumHydroxide.getFluid(4000))
                 .buildAndRegister();
     }

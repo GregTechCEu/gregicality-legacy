@@ -4,7 +4,6 @@ import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -59,13 +58,13 @@ public class ChromiumChain {
                 .input(dust, Carbon, 2)
                 .fluidInputs(SodiumDichromateSolution.getFluid(1000))
                 .output(dust, SodaAsh, 6)
-                .output(dust, ChromiumIIIOxide, 5)
+                .output(dust, Chromium3Oxide, 5)
                 .fluidOutputs(CarbonMonoxide.getFluid(1000))
                 .buildAndRegister();
 
         // Cr2O3 + 2Al -> 2 Cr + Al2O3
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(120).blastFurnaceTemp(1200)
-                .input(dust, ChromiumIIIOxide, 5)
+                .input(dust, Chromium3Oxide, 5)
                 .input(dust, Aluminium, 2)
                 .output(dust, Chrome, 2)
                 .output(dust, Alumina, 5)

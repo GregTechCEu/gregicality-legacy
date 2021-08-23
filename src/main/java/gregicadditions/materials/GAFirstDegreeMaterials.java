@@ -69,9 +69,19 @@ public class GAFirstDegreeMaterials {
                 .components(Sodium, 2, Tungsten, 1, Oxygen, 4)
                 .build();
 
-        // Free ID 3508
+        Chromium3Oxide = new Material.Builder(3508, "chromium_3_oxide")
+                .dust()
+                .color(0x4BF25F).iconSet(ROUGH)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Chrome, 2, Oxygen, 3)
+                .build();
 
-        // Free ID 3509
+        NaquadriaDifluoride = new Material.Builder(3509, "naquadria_difluoride")
+                .fluid(Material.FluidType.GAS)
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Naquadria, 1, Fluorine, 2)
+                .build();
 
         // Free ID 3510
 
@@ -1759,18 +1769,21 @@ public class GAFirstDegreeMaterials {
         CopperChloride = new Material.Builder(3670, "copper_chloride")
                 .dust()
                 .color(0xF5B35D).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Copper, 1, Chlorine, 2)
                 .build();
 
         BismuthChloride = new Material.Builder(3671, "bismuth_chloride")
                 .dust()
                 .color(0x95F5D7).iconSet(SHINY)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Bismuth, 1, Chlorine, 3)
                 .build();
 
         LeadChloride = new Material.Builder(3672, "lead_chloride")
                 .dust()
                 .colorAverage().iconSet(METALLIC)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Lead, 1, Chlorine, 2)
                 .build();
 
@@ -1942,6 +1955,7 @@ public class GAFirstDegreeMaterials {
         NickelChloride = new Material.Builder(3699, "nickel_chloride")
                 .dust()
                 .colorAverage().iconSet(ROUGH)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Nickel, 1, Chlorine, 2)
                 .build();
 
@@ -2061,12 +2075,14 @@ public class GAFirstDegreeMaterials {
         SodiumHydride = new Material.Builder(3717, "sodium_hydride")
                 .dust()
                 .color(0xCACAC8).iconSet(ROUGH)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Sodium, 1, Hydrogen, 1)
                 .build();
 
         MagnesiumSulfate = new Material.Builder(3718, "magnesium_sulfate")
                 .dust()
                 .colorAverage()
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Magnesium, 1, Sulfur, 1, Oxygen, 4)
                 .build();
 
@@ -2458,7 +2474,12 @@ public class GAFirstDegreeMaterials {
                 .components(Caesium, 1, Bromine, 1)
                 .build();
 
-        // Free ID 3777
+        AntimonyTrifluoride = new Material.Builder(3777, "antimony_trifluoride")
+                .dust()
+                .colorAverage()
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
+                .components(Antimony, 1, Fluorine, 3)
+                .build();
 
         // Free ID 3778
 

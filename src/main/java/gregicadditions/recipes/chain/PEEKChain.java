@@ -1,7 +1,6 @@
 package gregicadditions.recipes.chain;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
@@ -38,8 +37,8 @@ public class PEEKChain {
                 .fluidInputs(Acetylene.getFluid(1000))
                 .fluidInputs(Steam.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(4000))
-                .fluidOutputs(CarbonMonoxde.getFluid(1000))
-                .outputs(CoAcABCatalyst.getItemStack())
+                .fluidOutputs(CarbonMonoxide.getFluid(1000))
+                .output(dust, CoAcABCatalyst)
                 .EUt(500000)
                 .duration(10)
                 .buildAndRegister();
@@ -56,8 +55,8 @@ public class PEEKChain {
         // NaNO3(H2O) -> NaNO2 + H2O + O
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(SodiumNitrateSolution.getFluid(1000))
-                .notConsumable(CoAcABCatalyst.getItemStack())
-                .outputs(SodiumNitrite.getItemStack(4))
+                .notConsumable(dust, CoAcABCatalyst)
+                .output(dust, SodiumNitrite, 4)
                 .fluidOutputs(Oxygen.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .EUt(30)
@@ -69,7 +68,7 @@ public class PEEKChain {
                 .fluidInputs(FluoroBoricAcid.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Aniline.getFluid(1000))
-                .inputs(SodiumNitrite.getItemStack(4))
+                .input(dust, SodiumNitrite, 4)
                 .output(dust, Salt, 2)
                 .fluidOutputs(BenzenediazoniumTetrafluoroborate.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
@@ -94,18 +93,9 @@ public class PEEKChain {
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .fluidOutputs(Fluorotoluene.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(4000))
-                .outputs(AntimonyTrifluoride.getItemStack(4))
+                .output(dust, AntimonyTrifluoride, 4)
                 .EUt(480)
                 .duration(150)
-                .buildAndRegister();
-
-        // SbF3 -> Sb + 3F
-        ELECTROLYZER_RECIPES.recipeBuilder()
-                .inputs(AntimonyTrifluoride.getItemStack(4))
-                .output(dust, Antimony)
-                .fluidOutputs(Fluorine.getFluid(3000))
-                .EUt(120)
-                .duration(160)
                 .buildAndRegister();
 
         // Zn + Fe + Al + Cl -> ZnFeAlCl
@@ -114,7 +104,7 @@ public class PEEKChain {
                 .input(dust, Iron)
                 .input(dust, Aluminium)
                 .fluidInputs(Chlorine.getFluid(1000))
-                .outputs(ZnFeAlClCatalyst.getItemStack(4))
+                .output(dust, ZnFeAlClCatalyst, 4)
                 .EUt(15360)
                 .duration(250)
                 .buildAndRegister();
@@ -125,8 +115,8 @@ public class PEEKChain {
                 .fluidInputs(Chlorine.getFluid(6000))
                 .fluidInputs(Fluorotoluene.getFluid(1000))
                 .fluidInputs(FluoroBenzene.getFluid(1000))
-                .notConsumable(ZnFeAlClCatalyst.getItemStack())
-                .outputs(Difluorobenzophenone.getItemStack(24))
+                .notConsumable(dust, ZnFeAlClCatalyst)
+                .output(dust, Difluorobenzophenone, 24)
                 .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .EUt(1920)
                 .duration(100)
@@ -136,7 +126,7 @@ public class PEEKChain {
         // Not perfectly balanced, but is probably fine
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Hydroquinone.getFluid(1000))
-                .inputs(Difluorobenzophenone.getItemStack(24))
+                .input(dust, Difluorobenzophenone, 24)
                 .input(dust, SodaAsh, 6)
                 .fluidOutputs(Polyetheretherketone.getFluid(2592))
                 .fluidOutputs(Water.getFluid(1000))

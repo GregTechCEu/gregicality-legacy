@@ -6,7 +6,6 @@ import gregtech.common.items.MetaItems;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
-import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -161,7 +160,7 @@ public class PlatinumSludgeGroupChain {
                 .input(dust, PotassiumDisulfate, 11)
                 .fluidInputs(Oxygen.getFluid(1000))
                 .output(dust, LeachResidue, 4)
-                .outputs(PotassiumSulfate.getItemStack(7))
+                .output(dust, PotassiumSulfate, 7)
                 .fluidOutputs(RhodiumSulfate.getFluid(1000))
                 .blastFurnaceTemp(775)
                 .EUt(120)
@@ -177,7 +176,7 @@ public class PlatinumSludgeGroupChain {
                 .fluidInputs(Oxygen.getFluid(3000))
                 .output(dust, RarestMetalResidue, 6)
                 .output(dust, SodiumRuthenate, 21)
-                .fluidOutputs(CarbonMonoxde.getFluid(3000))
+                .fluidOutputs(CarbonMonoxide.getFluid(3000))
                 .blastFurnaceTemp(775)
                 .EUt(120)
                 .duration(200)

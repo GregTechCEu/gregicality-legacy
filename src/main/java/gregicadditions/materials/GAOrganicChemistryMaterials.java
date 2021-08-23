@@ -1032,7 +1032,12 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("NH2CH2COOH", true);
 
-        // Free ID 6633
+        Cellulose = new Material.Builder(6633, "cellulose")
+                .dust()
+                .color(0xFEFEFC)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 6, Hydrogen, 10, Oxygen, 5)
+                .build();
 
         // Free ID 6634
 

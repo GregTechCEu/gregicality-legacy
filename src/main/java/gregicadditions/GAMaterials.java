@@ -517,6 +517,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material HydroiodicAcid;
     public static Material LiquidOxygen;
     public static Material LiquidHydrogen;
+    public static Material Chromium3Oxide;
+    public static Material NaquadriaDifluoride;
 
 
     // Second Degree Materials
@@ -1042,6 +1044,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material ChlorodiisopropylPhosphine;
     public static Material IridiumCyclooctadienylChlorideDimer;
     public static Material AluminiumComplex;
+    public static Material Cellulose;
 
     // Unknown Composition Materials
     public static Material Kerosene;

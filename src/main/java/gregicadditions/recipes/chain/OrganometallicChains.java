@@ -13,7 +13,7 @@ public class OrganometallicChains{
 
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(8000) //2CH4O -> CH3OCH3 + H2O
                 .fluidInputs(Methanol.getFluid(2000))
-                .notConsumable(Alumina.getItemStack(1))
+                .notConsumable(dust, Alumina)
                 .notConsumable(dust, SiliconDioxide)
                 .fluidOutputs(Dimethylether.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
@@ -36,22 +36,22 @@ public class OrganometallicChains{
         BLAST_RECIPES.recipeBuilder().duration(1800).EUt(120) //2H + 2CfO2 -> Cf2O3 + H2O
                 .blastFurnaceTemp(2500)
                 .fluidInputs(Hydrogen.getFluid(2000))
-                .inputs(Californium.getItemStack(GAEnums.GAOrePrefix.dioxide, 6))
-                .outputs(CaliforniumTrioxide.getItemStack(5))
+                .input(Californium, GAEnums.GAOrePrefix.dioxide, 6) //todo nuclear rework
+                .output(dust, CaliforniumTrioxide, 5)
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(2000) //6HCl + Cf2O3 -> 2CfCl3 + 3H2O
                 .fluidInputs(HydrochloricAcid.getFluid(6000))
-                .inputs(CaliforniumTrioxide.getItemStack(5))
-                .outputs(CaliforniumTrichloride.getItemStack(8))
+                .input(dust, CaliforniumTrioxide, 5)
+                .output(dust, CaliforniumTrichloride, 8)
                 .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(200000) //3LiC5H5 + CfCl3 -> CfC15H15 + 3LiCf
                 .fluidInputs(LithiumCyclopentadienide.getFluid(3000))
-                .inputs(CaliforniumTrichloride.getItemStack(4))
-                .outputs(LithiumChloride.getItemStack(6))
+                .input(dust, CaliforniumTrichloride, 4)
+                .output(dust, LithiumChloride, 6)
                 .fluidOutputs(CaliforniumCyclopentadienide.getFluid(1000))
                 .buildAndRegister();
 
