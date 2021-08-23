@@ -1,23 +1,23 @@
 metaitem.board.kapton.name=卡普頓電路板
 metaitem.board.kapton.tooltip=杜邦™ 派拉克斯® TK 複合膜
-metaitem.board_circuit.kapton.name=瘋狂的電路板
-metaitem.board_circuit.kapton.tooltip=雙聚合物！
+metaitem.circuit_board.kapton.name=瘋狂的電路板
+metaitem.circuit_board.kapton.tooltip=雙聚合物！
 metaitem.boule.rutherfordium.name=鑪摻雜的單晶硅
 metaitem.boule.dubnium.name=钅杜摻雜的單晶硅
 metaitem.plate.field.shape.name=板狀形態力場
 metaitem.wafer.aram.name=ARAM晶圓
 metaitem.plate.aram.name=ARAM
-metaitem.uhpic.wafer.name=UHPIC晶圓
-metaitem.uhasoc.wafer.name=UHASoC晶圓
-metaitem.hasoc.wafer.name=HASoC晶圓
-metaitem.optical_soc_wafer.name=光學SoC晶圓
-metaitem.uhpic.name=UHPIC
-metaitem.uhasoc.name=UHASoC
-metaitem.hasoc.name=HASoC
+metaitem.wafer.uhpic.name=UHPIC晶圓
+metaitem.wafer.uhasoc.name=UHASoC晶圓
+metaitem.wafer.hasoc.name=HASoC晶圓
+metaitem.wafer.optical_soc.name=光學SoC晶圓
+metaitem.plate.uhpic.name=UHPIC
+metaitem.plate.uhasoc.name=UHASoC
+metaitem.plate.hasoc.name=HASoC
 metaitem.optical_soc.name=光學SoC
-metaitem.optical_processing_core.name=光學CPU
-metaitem.cosmic_processing_unit_core.name=寰宇處理器單元
-metaitem.cosmic_processing_core.name=寰宇CPU
+metaitem.optical.processing.core.name=光學CPU
+metaitem.cosmic.processing.unit.core.name=寰宇處理器單元
+metaitem.cosmic.processing.core.name=寰宇CPU
 
 metaitem.potassium_cyanide.name=氰化鉀
 metaitem.succinic_acid.name=琥珀酸
@@ -114,16 +114,16 @@ metaitem.eschericia.culture.name=大腸桿菌培養皿
 metaitem.streptococcus.culture.name=釀膿鏈球菌培養皿
 metaitem.cupriavidus.culture.name=鉤蟲貪銅菌培養皿
 metaitem.shewanella.culture.name=希瓦氏菌培養皿
-metaitem.ndyag_boule.name=摻釹的釔鋁石榴石晶體
-metaitem.prhoylf_boule.name=摻鐠鈥的氟化鋰釔晶體
-metaitem.lutmyvo_boule.name=摻镥銩的釩酸釔晶體
+metaitem.boule.ndyag.name=摻釹的釔鋁石榴石晶體
+metaitem.boule.prhoylf.name=摻鐠鈥的氟化鋰釔晶體
+metaitem.boule.lutmyvo.name=摻镥銩的釩酸釔晶體
 metaitem.ndyag_rod.name=摻釹的釔鋁石榴石棒
 metaitem.prhoylf_rod.name=摻鐠鈥的氟化鋰釔棒
 metaitem.lutmyvo_rod.name=摻镥銩的釩酸釔棒
 metaitem.low_frequency_laser.name=低頻激光器
 metaitem.medium_frequency_laser.name=中頻激光器
 metaitem.high_frequency_laser.name=高頻激光器
-metaitem.periodically_poled_lithium_niobate_boule.name=周期性極化鈮酸鋰晶體
+metaitem.boule.lithium_niobate.name=周期性極化鈮酸鋰晶體
 metaitem.highly_reflective_mirror.name=高反射率鏡
 metaitem.non_linear_optical_lens.name=非線性光學透鏡
 metaitem.rotating_transparent_surface.name=旋轉透明層
@@ -136,10 +136,10 @@ metaitem.scintillator_crystal.name=閃爍晶體
 metaitem.scintillator.name=閃爍體
 metaitem.lepton_trap_crystal.name=輕子阱晶體
 metaitem.hassium_seed_crystal.name=钅黑摻雜的晶種
-metaitem.hassium_boule.name=钅黑摻雜的單晶硅
-metaitem.hassium_wafer.name=钅黑摻雜的晶圓
-metaitem.coated_hassium_wafer.name=光刻膠涂覆的钅黑摻雜的晶圓
-metaitem.photocoated_hassium_wafer.name=光聚合物涂覆的钅黑摻雜的晶圓
+metaitem.boule.hassium.name=钅黑摻雜的單晶硅
+metaitem.wafer.hassium.name=钅黑摻雜的晶圓
+metaitem.wafer.coated_hassium.name=光刻膠涂覆的钅黑摻雜的晶圓
+metaitem.wafer.photocoated_hassium.name=光聚合物涂覆的钅黑摻雜的晶圓
 metaitem.grating_lithography_mask.name=光柵光刻掩膜
 metaitem.diffractor_grating_mirror.name=衍射光柵鏡
 metaitem.ultrashort_pulse_laser.name=超短脈沖激光器
@@ -176,43 +176,18 @@ metaitem.large_turbine_rotor.name=%s大型渦輪
 metaitem.huge_turbine_rotor.name=%s巨型渦輪
 metaitem.insulating_tape.name=絕緣膠帶
 
-metaitem.component.smd.capacitor.nano.name=納米貼片電容
-metaitem.component.smd.capacitor.wetware.name=濕件貼片電容
-metaitem.component.smd.capacitor.quantum.name=量子貼片電容
-metaitem.component.smd.capacitor.crystal.name=晶體貼片電容
-metaitem.component.smd.capacitor.refined.name=精制貼片電容
 metaitem.component.smd.capacitor.bioware.name=生物活性貼片電容
-metaitem.smd_capacitor_optical.name=光學貼片電容
-metaitem.smd_capacitor_cosmic.name=寰宇貼片電容
-metaitem.component.smd.resistor.nano.name=納米貼片電阻
-metaitem.component.smd.resistor.wetware.name=濕件貼片電阻
-metaitem.component.smd.resistor.quantum.name=量子貼片電阻
-metaitem.component.smd.resistor.crystal.name=晶體貼片電阻
-metaitem.component.smd.resistor.refined.name=精制貼片電阻
+metaitem.component.smd.capacitor.optical.name=光學貼片電容
+metaitem.component.smd.capacitor.cosmic.name=寰宇貼片電容
 metaitem.component.smd.resistor.bioware.name=生物活性貼片電阻
-metaitem.smd_resistor_optical.name=光學貼片電阻
-metaitem.smd_resistor_cosmic.name=寰宇貼片電阻
-metaitem.component.smd.diode.nano.name=納米貼片二極管
-metaitem.component.smd.diode.wetware.name=濕件貼片二極管
-metaitem.component.smd.diode.quantum.name=量子貼片二極管
-metaitem.component.smd.diode.crystal.name=晶體貼片二極管
-metaitem.component.smd.diode.refined.name=精制貼片二極管
+metaitem.component.smd.resistor.optical.name=光學貼片電阻
+metaitem.component.smd.resistor.cosmic.name=寰宇貼片電阻
 metaitem.component.smd.diode.bioware.name=生物活性貼片二極管
-metaitem.smd_diode_optical.name=光學貼片二極管
-metaitem.smd_diode_cosmic.name=寰宇貼片二極管
-metaitem.component.smd.transistor.nano.name=納米貼片晶體管
-metaitem.component.smd.transistor.wetware.name=濕件貼片晶體管
-metaitem.component.smd.transistor.quantum.name=量子貼片晶體管
-metaitem.component.smd.transistor.crystal.name=晶體貼片晶體管
-metaitem.component.smd.transistor.refined.name=精制貼片晶體管
+metaitem.component.smd.diode.optical.name=光學貼片二極管
+metaitem.component.smd.diode.cosmic.name=寰宇貼片二極管
 metaitem.component.smd.transistor.bioware.name=生物活性貼片晶體管
-metaitem.smd_transistor_optical.name=光學貼片晶體管
-metaitem.smd_transistor_cosmic.name=寰宇貼片晶體管
-
-metaitem.component.smd.diode.name=微型貼片二極管
-metaitem.component.smd.capacitor.name=微型貼片電容
-metaitem.component.smd.transistor.name=微型貼片晶體管
-metaitem.component.smd.resistor.name=微型貼片電阻
+metaitem.component.smd.transistor.optical.name=光學貼片晶體管
+metaitem.component.smd.transistor.cosmic.name=寰宇貼片晶體管
 
 metaitem.freedom_wrench.name=自由扳手
 metaitem.freedom_wrench.mode.0=模式: 投影預覽
@@ -683,9 +658,6 @@ metaitem.cover.digital.mode.energy.disabled=能量模式 - §c關閉
 metaitem.cover.digital.mode.machine.disabled=機器模式 - §c關閉
 metaitem.cover.digital.mode.proxy.disabled=代理模式 - §c關閉
 
-#universal.cover.mode.enabled=§a開啟
-#universal.cover.mode.disabled=§c關閉
-
 metaitem.cover.digital.title.mode=模式：
 metaitem.cover.digital.title.spin=轉向：
 monitor.gui.title.back=返回
@@ -697,148 +669,46 @@ monitor.gui.title.config=配置
 
 #/////////////////////CIRCUIT///////////////////////////
 
-#//LV
-metaitem.circuit.basic.name=原始處理器
-metaitem.circuit.basic.tooltip=§b§oLV級電路
-metaitem.circuit.processor.refined.name=精制處理器
-metaitem.circuit.processor.refined.tooltip=§b§oLV級電路
-metaitem.circuit.basic_electronic.name=電子處理器
-metaitem.circuit.basic_electronic.tooltip=§b§oLV級電路
-
-#//MV
-metaitem.circuit.assembly.primitive.name=原始處理器集群
-metaitem.circuit.assembly.primitive.tooltip=§b§oMV級電路
-metaitem.circuit.assembly.electronic.name=電子處理器集群
-metaitem.circuit.assembly.electronic.tooltip=§b§oMV級電路
-metaitem.circuit.assembly.refined.name=精制處理器集群
-metaitem.circuit.assembly.refined.tooltip=§b§oMV級電路
-metaitem.circuit.processor.micro.name=微型處理器
-metaitem.circuit.processor.micro.tooltip=§b§oMV級電路
-
-#//HV
-metaitem.circuit.computer.electronic.name=電子處理器電腦
-metaitem.circuit.computer.electronic.tooltip=§b§oHV級電路
-metaitem.circuit.computer.refined.name=精制處理器電腦
-metaitem.circuit.computer.refined.tooltip=§b§oHV級電路
-metaitem.circuit.processor_assembly.name=微型處理器集群
-metaitem.circuit.processor_assembly.tooltip=§b§oHV級電路
-metaitem.circuit.nano_processor.name=納米處理器
-metaitem.circuit.nano_processor.tooltip=§b§oHV級電路
-
-
-#//EV
-metaitem.circuit.mainframe.refined.name=精制處理器主機
-metaitem.circuit.mainframe.refined.tooltip=§b§oEV級電路
-metaitem.circuit.computer.micro.name=微型處理器電腦
-metaitem.circuit.computer.micro.tooltip=§b§oEV級電路
-metaitem.circuit.nano_processor_assembly.name=納米處理器集群
-metaitem.circuit.nano_processor_assembly.tooltip=§b§oEV級電路
-metaitem.circuit.quantum_processor.name=量子處理器
-metaitem.circuit.quantum_processor.tooltip=§b§oEV級電路
-
-#//IV
-metaitem.circuit.mainframe.micro.name=微型處理器主機
-metaitem.circuit.mainframe.micro.tooltip=§b§oIV級電路
-metaitem.circuit.computer.nano.name=納米處理器電腦
-metaitem.circuit.computer.nano.tooltip=§b§oIV級電路
-metaitem.circuit.assembly.quantum.name=量子處理器集群
-metaitem.circuit.assembly.quantum.tooltip=§b§oIV級電路
-metaitem.circuit.processor.crystal.name=晶體處理器
-metaitem.circuit.processor.crystal.tooltip=§b§oIV級電路
-
-#//Luv
-metaitem.circuit.mainframe.nano.name=納米處理器主機
-metaitem.circuit.mainframe.nano.tooltip=§b§oLuV級電路
-metaitem.circuit.computer.quantum.name=量子處理器電腦
-metaitem.circuit.computer.quantum.tooltip=§b§oLuV級電路
-metaitem.circuit.energy_flow.name=晶體處理器集群
-metaitem.circuit.energy_flow.tooltip=§b§oLuV級電路
-metaitem.circuit.wetware_processor.name=濕件處理器
-metaitem.circuit.wetware_processor.tooltip=§b§oLuV級電路
-
-#//ZPM
-metaitem.circuit.mainframe.quantum.name=量子處理器主機
-metaitem.circuit.mainframe.quantum.tooltip=§b§oZPM級電路
-metaitem.circuit.computer.crystal.name=晶體處理器電腦
-metaitem.circuit.computer.crystal.tooltip=§b§oZPM級電路
-metaitem.circuit.wetware_assembly.name=濕件處理器集群
-metaitem.circuit.wetware_assembly.tooltip=§b§oZPM級電路
-
-#//UV
-metaitem.circuit.mainframe.crystal.name=晶體處理器主機
-metaitem.circuit.mainframe.crystal.tooltip=§b§oUV級電路
-metaitem.circuit.wetware_super_computer.name=濕件處理器電腦
-metaitem.circuit.wetware_super_computer.tooltip=§b§oUV級電路
-
-#//MAX
-metaitem.circuit.wetware_mainframe.name=濕件處理器主機
-metaitem.circuit.wetware_mainframe.tooltip=§b§oUHV級電路
-
-
-#//magneto resonatic
-metaitem.circuit.resonatic.ulv.name=超低壓磁共振電路
-metaitem.circuit.resonatic.ulv.tooltip=§b§oULV級電路
-metaitem.circuit.resonatic.lv.name=低壓磁共振電路
-metaitem.circuit.resonatic.lv.tooltip=§b§oLV級電路
-metaitem.circuit.resonatic.mv.name=中壓磁共振電路
-metaitem.circuit.resonatic.mv.tooltip=§b§oMV級電路
-metaitem.circuit.resonatic.hv.name=高壓磁共振電路
-metaitem.circuit.resonatic.hv.tooltip=§b§oHV級電路
-metaitem.circuit.resonatic.ev.name=超高壓磁共振電路
-metaitem.circuit.resonatic.ev.tooltip=§b§oEV級電路
-metaitem.circuit.resonatic.iv.name=強導壓磁共振電路
-metaitem.circuit.resonatic.iv.tooltip=§b§oIV級電路
-metaitem.circuit.resonatic.luv.name=劇差壓磁共振電路
-metaitem.circuit.resonatic.luv.tooltip=§b§oLuV級電路
-metaitem.circuit.resonatic.zpm.name=零點壓磁共振電路
-metaitem.circuit.resonatic.zpm.tooltip=§b§oZPM級電路
-metaitem.circuit.resonatic.uv.name=極限壓磁共振電路
-metaitem.circuit.resonatic.uv.tooltip=§b§oUV級電路
-metaitem.circuit.resonatic.uhv.name=高極限壓磁共振電路
-metaitem.circuit.resonatic.uhv.tooltip=§b§oUHV級電路
-metaitem.circuit.resonatic.uev.name=超極限壓磁共振電路
-metaitem.circuit.resonatic.uev.tooltip=§b§oUEV級電路
-
 #bioware
-metaitem.circuit.processor.bioware.name=生物活性處理器
-metaitem.circuit.processor.bioware.tooltip=§b§oZPM級電路
-metaitem.circuit.assembly.bioware.name=生物活性處理器集群
-metaitem.circuit.assembly.bioware.tooltip=§b§oUV級電路
-metaitem.circuit.computer.bioware.name=生物活性處理器電腦
-metaitem.circuit.computer.bioware.tooltip=§b§oUHV級電路
-metaitem.circuit.mainframe.bioware.name=生物活性處理器主機
-metaitem.circuit.mainframe.bioware.tooltip=§b§oUEV級電路
+metaitem.circuit.bioware_processor.name=生物活性處理器
+metaitem.circuit.bioware_processor.tooltip=§b§oZPM級電路
+metaitem.circuit.bioware_assembly.name=生物活性處理器集群
+metaitem.circuit.bioware_assembly.tooltip=§b§oUV級電路
+metaitem.circuit.bioware_computer.name=生物活性處理器電腦
+metaitem.circuit.bioware_computer.tooltip=§b§oUHV級電路
+metaitem.circuit.bioware_mainframe.name=生物活性處理器主機
+metaitem.circuit.bioware_mainframe.tooltip=§b§oUEV級電路
 
 #optical
-metaitem.circuit.processor.optical.name=光學處理器
-metaitem.circuit.processor.optical.tooltip=§b§oUV級電路
-metaitem.circuit.assembly.optical.name=光學處理器集群
-metaitem.circuit.assembly.optical.tooltip=§b§oUHV級電路
-metaitem.circuit.computer.optical.name=光學處理器電腦
-metaitem.circuit.computer.optical.tooltip=§b§oUEV級電路
-metaitem.circuit.mainframe.optical.name=光學處理器主機
-metaitem.circuit.mainframe.optical.tooltip=§b§oUIV級電路
+metaitem.circuit.optical_processor.name=光學處理器
+metaitem.circuit.optical_processor.tooltip=§b§oUV級電路
+metaitem.circuit.optical_assembly.name=光學處理器集群
+metaitem.circuit.optical_assembly.tooltip=§b§oUHV級電路
+metaitem.circuit.optical_computer.name=光學處理器電腦
+metaitem.circuit.optical_computer.tooltip=§b§oUEV級電路
+metaitem.circuit.optical_mainframe.name=光學處理器主機
+metaitem.circuit.optical_mainframe.tooltip=§b§oUIV級電路
 
 #Exotic
-metaitem.circuit.processor.exotic.name=異域處理器
-metaitem.circuit.processor.exotic.tooltip=§b§oUHV級電路
-metaitem.circuit.assembly.exotic.name=異域處理器集群
-metaitem.circuit.assembly.exotic.tooltip=§b§oUEV級電路
-metaitem.circuit.computer.exotic.name=異域處理器電腦
-metaitem.circuit.computer.exotic.tooltip=§b§oUIV級電路
-metaitem.circuit.mainframe.exotic.name=異域處理器主機
-metaitem.circuit.mainframe.exotic.tooltip=§b§oUMV級電路
+metaitem.circuit.exotic_processor.name=異域處理器
+metaitem.circuit.exotic_processor.tooltip=§b§oUHV級電路
+metaitem.circuit.exotic_assembly.name=異域處理器集群
+metaitem.circuit.exotic_assembly.tooltip=§b§oUEV級電路
+metaitem.circuit.exotic_computer.name=異域處理器電腦
+metaitem.circuit.exotic_computer.tooltip=§b§oUIV級電路
+metaitem.circuit.exotic_mainframe.name=異域處理器主機
+metaitem.circuit.exotic_mainframe.tooltip=§b§oUMV級電路
 
 
 ##cosmic
-metaitem.circuit.processor.cosmic.name=寰宇處理器
-metaitem.circuit.processor.cosmic.tooltip=§b§oUHV級電路
-metaitem.circuit.assembly.cosmic.name=寰宇處理器集群
-metaitem.circuit.assembly.cosmic.tooltip=§b§oUEV級電路
-metaitem.circuit.computer.cosmic.name=寰宇處理器電腦
-metaitem.circuit.computer.cosmic.tooltip=§b§oUIV級電路
-metaitem.circuit.mainframe.cosmic.name=寰宇處理器主機
-metaitem.circuit.mainframe.cosmic.tooltip=§b§oUMV級電路
+metaitem.circuit.cosmic_processor.name=寰宇處理器
+metaitem.circuit.cosmic_processor.tooltip=§b§oUHV級電路
+metaitem.circuit.cosmic_assembly.name=寰宇處理器集群
+metaitem.circuit.cosmic_assembly.tooltip=§b§oUEV級電路
+metaitem.circuit.cosmic_computer.name=寰宇處理器電腦
+metaitem.circuit.cosmic_computer.tooltip=§b§oUIV級電路
+metaitem.circuit.cosmic_mainframe.name=寰宇處理器主機
+metaitem.circuit.cosmic_mainframe.tooltip=§b§oUMV級電路
 
 
 ####################################################################
@@ -2642,19 +2512,19 @@ metaitem.contained.exotic.matter.name=遏制奇異物質
 metaitem.separation.electromagnet.name=分離用電磁鐵
 metaitem.sphere.field.shape.name=球狀形態力場
 
-metaitem.smd.capacitor.supracausal.name=超因果貼片電容
-metaitem.smd.resistor.supracausal.name=超因果貼片電阻
-metaitem.smd.diode.supracausal.name=超因果貼片二極管
-metaitem.smd.transistor.supracausal.name=超因果貼片電阻
+metaitem.component.smd.capacitor.supracausal.name=超因果貼片電容
+metaitem.component.smd.resistor.supracausal.name=超因果貼片電阻
+metaitem.component.smd.diode.supracausal.name=超因果貼片二極管
+metaitem.component.smd.transistor.supracausal.name=超因果貼片電阻
 
-metaitem.circuit.processor.supracausal.name=超因果處理器
-metaitem.circuit.processor.supracausal.tooltip=§b§oUIV級電路
-metaitem.circuit.assembly.supracausal.name=超因果處理器集群
-metaitem.circuit.assembly.supracausal.tooltip=§b§oUMV級電路
-metaitem.circuit.computer.supracausal.name=超因果處理器電腦
-metaitem.circuit.computer.supracausal.tooltip=§b§oUXV級電路
-metaitem.circuit.mainframe.supracausal.name=超因果處理器主機
-metaitem.circuit.mainframe.supracausal.tooltip=§b§oMAX級電路
+metaitem.circuit.supracausal_processor.name=超因果處理器
+metaitem.circuit.supracausal_processor.tooltip=§b§oUIV級電路
+metaitem.circuit.supracausal_assembly.name=超因果處理器集群
+metaitem.circuit.supracausal_assembly.tooltip=§b§oUMV級電路
+metaitem.circuit.supracausal_computer.name=超因果處理器電腦
+metaitem.circuit.supracausal_computer.tooltip=§b§oUXV級電路
+metaitem.circuit.supracausal_mainframe.name=超因果處理器主機
+metaitem.circuit.supracausal_mainframe.tooltip=§b§oMAX級電路
 
 metaitem.topological.manipulator.unit.name=拓撲控制操縱單元
 metaitem.relativistic.spinorial.memory.system.name=相對論旋量存儲器
@@ -2685,9 +2555,9 @@ metaitem.fullerene.polymer.matrix.fine.tubing.name=富勒烯聚合物基質細�
 metaitem.xray.waveguide.name=X 射線波導
 metaitem.microfocus.xray.tube.name=微焦點 X 射線管
 metaitem.xray.mirror.plate.name=X射線鏡板
-metaitem.untreated.exotic.wafer.name=未經處理的外來晶圓
-metaitem.exotic.wafer.name=異域晶圓
-metaitem.exotic.chip.name=異域晶片
+metaitem.wafer.untreated.exotic.name=未經處理的外來晶圓
+metaitem.wafer.exotic.name=異域晶圓
+metaitem.plate.exotic_chip.name=異域晶片
 metaitem.excitation.maintainer.name=激磁維持器
 metaitem.cryogenic.interface.name=低溫接口
 metaitem.rydberg.spinorial.assembly.name=里德伯格脊柱組件

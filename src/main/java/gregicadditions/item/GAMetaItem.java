@@ -90,34 +90,34 @@ public class GAMetaItem extends StandardMetaItem {
         /////////////////////////////////////
 
         // T8: Bioware
-        BIOWARE_PROCESSOR = addItem(50, "circuit.processor.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
-        BIOWARE_ASSEMBLY = addItem(51, "circuit.assembly.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
-        BIOWARE_COMPUTER = addItem(52, "circuit.computer.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        BIOWARE_MAINFRAME = addItem(53, "circuit.mainframe.bioware").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
+        BIOWARE_PROCESSOR = addItem(50, "circuit.bioware_processor").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultimate);
+        BIOWARE_ASSEMBLY = addItem(51, "circuit.bioware_assembly").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+        BIOWARE_COMPUTER = addItem(52, "circuit.bioware_computer").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        BIOWARE_MAINFRAME = addItem(53, "circuit.bioware_mainframe").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
 
         // T9: Optical
-        OPTICAL_PROCESSOR = addItem(54,"circuit.processor.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
-        OPTICAL_ASSEMBLY = addItem(55,"circuit.assembly.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        OPTICAL_COMPUTER = addItem(56,"circuit.computer.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
-        OPTICAL_MAINFRAME = addItem(57,"circuit.mainframe.optical").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
+        OPTICAL_PROCESSOR = addItem(54,"circuit.optical_processor").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Superconductor);
+        OPTICAL_ASSEMBLY = addItem(55,"circuit.optical_assembly").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        OPTICAL_COMPUTER = addItem(56,"circuit.optical_computer").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
+        OPTICAL_MAINFRAME = addItem(57,"circuit.optical_mainframe").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
 
         // T10: Exotic
-        EXOTIC_PROCESSOR = addItem(58, "circuit.processor.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
-        EXOTIC_ASSEMBLY = addItem(59, "circuit.assembly.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
-        EXOTIC_COMPUTER = addItem(60, "circuit.computer.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
-        EXOTIC_MAINFRAME = addItem(61, "circuit.mainframe.exotic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
+        EXOTIC_PROCESSOR = addItem(58, "circuit.exotic_processor").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Infinite);
+        EXOTIC_ASSEMBLY = addItem(59, "circuit.exotic_assembly").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
+        EXOTIC_COMPUTER = addItem(60, "circuit.exotic_computer").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
+        EXOTIC_MAINFRAME = addItem(61, "circuit.exotic_mainframe").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
 
         // T11: Cosmic
-        COSMIC_PROCESSOR = addItem(62, "circuit.processor.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
-        COSMIC_ASSEMBLY = addItem(63, "circuit.assembly.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
-        COSMIC_COMPUTER = addItem(64, "circuit.computer.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
-        COSMIC_MAINFRAME = addItem(65, "circuit.mainframe.cosmic").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXVCircuit);
+        COSMIC_PROCESSOR = addItem(62, "circuit.cosmic_processor").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Ultra);
+        COSMIC_ASSEMBLY = addItem(63, "circuit.cosmic_assembly").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
+        COSMIC_COMPUTER = addItem(64, "circuit.cosmic_computer").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
+        COSMIC_MAINFRAME = addItem(65, "circuit.cosmic_mainframe").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXVCircuit);
 
         // T12: Supracausal
-        SUPRACAUSAL_PROCESSOR = addItem(66, "circuit.processor.supracausal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
-        SUPRACAUSAL_ASSEMBLY = addItem(67, "circuit.assembly.supracausal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
-        SUPRACAUSAL_COMPUTER = addItem(68, "circuit.computer.supracausal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXVCircuit);
-        SUPRACAUSAL_MAINFRAME = addItem(69, "circuit.mainframe.supracausal").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Maximum);
+        SUPRACAUSAL_PROCESSOR = addItem(66, "circuit.supracausal_processor").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Insane);
+        SUPRACAUSAL_ASSEMBLY = addItem(67, "circuit.supracausal_assembly").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UMVCircuit);
+        SUPRACAUSAL_COMPUTER = addItem(68, "circuit.supracausal_computer").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXVCircuit);
+        SUPRACAUSAL_MAINFRAME = addItem(69, "circuit.supracausal_mainframe").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.Maximum);
 
         /////////////////////////////////////
         // Circuit Components: IDs 100-999 //
@@ -129,69 +129,69 @@ public class GAMetaItem extends StandardMetaItem {
         SMD_CAPACITOR_BIOWARE = addItem(102, "component.smd.capacitor.bioware");
         SMD_DIODE_BIOWARE = addItem(103, "component.smd.diode.bioware");
 
-        SMD_TRANSISTOR_OPTICAL = addItem(104,"smd_transistor_optical");
-        SMD_RESISTOR_OPTICAL = addItem(105,"smd_resistor_optical");
-        SMD_CAPACITOR_OPTICAL = addItem(106,"smd_capacitor_optical");
-        SMD_DIODE_OPTICAL = addItem(107,"smd_diode_optical");
+        SMD_TRANSISTOR_OPTICAL = addItem(104,"component.smd.transistor.optical");
+        SMD_RESISTOR_OPTICAL = addItem(105,"component.smd.resistor.optical");
+        SMD_CAPACITOR_OPTICAL = addItem(106,"component.smd.capacitor.optical");
+        SMD_DIODE_OPTICAL = addItem(107,"component.smd.diode.optical");
 
         SMD_TRANSISTOR_EXOTIC = addItem(108, "component.smd.transistor.exotic");
         SMD_RESISTOR_EXOTIC = addItem(109, "component.smd.resistor.exotic");
         SMD_CAPACITOR_EXOTIC = addItem(110, "component.smd.capacitor.exotic");
         SMD_DIODE_EXOTIC = addItem(111, "component.smd.diode.exotic");
 
-        SMD_TRANSISTOR_COSMIC = addItem(112,"smd_transistor_cosmic");
-        SMD_RESISTOR_COSMIC = addItem(113,"smd_resistor_cosmic");
-        SMD_CAPACITOR_COSMIC = addItem(114,"smd_capacitor_cosmic");
-        SMD_DIODE_COSMIC = addItem(115,"smd_diode_cosmic");
+        SMD_TRANSISTOR_COSMIC = addItem(112,"component.smd.transistor.cosmic");
+        SMD_RESISTOR_COSMIC = addItem(113,"component.smd.resistor.cosmic");
+        SMD_CAPACITOR_COSMIC = addItem(114,"component.smd.capacitor.cosmic");
+        SMD_DIODE_COSMIC = addItem(115,"component.smd.diode.cosmic");
 
-        SMD_TRANSISTOR_SUPRACAUSAL = addItem(116, "smd.transistor.supracausal");
-        SMD_RESISTOR_SUPRACAUSAL = addItem(117, "smd.resistor.supracausal");
-        SMD_CAPACITOR_SUPRACAUSAL = addItem(118, "smd.capacitor.supracausal");
-        SMD_DIODE_SUPRACAUSAL = addItem(119, "smd.diode.supracausal");
+        SMD_TRANSISTOR_SUPRACAUSAL = addItem(116, "component.smd.transistor.supracausal");
+        SMD_RESISTOR_SUPRACAUSAL = addItem(117, "component.smd.resistor.supracausal");
+        SMD_CAPACITOR_SUPRACAUSAL = addItem(118, "component.smd.capacitor.supracausal");
+        SMD_DIODE_SUPRACAUSAL = addItem(119, "component.smd.diode.supracausal");
 
         // Wafers and Boules: IDs 200-299
         BOULE_DUBNIUM = addItem(200, "boule.dubnium");
         BOULE_RUTHERFORDIUM = addItem(201, "boule.rutherfordium");
-        HASSIUM_BOULE = addItem(202,"hassium_boule");
-        NDYAG_BOULE = addItem(203,"ndyag_boule");
-        PRHOYLF_BOULE = addItem(204,"prhoylf_boule");
-        LUTMYVO_BOULE = addItem(205,"lutmyvo_boule");
-        PERIODICALLY_POLED_LITHIUM_NIOBATE_BOULE = addItem(206,"periodically_poled_lithium_niobate_boule");
+        HASSIUM_BOULE = addItem(202,"boule.hassium");
+        NDYAG_BOULE = addItem(203,"boule.ndyag");
+        PRHOYLF_BOULE = addItem(204,"boule.prhoylf");
+        LUTMYVO_BOULE = addItem(205,"boule.lutmyvo");
+        PERIODICALLY_POLED_LITHIUM_NIOBATE_BOULE = addItem(206,"boule.lithium_niobate");
 
         WAFER_DUBNIUM = addItem(220, "wafer.dubnium");
         WAFER_RUTHERFORDIUM = addItem(221, "wafer.rutherfordium");
-        HASSIUM_WAFER = addItem(222,"hassium_wafer");
-        COATED_HASSIUM_WAFER = addItem(223, "coated_hassium_wafer");
-        PHOTOCOATED_HASSIUM_WAFER = addItem(224,"photocoated_hassium_wafer");
+        HASSIUM_WAFER = addItem(222,"wafer.hassium");
+        COATED_HASSIUM_WAFER = addItem(223, "wafer.coated_hassium");
+        PHOTOCOATED_HASSIUM_WAFER = addItem(224,"wafer.photocoated_hassium");
         NDYAG_ROD = addItem(225,"ndyag_rod");
         PRHOYLF_ROD = addItem(226,"prhoylf_rod");
         LUTMYVO_ROD = addItem(227,"lutmyvo_rod");
         ARAM_WAFER = addItem(228, "wafer.aram");
-        HASOC_WAFER = addItem(229, "hasoc.wafer");
-        UHASOC_WAFER = addItem(230, "uhasoc.wafer");
-        UHPIC_WAFER = addItem(231, "uhpic.wafer");
-        OPTICAL_SOC_WAFER = addItem(232,"optical_soc_wafer");
-        UNTREATED_EXOTIC_WAFER = addItem(233, "untreated.exotic.wafer");
-        EXOTIC_WAFER = addItem(234, "exotic.wafer");
+        HASOC_WAFER = addItem(229, "wafer.hasoc");
+        UHASOC_WAFER = addItem(230, "wafer.uhasoc");
+        UHPIC_WAFER = addItem(231, "wafer.uhpic");
+        OPTICAL_SOC_WAFER = addItem(232,"wafer.optical_soc");
+        UNTREATED_EXOTIC_WAFER = addItem(233, "wafer.untreated.exotic");
+        EXOTIC_WAFER = addItem(234, "wafer.exotic");
 
         ARAM = addItem(260, "plate.aram");
-        HASOC = addItem(261, "hasoc");
-        UHASOC = addItem(262, "uhasoc");
-        UHPIC = addItem(263, "uhpic");
-        OPTICAL_SOC = addItem(264,"optical_soc");
-        EXOTIC_CHIP = addItem(265, "exotic.chip");
+        HASOC = addItem(261, "plate.hasoc");
+        UHASOC = addItem(262, "plate.uhasoc");
+        UHPIC = addItem(263, "plate.uhpic");
+        OPTICAL_SOC = addItem(264,"plate.optical_soc");
+        EXOTIC_CHIP = addItem(265, "plate.exotic_chip");
 
         // Circuit Boards: IDs 300-324
         KAPTON_BOARD = addItem(300, "board.kapton");
-        KAPTON_CIRCUIT_BOARD = addItem(301, "board_circuit.kapton");
+        KAPTON_CIRCUIT_BOARD = addItem(301, "circuit_board.kapton");
 
         // Circuit Cores: IDs 325-349
         NEURO_SUPPORT_UNIT = addItem(325, "neuro.support.unit");
         CYBER_PROCESSING_UNIT = addItem(326, "cyber.processing.unit");
-        OPTICAL_PROCESSING_CORE = addItem(327,"optical_processing_core");
+        OPTICAL_PROCESSING_CORE = addItem(327,"optical.processing.core");
         EXOTIC_PROCESSING_CORE = addItem(328, "exotic.processing.core");
-        COSMIC_PROCESSING_UNIT_CORE = addItem(329,"cosmic_processing_unit_core");
-        COSMIC_PROCESSING_CORE = addItem(330,"cosmic_processing_core");
+        COSMIC_PROCESSING_UNIT_CORE = addItem(329,"cosmic.processing.unit.core");
+        COSMIC_PROCESSING_CORE = addItem(330,"cosmic.processing.core");
         SUPRACAUSAL_PROCESSING_CORE = addItem(331, "supracausal.processing.core");
 
         // Wetware/Bioware Process Items: IDs 350-399

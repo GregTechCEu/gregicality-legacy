@@ -1,24 +1,24 @@
 
 metaitem.board.kapton.name=Kapton Circuit Board
 metaitem.board.kapton.tooltip=Dupont™ Pyralux® TK Laminate Film
-metaitem.board_circuit.kapton.name=Insane Circuit Board
-metaitem.board_circuit.kapton.tooltip=Dual Polymers!
+metaitem.circuit_board.kapton.name=Insane Circuit Board
+metaitem.circuit_board.kapton.tooltip=Dual Polymers!
 metaitem.boule.rutherfordium.name=Rutherfordium Boule
 metaitem.boule.dubnium.name=Dubnium Boule
 metaitem.plate.field.shape.name=Plate Field Shape
 metaitem.wafer.aram.name=ARAM Wafer
 metaitem.plate.aram.name=ARAM
-metaitem.uhpic.wafer.name=UHPIC Wafer
-metaitem.uhasoc.wafer.name=UHASoC Wafer
-metaitem.hasoc.wafer.name=HASoC Wafer
-metaitem.optical_soc_wafer.name=Optical SoC Wafer
-metaitem.uhpic.name=UHPIC
-metaitem.uhasoc.name=UHASoC
-metaitem.hasoc.name=HASoC
+metaitem.wafer.uhpic.name=UHPIC Wafer
+metaitem.wafer.uhasoc.name=UHASoC Wafer
+metaitem.wafer.hasoc.name=HASoC Wafer
+metaitem.wafer.optical_soc.name=Optical SoC Wafer
+metaitem.plate.uhpic.name=UHPIC
+metaitem.plate.uhasoc.name=UHASoC
+metaitem.plate.hasoc.name=HASoC
 metaitem.optical_soc.name=Optical SoC
-metaitem.optical_processing_core.name=Optical Processing Core
-metaitem.cosmic_processing_unit_core.name=Cosmic Processing Unit Core
-metaitem.cosmic_processing_core.name=Cosmic Processing Core
+metaitem.optical.processing.core.name=Optical Processing Core
+metaitem.cosmic.processing.unit.core.name=Cosmic Processing Unit Core
+metaitem.cosmic.processing.core.name=Cosmic Processing Core
 
 metaitem.potassium_cyanide.name=Potassium Cyanide
 metaitem.succinic_acid.name=Succinic Acid
@@ -116,16 +116,16 @@ metaitem.eschericia.culture.name=Eschericia Coli Culture
 metaitem.streptococcus.culture.name=Streptococcus Pyogenes Culture
 metaitem.cupriavidus.culture.name=Cupriavidus Necator Culture
 metaitem.shewanella.culture.name=Shewanella Culture
-metaitem.ndyag_boule.name=Nd:YAG Boule
-metaitem.prhoylf_boule.name=Pr/Ho:YLF Boule
-metaitem.lutmyvo_boule.name=Lu/Tm:YVO Boule
+metaitem.boule.ndyag.name=Nd:YAG Boule
+metaitem.boule.prhoylf.name=Pr/Ho:YLF Boule
+metaitem.boule.lutmyvo.name=Lu/Tm:YVO Boule
 metaitem.ndyag_rod.name=Nd:YAG Rod
 metaitem.prhoylf_rod.name=Pr/Ho:YLF Rod
 metaitem.lutmyvo_rod.name=Lu/Tm:YVO Rod
 metaitem.low_frequency_laser.name=Low Frequency Laser
 metaitem.medium_frequency_laser.name=Medium Frequency Laser
 metaitem.high_frequency_laser.name=High Frequency Laser
-metaitem.periodically_poled_lithium_niobate_boule.name=Periodically Poled Lithium Niobate Boule
+metaitem.boule.lithium_niobate.name=Periodically Poled Lithium Niobate Boule
 metaitem.highly_reflective_mirror.name=Highly Reflective Mirror
 metaitem.non_linear_optical_lens.name=Non-Linear Optical Lens
 metaitem.rotating_transparent_surface.name=Rotating Transparent Surface
@@ -138,10 +138,10 @@ metaitem.scintillator_crystal.name=Scintillator Crystal
 metaitem.scintillator.name=Scintillator
 metaitem.lepton_trap_crystal.name=Lepton Trap Crystal
 metaitem.hassium_seed_crystal.name=Hassium Seed Crystal
-metaitem.hassium_boule.name=Hassium Boule
-metaitem.hassium_wafer.name=Hassium Wafer
-metaitem.coated_hassium_wafer.name=Coated Hassium Wafer
-metaitem.photocoated_hassium_wafer.name=Photocoated Hassium Wafer
+metaitem.boule.hassium.name=Hassium Boule
+metaitem.wafer.hassium.name=Hassium Wafer
+metaitem.wafer.coated_hassium.name=Coated Hassium Wafer
+metaitem.wafer.photocoated_hassium.name=Photocoated Hassium Wafer
 metaitem.grating_lithography_mask.name=Grating Lithography Mask
 metaitem.diffractor_grating_mirror.name=Diffractor Grating Mirror
 metaitem.ultrashort_pulse_laser.name=Ultrashort Pulse Laser
@@ -178,43 +178,30 @@ metaitem.large_turbine_rotor.name=%s Large Turbine Rotor
 metaitem.huge_turbine_rotor.name=%s Huge Turbine Rotor
 metaitem.insulating_tape.name=BrainTech Aerospace Advanced Reinforced Duct Tape FAL-84
 
-metaitem.component.smd.capacitor.nano.name=Nano SMD Capacitor
-metaitem.component.smd.capacitor.wetware.name=Wetware SMD Capacitor
-metaitem.component.smd.capacitor.quantum.name=Quantum SMD Capacitor
-metaitem.component.smd.capacitor.crystal.name=Crystal SMD Capacitor
-metaitem.component.smd.capacitor.refined.name=Refined SMD Capacitor
-metaitem.component.smd.capacitor.bioware.name=Bioware SMD Capacitor
-metaitem.smd_capacitor_optical.name=Optical SMD Capacitor
-metaitem.smd_capacitor_cosmic.name=Cosmic SMD Capacitor
-metaitem.component.smd.resistor.nano.name=Nano SMD Resistor
-metaitem.component.smd.resistor.wetware.name=Wetware SMD Resistor
-metaitem.component.smd.resistor.quantum.name=Quantum SMD Resistor
-metaitem.component.smd.resistor.crystal.name=Crystal SMD Resistor
-metaitem.component.smd.resistor.refined.name=Refined SMD Resistor
-metaitem.component.smd.resistor.bioware.name=Bioware SMD Resistor
-metaitem.smd_resistor_optical.name=Optical SMD Resistor
-metaitem.smd_resistor_cosmic.name=Cosmic SMD Resistor
-metaitem.component.smd.diode.nano.name=Nano SMD Diode
-metaitem.component.smd.diode.wetware.name=Wetware SMD Diode
-metaitem.component.smd.diode.quantum.name=Quantum SMD Diode
-metaitem.component.smd.diode.crystal.name=Crystal SMD Diode
-metaitem.component.smd.diode.refined.name=Refined SMD Diode
-metaitem.component.smd.diode.bioware.name=Bioware SMD Diode
-metaitem.smd_diode_optical.name=Optical SMD Diode
-metaitem.smd_diode_cosmic.name=Cosmic SMD Diode
-metaitem.component.smd.transistor.nano.name=Nano SMD Transistor
-metaitem.component.smd.transistor.wetware.name=Wetware SMD Transistor
-metaitem.component.smd.transistor.quantum.name=Quantum SMD Transistor
-metaitem.component.smd.transistor.crystal.name=Crystal SMD Transistor
-metaitem.component.smd.transistor.refined.name=Refined SMD Transistor
 metaitem.component.smd.transistor.bioware.name=Bioware SMD Transistor
-metaitem.smd_transistor_optical.name=Optical SMD Transistor
-metaitem.smd_transistor_cosmic.name=Cosmic SMD Transistor
+metaitem.component.smd.resistor.bioware.name=Bioware SMD Resistor
+metaitem.component.smd.capacitor.bioware.name=Bioware SMD Capacitor
+metaitem.component.smd.diode.bioware.name=Bioware SMD Diode
 
-metaitem.component.smd.diode.name=Micro SMD Diode
-metaitem.component.smd.capacitor.name=Micro SMD Capacitor
-metaitem.component.smd.transistor.name=Micro SMD Transistor
-metaitem.component.smd.resistor.name=Micro SMD Resistor
+metaitem.component.smd.transistor.optical.name=Optical SMD Transistor
+metaitem.component.smd.resistor.optical.name=Optical SMD Resistor
+metaitem.component.smd.capacitor.optical.name=Optical SMD Capacitor
+metaitem.component.smd.diode.optical.name=Optical SMD Diode
+
+metaitem.component.smd.transistor.exotic.name=Exotic SMD Transistor
+metaitem.component.smd.resistor.exotic.name=Exotic SMD Resistor
+metaitem.component.smd.capacitor.exotic.name=Exotic SMD Capacitor
+metaitem.component.smd.diode.exotic.name=Exotic SMD Diode
+
+metaitem.component.smd.transistor.cosmic.name=Cosmic SMD Transistor
+metaitem.component.smd.resistor.cosmic.name=Cosmic SMD Resistor
+metaitem.component.smd.capacitor.cosmic.name=Cosmic SMD Capacitor
+metaitem.component.smd.diode.cosmic.name=Cosmic SMD Diode
+
+metaitem.component.smd.transistor.supracausal.name=Supra-Causal SMD Transistor
+metaitem.component.smd.resistor.supracausal.name=Supra-Causal SMD Resistor
+metaitem.component.smd.capacitor.supracausal.name=Supra-Causal SMD Capacitor
+metaitem.component.smd.diode.supracausal.name=Supra-Causal SMD Diode
 
 metaitem.freedom_wrench.name=Freedom Wrench
 metaitem.freedom_wrench.mode.0=Mode: Preview
@@ -713,148 +700,55 @@ monitor.gui.title.config=Config
 
 #/////////////////////CIRCUIT///////////////////////////
 
-#//LV
-metaitem.circuit.basic.name=Primitive Processor
-metaitem.circuit.basic.tooltip=§b§oLV Circuit
-metaitem.circuit.processor.refined.name=Refined Processor
-metaitem.circuit.processor.refined.tooltip=§b§oLV Circuit
-metaitem.circuit.basic_electronic.name=Electronic Processor
-metaitem.circuit.basic_electronic.tooltip=§b§oLV Circuit
+# Bioware
+metaitem.circuit.bioware_processor.name=Bioware Processor
+metaitem.circuit.bioware_processor.tooltip=§b§oZPM Circuit
+metaitem.circuit.bioware_assembly.name=Bioware Assembly
+metaitem.circuit.bioware_assembly.tooltip=§b§oUV Circuit
+metaitem.circuit.bioware_computer.name=Bioware Computer
+metaitem.circuit.bioware_computer.tooltip=§b§oUHV Circuit
+metaitem.circuit.bioware_mainframe.name=Bioware Mainframe
+metaitem.circuit.bioware_mainframe.tooltip=§b§oUEV Circuit
 
-#//MV
-metaitem.circuit.assembly.primitive.name=Primitive Assembly
-metaitem.circuit.assembly.primitive.tooltip=§b§oMV Circuit
-metaitem.circuit.assembly.electronic.name=Electronic Assembly
-metaitem.circuit.assembly.electronic.tooltip=§b§oMV Circuit
-metaitem.circuit.assembly.refined.name=Refined Assembly
-metaitem.circuit.assembly.refined.tooltip=§b§oMV Circuit
-metaitem.circuit.processor.micro.name=Micro Processor
-metaitem.circuit.processor.micro.tooltip=§b§oMV Circuit
+# Optical
+metaitem.circuit.optical_processor.name=Optical Processor
+metaitem.circuit.optical_processor.tooltip=§b§oUV Circuit
+metaitem.circuit.optical_assembly.name=Optical Assembly
+metaitem.circuit.optical_assembly.tooltip=§b§oUHV Circuit
+metaitem.circuit.optical_computer.name=Optical Computer
+metaitem.circuit.optical_computer.tooltip=§b§oUEV Circuit
+metaitem.circuit.optical_mainframe.name=Optical Mainframe
+metaitem.circuit.optical_mainframe.tooltip=§b§oUIV Circuit
 
-#//HV
-metaitem.circuit.computer.electronic.name=Electronic Computer
-metaitem.circuit.computer.electronic.tooltip=§b§oHV Circuit
-metaitem.circuit.computer.refined.name=Refined Computer
-metaitem.circuit.computer.refined.tooltip=§b§oHV Circuit
-metaitem.circuit.processor_assembly.name=Micro Assembly
-metaitem.circuit.processor_assembly.tooltip=§b§oHV Circuit
-metaitem.circuit.nano_processor.name=Nano Processor
-metaitem.circuit.nano_processor.tooltip=§b§oHV Circuit
+# Exotic
+metaitem.circuit.exotic_processor.name=Exotic Processor
+metaitem.circuit.exotic_processor.tooltip=§b§oUHV Circuit
+metaitem.circuit.exotic_assembly.name=Exotic Assembly
+metaitem.circuit.exotic_assembly.tooltip=§b§oUEV Circuit
+metaitem.circuit.exotic_computer.name=Exotic Computer
+metaitem.circuit.exotic_computer.tooltip=§b§oUIV Circuit
+metaitem.circuit.exotic_mainframe.name=Exotic Mainframe
+metaitem.circuit.exotic_mainframe.tooltip=§b§oUMV Circuit
 
+# Cosmic
+metaitem.circuit.cosmic_processor.name=Cosmic Processor
+metaitem.circuit.cosmic_processor.tooltip=§b§oUEV Circuit
+metaitem.circuit.cosmic_assembly.name=Cosmic Assembly
+metaitem.circuit.cosmic_assembly.tooltip=§b§oUIV Circuit
+metaitem.circuit.cosmic_computer.name=Cosmic Computer
+metaitem.circuit.cosmic_computer.tooltip=§b§oUMV Circuit
+metaitem.circuit.cosmic_mainframe.name=Cosmic Mainframe
+metaitem.circuit.cosmic_mainframe.tooltip=§b§oUXV Circuit
 
-#//EV
-metaitem.circuit.mainframe.refined.name=Refined Mainframe
-metaitem.circuit.mainframe.refined.tooltip=§b§oEV Circuit
-metaitem.circuit.computer.micro.name=Micro Computer
-metaitem.circuit.computer.micro.tooltip=§b§oEV Circuit
-metaitem.circuit.nano_processor_assembly.name=Nano Assembly
-metaitem.circuit.nano_processor_assembly.tooltip=§b§oEV Circuit
-metaitem.circuit.quantum_processor.name=Quantum Processor
-metaitem.circuit.quantum_processor.tooltip=§b§oEV Circuit
-
-#//IV
-metaitem.circuit.mainframe.micro.name=Micro Mainframe
-metaitem.circuit.mainframe.micro.tooltip=§b§oIV Circuit
-metaitem.circuit.computer.nano.name=Nano Computer
-metaitem.circuit.computer.nano.tooltip=§b§oIV Circuit
-metaitem.circuit.assembly.quantum.name=Quantum Assembly
-metaitem.circuit.assembly.quantum.tooltip=§b§oIV Circuit
-metaitem.circuit.processor.crystal.name=Crystal Processor
-metaitem.circuit.processor.crystal.tooltip=§b§oIV Circuit
-
-#//Luv
-metaitem.circuit.mainframe.nano.name=Nano Mainframe
-metaitem.circuit.mainframe.nano.tooltip=§b§oLuV Circuit
-metaitem.circuit.computer.quantum.name=Quantum Computer
-metaitem.circuit.computer.quantum.tooltip=§b§oLuV Circuit
-metaitem.circuit.energy_flow.name=Crystal Assembly
-metaitem.circuit.energy_flow.tooltip=§b§oLuV Circuit
-metaitem.circuit.wetware_processor.name=Wetware Processor
-metaitem.circuit.wetware_processor.tooltip=§b§oLuV Circuit
-
-#//ZPM
-metaitem.circuit.mainframe.quantum.name=Quantum Mainframe
-metaitem.circuit.mainframe.quantum.tooltip=§b§oZPM Circuit
-metaitem.circuit.computer.crystal.name=Crystal Computer
-metaitem.circuit.computer.crystal.tooltip=§b§oZPM Circuit
-metaitem.circuit.wetware_assembly.name=Wetware Assembly
-metaitem.circuit.wetware_assembly.tooltip=§b§oZPM Circuit
-
-#//UV
-metaitem.circuit.mainframe.crystal.name=Crystal Mainframe
-metaitem.circuit.mainframe.crystal.tooltip=§b§oUV Circuit
-metaitem.circuit.wetware_super_computer.name=Wetware Computer
-metaitem.circuit.wetware_super_computer.tooltip=§b§oUV Circuit
-
-#//MAX
-metaitem.circuit.wetware_mainframe.name=Wetware Mainframe
-metaitem.circuit.wetware_mainframe.tooltip=§b§oUHV Circuit
-
-
-#//magneto resonatic
-metaitem.circuit.resonatic.ulv.name=ULV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.ulv.tooltip=§b§oULV Circuit
-metaitem.circuit.resonatic.lv.name=LV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.lv.tooltip=§b§oLV Circuit
-metaitem.circuit.resonatic.mv.name=MV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.mv.tooltip=§b§oMV Circuit
-metaitem.circuit.resonatic.hv.name=HV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.hv.tooltip=§b§oHV Circuit
-metaitem.circuit.resonatic.ev.name=EV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.ev.tooltip=§b§oEV Circuit
-metaitem.circuit.resonatic.iv.name=IV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.iv.tooltip=§b§oIV Circuit
-metaitem.circuit.resonatic.luv.name=LuV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.luv.tooltip=§b§oLuV Circuit
-metaitem.circuit.resonatic.zpm.name=ZPM Magneto Resonatic Circuit
-metaitem.circuit.resonatic.zpm.tooltip=§b§oZPM Circuit
-metaitem.circuit.resonatic.uv.name=UV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.uv.tooltip=§b§oUV Circuit
-metaitem.circuit.resonatic.uhv.name=UHV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.uhv.tooltip=§b§oUHV Circuit
-metaitem.circuit.resonatic.uev.name=UEV Magneto Resonatic Circuit
-metaitem.circuit.resonatic.uev.tooltip=§b§oUEV Circuit
-
-#bioware
-metaitem.circuit.processor.bioware.name=Bioware Processor
-metaitem.circuit.processor.bioware.tooltip=§b§oZPM Circuit
-metaitem.circuit.assembly.bioware.name=Bioware Assembly
-metaitem.circuit.assembly.bioware.tooltip=§b§oUV Circuit
-metaitem.circuit.computer.bioware.name=Bioware Computer
-metaitem.circuit.computer.bioware.tooltip=§b§oUHV Circuit
-metaitem.circuit.mainframe.bioware.name=Bioware Mainframe
-metaitem.circuit.mainframe.bioware.tooltip=§b§oUEV Circuit
-
-#optical
-metaitem.circuit.processor.optical.name=Optical Processor
-metaitem.circuit.processor.optical.tooltip=§b§oUV Circuit
-metaitem.circuit.assembly.optical.name=Optical Assembly
-metaitem.circuit.assembly.optical.tooltip=§b§oUHV Circuit
-metaitem.circuit.computer.optical.name=Optical Computer
-metaitem.circuit.computer.optical.tooltip=§b§oUEV Circuit
-metaitem.circuit.mainframe.optical.name=Optical Mainframe
-metaitem.circuit.mainframe.optical.tooltip=§b§oUIV Circuit
-
-#Exotic
-metaitem.circuit.processor.exotic.name=Exotic Processor
-metaitem.circuit.processor.exotic.tooltip=§b§oUHV Circuit
-metaitem.circuit.assembly.exotic.name=Exotic Assembly
-metaitem.circuit.assembly.exotic.tooltip=§b§oUEV Circuit
-metaitem.circuit.computer.exotic.name=Exotic Computer
-metaitem.circuit.computer.exotic.tooltip=§b§oUIV Circuit
-metaitem.circuit.mainframe.exotic.name=Exotic Mainframe
-metaitem.circuit.mainframe.exotic.tooltip=§b§oUMV Circuit
-
-
-##cosmic
-metaitem.circuit.processor.cosmic.name=Cosmic Processor
-metaitem.circuit.processor.cosmic.tooltip=§b§oUEV Circuit
-metaitem.circuit.assembly.cosmic.name=Cosmic Assembly
-metaitem.circuit.assembly.cosmic.tooltip=§b§oUIV Circuit
-metaitem.circuit.computer.cosmic.name=Cosmic Computer
-metaitem.circuit.computer.cosmic.tooltip=§b§oUMV Circuit
-metaitem.circuit.mainframe.cosmic.name=Cosmic Mainframe
-metaitem.circuit.mainframe.cosmic.tooltip=§b§oUXV Circuit
+# Supracausal
+metaitem.circuit.supracausal_processor.name=Supra-Causal Processor
+metaitem.circuit.supracausal_processor.tooltip=§b§oUIV Circuit
+metaitem.circuit.supracausal_assembly.name=Supra-Causal Assembly
+metaitem.circuit.supracausal_assembly.tooltip=§b§oUMV Circuit
+metaitem.circuit.supracausal_computer.name=Supra-Causal Computer
+metaitem.circuit.supracausal_computer.tooltip=§b§oUXV Circuit
+metaitem.circuit.supracausal_mainframe.name=Supra-Causal Mainframe
+metaitem.circuit.supracausal_mainframe.tooltip=§b§oMAX Circuit
 
 
 ####################################################################
@@ -2933,19 +2827,9 @@ metaitem.contained.exotic.matter.name=Contained Exotic Matter
 metaitem.separation.electromagnet.name=Separation Electromagnet
 metaitem.sphere.field.shape.name=Sphere Field Shape
 
-metaitem.smd.capacitor.supracausal.name=Supra-Causal SMD Capacitor
-metaitem.smd.resistor.supracausal.name=Supra-Causal SMD Resistor
-metaitem.smd.diode.supracausal.name=Supra-Causal SMD Diode
-metaitem.smd.transistor.supracausal.name=Supra-Causal SMD Transistor
 
-metaitem.circuit.processor.supracausal.name=Supra-Causal Processor
-metaitem.circuit.processor.supracausal.tooltip=§b§oUIV Circuit
-metaitem.circuit.assembly.supracausal.name=Supra-Causal Assembly
-metaitem.circuit.assembly.supracausal.tooltip=§b§oUMV Circuit
-metaitem.circuit.computer.supracausal.name=Supra-Causal Computer
-metaitem.circuit.computer.supracausal.tooltip=§b§oUXV Circuit
-metaitem.circuit.mainframe.supracausal.name=Supra-Causal Mainframe
-metaitem.circuit.mainframe.supracausal.tooltip=§b§oMAX Circuit
+
+
 
 metaitem.topological.manipulator.unit.name=Topological Manipulator Unit
 metaitem.relativistic.spinorial.memory.system.name=Relativistic Spinorial Memory
@@ -2976,18 +2860,15 @@ metaitem.fullerene.polymer.matrix.fine.tubing.name=Fullerene Polymer Matrix Fine
 metaitem.xray.waveguide.name=X-Ray Waveguide
 metaitem.microfocus.xray.tube.name=Microfocus X-Ray Tube
 metaitem.xray.mirror.plate.name=X-Ray Mirror Plate
-metaitem.untreated.exotic.wafer.name=Untreated Exotic Wafer
-metaitem.exotic.wafer.name=Exotic Wafer
-metaitem.exotic.chip.name=Exotic Chip
+metaitem.wafer.untreated.exotic.name=Untreated Exotic Wafer
+metaitem.wafer.exotic.name=Exotic Wafer
+metaitem.plate.exotic_chip.name=Exotic Chip
 metaitem.excitation.maintainer.name=Excitation Maintainer
 metaitem.cryogenic.interface.name=Cryogenic Interface
 metaitem.rydberg.spinorial.assembly.name=Rydberg Spinorial Assembly
 metaitem.xray.laser.name=X-Ray Laser
 metaitem.exotic.processing.core.name=Exotic Processing Core
-metaitem.component.smd.capacitor.exotic.name=Exotic SMD Capacitor
-metaitem.component.smd.resistor.exotic.name=Exotic SMD Resistor
-metaitem.component.smd.transistor.exotic.name=Exotic SMD Transistor
-metaitem.component.smd.diode.exotic.name=Exotic SMD Diode
+
 
 gtadditions.machine.disassembler.lv.name=Basic Disassembler
 gtadditions.machine.disassembler.mv.name=Advanced Disassembler
