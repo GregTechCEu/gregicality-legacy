@@ -154,21 +154,6 @@ metaitem.rod.field.shape.name=杆状形态力场
 metaitem.charged.lepton.trap.crystal.name=带电轻子阱晶体
 metaitem.nanosilicon.cathode.name=纳米硅阴极
 
-metaitem.electrode.apatite.name=磷灰石电子管元件
-metaitem.electrode.blaze.name=烈焰电子管元件
-metaitem.electrode.bronze.name=青铜电子管元件
-metaitem.electrode.copper.name=铜电子管元件
-metaitem.electrode.diamond.name=钻石电子管元件
-metaitem.electrode.emerald.name=绿宝石电子管元件
-metaitem.electrode.ender.name=末影电子管元件
-metaitem.electrode.gold.name=金电子管元件
-metaitem.electrode.iron.name=铁电子管元件
-metaitem.electrode.lapis.name=青金石电子管元件
-metaitem.electrode.obsidian.name=黑曜石电子管元件
-metaitem.electrode.orchid.name=兰花电子管元件
-metaitem.electrode.rubber.name=橡胶电子管元件
-metaitem.electrode.tin.name=锡电子管元件
-
 metaitem.small_turbine_rotor.name=%s小型涡轮
 metaitem.medium_turbine_rotor.name=%s涡轮
 metaitem.large_turbine_rotor.name=%s大型涡轮

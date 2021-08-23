@@ -365,21 +365,6 @@ public class GAMetaItems {
 
 
     // TODO Move to Gregification
-    public static MetaItem<?>.MetaValueItem ELECTRODE_APATITE;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_BLAZE;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_BRONZE;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_COPPER;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_DIAMOND;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_EMERALD;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_ENDER;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_GOLD;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_IRON;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_LAPIS;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_OBSIDIAN;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_ORCHID;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_RUBBER;
-    public static MetaItem<?>.MetaValueItem ELECTRODE_TIN;
-
     public static MetaItem<?>.MetaValueItem HYPERIUM_ESSENCE;
     public static MetaItem<?>.MetaValueItem HYPERIUM_SEED;
     public static MetaItem<?>.MetaValueItem LUDICIUM_ESSENCE;

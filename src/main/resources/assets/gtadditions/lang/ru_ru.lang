@@ -1,17 +1,4 @@
-metaitem.electrode.apatite.name=Апатитовый электрод
-metaitem.electrode.blaze.name=Ифритовый электрод
-metaitem.electrode.bronze.name=Бронзовый электрод
-metaitem.electrode.copper.name=Медный электрод
-metaitem.electrode.diamond.name=Алмазный электрод
-metaitem.electrode.emerald.name=Изумрудный электрод
-metaitem.electrode.ender.name=Эндер электрод
-metaitem.electrode.gold.name=Золотой электрод
-metaitem.electrode.iron.name=Железный электрод
-metaitem.electrode.lapis.name=Ляпис электрод
-metaitem.electrode.obsidian.name=Обсидиановый электрод
-metaitem.electrode.orchid.name=Орхидейный электрод
-metaitem.electrode.rubber.name=Прорезиненный электрод
-metaitem.electrode.tin.name=Оловянный электрод
+
 
 gtadditions.machine.naquadah_reactor.mk2.name=Наквадах реактор Mk. 2
 gtadditions.machine.naquadah_reactor.mk3.name=Наквадах реактор Mk. 3

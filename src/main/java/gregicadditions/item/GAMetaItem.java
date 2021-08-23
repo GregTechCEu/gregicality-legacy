@@ -395,24 +395,6 @@ public class GAMetaItem extends StandardMetaItem {
         FREEDOM_WRENCH = addItem(1210, "freedom_wrench").setMaxStackSize(1).addComponents(new FreedomWrenchBehaviour());
 
         // TODO Move to Gregification
-        if (Loader.isModLoaded(GAValues.MODID_FR) && GAConfig.GT6.electrodes) {
-            ELECTRODE_APATITE = addItem(108, "electrode.apatite");
-            ELECTRODE_BLAZE = addItem(109, "electrode.blaze");
-            ELECTRODE_BRONZE = addItem(110, "electrode.bronze");
-            ELECTRODE_COPPER = addItem(111, "electrode.copper");
-            ELECTRODE_DIAMOND = addItem(112, "electrode.diamond");
-            ELECTRODE_EMERALD = addItem(113, "electrode.emerald");
-            ELECTRODE_ENDER = addItem(114, "electrode.ender");
-            ELECTRODE_GOLD = addItem(115, "electrode.gold");
-            if (Loader.isModLoaded(GAValues.MODID_IC2) || Loader.isModLoaded(GAValues.MODID_BINNIE))
-                ELECTRODE_IRON = addItem(116, "electrode.iron");
-            ELECTRODE_LAPIS = addItem(117, "electrode.lapis");
-            ELECTRODE_OBSIDIAN = addItem(118, "electrode.obsidian");
-            if (Loader.isModLoaded(GAValues.MODID_XU2)) ELECTRODE_ORCHID = addItem(119, "electrode.orchid");
-            if (Loader.isModLoaded(GAValues.MODID_IC2) || Loader.isModLoaded(GAValues.MODID_TR) || Loader.isModLoaded(GAValues.MODID_BINNIE))
-                ELECTRODE_RUBBER = addItem(120, "electrode.rubber");
-            ELECTRODE_TIN = addItem(121, "electrode.tin");
-        }
         HYPERIUM_ESSENCE = addItem(344, "hyperium_essence");
         LUDICIUM_ESSENCE = addItem(345, "ludicium_essence");
         HYPERIUM_SEED = addItem(346, "hyperium_crafting_seed");
