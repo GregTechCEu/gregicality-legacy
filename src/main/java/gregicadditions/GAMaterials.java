@@ -3,12 +3,6 @@ package gregicadditions;
 import gregicadditions.materials.*;
 import gregtech.api.unification.material.IMaterialHandler;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialIconSet;
-import gregtech.api.unification.stack.MaterialStack;
-
-import static com.google.common.collect.ImmutableList.of;
-import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 
 @IMaterialHandler.RegisterMaterialHandler
 public class GAMaterials implements IMaterialHandler {

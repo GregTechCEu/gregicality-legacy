@@ -112,7 +112,7 @@ public class WormholeGeneratorChain {
                 .inputs(EMITTER_UV.getStackForm(4))
                 .inputs(FIELD_GENERATOR_UV.getStackForm(2))
                 .inputs(SENSOR_UV.getStackForm(4))
-                .inputs(BATTERY_SMALL_LIS.getStackForm())
+                .inputs(BATTERY_UV_NAQUADRIA.getStackForm())
                 .outputs(MACROWORMHOLE_GENERATOR.getStackForm())
                 .buildAndRegister();
 

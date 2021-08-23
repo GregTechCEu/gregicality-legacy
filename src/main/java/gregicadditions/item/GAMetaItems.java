@@ -191,17 +191,6 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem BREVIBACTERIUM_CULTURE;
     public static MetaItem<?>.MetaValueItem CUPRIVADUS_CULTURE;
 
-    public static MetaItem<?>.MetaValueItem BATTERY_NIMH_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_NIMH;
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LITHIUM_ION_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LITHIUM_ION;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LITHIUM_ION_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LITHIUM_ION;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LITHIUM_ION_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LITHIUM_ION;
-
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LIS_EMPTY;
-    public static MetaItem<?>.MetaValueItem BATTERY_SMALL_LIS;
     public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS_EMPTY;
     public static MetaItem<?>.MetaValueItem BATTERY_MEDIUM_LIS;
     public static MetaItem<?>.MetaValueItem BATTERY_LARGE_LIS_EMPTY;
