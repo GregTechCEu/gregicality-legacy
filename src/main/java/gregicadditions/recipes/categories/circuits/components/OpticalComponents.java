@@ -13,7 +13,6 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.SHAPE_EXTRUDER_WIRE;
-import static gregtech.common.items.MetaItems.SHAPE_MOLD_INGOT;
 
 public class OpticalComponents {
 
@@ -144,45 +143,39 @@ public class OpticalComponents {
         MIXER_RECIPES.recipeBuilder().EUt(120).duration(3000)
                 .input(dust, ZBLAN)
                 .input(dust, ErbiumTrifluoride, 4)
-                .output(dust, ErbiumDopedZBLANDust, 2)
+                .output(dust, ErbiumDopedZBLAN, 2)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
                 .input(dust, ZBLAN)
-                .outputs(ZBLAN.getStackForm())
+                .output(ingot, ZBLAN)
                 .blastFurnaceTemp(2500)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
-                .input(dust, ErbiumDopedZBLANDust)
-                .outputs(ERBIUM_DOPED_ZBLAN.getStackForm())
+                .input(dust, ErbiumDopedZBLAN)
+                .output(ingot, ErbiumDopedZBLAN)
                 .blastFurnaceTemp(2500)
-                .buildAndRegister();
-
-        FORMING_PRESS_RECIPES.recipeBuilder().EUt(7680).duration(2000)
-                .notConsumable(SHAPE_MOLD_INGOT)
-                .inputs(ZBLAN.getStackForm())
-                .outputs(ZBLAN_INGOT.getStackForm())
                 .buildAndRegister();
 
         ARC_FURNACE_RECIPES.recipeBuilder().EUt(120).duration(10000)
                 .fluidInputs(Oxygen.getFluid(1000))
-                .inputs(ZBLAN_INGOT.getStackForm())
-                .outputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm())
+                .input(ingot, ZBLAN)
+                .output(ingotHot, ZBLAN)
                 .buildAndRegister();
 
         EXTRUDER_RECIPES.recipeBuilder().EUt(7680).duration(2000)
                 .notConsumable(SHAPE_EXTRUDER_WIRE)
-                .inputs(HOT_ANNEALED_ZBLAN_INGOT.getStackForm())
-                .outputs(ZBLAN_FIBER.getStackForm(2))
+                .input(ingotHot, ZBLAN)
+                .output(wireFine, ZBLAN)
                 .buildAndRegister();
 
         // Optical Fiber
         FORMING_PRESS_RECIPES.recipeBuilder().EUt(4000).duration(2000)
-                .inputs(ZBLAN_FIBER.getStackForm())
-                .inputs(ERBIUM_DOPED_ZBLAN.getStackForm())
+                .input(wireFine, ZBLAN)
+                .input(ingot, ErbiumDopedZBLAN)
                 .outputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm())
                 .buildAndRegister();
 

@@ -1020,10 +1020,11 @@ public class GASecondDegreeMaterials {
                 .build();
 
         GAMaterials.ZBLAN = new Material.Builder(11541, "zblan")
-                .dust().fluid()
+                .ingot().fluid()
                 .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
+                .flags(DISABLE_DECOMPOSITION, GENERATE_FINE_WIRE, NO_UNIFICATION)
                 .components(ZirconiumTetrafluoride, 18, BariumDifluoride, 7, LanthanumTrifluoride, 2, AluminiumTrifluoride, 1, SodiumFluoride, 7)
+                .blastTemp(2200)
                 .build();
 
         VanadiumSlag = new Material.Builder(11542, "vanadium_slag")

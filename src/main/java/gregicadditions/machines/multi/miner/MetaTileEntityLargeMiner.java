@@ -25,8 +25,8 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
-import gregtech.api.unification.material.type.Material;
-import gregtech.api.unification.material.type.SolidMaterial;
+import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.tools.ToolUtility;
@@ -93,7 +93,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSS_G_CASING);
 
                 Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSSG);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSG;
+                this.material = possibleMaterial.hasFlag(MaterialFlags.GENERATE_FRAME) ? possibleMaterial : HSSG;
                 break;
             }
             case ADVANCE: {
@@ -101,7 +101,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSS_S_CASING);
 
                 Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSSS);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : HSSS;
+                this.material = possibleMaterial.hasFlag(MaterialFlags.GENERATE_FRAME) ? possibleMaterial : HSSS;
                 break;
             }
             default: {
@@ -109,7 +109,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
 
                 Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag("GENERATE_FRAME") ? possibleMaterial : BlackSteel;
+                this.material = possibleMaterial.hasFlag(MaterialFlags.GENERATE_FRAME) ? possibleMaterial : BlackSteel;
                 break;
             }
         }
@@ -249,7 +249,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 .where('L', statePredicate(getCasingState()))
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('P', statePredicate(getCasingState()))
-                .where('F', statePredicate(MetaBlocks.FRAMES.get((SolidMaterial) getMaterial()).getDefaultState()))
+                .where('F', statePredicate(MetaBlocks.FRAMES.get(getMaterial()).getDefaultState()))
                 .where('#', blockWorldState -> true)
                 .build();
     }

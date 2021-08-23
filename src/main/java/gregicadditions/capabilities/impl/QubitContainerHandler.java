@@ -1,6 +1,5 @@
 package gregicadditions.capabilities.impl;
 
-import gregicadditions.capabilities.GATraitNetworkIds;
 import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.IQubitContainer;
 import gregtech.api.metatileentity.MTETrait;

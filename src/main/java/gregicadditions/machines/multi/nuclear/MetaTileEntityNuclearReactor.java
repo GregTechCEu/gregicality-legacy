@@ -22,7 +22,6 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.common.MetaFluids;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;

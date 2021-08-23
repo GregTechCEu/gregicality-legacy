@@ -645,7 +645,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material LuTmYChlorideSolution;
     public static Material SeaborgiumDopedNanotubes;
     public static Material FullereneDopedNanotubes;
-    public static Material ZBLAN; //todo overhaul this
+    public static Material ZBLAN;
     public static Material GrapheneOxidationSolution;
     public static Material SupercriticalCO2;
     public static Material LiquidEnrichedHelium;
@@ -734,7 +734,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material CaCBaSMixture;
     public static Material LubricantClaySlurry;
     public static Material ATLEthylene;
-    public static Material ErbiumDopedZBLANDust;
+    public static Material ErbiumDopedZBLAN;
     public static Material RoastedSpodumene;
     public static Material RoastedLepidolite;
     public static Material CassiteriteCokePellets;

@@ -210,11 +210,6 @@ public class GAMetaItem extends StandardMetaItem {
         CUPRIVADUS_CULTURE = addItem(361, "cupriavidus.culture");
 
         // Optical Process Items: IDs 400-449
-        ZBLAN = addItem(400, "zblan");
-        ZBLAN_INGOT = addItem(401, "zblan_ingot");
-        HOT_ANNEALED_ZBLAN_INGOT = addItem(402, "hot_annealed_zblan_ingot");
-        ZBLAN_FIBER = addItem(403, "zblan_fiber");
-        ERBIUM_DOPED_ZBLAN = addItem(404, "erbium_doped_zblan");
         CLADDED_OPTICAL_FIBER_CORE = addItem(405, "cladded_optical_fiber_core");
 
         LOW_FREQUENCY_LASER = addItem(406,"low_frequency_laser");

@@ -107,8 +107,8 @@ public class GAThirdDegreeMaterials {
                 .components(ATL, 1, Ethylene, 1)
                 .build();
 
-        ErbiumDopedZBLANDust = new Material.Builder(15513, "erbium_doped_zblan_dust")
-                .dust()
+        ErbiumDopedZBLAN = new Material.Builder(15513, "erbium_doped_zblan")
+                .ingot()
                 .colorAverage().iconSet(MaterialIconSet.SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(GAMaterials.ZBLAN, 1 , ErbiumTrifluoride, 1)
