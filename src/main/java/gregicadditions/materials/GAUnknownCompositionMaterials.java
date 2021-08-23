@@ -564,14 +564,14 @@ public class GAUnknownCompositionMaterials {
                 .components(RareEarth, 1)
                 .build();
 
-        ZincFlueDust = new Material.Builder(9587, "zinc_flue_dust")
+        ZincFlue = new Material.Builder(9587, "zinc_flue")
                 .dust()
                 .color(0xfcfca).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1)
                 .build();
 
-        FineZincSlagDust = new Material.Builder(9588, "fine_zinc_slag_dust")
+        FineZincSlag = new Material.Builder(9588, "fine_zinc_slag")
                 .dust()
                 .color(0xfaf0e6).iconSet(FINE)
                 .flags(DISABLE_DECOMPOSITION)

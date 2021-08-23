@@ -20,7 +20,7 @@ public class UHVMaterials {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(dust, Naquadria)
                 .inputs(GELLED_TOLUENE.getStackForm(2))
-                .input(plate, Uranium238Isotope.getMaterial(), 1)
+                .input(plate, Uranium238)
                 .input(bolt, Osmium, 1)
                 .input(bolt, Titanium, 4)
                 .input(dust, HexanitroHexaaxaisowurtzitane)
@@ -66,7 +66,7 @@ public class UHVMaterials {
       
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(stickLong, NeodymiumMagnetic, 2)
-                .input(wireGtSingle, UVSuperconductor, 16)
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 16)
                 .input(pipeLargeFluid, Ultimet, 4)
                 .input(plate, NaquadahAlloy, 8)
                 .fluidInputs(Titanium.getFluid(2592))

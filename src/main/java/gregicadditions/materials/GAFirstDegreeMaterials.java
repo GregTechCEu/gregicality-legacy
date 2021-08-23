@@ -204,7 +204,7 @@ public class GAFirstDegreeMaterials {
         SodiumNitrate = new Material.Builder(3528, "sodium_nitrate")
                 .dust()
                 .color(0x846684).iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Sodium, 1, Nitrogen, 1, Oxygen, 3)
                 .build();
 
@@ -1062,6 +1062,7 @@ public class GAFirstDegreeMaterials {
         SiliconFluoride = new Material.Builder(3570, "silicon_fluoride")
                 .fluid()
                 .color(0xB2B4B4)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Silicon, 1, Fluorine, 4)
                 .build();
 
@@ -1146,6 +1147,7 @@ public class GAFirstDegreeMaterials {
         PotassiumHydroxide = new Material.Builder(3581, "potassium_hydroxide")
                 .fluid()
                 .colorAverage()
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Potassium, 1, Oxygen, 1, Hydrogen, 1)
                 .build();
 
@@ -1735,7 +1737,7 @@ public class GAFirstDegreeMaterials {
         ZirconiumTetrachloride = new Material.Builder(3665, "zirconium_tetrachloride")
                 .dust()
                 .color(0xF0F0F0).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Zirconium, 1, Fluorine, 4)
                 .build();
 
@@ -1829,11 +1831,7 @@ public class GAFirstDegreeMaterials {
                 .components(Magnesium, 1, Chlorine, 1, Bromine, 1)
                 .build();
 
-        SodiumNitrate = new Material.Builder(3680, "sodium_nitrite")
-                .dust()
-                .colorAverage().iconSet(ROUGH)
-                .components(Sodium, 1, Nitrogen, 1, Oxygen, 3)
-                .build();
+        // FREE ID 3680
 
         ZnFeAlClCatalyst = new Material.Builder(3681, "znfealcl_catalyst")
                 .dust()
@@ -2607,6 +2605,7 @@ public class GAFirstDegreeMaterials {
         PotassiumBromide = new Material.Builder(3805, "potassium_bromide")
                 .dust()
                 .color(0xE066A3)
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Potassium, 1, Bromine, 1)
                 .build();
 
@@ -2637,6 +2636,7 @@ public class GAFirstDegreeMaterials {
         LithiumIodide = new Material.Builder(3810, "lithium_iodide")
                 .dust()
                 .colorAverage()
+                .flags(DECOMPOSITION_BY_ELECTROLYZING)
                 .components(Lithium, 1, Iodine, 1)
                 .build();
 

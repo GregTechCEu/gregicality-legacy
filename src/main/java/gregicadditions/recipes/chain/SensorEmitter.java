@@ -13,7 +13,7 @@ public class SensorEmitter {
         // Sr + BaO + 2CH3COOH -> [C4H6BaSrO4 + H2O]
         MIXER_RECIPES.recipeBuilder().duration(420).EUt(120)
                 .input(dust, Strontium)
-                .inputs(BariumOxide.getItemStack(2))
+                .input(dust, BariumOxide, 2)
                 .fluidInputs(AceticAcid.getFluid(2000))
                 .fluidOutputs(BariumStrontiumAcetateSolution.getFluid(1000))
                 .buildAndRegister();
@@ -44,7 +44,7 @@ public class SensorEmitter {
         // [C4H6BaSrO4 + C12H28O4Ti + H2O + 2C] -> BaO4SrTi + C5H10O2 + 4C3H6 + H2O + CO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(480)
                 .fluidInputs(BariumStrontiumTitanatePreparation.getFluid(2000))
-                .outputs(BariumStrontiumTitanate.getItemStack(7))
+                .output(dust, BariumStrontiumTitanate, 7)
                 .fluidOutputs(IsopropylAcetate.getFluid(1000))
                 .fluidOutputs(Propene.getFluid(4000))
                 .fluidOutputs(Water.getFluid(1000))
@@ -53,7 +53,7 @@ public class SensorEmitter {
 
         // C5H10O2 + H2O -> C3H8O + CH3COOH
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(480)
-                .notConsumable(dust, PhosphorousPentoxide)
+                .notConsumable(dust, PhosphorusPentoxide)
                 .fluidInputs(IsopropylAcetate.getFluid(1000))
                 .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(IsopropylAlcohol.getFluid(1000))
@@ -62,9 +62,9 @@ public class SensorEmitter {
 
         // 9H2O + 2F7K2Ta -> Ta2O5 + 14HF + 4KOH
         CHEMICAL_RECIPES.recipeBuilder().duration(130).EUt(120)
-                .inputs(PotasssiumFluoroTantalate.getItemStack(20))
+                .input(dust, PotasssiumFluoroTantalate, 20)
                 .fluidInputs(Water.getFluid(9000))
-                .outputs(TantalumOxide.getItemStack(7))
+                .output(dust, TantalumOxide, 7)
                 .fluidOutputs(HydrofluoricAcid.getFluid(14000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(4000))
                 .buildAndRegister();
@@ -74,7 +74,7 @@ public class SensorEmitter {
                 .input(dust, Tantalum, 2)
                 .fluidInputs(Chlorine.getFluid(10000))
                 .fluidInputs(Water.getFluid(5000))
-                .outputs(TantalumOxide.getItemStack(7))
+                .output(dust, TantalumOxide, 7)
                 .fluidOutputs(HydrochloricAcid.getFluid(10000))
                 .buildAndRegister();
 
@@ -83,7 +83,7 @@ public class SensorEmitter {
                 .input(dust, Scandium, 2)
                 .fluidInputs(Chlorine.getFluid(6000))
                 .fluidInputs(Water.getFluid(3000))
-                .outputs(ScandiumOxide.getItemStack(5))
+                .output(dust, ScandiumOxide, 5)
                 .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .buildAndRegister();
 
@@ -92,7 +92,7 @@ public class SensorEmitter {
                 .input(dust, Lutetium, 2)
                 .fluidInputs(Chlorine.getFluid(6000))
                 .fluidInputs(Water.getFluid(3000))
-                .outputs(LutetiumOxide.getItemStack(5))
+                .output(dust, LutetiumOxide, 5)
                 .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .buildAndRegister();
 
@@ -101,7 +101,7 @@ public class SensorEmitter {
                 .input(dust, Thulium, 2)
                 .fluidInputs(Chlorine.getFluid(6000))
                 .fluidInputs(Water.getFluid(3000))
-                .outputs(ThuliumOxide.getItemStack(5))
+                .output(dust, ThuliumOxide, 5)
                 .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .buildAndRegister();
 
@@ -110,7 +110,7 @@ public class SensorEmitter {
                 .input(dust, Europium, 2)
                 .fluidInputs(Chlorine.getFluid(6000))
                 .fluidInputs(Water.getFluid(3000))
-                .outputs(EuropiumOxide.getItemStack(5))
+                .output(dust, EuropiumOxide, 5)
                 .fluidOutputs(HydrochloricAcid.getFluid(6000))
                 .buildAndRegister();
 
@@ -118,16 +118,16 @@ public class SensorEmitter {
         MIXER_RECIPES.recipeBuilder().duration(200).EUt(30)
                 .input(dust, LeadNitrate, 9)
                 .input(dust, Calcium, 9)
-                .outputs(LeadNitrateCalciumMixture.getItemStack(18))
+                .output(dust, LeadNitrateCalciumMixture, 18)
                 .buildAndRegister();
 
         // [2Pb(NO3)2 + 9Ca] + Ta2O5 + Sc2O3 + 3O -> 2Pb(ScTa)O3 + 9CaO + 4NO2
         BLAST_RECIPES.recipeBuilder().duration(350).EUt(120).blastFurnaceTemp(1350)
-                .inputs(LeadNitrateCalciumMixture.getItemStack(18))
-                .inputs(TantalumOxide.getItemStack(7))
-                .inputs(ScandiumOxide.getItemStack(5))
+                .input(dust, LeadNitrateCalciumMixture, 18)
+                .input(dust, TantalumOxide, 7)
+                .input(dust, ScandiumOxide, 5)
                 .fluidInputs(Oxygen.getFluid(3000))
-                .outputs(LeadScandiumTantalate.getItemStack(12))
+                .output(dust, LeadScandiumTantalate, 12)
                 .output(dust, Quicklime, 18)
                 .fluidOutputs(NitrogenDioxide.getFluid(4000))
                 .buildAndRegister();
@@ -141,21 +141,21 @@ public class SensorEmitter {
                 .input(dust, Boron, 2)
                 .input(dust, Silicon)
                 .input(dust, Carbon)
-                .outputs(MagnetorestrictiveAlloy.getItemStack(30))
+                .output(dust, MagnetorestrictiveAlloy, 30)
                 .buildAndRegister();
 
         // Pb + Se -> PbSe
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .input(dust, Lead)
                 .input(dust, Selenium)
-                .outputs(LeadSelenide.getItemStack(2))
+                .output(dust, LeadSelenide, 2)
                 .buildAndRegister();
 
         // Zn + Se -> ZnSe
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .input(dust, Zinc)
                 .input(dust, Selenium)
-                .outputs(ZincSelenide.getItemStack(2))
+                .output(dust, ZincSelenide, 2)
                 .buildAndRegister();
 
         // Fr + Cs + 2Cd + 6Br -> FrCsCd2Br6
@@ -164,15 +164,15 @@ public class SensorEmitter {
                 .input(dust, Caesium)
                 .input(dust, Cadmium, 2)
                 .fluidInputs(Bromine.getFluid(6000))
-                .outputs(FranciumCaesiumCadmiumBromide.getItemStack(10))
+                .output(dust, FranciumCaesiumCadmiumBromide, 10)
                 .buildAndRegister();
 
         // C6H5NH2 + NaNO2 + 2HCl + NaI -> 2NaCl + 2N + 2H2O + C6H5I
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(480)
                 .fluidInputs(Aniline.getFluid(1000))
-                .inputs(SodiumNitrite.getItemStack(4))
+                .input(dust, SodiumNitrite, 4)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
-                .inputs(SodiumIodide.getItemStack(2))
+                .input(dust, SodiumIodide, 2)
                 .output(dust, Salt, 4)
                 .fluidOutputs(Nitrogen.getFluid(2000))
                 .fluidOutputs(Water.getFluid(2000))
@@ -181,14 +181,14 @@ public class SensorEmitter {
 
         // C6H5I + C8H8 + Cl -> HCl + I + C14H12
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(18000)
-                .notConsumable(PalladiumAcetate.getItemStack())
+                .notConsumable(dust, PalladiumAcetate)
                 .fluidInputs(Iodobenzene.getFluid(1000))
                 .fluidInputs(Styrene.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(1000))
                 .notConsumable(Tributylamine.getFluid(0))
                 .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .output(dust, Iodine)
-                .outputs(Stilbene.getItemStack(26))
+                .output(dust, Stilbene, 26)
                 .buildAndRegister();
 
         // C6H6O2 + NH3 -> C6H7NO + H2O
@@ -204,7 +204,7 @@ public class SensorEmitter {
                 .fluidInputs(Ethylene.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Ethylamine.getFluid(2000))
-                .notConsumable(SodiumAzanide.getItemStack())
+                .notConsumable(dust, SodiumAzanide)
                 .buildAndRegister();
 
         // 3C2H5NH2 + C6H7NO + 2C8H4O3 + HCl -> 2NH3 + C28H31ClN2O3 + 4O
@@ -213,10 +213,10 @@ public class SensorEmitter {
                 .fluidInputs(Amino3phenol.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .input(dust, PhthalicAnhydride, 30)
-                .notConsumable(TetraethylammoniumNonahydridides.getItemStack())
+                .notConsumable(dust, TetraethylammoniumNonahydridides)
                 .fluidOutputs(Ammonia.getFluid(2000))
                 .fluidOutputs(Oxygen.getFluid(4000))
-                .outputs(RhodamineB.getItemStack(65))
+                .output(dust, RhodamineB, 65)
                 .buildAndRegister();
 
         // Re + 7F + 4H2O + NH3 -> 7HF + NH4ReO4
@@ -236,14 +236,14 @@ public class SensorEmitter {
                 .fluidInputs(NitricAcid.getFluid(2000))
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .fluidOutputs(Hydroxylamine.getFluid(1000))
-                .outputs(SodiumPertechnetate.getItemStack(6))
+                .output(dust, SodiumPertechnetate, 6)
                 .buildAndRegister();
 
         // KOH + NH4ReO4 -> KReO4 + NH3 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(280).EUt(480)
                 .fluidInputs(PotassiumHydroxide.getFluid(1000))
                 .fluidInputs(AmmoniumPerrhenate.getFluid(1000))
-                .outputs(PotassiumPerrhenate.getItemStack(6))
+                .output(dust, PotassiumPerrhenate, 6)
                 .fluidOutputs(Ammonia.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
@@ -251,30 +251,30 @@ public class SensorEmitter {
         // K + NaTcO4 -> KTcO4 + Na
         BLAST_RECIPES.recipeBuilder().duration(280).EUt(120).blastFurnaceTemp(6500)
                 .input(dust, Potassium)
-                .inputs(SodiumPertechnetate.getItemStack(6))
-                .outputs(PotassiumPertechnate.getItemStack(6))
+                .input(dust, SodiumPertechnetate, 6)
+                .output(dust, PotassiumPertechnate, 6)
                 .output(dust, Sodium)
                 .buildAndRegister();
 
         // KReO4 + 18K + 13C2H5OH + 4O -> 4KOH + H9K2ReO4 + 13C2H5KO
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1920)
-                .inputs(PotassiumPerrhenate.getItemStack(6))
+                .input(dust, PotassiumPerrhenate, 6)
                 .input(dust, Potassium, 18)
                 .fluidInputs(Ethanol.getFluid(13000))
                 .fluidInputs(Oxygen.getFluid(4000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(4000))
-                .outputs(PotassiumNonahydridorhenate.getItemStack(16))
+                .output(dust, PotassiumNonahydridorhenate, 16)
                 .fluidOutputs(PotassiumEthoxide.getFluid(13000))
                 .buildAndRegister();
 
         // KTcO4 + 18K + 13C2H5OH + 4O -> 4KOH + H9K2TcO4 + 13C2H5KO
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(1920)
-                .inputs(PotassiumPertechnate.getItemStack(6))
+                .input(dust, PotassiumPertechnate, 6)
                 .input(dust, Potassium, 18)
                 .fluidInputs(Ethanol.getFluid(13000))
                 .fluidInputs(Oxygen.getFluid(4000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(4000))
-                .outputs(PotassiumNonahydridotechnetate.getItemStack(16))
+                .output(dust, PotassiumNonahydridotechnetate, 16)
                 .fluidOutputs(PotassiumEthoxide.getFluid(13000))
                 .buildAndRegister();
 
@@ -288,27 +288,27 @@ public class SensorEmitter {
 
         // H9K2ReO4 + H9K2TcO4 + 2C8H20NBr + 2Br -> 4KBr + [C8H20NH9ReO4 + C8H20NH9TcO4]
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(360).EUt(15310)
-                .inputs(PotassiumNonahydridorhenate.getItemStack(16))
-                .inputs(PotassiumNonahydridotechnetate.getItemStack(16))
+                .input(dust, PotassiumNonahydridorhenate, 16)
+                .input(dust, PotassiumNonahydridotechnetate, 16)
                 .fluidInputs(TetraethylammoniumBromide.getFluid(2000))
                 .fluidInputs(Bromine.getFluid(2000))
-                .outputs(PotassiumBromide.getItemStack(8))
-                .outputs(TetraethylammoniumNonahydridides.getItemStack(86))
+                .output(dust, PotassiumBromide, 8)
+                .output(dust, TetraethylammoniumNonahydridides, 86)
                 .buildAndRegister();
 
         // KI + C6H7NO + C4H9Li -> C10H15N + KOH + LiI
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(480)
-                .inputs(PotassiumIodide.getItemStack(2))
+                .input(dust, PotassiumIodide, 2)
                 .fluidInputs(Aminophenol.getFluid(1000))
                 .fluidInputs(ButylLithium.getFluid(1000))
                 .fluidOutputs(Butylaniline.getFluid(1000))
                 .fluidOutputs(PotassiumHydroxide.getFluid(1000))
-                .outputs(LithiumIodide.getItemStack(2))
+                .output(dust, LithiumIodide, 2)
                 .buildAndRegister();
 
         // NaH + C3H9SiCl -> C3H10Si + NaCl
         CHEMICAL_RECIPES.recipeBuilder().duration(170).EUt(1920)
-                .inputs(SodiumHydride.getItemStack(2))
+                .input(dust, SodiumHydride, 2)
                 .fluidInputs(Trimethylchlorosilane.getFluid(1000))
                 .fluidOutputs(Trimethylsilane.getFluid(1000))
                 .output(dust, Salt, 2)
@@ -318,21 +318,21 @@ public class SensorEmitter {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .input(dust, Potassium)
                 .fluidInputs(Bromine.getFluid(1000))
-                .outputs(PotassiumBromide.getItemStack(2))
+                .output(dust, PotassiumBromide, 2)
                 .buildAndRegister();
 
         // KBr + O3 -> KBrO3
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(480)
-                .inputs(PotassiumBromide.getItemStack(2))
+                .input(dust, PotassiumBromide, 2)
                 .fluidInputs(Ozone.getFluid(1000))
-                .outputs(PotassiumBromate.getItemStack(5))
+                .output(dust, PotassiumBromate, 5)
                 .buildAndRegister();
 
         // C8H4O3 + NaI + NaNO2 + [NaOH + H2O] + NH3 + HClO + 2Cl -> C7H5IO2 + N2O + CO2 + 3[H2O + NaCl]
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(122880)
                 .input(dust, PhthalicAnhydride, 15)
-                .inputs(SodiumIodide.getItemStack(2))
-                .inputs(SodiumNitrite.getItemStack(4))
+                .input(dust, SodiumIodide, 2)
+                .input(dust, SodiumNitrite, 4)
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
@@ -345,26 +345,12 @@ public class SensorEmitter {
 
         // 3C7H5IO2 + H2SO4 + 2O -> H2S + 3C7H5IO4
         CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(1920)
-                .notConsumable(PotassiumBromate.getItemStack())
+                .notConsumable(dust, PotassiumBromate)
                 .fluidInputs(IodobenzoicAcid.getFluid(3000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidInputs(Oxygen.getFluid(2000))
                 .fluidOutputs(HydrogenSulfide.getFluid(1000))
-                .outputs(IBX.getItemStack(51))
-                .buildAndRegister();
-
-        // LiI -> Li + I
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(224).EUt(30)
-                .inputs(LithiumIodide.getItemStack(2))
-                .output(dust, Lithium)
-                .output(dust, Iodine)
-                .buildAndRegister();
-
-        // KBr -> K + Br
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(224).EUt(30)
-                .inputs(PotassiumBromide.getItemStack(2))
-                .output(dust, Potassium)
-                .fluidOutputs(Bromine.getFluid(1000))
+                .output(dust, IBX, 51)
                 .buildAndRegister();
 
         // Co + O -> CoO
@@ -379,7 +365,7 @@ public class SensorEmitter {
                 .fluidInputs(Trimethylsilane.getFluid(1000))
                 .fluidInputs(Chlorobenzene.getFluid(1000))
                 .fluidInputs(Formaldehyde.getFluid(2000))
-                .inputs(IBX.getItemStack(17))
+                .input(dust, IBX, 17)
                 .notConsumable(dust, CobaltOxide)
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
                 .fluidOutputs(Methoxybenzaldehyde.getFluid(1000))
@@ -391,7 +377,7 @@ public class SensorEmitter {
         CHEMICAL_RECIPES.recipeBuilder().duration(190).EUt(122880)
                 .fluidInputs(Methoxybenzaldehyde.getFluid(1000))
                 .fluidInputs(Butylaniline.getFluid(1000))
-                .notConsumable(TetraethylammoniumNonahydridides.getItemStack())
+                .notConsumable(dust, TetraethylammoniumNonahydridides)
                 .fluidOutputs(MBBA.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
@@ -404,9 +390,9 @@ public class SensorEmitter {
 
         // PdCl2 + 2CH3COOH -> C4H6O4Pd + 2HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(480)
-                .inputs(PalladiumChloride.getItemStack(3))
+                .input(dust, PalladiumChloride, 3)
                 .fluidInputs(AceticAcid.getFluid(2000))
-                .outputs(PalladiumAcetate.getItemStack(15))
+                .output(dust, PalladiumAcetate, 15)
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
                 .buildAndRegister();
 
@@ -422,7 +408,7 @@ public class SensorEmitter {
                 .input(dust, Rhenium)
                 .input(dust, Rhodium)
                 .input(dust, Naquadah)
-                .outputs(RhReNqCatalyst.getItemStack(3))
+                .output(dust, RhReNqCatalyst, 3)
                 .buildAndRegister();
 
         // Mg + 2Cl -> MgCl2
@@ -458,10 +444,10 @@ public class SensorEmitter {
                 .fluidInputs(IodineMonochloride.getFluid(1000))
                 .fluidInputs(HypochlorousAcid.getFluid(2000))
                 .fluidInputs(Hydrogen.getFluid(2000))
-                .inputs(Bromosuccinimide.getItemStack(12))
-                .notConsumable(RhReNqCatalyst.getItemStack())
-                .outputs(MgClBromide.getItemStack(6))
-                .outputs(Succinimide.getItemStack(12))
+                .input(dust, Bromosuccinimide, 12)
+                .notConsumable(dust, RhReNqCatalyst)
+                .output(dust, MgClBromide, 6)
+                .output(dust, Succinimide, 12)
                 .fluidOutputs(Dihydroiodotetracene.getFluid(1000))
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
@@ -484,19 +470,19 @@ public class SensorEmitter {
                 .fluidInputs(HydrogenPeroxide.getFluid(1000))
                 .fluidOutputs(Dichlorodicyanobenzoquinone.getFluid(1000))
                 .fluidOutputs(Water.getFluid(2000))
-                .notConsumable(VanadiumOxide.getItemStack())
+                .notConsumable(dust, VanadiumOxide)
                 .buildAndRegister();
 
         // C4H6O4Pd + Li2TiO3 + 2HCl + H2O -> C4H6O4 + 2[H2O + LiCl] + PdTiO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(350).EUt(491520)
-                .inputs(PalladiumAcetate.getItemStack(15))
+                .input(dust, PalladiumAcetate, 15)
                 .input(wireFine, LithiumTitanate, 24)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidInputs(Water.getFluid(1000))
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .fluidOutputs(LithiumChlorideSolution.getFluid(2000))
-                .outputs(SuccinicAcid.getItemStack(14))
-                .outputs(PalladiumLoadedRutileNanoparticles.getItemStack(5))
+                .output(dust, SuccinicAcid, 14)
+                .output(dust, PalladiumLoadedRutileNanoparticles, 5)
                 .buildAndRegister();
 
         // 2H2C18H11I + 2C8Cl2N2O2 + C3H8O -> C3H6O + 2C8N2Cl2(OH)2 + 2I + 2C18H12
@@ -507,9 +493,9 @@ public class SensorEmitter {
                 .fluidOutputs(Acetone.getFluid(1000))
                 .fluidOutputs(Dichlorodicyanohydroquinone.getFluid(2000))
                 .output(dust, Iodine, 2)
-                .outputs(Tetracene.getItemStack(60))
+                .output(dust, Tetracene, 60)
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
-                .notConsumable(PalladiumLoadedRutileNanoparticles.getItemStack())
+                .notConsumable(dust, PalladiumLoadedRutileNanoparticles)
                 .buildAndRegister();
         
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(491520)

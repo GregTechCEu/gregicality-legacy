@@ -1096,7 +1096,7 @@ public class GASecondDegreeMaterials {
                 .components(Water, 1, Sphalerite, 1, Coke, 1)
                 .build();
 
-        CadmiumZincDust = new Material.Builder(11551, "cadmium_zinc_dust")
+        CadmiumZinc = new Material.Builder(11551, "cadmium_zinc")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)

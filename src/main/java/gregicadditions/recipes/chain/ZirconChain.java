@@ -83,7 +83,7 @@ public class ZirconChain {
                 .fluidInputs(SulfurTrioxide.getFluid(3000))
                 .fluidInputs(AmmoniumChloride.getFluid(6000))
                 .fluidInputs(HydrogenPeroxide.getFluid(6000))
-                .notConsumable(ZrHfSeparationMix)
+                .notConsumable(ZrHfSeparationMix.getFluid(0))
                 .fluidOutputs(AmmoniumSulfate.getFluid(3000))
                 .fluidOutputs(HydrochloricAcid.getFluid(12000))
                 .output(dust, CubicZirconia, 3)

@@ -669,7 +669,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material UraniumOxideThoriumNitrate;
     public static Material GrapheneOxidationResidue;
     public static Material ZincCokePellets;
-    public static Material CadmiumZincDust;
+    public static Material CadmiumZinc;
     public static Material UranylNitrate;
     public static Material SodiumSalts;
     public static Material PotassiumMagnesiumSalts;
@@ -1132,8 +1132,8 @@ public class GAMaterials implements IMaterialHandler {
     public static Material CupriavidusNecator;
     public static Material Shewanella;
     public static Material ZincResidualSlag;
-    public static Material ZincFlueDust;
-    public static Material FineZincSlagDust;
+    public static Material ZincFlue;
+    public static Material FineZincSlag;
     public static Material DehydrogenationCatalyst;
     public static Material NeodymiumDopedYttrium;
     public static Material NdYAGNanoparticles;

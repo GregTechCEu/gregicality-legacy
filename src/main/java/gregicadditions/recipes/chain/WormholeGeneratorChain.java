@@ -44,7 +44,7 @@ public class WormholeGeneratorChain {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(100000)
                 .fluidInputs(Tritanium.getFluid(144))
                 .input(stick, NaquadahAlloy, 4)
-                .input(wireGtSingle, UVSuperconductor, 2)
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 2)
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
                 .inputs(EMITTER_UV.getStackForm(2))
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
@@ -83,7 +83,7 @@ public class WormholeGeneratorChain {
                 .fluidInputs(FreeElectronGas.getFluid(1000))
                 .input(plate, MetastableOganesson, 1)
                 .input(plate, Vibranium, 1)
-                .input(dustSmall, Mendelevium.getMaterial(), 1)
+                .input(dustSmall, Mendelevium, 1)
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
                 .buildAndRegister();
@@ -93,7 +93,7 @@ public class WormholeGeneratorChain {
                 .inputs(EMITTER_ZPM.getStackForm(2))
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm())
                 .inputs(CONTAINED_KERR_SINGULARITY.getStackForm())
-                .input(wireGtSingle, UVSuperconductor, 2)
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 2)
                 .input(plate, Neutronium, 2)
                 .outputs(MICROWORMHOLE_GENERATOR.getStackForm())
                 .buildAndRegister();
