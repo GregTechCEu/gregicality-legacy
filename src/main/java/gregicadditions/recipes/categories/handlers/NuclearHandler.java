@@ -20,7 +20,7 @@ import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 import static gregtech.common.items.MetaItems.SHAPE_MOLD_BALL;
 
-public class NuclearHandler {
+public class NuclearHandler { //todo nuclear rework
 
     public static void register() {
         OrePrefix.ingot.addProcessingHandler(IngotMaterial.class, NuclearHandler::processNuclearMaterial);

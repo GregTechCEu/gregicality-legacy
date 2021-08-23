@@ -50,8 +50,8 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, Master)
                 .input(circuit, Master)
                 .input(circuit, Master)
-                .input(wireGtSingle, IVSuperconductor, 64)
-                .input(wireGtSingle, IVSuperconductor, 64)
+                .input(wireGtSingle, SamariumIronArsenicOxide, 64)
+                .input(wireGtSingle, SamariumIronArsenicOxide, 64)
                 .input(gear, IncoloyMA956, 16)
                 .inputs(ROCKET_GENERATOR[LuV - 1].getStackForm(2))
                 .inputs(ELECTRIC_PISTON_LUV.getStackForm(16))
@@ -76,10 +76,10 @@ public class MultiblockCraftingRecipes {
                 .input(bolt, Tritanium, 24)
                 .inputs(ELECTRIC_MOTOR_UV.getStackForm(4))
                 .inputs(SENSOR_UV.getStackForm())
-                .input(wireGtSingle, UVSuperconductor, 64)
-                .input(wireGtSingle, UVSuperconductor, 64)
-                .input(wireGtSingle, UVSuperconductor, 64)
-                .input(wireGtSingle, UVSuperconductor, 64)
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 64)
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 64)
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 64)
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 64)
                 .inputs(LARGE_MINER[0].getStackForm())
                 .inputs(LARGE_MINER[1].getStackForm())
                 .inputs(LARGE_MINER[2].getStackForm())
@@ -119,7 +119,7 @@ public class MultiblockCraftingRecipes {
                 .input(wireGtSingle, ActiniumVibraniumBETSSuperhydride, 64)
                 .input(wireGtSingle, ActiniumVibraniumBETSSuperhydride, 64)
                 .inputs(VOID_MINER[1].getStackForm())
-                .input(circuit, UEV, 4)
+                .input(circuit, Ultra, 4)
                 .input(gear, HastelloyX78, 4)
                 .input(screw, Lafium, 64)
                 .input(screw, Pikyonium, 64)
@@ -179,7 +179,7 @@ public class MultiblockCraftingRecipes {
         // Naquadah Reactor
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 20))
-                .fluidInputs(Protactinium233.getMaterial().getFluid(L * 2))
+                .fluidInputs(Protactinium233.getFluid(L * 2))
                 .input(plate, Tritanium, 8)
                 .input(foil, EnrichedNaquadahAlloy, 24)
                 .input(gear, Duranium, 16)
@@ -188,7 +188,7 @@ public class MultiblockCraftingRecipes {
                 .inputs(ELECTRIC_PUMP_UV.getStackForm(1))
                 .inputs(ELECTRIC_PISTON_UV.getStackForm(2))
                 .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32))
-                .input(wireGtSingle, ZPMSuperconductor, 32)
+                .input(wireGtSingle, UraniumRhodiumDinaquadide, 32)
                 .input(circuit, Superconductor)
                 .input(circuit, Superconductor)
                 .input(circuit, Superconductor)
@@ -196,7 +196,7 @@ public class MultiblockCraftingRecipes {
                 .outputs(LARGE_NAQUADAH_REACTOR.getStackForm())
                 .buildAndRegister();
 
-        /* TODO
+        /* TODO fusion with CEu
         // Fusion Reactor Mk1
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(30000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 20))
@@ -205,7 +205,7 @@ public class MultiblockCraftingRecipes {
                 .input(plate, NetherStar, 4)
                 .inputs(FIELD_GENERATOR_IV.getStackForm(2))
                 .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32))
-                .input(wireGtSingle, LuVSuperconductor, 32)
+                .input(wireGtSingle, LEnrichedNaquadahTriniumEuropiumDuranide, 32)
                 .input(circuit, Ultimate)
                 .input(circuit, Ultimate)
                 .input(circuit, Ultimate)
@@ -237,7 +237,7 @@ public class MultiblockCraftingRecipes {
                 .input(plate, Fermium.getMaterial(), 4)
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm(2))
                 .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(64))
-                .input(wireGtQuadruple, UVSuperconductor, 32)
+                .input(wireGtQuadruple, EnrichedNaquadahTriniumEuropiumDuranide, 32)
                 .input(circuit, Infinite)
                 .input(circuit, Infinite)
                 .input(circuit, Infinite)
@@ -270,7 +270,7 @@ public class MultiblockCraftingRecipes {
                 .input(screw, Ruridit, 64)
                 .input(stick, AbyssalAlloy, 16)
                 .input(gear, TungstenTitaniumCarbide, 8)
-                .input(circuit, UEV, 4)
+                .input(circuit, Ultra, 4)
                 .input(foil, Zylon, 64)
                 .inputs(FIELD_GENERATOR_UEV.getStackForm(2))
                 .inputs(ELECTRIC_PUMP_UEV.getStackForm(2))
@@ -286,7 +286,7 @@ public class MultiblockCraftingRecipes {
                 .input(screw, Zeron100, 64)
                 .input(stick, TitanSteel, 16)
                 .input(gear, Pikyonium, 8)
-                .input(circuit, UIV, 4)
+                .input(circuit, Insane, 4)
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
                 .input(foil, Zylon, 64)
                 .input(foil, Zylon, 64)
@@ -384,10 +384,10 @@ public class MultiblockCraftingRecipes {
                 .inputs(ROBOT_ARM_UEV.getStackForm(2))
                 .inputs(FIELD_GENERATOR_UEV.getStackForm(2))
                 .input(wireGtHex, BlackTitanium, 16)
-                .input(circuit, UEV)
-                .input(circuit, UEV)
-                .input(circuit, UEV)
-                .input(circuit, UEV)
+                .input(circuit, Ultra)
+                .input(circuit, Ultra)
+                .input(circuit, Ultra)
+                .input(circuit, Ultra)
                 .outputs(QUBIT_COMPUTER.getStackForm()).buildAndRegister();
 
         // Nuclear Reactor
@@ -454,7 +454,7 @@ public class MultiblockCraftingRecipes {
                 .fluidInputs(Polytetrafluoroethylene.getFluid(L * 16))
                 .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(PTFE_PIPE, 4))
                 .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(CHEMICALLY_INERT, 4))
-                .input(pipeLarge, Polytetrafluoroethylene, 8)
+                .input(pipeLargeFluid, Polytetrafluoroethylene, 8)
                 .input(foil, Polybenzimidazole, 32)
                 .input(plate, Grisium, 32)
                 .input(circuit, Elite, 4)
@@ -494,7 +494,7 @@ public class MultiblockCraftingRecipes {
                 .input(block, IncoloyMA956, 2)
                 .input(stickLong, Osmium, 64)
                 .input(ring, Osmium, 64)
-                .input(wireGtSingle, UVSuperconductor, 16)
+                .input(wireGtSingle, EnrichedNaquadahTriniumEuropiumDuranide, 16)
                 .inputs(ELECTRIC_PISTON_UV.getStackForm(16))
                 .outputs(ELECTRIC_IMPLOSION.getStackForm())
                 .buildAndRegister();
@@ -513,9 +513,7 @@ public class MultiblockCraftingRecipes {
         // Large Thermal Centrifuge
         ModHandler.addShapedRecipe("ga_large_thermal_centrifuge", LARGE_THERMAL_CENTRIFUGE.getStackForm(),
                 "CBC", "RHR", "CDC",
-                'H', GAConfig.GT5U.highTierThermalCentrifuges ?
-                        GATileEntities.THERMAL_CENTRIFUGE[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.THERMAL_CENTRIFUGE[EV - 1].getStackForm(),
+                'H', MetaTileEntities.THERMAL_CENTRIFUGE[IV].getStackForm(),
                 'R', new UnificationEntry(stick, RedSteel),
                 'B', new UnificationEntry(circuit, Elite),
                 'C', new UnificationEntry(plate, RedSteel),
@@ -524,9 +522,7 @@ public class MultiblockCraftingRecipes {
         // Large Bending and Forming Machine
         ModHandler.addShapedRecipe("ga_large_bender_and_forming", LARGE_BENDER_AND_FORMING.getStackForm(),
                 "CBC", "RHR", "CBC",
-                'H', GAConfig.GT5U.highTierThermalCentrifuges ?
-                        GATileEntities.BENDER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.BENDER[EV - 1].getStackForm(),
+                'H', MetaTileEntities.BENDER[IV].getStackForm(),
                 'R', new UnificationEntry(gear, Titanium),
                 'B', new UnificationEntry(circuit, Elite),
                 'C', new UnificationEntry(plate, Titanium));
@@ -534,21 +530,17 @@ public class MultiblockCraftingRecipes {
         // Large Centrifuge
         ModHandler.addShapedRecipe("ga_large_centrifuge", LARGE_CENTRIFUGE.getStackForm(),
                 "CBC", "RHR", "DED",
-                'H', GAConfig.GT5U.highTierCentrifuges ?
-                        GATileEntities.CENTRIFUGE[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.CENTRIFUGE[EV - 1].getStackForm(),
+                'H', MetaTileEntities.CENTRIFUGE[IV].getStackForm(),
                 'E', new UnificationEntry(plateDense, Tumbaga),
                 'C', new UnificationEntry(circuit, Elite),
-                'B', new UnificationEntry(pipeLarge, TungstenSteel),
+                'B', new UnificationEntry(pipeLargeFluid, TungstenSteel),
                 'D', new UnificationEntry(plate, Tumbaga),
                 'R', new UnificationEntry(gear, Titanium));
 
         // Large Cutting Machine
         ModHandler.addShapedRecipe("ga_large_cutting", LARGE_CUTTING.getStackForm(),
                 "GEG", "CHC", "DED",
-                'H', GAConfig.GT5U.highTierCutters ?
-                        GATileEntities.CUTTER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.CUTTER[EV - 1].getStackForm(),
+                'H', MetaTileEntities.CUTTER[IV].getStackForm(),
                 'C', CONVEYOR_MODULE_IV.getStackForm(),
                 'E', new UnificationEntry(circuit, Elite),
                 'G', new UnificationEntry(gear, MaragingSteel250),
@@ -557,9 +549,7 @@ public class MultiblockCraftingRecipes {
         // Large Electrolyzer
         ModHandler.addShapedRecipe("ga_large_electrolyzer", LARGE_ELECTROLYZER.getStackForm(),
                 "DED", "CHC", "DED",
-                'H', GAConfig.GT5U.highTierElectrolyzers ?
-                        GATileEntities.ELECTROLYZER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.ELECTROLYZER[EV - 1].getStackForm(),
+                'H', MetaTileEntities.ELECTROLYZER[IV].getStackForm(),
                 'C', new UnificationEntry(wireGtQuadruple, YttriumBariumCuprate),
                 'E', new UnificationEntry(circuit, Elite),
                 'D', new UnificationEntry(plate, Potin));
@@ -567,9 +557,7 @@ public class MultiblockCraftingRecipes {
         // Large Extruder
         ModHandler.addShapedRecipe("ga_large_extruder", LARGE_EXTRUDER.getStackForm(),
                 "DED", "CHC", "DED",
-                'H', GAConfig.GT5U.highTierExtruders ?
-                        GATileEntities.EXTRUDER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.EXTRUDER[EV - 2].getStackForm(),
+                'H', MetaTileEntities.EXTRUDER[IV].getStackForm(),
                 'C', ELECTRIC_PISTON_IV,
                 'E', new UnificationEntry(circuit, Elite),
                 'D', new UnificationEntry(plate, Inconel625));
@@ -579,9 +567,7 @@ public class MultiblockCraftingRecipes {
                 "MBM", "CEC", "DHD",
                 'C', ELECTRIC_MOTOR_IV,
                 'M', ELECTRIC_PISTON_IV,
-                'E', GAConfig.GT5U.highTierMacerators ?
-                        GATileEntities.MACERATOR[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.MACERATOR[EV - 1].getStackForm(),
+                'E', MetaTileEntities.MACERATOR[IV].getStackForm(),
                 'H', new UnificationEntry(circuit, Elite),
                 'B', COMPONENT_GRINDER_TUNGSTEN,
                 'D', new UnificationEntry(plate, TungstenCarbide));
@@ -591,17 +577,13 @@ public class MultiblockCraftingRecipes {
                 "DED", "CHC", "DED",
                 'C', new UnificationEntry(plate, TungstenCarbide),
                 'E', new UnificationEntry(circuit, Elite),
-                'H', GAConfig.GT5U.highTierMixers ?
-                        GATileEntities.MIXER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.MIXER[EV - 1].getStackForm(),
+                'H', MetaTileEntities.MIXER[IV].getStackForm(),
                 'D', new UnificationEntry(plate, Staballoy));
 
         // Large Sifter
         ModHandler.addShapedRecipe("ga_large_sifter", LARGE_SIFTER.getStackForm(),
                 "DED", "CHC", "BEB",
-                'H', GAConfig.GT5U.highTierSifters ?
-                        GATileEntities.SIFTER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.SIFTER[EV - 1].getStackForm(),
+                'H', MetaTileEntities.SIFTER[IV].getStackForm(),
                 'E', new UnificationEntry(circuit, Elite),
                 'C', new UnificationEntry(cableGtSingle, Tungsten),
                 'D', new UnificationEntry(plate, EglinSteel),
@@ -610,9 +592,7 @@ public class MultiblockCraftingRecipes {
         // Large Washing Plant
         ModHandler.addShapedRecipe("ga_large_washing_plant", LARGE_WASHING_PLANT.getStackForm(),
                 "DED", "CHC", "DED",
-                'H', GAConfig.GT5U.highTierOreWashers ?
-                        GATileEntities.ORE_WASHER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.ORE_WASHER[EV - 1].getStackForm(),
+                'H', MetaTileEntities.ORE_WASHER[IV].getStackForm(),
                 'E', new UnificationEntry(circuit, Elite),
                 'C', new UnificationEntry(gear, Talonite),
                 'D', new UnificationEntry(plate, Grisium));
@@ -620,9 +600,7 @@ public class MultiblockCraftingRecipes {
         // Large Wiremill
         ModHandler.addShapedRecipe("ga_large_wiremill", LARGE_WIREMILL.getStackForm(),
                 "DED", "CHC", "GEG",
-                'H', GAConfig.GT5U.highTierWiremills ?
-                        GATileEntities.WIREMILL[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.WIREMILL[EV - 1].getStackForm(),
+                'H', MetaTileEntities.WIREMILL[IV].getStackForm(),
                 'E', ELECTRIC_MOTOR_IV,
                 'C', new UnificationEntry(circuit, Elite),
                 'G', new UnificationEntry(gear, MaragingSteel250),
@@ -640,12 +618,8 @@ public class MultiblockCraftingRecipes {
                 "BCR", "PHU", "CMC",
                 'H', HULL[IV].getStackForm(),
                 'C', new UnificationEntry(circuit, Elite),
-                'P', GAConfig.GT5U.highTierPackers ?
-                        GATileEntities.PACKER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.PACKER[EV - 1].getStackForm(),
-                'U', GAConfig.GT5U.highTierUnpackers ?
-                        GATileEntities.UNPACKER[EV].getMetaTileEntity().getStackForm() :
-                        MetaTileEntities.UNPACKER[EV - 1].getStackForm(),
+                'P', MetaTileEntities.PACKER[IV].getStackForm(),
+                'U', MetaTileEntities.UNPACKER[IV].getStackForm(),
                 'B', CONVEYOR_MODULE_IV,
                 'R', ROBOT_ARM_IV,
                 'M', new UnificationEntry(plate, HG1223));
@@ -665,7 +639,7 @@ public class MultiblockCraftingRecipes {
                 "CRC", "SAS", "CRC",
                 'A', HULL[LuV].getStackForm(),
                 'R', ROBOT_ARM_LUV,
-                'C', MetaBlocks.MUTLIBLOCK_CASING.getItemVariant(ASSEMBLER_CASING),
+                'C', MetaBlocks.MULTIBLOCK_CASING.getItemVariant(ASSEMBLER_CASING),
                 'S', new UnificationEntry(circuit, Ultimate));
 
         // Large Brewery
@@ -729,7 +703,7 @@ public class MultiblockCraftingRecipes {
                 .input(screw, Tritanium, 32)
                 .input(gear, Duranium, 4)
                 .input(wireFine, NaquadahAlloy, 64)
-                .input(wireGtSingle, ZPMSuperconductor, 32)
+                .input(wireGtSingle, UraniumRhodiumDinaquadide, 32)
                 .outputs(LARGE_MASS_FABRICATOR.getStackForm())
                 .buildAndRegister();
 
@@ -747,7 +721,7 @@ public class MultiblockCraftingRecipes {
                 .input(screw, Tritanium, 32)
                 .input(gear, Duranium, 4)
                 .input(wireFine, NaquadahAlloy, 64)
-                .inputs(MetaBlocks.WIRE_COIL.getItemVariant(SUPERCONDUCTOR, 8))
+                .inputs(MetaBlocks.FUSION_COIL.getItemVariant(BlockFusionCoil.CoilType.SUPERCONDUCTOR, 8))
                 .outputs(LARGE_REPLICATOR.getStackForm())
                 .buildAndRegister();
 
@@ -780,7 +754,7 @@ public class MultiblockCraftingRecipes {
                 .inputs(MetaTileEntities.VACUUM_FREEZER.getStackForm(64))
                 .input(gear, AbyssalAlloy, 16)
                 .input(gearSmall, Duranium, 32)
-                .input(pipeSmall, Zeron100, 64)
+                .input(pipeSmallFluid, Zeron100, 64)
                 .inputs(FIELD_GENERATOR_UV.getStackForm(2))
                 .input(foil, Rutherfordium, 64)
                 .input(wireFine, Europium, 64)
@@ -801,7 +775,7 @@ public class MultiblockCraftingRecipes {
                 .input(gear, Zeron100, 8)
                 .input(gear, Zeron100, 8)
                 .input(gearSmall, HSSE, 32)
-                .input(pipeSmall, Titanium, 64)
+                .input(pipeSmallFluid, Titanium, 64)
                 .inputs(FIELD_GENERATOR_LUV.getStackForm(2))
                 .input(plateDense, BabbittAlloy, 8)
                 .input(circuit, Master, 4)
@@ -812,8 +786,8 @@ public class MultiblockCraftingRecipes {
 
     private static void multiblockOverride() {
 
-        // Primitive Blast Furnace (PBF)
-        removeRecipeByName("gregtech:bronze_primitive_blast_furnace");
+        // Primitive Blast Furnace (PBF) todo are these still needed with CEu?
+        ModHandler.removeRecipeByName("gregtech:bronze_primitive_blast_furnace");
         ModHandler.addShapedRecipe("ga_primitive_blast_furnace", MetaTileEntities.PRIMITIVE_BLAST_FURNACE.getStackForm(),
                 "hRS", "PBR", "dRS",
                 'R', new UnificationEntry(stick, Iron),
@@ -822,7 +796,7 @@ public class MultiblockCraftingRecipes {
                 'B', MetaBlocks.METAL_CASING.getItemVariant(PRIMITIVE_BRICKS));
 
         // Large Bronze Boiler
-        removeRecipeByName("gregtech:large_bronze_boiler");
+        ModHandler.removeRecipeByName("gregtech:large_bronze_boiler");
         ModHandler.addShapedRecipe("ga_large_bronze_boiler", MetaTileEntities.LARGE_BRONZE_BOILER.getStackForm(),
                 "PSP", "SAS", "PSP",
                 'P', new UnificationEntry(cableGtSingle, Tin),
@@ -830,7 +804,7 @@ public class MultiblockCraftingRecipes {
                 'A', MetaBlocks.METAL_CASING.getItemVariant(BRONZE_BRICKS));
 
         // Large Steel Boiler
-        removeRecipeByName("gregtech:large_steel_boiler");
+        ModHandler.removeRecipeByName("gregtech:large_steel_boiler");
         ModHandler.addShapedRecipe("ga_large_steel_boiler", MetaTileEntities.LARGE_STEEL_BOILER.getStackForm(),
                 "PSP", "SAS", "PSP",
                 'P', new UnificationEntry(cableGtSingle, Copper),
@@ -838,7 +812,7 @@ public class MultiblockCraftingRecipes {
                 'A', MetaBlocks.METAL_CASING.getItemVariant(STEEL_SOLID));
 
         // Large Titanium Boiler
-        removeRecipeByName("gregtech:large_titanium_boiler");
+        ModHandler.removeRecipeByName("gregtech:large_titanium_boiler");
         ModHandler.addShapedRecipe("ga_large_titanium_boiler", MetaTileEntities.LARGE_TITANIUM_BOILER.getStackForm(),
                 "PSP", "SAS", "PSP",
                 'P', new UnificationEntry(cableGtSingle, Gold),
@@ -846,7 +820,7 @@ public class MultiblockCraftingRecipes {
                 'A', MetaBlocks.METAL_CASING.getItemVariant(TITANIUM_STABLE));
 
         // Large Tungstensteel Boiler
-        removeRecipeByName("gregtech:large_tungstensteel_boiler");
+        ModHandler.removeRecipeByName("gregtech:large_tungstensteel_boiler");
         ModHandler.addShapedRecipe("ga_large_tungstensteel_boiler", MetaTileEntities.LARGE_TUNGSTENSTEEL_BOILER.getStackForm(),
                 "PSP", "SAS", "PSP",
                 'P', new UnificationEntry(cableGtSingle, Aluminium),

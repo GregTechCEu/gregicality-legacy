@@ -138,18 +138,18 @@ public class OpticalComponents {
                 .input(dust, LanthanumTrifluoride, 8)
                 .input(dust, AluminiumTrifluoride, 4)
                 .input(dust, SodiumFluoride, 14)
-                .output(dust, ZBLANDust, 35)
+                .output(dust, ZBLAN, 35)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().EUt(120).duration(3000)
-                .input(dust, ZBLANDust)
+                .input(dust, ZBLAN)
                 .input(dust, ErbiumTrifluoride, 4)
                 .output(dust, ErbiumDopedZBLANDust, 2)
                 .buildAndRegister();
 
         BLAST_RECIPES.recipeBuilder().EUt(120).duration(6000)
                 .fluidInputs(Argon.getFluid(1000))
-                .input(dust, ZBLANDust)
+                .input(dust, ZBLAN)
                 .outputs(ZBLAN.getStackForm())
                 .blastFurnaceTemp(2500)
                 .buildAndRegister();

@@ -37,34 +37,20 @@ public class MachineCraftingRecipes {
 
     private static void hullOverride() {
 
-        // Hull Overrides
+        // Hull Overrides todo might not be needed in CEu
         removeTieredRecipeByName("gregtech:hull_", ULV, GTValues.MAX);
 
-        if (ConfigHolder.harderMachineHulls) {
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV), OreDictUnifier.get(cableGtSingle, Lead, 2)},             new FluidStack[]{Polyethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV),  OreDictUnifier.get(cableGtSingle, Tin, 2)},              new FluidStack[]{Polyethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, Copper, 2)},           new FluidStack[]{Polyethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, AnnealedCopper, 2)},   new FluidStack[]{Polyethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.HV),  OreDictUnifier.get(cableGtSingle, Gold, 2)},             new FluidStack[]{Polyethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.EV),  OreDictUnifier.get(cableGtSingle, Aluminium, 2)},        new FluidStack[]{Polyethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.IV),  OreDictUnifier.get(cableGtSingle, Tungsten, 2)},         new FluidStack[]{Polyethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV), OreDictUnifier.get(cableGtSingle, VanadiumGallium, 2)},  new FluidStack[]{Polyethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM), OreDictUnifier.get(cableGtSingle, Naquadah, 2)},         new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV),  OreDictUnifier.get(cableGtQuadruple, NaquadahAlloy, 2)}, new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
-            removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(cableGtSingle, Superconductor, 2)},   new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
-        } else {
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV), OreDictUnifier.get(cableGtSingle, Lead, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV),  OreDictUnifier.get(cableGtSingle, Tin, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, Copper, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, AnnealedCopper, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.HV),  OreDictUnifier.get(cableGtSingle, Gold, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.EV),  OreDictUnifier.get(cableGtSingle, Aluminium, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.IV),  OreDictUnifier.get(cableGtSingle, Tungsten, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV), OreDictUnifier.get(cableGtSingle, VanadiumGallium, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM), OreDictUnifier.get(cableGtSingle, Naquadah, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV),  OreDictUnifier.get(cableGtQuadruple, NaquadahAlloy, 2));
-            removeRecipesByInputs(ASSEMBLER_RECIPES, MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(cableGtSingle, Superconductor, 2));
-        }
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV), OreDictUnifier.get(cableGtSingle, Lead, 2)},             new FluidStack[]{Polyethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV),  OreDictUnifier.get(cableGtSingle, Tin, 2)},              new FluidStack[]{Polyethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, Copper, 2)},           new FluidStack[]{Polyethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MV),  OreDictUnifier.get(cableGtSingle, AnnealedCopper, 2)},   new FluidStack[]{Polyethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.HV),  OreDictUnifier.get(cableGtSingle, Gold, 2)},             new FluidStack[]{Polyethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.EV),  OreDictUnifier.get(cableGtSingle, Aluminium, 2)},        new FluidStack[]{Polyethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.IV),  OreDictUnifier.get(cableGtSingle, Tungsten, 2)},         new FluidStack[]{Polyethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LuV), OreDictUnifier.get(cableGtSingle, VanadiumGallium, 2)},  new FluidStack[]{Polyethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ZPM), OreDictUnifier.get(cableGtSingle, Naquadah, 2)},         new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.UV),  OreDictUnifier.get(cableGtQuadruple, NaquadahAlloy, 2)}, new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.MAX), OreDictUnifier.get(cableGtSingle, Superconductor, 2)},   new FluidStack[]{Polytetrafluoroethylene.getFluid(L * 2)});
 
         ModHandler.addShapedRecipe("hull_ulv", MetaTileEntities.HULL[ULV].getStackForm(), "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.ULV), 'C', new UnificationEntry(cableGtSingle, Lead),                    'H', new UnificationEntry(plate, WroughtIron),            'P', new UnificationEntry(plate, Wood));
         ModHandler.addShapedRecipe("hull_lv",  MetaTileEntities.HULL[LV].getStackForm(),  "PHP", "CMC", 'M', MetaBlocks.MACHINE_CASING.getItemVariant(BlockMachineCasing.MachineCasingType.LV),  'C', new UnificationEntry(cableGtSingle, Tin),                     'H', new UnificationEntry(plate, Steel),                  'P', new UnificationEntry(plate, WroughtIron));

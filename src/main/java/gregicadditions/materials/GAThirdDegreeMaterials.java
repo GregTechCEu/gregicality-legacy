@@ -1,5 +1,6 @@
 package gregicadditions.materials;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.info.MaterialIconSet;
@@ -110,7 +111,7 @@ public class GAThirdDegreeMaterials {
                 .dust()
                 .colorAverage().iconSet(MaterialIconSet.SHINY)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(ZBLANDust, 1 , ErbiumTrifluoride, 1)
+                .components(GAMaterials.ZBLAN, 1 , ErbiumTrifluoride, 1)
                 .build();
 
         RoastedSpodumene = new Material.Builder(15514,"roasted_spodumene")

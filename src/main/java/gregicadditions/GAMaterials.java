@@ -649,7 +649,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material LuTmYChlorideSolution;
     public static Material SeaborgiumDopedNanotubes;
     public static Material FullereneDopedNanotubes;
-    public static Material LiquidZBLAN; //todo overhaul this
+    public static Material ZBLAN; //todo overhaul this
     public static Material GrapheneOxidationSolution;
     public static Material SupercriticalCO2;
     public static Material LiquidEnrichedHelium;
@@ -664,7 +664,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material SilicaAluminaGel;
     public static Material ZeoliteSievingPellets;
     public static Material WetZeoliteSievingPellets;
-    public static Material ZBLANDust;
     public static Material VanadiumSlag;
     public static Material PotassiumUranylTricarbonate;
     public static Material UraniumPeroxideThoriumOxide;
@@ -1048,6 +1047,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material CrudeHexanitroHexaaxaisowurtzitane;
     public static Material ChlorodiisopropylPhosphine;
     public static Material IridiumCyclooctadienylChlorideDimer;
+    public static Material AluminiumComplex;
 
     // Unknown Composition Materials
     public static Material Kerosene;
@@ -1143,7 +1143,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material PotassiumPermanganate;
     public static Material PrHoYLFNanoparticles;
     public static Material LuTmYVONanoparticles;
-    public static Material UnprocessedNdYAGDust;
+    public static Material UnprocessedNdYAG;
     public static Material LuTmYVOPrecipitate;
     public static Material SelectivelyMutatedCupriavidiusNecator;
     public static Material CoAcABCatalyst;

@@ -36,7 +36,7 @@ public class WetwareComponents {
                 .duration(250)
                 .buildAndRegister();
 
-        // Cyber Processing Unit
+        // Cyber Processing Unit todo smds
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .inputs(ELECTRICALLY_WIRED_PETRI_DISH.getStackForm())
                 .input(foil, SiliconeRubber, 8)

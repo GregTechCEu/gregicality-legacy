@@ -914,12 +914,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("C60CNT", true);
 
-        LiquidZBLAN = new Material.Builder(11525, "molten_zblan")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(ZBLANDust, 1)
-                .build();
+        // FREE ID 11525
 
         GrapheneOxidationSolution = new Material.Builder(11526, "graphene_oxidation_solution")
                 .fluid()
@@ -1024,8 +1019,8 @@ public class GASecondDegreeMaterials {
                 .components(ZeoliteSievingPellets, RareEarth, 1)
                 .build();
 
-        ZBLANDust = new Material.Builder(11541, "zblan_dust")
-                .dust()
+        GAMaterials.ZBLAN = new Material.Builder(11541, "zblan")
+                .dust().fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(ZirconiumTetrafluoride, 18, BariumDifluoride, 7, LanthanumTrifluoride, 2, AluminiumTrifluoride, 1, SodiumFluoride, 7)

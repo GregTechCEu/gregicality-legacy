@@ -54,7 +54,7 @@ public class ElectricImplosionHandler {
         RecipeMaps.IMPLOSION_RECIPES.getRecipeList().forEach(recipe -> {
 
             // Get the explosive type used in this recipe
-            ItemStack explosive = (ItemStack) recipe.getRecipePropertyStorage().getRawRecipePropertyValue(PROPERTY);
+            ItemStack explosive = (ItemStack) recipe.getPropertyRaw(PROPERTY);
 
             // Get the input list, converting from CountableIngredient to ItemStack
             AtomicInteger stackCount = new AtomicInteger();

@@ -616,7 +616,7 @@ public class GAUnknownCompositionMaterials {
                 .build()
                 .setFormula("Lu/Tm:YVO");
 
-        UnprocessedNdYAGDust = new Material.Builder(9595, "unprocessed_ndyag_dust")
+        UnprocessedNdYAG = new Material.Builder(9595, "unprocessed_ndyag")
                 .dust()
                 .color(0x6f20af).iconSet(DULL)
                 .build()

@@ -20,7 +20,7 @@ import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.UUMatter;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
-public class OreRecipeHandler {
+public class OreRecipeHandler { //todo ore processing rework
 
     private static final List<OrePrefix> ORE_TYPES = Arrays.asList(
             ore, oreBasalt, oreBlackgranite, oreEndstone, oreGravel, oreNetherrack, oreMarble, oreRedgranite, oreSand);

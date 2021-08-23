@@ -62,30 +62,9 @@ public class FuelHandler {
         registerHotCoolantTurbineFuel(SupercriticalLeadBismuthEutectic .getFluid( 60), LeadBismuthEutectic,  10000, EV);
 
         // Gas Turbine Fuels
-        registerGasGeneratorFuel(NaturalGas        .getFluid(20),    13, LV);
-        registerGasGeneratorFuel(Hydrogen          .getFluid(20),    1, LV);
-        registerGasGeneratorFuel(CarbonMonoxide    .getFluid(20),    15, LV);
-        registerGasGeneratorFuel(WoodGas           .getFluid(20),    15, LV);
-        registerGasGeneratorFuel(SulfuricNaphtha   .getFluid( 8),    10, LV);
-        registerGasGeneratorFuel(Ethylene          .getFluid( 5),    20, LV);
-        registerGasGeneratorFuel(RefineryGas       .getFluid( 2),    10, LV);
-        registerGasGeneratorFuel(Propene           .getFluid(10),    60, LV);
-        registerGasGeneratorFuel(Butene            .getFluid(10),    80, LV);
-        registerGasGeneratorFuel(Phenol            .getFluid(10),    90, LV);
-        registerGasGeneratorFuel(Benzene           .getFluid(10),    90, LV);
         registerGasGeneratorFuel(NaquadahGas       .getFluid( 1),  8000, LV);
         registerGasGeneratorFuel(LightNaquadahFuel .getFluid( 1),  4000, LV);
         registerGasGeneratorFuel(LightENaquadahFuel.getFluid( 1), 10000, LV);
-
-        // Diesel Generator Fluids
-        registerCombustionGeneratorFuel(Oil               .getFluid(20),   10, LV);
-        registerCombustionGeneratorFuel(SulfuricLightFuel .getFluid( 8),   10, LV);
-        registerCombustionGeneratorFuel(BioDiesel         .getFluid( 2),   14, LV);
-        registerCombustionGeneratorFuel(LightFuel         .getFluid(32),  305, LV);
-        registerCombustionGeneratorFuel(Gasoline          .getFluid( 8),  135, LV);
-        registerCombustionGeneratorFuel(HighOctaneGasoline.getFluid(10),  562, LV);
-        registerCombustionGeneratorFuel(Octane            .getFluid(20),   45, LV);
-        registerCombustionGeneratorFuel(Ethanol           .getFluid( 2),   12, LV);
 
 
         // Plasma Generator
@@ -105,18 +84,7 @@ public class FuelHandler {
         registerPlasmaFuel(HeliumCNO .getPlasma(1), 3840, LV);
 
         // Semi-Fluid Fuels
-        registerSemiFluidGeneratorFuel(FishOil           .getFluid(640),  10, LV);
-        registerSemiFluidGeneratorFuel(SeedOil           .getFluid(640),  10, LV);
-        registerSemiFluidGeneratorFuel(Creosote          .getFluid(160),  10, LV);
-        registerSemiFluidGeneratorFuel(Biomass           .getFluid(160),  10, LV);
-        registerSemiFluidGeneratorFuel(OilLight          .getFluid(320),  50, LV);
-        registerSemiFluidGeneratorFuel(OilMedium         .getFluid(640), 150, LV);
-        registerSemiFluidGeneratorFuel(OilHeavy          .getFluid(160),  50, LV);
-        registerSemiFluidGeneratorFuel(SulfuricHeavyFuel .getFluid(160),  50, LV);
-        registerSemiFluidGeneratorFuel(HeavyFuel         .getFluid( 80), 150, LV);
-        registerSemiFluidGeneratorFuel(CoalTar           .getFluid(320),  10, LV);
-        registerSemiFluidGeneratorFuel(CoalTarOil        .getFluid(160),  10, LV);
-        registerSemiFluidGeneratorFuel(SulfuricCoalTarOil.getFluid(120),  10, LV);
+        registerSemiFluidGeneratorFuel(CoalTar.getFluid(320),  10, LV);
 
         // Rocket Fuel
         registerRocketFuel(RocketFuelH8N4C2O4       .getFluid( 3), 160, EV);

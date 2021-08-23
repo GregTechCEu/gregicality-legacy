@@ -2140,5 +2140,11 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("Ir2(C8H12)2Cl2");
 
+        AluminiumComplex = new Material.Builder(6773, "aluminium_complex")
+                .dust()
+                .color(0x3F5A9F).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Aluminium, 1, Carbon, 9, Hydrogen, 7, Nitrogen, 1, Oxygen, 1)
+                .build();
     }
 }
