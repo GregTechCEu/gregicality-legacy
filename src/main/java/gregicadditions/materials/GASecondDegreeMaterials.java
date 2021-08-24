@@ -1337,12 +1337,7 @@ public class GASecondDegreeMaterials {
                 .components(Lanthanum, 1, Caesium, 1, Rubidium, 1, Fullerene, 2)
                 .build();
 
-        GoldLeach = new Material.Builder(11597, "gold_leach")
-                .dust()
-                .color(0xBBA52B).iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Copper, 3, Gold, 1, RareEarth, 1)
-                .build();
+        // Free ID 11597
 
         IridiumTrichlorideSolution = new Material.Builder(11598, "iridiumtrichloridesolution")
                 .fluid()

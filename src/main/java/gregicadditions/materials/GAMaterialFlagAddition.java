@@ -127,7 +127,6 @@ public class GAMaterialFlagAddition {
 
 
         // Ore Multiplier
-        PreciousMetal.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
         PlatinumMetallicPowder.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
         PalladiumMetallicPowder.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
         Trona.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
@@ -155,9 +154,6 @@ public class GAMaterialFlagAddition {
 
         property = Zircon.getProperty(PropertyKey.ORE);
         property.setOreByProducts(Cobalt, Lead, Uranium238);
-
-        property = PreciousMetal.getProperty(PropertyKey.ORE);
-        property.setOreByProducts(Lead, Silver, Nickel);
 
         property = Pyrochlore.getProperty(PropertyKey.ORE);
         property.setOreByProducts(Apatite, Calcite, Niobium);
@@ -218,19 +214,19 @@ public class GAMaterialFlagAddition {
         property.setOreByProducts(Apatite, Fluorite, Phosphorus);
 
         property = Bornite.getProperty(PropertyKey.ORE);
-        property.setOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
+        property.setOreByProducts(Pyrite, Cobalt, Cadmium, Gold);
 
         property = Chalcopyrite.getProperty(PropertyKey.ORE);
-        property.setOreByProducts(Pyrite, Cobalt, Cadmium, PreciousMetal);
+        property.setOreByProducts(Pyrite, Cobalt, Cadmium, Gold);
 
         property = Copper.getProperty(PropertyKey.ORE);
-        property.setOreByProducts(Cobalt, PreciousMetal, Nickel);
+        property.setOreByProducts(Cobalt, Gold, Nickel);
 
         property = Glowstone.getProperty(PropertyKey.ORE);
-        property.setOreByProducts(Redstone, PreciousMetal);
+        property.setOreByProducts(Redstone, Gold);
 
         property = Magnetite.getProperty(PropertyKey.ORE);
-        property.setOreByProducts(Iron, PreciousMetal);
+        property.setOreByProducts(Iron, Gold);
 
         property = Pitchblende.getProperty(PropertyKey.ORE);
         property.setOreByProducts(Thorium, Uranium238, Lead); //todo nuclear rework

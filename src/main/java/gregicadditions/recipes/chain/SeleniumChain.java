@@ -48,7 +48,7 @@ public class SeleniumChain {
                 .input(dust, AnodicSlime)
                 .input(dust, SodaAsh, 12)
                 .fluidInputs(Hydrogen.getFluid(4000))
-                .output(dustTiny, PreciousMetal, 5)
+                .output(dustTiny, Gold, 5)
                 .fluidOutputs(SelenateTellurateMix.getFluid(1000))
                 .buildAndRegister();
 

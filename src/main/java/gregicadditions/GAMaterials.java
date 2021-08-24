@@ -125,7 +125,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material RhodiumFilterCake;
     public static Material SilverOxide;
     public static Material SilverChloride;
-    public static Material PotassiumMetabisulfite;
     public static Material LeadNitrate;
     public static Material SodiumPotassiumAlloy;
     public static Material SodiumFluoride;
@@ -162,8 +161,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material ZirconiumCarbide;
     public static Material RhodiumPlatedPalladium;
     public static Material Ruridit;
-    public static Material GoldAlloy;
-    public static Material PreciousMetal;
     public static Material LithiumFluoride;
     public static Material BerylliumFluoride;
     public static Material LeadBismuthEutectic;
@@ -295,7 +292,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material NonMetals;
     public static Material Iron2Chloride;
     public static Material FluorophosphoricAcid;
-    public static Material ChloroauricAcid;
     public static Material LiquidHelium;
     public static Material SuperfluidHelium;
     public static Material LiquidHelium3;
@@ -495,7 +491,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material PotassiumPeroxymonosulfate;
     public static Material SilverPerchlorate;
     public static Material SodiumChlorate;
-    public static Material CopperLeach;
     public static Material CaliforniumTrioxide;
     public static Material CaliforniumTrichloride;
     public static Material IridiumTrioxide;
@@ -693,7 +688,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material TBCCO;
     public static Material StrontiumSuperconductor;
     public static Material FullereneSuperconductor;
-    public static Material GoldLeach;
     public static Material IridiumTrichlorideSolution;
     public static Material Quantum;
     public static Material BoronFranciumCarbide;

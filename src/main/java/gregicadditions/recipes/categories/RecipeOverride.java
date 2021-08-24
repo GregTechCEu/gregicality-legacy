@@ -196,31 +196,6 @@ public class RecipeOverride {
 
         ModHandler.addSmeltingRecipe(COMPRESSED_COKE_CLAY.getStackForm(), COKE_OVEN_BRICK.getStackForm());
 
-        // Gold Dust Centrifuging todo gold chain removal
-        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Netherrack));
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(160).EUt(20)
-                .input(dust, Netherrack)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Redstone), 5625, 850)
-                .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal, 2), 625, 500)
-                .chancedOutput(OreDictUnifier.get(dustSmall, Sulfur), 9900, 100)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Coal), 5625, 850)
-                .buildAndRegister();
-
-        removeRecipesByInputs(CENTRIFUGE_RECIPES, OreDictUnifier.get(dust, Glowstone));
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(488).EUt(80)
-                .input(dust, Glowstone)
-                .output(dustSmall, Netherrack, 2)
-                .output(dustSmall, PreciousMetal, 2)
-                .buildAndRegister();
-
-        // Precious Metal Dust from Netherrack
-        removeRecipesByInputs(MACERATOR_RECIPES, new ItemStack(Blocks.NETHERRACK));
-        MACERATOR_RECIPES.recipeBuilder().duration(150).EUt(8)
-                .inputs(new ItemStack(Blocks.NETHERRACK))
-                .output(dust, Netherrack)
-                .chancedOutput(OreDictUnifier.get(dustTiny, PreciousMetal), 500, 120)
-                .buildAndRegister();
-
         // GTNH Lava todo GTNH lava in CEu?
         removeRecipesByInputs(CENTRIFUGE_RECIPES, Lava.getFluid(100));
         CENTRIFUGE_RECIPES.recipeBuilder().duration(80).EUt(80)
@@ -228,7 +203,7 @@ public class RecipeOverride {
                 .chancedOutput(OreDictUnifier.get(dustSmall, SiliconDioxide),5000, 500)
                 .chancedOutput(OreDictUnifier.get(dustSmall, Magnesia),1000, 100)
                 .chancedOutput(OreDictUnifier.get(dustSmall, Quicklime),1000, 100)
-                .chancedOutput(OreDictUnifier.get(dustSmall, PreciousMetal),250, 90)
+                .chancedOutput(OreDictUnifier.get(dustSmall, Gold),250, 90)
                 .chancedOutput(OreDictUnifier.get(dustSmall, Sapphire),1250, 150)
                 .chancedOutput(OreDictUnifier.get(dustSmall, Tantalite),500, 90)
                 .buildAndRegister();
@@ -244,7 +219,7 @@ public class RecipeOverride {
         CENTRIFUGE_RECIPES.recipeBuilder().EUt(30).duration(900)
                 .input(dust, PlatinumGroupSludge)
                 .output(dust, SiliconDioxide)
-                .output(dust, PreciousMetal)
+                .output(dust, Gold)
                 .output(dust, PlatinumMetallicPowder, 2)
                 .chancedOutput(OreDictUnifier.get(dustTiny, PalladiumMetallicPowder, 6), 9500, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, IrMetalResidue, 3), 9000, 0)
@@ -279,12 +254,6 @@ public class RecipeOverride {
     private static void vanillaOverride() {
 
         // Glowstone Recipes
-        MIXER_RECIPES.recipeBuilder().EUt(30).duration(100)
-                .input(dust, Redstone)
-                .input(dust, PreciousMetal)
-                .output(dust, Glowstone)
-                .buildAndRegister();
-
         MIXER_RECIPES.recipeBuilder().EUt(30).duration(100)
                 .input(dust, Redstone)
                 .input(dust, Gold)

@@ -71,7 +71,7 @@ public final class CropType {
         SEEDS.put(Europium, new ItemTierSeed(CROPS.get(Europium), Europium, 7));
         SEEDS.put(Gadolinium, new ItemTierSeed(CROPS.get(Gadolinium), Gadolinium, 2));
         SEEDS.put(Gallium, new ItemTierSeed(CROPS.get(Gallium), Gallium, 3));
-        //SEEDS.put(Gold, new ItemTierSeed(CROPS.get(Gold), Gold, 4));
+        SEEDS.put(Gold, new ItemTierSeed(CROPS.get(Gold), Gold, 4));
         SEEDS.put(Holmium, new ItemTierSeed(CROPS.get(Holmium), Holmium, 2));
         SEEDS.put(Indium, new ItemTierSeed(CROPS.get(Indium), Indium, 5));
         SEEDS.put(Iridium, new ItemTierSeed(CROPS.get(Iridium), Iridium, 6));
@@ -348,7 +348,6 @@ public final class CropType {
         SEEDS.put(Polybenzimidazole, new ItemTierSeed(CROPS.get(Polybenzimidazole), Polybenzimidazole, 5));
         SEEDS.put(Polonium, new ItemTierSeed(CROPS.get(Polonium), Polonium, 4));
         SEEDS.put(Copernicium, new ItemTierSeed(CROPS.get(Copernicium), Copernicium, 6));
-        SEEDS.put(PreciousMetal, new ItemTierSeed(CROPS.get(PreciousMetal), PreciousMetal, 3));
         //SEEDS.put(UraniumRadioactive.getMaterial(), new ItemTierSeed(CROPS.get(UraniumRadioactive.getMaterial()), UraniumRadioactive.getMaterial(), 4));
 //        SEEDS.put(FLiNaK,new ItemTierSeed(CROPS.get(FLiNaK),FLiNaK,5));
 //        SEEDS.put(FLiBe,new ItemTierSeed(CROPS.get(FLiBe),FLiBe,5));

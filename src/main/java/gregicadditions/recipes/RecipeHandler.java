@@ -96,7 +96,6 @@ public class RecipeHandler {
      * located in the "recipes/chain" directory.
      */
     public static void initChains() {
-        GoldChain.init();
         NaquadahChain.init();
         NuclearChain.init();
         PolymerChain.init();

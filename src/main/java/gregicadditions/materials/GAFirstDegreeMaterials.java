@@ -228,10 +228,7 @@ public class GAFirstDegreeMaterials {
                 .components(Silver, 1, Chlorine, 1)
                 .build();
 
-        PotassiumMetabisulfite = new Material.Builder(3533, "potassium_metabisulfite")
-                .dust()
-                .components(Potassium, 2, Sulfur, 2, Oxygen, 5)
-                .build();
+        // Free ID 3533
 
         LeadNitrate = new Material.Builder(3534, "lead_nitrate")
                 .dust()
@@ -492,19 +489,9 @@ public class GAFirstDegreeMaterials {
                 .blastTemp(9950)
                 .build();
 
-        GoldAlloy = new Material.Builder(3471, "gold_alloy")
-                .ingot()
-                .color(0xBBA52B).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Copper, 3, Gold, 1, RareEarth, 1)
-                .build();
+        // Free ID 3471
 
-        PreciousMetal = new Material.Builder(3472, "precious_metal")
-                .ingot().ore()
-                .color(0xB99023).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Gold, 1, RareEarth, 1)
-                .build();
+        // Free ID 3472
 
         LithiumFluoride = new Material.Builder(3473, "lithium_fluoride")
                 .ingot()
@@ -1427,12 +1414,7 @@ public class GAFirstDegreeMaterials {
                 .components(Fluorine, 1, Hydrogen, 2, Oxygen, 3, Phosphorus, 1)
                 .build();
 
-        ChloroauricAcid = new Material.Builder(3622, "chloroauric_acid")
-                .fluid()
-                .color(0xDFD11F)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Hydrogen, 1, Gold, 1, Chlorine, 1, RareEarth, 1)
-                .build();
+        // Free ID 3622
 
         LiquidHelium = new Material.Builder(3623, "liquid_helium")
                 .fluid()
@@ -2791,12 +2773,7 @@ public class GAFirstDegreeMaterials {
                 .components(Sodium, 1, Chlorine, 1, Oxygen, 3)
                 .build();
 
-        CopperLeach = new Material.Builder(3839, "copper_leach")
-                .dust()
-                .color(0x765A30).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Copper, 3, RareEarth, 1)
-                .build();
+        // Free ID 3839
 
         CaliforniumTrioxide = new Material.Builder(3840, "californiumtrioxide")
                 .dust()
