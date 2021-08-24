@@ -24,16 +24,6 @@ public class GAConfig {
         public boolean AdvancedCasingModel = true;
     }
 
-    @Config.Comment("Config options for GT6 features")
-    public static GT6 GT6 = new GT6();
-
-    public static class GT6 {
-
-        @Config.Comment("Set this to false to disable the support for Forestry Electron Tubes")
-        @Config.Name("Should Electrodes be registered?")
-        public boolean electrodes = true;
-    }
-
     @Config.Comment("Config options for GT5U features")
     public static GT5U GT5U = new GT5U();
 
@@ -291,7 +281,6 @@ public class GAConfig {
         @Config.Name("Reverse recipes after CT")
         @Config.RequiresMcRestart
         public boolean reverseAfterCT = true;
-
     }
 
     public static Multis multis = new Multis();
