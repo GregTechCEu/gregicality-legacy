@@ -317,26 +317,11 @@ public class GAUnknownCompositionMaterials {
                 // TextFormatting.OBFUSCATED + "???"
                 .build();
 
-        RubySlurry = new Material.Builder(9547, "ruby_slurry")
-                .fluid()
-                .color(0xff6464)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(RareEarth, 1)
-                .build();
+        // Free ID 9547
 
-        SapphireSlurry = new Material.Builder(9548, "sapphire_slurry")
-                .fluid()
-                .color(0x6464c8)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(RareEarth, 1)
-                .build();
+        // Free ID 9548
 
-        GreenSapphireSlurry = new Material.Builder(9549, "green_sapphire_slurry")
-                .fluid()
-                .color(0x64c882)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(RareEarth, 1)
-                .build();
+        // Free ID 9549
 
         ATL = new Material.Builder(9550, "atl")
                 .fluid()

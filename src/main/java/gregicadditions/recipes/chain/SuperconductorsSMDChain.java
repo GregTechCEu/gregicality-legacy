@@ -890,7 +890,7 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Water.getFluid(9000))
                 .buildAndRegister();
 
-        // 3[Cu + H2SO4] + 6NaOH + NaI + 3SO3 -> NaIO3 + 3Cu + 3Na + 3NaSO4 + 6H2O + 3SO2
+        // 3[Cu + H2SO4] + 6NaOH + NaI + 3SO3 -> NaIO3 + 3Cu + 3Na2SO4 + 6H2O + 3SO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(290).EUt(1920)
                 .fluidInputs(CopperSulfateSolution.getFluid(3000))
                 .fluidInputs(SulfurTrioxide.getFluid(3000))
@@ -898,8 +898,7 @@ public class SuperconductorsSMDChain {
                 .input(dust, SodiumHydroxide, 18)
                 .output(dust, SodiumIodate, 5)
                 .output(dust, Copper, 3)
-                .output(dust, Sodium, 3)
-                .fluidOutputs(SodiumSulfateSolution.getFluid(3000))
+                .output(dust, SodiumSulfate, 21)
                 .fluidOutputs(Water.getFluid(6000))
                 .fluidOutputs(SulfurDioxide.getFluid(3000))
                 .buildAndRegister();

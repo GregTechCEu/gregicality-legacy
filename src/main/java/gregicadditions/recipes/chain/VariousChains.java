@@ -251,6 +251,66 @@ public class VariousChains {
                 .output(dust, SodiumBisulfate, 7)
                 .buildAndRegister();
 
+        // Aluminium Trifluoride / Alumina =============================================================================
+        // 2Al(OH)3 -> Al2O3 + 3H2O
+        BLAST_RECIPES.recipeBuilder().duration(200).EUt(120).blastFurnaceTemp(1100)
+                .input(dust, AluminiumHydroxide, 14)
+                .output(dust, Alumina, 5)
+                .fluidOutputs(Water.getFluid(3000))
+                .buildAndRegister();
+
+        // 6NaOH + Al2O3 + 12HF -> 2Na3AlF6 + 9H2O
+        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(120)
+                .input(dust, SodiumHydroxide, 18)
+                .input(dust, Alumina, 5)
+                .fluidInputs(HydrofluoricAcid.getFluid(12000))
+                .fluidOutputs(SodiumHexafluoroaluminate.getFluid(2000))
+                .fluidOutputs(Water.getFluid(9000))
+                .buildAndRegister();
+
+        // 2Al2O3 + Na3AlF6 -> 4Al + 3NaF + AlF3 + 6O
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(200).EUt(120)
+                .input(dust, Alumina, 10)
+                .fluidInputs(SodiumHexafluoroaluminate.getFluid(1000))
+                .fluidOutputs(Oxygen.getFluid(6000))
+                .output(dust, Aluminium, 4)
+                .output(dust, SodiumFluoride, 6)
+                .output(dust, AluminiumTrifluoride, 4)
+                .buildAndRegister();
+
+        // 3NaF + AlF3 -> Na3AlF6
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(120)
+                .input(dust, SodiumFluoride, 6)
+                .input(dust, AluminiumTrifluoride, 4)
+                .fluidOutputs(SodiumHexafluoroaluminate.getFluid(1000))
+                .buildAndRegister();
+
+        // Vanadium Products ===========================================================================================
+        // 2V + 3Na2CO3 = 2Na3VO4 + 3C + O
+        CHEMICAL_RECIPES.recipeBuilder().duration(150).EUt(120)
+                .input(dust, Vanadium, 2)
+                .input(dust, SodaAsh, 18)
+                .output(dust, SodiumVanadate, 16)
+                .output(dust, Carbon, 3)
+                .fluidOutputs(Oxygen.getFluid(1000))
+                .buildAndRegister();
+
+        // H2SO4 + NH4Cl + Na3VO4 = NH4VO3 + [Cl + 3Na + O + H2SO4]
+        CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .input(dust, SodiumVanadate, 8)
+                .fluidInputs(AmmoniumChloride.getFluid(1000))
+                .output(dust, AmmoniumVanadate, 9)
+                .buildAndRegister();
+
+
+        // 2NH4VO3 = V2O5 + 2NH3 + H2O (H2O lost to dehydrator)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(120)
+                .input(dust, AmmoniumVanadate, 18)
+                .output(dust, VanadiumOxide, 7)
+                .fluidOutputs(Ammonia.getFluid(2000))
+                .buildAndRegister();
+
         // Misc Reactions ==============================================================================================
         // 3Ca + 3PO4 + H + O -> [3Ca + 3PO4 + H + O]
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(100)
@@ -355,6 +415,33 @@ public class VariousChains {
                 .fluidOutputs(Water.getFluid(2000))
                 .notConsumable(dust, ZincChloride)
                 .buildAndRegister();
+
+        // [Li2CO3 + H2O] + 2HCl + 2Na = 2[LiCl + H2O] + Na2CO3
+        // off by 1 oxygen, which is fine since water is lost in dehydrator step
+        CHEMICAL_RECIPES.recipeBuilder().duration(130).EUt(120)
+                .input(dust, Sodium, 2)
+                .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .output(dust, SodaAsh, 6)
+                .fluidOutputs(LithiumChlorideSolution.getFluid(2000))
+                .buildAndRegister();
+
+        // [LiCl + H2O] = LiCl + H2O (H2O Voided - Dehydrator)
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(180).EUt(120)
+                .fluidInputs(LithiumChlorideSolution.getFluid(1000))
+                .fluidOutputs(Chlorine.getFluid(1000))
+                .output(dust, Lithium)
+                .buildAndRegister();
+
+        // Na2SO4 + H2 -> H2SO4 + 2Na
+        CHEMICAL_RECIPES.recipeBuilder().duration(90).EUt(30)
+                .input(dust, SodiumSulfate, 7)
+                .fluidInputs(Hydrogen.getFluid(2000))
+                .output(dust, Sodium, 2)
+                .fluidOutputs(SulfuricAcid.getFluid(1000))
+                .buildAndRegister();
+
+
     }
 
     private static void hydrogenPeroxide() {

@@ -111,14 +111,11 @@ public class RecipeHandler {
         FullereneChain.init();
         BariumChain.init();
         UraniumChain.init();
-        VanadiumChain.init();
         IodineChain.init();
         ZirconChain.init();
         ZincChain.init();
-        AluminiumChain.init();
         AmmoniaChain.init();
-        ChromiumChain.init();
-        LithiumChain.init();
+        SodiumCarbonateChain.init();
         BrineChain.init();
         FusionElementsChain.init();
         NanotubeChain.init();

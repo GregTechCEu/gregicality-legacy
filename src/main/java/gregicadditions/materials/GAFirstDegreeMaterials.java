@@ -69,12 +69,7 @@ public class GAFirstDegreeMaterials {
                 .components(Sodium, 2, Tungsten, 1, Oxygen, 4)
                 .build();
 
-        Chromium3Oxide = new Material.Builder(3508, "chromium_3_oxide")
-                .dust()
-                .color(0x4BF25F).iconSet(ROUGH)
-                .flags(DECOMPOSITION_BY_ELECTROLYZING)
-                .components(Chrome, 2, Oxygen, 3)
-                .build();
+        // Free ID 3508
 
         NaquadriaDifluoride = new Material.Builder(3509, "naquadria_difluoride")
                 .fluid(Material.FluidType.GAS)
@@ -1288,13 +1283,7 @@ public class GAFirstDegreeMaterials {
                 .components(Hydrogen, 2, Selenium, 1, Carbon, 1, Oxygen, 3)
                 .build();
 
-        TitaniumDisulfate = new Material.Builder(3600, "titanium_disulfate")
-                .fluid()
-                .color(0xDC3D7C)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Titanium, 1, Sulfur, 1, Oxygen, 5)
-                .build()
-                .setFormula("TiO(SO4)", true);
+        // Free ID 3560
 
         FluoroniobicAcid = new Material.Builder(3601, "fluroniobic_acid")
                 .fluid()
@@ -1857,12 +1846,7 @@ public class GAFirstDegreeMaterials {
                 .components(Tin, 1, Chlorine, 2)
                 .build();
 
-        VanadiumSlagDust = new Material.Builder(3685, "vanadium_slag_dust")
-                .dust()
-                .color(0xF2EF1B).iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Vanadium, 1, Oxygen, 1)
-                .build();
+        // Free ID 3685
 
         SodiumVanadate = new Material.Builder(3686, "sodium_vanadate")
                 .dust()
@@ -1963,12 +1947,7 @@ public class GAFirstDegreeMaterials {
                 .components(Potassium, 2, Sulfur, 1, Oxygen, 4)
                 .build();
 
-        AluminiumSulfate = new Material.Builder(3701, "aluminium_sulfate")
-                .dust()
-                .colorAverage().iconSet(SHINY)
-                .components(Aluminium, 2, Sulfur, 3, Oxygen, 12)
-                .build()
-                .setFormula("Al2(SO4)3", true);
+        // Free ID 3701
 
         BariumHydroxide = new Material.Builder(3702, "barium_hydroxide")
                 .dust()

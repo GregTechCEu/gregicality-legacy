@@ -275,7 +275,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material FlYbPlasma;
     public static Material HeliumCNO;
     public static Material SelenateSolution;
-    public static Material TitaniumDisulfate;
     public static Material FluoroniobicAcid;
     public static Material FluorotantalicAcid;
     public static Material OxypentafluoroNiobate;
@@ -359,7 +358,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material AluminiumChloride;
     public static Material AuPdCCatalyst;
     public static Material TinChloride;
-    public static Material VanadiumSlagDust;
     public static Material SodiumVanadate;
     public static Material AmmoniumVanadate;
     public static Material VanadiumOxide;
@@ -375,7 +373,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material LithiumChloride;
     public static Material NickelChloride;
     public static Material PotassiumSulfate;
-    public static Material AluminiumSulfate;
     public static Material BariumHydroxide;
     public static Material HafniumOxide;
     public static Material SiliconChloride;
@@ -517,7 +514,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material HydroiodicAcid;
     public static Material LiquidOxygen;
     public static Material LiquidHydrogen;
-    public static Material Chromium3Oxide;
     public static Material NaquadriaDifluoride;
 
 
@@ -564,7 +560,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material IodineSlurry;
     public static Material Hydroxylamine;
     public static Material HydroxylamineDisulfate;
-    public static Material SodiumHydroxideBauxite;
     public static Material AcidicSaltWater;
     public static Material SulfuricBromineSolution;
     public static Material HotVapourMixture;
@@ -582,7 +577,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material RedOil;
     public static Material ChlorideLeachedSolution;
     public static Material MolybdenumFlue;
-    public static Material VanadiumWasteSolution;
     public static Material UranylChlorideSolution;
     public static Material UranylNitrateSolution;
     public static Material UraniumSulfateWasteSolution;
@@ -592,10 +586,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material ThoriumNitrateSolution;
     public static Material SodiumHexafluoroaluminate;
     public static Material SodiumCarbonateSolution;
-    public static Material SodiumSulfateSolution;
-    public static Material SodiumChromateSolution;
-    public static Material SodiumDichromateSolution;
-    public static Material DissolvedLithiumOre;
     public static Material LithiumCarbonateSolution;
     public static Material LithiumChlorideSolution;
     public static Material CalicheIodateBrine;
@@ -621,12 +611,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material AcidicBrominatedBrine;
     public static Material SelenateTellurateMix;
     public static Material CopperRefiningSolution;
-    public static Material ImpureAluminiumHydroxideSolution;
-    public static Material PureAluminiumHydroxideSolution;
-    public static Material RedMud;
-    public static Material NeutralisedRedMud;
-    public static Material FerricREEChloride;
-    public static Material RedSlurry;
     public static Material DiluteNitricAcid;
     public static Material NbTaFluorideMix;
     public static Material REEThUSulfateSolution;
@@ -660,7 +644,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material SilicaAluminaGel;
     public static Material ZeoliteSievingPellets;
     public static Material WetZeoliteSievingPellets;
-    public static Material VanadiumSlag;
     public static Material PotassiumUranylTricarbonate;
     public static Material UraniumPeroxideThoriumOxide;
     public static Material UraniumThoriumOxide;
@@ -735,8 +718,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material LubricantClaySlurry;
     public static Material ATLEthylene;
     public static Material ErbiumDopedZBLAN;
-    public static Material RoastedSpodumene;
-    public static Material RoastedLepidolite;
     public static Material CassiteriteCokePellets;
     public static Material LanthanumFullereneNanotubes;
     public static Material StrontiumTaraniumTBCCO;
@@ -1093,9 +1074,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material Cycloparaphenylene;
     public static Material NeutronPlasma;
     public static Material QuassifissioningPlasma;
-    public static Material RubySlurry;
-    public static Material SapphireSlurry;
-    public static Material GreenSapphireSlurry;
     public static Material ATL;
     public static Material DrillingMud;
     public static Material UsedDrillingMud;

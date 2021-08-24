@@ -327,12 +327,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(NH3OH)2SO4", true);
 
-        SodiumHydroxideBauxite = new Material.Builder(11543, "sodium_hydroxide_bauxite")
-                .fluid()
-                .color(0xBF731A)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(SodiumHydroxideSolution, 1, Bauxite, 1)
-                .build();
+        // Free ID 11543
 
         AcidicSaltWater = new Material.Builder(11544, "acidic_salt_water")
                 .fluid()
@@ -455,13 +450,7 @@ public class GASecondDegreeMaterials {
                 .components(Water, 1, Rhenium, 1, Sulfur, 1, RareEarth, 1)
                 .build();
 
-        VanadiumWasteSolution = new Material.Builder(11561, "vanadium_waste_solution")
-                .fluid()
-                .color(0xBF95F5)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Salt, 1, SodiumSulfate, 1, SiliconDioxide, 1, Aluminium, 1, Oxygen, 3, Hydrogen, 3)
-                .build()
-                .setFormula("NaCl(Na2SO4)(SiO2)(Al(OH)3)", true);
+        // Free ID 11561
 
         UranylChlorideSolution = new Material.Builder(11562, "uranyl_chloride_solution")
                 .fluid()
@@ -529,33 +518,13 @@ public class GASecondDegreeMaterials {
                 .components(SodaAsh, 1, Water, 1)
                 .build();
 
-        SodiumSulfateSolution = new Material.Builder(11571, "sodium_sulfate_solution")
-                .fluid()
-                .colorAverage()
-                .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(SodiumSulfate, 1, Water, 1)
-                .build();
+        // Free ID 11571
 
-        SodiumChromateSolution = new Material.Builder(11572, "sodium_chromate_solution")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Sodium, 2, Chrome, 2, Oxygen, 4, Water, 1)
-                .build();
+        // Free ID 11572
 
-        SodiumDichromateSolution = new Material.Builder(11573, "sodium_dichromate_solution")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Sodium, 2, Chrome, 2, Oxygen, 7, Water, 1)
-                .build();
+        // Free ID 11573
 
-        DissolvedLithiumOre = new Material.Builder(11574, "dissolved_lithium_ores")
-                .fluid()
-                .color(0x664850)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Lithium, 1, Aluminium, 1, Oxygen, 2, SulfuricAcid, 1)
-                .build();
+        // Free ID 11574
 
         LithiumCarbonateSolution = new Material.Builder(11575, "lithium_carbonate_solution")
                 .fluid()
@@ -734,49 +703,17 @@ public class GASecondDegreeMaterials {
                 .components(Copper, 1, SulfuricAcid, 1)
                 .build();
 
-        ImpureAluminiumHydroxideSolution = new Material.Builder(11500, "impure_aloh3_solution")
-                .fluid()
-                .color(0xD8653E)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Water, 1, Aluminium, 1, Oxygen, 3, Hydrogen, 3, RareEarth, 1)
-                .build();
+        // Free ID 11500
 
-        PureAluminiumHydroxideSolution = new Material.Builder(11501, "pure_aloh3_solution")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(ImpureAluminiumHydroxideSolution, 1)
-                .build()
-                .setFormula("(H2O)Al(OH)3");
+        // Free ID 11501
 
-        RedMud = new Material.Builder(11502, "red_mud")
-                .fluid()
-                .color(0xCC3300)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(HydrochloricAcid, 1, RareEarth, 1)
-                .build();
+        // Free ID 11502
 
-        NeutralisedRedMud = new Material.Builder(11503, "neutralized_red_mud")
-                .fluid()
-                .color(0xCC3300)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Iron, 1, RareEarth, 2)
-                .build()
-                .setFormula("Fe??", true);
+        // Free ID 11503
 
-        FerricREEChloride = new Material.Builder(11504, "ferric_ree_chloride")
-                .fluid()
-                .color(0x30301A)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Iron, 1, RareEarth, 1)
-                .build();
+        // Free ID 11504
 
-        RedSlurry = new Material.Builder(11505, "red_slurry")
-                .fluid()
-                .color(0xCC3300)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Rutile, 1, RareEarth, 1)
-                .build();
+        // Free ID 11505
 
         DiluteNitricAcid = new Material.Builder(11506, "dilute_nitric_acid")
                 .fluid()
@@ -1019,7 +956,7 @@ public class GASecondDegreeMaterials {
                 .components(ZeoliteSievingPellets, RareEarth, 1)
                 .build();
 
-        GAMaterials.ZBLAN = new Material.Builder(11541, "zblan")
+        ZBLAN = new Material.Builder(11541, "zblan")
                 .ingot().fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION, GENERATE_FINE_WIRE, NO_UNIFICATION)
@@ -1027,13 +964,7 @@ public class GASecondDegreeMaterials {
                 .blastTemp(2200)
                 .build();
 
-        VanadiumSlag = new Material.Builder(11542, "vanadium_slag")
-                .dust()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Vanadium, 1, Oxygen, 1, Carbon, 1, Rutile, 1)
-                .build()
-                .setFormula("(VO)C(TiO2)", true);
+        // Free ID 11542
 
         PotassiumUranylTricarbonate = new Material.Builder(11543, "potassium_uranyl_carbonate")
                 .dust()

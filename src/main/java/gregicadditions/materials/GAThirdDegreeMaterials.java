@@ -114,19 +114,9 @@ public class GAThirdDegreeMaterials {
                 .components(GAMaterials.ZBLAN, 1 , ErbiumTrifluoride, 1)
                 .build();
 
-        RoastedSpodumene = new Material.Builder(15514,"roasted_spodumene")
-                .dust()
-                .color(0x3d3d29)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Lithium, 1, Aluminium, 1, Silicon, 2, Oxygen, 6)
-                .build();
+        // Free ID 15514
 
-        RoastedLepidolite = new Material.Builder(15515,"roasted_lepidolite")
-                .dust()
-                .color(0x470024)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Potassium, 1, Lithium, 3, Aluminium, 4, Oxygen, 8)
-                .build();
+        // Free ID 15515
 
         CassiteriteCokePellets = new Material.Builder(15516, "cassiterite_coke_pellets")
                 .dust()
