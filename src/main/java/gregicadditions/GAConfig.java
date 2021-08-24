@@ -260,11 +260,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean uuMatterOreProcessing = true;
 
-        @Config.Comment("Remove the standard electrolyzer recipes of Scheelite and Tungstate and add a more complex chemical purification process")
-        @Config.Name("Tungsten Purification Process")
-        @Config.RequiresMcRestart
-        public boolean tungstenProcess = true;
-
         @Config.Name("Enable RockBreaker high tier")
         @Config.RequiresMcRestart
         public boolean enableRockBreakerHighTier = true;

@@ -71,10 +71,8 @@ public class GAMaterialFlagAddition {
         Trona.addFlag(DISABLE_DECOMPOSITION);
         Columbite.addFlag(DISABLE_DECOMPOSITION);
         Tantalite.addFlag(DISABLE_DECOMPOSITION);
-        if (GAConfig.Misc.tungstenProcess) {
-            Scheelite.addFlag(DISABLE_DECOMPOSITION);
-            Tungstate.addFlag(DISABLE_DECOMPOSITION);
-        }
+        Scheelite.addFlag(DISABLE_DECOMPOSITION);
+        Tungstate.addFlag(DISABLE_DECOMPOSITION);
 
         //todo
         // Fine Wires
