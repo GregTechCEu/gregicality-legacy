@@ -1,7 +1,6 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
-import gregicadditions.blocks.GAOreItemBlock;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import gregicadditions.item.GAHeatingCoil;
@@ -42,7 +41,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
-import static gregicadditions.item.GAMetaBlocks.GA_ORES;
 import static gregicadditions.item.GAMetaBlocks.OPTICAL_FIBER;
 
 @Mod.EventBusSubscriber(modid = Gregicality.MODID)
@@ -51,7 +49,6 @@ public class CommonProxy {
     public void preLoad() {
         GAMetaItems.init();
         GAMetaFluids.init();
-        WorldGenRegister.preInit();
     }
 
     public void onLoad() throws IOException {
@@ -105,7 +102,6 @@ public class CommonProxy {
         registry.register(GAMetaBlocks.METAL_CASING_2);
         registry.register(GAMetaBlocks.NUCLEAR_CASING);
         registry.register(OPTICAL_FIBER);
-        GA_ORES.forEach(registry::register);
     }
 
 
@@ -139,10 +135,6 @@ public class CommonProxy {
         registry.register(createItemBlock(GAMetaBlocks.METAL_CASING_1, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.METAL_CASING_2, VariantItemBlock::new));
         registry.register(createItemBlock(GAMetaBlocks.NUCLEAR_CASING, VariantItemBlock::new));
-
-        GA_ORES.stream()
-                .map(block -> createItemBlock(block, GAOreItemBlock::new))
-                .forEach(registry::register);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

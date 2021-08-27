@@ -249,18 +249,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean enableRockBreakerHighTier = true;
 
-        @Config.Comment("Whether or not to generate different ore variants. E.g. rich ores, pure ores and poor ores. If you disable this some of your worldgen will break! You will also break any previously created worlds!")
-        @Config.Name("Add ore variants")
-        @Config.RequiresMcRestart
-        @Config.RequiresWorldRestart
-        public boolean oreVariants = true;
-
-        @Config.Comment("Whether or not to generate all stone types for ore variants. E.g. basalt rich ores, nether pure ores, etc. This will break existing worlds!")
-        @Config.Name("Add ore variant stone types")
-        @Config.RequiresMcRestart
-        @Config.RequiresWorldRestart
-        public boolean oreVariantsStoneTypes = true;
-
         @Config.Comment("Whether or not to enable machine disassembly recipes")
         @Config.Name("Enable disassembly")
         @Config.RequiresMcRestart

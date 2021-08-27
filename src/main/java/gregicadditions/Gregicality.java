@@ -1,12 +1,10 @@
 package gregicadditions;
 
 import com.blakebr0.mysticalagradditions.MysticalAgradditions;
-import gregicadditions.blocks.factories.GAOreBlockFactory;
 import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
-//import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.network.IPSaveData;
@@ -51,9 +49,6 @@ public class Gregicality {
     public static final String VERSION = "@VERSION@";
 
     static {
-        if (FMLCommonHandler.instance().getSide().isClient()) {
-            GAOreBlockFactory.init();
-        }
         // TODO Make sure this is not called too early, may need InterModComms
         GAConfig.syncMachineConfigs();
     }

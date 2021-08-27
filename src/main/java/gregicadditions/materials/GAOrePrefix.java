@@ -1,20 +1,13 @@
 package gregicadditions.materials;
 
-import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.info.MaterialIconType;
 import gregtech.api.unification.ore.OrePrefix;
-import gregtech.api.unification.stack.MaterialStack;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static gregtech.api.GTValues.M;
 import static gregtech.api.unification.ore.OrePrefix.Flags.ENABLE_UNIFICATION;
 
 public class GAOrePrefix {
         /*
-                //nuclear stuff
+                //todo nuclear stuff
                 public static final OrePrefix dioxide = new OrePrefix("dioxide", M / 3, null, GAMaterialIconType.dioxide, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
                 public static final OrePrefix hexafluoride = new OrePrefix("hexafluoride", M / 7, null, GAMaterialIconType.hexafluoride, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
                 public static final OrePrefix nitrite = new OrePrefix("nitrite", M / 2, null, GAMaterialIconType.nitrite, ENABLE_UNIFICATION, hasIngotProperty.and(isNuclear));
@@ -41,10 +34,6 @@ public class GAOrePrefix {
     public static OrePrefix opticalFiberDouble;
     public static OrePrefix opticalFiberSingle;
 
-    public static final List<OrePrefix> RICH_ORES = new ArrayList<>();
-    public static final List<OrePrefix> POOR_ORES = new ArrayList<>();
-    public static final List<OrePrefix> PURE_ORES = new ArrayList<>();
-
     //public static final Predicate<Material> isNuclear = mat -> mat.hasFlag(GENERATE_NUCLEAR_COMPOUND);
 
     public static void initPrefixes() {
@@ -53,28 +42,6 @@ public class GAOrePrefix {
         opticalFiberQuadruple = new OrePrefix("opticalFiberQuadruple", M * 2, null, null, ENABLE_UNIFICATION, null);
         opticalFiberDouble = new OrePrefix("opticalFiberDouble", M, null, null, ENABLE_UNIFICATION, null);
         opticalFiberSingle = new OrePrefix("opticalFiberSingle", M / 2, null, null, ENABLE_UNIFICATION, null);
-
-        String[] stoneTypes = {"", "Blackgranite", "Redgranite", "Marble", "Basalt", "Sand", "Gravel", "Netherrack", "Endstone"};
-        Material[] secondaryMaterials = {Materials.Stone, Materials.GraniteBlack, Materials.GraniteRed, Materials.Marble,
-                Materials.Basalt, Materials.SiliconDioxide, Materials.Flint, Materials.Netherrack, Materials.Endstone};
-
-        // todo this still needs to be redone, but at least "works" now
-        for (int i = 0; i < stoneTypes.length; i++) {
-            MaterialIconType current = new MaterialIconType("oreRich" + stoneTypes[i]);
-            OrePrefix currentPrefix = new OrePrefix("oreRich" + stoneTypes[i], M * 2, null, current, ENABLE_UNIFICATION, null);
-            currentPrefix.addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
-            RICH_ORES.add(currentPrefix);
-
-            current = new MaterialIconType("orePoor" + stoneTypes[i]);
-            currentPrefix = new OrePrefix("orePoor" + stoneTypes[i], M / 2, null, current, ENABLE_UNIFICATION, null);
-            currentPrefix.addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
-            POOR_ORES.add(currentPrefix);
-
-            current = new MaterialIconType("orePure" + stoneTypes[i]);
-            currentPrefix = new OrePrefix("orePure" + stoneTypes[i], M * 4, null, current, ENABLE_UNIFICATION, null);
-            currentPrefix.addSecondaryMaterial(new MaterialStack(secondaryMaterials[i], OrePrefix.dust.materialAmount));
-            PURE_ORES.add(currentPrefix);
-        }
     }
 
     public static void initIconSets() {

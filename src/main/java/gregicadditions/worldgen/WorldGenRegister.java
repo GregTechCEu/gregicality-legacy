@@ -16,11 +16,6 @@ import java.util.stream.Collectors;
 
 public class WorldGenRegister {
 
-    public static void preInit() {
-        GALog.logger.info("Adding Gregicality block filler to the ore generation registry");
-        WorldGenRegistry.INSTANCE.registerBlockFiller("ga_simple", GABlockFiller::new);
-    }
-
     public static void init() throws IOException {
         long time = System.currentTimeMillis();
         GALog.logger.info("WorldGen preInit2 started");

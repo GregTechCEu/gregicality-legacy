@@ -1,9 +1,7 @@
 package gregicadditions.item;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
-import gregicadditions.blocks.GABlockOre;
 import gregicadditions.client.model.IReTexturedModel;
 import gregicadditions.item.components.*;
 import gregicadditions.item.fusion.GACryostatCasing;
@@ -18,30 +16,23 @@ import gregicadditions.pipelike.opticalfiber.OpticalFiberSize;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiber;
 import gregicadditions.pipelike.opticalfiber.tile.TileEntityOpticalFiberTickable;
 import gregicadditions.client.renderer.OpticalFiberRenderer;
-import gregtech.api.GTValues;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
 import gregtech.api.unification.material.MaterialRegistry;
-import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.ore.StoneType;
 import gregtech.api.unification.ore.StoneTypes;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.pipelike.cable.BlockCable;
-import gregtech.common.pipelike.cable.Insulation;
-import gregtech.common.render.CableRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.DefaultStateMapper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -50,9 +41,6 @@ import org.apache.commons.lang3.ArrayUtils;
 import javax.annotation.Nonnull;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static gregicadditions.ClientProxy.*;
-import static gregicadditions.GAMaterials.*;
 
 public class GAMetaBlocks {
 
@@ -91,20 +79,10 @@ public class GAMetaBlocks {
     //nuclear casing
     public static NuclearCasing NUCLEAR_CASING;
 
-    public static Collection<GABlockOre> GA_ORES = new HashSet<>();
-
-
     public static BlockOpticalFiber OPTICAL_FIBER;
 
 
     public static void init() {
-        if (GAConfig.Misc.oreVariants) {
-            for (Material mat : MaterialRegistry.MATERIAL_REGISTRY) {
-                if (mat.hasProperty(PropertyKey.ORE)) {
-                    createOreBlock(mat);
-                }
-            }
-        }
 
         QUANTUM_CASING = new GAQuantumCasing();
         QUANTUM_CASING.setRegistryName("ga_quantum_casing");
@@ -204,39 +182,9 @@ public class GAMetaBlocks {
         registerTileEntity();
     }
 
-    private static void createOreBlock(Material material) {
-        if (GAConfig.Misc.oreVariantsStoneTypes) {
-            StoneType[] stoneTypeBuffer = new StoneType[16];
-            int generationIndex = 0;
-            for (StoneType stoneType : StoneType.STONE_TYPE_REGISTRY) {
-                int id = StoneType.STONE_TYPE_REGISTRY.getIDForObject(stoneType), index = id / 16;
-                if (index > generationIndex) {
-                    createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
-                    Arrays.fill(stoneTypeBuffer, null);
-                }
-                stoneTypeBuffer[id % 16] = stoneType;
-                generationIndex = index;
-            }
-            createOreBlock(material, copyNotNull(stoneTypeBuffer), generationIndex);
-        } else {
-            createOreBlock(material, new StoneType[] {StoneTypes.STONE}, 0);
-        }
-    }
-
     private static <T> T[] copyNotNull(T[] src) {
         int nullIndex = ArrayUtils.indexOf(src, null);
         return Arrays.copyOfRange(src, 0, nullIndex == -1 ? src.length : nullIndex);
-    }
-
-    private static void createOreBlock(Material material, StoneType[] stoneTypes, int index) {
-        String[] orePrefixes = {"Rich", "Poor", "Pure"};
-        for (String orePrefix : orePrefixes) {
-            GABlockOre block = new GABlockOre(material, stoneTypes, OrePrefix.getPrefix("ore" + orePrefix));
-            block.setRegistryName("gregtech:" + orePrefix.toLowerCase() + "_ore_" + material + "_" + index);
-            block.setTranslationKey(orePrefix.toLowerCase() + "_ore_block");
-            GA_ORES.add(block);
-        }
-
     }
 
 
@@ -276,7 +224,6 @@ public class GAMetaBlocks {
         registerItemModel(METAL_CASING_1);
         registerItemModel(METAL_CASING_2);
         registerItemModel(NUCLEAR_CASING);
-        GA_ORES.stream().distinct().forEach(GAMetaBlocks::registerItemModel);
     }
 
     public static void registerTileEntity() {
@@ -315,26 +262,7 @@ public class GAMetaBlocks {
         }
     }
 
-    @SideOnly(Side.CLIENT)
-    public static void registerColors() {
-        GAMetaBlocks.GA_ORES.stream().distinct().forEach(block -> {
-            Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(ORE_BLOCK_COLOR, block);
-            Minecraft.getMinecraft().getItemColors().registerItemColorHandler(ORE_ITEM_COLOR, block);
-        });
-
-    }
-
     public static void registerOreDict() {
-        for (GABlockOre blockOre : GA_ORES) {
-            Material mat = blockOre.material;
-            for (StoneType stoneType : blockOre.STONE_TYPE.getAllowedValues()) {
-                ItemStack normalStack = blockOre.getItem(blockOre.getDefaultState().withProperty(blockOre.STONE_TYPE, stoneType));
-                OrePrefix orePrefix = stoneType.processingPrefix == OrePrefix.ore ? blockOre.orePrefix :
-                        OrePrefix.getPrefix(blockOre.orePrefix.name() + stoneType.processingPrefix.name().substring(3));
-                OreDictUnifier.registerOre(normalStack, orePrefix, mat);
-            }
-        }
-
         for (OpticalFiberSize opticalFiberSize : OpticalFiberSize.values()) {
             ItemStack itemStack = OPTICAL_FIBER.getItem(opticalFiberSize);
             OreDictUnifier.registerOre(itemStack, opticalFiberSize.getOrePrefix().name());
