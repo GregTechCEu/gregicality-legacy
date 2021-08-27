@@ -244,7 +244,7 @@ public class GAMaterials implements IMaterialHandler {
     public static Material RheniumSulfuricSolution;
     public static Material AmmoniumSulfate;
     public static Material AmmoniumPerrhenate;
-    public static Material ElectronDegenerateRheniumPlasma;
+    public static Material ElectronDegenerateRhenium;
     public static Material BoricAcid;
     public static Material FluoroBoricAcid;
     public static Material BoronFluoride;

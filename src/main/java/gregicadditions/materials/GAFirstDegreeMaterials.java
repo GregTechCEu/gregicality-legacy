@@ -1068,7 +1068,7 @@ public class GAFirstDegreeMaterials {
                 .components(Ammonia, 1, Rhenium, 1, Oxygen, 4)
                 .build();
 
-        ElectronDegenerateRheniumPlasma = new Material.Builder(3676, "degenerate_rhenium_plasma") //todo fancy
+        ElectronDegenerateRhenium = new Material.Builder(3676, "degenerate_rhenium") //todo fancy
                 .plasma()
                 .color(0x6666FF)
                 .flags(DISABLE_DECOMPOSITION)

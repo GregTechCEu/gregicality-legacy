@@ -314,7 +314,7 @@ public class GAOrganicChemistryMaterials {
                 .setFormula("HCN", true);
 
         SodiumCyanide = new Material.Builder(6539, "sodium_cyanide")
-                .dust()
+                .fluid()
                 .color(0x5f7c8c)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Sodium, 1, Carbon, 1, Nitrogen, 1)

@@ -1165,7 +1165,7 @@ public class RecipeHandler {
      * + Plasma Condenser recipes
      */
     private static void registerPlasmaCondenserRecipes(OrePrefix prefix, Material material) {
-        if (material.hasProperty(PropertyKey.PLASMA)) {
+        if (material.hasProperty(PropertyKey.PLASMA) && material.hasProperty(PropertyKey.FLUID)) {
             int fluidAmount = material.hasFluid() ? GTValues.L : 100;
 
             PLASMA_CONDENSER_RECIPES.recipeBuilder().duration((int) material.getAverageMass()).EUt(960)

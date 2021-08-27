@@ -33,14 +33,14 @@ public class UHVMaterials {
         STELLAR_FORGE_RECIPES.recipeBuilder()
                 .input(ingot, Rhenium)
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
-                .fluidOutputs(ElectronDegenerateRheniumPlasma.getFluid(1000))
+                .fluidOutputs(ElectronDegenerateRhenium.getPlasma(144))
                 .EUt(1966080)
                 .duration(20)
                 .buildAndRegister();
 
         CANNER_RECIPES.recipeBuilder()
                 .inputs(PLASMA_CONTAINMENT_CELL.getStackForm())
-                .fluidInputs(ElectronDegenerateRheniumPlasma.getFluid(1000))
+                .fluidInputs(ElectronDegenerateRhenium.getPlasma(144))
                 .outputs(RHENIUM_PLASMA_CONTAINMENT_CELL.getStackForm())
                 .EUt(30720)
                 .duration(20)
