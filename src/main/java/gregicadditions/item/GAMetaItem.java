@@ -280,8 +280,8 @@ public class GAMetaItem extends StandardMetaItem {
         MAGNETIC_TRAP = addItem(657,"magnetic_trap");
         EMPTY_LASER_COOLING_CONTAINER = addItem(658,"empty_laser_cooling_container");
         BOSE_EINSTEIN_COOLING_CONTAINER = addItem(659,"bose_einstein_cooling_container");
-        NEUTRON_PLASMA_CONTAINMENT_CELL = addItem(650, "neutron.plasma.containment.cell");
-        INGOT_FIELD_SHAPE = addItem(651, "ingot.field.shape");
+        NEUTRON_PLASMA_CONTAINMENT_CELL = addItem(660, "neutron.plasma.containment.cell");
+        INGOT_FIELD_SHAPE = addItem(661, "ingot.field.shape");
 
         ////////////////////////////////////
         //    Batteries: IDs 1000-1099    //
@@ -380,20 +380,20 @@ public class GAMetaItem extends StandardMetaItem {
         ////////////////////////////////////
 
         // TODO Move to CEu
-        COLOURED_LEDS = addItem(1400, "coloured.leds");
-        DISPLAY = addItem(1401, "display");
-        PLUGIN_ADVANCED_MONITOR = addItem(1100, "plugin.advanced_monitor").addComponents(new AdvancedMonitorPluginBehavior());
-        PLUGIN_FAKE_GUI = addItem(1101, "plugin.fake_gui").addComponents(new FakeGuiPluginBehavior());
-        PLUGIN_ONLINE_PIC = addItem(1102, "plugin.online_pic").addComponents(new OnlinePicPluginBehavior());
-        PLUGIN_TEXT = addItem(1103, "plugin.text").addComponents(new TextPluginBehavior());
-        COVER_DIGITAL_INTERFACE = addItem(1104, "cover.digital");
-        FREEDOM_WRENCH = addItem(1210, "freedom_wrench").setMaxStackSize(1).addComponents(new FreedomWrenchBehaviour());
+        COLOURED_LEDS = addItem(9000, "coloured.leds");
+        DISPLAY = addItem(9001, "display");
+        PLUGIN_ADVANCED_MONITOR = addItem(9100, "plugin.advanced_monitor").addComponents(new AdvancedMonitorPluginBehavior());
+        PLUGIN_FAKE_GUI = addItem(9101, "plugin.fake_gui").addComponents(new FakeGuiPluginBehavior());
+        PLUGIN_ONLINE_PIC = addItem(9102, "plugin.online_pic").addComponents(new OnlinePicPluginBehavior());
+        PLUGIN_TEXT = addItem(9103, "plugin.text").addComponents(new TextPluginBehavior());
+        COVER_DIGITAL_INTERFACE = addItem(9104, "cover.digital");
+        FREEDOM_WRENCH = addItem(9210, "freedom_wrench").setMaxStackSize(1).addComponents(new FreedomWrenchBehaviour());
 
         // TODO Move to Gregification
-        HYPERIUM_ESSENCE = addItem(344, "hyperium_essence");
-        LUDICIUM_ESSENCE = addItem(345, "ludicium_essence");
-        HYPERIUM_SEED = addItem(346, "hyperium_crafting_seed");
-        LUDICIUM_SEED = addItem(347, "ludicium_crafting_seed");
+        HYPERIUM_ESSENCE = addItem(9344, "hyperium_essence");
+        LUDICIUM_ESSENCE = addItem(9345, "ludicium_essence");
+        HYPERIUM_SEED = addItem(9346, "hyperium_crafting_seed");
+        LUDICIUM_SEED = addItem(9347, "ludicium_crafting_seed");
 
         // TODO Nuclear Rework
         /*

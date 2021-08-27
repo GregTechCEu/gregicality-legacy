@@ -94,6 +94,13 @@ public class GAMaterialFlagAddition {
 
         // Fluids
         Arsenic.setProperty(PropertyKey.FLUID, new FluidProperty());
+
+        // Frames
+        Naquadria.addFlag(GENERATE_FRAME);
+        BlackSteel.addFlag(GENERATE_FRAME);
+        Seaborgium.addFlag(GENERATE_FRAME);
+        Bohrium.addFlag(GENERATE_FRAME);
+        HSSS.addFlag(GENERATE_FRAME);
     }
 
     // TODO Clean this up, migrate what we can up to CEu

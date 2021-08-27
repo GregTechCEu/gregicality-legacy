@@ -91,7 +91,7 @@ public class MetaTileEntityHyperReactorIII extends FueledMultiblockController {
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gtadditions.multiblock.hyper_reactor.tooltip.1", Objects.requireNonNull(FluidRegistry.getFluidStack(GAConfig.multis.hyperReactors.boosterFluid[2], 1)).getLocalizedName()));
+//        tooltip.add(I18n.format("gtadditions.multiblock.hyper_reactor.tooltip.1", Objects.requireNonNull(FluidRegistry.getFluidStack(GAConfig.multis.hyperReactors.boosterFluid[2], 1)).getLocalizedName())); todo fix default fluids
         tooltip.add(I18n.format("gtadditions.multiblock.hyper_reactor.tooltip.2", maxVoltage));
     }
 

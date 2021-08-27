@@ -1087,7 +1087,7 @@ public class GAConfig {
         @Config.Comment("The liquid that boosts the Reactor.")
         @Config.RequiresMcRestart
         @Config.Name("Hyper Reactor boosters")
-        public String[] boosterFluid = {"plasma.helium", "plasma.radon", "degenerate_rhenium_plasma"};
+        public String[] boosterFluid = {"plasma.helium", "plasma.radon", "plasma.degenerate_rhenium_plasma"};
 
         @Config.Comment("The amount of liquid that boosts the Reactor.")
         @Config.RequiresMcRestart
