@@ -245,11 +245,6 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean thermalCentrifugeOreProcessing = true;
 
-        @Config.Comment("Add Chemical Bath recipes taking ores and UU-Matter as input and resulting in a larger amount of outputs.")
-        @Config.Name("UU-Matter ore tripling")
-        @Config.RequiresMcRestart
-        public boolean uuMatterOreProcessing = true;
-
         @Config.Name("Enable RockBreaker high tier")
         @Config.RequiresMcRestart
         public boolean enableRockBreakerHighTier = true;

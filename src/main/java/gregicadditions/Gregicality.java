@@ -6,7 +6,7 @@ import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.integrations.bees.ForestryCommonProxy;
 import gregicadditions.integrations.mysticalagriculture.MysticalCommonProxy;
-import gregicadditions.integrations.tconstruct.TinkersMaterials;
+//import gregicadditions.integrations.tconstruct.TinkersMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.network.IPSaveData;
@@ -82,8 +82,8 @@ public class Gregicality {
 
         GAMetaBlocks.init();
         GATileEntities.init();
-        if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded(GAValues.MODID_TCON))
-            TinkersMaterials.preInit();
+//        if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded(GAValues.MODID_TCON)) todo TC integration
+//            TinkersMaterials.preInit();
         if (GAConfig.GTBees.EnableGTCEBees && Loader.isModLoaded(GAValues.MODID_FR)) {
             forestryProxy.preInit();
         }

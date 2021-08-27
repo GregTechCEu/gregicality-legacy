@@ -2,7 +2,6 @@ package gregicadditions.recipes.impl;
 
 import com.google.common.collect.ImmutableMap;
 import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.RecipeMap;
