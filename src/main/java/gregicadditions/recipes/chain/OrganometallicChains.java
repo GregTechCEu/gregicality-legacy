@@ -36,7 +36,7 @@ public class OrganometallicChains{
         BLAST_RECIPES.recipeBuilder().duration(1800).EUt(120) //2H + 2CfO2 -> Cf2O3 + H2O
                 .blastFurnaceTemp(2500)
                 .fluidInputs(Hydrogen.getFluid(2000))
-//                .input(Californium, GAEnums.GAOrePrefix.dioxide, 6) todo nuclear rework
+//                .input(Californium, GAEnums.gregicadditions.materials.GAOrePrefix.dioxide, 6) todo nuclear rework
                 .output(dust, CaliforniumTrioxide, 5)
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();

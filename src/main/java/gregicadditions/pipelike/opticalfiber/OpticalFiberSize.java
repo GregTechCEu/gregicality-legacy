@@ -1,6 +1,6 @@
 package gregicadditions.pipelike.opticalfiber;
 
-import gregicadditions.GAEnums.GAOrePrefix;
+import gregicadditions.materials.GAOrePrefix;
 import gregtech.api.pipenet.block.material.IMaterialPipeType;
 import gregtech.api.unification.ore.OrePrefix;
 

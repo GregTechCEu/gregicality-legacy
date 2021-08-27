@@ -243,7 +243,7 @@ public class SuperconductorsSMDChain {
 
         BLAST_RECIPES.recipeBuilder().duration(500).EUt(120).blastFurnaceTemp(2400)
                 .input(dust, Tungsten, 9)
-//                .input(dust, GAEnums.GAOrePrefix.oxide, Thorium) todo nuclear rework
+//                .input(dust, GAEnums.gregicadditions.materials.GAOrePrefix.oxide, Thorium) todo nuclear rework
                 .output(ingot, ThoriaDopedTungsten, 10)
                 .buildAndRegister();
 

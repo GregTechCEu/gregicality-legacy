@@ -4,9 +4,9 @@ import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import net.minecraft.item.ItemStack;
 
-import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.materials.GAOrePrefix.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;

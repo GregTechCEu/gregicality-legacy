@@ -1157,5 +1157,9 @@ public class GAMaterials implements IMaterialHandler {
         GAHighDegreeMaterials.register();
 
         GAMaterialFlagAddition.init();
+
+        // TODO Clean this up once GT uses events for Material Registration
+        GAOrePrefix.initIconSets();
+        GAOrePrefix.initPrefixes();
     }
 }
