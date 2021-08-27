@@ -98,10 +98,10 @@ public class BlockOpticalFiber extends BlockSimplePipe<OpticalFiberSize, Optical
         return new OpticalFiberProperties(1, 1);
     }
 
-    @Override
-    public void func_149666_a(@Nonnull CreativeTabs creativeTabs, @Nonnull NonNullList<ItemStack> nonNullList) {
+    //@Override
+    //public void func_149666_a(@Nonnull CreativeTabs creativeTabs, @Nonnull NonNullList<ItemStack> nonNullList) {
         //todo optical fiber cables
-    }
+    //}
 
     @Override
     public boolean canPipesConnect(IPipeTile<OpticalFiberSize, OpticalFiberProperties> iPipeTile, EnumFacing enumFacing, IPipeTile<OpticalFiberSize, OpticalFiberProperties> iPipeTile1) {
