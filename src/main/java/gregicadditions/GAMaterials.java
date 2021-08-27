@@ -1131,15 +1131,16 @@ public class GAMaterials implements IMaterialHandler {
          */
         GAFirstDegreeMaterials.register();
 
-        /*
-         * Organic Chem Materials, IDs 6500-9499
-         */
-        GAOrganicChemistryMaterials.register();
-
+        // dont worry about the IDs here...
         /*
          * Unknown Composition Materials, IDs 9500-11499
          */
         GAUnknownCompositionMaterials.register();
+
+        /*
+         * Organic Chem Materials, IDs 6500-9499
+         */
+        GAOrganicChemistryMaterials.register();
 
         /*
          * Second Degree Materials, IDs 11500-14499

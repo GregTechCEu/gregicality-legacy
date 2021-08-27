@@ -1,5 +1,6 @@
 package gregicadditions.materials;
 
+import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
 
 import static gregicadditions.materials.GAMaterialFlags.*;
@@ -60,6 +61,12 @@ public class GAHighDegreeMaterials {
                 .components(Rhenium, 1, Hassium, 1, Thallium, 1, Fullerene, 1, Phosphorus, 1, Nitrogen, 12, Hydrogen, 84, SulfurDioxide, 6, Fluorine, 6)
                 .build();
 
+        DrillingMudMixture = new Material.Builder(18506, "drilling_mud_mixture")
+                .fluid()
+                .colorAverage()
+                .components(CaCBaSMixture, 1, LubricantClaySlurry, 1)
+                .build();
+
 
         // Fifth Degree Materials, 19000-19499
         Cryotheum = new Material.Builder(19000, "cryotheum")
@@ -78,6 +85,24 @@ public class GAHighDegreeMaterials {
                 .blastTemp(9900)
                 .build()
                 .setFormula("(FeW)12(((FeW)5CrMo2V)6CoMnSi)9((FeW)5CrMo2V)6(Ru2Ir)3((((SiO2)5Fe)3(Bi2Te3)4ZrO2Fe)2Pu");
+
+        SuperheavyChargedBlackTitanium = new Material.Builder(19002, "superheavy_charged_black_titanium")
+                .ingot()
+                .color(0x883AFC)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(BlackTitanium, 3, SuperheavyHAlloy, 2, ChargedCesiumCeriumCobaltIndium, 3, RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 6)
+                .cableProperties(GTValues.V[GTValues.UMV], 64, 0, true)
+                .blastTemp(12000)
+                .build();
+
+        NeutroniumLegendariumSuperhydride = new Material.Builder(19003, "neutronium_legendarium_superhydride")
+                .ingot()
+                .color(0xE34B5A)
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Neutronium, 4, Legendarium, 5, ActiniumSuperhydride, 5, LanthanumFullereneNanotubes, 4, RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 12)
+                .cableProperties(GTValues.V[GTValues.UXV], 128, 0, true)
+                .blastTemp(14000)
+                .build();
 
 
         // Sixth Degree Materials, 19500-19999

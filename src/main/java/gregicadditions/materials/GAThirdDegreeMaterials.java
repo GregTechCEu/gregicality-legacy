@@ -159,23 +159,17 @@ public class GAThirdDegreeMaterials {
                 .blastTemp(11600)
                 .build();
 
-        SuperheavyChargedBlackTitanium = new Material.Builder(11521, "superheavy_charged_black_titanium")
-                .ingot()
-                .color(0x883AFC)
-                .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(BlackTitanium, 3, SuperheavyHAlloy, 2, ChargedCesiumCeriumCobaltIndium, 3, RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 6)
-                .cableProperties(GTValues.V[GTValues.UMV], 64, 0, true)
-                .blastTemp(12000)
-                .build();
+        // Free ID 15521
 
-        NeutroniumLegendariumSuperhydride = new Material.Builder(11522, "neutronium_legendarium_superhydride")
-                .ingot()
-                .color(0xE34B5A)
-                .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(Neutronium, 4, Legendarium, 5, ActiniumSuperhydride, 5, LanthanumFullereneNanotubes, 4, RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 12)
-                .cableProperties(GTValues.V[GTValues.UXV], 128, 0, true)
-                .blastTemp(14000)
-                .build();
+        // Free ID 15522
+
+        NaquadahSolution = new Material.Builder(15523, "naquadah_solution")
+                .fluid()
+                .color(0x523B3A)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Naquadah, 1, AmmoniumNitrate, 1)
+                .build()
+                .setFormula("NqNH4NO3", true);
 
     }
 }

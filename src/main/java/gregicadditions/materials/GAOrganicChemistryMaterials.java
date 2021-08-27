@@ -465,21 +465,19 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("C7H5ClO", true);
 
-        PCBA = new Material.Builder(6558, "pcba")
-                .fluid()
-                .colorAverage()
+        Fullerene = new Material.Builder(6558, "fullerene")
+                .dust()
+                .colorAverage().iconSet(METALLIC)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Fullerene, 1, Carbon, 12, Hydrogen, 14, Oxygen, 2)
-                .build()
-                .setFormula("C72H14O2", true);
+                .components(Carbon, 60)
+                .build();
 
-        PCBS = new Material.Builder(6559, "pcbs")
-                .fluid()
+        TiAlChloride = new Material.Builder(6559, "tial_chloride")
+                .dust()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Fullerene, 1, Carbon, 20, Hydrogen, 21, Oxygen, 2)
-                .build()
-                .setFormula("C80H21O2", true);
+                .components(Titanium, 1, Aluminium, 1, Chlorine, 7)
+                .build();
 
         Ferrocene = new Material.Builder(6560, "ferrocene")
                 .fluid()
@@ -755,7 +753,7 @@ public class GAOrganicChemistryMaterials {
                 .fluid()
                 .color(0xBCAC93)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 18, Hydrogen, 39, Oxygen, 5, Phosphorus)
+                .components(Carbon, 18, Hydrogen, 39, Oxygen, 5, Phosphorus, 1)
                 .build();
 
         WetEthyleneOxide = new Material.Builder(6597, "wet_etylene_oxide")
@@ -1275,11 +1273,11 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("C149H97N10O2(TiBF20)");
 
-        GlucoseIronSolution = new Material.Builder(6671, "glucose_iron_solution")
-                .fluid()
-                .colorAverage()
+        Glucose = new Material.Builder(6671, "glucose")
+                .dust()
+                .colorAverage().iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Glucose, 1, Iron3Chloride, 1)
+                .components(Carbon, 6, Hydrogen, 12, Oxygen, 6)
                 .build();
 
         Methylethanolamine = new Material.Builder(6672, "methylethanolamine")
@@ -1567,19 +1565,21 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 60, Hydrogen, 30)
                 .build();
 
-        Fullerene = new Material.Builder(6714, "fullerene")
-                .dust()
-                .colorAverage().iconSet(METALLIC)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 60)
-                .build();
-
-        TiAlChloride = new Material.Builder(6715, "tial_chloride")
-                .dust()
+        PCBA = new Material.Builder(6714, "pcba")
+                .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Titanium, 1, Aluminium, 1, Chlorine, 7)
-                .build();
+                .components(Fullerene, 1, Carbon, 12, Hydrogen, 14, Oxygen, 2)
+                .build()
+                .setFormula("C72H14O2", true);
+
+        PCBS = new Material.Builder(6715, "pcbs")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Fullerene, 1, Carbon, 20, Hydrogen, 21, Oxygen, 2)
+                .build()
+                .setFormula("C80H21O2", true);
 
         Dimethylaminopyridine = new Material.Builder(6716, "dimethylaminopyridine")
                 .dust()
@@ -1682,11 +1682,11 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 6, Hydrogen, 12, Oxygen, 6)
                 .build();
 
-        Glucose = new Material.Builder(6729, "glucose")
-                .dust()
-                .colorAverage().iconSet(ROUGH)
+        GlucoseIronSolution = new Material.Builder(6729, "glucose_iron_solution")
+                .fluid()
+                .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 6, Hydrogen, 12, Oxygen, 6)
+                .components(Glucose, 1, Iron3Chloride, 1)
                 .build();
 
         Biphenyl = new Material.Builder(6730, "biphenyl")
@@ -1925,7 +1925,7 @@ public class GAOrganicChemistryMaterials {
                 .dust()
                 .color(0xBEE8B9).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 8, Hydrogen, 20, Nitrogen, Rhenium, 1, Hydrogen, 18, Technetium, 1)
+                .components(Carbon, 8, Hydrogen, 20, Nitrogen, 1, Rhenium, 1, Hydrogen, 18, Technetium, 1)
                 .build()
                 .setFormula("(C8H20N)(ReH9)(TcH9)", true);
 

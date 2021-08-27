@@ -3,6 +3,9 @@ package gregicadditions.materials;
 import gregtech.api.unification.material.Material;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.materials.GAMaterialFlags.GA_CORE_METAL;
+import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.info.MaterialIconSet.SHINY;
 
 public class GAElementMaterials {
 
@@ -343,6 +346,31 @@ public class GAElementMaterials {
                 .ingot().fluid()
                 .color(0x204DD2)
                 .element(GAElements.Md263)
+                .build();
+
+        // MetaStables
+        MetastableOganesson = new Material.Builder(3058, "metastable_oganesson")
+                .ingot(7)
+                .color(0xE61C24).iconSet(SHINY)
+                .flags(GA_CORE_METAL)
+                .components(Oganesson, 1)
+                .blastTemp(10380)
+                .build();
+
+        MetastableFlerovium = new Material.Builder(3059, "metastable_flerovium")
+                .ingot(7)
+                .color(0x521973).iconSet(SHINY)
+                .flags(GA_CORE_METAL)
+                .components(Flerovium, 1)
+                .blastTemp(10990)
+                .build();
+
+        MetastableHassium = new Material.Builder(3060, "metastable_hassium")
+                .ingot(6)
+                .color(0x2D3A9D).iconSet(SHINY)
+                .flags(GA_CORE_METAL)
+                .components(Hassium, 1)
+                .blastTemp(11240)
                 .build();
     }
 }

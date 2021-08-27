@@ -275,13 +275,12 @@ public class GASecondDegreeMaterials {
                 .components(Naquadria, 1, Fluorine, 2, CaesiumFluoride, 1)
                 .build();
 
-        NaquadahSolution = new Material.Builder(11536, "naquadah_solution")
+        SodiumHydroxideSolution = new Material.Builder(11536, "sodium_hydroxide_solution")
                 .fluid()
-                .color(0x523B3A)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Naquadah, 1, AmmoniumNitrate, 1)
-                .build()
-                .setFormula("NqNH4NO3", true);
+                .colorAverage()
+                .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .components(Water, 1, SodiumHydroxide, 1)
+                .build();
 
         AmmoniumNitrate = new Material.Builder(11537, "ammonium_nitrate")
                 .fluid()
@@ -450,7 +449,12 @@ public class GASecondDegreeMaterials {
                 .components(Water, 1, Rhenium, 1, Sulfur, 1, RareEarth, 1)
                 .build();
 
-        // Free ID 11561
+        CalciumTungstate = new Material.Builder(11561, "calcium_tungstate")
+                .dust()
+                .color(0x6E6867).iconSet(SHINY)
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Tungsten, 1, CalciumCarbide, 1, Oxygen, 4)
+                .build();
 
         UranylChlorideSolution = new Material.Builder(11562, "uranyl_chloride_solution")
                 .fluid()
@@ -459,27 +463,27 @@ public class GASecondDegreeMaterials {
                 .components(Uraninite, 1, Chlorine, 2, Water, 1, RareEarth, 1)
                 .build();
 
-        UranylNitrateSolution = new Material.Builder(11563, "uranyl_nitrate_solution")
-                .fluid()
-                .colorAverage()
-                .flags(DISABLE_DECOMPOSITION)
-                .components(PurifiedUranylNitrate, 1, RareEarth, 1)
-                .build();
-
-        UraniumSulfateWasteSolution = new Material.Builder(11564, "uranium_sulfate_waste_solution")
+        UraniumSulfateWasteSolution = new Material.Builder(11563, "uranium_sulfate_waste_solution")
                 .fluid()
                 .color(0xDFE018)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Lead, 1, Radon, 1, Strontium, 1, SulfuricAcid, 1)
                 .build();
 
-        PurifiedUranylNitrate = new Material.Builder(11565, "purified_uranyl_nitrate_solution")
+        PurifiedUranylNitrate = new Material.Builder(11564, "purified_uranyl_nitrate_solution")
                 .fluid()
                 .color(0xEFF028)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Uraninite, 1, Nitrogen, 2, Oxygen, 6, Water, 1)
                 .build()
                 .setFormula("UO2(NO3)2(H2O)", true);
+
+        UranylNitrateSolution = new Material.Builder(11565, "uranyl_nitrate_solution")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(PurifiedUranylNitrate, 1, RareEarth, 1)
+                .build();
 
         UraniumDiuranate = new Material.Builder(11566, "uranium_diuranate")
                 .fluid()
@@ -631,28 +635,23 @@ public class GASecondDegreeMaterials {
                 .components(Hydrogen, 4, Germanium, 1, Oxygen, 4)
                 .build();
 
-        SodiumHydroxideSolution = new Material.Builder(11490, "sodium_hydroxide_solution")
-                .fluid()
-                .colorAverage()
-                .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(Water, 1, SodiumHydroxide, 1)
-                .build();
+        // Free ID 11590
 
-        LithiumHydroxideSolution = new Material.Builder(11491, "lithium_hydroxide_solution")
+        LithiumHydroxideSolution = new Material.Builder(11591, "lithium_hydroxide_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Water, 1, LithiumHydroxide, 1)
                 .build();
 
-        LithiumPeroxideSolution = new Material.Builder(11492, "lithium_peroxide_solution")
+        LithiumPeroxideSolution = new Material.Builder(11592, "lithium_peroxide_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, Lithium, 2, Oxygen, 2)
                 .build();
 
-        PureUranylNitrateSolution = new Material.Builder(11493, "pure_uranyl_nitrate")
+        PureUranylNitrateSolution = new Material.Builder(11593, "pure_uranyl_nitrate")
                 .fluid()
                 .color(0x33BD45)
                 .flags(DISABLE_DECOMPOSITION)
@@ -660,35 +659,35 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(H2O)UO2(NO3)2", true);
 
-        SodiumLithiumSolution = new Material.Builder(11494, "sodium_lithium_solution")
+        SodiumLithiumSolution = new Material.Builder(11594, "sodium_lithium_solution")
                 .fluid()
                 .color(0xFCFCCD)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Sodium, 1, Lithium, 1, RareEarth, 1)
                 .build();
 
-        MagnesiumContainingBrine = new Material.Builder(11495, "magnesium_containing_brine")
+        MagnesiumContainingBrine = new Material.Builder(11595, "magnesium_containing_brine")
                 .fluid()
                 .color(0xFCFCBC)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Magnesium, 1, RareEarth, 1)
                 .build();
 
-        BrominatedBrine = new Material.Builder(11496, "brominated_brine")
+        BrominatedBrine = new Material.Builder(11596, "brominated_brine")
                 .fluid()
                 .color(0xFDD48D)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Bromine, 1, RareEarth, 1)
                 .build();
 
-        AcidicBrominatedBrine = new Material.Builder(11497, "acidic_brominated_brine")
+        AcidicBrominatedBrine = new Material.Builder(11597, "acidic_brominated_brine")
                 .fluid()
                 .color(0xFDD48D)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(SulfuricAcid, 1, Chlorine, 1, RareEarth, 1)
                 .build();
 
-        SelenateTellurateMix = new Material.Builder(11498, "selenate_tellurate_mixture")
+        SelenateTellurateMix = new Material.Builder(11598, "selenate_tellurate_mixture")
                 .fluid()
                 .color(0x765A30)
                 .flags(DISABLE_DECOMPOSITION)
@@ -696,110 +695,110 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("TeSe(H2Na2CO3)2", true);
 
-        CopperRefiningSolution = new Material.Builder(11499, "copper_refining_solution")
+        CopperRefiningSolution = new Material.Builder(11599, "copper_refining_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Copper, 1, SulfuricAcid, 1)
                 .build();
 
-        // Free ID 11500
+        // Free ID 11600
 
-        // Free ID 11501
+        // Free ID 11601
 
-        // Free ID 11502
+        // Free ID 11602
 
-        // Free ID 11503
+        // Free ID 11603
 
-        // Free ID 11504
+        // Free ID 11604
 
-        // Free ID 11505
+        // Free ID 11605
 
-        DiluteNitricAcid = new Material.Builder(11506, "dilute_nitric_acid")
+        DiluteNitricAcid = new Material.Builder(11606, "dilute_nitric_acid")
                 .fluid()
                 .colorAverage()
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Water, 1, NitricAcid, 1)
                 .build();
 
-        NbTaFluorideMix = new Material.Builder(11507, "nbta_fluoride_mix")
+        NbTaFluorideMix = new Material.Builder(11607, "nbta_fluoride_mix")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(FluoroniobicAcid, 1, FluorotantalicAcid, 1)
                 .build();
 
-        REEThUSulfateSolution = new Material.Builder(11508, "reethu_sulfate_soltion")
+        REEThUSulfateSolution = new Material.Builder(11608, "reethu_sulfate_soltion")
                 .fluid()
                 .color(0x89BE5C)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1, Sulfur, 1, Oxygen, 4)
                 .build();
 
-        RareEarthNitrateSolution = new Material.Builder(11509, "rare_earth_nitrate_solution")
+        RareEarthNitrateSolution = new Material.Builder(11609, "rare_earth_nitrate_solution")
                 .fluid()
                 .color(0xCFB37D)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1, Nitrogen, 1, Oxygen, 3)
                 .build();
 
-        AlkalineEarthSulfateSolution = new Material.Builder(11510, "alkalineearth_sulfate")
+        AlkalineEarthSulfateSolution = new Material.Builder(11610, "alkalineearth_sulfate")
                 .fluid()
                 .color(0xE6EBFF)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RareEarth, 1, Sulfur, 1, Oxygen, 4)
                 .build();
 
-        CalciumCarbonateSolution = new Material.Builder(11510, "calcium_carbonate_solution")
+        CalciumCarbonateSolution = new Material.Builder(11610, "calcium_carbonate_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Water, 1, Calcite, 1)
                 .build();
 
-        BariumSulfateSolution = new Material.Builder(11511, "barium_sulfate_solution")
+        BariumSulfateSolution = new Material.Builder(11611, "barium_sulfate_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, Barite, 1)
                 .build();
 
-        BentoniteClaySlurry = new Material.Builder(11512, "bentontie_clay_solution")
+        BentoniteClaySlurry = new Material.Builder(11612, "bentontie_clay_solution")
                 .fluid()
                 .color(0xDBC9C5)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, RareEarth, 1)
                 .build();
 
-        AstatideSolution = new Material.Builder(11513, "astadide_solution")
+        AstatideSolution = new Material.Builder(11613, "astadide_solution")
                 .fluid()
                 .color(0x6DF63F)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Astatine, 1, Water, 1, SulfurTrioxide, 1)
                 .build();
 
-        BariumChlorideSolution = new Material.Builder(11514, "barium_chloride_solution")
+        BariumChlorideSolution = new Material.Builder(11614, "barium_chloride_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, BariumChloride, 1)
                 .build();
 
-        IronCarbonyl = new Material.Builder(11515, "iron_carbonyl")
+        IronCarbonyl = new Material.Builder(11615, "iron_carbonyl")
                 .fluid()
                 .color(0xFF8000)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Iron, 1, RareEarth, 1)
                 .build();
 
-        PurifiedIronCarbonyl = new Material.Builder(11516, "purified_iron_carbonyl")
+        PurifiedIronCarbonyl = new Material.Builder(11616, "purified_iron_carbonyl")
                 .fluid()
                 .color(0xFFA000)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Iron, 1)
                 .build();
 
-        BismuthNitrateSoluton = new Material.Builder(11517, "bismuth_nitrate_solution")
+        BismuthNitrateSoluton = new Material.Builder(11617, "bismuth_nitrate_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
@@ -807,7 +806,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(H2O)Bi(NO3)3", true);
 
-        PrYHoNitrateSolution = new Material.Builder(11518, "pryho_nitrate_solution")
+        PrYHoNitrateSolution = new Material.Builder(11618, "pryho_nitrate_solution")
                 .fluid()
                 .color(0x00F2B2)
                 .flags(DISABLE_DECOMPOSITION)
@@ -815,9 +814,9 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(Y(NO3)3)6(Pr(NO3)3)2(Nd(NO3)3)2(H2O)15", true);
 
-        // Free ID 11519
+        // Free ID 11619
 
-        AmmoniumBifluorideSolution = new Material.Builder(11520, "ammonium_bifluoride_solution")
+        AmmoniumBifluorideSolution = new Material.Builder(11620, "ammonium_bifluoride_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
@@ -825,7 +824,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(H2O)NH4FHF", true);
 
-        LuTmYChlorideSolution = new Material.Builder(11521, "lutmy_chloride_solution")
+        LuTmYChlorideSolution = new Material.Builder(11621, "lutmy_chloride_solution")
                 .fluid()
                 .color(0x00F2B2)
                 .flags(DISABLE_DECOMPOSITION)
@@ -833,9 +832,9 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(YCl3)6(LuCl3)2(TmCl3)2(H2O)15", true);
 
-        // Free ID 11522
+        // Free ID 11622
 
-        SeaborgiumDopedNanotubes = new Material.Builder(11523, "seaborgium_doped_nanotubes")
+        SeaborgiumDopedNanotubes = new Material.Builder(11623, "seaborgium_doped_nanotubes")
                 .fluid()
                 .color(0x2C2C8C)
                 .flags(DISABLE_DECOMPOSITION)
@@ -843,7 +842,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("SgCNT", true);
 
-        FullereneDopedNanotubes = new Material.Builder(11524, "fullerene_doped_nanotubes")
+        FullereneDopedNanotubes = new Material.Builder(11624, "fullerene_doped_nanotubes")
                 .fluid()
                 .color(0x6C2C6C)
                 .flags(DISABLE_DECOMPOSITION)
@@ -851,44 +850,44 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("C60CNT", true);
 
-        // FREE ID 11525
+        // FREE ID 11625
 
-        GrapheneOxidationSolution = new Material.Builder(11526, "graphene_oxidation_solution")
+        GrapheneOxidationSolution = new Material.Builder(11626, "graphene_oxidation_solution")
                 .fluid()
                 .color(0x96821A)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(PotassiumManganate, 1, Saltpeter, 1, SulfuricAcid, 1)
                 .build();
 
-        SupercriticalCO2 = new Material.Builder(11527, "supercritical_co2")
+        SupercriticalCO2 = new Material.Builder(11627, "supercritical_co2")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(CarbonDioxide, 1)
                 .build();
 
-        LiquidEnrichedHelium = new Material.Builder(11527, "liquid_enriched_helium")
+        LiquidEnrichedHelium = new Material.Builder(11627, "liquid_enriched_helium")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Helium, 1, Helium3, 1)
                 .build();
 
-        LiquidNitrogen = new Material.Builder(11528, "liquid_nitrogen")
+        LiquidNitrogen = new Material.Builder(11628, "liquid_nitrogen")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Nitrogen, 1)
                 .build();
 
-        RheniumScrubbedSolution = new Material.Builder(11529, "rhenium_scrubbed_solution")
+        RheniumScrubbedSolution = new Material.Builder(11629, "rhenium_scrubbed_solution")
                 .fluid()
                 .color(0xED2C3A)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Rhenium, 1, RareEarth, 1)
                 .build();
 
-        NeutroniumDopedNanotubes = new Material.Builder(11530, "neutronium_doped_nanotubes")
+        NeutroniumDopedNanotubes = new Material.Builder(11630, "neutronium_doped_nanotubes")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
@@ -896,67 +895,67 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("NtCNT", true);
 
-        SupercriticalSteam = new Material.Builder(11531, "supercritical_steam")
+        SupercriticalSteam = new Material.Builder(11631, "supercritical_steam")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Steam, 1)
                 .build();
 
-        SupercriticalSodiumPotassiumAlloy = new Material.Builder(11532, "supercritical_sodium_potassium_alloy")
+        SupercriticalSodiumPotassiumAlloy = new Material.Builder(11632, "supercritical_sodium_potassium_alloy")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(SodiumPotassiumAlloy, 1)
                 .build();
 
-        SupercriticalFLiNaK = new Material.Builder(11533, "supercritical_flinak")
+        SupercriticalFLiNaK = new Material.Builder(11633, "supercritical_flinak")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(FLiNaK, 1)
                 .build();
 
-        SupercriticalFLiBe = new Material.Builder(11534, "supercritical_flibe")
+        SupercriticalFLiBe = new Material.Builder(11634, "supercritical_flibe")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(FLiBe, 1)
                 .build();
 
-        SupercriticalLeadBismuthEutectic = new Material.Builder(11535, "supercritical_lead_bismuth_eutectic")
+        SupercriticalLeadBismuthEutectic = new Material.Builder(11635, "supercritical_lead_bismuth_eutectic")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(LeadBismuthEutectic, 1)
                 .build();
 
-        // Free ID 11536
+        // Free ID 11636
 
-        // Free ID 11537
+        // Free ID 11637
 
-        SilicaAluminaGel = new Material.Builder(11538, "silica_alumina_gel")
+        SilicaAluminaGel = new Material.Builder(11638, "silica_alumina_gel")
                 .dust()
                 .color(0x558D9E)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Alumina, 1, SiliconDioxide, 1)
                 .build();
 
-        ZeoliteSievingPellets = new Material.Builder(11539, "zeolite_sieving_pellets")
+        ZeoliteSievingPellets = new Material.Builder(11639, "zeolite_sieving_pellets")
                 .dust()
                 .color(0xA17BD1).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Alumina, 1, SiliconDioxide, 1)
                 .build();
 
-        WetZeoliteSievingPellets = new Material.Builder(11540, "wet_zeolite_sieving_pellets")
+        WetZeoliteSievingPellets = new Material.Builder(11640, "wet_zeolite_sieving_pellets")
                 .dust()
                 .color(0x392F45).iconSet(METALLIC)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(ZeoliteSievingPellets, RareEarth, 1)
+                .components(ZeoliteSievingPellets, 1, RareEarth, 1)
                 .build();
 
-        ZBLAN = new Material.Builder(11541, "zblan")
+        ZBLAN = new Material.Builder(11641, "zblan")
                 .ingot().fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION, GENERATE_FINE_WIRE, NO_UNIFICATION)
@@ -964,9 +963,9 @@ public class GASecondDegreeMaterials {
                 .blastTemp(2200)
                 .build();
 
-        // Free ID 11542
+        // Free ID 11642
 
-        PotassiumUranylTricarbonate = new Material.Builder(11543, "potassium_uranyl_carbonate")
+        PotassiumUranylTricarbonate = new Material.Builder(11643, "potassium_uranyl_carbonate")
                 .dust()
                 .color(0xEFF028)
                 .flags(DISABLE_DECOMPOSITION)
@@ -974,7 +973,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(UO2)CO3", true);
 
-        UraniumPeroxideThoriumOxide = new Material.Builder(11544, "uranium_peroixide_thorium_oxide")
+        UraniumPeroxideThoriumOxide = new Material.Builder(11644, "uranium_peroixide_thorium_oxide")
                 .dust()
                 .color(0x202020).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -982,7 +981,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(UO3)(H2O2)ThO2", true);
 
-        UraniumThoriumOxide = new Material.Builder(11545, "uranium_thorium_oxide")
+        UraniumThoriumOxide = new Material.Builder(11645, "uranium_thorium_oxide")
                 .dust()
                 .color(0x202020).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -990,7 +989,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("UO2ThO2", true);
 
-        UranylThoriumSulfate = new Material.Builder(11546, "uranyl_thorium_sulfate")
+        UranylThoriumSulfate = new Material.Builder(11646, "uranyl_thorium_sulfate")
                 .dust()
                 .color(0xE7E848).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -998,7 +997,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(UO2)SO4ThO2", true);
 
-        UranylThoriumNitrate = new Material.Builder(11547, "uranium_thorium_nitrate")
+        UranylThoriumNitrate = new Material.Builder(11647, "uranium_thorium_nitrate")
                 .dust()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
@@ -1006,7 +1005,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("UO2(NO3)2Th(NO3)4", true);
 
-        UraniumOxideThoriumNitrate = new Material.Builder(11548, "uranium_oxide_thorium_nitrate")
+        UraniumOxideThoriumNitrate = new Material.Builder(11648, "uranium_oxide_thorium_nitrate")
                 .dust()
                 .color(0x33BD45).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1014,28 +1013,28 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("UO2Th(NO3)4", true);
 
-        GrapheneOxidationResidue = new Material.Builder(11549, "graphene_oxidation_residue")
+        GrapheneOxidationResidue = new Material.Builder(11649, "graphene_oxidation_residue")
                 .dust()
                 .color(0x96821A).iconSet(FINE)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(PotassiumManganate, 1, Saltpeter, 1, SulfuricAcid, 1)
                 .build();
 
-        ZincCokePellets = new Material.Builder(11550, "zinc_coke_pellets")
+        ZincCokePellets = new Material.Builder(11650, "zinc_coke_pellets")
                 .dust()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, Sphalerite, 1, Coke, 1)
                 .build();
 
-        CadmiumZinc = new Material.Builder(11551, "cadmium_zinc")
+        CadmiumZinc = new Material.Builder(11651, "cadmium_zinc")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(SulfuricAcid, 1, Cadmium, 1, Zinc, 1, RareEarth, 1)
                 .build();
 
-        UranylNitrate = new Material.Builder(11552, "uranyl_nitrate")
+        UranylNitrate = new Material.Builder(11652, "uranyl_nitrate")
                 .dust()
                 .color(0x33BD45).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1043,70 +1042,70 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("UO2(NO3)2");
 
-        SodiumSalts = new Material.Builder(11553, "sodium_salts")
+        SodiumSalts = new Material.Builder(11653, "sodium_salts")
                 .dust()
                 .colorAverage().iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Salt, 1, RareEarth, 1)
                 .build();
 
-        PotassiumMagnesiumSalts = new Material.Builder(11554, "kmg_salts")
+        PotassiumMagnesiumSalts = new Material.Builder(11654, "kmg_salts")
                 .dust()
                 .colorAverage().iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(RockSalt, 1, MagnesiumSulfate, 1, PotassiumSulfate, 1 , PotassiumFluoride, 1)
                 .build();
 
-        CalciumMagnesiumSalts = new Material.Builder(11555, "camg_salts")
+        CalciumMagnesiumSalts = new Material.Builder(11655, "camg_salts")
                 .dust()
                 .colorAverage().iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Calcite, 1, StrontiumCarbonate, 1, CarbonDioxide, 1, Magnesium, 1, Oxygen, 1)
                 .build();
 
-        SodiumAluminiumHydride = new Material.Builder(11556, "sodium_aluminium_hydride")
+        SodiumAluminiumHydride = new Material.Builder(11656, "sodium_aluminium_hydride")
                 .dust()
                 .color(0x98CAFC).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Sodium, 1, Aluminium, 1, Hydrogen, 4)
                 .build();
 
-        LithiumAluminiumHydride = new Material.Builder(11557, "lithium_aluminium_hydride")
+        LithiumAluminiumHydride = new Material.Builder(11657, "lithium_aluminium_hydride")
                 .dust()
                 .color(0xC0DEFC).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Lithium, 1, Aluminium, 1, Hydrogen, 4)
                 .build();
 
-        SodiumPhosphomolybdate = new Material.Builder(11558, "sodium_phosphomolybdate")
+        SodiumPhosphomolybdate = new Material.Builder(11658, "sodium_phosphomolybdate")
                 .dust()
                 .color(0xFCFC00).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(MolybdenumTrioxide, 12, Sodium, 3, Phosphate, 1)
                 .build();
 
-        SodiumPhosphotungstate = new Material.Builder(11559, "sodium_phosphotungstate")
+        SodiumPhosphotungstate = new Material.Builder(11659, "sodium_phosphotungstate")
                 .dust()
                 .color(0x7a7777).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(TungstenTrioxide, 12, Sodium, 3, Phosphate, 1)
                 .build();
 
-        LeadNitrateCalciumMixture = new Material.Builder(11560, "lead_nitrate_calcium_mixture")
+        LeadNitrateCalciumMixture = new Material.Builder(11660, "lead_nitrate_calcium_mixture")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(LeadNitrate, 1, Calcium, 9)
                 .build();
 
-        TinSlag = new Material.Builder(11561, "tin_slag")
+        TinSlag = new Material.Builder(11661, "tin_slag")
                 .dust()
                 .color(0xC8B9A9)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Niobium, 1, Tantalum, 1, RareEarth, 1)
                 .build();
 
-        NiobiumTantalumOxide = new Material.Builder(11562, "niobium_tantalum_oxide")
+        NiobiumTantalumOxide = new Material.Builder(11662, "niobium_tantalum_oxide")
                 .dust()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
@@ -1114,7 +1113,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(Nb2O5)(Ta2O5)", true);
 
-        FusedColumbite = new Material.Builder(11563, "fused_columbite")
+        FusedColumbite = new Material.Builder(11663, "fused_columbite")
                 .dust()
                 .colorAverage().iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1122,7 +1121,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(Fe2O3)(NaO)Nb2O5", true);
 
-        LeachedColumbite = new Material.Builder(11564, "leached_columbite")
+        LeachedColumbite = new Material.Builder(11664, "leached_columbite")
                 .dust()
                 .color(0xCCCC00).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1130,7 +1129,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(Nb2O5)9Ta2O5?");
 
-        FusedTantalite = new Material.Builder(11565, "fused_tantalite")
+        FusedTantalite = new Material.Builder(11665, "fused_tantalite")
                 .dust()
                 .colorAverage().iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1138,7 +1137,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(Fe2O3)(NaO)Ta2O5", true);
 
-        LeachedTantalite = new Material.Builder(11566, "leached_tantalite")
+        LeachedTantalite = new Material.Builder(11666, "leached_tantalite")
                 .dust()
                 .color(0x00CCCC).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1146,21 +1145,21 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(Ta2O5)9Nb2O5?");
 
-        ColumbiteMinorOxideResidue = new Material.Builder(11567, "columbite_minor_oxide_residue")
+        ColumbiteMinorOxideResidue = new Material.Builder(11667, "columbite_minor_oxide_residue")
                 .dust()
                 .color(0x915028).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(BariumOxide, 1, Cassiterite, 1, TungstenTrioxide, 1, Alumina, 1)
                 .build();
 
-        TantaliteMinorOxideResidue = new Material.Builder(11568, "tantalite_minor_oxide_residue")
+        TantaliteMinorOxideResidue = new Material.Builder(11668, "tantalite_minor_oxide_residue")
                 .dust()
                 .color(0xCC00CC).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(BariumOxide, 1, Zirconium, 1, Oxygen, 2, Rutile, 1, SiliconDioxide, 1)
                 .build();
 
-        LeachedPyrochlore = new Material.Builder(11569, "leached_pyrochlore")
+        LeachedPyrochlore = new Material.Builder(11669, "leached_pyrochlore")
                 .dust()
                 .color(0x996633).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1168,7 +1167,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(Nb2O5)9Ta2O5?");
 
-        AcidicLeachedPyrochlore = new Material.Builder(11570, "acidic_leached_pyrochlore")
+        AcidicLeachedPyrochlore = new Material.Builder(11670, "acidic_leached_pyrochlore")
                 .dust()
                 .color(0x336699).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1176,114 +1175,114 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(H2SO4)Ca12Sr6Ba6?ThUNb26O78F26");
 
-        PotassiumFluoroNiobate = new Material.Builder(11571, "potassium_fluoroniobate")
+        PotassiumFluoroNiobate = new Material.Builder(11671, "potassium_fluoroniobate")
                 .dust()
                 .color(0x73ff00).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Potassium, 2, Niobium, 1, Fluorine, 7)
                 .build();
 
-        PotasssiumFluoroTantalate = new Material.Builder(11572, "potassium_fluoroniobate")
+        PotasssiumFluoroTantalate = new Material.Builder(11672, "potassium_fluoroniobate")
                 .dust()
                 .color(0x00ff73).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Potassium, 2, Tantalum, 1, Fluorine, 7)
                 .build();
 
-        BariumPeroxide = new Material.Builder(11573, "barium_peroxide")
+        BariumPeroxide = new Material.Builder(11673, "barium_peroxide")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Barium, 1, Oxygen, 2)
                 .build();
 
-        CopperGalliumIndiumSelenide = new Material.Builder(11574, "copper_gallium_indium_selenide")
+        CopperGalliumIndiumSelenide = new Material.Builder(11674, "copper_gallium_indium_selenide")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Copper, 1, Gallium, 1, Indium, 1, Selenium, 2)
                 .build();
 
-        UVAHalideMix = new Material.Builder(11575, "uva_halide_mix")
+        UVAHalideMix = new Material.Builder(11675, "uva_halide_mix")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Mercury, 1, GalliumIodide, 1, PotassiumIodide, 1)
                 .build();
 
-        WhiteHalideMix = new Material.Builder(11576, "white_halide_mix")
+        WhiteHalideMix = new Material.Builder(11676, "white_halide_mix")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Mercury, 1, ScandiumIodide, 1, PotassiumIodide, 1)
                 .build();
 
-        BlueHalideMix = new Material.Builder(11577, "blue_halide_mix")
+        BlueHalideMix = new Material.Builder(11677, "blue_halide_mix")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Mercury, 1, IndiumIodide, 1, PotassiumIodide, 1)
                 .build();
 
-        GreenHalideMix = new Material.Builder(11578, "green_halide_mix")
+        GreenHalideMix = new Material.Builder(11678, "green_halide_mix")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Mercury, 1, ThalliumIodide, 1, PotassiumIodide, 1)
                 .build();
 
-        RedHalideMix = new Material.Builder(11579, "red_halide_mix")
+        RedHalideMix = new Material.Builder(11679, "red_halide_mix")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Mercury, 1, RubidiumIodide, 1, PotassiumIodide, 1)
                 .build();
 
-        LeadScandiumTantalate = new Material.Builder(11580, "lead_scandium_tantalate")
+        LeadScandiumTantalate = new Material.Builder(11680, "lead_scandium_tantalate")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Lead, Scandium, 1, Tantalum, Oxygen, 3)
+                .components(Lead, 1, Scandium, 1, Tantalum, 1, Oxygen, 3)
                 .build()
                 .setFormula("PB(ScTa)O3", true);
 
-        MagnetorestrictiveAlloy = new Material.Builder(11581, "magnetorestrictive_alloy")
+        MagnetorestrictiveAlloy = new Material.Builder(11681, "magnetorestrictive_alloy")
                 .dust()
                 .color(0xAFEFEF).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Terbium, 4, Dysprosium, 7, Iron, 10, Cobalt, 5, Boron, 2, SiliconCarbide, 1)
                 .build();
 
-        // Free ID 11582
+        // Free ID 11682
 
-        // Free ID 11583
+        // Free ID 11683
 
-        // Free ID 11584
+        // Free ID 11684
 
-        // Free ID 11585
+        // Free ID 11685
 
-        PotassiumNonahydridotechnetate = new Material.Builder(11586, "potassium_nonahydridotechnetate")
+        PotassiumNonahydridotechnetate = new Material.Builder(11686, "potassium_nonahydridotechnetate")
                 .dust()
                 .color(0xEDE2A4).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Hydrogen, 9, Potassium, 2, Technetium, 1, Oxygen, 4)
                 .build();
 
-        PotassiumNonahydridorhenate = new Material.Builder(11587, "potassium_nonahydridorhenate")
+        PotassiumNonahydridorhenate = new Material.Builder(11687, "potassium_nonahydridorhenate")
                 .dust()
                 .color(0xEDE2A4).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Hydrogen, 9, Potassium, 2, Rhenium, 1, Oxygen, 4)
                 .build();
 
-        PalladiumLoadedRutileNanoparticles = new Material.Builder(11588, "palladium_loaded_rutile_nanoparticles")
+        PalladiumLoadedRutileNanoparticles = new Material.Builder(11688, "palladium_loaded_rutile_nanoparticles")
                 .dust()
                 .colorAverage().iconSet(FINE)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Palladium, 1, Rutile, 1)
                 .build();
 
-        PurifiedColumbite = new Material.Builder(11589, "purified_columbite")
+        PurifiedColumbite = new Material.Builder(11689, "purified_columbite")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1291,7 +1290,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("Ta2O5Nb18O45", true);
 
-        PurifiedPyrochlore = new Material.Builder(11590, "purified_pyrochlore")
+        PurifiedPyrochlore = new Material.Builder(11690, "purified_pyrochlore")
                 .dust()
                 .colorAverage().iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1299,14 +1298,14 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("Ta2O5Nb18O45", true);
 
-        ChargedCesiumCeriumCobaltIndium = new Material.Builder(11591, "charged_cesium_cerium_cobalt_indium")
+        ChargedCesiumCeriumCobaltIndium = new Material.Builder(11691, "charged_cesium_cerium_cobalt_indium")
                 .dust()
                 .color(0x52AD25).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Caesium, 1, Cerium, 1, Cobalt, 2, Indium, 10)
                 .build();
 
-        SulfurCoatedHalloysite = new Material.Builder(11592, "sulfur_coated_halloysite")
+        SulfurCoatedHalloysite = new Material.Builder(11692, "sulfur_coated_halloysite")
                 .dust()
                 .color(0x23963A).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1314,39 +1313,39 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("S2C2(Al9Si10O50Ga)", true);
 
-        // Free ID 11593
+        // Free ID 11693
 
-        TBCCO = new Material.Builder(11594, "tbcco")
+        TBCCO = new Material.Builder(11694, "tbcco")
                 .dust()
                 .color(0x669900).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Thallium, 1, Barium, 2, Calcium, 2, Copper, 3, Oxygen, 10)
                 .build();
 
-        StrontiumSuperconductor = new Material.Builder(11595, "strontium_superconductor_dust")
+        StrontiumSuperconductor = new Material.Builder(11695, "strontium_superconductor_dust")
                 .dust()
                 .color(0x45ABF4).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Ruthenium, 1, Seaborgium, 1, GAMaterials.Celestine, 4)
                 .build();
 
-        FullereneSuperconductor = new Material.Builder(11596, "fullerene_superconductor")
+        FullereneSuperconductor = new Material.Builder(11696, "fullerene_superconductor")
                 .dust()
                 .color(0x99CC00).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Lanthanum, 1, Caesium, 1, Rubidium, 1, Fullerene, 2)
                 .build();
 
-        // Free ID 11597
+        // Free ID 11697
 
-        IridiumTrichlorideSolution = new Material.Builder(11598, "iridiumtrichloridesolution")
+        IridiumTrichlorideSolution = new Material.Builder(11698, "iridiumtrichloridesolution")
                 .fluid()
                 .color(0x96821A)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Iridium, 1, Chlorine, 3)
                 .build();
 
-        Quantum = new Material.Builder(11599, "quantum")
+        Quantum = new Material.Builder(11699, "quantum")
                 .ingot(7).fluid()
                 .color(0x0F0F0F).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION, DISABLE_REPLICATION, DISABLE_AUTOGENERATED_MIXER_RECIPE)
@@ -1354,35 +1353,35 @@ public class GASecondDegreeMaterials {
                 .blastTemp(11400)
                 .build();
 
-        BoronFranciumCarbide = new Material.Builder(11600, "boron_francium_carbide")
+        BoronFranciumCarbide = new Material.Builder(11700, "boron_francium_carbide")
                 .dust()
                 .color(0x808080).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Fluorine, 4, Boron, 4, Carbon, 5)
                 .build();
 
-        TlTmCesiumIodide = new Material.Builder(11601, "tl_tm_caesium_iodide")
+        TlTmCesiumIodide = new Material.Builder(11701, "tl_tm_caesium_iodide")
                 .dust()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Caesium, 1, Iodine, 1, Thallium, 1, Thulium, 1)
                 .build();
 
-        RocketFuelH8N4C2O4 = new Material.Builder(11602, "rocket_fuel_a")
+        RocketFuelH8N4C2O4 = new Material.Builder(11702, "rocket_fuel_a")
                 .fluid()
                 .color(0x5ECB22)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Hydrogen, 8, Nitrogen, 4, Carbon, 2, Oxygen, 4)
                 .build();
 
-        Phosgene = new Material.Builder(11603, "phosgene")
+        Phosgene = new Material.Builder(11703, "phosgene")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Carbon, 1, Oxygen, 1, Chlorine, 2)
                 .build();
 
-        FinelyPowderedRutile = new Material.Builder(11604, "finely_powdered_rutile")
+        FinelyPowderedRutile = new Material.Builder(11704, "finely_powdered_rutile")
                 .fluid()
                 .color(0xFFFFFF).iconSet(FINE)
                 .flags(DISABLE_DECOMPOSITION)

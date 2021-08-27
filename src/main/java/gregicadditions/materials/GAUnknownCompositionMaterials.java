@@ -630,12 +630,5 @@ public class GAUnknownCompositionMaterials {
                 .color(0x755f30).iconSet(FINE)
                 .build()
                 .setFormula("Co/AC-AB");
-
-        DrillingMudMixture = new Material.Builder(9600, "drilling_mud_mixture")
-                .fluid()
-                .colorAverage()
-                .components(CaCBaSMixture, 1, LubricantClaySlurry, 1)
-                .build();
-
     }
 }

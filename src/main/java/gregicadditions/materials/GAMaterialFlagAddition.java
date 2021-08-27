@@ -1,6 +1,5 @@
 package gregicadditions.materials;
 
-import gregicadditions.GAConfig;
 import gregtech.api.unification.material.info.MaterialFlag;
 import gregtech.api.unification.material.properties.*;
 import gregtech.api.unification.ore.OrePrefix;
@@ -59,7 +58,6 @@ public class GAMaterialFlagAddition {
         Magnesium.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
         Silicon.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
         Sulfur.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
-        Argon.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
         Calcium.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
         Titanium.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
 
@@ -98,25 +96,13 @@ public class GAMaterialFlagAddition {
         Arsenic.setProperty(PropertyKey.FLUID, new FluidProperty());
     }
 
+    // TODO Clean this up, migrate what we can up to CEu
     private static void initOres() {
 
         // Ores
         Tellurium.setProperty(PropertyKey.ORE, new OreProperty());
-        Diatomite.setProperty(PropertyKey.ORE, new OreProperty());
         GarnetSand.setProperty(PropertyKey.ORE, new OreProperty());
-        Mica.setProperty(PropertyKey.ORE, new OreProperty());
-        Asbestos.setProperty(PropertyKey.ORE, new OreProperty());
-        Kyanite.setProperty(PropertyKey.ORE, new OreProperty());
         Pollucite.setProperty(PropertyKey.ORE, new OreProperty());
-        BasalticMineralSand.setProperty(PropertyKey.ORE, new OreProperty());
-        GraniticMineralSand.setProperty(PropertyKey.ORE, new OreProperty());
-        FullersEarth.setProperty(PropertyKey.ORE, new OreProperty());
-        Gypsum.setProperty(PropertyKey.ORE, new OreProperty());
-        Zeolite.setProperty(PropertyKey.ORE, new OreProperty());
-        Kaolinite.setProperty(PropertyKey.ORE, new OreProperty());
-        Dolomite.setProperty(PropertyKey.ORE, new OreProperty());
-        Wollastonite.setProperty(PropertyKey.ORE, new OreProperty());
-        Trona.setProperty(PropertyKey.ORE, new OreProperty());
         Andradite.setProperty(PropertyKey.ORE, new OreProperty());
         Vermiculite.setProperty(PropertyKey.ORE, new OreProperty());
         Alunite.setProperty(PropertyKey.ORE, new OreProperty());
@@ -125,22 +111,19 @@ public class GAMaterialFlagAddition {
 
 
         // Ore Multiplier
-        PlatinumMetallicPowder.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
-        PalladiumMetallicPowder.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
-        Trona.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
-        Lepidolite.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
-        Barytocalcite.setProperty(PropertyKey.ORE, new OreProperty(2, 1));
+        PlatinumMetallicPowder.getProperty(PropertyKey.ORE).setOreMultiplier(2);
+        PalladiumMetallicPowder.getProperty(PropertyKey.ORE).setOreMultiplier(2);
+        Lepidolite.getProperty(PropertyKey.ORE).setOreMultiplier(2);
+        Barytocalcite.getProperty(PropertyKey.ORE).setOreMultiplier(2);
 
         // Washed In
-        OreProperty property = new OreProperty();
-        property.setWashedIn(SodiumPersulfate);
-        PlatinumMetallicPowder.setProperty(PropertyKey.ORE, property);
-        RarestMetalResidue.setProperty(PropertyKey.ORE, property);
-        IrMetalResidue.setProperty(PropertyKey.ORE, property);
-        Witherite.setProperty(PropertyKey.ORE, property);
+        PlatinumMetallicPowder.getProperty(PropertyKey.ORE).setWashedIn(SodiumPersulfate);
+        RarestMetalResidue.getProperty(PropertyKey.ORE).setWashedIn(SodiumPersulfate);
+        IrMetalResidue.getProperty(PropertyKey.ORE).setWashedIn(SodiumPersulfate);
+        Witherite.getProperty(PropertyKey.ORE).setWashedIn(SodiumPersulfate);
 
         // Direct Smelting
-        property = Cooperite.getProperty(PropertyKey.ORE);
+        OreProperty property = Cooperite.getProperty(PropertyKey.ORE);
         property.setDirectSmeltResult(null);
 
         // Byproducts
@@ -219,9 +202,6 @@ public class GAMaterialFlagAddition {
 
         property = Copper.getProperty(PropertyKey.ORE);
         property.setOreByProducts(Cobalt, Gold, Nickel);
-
-        property = Glowstone.getProperty(PropertyKey.ORE);
-        property.setOreByProducts(Redstone, Gold);
 
         property = Magnetite.getProperty(PropertyKey.ORE);
         property.setOreByProducts(Iron, Gold);

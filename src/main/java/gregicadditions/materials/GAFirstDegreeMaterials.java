@@ -264,15 +264,10 @@ public class GAFirstDegreeMaterials {
         FLiBe = new Material.Builder(3539, "flibe")
                 .dust().fluid()
                 .color(0x252525)
-                .components(Fluorine, Lithium, 1, Beryllium, 1)
+                .components(Fluorine, 1, Lithium, 1, Beryllium, 1)
                 .build();
 
-        CalciumTungstate = new Material.Builder(3540, "calcium_tungstate")
-                .dust()
-                .color(0x6E6867).iconSet(SHINY)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Tungsten, 1, CalciumCarbide, 1, Oxygen, 4)
-                .build();
+        // Free ID 3540
 
         TungsticAcid = new Material.Builder(3541, "tungstic_acid")
                 .dust()
@@ -631,14 +626,6 @@ public class GAFirstDegreeMaterials {
                 .blastTemp(10600)
                 .build();
 
-        SuperheavyLAlloy = new Material.Builder(3491, "superheavy_l_alloy")
-                .ingot(6)
-                .color(0x2B45DF).iconSet(SHINY)
-                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
-                .components(Rutherfordium, 1, Dubnium, 1, Seaborgium, 1, Bohrium, 1, MetastableHassium, 1, Meitnerium, 1, Roentgenium, 1)
-                .blastTemp(10600)
-                .build();
-
         Periodicium = new Material.Builder(3492, "periodicium")
                 .ingot(6)
                 .color(0x3D4BF6).iconSet(SHINY)
@@ -703,7 +690,7 @@ public class GAFirstDegreeMaterials {
                 .components(NaquadahEnriched, 1, Fluorine, 2)
                 .build();
 
-        EnrichedNaquadahDifluoride = new Material.Builder(3501, "naquadria_difluoride")
+        NaquadriaDifluoride = new Material.Builder(3501, "naquadria_difluoride")
                 .fluid()
                 .color(0x141E1F)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1011,28 +998,28 @@ public class GAFirstDegreeMaterials {
                 .fluid()
                 .color(0xFAFF5E)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Naquadah, 1, NaquadahEnriched, 1, Naquadria, 1, Rutherfordium, 1, Plutonium239)
+                .components(Naquadah, 1, NaquadahEnriched, 1, Naquadria, 1, Rutherfordium, 1, Plutonium239, 1)
                 .build();
 
         HyperFuelII = new Material.Builder(3566, "hyper_fluid_ii")
                 .fluid()
                 .color(0xD8DB67)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Naquadah, 1, NaquadahEnriched, 1, Naquadria, 1, Dubnium, 1, Materials.Curium)
+                .components(Naquadah, 1, NaquadahEnriched, 1, Naquadria, 1, Dubnium, 1, Materials.Curium, 1)
                 .build();
 
         HyperFuelIII = new Material.Builder(3567, "hyper_fluid_iii")
                 .fluid()
                 .color(0x8F9146)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Naquadah, 1, NaquadahEnriched, 1, Naquadria, 1, Adamantium, 1, Materials.Californium)
+                .components(Naquadah, 1, NaquadahEnriched, 1, Naquadria, 1, Adamantium, 1, Materials.Californium, 1)
                 .build();
 
         HyperFuelIV = new Material.Builder(3568, "hyper_fluid_iv")
                 .fluid()
                 .color(0x4D4E31)
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Naquadah, 1, NaquadahEnriched, 1, Naquadria, 1, Adamantium, 1, Materials.Californium, Neutronium, 1, Taranium, 1)
+                .components(Naquadah, 1, NaquadahEnriched, 1, Naquadria, 1, Adamantium, 1, Materials.Californium, 1, Neutronium, 1, Taranium, 1)
                 .build();
 
         ChlorosulfonicAcid = new Material.Builder(3569, "chlorosulfonic_acid")
@@ -1233,7 +1220,7 @@ public class GAFirstDegreeMaterials {
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Titanium50, Fluorine, 4)
+                .components(Titanium50, 1, Fluorine, 4)
                 .build();
 
         CNOcatalyst = new Material.Builder(3595, "cno_catalyst")
@@ -1270,7 +1257,13 @@ public class GAFirstDegreeMaterials {
                 .components(Hydrogen, 2, Selenium, 1, Carbon, 1, Oxygen, 3)
                 .build();
 
-        // Free ID 3560
+        SuperheavyLAlloy = new Material.Builder(3560, "superheavy_l_alloy")
+                .ingot(6)
+                .color(0x2B45DF).iconSet(SHINY)
+                .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
+                .components(Rutherfordium, 1, Dubnium, 1, Seaborgium, 1, Bohrium, 1, MetastableHassium, 1, Meitnerium, 1, Roentgenium, 1)
+                .blastTemp(10600)
+                .build();
 
         FluoroniobicAcid = new Material.Builder(3601, "fluroniobic_acid")
                 .fluid()
@@ -2080,7 +2073,7 @@ public class GAFirstDegreeMaterials {
         TitaniumNitrate = new Material.Builder(3725, "titanium_nitrate")
                 .dust()
                 .color(0xFF0066).iconSet(FINE)
-                .components(Titanium, Nitrogen, 4, Oxygen, 12)
+                .components(Titanium, 1, Nitrogen, 4, Oxygen, 12)
                 .build()
                 .setFormula("Ti(NO3)4", true);
 
@@ -2144,7 +2137,7 @@ public class GAFirstDegreeMaterials {
                 .dust()
                 .colorAverage().iconSet(ROUGH)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(Copper, 1, Gallium, 1, Indium)
+                .components(Copper, 1, Gallium, 1, Indium, 1)
                 .build();
 
         LanthanumCalciumManganate = new Material.Builder(3635, "lanthanum_gallium_manganate")
@@ -2515,7 +2508,7 @@ public class GAFirstDegreeMaterials {
         NiobiumHydroxide = new Material.Builder(3797, "niobium_hydroxide")
                 .dust()
                 .color(0x7C7C7C)
-                .components(Niobium, Oxygen, 5, Hydrogen, 5)
+                .components(Niobium, 1, Oxygen, 5, Hydrogen, 5)
                 .build()
                 .setFormula("Nb(OH)5", true);
 
@@ -2859,29 +2852,11 @@ public class GAFirstDegreeMaterials {
                 .components(Carbon, 5, Fluorine, 10)
                 .build();
 
-        MetastableOganesson = new Material.Builder(3853, "metastable_oganesson")
-                .ingot(7)
-                .color(0xE61C24).iconSet(SHINY)
-                .flags(GA_CORE_METAL)
-                .components(Oganesson, 1)
-                .blastTemp(10380)
-                .build();
+        // Free ID 3853
 
-        MetastableFlerovium = new Material.Builder(3854, "metastable_flerovium")
-                .ingot(7)
-                .color(0x521973).iconSet(SHINY)
-                .flags(GA_CORE_METAL)
-                .components(Flerovium, 1)
-                .blastTemp(10990)
-                .build();
+        // Free ID 3854
 
-        MetastableHassium = new Material.Builder(3855, "metastable_hassium")
-                .ingot(6)
-                .color(0x2D3A9D).iconSet(SHINY)
-                .flags(GA_CORE_METAL)
-                .components(Hassium, 1)
-                .blastTemp(11240)
-                .build();
+        // Free ID 3855
 
         Alumina = new Material.Builder(3856, "alumina")
                 .dust()
