@@ -749,56 +749,56 @@ public class GASecondDegreeMaterials {
                 .components(RareEarth, 1, Sulfur, 1, Oxygen, 4)
                 .build();
 
-        CalciumCarbonateSolution = new Material.Builder(11610, "calcium_carbonate_solution")
+        CalciumCarbonateSolution = new Material.Builder(11611, "calcium_carbonate_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Water, 1, Calcite, 1)
                 .build();
 
-        BariumSulfateSolution = new Material.Builder(11611, "barium_sulfate_solution")
+        BariumSulfateSolution = new Material.Builder(11612, "barium_sulfate_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, Barite, 1)
                 .build();
 
-        BentoniteClaySlurry = new Material.Builder(11612, "bentontie_clay_solution")
+        BentoniteClaySlurry = new Material.Builder(11613, "bentontie_clay_solution")
                 .fluid()
                 .color(0xDBC9C5)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, RareEarth, 1)
                 .build();
 
-        AstatideSolution = new Material.Builder(11613, "astadide_solution")
+        AstatideSolution = new Material.Builder(11614, "astadide_solution")
                 .fluid()
                 .color(0x6DF63F)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Astatine, 1, Water, 1, SulfurTrioxide, 1)
                 .build();
 
-        BariumChlorideSolution = new Material.Builder(11614, "barium_chloride_solution")
+        BariumChlorideSolution = new Material.Builder(11615, "barium_chloride_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, BariumChloride, 1)
                 .build();
 
-        IronCarbonyl = new Material.Builder(11615, "iron_carbonyl")
+        IronCarbonyl = new Material.Builder(11616, "iron_carbonyl")
                 .fluid()
                 .color(0xFF8000)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Iron, 1, RareEarth, 1)
                 .build();
 
-        PurifiedIronCarbonyl = new Material.Builder(11616, "purified_iron_carbonyl")
+        PurifiedIronCarbonyl = new Material.Builder(11617, "purified_iron_carbonyl")
                 .fluid()
                 .color(0xFFA000)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Iron, 1)
                 .build();
 
-        BismuthNitrateSoluton = new Material.Builder(11617, "bismuth_nitrate_solution")
+        BismuthNitrateSoluton = new Material.Builder(11618, "bismuth_nitrate_solution")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
@@ -806,15 +806,13 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(H2O)Bi(NO3)3", true);
 
-        PrYHoNitrateSolution = new Material.Builder(11618, "pryho_nitrate_solution")
+        PrYHoNitrateSolution = new Material.Builder(11619, "pryho_nitrate_solution")
                 .fluid()
                 .color(0x00F2B2)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(YttriumNitrate, 6, Praseodymium, 2, Nitrogen, 12, Oxygen, 36, Neodymium, 2, Water, 15)
                 .build()
                 .setFormula("(Y(NO3)3)6(Pr(NO3)3)2(Nd(NO3)3)2(H2O)15", true);
-
-        // Free ID 11619
 
         AmmoniumBifluorideSolution = new Material.Builder(11620, "ammonium_bifluoride_solution")
                 .fluid()
@@ -850,16 +848,14 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("C60CNT", true);
 
-        // FREE ID 11625
-
-        GrapheneOxidationSolution = new Material.Builder(11626, "graphene_oxidation_solution")
+        GrapheneOxidationSolution = new Material.Builder(11625, "graphene_oxidation_solution")
                 .fluid()
                 .color(0x96821A)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(PotassiumManganate, 1, Saltpeter, 1, SulfuricAcid, 1)
                 .build();
 
-        SupercriticalCO2 = new Material.Builder(11627, "supercritical_co2")
+        SupercriticalCO2 = new Material.Builder(11626, "supercritical_co2")
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)

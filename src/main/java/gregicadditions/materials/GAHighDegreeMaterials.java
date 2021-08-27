@@ -61,7 +61,7 @@ public class GAHighDegreeMaterials {
                 .components(Rhenium, 1, Hassium, 1, Thallium, 1, Fullerene, 1, Phosphorus, 1, Nitrogen, 12, Hydrogen, 84, SulfurDioxide, 6, Fluorine, 6)
                 .build();
 
-        DrillingMudMixture = new Material.Builder(18506, "drilling_mud_mixture")
+        DrillingMudMixture = new Material.Builder(18507, "drilling_mud_mixture")
                 .fluid()
                 .colorAverage()
                 .components(CaCBaSMixture, 1, LubricantClaySlurry, 1)

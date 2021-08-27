@@ -67,7 +67,7 @@ public class GAUnknownCompositionMaterials {
                 .blastTemp(13100)
                 .build();
 
-        CosmicNeutronium = new Material.Builder(9508, "cosmic_neutronium")
+        CosmicNeutronium = new Material.Builder(9509, "cosmic_neutronium")
                 .ingot(7)
                 .color(0x323232).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
@@ -75,7 +75,7 @@ public class GAUnknownCompositionMaterials {
                 .blastTemp(14100)
                 .build();
 
-        // TODO: fill 2 empty ids
+        // TODO: fill 1 empty id
         Catalase = new Material.Builder(9511, "catalase")
                 .fluid()
                 .color(0xdb6596)
