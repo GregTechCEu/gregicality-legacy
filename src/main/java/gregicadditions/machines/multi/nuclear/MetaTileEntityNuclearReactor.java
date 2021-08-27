@@ -187,7 +187,7 @@ public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockControlle
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        recipeBaseHeat = recipe.getIntegerProperty("base_heat_production");
+//        recipeBaseHeat = recipe.getIntegerProperty("base_heat_production"); todo nuclear rework
         return true;
     }
 
@@ -211,38 +211,38 @@ public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockControlle
                 FluidStack fluidStack = inputFluidInventory.drain(Integer.MAX_VALUE, false);
                 if (fluidStack != null) {
                     coolant = MetaFluids.getMaterialFromFluid(fluidStack.getFluid());
-                    hotCoolant = GAMetaFluids.HOT_FLUIDS.get(coolant);
-                    if (hotCoolant != null) {
-                        fluidStack = inputFluidInventory.drain(coolant.getFluid(coolantNeeded()), true);
-                        if (fluidStack == null) {
-                            hotCoolant = null;
-                            coolant = null;
-                            return;
-                        }
-                        if (fluidStack.amount < coolantNeeded()) {
-                            notEnoughCoolant = true;
-                            inputFluidInventory.fill(fluidStack, true);
-                            return;
-                        }
-                        notEnoughCoolant = false;
-                        outputFluidInventory.fill(new FluidStack(hotCoolant, fluidStack.amount), true);
-
-                        boolean overclock = true;
-                        do {
-                            fluidStack = inputFluidInventory.drain(coolant.getFluid(coolantRatio()), true);
-                            if (fluidStack == null || fluidStack.amount < coolantRatio()) {
-                                overclock = false;
-                                if (fluidStack != null)
-                                    inputFluidInventory.fill(fluidStack, true);
-                            } else {
-                                int progressTime = ObfuscationReflectionHelper.getPrivateValue(AbstractRecipeLogic.class, recipeMapWorkable, "progressTime");
-                                ObfuscationReflectionHelper.setPrivateValue(AbstractRecipeLogic.class, recipeMapWorkable, progressTime + 20, "progressTime");
-                                outputFluidInventory.fill(new FluidStack(hotCoolant, fluidStack.amount), true);
-                            }
-
-                        } while (overclock);
-
-                    }
+//                    hotCoolant = GAMetaFluids.HOT_FLUIDS.get(coolant); todo nuclear rework
+//                    if (hotCoolant != null) {
+//                        fluidStack = inputFluidInventory.drain(coolant.getFluid(coolantNeeded()), true);
+//                        if (fluidStack == null) {
+//                            hotCoolant = null;
+//                            coolant = null;
+//                            return;
+//                        }
+//                        if (fluidStack.amount < coolantNeeded()) {
+//                            notEnoughCoolant = true;
+//                            inputFluidInventory.fill(fluidStack, true);
+//                            return;
+//                        }
+//                        notEnoughCoolant = false;
+//                        outputFluidInventory.fill(new FluidStack(hotCoolant, fluidStack.amount), true);
+//
+//                        boolean overclock = true;
+//                        do {
+//                            fluidStack = inputFluidInventory.drain(coolant.getFluid(coolantRatio()), true);
+//                            if (fluidStack == null || fluidStack.amount < coolantRatio()) {
+//                                overclock = false;
+//                                if (fluidStack != null)
+//                                    inputFluidInventory.fill(fluidStack, true);
+//                            } else {
+//                                int progressTime = ObfuscationReflectionHelper.getPrivateValue(AbstractRecipeLogic.class, recipeMapWorkable, "progressTime");
+//                                ObfuscationReflectionHelper.setPrivateValue(AbstractRecipeLogic.class, recipeMapWorkable, progressTime + 20, "progressTime");
+//                                outputFluidInventory.fill(new FluidStack(hotCoolant, fluidStack.amount), true);
+//                            }
+//
+//                        } while (overclock);
+//
+//                    } todo nuclear rework
                 } else {
                     hotCoolant = null;
                     coolant = null;

@@ -54,7 +54,7 @@ import static gregicadditions.recipes.categories.handlers.VoidMinerHandler.*;
 import static gregicadditions.client.ClientHandler.*;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
-import static gregtech.api.unification.material.Materials.TungstenSteel;
+import static gregtech.api.unification.material.Materials.*;
 
 public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //todo soft hammerable
 

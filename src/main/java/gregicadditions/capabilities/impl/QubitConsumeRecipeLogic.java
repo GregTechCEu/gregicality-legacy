@@ -33,7 +33,7 @@ public class QubitConsumeRecipeLogic extends GAMultiblockRecipeLogic {
     @Override
     protected void setupRecipe(Recipe recipe) {
         super.setupRecipe(recipe);
-        recipeQubit = recipe.getIntegerProperty("qubitConsume");
+//        recipeQubit = recipe.getIntegerProperty("qubitConsume"); todo qubit recipe logic
     }
 
     @Override

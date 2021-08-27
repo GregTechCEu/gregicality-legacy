@@ -30,7 +30,7 @@ public class QubitProducerRecipeLogic extends GAMultiblockRecipeLogic {
     @Override
     protected void setupRecipe(Recipe recipe) {
         super.setupRecipe(recipe);
-        this.recipeOutputQubit = recipe.getIntegerProperty("qubitProduce");
+//        this.recipeOutputQubit = recipe.getIntegerProperty("qubitProduce"); todo qubit rework
     }
 
     @Override

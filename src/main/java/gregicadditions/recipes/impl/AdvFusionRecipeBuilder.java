@@ -29,9 +29,9 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
 
     public AdvFusionRecipeBuilder(Recipe recipe, RecipeMap<AdvFusionRecipeBuilder> recipeMap) {
         super(recipe, recipeMap);
-        this.coilTier = recipe.getIntegerProperty("coil_tier");
-        this.euStart = recipe.getProperty("eu_to_start");
-        this.euReturn = recipe.getIntegerProperty("eu_return");
+//        this.coilTier = recipe.getIntegerProperty("coil_tier"); todo advanced fusion recipe properties
+//        this.euStart = recipe.getProperty("eu_to_start");
+//        this.euReturn = recipe.getIntegerProperty("eu_return");
     }
 
     public AdvFusionRecipeBuilder() {
@@ -39,13 +39,13 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
 
 
     static {
-        COOLANTS.put(Steam.getFluid(570), SupercriticalSteam.fluid);
-        COOLANTS.put(Deuterium.getFluid(240), SupercriticalDeuterium.fluid);
-        COOLANTS.put(SodiumPotassiumAlloy.getFluid(120), SupercriticalSodiumPotassiumAlloy.fluid);
-        COOLANTS.put(Sodium.getFluid(100), SupercriticalSodium.fluid);
-        COOLANTS.put(FLiNaK.getFluid(50), SupercriticalFLiNaK.fluid);
-        COOLANTS.put(FLiBe.getFluid(55), SupercriticalFLiBe.fluid);
-        COOLANTS.put(LeadBismuthEutectic.getFluid(60), SupercriticalLeadBismuthEutectic.fluid);
+        COOLANTS.put(Steam.getFluid(570), SupercriticalSteam.getFluid());
+        COOLANTS.put(Deuterium.getFluid(240), SupercriticalDeuterium.getFluid());
+        COOLANTS.put(SodiumPotassiumAlloy.getFluid(120), SupercriticalSodiumPotassiumAlloy.getFluid());
+        COOLANTS.put(Sodium.getFluid(100), SupercriticalSodium.getFluid());
+        COOLANTS.put(FLiNaK.getFluid(50), SupercriticalFLiNaK.getFluid());
+        COOLANTS.put(FLiBe.getFluid(55), SupercriticalFLiBe.getFluid());
+        COOLANTS.put(LeadBismuthEutectic.getFluid(60), SupercriticalLeadBismuthEutectic.getFluid());
     }
 
     public AdvFusionRecipeBuilder(RecipeBuilder<AdvFusionRecipeBuilder> recipeBuilder) {
@@ -112,7 +112,7 @@ public class AdvFusionRecipeBuilder extends RecipeBuilder<AdvFusionRecipeBuilder
     public ValidationResult<Recipe> build() {
         return ValidationResult.newResult(finalizeAndValidate(),
                 new Recipe(inputs, outputs, chancedOutputs, fluidInputs, fluidOutputs,
-                        ImmutableMap.of("coil_tier", this.coilTier, "eu_to_start", this.euStart, "eu_return", this.euReturn),
+//                        ImmutableMap.of("coil_tier", this.coilTier, "eu_to_start", this.euStart, "eu_return", this.euReturn), todo advanced fusion recipe properties
                         duration, EUt, hidden));
     }
 

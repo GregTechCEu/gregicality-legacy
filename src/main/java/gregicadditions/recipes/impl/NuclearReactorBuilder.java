@@ -20,7 +20,7 @@ public class NuclearReactorBuilder extends RecipeBuilder<NuclearReactorBuilder> 
 
     public NuclearReactorBuilder(Recipe recipe, RecipeMap<NuclearReactorBuilder> recipeMap) {
         super(recipe, recipeMap);
-        this.baseHeatProduction = recipe.getIntegerProperty("baseHeatProduction");
+//        this.baseHeatProduction = recipe.getIntegerProperty("baseHeatProduction"); todo nuclear rework
     }
 
     public NuclearReactorBuilder(RecipeBuilder<NuclearReactorBuilder> recipeBuilder) {
@@ -53,7 +53,7 @@ public class NuclearReactorBuilder extends RecipeBuilder<NuclearReactorBuilder> 
     public ValidationResult<Recipe> build() {
         return ValidationResult.newResult(finalizeAndValidate(),
                 new Recipe(inputs, outputs, chancedOutputs, fluidInputs, fluidOutputs,
-                        ImmutableMap.of("base_heat_production", baseHeatProduction),
+//                        ImmutableMap.of("base_heat_production", baseHeatProduction), todo nuclear rework
                         duration, EUt, hidden));
     }
 

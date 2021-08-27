@@ -69,11 +69,11 @@ public class GAHighDegreeMaterials {
                 .flags(DISABLE_DECOMPOSITION, EXCLUDE_BLOCK_CRAFTING_RECIPES)
                 .build();
 
-        // TODO Fix comp
+        // TODO replacement for magneto resonatic
         HDCS = new Material.Builder(19001, "hdcs")
                 .ingot(5).fluid()
                 .color(0x334433).iconSet(SHINY)
-                .components(TungstenSteel, 12, HSSS, 9, HSSG, 6, Ruridit, 3, MagnetoResonatic, 2, Plutonium239, 1)
+                .components(TungstenSteel, 12, HSSS, 9, HSSG, 6, Ruridit, 3, /*MagnetoResonatic, 2,*/ Plutonium239, 1)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION, GENERATE_ROUND)
                 .blastTemp(9900)
                 .build()

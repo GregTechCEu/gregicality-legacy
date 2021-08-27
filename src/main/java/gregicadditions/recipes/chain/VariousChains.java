@@ -32,7 +32,7 @@ public class VariousChains {
                 .fluidInputs(BosonicUUMatter.getFluid(1000))
                 .fluidInputs(FermionicUUMatter.getFluid(1000))
                 .fluidInputs(FreeElectronGas.getFluid(2000))
-                .fluidOutputs(UUMatter.getFluid(1000)) //todo UU-Matter
+//                .fluidOutputs(UUMatter.getFluid(1000)) //todo UU-Matter
                 .buildAndRegister();
 
         // Sodium Hypochlorite =========================================================================================

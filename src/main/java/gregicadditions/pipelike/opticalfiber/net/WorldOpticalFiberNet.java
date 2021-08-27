@@ -2,6 +2,7 @@ package gregicadditions.pipelike.opticalfiber.net;
 
 import gregicadditions.pipelike.opticalfiber.OpticalFiberProperties;
 import gregtech.api.pipenet.WorldPipeNet;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class WorldOpticalFiberNet extends WorldPipeNet<OpticalFiberProperties, OpticalFiberNet> {
@@ -23,6 +24,16 @@ public class WorldOpticalFiberNet extends WorldPipeNet<OpticalFiberProperties, O
     }
 
     @Override
+    public void readFromNBT(NBTTagCompound nbtTagCompound) {
+
+    }
+
+    @Override // todo optical fiber rewrite
+    public NBTTagCompound writeToNBT(NBTTagCompound nbtTagCompound) {
+        return null;
+    }
+
+    @Override // todo optical fiber rewrite
     protected OpticalFiberNet createNetInstance() {
         return new OpticalFiberNet(this);
     }

@@ -177,7 +177,7 @@ public class CommonProxy {
         RecipeHandler.register();
         WireRecipeHandler.register();
         NuclearHandler.register();
-        OreRecipeHandler.register();
+//        OreRecipeHandler.register(); todo material processing handlers
         VoidMinerHandler.register();
 
         // Register OreDictionary Entries

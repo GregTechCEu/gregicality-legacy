@@ -140,8 +140,8 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
         for (int i = 0; i < importInventory.size(); i++) {
             IItemHandlerModifiable bus = importInventory.get(i);
             boolean dirty = checkRecipeInputsDirty(bus, importFluids, i);
-            if (dirty || forceRecipeRecheck) {
-                this.forceRecipeRecheck = false;
+            if (dirty /*|| forceRecipeRecheck*/) { //todo recipe logic
+//                this.forceRecipeRecheck = false;
                 currentRecipe = findRecipe(maxVoltage, bus, importFluids, MatchingMode.DEFAULT);
                 if (currentRecipe != null) {
                     this.previousRecipe = currentRecipe;
@@ -166,9 +166,9 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
             this.lastItemInputsMatrix[index] = new ItemStack[inputs.getSlots()];
             Arrays.fill(lastItemInputsMatrix[index], ItemStack.EMPTY);
         }
-        if (lastFluidInputs == null || lastFluidInputs.length != fluidInputs.getTanks()) {
-            this.lastFluidInputs = new FluidStack[fluidInputs.getTanks()];
-        }
+//        if (lastFluidInputs == null || lastFluidInputs.length != fluidInputs.getTanks()) { todo recipe logic
+//            this.lastFluidInputs = new FluidStack[fluidInputs.getTanks()];
+//        }
         for (int i = 0; i < lastItemInputsMatrix[index].length; i++) {
             ItemStack currentStack = inputs.getStackInSlot(i);
             ItemStack lastStack = lastItemInputsMatrix[index][i];
@@ -180,19 +180,19 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
                 shouldRecheckRecipe = true;
             }
         }
-        for (int i = 0; i < lastFluidInputs.length; i++) {
-            FluidStack currentStack = fluidInputs.getTankAt(i).getFluid();
-            FluidStack lastStack = lastFluidInputs[i];
-            if ((currentStack == null && lastStack != null) ||
-                    (currentStack != null && !currentStack.isFluidEqual(lastStack))) {
-                this.lastFluidInputs[i] = currentStack == null ? null : currentStack.copy();
-                shouldRecheckRecipe = true;
-            } else if (currentStack != null && lastStack != null &&
-                    currentStack.amount != lastStack.amount) {
-                lastStack.amount = currentStack.amount;
-                shouldRecheckRecipe = true;
-            }
-        }
+//        for (int i = 0; i < lastFluidInputs.length; i++) { todo recipe logic
+//            FluidStack currentStack = fluidInputs.getTankAt(i).getFluid();
+//            FluidStack lastStack = lastFluidInputs[i];
+//            if ((currentStack == null && lastStack != null) ||
+//                    (currentStack != null && !currentStack.isFluidEqual(lastStack))) {
+//                this.lastFluidInputs[i] = currentStack == null ? null : currentStack.copy();
+//                shouldRecheckRecipe = true;
+//            } else if (currentStack != null && lastStack != null &&
+//                    currentStack.amount != lastStack.amount) {
+//                lastStack.amount = currentStack.amount;
+//                shouldRecheckRecipe = true;
+//            }
+//        }
         return shouldRecheckRecipe;
     }
 

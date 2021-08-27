@@ -64,7 +64,7 @@ public abstract class GAFueledMultiblockController extends FueledMultiblockContr
         this.hasMuffler = hasMuffler;
         this.hasMaintenance = hasMaintenance;
         this.maintenance_problems = 0b000000;
-        this.workableHandler = this.createWorkable(maxVoltage);
+//        this.workableHandler = this.createWorkable(maxVoltage); todo fueled multiblock logic
     }
 
     @Override

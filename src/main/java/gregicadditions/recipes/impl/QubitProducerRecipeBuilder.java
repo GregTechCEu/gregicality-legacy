@@ -24,7 +24,7 @@ public class QubitProducerRecipeBuilder extends RecipeBuilder<QubitProducerRecip
 
     public QubitProducerRecipeBuilder(Recipe recipe, RecipeMap<QubitProducerRecipeBuilder> recipeMap) {
         super(recipe, recipeMap);
-        this.qubit = recipe.getIntegerProperty("qubitProduce");
+//        this.qubit = recipe.getIntegerProperty("qubitProduce"); todo qubit recipe logic
     }
 
     public QubitProducerRecipeBuilder(RecipeBuilder<QubitProducerRecipeBuilder> recipeBuilder) {
@@ -57,7 +57,7 @@ public class QubitProducerRecipeBuilder extends RecipeBuilder<QubitProducerRecip
     public ValidationResult<Recipe> build() {
         return ValidationResult.newResult(finalizeAndValidate(),
                 new Recipe(inputs, outputs, chancedOutputs, fluidInputs, fluidOutputs,
-                        ImmutableMap.of("qubitProduce", qubit),
+//                        ImmutableMap.of("qubitProduce", qubit), todo qubit recipe logic
                         duration, EUt, hidden));
     }
 

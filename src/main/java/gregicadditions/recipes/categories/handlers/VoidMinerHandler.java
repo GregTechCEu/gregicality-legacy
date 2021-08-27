@@ -4,6 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.utils.GALog;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.Item;
@@ -20,7 +21,7 @@ public class VoidMinerHandler {
     public static List<ItemStack> ORES_3 = new ArrayList<>();
 
     public static void register() {
-        OrePrefix.ore.addProcessingHandler(DustMaterial.class, VoidMinerHandler::processVoidOre);
+//        OrePrefix.ore.addProcessingHandler(PropertyKey.DUST, VoidMinerHandler::processVoidOre); todo material processing handlers
     }
 
     private static void processVoidOre(OrePrefix dustPrefix, Material material) {

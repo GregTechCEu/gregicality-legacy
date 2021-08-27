@@ -67,8 +67,8 @@ public enum GTCombs implements IStringSerializable {
 	FLUORINE(Materials.Fluorine),
 	SUPERCOOLEDCRYOTHEUM(GAMaterials.SupercooledCryotheum),
 	STYRENEBUTADIENERUBBER(Materials.StyreneButadieneRubber),
-	NEUTRALMATTER(Materials.NeutralMatter),
-	POSITIVEMATTER(Materials.PositiveMatter),
+//	NEUTRALMATTER(Materials.NeutralMatter), todo forestry integration
+//	POSITIVEMATTER(Materials.PositiveMatter),
 	;
 
 	public static final GTCombs[] VALUES = values();

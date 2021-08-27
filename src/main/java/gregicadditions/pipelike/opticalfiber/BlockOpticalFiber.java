@@ -25,6 +25,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.commons.lang3.tuple.Pair;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public class BlockOpticalFiber extends BlockSimplePipe<OpticalFiberSize, OpticalFiberProperties, WorldOpticalFiberNet> implements ITileEntityProvider {
 
 
@@ -58,7 +61,6 @@ public class BlockOpticalFiber extends BlockSimplePipe<OpticalFiberSize, Optical
         return new ItemStack(this, 1, pipeType.ordinal());
     }
 
-    @Override
     public int getActiveNodeConnections(IBlockAccess world, BlockPos nodePos, IPipeTile<OpticalFiberSize, OpticalFiberProperties> selfTileEntity) {
         int activeNodeConnections = 0;
         for (EnumFacing side : EnumFacing.VALUES) {
@@ -97,8 +99,29 @@ public class BlockOpticalFiber extends BlockSimplePipe<OpticalFiberSize, Optical
     }
 
     @Override
+    public void func_149666_a(@Nonnull CreativeTabs creativeTabs, @Nonnull NonNullList<ItemStack> nonNullList) {
+        //todo optical fiber cables
+    }
+
+    @Override
+    public boolean canPipesConnect(IPipeTile<OpticalFiberSize, OpticalFiberProperties> iPipeTile, EnumFacing enumFacing, IPipeTile<OpticalFiberSize, OpticalFiberProperties> iPipeTile1) {
+        return false; //todo optical fiber cables
+    }
+
+    @Override
+    public boolean canPipeConnectToBlock(IPipeTile<OpticalFiberSize, OpticalFiberProperties> iPipeTile, EnumFacing enumFacing, @Nullable TileEntity tileEntity) {
+        return false; //todo optical fiber cables
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     protected Pair<TextureAtlasSprite, Integer> getParticleTexture(World world, BlockPos blockPos) {
         return OpticalFiberRenderer.INSTANCE.getParticleTexture((TileEntityOpticalFiber) world.getTileEntity(blockPos));
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createNewTileEntity(World world, int i) {
+        return null; //todo optical fiber cables
     }
 }

@@ -112,12 +112,12 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
         BlockOpticalFiber blockOpticalFiber = (BlockOpticalFiber) state.getBlock();
         TileEntityOpticalFiber tileEntityOpticalFiber = (TileEntityOpticalFiber) blockOpticalFiber.getPipeTileEntity(world, pos);
         if (tileEntityOpticalFiber == null) return false;
-        int connectedSidesMask = blockOpticalFiber.getActualConnections(tileEntityOpticalFiber, world);
+//        int connectedSidesMask = blockOpticalFiber.getActualConnections(tileEntityOpticalFiber, world); todo optical fiber cable rewrite
         OpticalFiberSize opticalFiberSize = tileEntityOpticalFiber.getPipeType();
         if (opticalFiberSize != null) {
             BlockRenderLayer renderLayer = MinecraftForgeClient.getRenderLayer();
             if (renderLayer == BlockRenderLayer.CUTOUT) {
-                renderCableBlock(opticalFiberSize, renderState, pipeline, connectedSidesMask);
+//                renderCableBlock(opticalFiberSize, renderState, pipeline, connectedSidesMask); todo optical fiber cable rewrite
             }
             ICoverable coverable = tileEntityOpticalFiber.getCoverableImplementation();
             coverable.renderCovers(renderState, new Matrix4().translate(pos.getX(), pos.getY(), pos.getZ()), renderLayer);
@@ -197,14 +197,14 @@ public class OpticalFiberRenderer implements ICCBlockRenderer, IItemRenderer {
             return;
         }
         float thickness = opticalFiberSize.getThickness();
-        int connectedSidesMask = blockOpticalFiber.getActualConnections(tileEntityCable, world);
+//        int connectedSidesMask = blockOpticalFiber.getActualConnections(tileEntityCable, world); todo optical fiber cable rewrite
         Cuboid6 baseBox = BlockOpticalFiber.getSideBox(null, thickness);
         BlockRenderer.renderCuboid(renderState, baseBox, 0);
         for (EnumFacing renderSide : EnumFacing.VALUES) {
-            if ((connectedSidesMask & (1 << renderSide.getIndex())) > 0) {
-                Cuboid6 sideBox = BlockOpticalFiber.getSideBox(renderSide, thickness);
-                BlockRenderer.renderCuboid(renderState, sideBox, 0);
-            }
+//            if ((connectedSidesMask & (1 << renderSide.getIndex())) > 0) { todo optical fiber cable rewrite
+//                Cuboid6 sideBox = BlockOpticalFiber.getSideBox(renderSide, thickness);
+//                BlockRenderer.renderCuboid(renderState, sideBox, 0);
+//            }
         }
     }
 

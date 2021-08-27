@@ -6,7 +6,6 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.multi.IMaintenance;
 import gregicadditions.tools.GTToolTypes;
 import gregtech.api.gui.ModularUI;
@@ -22,6 +21,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.minecraft.entity.player.EntityPlayer;
 import gregtech.api.gui.*;
@@ -194,11 +194,11 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
             return false;
 
         ItemStack itemStack = handler.getStackInSlot(slot);
-        if (!itemStack.isEmpty() && itemStack.isItemEqual(GAMetaItems.INSULATING_TAPE.getStackForm()))
-            if (itemStack.getCount() - 1 >= 0) {
-                itemStack.shrink(1);
-                return true;
-            }
+//        if (!itemStack.isEmpty() && itemStack.isItemEqual(MetaItems.DUCT_TAPE.getStackForm()))
+//            if (itemStack.getCount() - 1 >= 0) {
+//                itemStack.shrink(1);
+//                return true;
+//            }
         return false;
     }
 

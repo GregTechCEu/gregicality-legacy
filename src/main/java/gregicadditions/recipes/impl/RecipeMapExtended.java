@@ -18,8 +18,8 @@ public class RecipeMapExtended<R extends RecipeBuilder<R>> extends RecipeMap<R> 
     private TextureArea progressBarTexture;
     private ProgressWidget.MoveType moveType;
 
-    public RecipeMapExtended(String unlocalizedName, int inputs, int outputs, int fluidInputs, int fluidOutputs, R defaultRecipe, boolean isHidden) {
-        super(unlocalizedName, inputs, outputs, fluidInputs, fluidOutputs, defaultRecipe, isHidden);
+    public RecipeMapExtended(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, R defaultRecipe, boolean isHidden) {
+        super(unlocalizedName, minInputs, maxInputs, minOutputs, maxOutputs, minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs, defaultRecipe, isHidden);
         this.progressBarTexture = GuiTextures.PROGRESS_BAR_ARROW;
         this.moveType = ProgressWidget.MoveType.HORIZONTAL;
     }
@@ -33,18 +33,18 @@ public class RecipeMapExtended<R extends RecipeBuilder<R>> extends RecipeMap<R> 
     }
 
     @Override
-    public ModularUI.Builder createUITemplate(DoubleSupplier progressSupplier, IItemHandlerModifiable importItems, IItemHandlerModifiable exportItems, FluidTankList importFluids, FluidTankList exportFluids) {
-        ModularUI.Builder builder = new ModularUI.Builder(GuiTextures.BACKGROUND_EXTENDED, 176, 216) {
+    public ModularUI.Builder createUITemplate(DoubleSupplier progressSupplier, IItemHandlerModifiable importItems, IItemHandlerModifiable exportItems, FluidTankList importFluids, FluidTankList exportFluids, int yOffset) {
+        ModularUI.Builder builder = new ModularUI.Builder(GuiTextures.BACKGROUND, 176, 216 + yOffset) {
             @Override
             public ModularUI.Builder bindPlayerInventory(InventoryPlayer inventoryPlayer) {
-                this.bindPlayerInventory(inventoryPlayer, 134);
+                this.bindPlayerInventory(inventoryPlayer, 134 + yOffset);
                 return this;
             }
 
         };
         builder.widget(new ProgressWidget(progressSupplier, 77, 22, 21, 20, progressBarTexture, moveType));
-        this.addInventorySlotGroup(builder, importItems, importFluids, false);
-        this.addInventorySlotGroup(builder, exportItems, exportFluids, true);
+        this.addInventorySlotGroup(builder, importItems, importFluids, false, yOffset);
+        this.addInventorySlotGroup(builder, exportItems, exportFluids, true, yOffset);
         return builder;
     }
 }

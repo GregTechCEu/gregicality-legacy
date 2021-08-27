@@ -189,28 +189,28 @@ public enum GTBees implements IBeeDefinition {
 			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_ACCELERATE);
 		}
 	},
-	NEUTRALMATTER(Materials.NeutralMatter, 0.01f) {
-		@Override
-		protected void registerMutations() {
-			registerMutation(MERCURY, URANIUM, 1).addMutationCondition(new MutationConditionFluid(10,70, Materials.NeutralMatter));
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
-			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_FIX);
-		}
-	},
-	POSITIVEMATTER(Materials.PositiveMatter, 0.01f) {
-		@Override
-		protected void registerMutations() {
-			registerMutation(FLUORINE, PLUTONIUM, 1).addMutationCondition(new MutationConditionFluid(10,70, Materials.PositiveMatter));
-		}
-
-		@Override
-		protected void setAlleles(IAllele[] template) {
-			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_ENERGY);
-		}
-	},
+//	NEUTRALMATTER(Materials.NeutralMatter, 0.01f) { todo forestry integration
+//		@Override
+//		protected void registerMutations() {
+//			registerMutation(MERCURY, URANIUM, 1).addMutationCondition(new MutationConditionFluid(10,70, Materials.NeutralMatter));
+//		}
+//
+//		@Override
+//		protected void setAlleles(IAllele[] template) {
+//			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_FIX);
+//		}
+//	},
+//	POSITIVEMATTER(Materials.PositiveMatter, 0.01f) {
+//		@Override
+//		protected void registerMutations() {
+//			registerMutation(FLUORINE, PLUTONIUM, 1).addMutationCondition(new MutationConditionFluid(10,70, Materials.PositiveMatter));
+//		}
+//
+//		@Override
+//		protected void setAlleles(IAllele[] template) {
+//			AlleleHelper.getInstance().set(template, EnumBeeChromosome.EFFECT, GTBeesEffects.GT_ENERGY);
+//		}
+//	},
 
 	//FUELISs
 	CLAY(GTBranches.FUELIS, "clay", true, new Color(0x19d0ec), new Color(0xe0c113)) {

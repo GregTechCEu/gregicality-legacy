@@ -130,7 +130,7 @@ public class UraniumChain {
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(30)
                 .input(dust, UraniumOxideThoriumNitrate, 18)
                 .fluidInputs(DistilledWater.getFluid(1000))
-                .output(dioxide, Uranium238, 3) //todo nuclear rework
+//                .output(dioxide, Uranium238, 3) //todo nuclear rework
                 .fluidOutputs(ThoriumNitrateSolution.getFluid(1000))
                 .buildAndRegister();
 
@@ -138,7 +138,7 @@ public class UraniumChain {
         ELECTROLYZER_RECIPES.recipeBuilder().duration(150).EUt(120)
                 .input(dust, Sodium, 2)
                 .fluidInputs(ThoriumNitrateSolution.getFluid(1000))
-                .output(oxide, Thorium, 2)
+//                .output(oxide, Thorium, 2)
                 .output(dust, SodiumNitrate, 10)
                 .fluidOutputs(NitricAcid.getFluid(2000))
                 .buildAndRegister();
@@ -153,7 +153,7 @@ public class UraniumChain {
 
         // UO2 + C -> U + CO2
         BLAST_RECIPES.recipeBuilder().duration(150).EUt(120).blastFurnaceTemp(1000)
-                .input(dioxide, Uranium238) //todo nuclear rework
+//                .input(dioxide, Uranium238) //todo nuclear rework
                 .input(dust, Carbon)
                 .output(dust, Uranium238)
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
@@ -161,7 +161,7 @@ public class UraniumChain {
 
         // ThO + CaCl2 -> Th + CaO + 2Cl
         BLAST_RECIPES.recipeBuilder().duration(150).EUt(120).blastFurnaceTemp(1000)
-                .input(oxide, Thorium, 2) //todo nuclear rework
+//                .input(oxide, Thorium, 2) //todo nuclear rework
                 .input(dust, CalciumChloride, 3)
                 .output(dust, Thorium)
                 .output(dust, Quicklime, 2)

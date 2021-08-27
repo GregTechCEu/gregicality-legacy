@@ -123,7 +123,7 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
             }
         }
 
-        builder.bindPlayerInventory(entityPlayer.inventory, GuiTextures.BRONZE_SLOT);
+        builder.bindPlayerInventory(entityPlayer.inventory, GuiTextures.BRONZE_SLOT, 7, 143); //todo this might be wrong
 
         builder.image(7, 16, 81, 55, ClientHandler.BRONZE_DISPLAY)
                 .label(10, 5, getMetaFullName());
@@ -280,5 +280,10 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
     @Override
     public Type getType() {
         return Type.STEAM;
+    }
+
+    @Override // todo port miners to CEu
+    public long getTimer() {
+        return 0;
     }
 }

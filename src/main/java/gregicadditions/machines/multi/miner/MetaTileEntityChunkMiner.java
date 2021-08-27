@@ -222,4 +222,9 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
     public Type getType() {
         return type;
     }
+
+    @Override // todo port miners to CEu
+    public long getTimer() {
+        return 0;
+    }
 }

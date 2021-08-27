@@ -187,34 +187,34 @@ public class MysticalAgricultureItems {
                 'S', getCraftingSeed(redstoneSeed.getTier()),
                 'M', OreDictUnifier.get(OrePrefix.block, Redstone));
 
-        OrePrefix.nugget.addProcessingHandler(IngotMaterial.class, (nugget, ingotMaterial) -> {
-            if (ESSENCES.get(ingotMaterial) == null) {
-                return;
-            }
-            RecipeMaps.PACKER_RECIPES.recipeBuilder().EUt(16).duration(30).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(ESSENCES.get(ingotMaterial), 8)).outputs(OreDictUnifier.get(nugget, ingotMaterial)).buildAndRegister();
-        });
-        OrePrefix.nugget.addProcessingHandler(GemMaterial.class, (nugget, gemMaterial) -> {
-            if (ESSENCES.get(gemMaterial) == null) {
-                return;
-            }
-            RecipeMaps.PACKER_RECIPES.recipeBuilder().EUt(16).duration(30).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(ESSENCES.get(gemMaterial), 8)).outputs(OreDictUnifier.get(nugget, gemMaterial)).buildAndRegister();
-        });
-        OrePrefix.dustTiny.addProcessingHandler(DustMaterial.class, (dustTiny, dustMaterial) -> {
-            if (dustMaterial instanceof IngotMaterial || dustMaterial instanceof GemMaterial || ESSENCES.get(dustMaterial) == null)
-                return;
-            RecipeMaps.PACKER_RECIPES.recipeBuilder().EUt(16).duration(30).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(ESSENCES.get(dustMaterial), 8)).outputs(OreDictUnifier.get(dustTiny, dustMaterial)).buildAndRegister();
-        });
-
-        OrePrefix.block.addProcessingHandler(DustMaterial.class, (nugget, dustMaterial) -> {
-            if (CropType.SEEDS.get(dustMaterial) == null) {
-                return;
-            }
-            ModHandler.addShapedRecipe("gtadditions:seed_" + dustMaterial.toString(), new ItemStack(CropType.SEEDS.get(dustMaterial), 1),
-                    "MEM", "ESE", "MEM",
-                    'E', getEssence(CropType.SEEDS.get(dustMaterial).getTier()),
-                    'S', getCraftingSeed(CropType.SEEDS.get(dustMaterial).getTier()),
-                    'M', OreDictUnifier.get(OrePrefix.block, dustMaterial));
-        });
+//        OrePrefix.nugget.addProcessingHandler(PropertyKey.INGOT, (nugget, ingotMaterial) -> { todo mystical agriculture integration
+//            if (ESSENCES.get(ingotMaterial) == null) {
+//                return;
+//            }
+//            RecipeMaps.PACKER_RECIPES.recipeBuilder().EUt(16).duration(30).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(ESSENCES.get(ingotMaterial), 8)).outputs(OreDictUnifier.get(nugget, ingotMaterial)).buildAndRegister();
+//        });
+//        OrePrefix.nugget.addProcessingHandler(PropertyKey.GEM, (nugget, gemMaterial) -> {
+//            if (ESSENCES.get(gemMaterial) == null) {
+//                return;
+//            }
+//            RecipeMaps.PACKER_RECIPES.recipeBuilder().EUt(16).duration(30).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(ESSENCES.get(gemMaterial), 8)).outputs(OreDictUnifier.get(nugget, gemMaterial)).buildAndRegister();
+//        });
+//        OrePrefix.dustTiny.addProcessingHandler(PropertyKey.DUST, (dustTiny, dustMaterial) -> {
+//            if (dustMaterial.hasProperty(PropertyKey.INGOT) || dustMaterial.hasProperty(PropertyKey.GEM) || ESSENCES.get(dustMaterial) == null)
+//                return;
+//            RecipeMaps.PACKER_RECIPES.recipeBuilder().EUt(16).duration(30).notConsumable(new IntCircuitIngredient(1)).inputs(new ItemStack(ESSENCES.get(dustMaterial), 8)).outputs(OreDictUnifier.get(dustTiny, dustMaterial)).buildAndRegister();
+//        });
+//
+//        OrePrefix.block.addProcessingHandler(PropertyKey.DUST, (nugget, dustMaterial) -> {
+//            if (CropType.SEEDS.get(dustMaterial) == null) {
+//                return;
+//            }
+//            ModHandler.addShapedRecipe("gtadditions:seed_" + dustMaterial.toString(), new ItemStack(CropType.SEEDS.get(dustMaterial), 1),
+//                    "MEM", "ESE", "MEM",
+//                    'E', getEssence(CropType.SEEDS.get(dustMaterial).getTier()),
+//                    'S', getCraftingSeed(CropType.SEEDS.get(dustMaterial).getTier()),
+//                    'M', OreDictUnifier.get(OrePrefix.block, dustMaterial));
+//        });
 
         ModHandler.addShapedRecipe("hyperium_essence", GAMetaItems.HYPERIUM_ESSENCE.getStackForm()," E ", "ECE", " E ", 'E', getEssence(6), 'C', ModItems.itemInfusionCrystal);
         ModHandler.addShapedRecipe("ludicium_essence", GAMetaItems.LUDICIUM_ESSENCE.getStackForm()," E ", "ECE", " E ", 'E', getEssence(7), 'C', ModItems.itemInfusionCrystal);

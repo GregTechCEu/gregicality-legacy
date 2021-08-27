@@ -138,7 +138,7 @@ public class MetaTileEntityCentralMonitor extends MultiblockWithDisplayBase impl
             }
             for (EnumFacing facing : EnumFacing.VALUES) {
                 TileEntity tileEntity = world.getTileEntity(pos.offset(facing));
-                if (tileEntity instanceof MetaTileEntityHolder && !((TileEntityPipeBase<?,?>) tileEntityCable).isConnectionBlocked(AttachmentType.PIPE, facing)) {
+                if (tileEntity instanceof MetaTileEntityHolder && ((TileEntityPipeBase<?,?>) tileEntityCable).isConnectionOpen(AttachmentType.PIPE, facing)) {
                     MetaTileEntity metaTileEntity = ((MetaTileEntityHolder) tileEntity).getMetaTileEntity();
                     if (metaTileEntity != null) {
                         CoverBehavior cover = metaTileEntity.getCoverAtSide(facing.getOpposite());

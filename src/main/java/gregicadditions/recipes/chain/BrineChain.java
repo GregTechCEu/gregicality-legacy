@@ -144,7 +144,7 @@ public class BrineChain {
         BLAST_RECIPES.recipeBuilder().duration(200).EUt(120).blastFurnaceTemp(500)
                 .input(dust, UranylNitrate, 11)
                 .fluidInputs(Water.getFluid(1000))
-                .output(dust, dioxide, Uranium238, 3) //todo nuclear rework
+                .output(dust /*,dioxide*/, Uranium238, 3) //todo nuclear rework
                 .fluidOutputs(DiluteNitricAcid.getFluid(2000))
                 .buildAndRegister();
 

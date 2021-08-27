@@ -56,9 +56,9 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
     private int divertorTier;
     private boolean canWork;
 
-    private static List<Fluid> HOT = Arrays.asList(SupercriticalSteam.fluid, SupercriticalDeuterium.fluid,
-            SupercriticalSodiumPotassiumAlloy.fluid, SupercriticalSodium.fluid,
-            SupercriticalFLiNaK.fluid, SupercriticalFLiBe.fluid, SupercriticalLeadBismuthEutectic.fluid);
+    private static List<Fluid> HOT = Arrays.asList(SupercriticalSteam.getFluid(), SupercriticalDeuterium.getFluid(),
+            SupercriticalSodiumPotassiumAlloy.getFluid(), SupercriticalSodium.getFluid(),
+            SupercriticalFLiNaK.getFluid(), SupercriticalFLiBe.getFluid(), SupercriticalLeadBismuthEutectic.getFluid());
 
     private EnergyContainerList inputEnergyContainers;
     private long heat = 0;
@@ -239,8 +239,8 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        int requiredCoilTier = recipe.getIntegerProperty("coil_tier");
-        return canWork && this.coilTier >= requiredCoilTier;
+//        int requiredCoilTier = recipe.getIntegerProperty("coil_tier"); todo advanced fusion recipe rework
+        return canWork /*&& this.coilTier >= requiredCoilTier*/;
     }
 
 
@@ -300,52 +300,52 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
             }
         }
 
-        @Override
-        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
-            Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
-            RecipeBuilder<?> newRecipe;
-            if (recipe == null || recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) > energyContainer.getEnergyCapacity()) {
-                return null;
-            } else {
-                int recipeTier = recipe.getIntegerProperty("coil_tier");
-                int coilTierDifference = coilTier - recipeTier;
-                int vacuumTierDifference = vacuumTier - recipeTier;
-                int divertorTierDifference = divertorTier - recipeTier;
-                newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
-                newRecipe.EUt((int) Math.max(1, recipe.getEUt() * (1 - vacuumTierDifference * GAConfig.multis.advFusion.vacuumEnergyDecrease)));
+//        @Override todo advanced fusion recipe rework
+//        protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
+//            Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
+//            RecipeBuilder<?> newRecipe;
+//            if (recipe == null || recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) > energyContainer.getEnergyCapacity()) {
+//                return null;
+//            } else {
+//                int recipeTier = recipe.getIntegerProperty("coil_tier");
+//                int coilTierDifference = coilTier - recipeTier;
+//                int vacuumTierDifference = vacuumTier - recipeTier;
+//                int divertorTierDifference = divertorTier - recipeTier;
+//                newRecipe = recipeMap.recipeBuilder().duration((int) Math.max(1.0, recipe.getDuration() * (1 - GAConfig.multis.advFusion.coilDurationDiscount * coilTierDifference)));
+//                newRecipe.EUt((int) Math.max(1, recipe.getEUt() * (1 - vacuumTierDifference * GAConfig.multis.advFusion.vacuumEnergyDecrease)));
+//
+//                newRecipe.fluidInputs(recipe.getFluidInputs().get(0), recipe.getFluidInputs().get(1));
+//                FluidStack newOutput = recipe.getFluidOutputs().get(0);
+//                newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.divertorOutputIncrease));
+//                newRecipe.fluidOutputs(newOutput);
+//
+//                if (recipe.getFluidInputs().size() == 3) {
+//
+//                    FluidStack newFluid = recipe.getFluidInputs().get(2).copy();
+//                    newFluid.amount = (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
+//                    newRecipe.fluidInputs(newFluid);
+//
+//                    newOutput = recipe.getFluidOutputs().get(1).copy();
+//                    newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
+//                    newRecipe.fluidOutputs(newOutput);
+//                }
+//            }
+//            return newRecipe.build().getResult();
+//        }
 
-                newRecipe.fluidInputs(recipe.getFluidInputs().get(0), recipe.getFluidInputs().get(1));
-                FluidStack newOutput = recipe.getFluidOutputs().get(0);
-                newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.divertorOutputIncrease));
-                newRecipe.fluidOutputs(newOutput);
-
-                if (recipe.getFluidInputs().size() == 3) {
-
-                    FluidStack newFluid = recipe.getFluidInputs().get(2).copy();
-                    newFluid.amount = (int) (newFluid.amount * (1 + vacuumTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
-                    newRecipe.fluidInputs(newFluid);
-
-                    newOutput = recipe.getFluidOutputs().get(1).copy();
-                    newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
-                    newRecipe.fluidOutputs(newOutput);
-                }
-            }
-            return newRecipe.build().getResult();
-        }
-
-        @Override
-        protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
-            long heatDiff = recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) - heat;
-            if (heatDiff <= 0) {
-                return super.setupAndConsumeRecipeInputs(recipe);
-            }
-            if (energyContainer.getEnergyStored() < heatDiff || !super.setupAndConsumeRecipeInputs(recipe)) {
-                return false;
-            }
-            energyContainer.removeEnergy(heatDiff);
-            heat += heatDiff;
-            return true;
-        }
+//        @Override todo advanced fusion recipe rework
+//        protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
+//            long heatDiff = recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) - heat;
+//            if (heatDiff <= 0) {
+//                return super.setupAndConsumeRecipeInputs(recipe);
+//            }
+//            if (energyContainer.getEnergyStored() < heatDiff || !super.setupAndConsumeRecipeInputs(recipe)) {
+//                return false;
+//            }
+//            energyContainer.removeEnergy(heatDiff);
+//            heat += heatDiff;
+//            return true;
+//        }
 
         @Override
         public NBTTagCompound serializeNBT() {

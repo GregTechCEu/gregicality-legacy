@@ -10,8 +10,8 @@ public class LargeRecipeMap extends RecipeMap<LargeRecipeBuilder> {
 
     private static final List<LargeRecipeMap> LARGE_RECIPE_MAPS = new ArrayList<>();
 
-    public LargeRecipeMap(String unlocalizedName, int inputs, int outputs, int fluidInputs, int fluidOutputs, LargeRecipeBuilder defaultRecipe, boolean isHidden) {
-        super(unlocalizedName, inputs, outputs, fluidInputs, fluidOutputs, defaultRecipe, isHidden);
+    public LargeRecipeMap(String unlocalizedName, int minInputs, int maxInputs, int minOutputs, int maxOutputs, int minFluidInputs, int maxFluidInputs, int minFluidOutputs, int maxFluidOutputs, LargeRecipeBuilder defaultRecipe, boolean isHidden) {
+        super(unlocalizedName, minInputs, maxInputs, minOutputs, maxOutputs, minFluidInputs, maxFluidInputs, minFluidOutputs, maxFluidOutputs, defaultRecipe, isHidden);
         LARGE_RECIPE_MAPS.add(this);
     }
 

@@ -16,6 +16,7 @@ import gregtech.api.recipes.*;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.MaterialRegistry;
 import gregtech.api.unification.material.properties.BlastProperty;
 import gregtech.api.unification.material.properties.PropertyKey;
 import gregtech.api.unification.ore.OrePrefix;
@@ -72,25 +73,25 @@ public class RecipeHandler {
      */
     public static void register() {
 
-        turbineBlade.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processTurbine);
-        ingot.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processIngot);
-        plateDense.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDensePlate);
-
-        plateDouble.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDoublePlate);
-
-        nugget.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processNugget);
-
-        dust.addProcessingHandler(PropertyKey.GEM, RecipeHandler::processGem);
-        foil.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processFoil);
-        rotor.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processRotor);
-        lens.addProcessingHandler(PropertyKey.GEM, RecipeHandler::processLens);
-        spring.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processSpring);
-        springSmall.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processSpringSmall);
-        gearSmall.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processGearSmall);
-        gear.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processGear);
-        ingotHot.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processIngotHot);
-
-        dust.addProcessingHandler(PropertyKey.FLUID, RecipeHandler::registerPlasmaCondenserRecipes);
+//        turbineBlade.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processTurbine); todo material processing handlers
+//        ingot.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processIngot);
+//        plateDense.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDensePlate);
+//
+//        plateDouble.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processDoublePlate);
+//
+//        nugget.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processNugget);
+//
+//        dust.addProcessingHandler(PropertyKey.GEM, RecipeHandler::processGem);
+//        foil.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processFoil);
+//        rotor.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processRotor);
+//        lens.addProcessingHandler(PropertyKey.GEM, RecipeHandler::processLens);
+//        spring.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processSpring);
+//        springSmall.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processSpringSmall);
+//        gearSmall.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processGearSmall);
+//        gear.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processGear);
+//        ingotHot.addProcessingHandler(PropertyKey.INGOT, RecipeHandler::processIngotHot);
+//
+//        dust.addProcessingHandler(PropertyKey.FLUID, RecipeHandler::registerPlasmaCondenserRecipes);
         ingot.addProcessingHandler(PropertyKey.BLAST, RecipeHandler::registerStellarForgeRecipes);
     }
 
@@ -492,7 +493,7 @@ public class RecipeHandler {
      */
     private static void processRotor(OrePrefix rotor, Material material) {
 
-        removeCraftingRecipes(OreDictUnifier.get(rotor, material));
+//        removeCraftingRecipes(OreDictUnifier.get(rotor, material)); todo material processing handlers
 
         ModHandler.addShapedRecipe(String.format("ga_rotor_%s", material.toString()), OreDictUnifier.get(rotor, material),
                 "ChC", "SRf", "CdC",
@@ -751,7 +752,7 @@ public class RecipeHandler {
      * This Recipe Registration MUST be run after the Large Mixer recipe addition.
      */
     private static void registerAlloyBlastRecipes() {
-        for (Material material : Material.MATERIAL_REGISTRY) {
+        for (Material material : MaterialRegistry.MATERIAL_REGISTRY) {
             if (!(material.hasProperty(PropertyKey.INGOT)))
                 continue;
             if (material.getBlastTemperature() == 0)
@@ -976,7 +977,7 @@ public class RecipeHandler {
      * - Matter Replication Recipes
      */
     public static void runRecipeGeneration() {
-        for (Material material : Material.MATERIAL_REGISTRY) {
+        for (Material material : MaterialRegistry.MATERIAL_REGISTRY) {
 
             // Decomposition Recipes
             if (material.hasProperty(PropertyKey.FLUID)) {

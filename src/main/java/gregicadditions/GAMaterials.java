@@ -26,7 +26,7 @@ public class GAMaterials implements IMaterialHandler {
 
     // NUCLEAR MATERIALS
     // Thorium
-    public static Material ThoriumRadioactive;
+//    public static Material ThoriumRadioactive;
     public static Material Thorium232;
     public static Material Thorium233;
 

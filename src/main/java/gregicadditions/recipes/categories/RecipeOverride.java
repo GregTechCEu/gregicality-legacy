@@ -1,12 +1,10 @@
 package gregicadditions.recipes.categories;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAMaterials;
 import gregtech.api.recipes.GTRecipeHandler;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -21,9 +19,7 @@ import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.GTValues.W;
 import static gregtech.api.recipes.GTRecipeHandler.removeRecipesByInputs;
-import static gregtech.api.recipes.ModHandler.removeRecipeByName;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
@@ -209,7 +205,7 @@ public class RecipeOverride {
                 .buildAndRegister();
 
         // Seed Oil TODO This duplicates
-        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(2)
+        EXTRACTOR_RECIPES.recipeBuilder().duration(32).EUt(2)
                 .input("listAllSeed", 1)
                 .fluidOutputs(SeedOil.getFluid(10))
                 .buildAndRegister();

@@ -174,7 +174,7 @@ public class CombinedChains {
         CHEMICAL_PLANT_RECIPES.recipeBuilder().EUt(7680).duration(864)
                 .input(dust, Uraninite, 3)
                 .fluidInputs(NitrationMixture.getFluid(4000))
-                .output(dust, dioxide, Uranium238, 3) //todo nuclear rework
+                .output(dust, /*dioxide,*/ Uranium238, 3) //todo nuclear rework
                 .fluidOutputs(UraniumSulfateWasteSolution.getFluid(1000))
                 .fluidOutputs(UraniumRefinementWasteSolution.getFluid(1000))
                 .fluidOutputs(ThoriumNitrateSolution.getFluid(1000))

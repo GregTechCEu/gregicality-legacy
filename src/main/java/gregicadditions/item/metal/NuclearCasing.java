@@ -12,6 +12,7 @@ import net.minecraft.world.IBlockAccess;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.client.ClientHandler.*;
+import static gregtech.api.unification.material.Materials.*;
 
 public class NuclearCasing extends VariantBlock<NuclearCasing.CasingType> {
 
@@ -32,18 +33,18 @@ public class NuclearCasing extends VariantBlock<NuclearCasing.CasingType> {
 
     public enum CasingType implements IStringSerializable {
 
-        THORIUM("casing_thorium", ThoriumRadioactive.getMaterial()),
-        PROTACTINIUM("casing_protactinium", Protactinium.getMaterial()),
-        URANIUM("casing_uranium", UraniumRadioactive.getMaterial()),
-        NEPTUNIUM("casing_neptunium", Neptunium.getMaterial()),
-        PLUTONIUM("casing_plutonium", PlutoniumRadioactive.getMaterial()),
-        AMERICIUM("casing_americium", AmericiumRadioactive.getMaterial()),
-        CURIUM("casing_curium", Curium.getMaterial()),
-        BERKELIUM("casing_berkelium", Berkelium.getMaterial()),
-        CALIFORNIUM("casing_californium", Californium.getMaterial()),
-        EINSTEINIUM("casing_einsteinium", Einsteinium.getMaterial()),
-        FERMIUM("casing_fermium", Fermium.getMaterial()),
-        MENDELEVIUM("casing_mendelevium", Mendelevium.getMaterial());
+        THORIUM("casing_thorium", Thorium),
+        PROTACTINIUM("casing_protactinium", Protactinium),
+        URANIUM("casing_uranium", Uranium238),
+        NEPTUNIUM("casing_neptunium", Neptunium),
+        PLUTONIUM("casing_plutonium", Plutonium239),
+        AMERICIUM("casing_americium", Americium),
+        CURIUM("casing_curium", Curium),
+        BERKELIUM("casing_berkelium", Berkelium),
+        CALIFORNIUM("casing_californium", Californium),
+        EINSTEINIUM("casing_einsteinium", Einsteinium),
+        FERMIUM("casing_fermium", Fermium),
+        MENDELEVIUM("casing_mendelevium", Mendelevium);
 
 
         private final String name;

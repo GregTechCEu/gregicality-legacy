@@ -35,6 +35,7 @@ import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregicadditions.item.GATransparentCasing.CasingType.*;
+import static gregtech.common.blocks.BlockFusionCoil.CoilType.FUSION_COIL;
 import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.*;
 import static gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.*;
 import static gregtech.common.blocks.BlockWireCoil.CoilType.*;
@@ -307,17 +308,17 @@ public class CasingRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(30720).duration(400)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(2))
                 .inputs(FIELD_GENERATOR_LUV.getStackForm())
-                .input(cableGtQuadruple, LuVSuperconductor, 4)
+                .input(cableGtQuadruple, IndiumTinBariumTitaniumCuprate, 4)
                 .input(plate, Osmiridium, 2)
                 .input(circuit, Master)
                 .fluidInputs(Helium.getFluid(4000))
-                .outputs(MetaBlocks.WIRE_COIL.getItemVariant(FUSION_COIL))
+                .outputs(MetaBlocks.FUSION_COIL.getItemVariant(FUSION_COIL))
                 .buildAndRegister();
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(122880).duration(400)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(4))
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .input(cableGtQuadruple, ZPMSuperconductor, 4)
+                .input(cableGtQuadruple, UraniumRhodiumDinaquadide, 4)
                 .input(plate, Rutherfordium, 2)
                 .input(circuit, Ultimate)
                 .fluidInputs(Helium.getFluid(4000))
@@ -327,38 +328,38 @@ public class CasingRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(491520).duration(400)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(6))
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm(2))
-                .input(cableGtQuadruple, UVSuperconductor, 4)
+                .input(cableGtQuadruple, EnrichedNaquadahTriniumEuropiumDuranide, 4)
                 .input(plate, Tritanium, 2)
                 .input(circuit, Superconductor)
                 .fluidInputs(Helium.getFluid(4000))
                 .outputs(GAMetaBlocks.FUSION_CASING.getItemVariant(FUSION_COIL_3))
                 .buildAndRegister();
 
-        // Coils
+        // Coils todo coils with CEu
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(500000)
                 .input(wireGtDouble, TitanSteel, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
+//                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Tritanium.getFluid(L))
                 .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(TITAN_STEEL_COIL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(2000000)
                 .input(wireGtDouble, Pikyonium, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
+//                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Adamantium.getFluid(L))
                 .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(PIKYONIUM_COIL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(8000000)
                 .input(wireGtDouble, BlackTitanium, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
+//                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Vibranium.getFluid(L))
                 .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(BLACK_TITANIUM_COIL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(32000000)
                 .input(wireGtDouble, Neutronium, 8)
-                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
+//                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Cinobite.getFluid(L))
                 .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(NEUTRONIUM_COIL))
                 .buildAndRegister();

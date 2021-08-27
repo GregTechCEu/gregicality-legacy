@@ -112,11 +112,11 @@ public class WireRecipeHandler {
         }
 
         // Register the OrePrefix handlers
-        for (OrePrefix wirePrefix : WIRE_DOUBLING_ORDER)
-            wirePrefix.addProcessingHandler(Material.class, WireRecipeHandler::processWireGt);
-
-        cableGtSingle.addProcessingHandler(Material.class, WireRecipeHandler::processCableStripping);
-        wireGtSingle.addProcessingHandler(Material.class, WireRecipeHandler::processWireCompression);
+//        for (OrePrefix wirePrefix : WIRE_DOUBLING_ORDER)
+//            wirePrefix.addProcessingHandler(Material.class, WireRecipeHandler::processWireGt); todo material processing handlers
+//
+//        cableGtSingle.addProcessingHandler(Material.class, WireRecipeHandler::processCableStripping);
+//        wireGtSingle.addProcessingHandler(Material.class, WireRecipeHandler::processWireCompression);
     }
 
     /**

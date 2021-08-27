@@ -313,6 +313,11 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
         return type;
     }
 
+    @Override //todo port miners to CEu
+    public long getTimer() {
+        return 0;
+    }
+
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);

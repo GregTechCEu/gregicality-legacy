@@ -39,7 +39,7 @@ public class CableQubitContainer implements IQubitContainer {
         long currentParallel = 0;
         for (RoutePath routePath : paths) {
             BlockPos destinationPos = routePath.destination;
-            int blockedConnections = opticalFiberNet.getAllNodes().get(destinationPos).blockedConnections;
+            int blockedConnections = opticalFiberNet.getAllNodes().get(destinationPos).openConnections; //todo optical fiber cable rework
             currentParallel += dispatchQubitToNode(destinationPos, blockedConnections, qubit, parallel - currentParallel);
 
             if (currentParallel == parallel) {

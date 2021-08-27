@@ -91,7 +91,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
                 .where('F', statePredicate(getSecondaryFrameState()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('T', statePredicate(getSecondaryCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate().or(MetaTileEntityElectricBlastFurnace.heatingCoilPredicate2()))
+                .where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate()/*.or(MetaTileEntityElectricBlastFurnace.heatingCoilPredicate2())*/) // todo GA Coils for MEBF in CEu
                 .where('P', frameworkPredicate().or(frameworkPredicate2()))
                 .where('p', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS)))

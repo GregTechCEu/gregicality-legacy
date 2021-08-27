@@ -46,7 +46,7 @@ public class MetaTileEntityHyperReactorII extends FueledMultiblockController {
         this.maxVoltage = maxVoltage;
         Fluid temp = FluidRegistry.getFluid(GAConfig.multis.hyperReactors.boosterFluid[1]);
         if (temp == null) {
-            temp = Radon.getMaterialPlasma();
+            temp = Radon.getPlasma(0).getFluid();
             GALog.logger.warn("Incorrect fluid given to hyper reactor: " + GAConfig.multis.hyperReactors.boosterFluid[1]);
         }
         booster = new FluidStack(temp, GAConfig.multis.hyperReactors.boosterFluidAmounts[1]);

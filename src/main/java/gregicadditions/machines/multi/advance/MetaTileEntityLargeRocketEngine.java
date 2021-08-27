@@ -107,7 +107,7 @@ public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockControlle
                 .where('K', statePredicate(getCasingState()).or(abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH)))
                 .where('E', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY)))
                 .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS)))
-                .where('A', statePredicate(MetaBlocks.MUTLIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING)))
+                .where('A', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING)))
                 .where('#', isAirPredicate())
                 .build();
     }

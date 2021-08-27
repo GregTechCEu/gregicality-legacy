@@ -375,7 +375,7 @@ public class REEChain {
                 .fluidInputs(Oxygen.getFluid(500))
                 .chancedOutput(OreDictUnifier.get(dustTiny, Thorium), 2000, 150)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Uranium238), 2000, 150)
-                .output(oxide, Thorium) //todo nuclear rework
+//                .output(oxide, Thorium) todo nuclear rework
                 .EUt(480)
                 .duration(250)
                 .buildAndRegister();
