@@ -10,7 +10,7 @@ import org.objectweb.asm.MethodVisitor;
 public class GAClassTransformer implements IClassTransformer {
     @Override
     public byte[] transform(String name, String transformedName, byte[] basicClass) {
-        Transform tform;
+        /*Transform tform;
         switch (transformedName) {
             case "appeng.core.sync.packets.PacketJEIRecipe":
                 tform = PacketJEIRecipeTransformer.INSTANCE;
@@ -49,7 +49,8 @@ public class GAClassTransformer implements IClassTransformer {
                 return basicClass;
         }
         System.out.println("[Gregicality] Transforming class: " + transformedName);
-        return tform.transformClass(basicClass);
+        return tform.transformClass(basicClass);*/
+        return basicClass;
     }
 
     public interface Transform {
