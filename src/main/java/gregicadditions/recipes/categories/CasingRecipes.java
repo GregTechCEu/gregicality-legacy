@@ -3,16 +3,15 @@ package gregicadditions.recipes.categories;
 import gregicadditions.item.*;
 import gregicadditions.item.components.*;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.recipes.helper.GACraftingComponents;
 import gregtech.api.GTValues;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.blocks.*;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtech.loaders.recipe.CraftingComponent;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
@@ -30,7 +29,6 @@ import static gregicadditions.item.GAReactorCasing.CasingType.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -38,7 +36,6 @@ import static gregicadditions.item.GATransparentCasing.CasingType.*;
 import static gregtech.common.blocks.BlockFusionCoil.CoilType.FUSION_COIL;
 import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.*;
 import static gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.*;
-import static gregtech.common.blocks.BlockWireCoil.CoilType.*;
 import static gregtech.common.items.MetaItems.*;
 
 public class CasingRecipes {
@@ -233,23 +230,6 @@ public class CasingRecipes {
     }
 
     private static void tieredGlass() {
-
-        final MaterialStack[] firstMetal = {
-                new MaterialStack(Iron, 1),
-                new MaterialStack(Nickel, 1),
-                new MaterialStack(Invar, 2),
-                new MaterialStack(Steel, 2),
-                new MaterialStack(StainlessSteel, 3),
-                new MaterialStack(Titanium, 3),
-                new MaterialStack(Tungsten, 4),
-                new MaterialStack(TungstenSteel, 5)
-        };
-
-        final MaterialStack[] lastMetal = {
-                new MaterialStack(Tin, 0),
-                new MaterialStack(Zinc, 0),
-                new MaterialStack(Aluminium, 1)
-        };
 
         // Reinforced Glass
         ALLOY_SMELTER_RECIPES.recipeBuilder().duration(400).EUt(4)
@@ -501,39 +481,38 @@ public class CasingRecipes {
                 .buildAndRegister();
     }
 
-    //todo convert to gtce components
     private static void componentCasings() {
 
         Arrays.stream(EmitterCasing.CasingType.values()).forEach(casing ->
-                registerComponentBlockRecipe(casing.getTier(), casing, GACraftingComponents.EMITTER, GAMetaBlocks.EMITTER_CASING));
+                registerComponentBlockRecipe(casing.getTier(), casing, CraftingComponent.EMITTER, GAMetaBlocks.EMITTER_CASING));
 
         Arrays.stream(MotorCasing.CasingType.values()).forEach(casing ->
-                registerComponentBlockRecipe(casing.getTier(), casing, GACraftingComponents.MOTOR, GAMetaBlocks.MOTOR_CASING));
+                registerComponentBlockRecipe(casing.getTier(), casing, CraftingComponent.MOTOR, GAMetaBlocks.MOTOR_CASING));
 
         Arrays.stream(PistonCasing.CasingType.values()).forEach(casing ->
-                registerComponentBlockRecipe(casing.getTier(), casing, GACraftingComponents.PISTON, GAMetaBlocks.PISTON_CASING));
+                registerComponentBlockRecipe(casing.getTier(), casing, CraftingComponent.PISTON, GAMetaBlocks.PISTON_CASING));
 
         Arrays.stream(SensorCasing.CasingType.values()).forEach(casing ->
-                registerComponentBlockRecipe(casing.getTier(), casing, GACraftingComponents.SENSOR, GAMetaBlocks.SENSOR_CASING));
+                registerComponentBlockRecipe(casing.getTier(), casing, CraftingComponent.SENSOR, GAMetaBlocks.SENSOR_CASING));
 
         Arrays.stream(FieldGenCasing.CasingType.values()).forEach(casing ->
-                registerComponentBlockRecipe(casing.getTier(), casing, GACraftingComponents.FIELD_GENERATOR, GAMetaBlocks.FIELD_GEN_CASING));
+                registerComponentBlockRecipe(casing.getTier(), casing, CraftingComponent.FIELD_GENERATOR, GAMetaBlocks.FIELD_GEN_CASING));
 
         Arrays.stream(PumpCasing.CasingType.values()).forEach(casing ->
-                registerComponentBlockRecipe(casing.getTier(), casing, GACraftingComponents.PUMP, GAMetaBlocks.PUMP_CASING));
+                registerComponentBlockRecipe(casing.getTier(), casing, CraftingComponent.PUMP, GAMetaBlocks.PUMP_CASING));
 
         Arrays.stream(ConveyorCasing.CasingType.values()).forEach(casing ->
-                registerComponentBlockRecipe(casing.getTier(), casing, GACraftingComponents.CONVEYOR, GAMetaBlocks.CONVEYOR_CASING));
+                registerComponentBlockRecipe(casing.getTier(), casing, CraftingComponent.CONVEYOR, GAMetaBlocks.CONVEYOR_CASING));
 
         Arrays.stream(RobotArmCasing.CasingType.values()).forEach(casing ->
-                registerComponentBlockRecipe(casing.getTier(), casing, GACraftingComponents.ROBOT_ARM, GAMetaBlocks.ROBOT_ARM_CASING));
+                registerComponentBlockRecipe(casing.getTier(), casing, CraftingComponent.ROBOT_ARM, GAMetaBlocks.ROBOT_ARM_CASING));
     }
 
-    private static <T extends Enum<T> & IStringSerializable> void registerComponentBlockRecipe(int tier, T inputComponent, GACraftingComponents inputStack, VariantBlock<T> outputCasing) {
+    private static <T extends Enum<T> & IStringSerializable> void registerComponentBlockRecipe(int tier, T inputComponent, CraftingComponent.Component inputStack, VariantBlock<T> outputCasing) {
 
         ItemStack stack = ((MetaItem<?>.MetaValueItem) inputStack.getIngredient(tier)).getStackForm(2);
-        ItemStack hull = (ItemStack) GACraftingComponents.HULL.getIngredient(tier);
-        UnificationEntry cable = (UnificationEntry) GACraftingComponents.CABLE_SINGLE.getIngredient(tier);
+        ItemStack hull = (ItemStack) CraftingComponent.HULL.getIngredient(tier);
+        UnificationEntry cable = (UnificationEntry) CraftingComponent.CABLE.getIngredient(tier);
 
         ASSEMBLER_RECIPES.recipeBuilder().EUt((int) (30 * Math.pow(4, tier - 1))).duration(200)
                 .inputs(stack)
