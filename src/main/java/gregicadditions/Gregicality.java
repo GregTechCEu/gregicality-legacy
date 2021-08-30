@@ -61,8 +61,8 @@ public class Gregicality {
             TheOneProbeCompatibility.registerCompatibility();
         }
         CoverBehaviors.init();
-        GAConfig.addConfigReservoirs(GAConfig.Extraction.reservoirs);
-        PumpjackHandler.oilChance = GAConfig.Extraction.reservoirChance;
+        GAConfig.addConfigReservoirs(GAConfig.extraction.reservoirs);
+        PumpjackHandler.oilChance = GAConfig.extraction.reservoirChance;
     }
 
     @EventHandler

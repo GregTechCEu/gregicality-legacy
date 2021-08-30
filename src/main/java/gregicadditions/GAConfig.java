@@ -48,13 +48,6 @@ public class GAConfig {
         @Config.Name("All Log to Charcoal smelting recipes will be removed")
         public boolean DisableLogToCharcoalSmelting = true;
 
-        @Config.Comment("This value determines the minimum amount of time in ticks a multiblock must be run for a single maintenance problem to have a change to occur. The default is 48 real-world hours.")
-        @Config.RequiresMcRestart
-        public int minimumMaintenanceTime = 3456000;
-
-        @Config.Comment("Whether to enable maintenance. Multiblocks will still require maintenance hatches in their structures, however the involved mechanics are disabled.")
-        public boolean enableMaintenance = true;
-
         @Config.Comment("Set these to false to disable the higher tier versions of machines")
         @Config.Name("Should higher tier Alloy Smelters be registered?")
         public boolean highTierAlloySmelter = true;
@@ -239,15 +232,6 @@ public class GAConfig {
         @Config.Comment("List of Soldering fluid [<fluid>:<amount>] amount=[1 ~ 64000]")
         @Config.RequiresMcRestart
         public String[] solderingFluidList = new String[]{"soldering_alloy:72", "tin:144", "lead:288"};
-
-        @Config.Comment("Replace the normal thermal centrifuge recipes for purified ores with one that gives more crushed centrifuged and more byproduct material but with 20% more power hungry.")
-        @Config.Name("Thermal Centrifuge ore doubling")
-        @Config.RequiresMcRestart
-        public boolean thermalCentrifugeOreProcessing = true;
-
-        @Config.Name("Enable RockBreaker high tier")
-        @Config.RequiresMcRestart
-        public boolean enableRockBreakerHighTier = true;
 
         @Config.Comment("Whether or not to enable machine disassembly recipes")
         @Config.Name("Enable disassembly")
@@ -1088,7 +1072,7 @@ public class GAConfig {
     public static class Extraction {
         @Config.Comment({"List of reservoir types. Format: fluid_name, min_mb_fluid, max_mb_fluid, mb_per_tick_replenish, weight, [dim_blacklist], [dim_whitelist], [biome_dict_blacklist], [biome_dict_whitelist]"})
         @Config.RequiresMcRestart
-        public static String[] reservoirs = new String[]{
+        public  String[] reservoirs = new String[]{
                 "water, 5000000, 10000000, 10, 30, [], [0], [2,17,24,0,10], []",
                 "oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
                 "iodized_oil, 2500000, 15000000, 6, 40, [], [0], [], [2,17,24,0,10]",
@@ -1097,11 +1081,11 @@ public class GAConfig {
         };
 
         @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})
-        public static float reservoirChance = 0.5F;
+        public  float reservoirChance = 0.5F;
 
         @Config.Comment({"This is the time scan coefficient, 100 mean 100% of the time, default=100"})
         @Config.RangeInt(min = 1, max = 1000)
-        public static int timeToScanFactor = 100;
+        public  int timeToScanFactor = 100;
     }
 
     public static void addConfigReservoirs(String[] reservoirs) {

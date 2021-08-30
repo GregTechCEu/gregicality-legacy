@@ -46,7 +46,6 @@ public class GATileEntities {
     public static MetaTileEntityMonitorScreen MONITOR_SCREEN; // todo move to CEu
     public static MetaTileEntityCentralMonitor CENTRAL_MONITOR; // todo move to CEu
     public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3]; // todo move to CEu
-    public static MetaTileEntityRockBreaker[] ROCK_BREAKER = new MetaTileEntityRockBreaker[8]; // todo move to CEu
     public static MetaTileEntityBatteryTower BATTERY_TOWER; // todo move to CEu, and rework
     public static MetaTileEntityFluidDrillingPlant[] FLUID_DRILLING_PLANT = new MetaTileEntityFluidDrillingPlant[3]; // todo move to CEu
     public static List<MetaTileEntityMultiFluidHatch> INPUT_HATCH_MULTI = new ArrayList<>(); // todo move to CEu
@@ -55,6 +54,7 @@ public class GATileEntities {
     public static SimpleMachineMetaTileEntity[] DISASSEMBLER = new SimpleMachineMetaTileEntity[14]; // todo move to CEu
     public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8]; // todo move to CEu
 
+    // TODO Nuclear rework
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
     public static MetaTileEntityGasCentrifuge GAS_CENTRIFUGE;
@@ -226,16 +226,6 @@ public class GATileEntities {
         FLUID_DRILLING_PLANT[0] = GregTechAPI.registerMetaTileEntity(3954, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_mv"), 2));
         FLUID_DRILLING_PLANT[1] = GregTechAPI.registerMetaTileEntity(3955, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_hv"), 3));
         FLUID_DRILLING_PLANT[2] = GregTechAPI.registerMetaTileEntity(3956, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_ev"), 4));
-        ROCK_BREAKER[0] = GregTechAPI.registerMetaTileEntity(3976, new MetaTileEntityRockBreaker(location("rock_breaker.lv"), 1));
-        ROCK_BREAKER[1] = GregTechAPI.registerMetaTileEntity(3977, new MetaTileEntityRockBreaker(location("rock_breaker.mv"), 2));
-        ROCK_BREAKER[2] = GregTechAPI.registerMetaTileEntity(3978, new MetaTileEntityRockBreaker(location("rock_breaker.hv"), 3));
-        ROCK_BREAKER[3] = GregTechAPI.registerMetaTileEntity(3979, new MetaTileEntityRockBreaker(location("rock_breaker.ev"), 4));
-        if (GAConfig.Misc.enableRockBreakerHighTier) {
-            ROCK_BREAKER[4] = GregTechAPI.registerMetaTileEntity(3980, new MetaTileEntityRockBreaker(location("rock_breaker.iv"), 5));
-            ROCK_BREAKER[5] = GregTechAPI.registerMetaTileEntity(3981, new MetaTileEntityRockBreaker(location("rock_breaker.luv"), 6));
-            ROCK_BREAKER[6] = GregTechAPI.registerMetaTileEntity(3982, new MetaTileEntityRockBreaker(location("rock_breaker.zpm"), 7));
-            ROCK_BREAKER[7] = GregTechAPI.registerMetaTileEntity(3983, new MetaTileEntityRockBreaker(location("rock_breaker.uv"), 8));
-        }
         MINER[0] = GregTechAPI.registerMetaTileEntity(3984, new MetaTileEntityChunkMiner(location("miner.lv"), Miner.Type.LV, 1));
         MINER[1] = GregTechAPI.registerMetaTileEntity(3985, new MetaTileEntityChunkMiner(location("miner.mv"), Miner.Type.MV, 2));
         MINER[2] = GregTechAPI.registerMetaTileEntity(3986, new MetaTileEntityChunkMiner(location("miner.hv"), Miner.Type.HV, 3));

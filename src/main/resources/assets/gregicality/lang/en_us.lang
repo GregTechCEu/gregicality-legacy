@@ -935,19 +935,6 @@ gtadditions.multiblock.cosmic_ray_detector.description=The Cosmic Ray Detector p
 
 gtadditions.machine.solar_fluid_sampler.missing_solar=Requires an LV Solar Panel on top.
 
-gtadditions.machine.maintenance_hatch.name=Maintenance Hatch
-gtadditions.machine.auto_maintenance_hatch.name=Auto-Taping Maintenance Hatch
-gtadditions.machine.fullauto_maintenance_hatch.name=Full-Auto Maintenance Hatch
-gtadditions.machine.muffler_hatch.lv.name=LV Muffler Hatch
-gtadditions.machine.muffler_hatch.mv.name=MV Muffler Hatch
-gtadditions.machine.muffler_hatch.hv.name=HV Muffler Hatch
-gtadditions.machine.muffler_hatch.ev.name=EV Muffler Hatch
-gtadditions.machine.muffler_hatch.iv.name=IV Muffler Hatch
-gtadditions.machine.muffler_hatch.luv.name=LuV Muffler Hatch
-gtadditions.machine.muffler_hatch.zpm.name=ZPM Muffler Hatch
-gtadditions.machine.muffler_hatch.uv.name=UV Muffler Hatch
-gtadditions.muffler.recovery_tooltip=Recovers Items §b%d%%§7 of the time!
-
 tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Tungstensteel Gear Box Casing
 tile.ga_multiblock_casing.assembly_line_casing.name=Assembly Line Casing
 tile.ga_multiblock_casing.large_assembler_casing.name=Large-Scale Assembler Casing
@@ -1799,7 +1786,6 @@ gtadditions.multiblock.large_transformer.description=Large Transformer can conve
 gtadditions.multiblock.industrial_primitive_blast_furnace.description=The Industrial Primitive Blast Furnace is a large multiblock structure consisting of 1 to 64 "slices".
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=It's an upgraded version of The Primitive Blast Furnace.
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=The Industrial Primitive Blast Furnace can be automated and sped up.
-gtadditions.machine.rock_breaker.description=Will produce Cobblestone, Andesite, Diorite and Granite. Must be adjacent to lava and water.
 gregtech.multiblock.cryogenic_freezer.description=The Cryogenic Freezer is built the same as the Vacuum Freezer, but with different casings. It consumes pyrotheum 2 ^ max voltage tier mB of cryotheum per tick.
 gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built the same as the Distillation Tower but with different casings and titanium pipe casings in the center.
 gregtech.multiblock.advanced_distillation_tower.description2=2 Modes:
@@ -2042,15 +2028,6 @@ for.description.uumatter=UU-Matter bees were born with the Mellifluous (produce 
 item.material.oreprefix.seed=%s Seed
 item.material.oreprefix.essence=%s Essence
 item.material.oreprefix.crop=%s crop
-
-gtadditions.machine.rock_breaker.lv.name=Basic Electric Rock Breaker
-gtadditions.machine.rock_breaker.mv.name=Advanced Electric Rock Breaker
-gtadditions.machine.rock_breaker.hv.name=Advanced Electric Rock Breaker II
-gtadditions.machine.rock_breaker.ev.name=Advanced Electric Rock Breaker III
-gtadditions.machine.rock_breaker.iv.name=Elite Electric Rock Breaker
-gtadditions.machine.rock_breaker.luv.name=Elite Electric Rock Breaker II
-gtadditions.machine.rock_breaker.zpm.name=Elite Electric Rock Breaker III
-gtadditions.machine.rock_breaker.uv.name=Elite Electric Rock Breaker IV
 
 gtadditions.machine.attractor.lv.name=Basic Bee Attractor
 gtadditions.machine.attractor.mv.name=Advanced Bee Attractor

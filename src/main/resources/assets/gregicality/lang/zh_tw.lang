@@ -1570,7 +1570,6 @@ item.ga_seed.material.name=%s種子
 item.ga_essence.material.name=%s精華
 
 gtadditions.multiblock.battery_tower.description=儲能塔允許的搭建高度為4-16層。你可以任意擺放能源倉。能源倉的電壓等級不得高于能量單元。
-gregtech.multiblock.chemical_plant.description=化工廠是一個由不同等級外殼構成的5x5結構，框架等級決定多方塊等級。
 gregtech.multiblock.coke_oven.description=焦爐是一個用于將煤燒成焦煤、將褐煤燒成焦褐煤和將原木燒成木頭，并產出雜酚油的3x3多方塊結構。
 gregtech.multiblock.assembly_line.description=裝配線是一個由5-16片重復結構組成的多方塊結構。按理說，它是個用于生產高級元件的大組裝機。
 gregtech.multiblock.large_circuit_assembly.description=大型電路組裝機是一個用于制造高階電路的多方塊結構。
@@ -1619,13 +1618,11 @@ gtadditions.multiblock.large_transformer.description=大型變壓器可以將任
 gtadditions.multiblock.industrial_primitive_blast_furnace.description=工業土高爐是一個由1-64片重復結構組成的多方塊結構。
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.1=土高爐的升級版本。
 gregtech.machine.primitive_blast_furnace.industrial.tooltip.2=工業土高爐可以自動化并且速度更快。
-gtadditions.machine.rock_breaker.description=會產出圓石、安山巖、閃長巖和花崗巖。必須接觸水和巖漿。
 gregtech.multiblock.cryogenic_freezer.description=凜冰冷凍機可以勝任真空冷凍機的工作。它每秒消耗20mB極寒之凜冰，處理速度雙倍于同等電壓的真空冷凍機且可同時處理4個物品。
 gregtech.multiblock.advanced_distillation_tower.description1=進階蒸餾塔可以勝任蒸餾塔的工作，并且能搭建到26格。
 gregtech.multiblock.advanced_distillation_tower.description2=它有兩種模式:
 gregtech.multiblock.advanced_distillation_tower.description3=    蒸餾塔 => 處理4份配方 
 gregtech.multiblock.advanced_distillation_tower.description4=    蒸餾室 => 處理12份配方
-gtadditions.multiblock.chemical_plant.tooltip=處理速度與線圈等級相關。
 gtadditions.multiblock.large_rocket_engine.tooltip.1=大型火箭引擎會產出成噸的能量。
 gtadditions.multiblock.large_rocket_engine.tooltip.2=它會消耗你提供的所有火箭燃料。
 gtadditions.multiblock.large_rocket_engine.tooltip.3=每秒還消耗37500mB的空氣和10mB的二氧化碳。
@@ -1814,46 +1811,9 @@ for.description.plutonium=钚蜂生來具有“量子”屬性，可為來自GTC
 for.description.naquadah=硅巖蜂生來具有“鐘表”屬性，可加速運轉來自GTCE的機器。
 for.description.uumatter=UU物質蜂生來具有“暢流”屬性，可產出流體。
 
-item.material.oreprefix.oreRich=富集%s礦石
-item.material.oreprefix.oreRichBlackgranite=富集紅花崗巖%s礦石
-item.material.oreprefix.oreRichRedgranite=富集黑花崗巖%s礦石
-item.material.oreprefix.oreRichMarble=富集大理石%s礦石
-item.material.oreprefix.oreRichBasalt=富集玄武巖%s礦石
-item.material.oreprefix.oreRichSand=富集沙子%s礦石
-item.material.oreprefix.oreRichGravel=富集砂礫%s礦石
-item.material.oreprefix.oreRichNetherrack=富集下界%s礦石
-item.material.oreprefix.oreRichEndstone=富集末地%s礦石
-item.material.oreprefix.orePoor=貧瘠%s礦石
-item.material.oreprefix.orePoorBlackgranite=貧瘠黑花崗巖%s礦石
-item.material.oreprefix.orePoorRedgranite=貧瘠紅花崗巖%s礦石
-item.material.oreprefix.orePoorMarble=貧瘠大理石%s礦石
-item.material.oreprefix.orePoorBasalt=貧瘠玄武巖%s礦石
-item.material.oreprefix.orePoorSand=貧瘠沙子%s礦石
-item.material.oreprefix.orePoorGravel=貧瘠砂礫%s礦石
-item.material.oreprefix.orePoorNetherrack=貧瘠下界%s礦石
-item.material.oreprefix.orePoorEndstone=貧瘠末地%s礦石
-item.material.oreprefix.orePure=高純%s礦石
-item.material.oreprefix.orePureBlackgranite=高純黑花崗巖%s礦石
-item.material.oreprefix.orePureRedgranite=高純紅花崗巖%s礦石
-item.material.oreprefix.orePureMarble=高純大理石%s礦石
-item.material.oreprefix.orePureBasalt=高純玄武巖%s礦石
-item.material.oreprefix.orePureSand=高純沙子%s礦石
-item.material.oreprefix.orePureGravel=高純砂礫%s礦石
-item.material.oreprefix.orePureNetherrack=高純下界%s礦石
-item.material.oreprefix.orePureEndstone=高純末地%s礦石
-
 item.material.oreprefix.seed=%s種子
 item.material.oreprefix.essence=%s精華
 item.material.oreprefix.crop=%s作物
-
-gtadditions.machine.rock_breaker.lv.name=基礎電動造石機
-gtadditions.machine.rock_breaker.mv.name=進階電動造石機
-gtadditions.machine.rock_breaker.hv.name=進階電動造石機 II
-gtadditions.machine.rock_breaker.ev.name=進階電動造石機 III
-gtadditions.machine.rock_breaker.iv.name=精英電動造石機
-gtadditions.machine.rock_breaker.luv.name=精英電動造石機 II
-gtadditions.machine.rock_breaker.zpm.name=精英電動造石機 III
-gtadditions.machine.rock_breaker.uv.name=精英電動造石機 IV
 
 gtadditions.machine.attractor.lv.name=基礎引蜂器
 gtadditions.machine.attractor.mv.name=進階引蜂器

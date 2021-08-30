@@ -56,13 +56,6 @@ public class SingleblockCraftingRecipes {
                 'G', GLASS,
                 'A', ROBOT_ARM);
 
-        registerMachineRecipe(GATileEntities.ROCK_BREAKER,
-                "CPC", "CMC", "GGG",
-                'M', HULL,
-                'C', PIPE_NORMAL,
-                'G', GLASS,
-                'P', PISTON);
-
         registerMachineRecipe(GATileEntities.DISASSEMBLER,
                 "RSV", "PMV", "ICI",
                 'M', HULL,
