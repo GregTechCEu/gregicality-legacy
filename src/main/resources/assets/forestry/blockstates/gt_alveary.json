@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "state=on": { "model": "forestry:gt_alveary_on" },
-    "state=off": { "model": "forestry:gt_alveary_off" }
-  }
-}

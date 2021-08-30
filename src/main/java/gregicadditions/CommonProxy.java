@@ -1,8 +1,6 @@
 package gregicadditions;
 
-import com.blakebr0.mysticalagradditions.MysticalAgradditions;
 import gregicadditions.fluid.GAMetaFluids;
-import gregicadditions.integrations.mysticalagriculture.items.MysticalAgricultureItems;
 import gregicadditions.item.GAHeatingCoil;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMetaItems;
@@ -28,7 +26,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -141,10 +138,6 @@ public class CommonProxy {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         GALog.logger.info("Registering recipe low...");
 
-        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
-            MysticalAgricultureItems.removeMARecipe();
-        }
-
         for (GAHeatingCoil.CoilType values : GAHeatingCoil.CoilType.values()) {
             BlastTemperatureProperty.registerCoilType(values.getCoilTemperature(), null,
                     "tile.ga_heating_coil." + values.getName() + ".name");
@@ -184,10 +177,6 @@ public class CommonProxy {
         // any recipes, they are fine to be run early
         RecipeHandler.initChains();
         FuelHandler.init();
-
-        if (Loader.isModLoaded(MysticalAgradditions.MOD_ID) && !GAConfig.mysticalAgriculture.disable) {
-            MysticalAgricultureItems.registerOreDict();
-        }
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
