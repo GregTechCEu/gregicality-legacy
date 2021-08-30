@@ -1,13 +1,11 @@
 package gregicadditions.machines.multi.uumatter;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.components.*;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -31,7 +29,7 @@ public class TileEntityLargeMassFabricator extends LargeSimpleRecipeMapMultibloc
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GregicalityCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.MAINTENANCE_HATCH
     };
 
     public TileEntityLargeMassFabricator(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {

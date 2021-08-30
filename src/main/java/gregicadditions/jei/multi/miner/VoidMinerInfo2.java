@@ -40,7 +40,7 @@ public class VoidMinerInfo2 extends MultiblockInfoPage {
                 .aisle("C#######C", "C#######C", "#########", "#########", "#########", "C###D###C", "F##DDD##F", "F##DDD##F", "###DDD###", "#########")
                 .aisle("CCCCCCCCC", "CCCCCCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
                 .where('S', GATileEntities.VOID_MINER[1], EnumFacing.WEST)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(METAL_CASING_2.getState(MetalCasing2.CasingType.ENRICHED_NAQUADAH_ALLOY)), EnumFacing.WEST)
                 .where('C', METAL_CASING_2.getState(MetalCasing2.CasingType.ENRICHED_NAQUADAH_ALLOY))
                 .where('D', METAL_CASING_1.getState(MetalCasing1.CasingType.INCOLOY_813))
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[8], EnumFacing.WEST)

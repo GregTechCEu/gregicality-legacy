@@ -50,7 +50,7 @@ public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
                     .aisle("#####XXXXX#####", "#F#XXXBBBXXX###", "##XXBBXBXBBXX##", "#XXXBBXBXBBXXX#", "#XBBXBBXBBXBBX#", "IXBBBXBXBXBBBXX", "MXXXBBXXXBBXXBX", "SGGpXXXPXXXBBBX", "IXXXBBXXXBBXXBX", "XXBBBXBXBXBBBXX", "#XBBXBBXBBXBBX#", "#XXXBBXBXBBXXX#", "##XXBBXBXBBXX##", "###XXXBBBXXX###", "#####XXXXX#####")
                     .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.WEST)
                     .where('S', GATileEntities.MEGA_BLAST_FURNACE, EnumFacing.WEST)
-                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                    .where('M', maintenanceIfEnabled(MetaTileEntityMegaBlastFurnace.casingState), EnumFacing.WEST)
                     .where('T', MetaTileEntityMegaBlastFurnace.secondaryCasingState)
                     .where('X', MetaTileEntityMegaBlastFurnace.casingState)
                     .where('f', MetaTileEntityMegaBlastFurnace.getFrameState())
@@ -64,7 +64,7 @@ public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
                     .where('p', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE))
                     .where('P', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                     .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS))
-                    .where('m', GATileEntities.MUFFLER_HATCH[2], EnumFacing.UP)
+                    .where('m', MetaTileEntities.MUFFLER_HATCH[2], EnumFacing.UP)
                     .where('B', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.PRIMITIVE_BRICKS))
                     .where('R', MetaBlocks.BOILER_FIREBOX_CASING.getState(BlockFireboxCasing.FireboxCasingType.TUNGSTENSTEEL_FIREBOX))
                     .where('g', MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING));

@@ -77,7 +77,7 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
                 .aisle("GSG", "RTR", "FIF")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
-                .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS).or(abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH))))
+                .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS).or(abilityPartPredicate(MultiblockAbility.MAINTENANCE_HATCH))))
                 .where('O', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.EXPORT_ITEMS)))
                 .where('I', tilePredicate((state, tile) -> tile.metaTileEntityId.equals(MetaTileEntities.ITEM_IMPORT_BUS[0].metaTileEntityId)))
                 .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))

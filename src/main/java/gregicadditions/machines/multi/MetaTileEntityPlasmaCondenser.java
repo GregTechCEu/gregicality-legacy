@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi;
 
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.components.PumpCasing;
@@ -48,7 +47,7 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.INPUT_ENERGY, MultiblockAbility.MAINTENANCE_HATCH
     };
 
     public long maxVoltage;
@@ -97,7 +96,7 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed() && !hasProblems())
+        if (isStructureFormed())
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 

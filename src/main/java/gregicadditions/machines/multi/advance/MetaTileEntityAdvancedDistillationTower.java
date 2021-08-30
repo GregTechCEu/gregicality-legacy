@@ -1,9 +1,7 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.CasingUtils;
 import gregicadditions.machines.multi.simple.MultiRecipeMapMultiblockController;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -48,7 +46,7 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
             MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GregicalityCapabilities.MAINTENANCE_HATCH};
+            MultiblockAbility.MAINTENANCE_HATCH};
 
     public MetaTileEntityAdvancedDistillationTower(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, 100, 100, 100, GAConfig.multis.distillationTower.distillationMultiplier,
@@ -74,7 +72,7 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
                 .aisle("XXX", "XXX", "XXX")
                 .where('S', selfPredicate())
                 .where('Y', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('X', fluidExportPredicate.or(statePredicate(getCasingState())).or(abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH)))
+                .where('X', fluidExportPredicate.or(statePredicate(getCasingState())).or(abilityPartPredicate(MultiblockAbility.MAINTENANCE_HATCH)))
                 .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE)))
                 .validateLayer(1, exactlyOneHatch)
                 .validateLayer(2, exactlyOneHatch)

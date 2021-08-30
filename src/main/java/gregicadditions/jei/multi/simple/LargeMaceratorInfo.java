@@ -34,7 +34,7 @@ public class LargeMaceratorInfo extends MultiblockInfoPage {
 					.aisle("XSX", "XHX","XEX","XIX", "XOX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
 					.where('S', GATileEntities.LARGE_MACERATOR, EnumFacing.SOUTH)
-					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+					.where('H', maintenanceIfEnabled(METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE)), EnumFacing.SOUTH)
 					.where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)

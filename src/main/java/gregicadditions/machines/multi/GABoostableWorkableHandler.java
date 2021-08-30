@@ -2,6 +2,7 @@ package gregicadditions.machines.multi;
 
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
+import gregtech.api.capability.impl.FuelRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.machines.FuelRecipeMap;
 import gregtech.api.recipes.recipes.FuelRecipe;
@@ -9,7 +10,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.function.Supplier;
 
-public class GABoostableWorkableHandler extends GAFuelRecipeLogic {
+public class GABoostableWorkableHandler extends FuelRecipeLogic {
 
     private boolean boosted = false;
     FluidStack booster;

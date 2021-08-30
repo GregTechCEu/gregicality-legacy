@@ -40,7 +40,7 @@ public class MegaDistillationTowerInfo extends MultiblockInfoPage {
             builder.aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XEX#")
                     .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.IV], EnumFacing.SOUTH)
                     .where('S', GATileEntities.MEGA_DISTILLATION_TOWER, EnumFacing.SOUTH)
-                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                    .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.SOUTH)
                     .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('E', MetaTileEntities.FLUID_EXPORT_HATCH[GTValues.HV], EnumFacing.SOUTH)

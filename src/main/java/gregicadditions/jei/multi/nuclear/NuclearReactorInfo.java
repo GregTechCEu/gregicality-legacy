@@ -37,7 +37,7 @@ public class NuclearReactorInfo extends MultiblockInfoPage {
                 .aisle("YYY", "XRX", "XRX", "XRX", "XRX", "XRX", "XRX", "XRX", "YYY")
                 .aisle("ISO", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "ZXZ", "FYG")
                 .where('S', reactor, EnumFacing.SOUTH)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
+                .where('M', maintenanceIfEnabled(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING)), EnumFacing.NORTH)
                 .where('R', rodType.casingState)
                 .where('Y', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING))
                 .where('Z', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CLADDED_REACTOR_CASING))

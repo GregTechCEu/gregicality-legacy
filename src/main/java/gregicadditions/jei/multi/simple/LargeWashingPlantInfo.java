@@ -49,7 +49,7 @@ public class LargeWashingPlantInfo extends MultiblockInfoPage {
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_WASHING_PLANT, EnumFacing.SOUTH)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM))
-					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+					.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM)), EnumFacing.SOUTH)
 					.where('#', Blocks.WATER.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)

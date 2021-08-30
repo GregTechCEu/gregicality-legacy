@@ -38,7 +38,7 @@ public class LargeCanningMachineInfo extends MultiblockInfoPage {
             builder.aisle("PPP", "PSP", "PPP")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
                     .where('S', GATileEntities.LARGE_CANNING_MACHINE, EnumFacing.SOUTH)
-                    .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
+                    .where('H', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)), EnumFacing.NORTH)
                     .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)

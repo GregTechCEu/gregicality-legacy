@@ -28,7 +28,7 @@ public class QubitComputerInfo extends MultiblockInfoPage {
                 .aisle("EC", "MC", "CC", "CC")
                 .aisle("CC", "CC", "CC", "CC")
                 .where('S', GATileEntities.QUBIT_COMPUTER, EnumFacing.WEST)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GAMetaBlocks.QUANTUM_CASING.getState(GAQuantumCasing.CasingType.COMPUTER)), EnumFacing.WEST)
                 .where('C', GAMetaBlocks.QUANTUM_CASING.getState(GAQuantumCasing.CasingType.COMPUTER))
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.WEST)
                 .where('O', GATileEntities.QBIT_OUTPUT_HATCH[0], EnumFacing.WEST)

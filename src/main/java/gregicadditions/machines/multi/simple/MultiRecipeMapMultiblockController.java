@@ -164,7 +164,7 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed() && !hasProblems())
+        if (isStructureFormed() && !hasMaintenanceProblems())
             textList.add(new TextComponentTranslation("gregtech.multiblock.recipe", new TextComponentTranslation("recipemap." + this.recipeMaps[this.recipeMapIndex].getUnlocalizedName() + ".name")
                     .setStyle(new Style().setColor(TextFormatting.AQUA))));
     }

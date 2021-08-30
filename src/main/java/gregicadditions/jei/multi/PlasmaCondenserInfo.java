@@ -39,7 +39,7 @@ public class PlasmaCondenserInfo extends MultiblockInfoPage {
                 .aisle("#XXX#", "IG#GX", "F#P#X", "XGpGX", "#XXX#")
                 .aisle("#####", "#XXX#", "#XXX#", "#XXX#", "#####")
                 .where('S', GATileEntities.PLASMA_CONDENSER, EnumFacing.WEST)
-                .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N)), EnumFacing.WEST)
                 .where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N))
                 .where('G', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX))
                 .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE))

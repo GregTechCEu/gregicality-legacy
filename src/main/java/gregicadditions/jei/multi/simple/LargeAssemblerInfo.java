@@ -52,7 +52,7 @@ public class LargeAssemblerInfo extends MultiblockInfoPage {
                     .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS))
                     .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE))
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[6], EnumFacing.WEST)
-                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                    .where('M', maintenanceIfEnabled(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER)), EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[6], EnumFacing.WEST)
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[6], EnumFacing.WEST)
                     .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[6], EnumFacing.WEST)

@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi.nuclear;
 
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.impl.HotCoolantMultiblockController;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
@@ -151,8 +150,8 @@ public class MetaTileEntityHotCoolantTurbine extends HotCoolantMultiblockControl
 
     public MultiblockAbility[] getAllowedAbilities() {
         return turbineType.hasOutputHatch ?
-                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, GregicalityCapabilities.MAINTENANCE_HATCH} :
-                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, GregicalityCapabilities.MAINTENANCE_HATCH};
+                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.MAINTENANCE_HATCH} :
+                new MultiblockAbility[]{MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.MAINTENANCE_HATCH};
     }
 
     public IBlockState getCasingState() {

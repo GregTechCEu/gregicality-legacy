@@ -48,7 +48,7 @@ public class HotCoolantTurbineInfo extends MultiblockInfoPage {
                 .aisle("CCCC", "R##D", "CCCC")
                 .aisle("CCCC", "CSMC", "CCCC")
                 .where('S', turbine, EnumFacing.SOUTH)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                .where('M', maintenanceIfEnabled(turbine.turbineType.casingState), EnumFacing.SOUTH)
                 .where('C', turbine.turbineType.casingState)
                 .where('R', new BlockInfo(MetaBlocks.MACHINE.getDefaultState(), holder))
                 .where('D', MetaTileEntities.ENERGY_OUTPUT_HATCH[GTValues.EV], EnumFacing.EAST)

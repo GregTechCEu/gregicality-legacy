@@ -37,7 +37,7 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
 					.aisle("H###X", "SXXIO", "X###X", "XXXXX", "X###X")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
 					.where('S', GATileEntities.CHEMICAL_PLANT, EnumFacing.SOUTH)
-					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+					.where('H', maintenanceIfEnabled(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CHEMICALLY_INERT)), EnumFacing.SOUTH)
 					.where('X', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CHEMICALLY_INERT))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)

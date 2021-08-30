@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi.nuclear;
 
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -21,7 +20,7 @@ import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 
 public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS, GregicalityCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.MAINTENANCE_HATCH};
 
     public MetaTileEntityGasCentrifuge(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GAS_CENTRIFUGE_RECIPES);

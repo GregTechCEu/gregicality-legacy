@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi;
 
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
@@ -24,7 +23,7 @@ import javax.annotation.Nonnull;
 public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityElectricImplosion(ResourceLocation metaTileEntityId) {
@@ -46,7 +45,7 @@ public class MetaTileEntityElectricImplosion extends GARecipeMapMultiblockContro
                 .where('#', isAirPredicate())
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
-                .where('M', abilityPartPredicate(GregicalityCapabilities.MUFFLER_HATCH))
+                .where('M', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
                 .build();
     }
 

@@ -89,12 +89,5 @@ public class SingleblockCraftingRecipes {
                 'G', PLATE_DENSE,
                 'A', CABLE_DOUBLE,
                 'P', PISTON);
-
-        registerMachineRecipe(GATileEntities.MUFFLER_HATCH,
-                "HM ", "PR ", "   ",
-                'H', HULL,
-                'M', MOTOR,
-                'P', PIPE_NORMAL,
-                'R', ROTOR);
     }
 }

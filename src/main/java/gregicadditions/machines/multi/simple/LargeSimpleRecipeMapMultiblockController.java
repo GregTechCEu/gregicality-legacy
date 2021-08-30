@@ -225,7 +225,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed() && !hasProblems())
+        if (isStructureFormed() && !hasMaintenanceProblems())
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.framework", this.maxVoltage));
     }
 

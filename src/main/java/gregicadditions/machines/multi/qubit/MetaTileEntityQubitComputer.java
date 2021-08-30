@@ -21,7 +21,7 @@ import javax.annotation.Nonnull;
 
 public class MetaTileEntityQubitComputer extends QubitRecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS, GregicalityCapabilities.OUTPUT_QBIT, GregicalityCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_ITEMS, GregicalityCapabilities.OUTPUT_QBIT, MultiblockAbility.MAINTENANCE_HATCH};
 
 
     public MetaTileEntityQubitComputer(ResourceLocation metaTileEntityId) {

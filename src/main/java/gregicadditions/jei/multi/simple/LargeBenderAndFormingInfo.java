@@ -45,7 +45,7 @@ public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
             builder.aisle("EXXX", "XSHX", "XXIX")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
                     .where('S', GATileEntities.LARGE_BENDER_AND_FORMING, EnumFacing.SOUTH)
-                    .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                    .where('H', maintenanceIfEnabled(METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)), EnumFacing.SOUTH)
                     .where('X', METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('i', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)

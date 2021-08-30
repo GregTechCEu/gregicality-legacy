@@ -31,7 +31,7 @@ public class GasCentrifugeInfo extends MultiblockInfoPage {
                 .aisle("OYYYY", "YYYYY", "#ZCZ#", "#Z#Z#", "#Z#Z#", "#Z#Z#", "#Z#Z#")
                 .aisle("#IYY#", "#YYY#", "#####", "#####", "#####", "#####", "#####")
                 .where('S', GATileEntities.GAS_CENTRIFUGE, EnumFacing.NORTH)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
+                .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.NORTH)
                 .where('Y', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                 .where('Z', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                 .where('C', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE))

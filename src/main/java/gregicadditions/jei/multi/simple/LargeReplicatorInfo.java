@@ -54,7 +54,7 @@ public class LargeReplicatorInfo extends MultiblockInfoPage {
                 .aisle("#####XXEXX#####", "#####XXEXX#####", "#######X#######")
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.NORTH)
                 .where('S', GATileEntities.LARGE_REPLICATOR, EnumFacing.SOUTH)
-                .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.EAST)

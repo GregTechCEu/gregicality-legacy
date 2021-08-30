@@ -1,11 +1,7 @@
 package gregicadditions.machines.multi.advance;
 
 import gregicadditions.GAMaterials;
-import gregicadditions.GAValues;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.GAFuelRecipeLogic;
-import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
@@ -23,6 +19,7 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.metatileentities.multi.electric.generator.FueledMultiblockController;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -39,7 +36,7 @@ import static gregicadditions.client.ClientHandler.NITINOL_60_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.util.RelativeDirection.*;
 
-public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockController {
+public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController {
 
 
     public MetaTileEntityLargeRocketEngine(ResourceLocation metaTileEntityId) {
@@ -59,7 +56,7 @@ public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockControlle
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed() && !hasProblems()) {
+        if (isStructureFormed()) {
             FluidStack hydrogen = importFluidHandler.drain(GAMaterials.LiquidHydrogen.getFluid(Integer.MAX_VALUE), false);
             FluidStack air = importFluidHandler.drain(Materials.Air.getFluid(Integer.MAX_VALUE), false);
             FluidStack fuelStack = ((RocketEngineWorkableHandler) workableHandler).getFuelStack();
@@ -104,7 +101,7 @@ public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockControlle
                 .aisle("KKK", "KSK", "KKK")
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()))
-                .where('K', statePredicate(getCasingState()).or(abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH)))
+                .where('K', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.MAINTENANCE_HATCH)))
                 .where('E', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.OUTPUT_ENERGY)))
                 .where('F', statePredicate(getCasingState()).or(abilityPartPredicate(MultiblockAbility.IMPORT_FLUIDS)))
                 .where('A', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING)))
@@ -121,7 +118,7 @@ public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockControlle
         return METAL_CASING_1.getState(MetalCasing1.CasingType.NITINOL_60);
     }
 
-    public static class RocketEngineWorkableHandler extends GAFuelRecipeLogic {
+    public static class RocketEngineWorkableHandler extends FuelRecipeLogic {
 
         private boolean isUsingOxygen = false;
         private int oxygenNeededToBoost;

@@ -43,7 +43,7 @@ public class LargeEngraverInfo extends MultiblockInfoPage {
             builder.aisle("eHX", "XSX","XOX","#T#")
                     .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
                     .where('S', GATileEntities.LARGE_LASER_ENGRAVER, EnumFacing.SOUTH)
-                    .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                    .where('H', maintenanceIfEnabled(GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.LASER_ENGRAVER)), EnumFacing.SOUTH)
                     .where('X', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.LASER_ENGRAVER))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)

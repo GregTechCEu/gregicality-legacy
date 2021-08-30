@@ -1,7 +1,5 @@
 package gregicadditions.machines.multi;
 
-import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAHeatingCoil;
@@ -35,7 +33,6 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -51,7 +48,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS,
             MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GregicalityCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.MAINTENANCE_HATCH
     };
 
     public TileEntityAlloyBlastFurnace(ResourceLocation metaTileEntityId) {
@@ -84,7 +81,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
                 .where('C', heatingCoilPredicate().or(heatingCoilPredicate2()))
                 .where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('c', statePredicate(getCasingState2()))
-                .where('m', abilityPartPredicate(GregicalityCapabilities.MUFFLER_HATCH))
+                .where('m', abilityPartPredicate(MultiblockAbility.MUFFLER_HATCH))
                 .where('#', (tile) -> true)
                 .where('A', isAirPredicate())
                 .build();
@@ -139,7 +136,7 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed() && !hasProblems()) {
+        if (isStructureFormed()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.blast_furnace.max_temperature", blastFurnaceTemperature));
             textList.add(new TextComponentTranslation("gtadditions.multiblock.blast_furnace.additional_temperature", bonusTemperature));
         }
@@ -203,14 +200,8 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
         }
 
         protected int[] calculateOverclock(int EUt, long voltage, int duration, int recipeTemp) {
-            int numMaintenanceProblems = (this.metaTileEntity instanceof GARecipeMapMultiblockController) ?
-                    ((GARecipeMapMultiblockController) metaTileEntity).getNumProblems() : 0;
-
-            double maintenanceDurationMultiplier = 1.0 + (0.1 * numMaintenanceProblems);
-            int durationModified = (int) (duration * maintenanceDurationMultiplier);
-
             if (!allowOverclocking) {
-                return new int[]{EUt, durationModified};
+                return new int[]{EUt, duration};
             }
             boolean negativeEU = EUt < 0;
 
@@ -222,18 +213,18 @@ public class TileEntityAlloyBlastFurnace extends GARecipeMapMultiblockController
 
             int tier = getOverclockingTier(voltage);
             if (GTValues.V[tier] <= EUt || tier == 0)
-                return new int[]{EUt, durationModified};
+                return new int[]{EUt, duration};
             if (negativeEU)
                 EUt = -EUt;
             if (EUt <= 16) {
                 int multiplier = EUt <= 8 ? tier : tier - 1;
                 int resultEUt = EUt * (1 << multiplier) * (1 << multiplier);
-                int resultDuration = durationModified / (1 << multiplier);
+                int resultDuration = duration / (1 << multiplier);
                 previousRecipeDuration = resultDuration;
                 return new int[]{negativeEU ? -resultEUt : resultEUt, resultDuration};
             } else {
                 int resultEUt = EUt;
-                double resultDuration = durationModified;
+                double resultDuration = duration;
                 previousRecipeDuration = (int) resultDuration;
 
                 // Do not overclock further if duration is already too small

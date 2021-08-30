@@ -4,7 +4,6 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.coremod.hooks.GregTechCEHooks;
 import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
@@ -19,6 +18,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.BlockWorldState;
 import gregtech.api.multiblock.FactoryBlockPattern;
@@ -47,9 +47,9 @@ import static gregicadditions.client.ClientHandler.TALONITE_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregtech.api.util.RelativeDirection.*;
 
-public class MetaTileEntityBatteryTower extends GAMultiblockWithDisplayBase implements IEnergyContainer { //todo maintenance
+public class MetaTileEntityBatteryTower extends MultiblockWithDisplayBase implements IEnergyContainer {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.MAINTENANCE_HATCH};
 
 
     private long energyStored;
@@ -95,7 +95,7 @@ public class MetaTileEntityBatteryTower extends GAMultiblockWithDisplayBase impl
         maxCapacity =  capacity.min(BigInteger.valueOf(Long.MAX_VALUE)).longValue();
         energyInputPerTick = 0;
         energyOutputPerTick = 0;
-        passiveDrain = (long) (GTValues.V[cell.getTier()] * (GAConfig.multis.batteryTower.lossPercentage / 100.0) + (5L * this.getNumProblems() / 100.0));
+        passiveDrain = (long) (GTValues.V[cell.getTier()] * (GAConfig.multis.batteryTower.lossPercentage / 100.0));
     }
 
     @Override
@@ -157,7 +157,7 @@ public class MetaTileEntityBatteryTower extends GAMultiblockWithDisplayBase impl
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        if (this.isStructureFormed() && !this.hasProblems()) {
+        if (this.isStructureFormed()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.universal.energy_store", String.format("%,d", getEnergyStored()), String.format("%,d", getEnergyCapacity())));
             textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.input", String.format("%,d", getEnergyInputPerTick())));
             textList.add(new TextComponentTranslation("gtadditions.multiblock.battery_tower.output", String.format("%,d", getEnergyOutputPerTick())));

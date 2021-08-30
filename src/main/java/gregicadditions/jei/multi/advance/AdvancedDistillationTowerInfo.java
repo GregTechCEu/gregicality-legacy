@@ -33,7 +33,7 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
                 .aisle("IEX", "HXX", "HXX", "HXX", "HXX", "HXX")
                 .where('#', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                 .where('X', MetaTileEntityAdvancedDistillationTower.casingState)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(MetaTileEntityAdvancedDistillationTower.casingState), EnumFacing.WEST)
                 .where('S', GATileEntities.ADVANCED_DISTILLATION_TOWER, EnumFacing.WEST)
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.SOUTH)
                 .where('C', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.EV], EnumFacing.WEST)

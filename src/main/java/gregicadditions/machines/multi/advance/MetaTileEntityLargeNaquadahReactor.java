@@ -1,11 +1,8 @@
 package gregicadditions.machines.multi.advance;
 
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.multi.GAFuelRecipeLogic;
-import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
@@ -22,6 +19,7 @@ import gregtech.api.recipes.recipes.FuelRecipe;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.*;
+import gregtech.common.metatileentities.multi.electric.generator.FueledMultiblockController;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -39,10 +37,10 @@ import static gregicadditions.client.ClientHandler.NAQUADRIA_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.Naquadria;
 
-public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockController {
+public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockController {
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.OUTPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.MAINTENANCE_HATCH
     };
 
 
@@ -103,7 +101,7 @@ public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockContro
                 .where('g', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TUNGSTENSTEEL_GEARBOX_CASING)))
                 .where('F', statePredicate(MetaBlocks.FRAMES.get(Naquadria).getDefaultState()))
                 .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
-                .where('m', abilityPartPredicate(GregicalityCapabilities.MAINTENANCE_HATCH).or(statePredicate(getCasingState())))
+                .where('m', abilityPartPredicate(MultiblockAbility.MAINTENANCE_HATCH).or(statePredicate(getCasingState())))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)
                 .build();
@@ -118,7 +116,7 @@ public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockContro
         return METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA);
     }
 
-    public static class NaquadahReactorWorkableHandler extends GAFuelRecipeLogic {
+    public static class NaquadahReactorWorkableHandler extends FuelRecipeLogic {
 
         private final int maxCycleLength = 20;
         private int currentCycle = 0;
@@ -177,7 +175,5 @@ public class MetaTileEntityLargeNaquadahReactor extends GAFueledMultiblockContro
             super.deserializeNBT(compound);
             this.currentCycle = compound.getInteger("Cycle");
         }
-
     }
-
 }

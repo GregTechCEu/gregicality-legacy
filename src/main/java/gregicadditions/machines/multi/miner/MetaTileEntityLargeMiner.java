@@ -5,11 +5,7 @@ import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
-import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
-import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -20,13 +16,13 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Material;
-import gregtech.api.unification.material.info.MaterialFlags;
 import gregtech.api.util.GTUtility;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.tools.ToolUtility;
@@ -64,9 +60,9 @@ import static gregicadditions.client.ClientHandler.*;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.*;
 
-public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implements Miner { //todo maintenance in miner algorithm overhaul
+public class MetaTileEntityLargeMiner extends MultiblockWithDisplayBase implements Miner {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.MAINTENANCE_HATCH};
 
     public final Miner.Type type;
     private final IBlockState casingState;
@@ -81,7 +77,6 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
     private boolean isActive = false;
     private boolean done = false;
     private boolean silktouch = false;
-    protected boolean wasActiveAndNeedsUpdate;
 
 
     public MetaTileEntityLargeMiner(ResourceLocation metaTileEntityId, Miner.Type type) {

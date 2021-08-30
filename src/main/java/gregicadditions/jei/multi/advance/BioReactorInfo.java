@@ -43,7 +43,7 @@ public class BioReactorInfo extends MultiblockInfoPage {
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
                 .where('i', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.SOUTH)
                 .where('S', GATileEntities.BIO_REACTOR, EnumFacing.SOUTH)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                .where('M', maintenanceIfEnabled(GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.BIO_REACTOR)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.BIO_REACTOR))
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.NORTH)
                 .where('E', GAMetaBlocks.EMITTER_CASING.getState(EmitterCasing.CasingType.EMITTER_UV))

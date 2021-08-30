@@ -37,7 +37,7 @@ public class LargeMinerInfo extends MultiblockInfoPage {
                 .aisle("#####", "#####", "PPPPP", "#IPP#", "##F##", "##F##", "##F##", "#####", "#####", "#####")
                 .aisle("F###F", "F###F", "PPPPP", "#####", "#####", "#####", "#####", "#####", "#####", "#####")
                 .where('S', largeMiner, EnumFacing.WEST)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(largeMiner.getCasingState()), EnumFacing.WEST)
                 .where('P', largeMiner.getCasingState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[4], EnumFacing.EAST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[0], EnumFacing.EAST)

@@ -38,7 +38,7 @@ public class LargeElectrolyzerInfo extends MultiblockInfoPage {
 			builder.aisle("EXHXX", "XXSXX", "XXCXX", "XX#XX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_ELECTROLYZER, EnumFacing.SOUTH)
-					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+					.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE)), EnumFacing.SOUTH)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)

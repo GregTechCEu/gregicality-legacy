@@ -36,7 +36,7 @@ public class LargeForgeHammerInfo extends MultiblockInfoPage {
             }
             builder.where('S', GATileEntities.LARGE_FORGE_HAMMER, EnumFacing.NORTH)
                     .where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.IRON))
-                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
+                    .where('M', maintenanceIfEnabled(METAL_CASING_2.getState(MetalCasing2.CasingType.IRON)), EnumFacing.NORTH)
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.WEST)
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)

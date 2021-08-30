@@ -35,7 +35,7 @@ public class LargeElectromagnetInfo extends MultiblockInfoPage {
                 .aisle("#XHX#", "#ISO#", "#XEX#")
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .where('S', GATileEntities.LARGE_ELECTROMAGNET, EnumFacing.SOUTH)
-                .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)

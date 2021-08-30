@@ -31,7 +31,7 @@ public class BatteryTowerInfo extends MultiblockInfoPage {
                 .aisle("MCCCC", "GRRRG", "GRRRG", "GRRRG", "GRRRG", "CCCCC")
                 .aisle("CCCCC", "GGGGG", "GGGGG", "GGGGG", "GGGGG", "CCCCC")
                 .where('S', GATileEntities.BATTERY_TOWER, EnumFacing.WEST)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE)), EnumFacing.WEST)
                 .where('C', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE))
                 .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))
                 .where('R', GAMetaBlocks.CELL_CASING.getState(cellType))

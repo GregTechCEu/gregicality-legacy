@@ -49,7 +49,7 @@ public class CosmicRayDetectorInfo extends MultiblockInfoPage {
                 .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "####xx###xx####", "###############")
                 .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "###############")
                 .where('S', GATileEntities.COSMIC_RAY_DETECTOR, EnumFacing.NORTH)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
+                .where('M', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.QUANTUM)), EnumFacing.NORTH)
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UHV], EnumFacing.NORTH)
                 .where('f', MetaTileEntities.FLUID_EXPORT_HATCH[0], EnumFacing.NORTH)
                 .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.QUANTUM))

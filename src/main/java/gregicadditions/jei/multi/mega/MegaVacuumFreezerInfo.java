@@ -38,7 +38,7 @@ public class MegaVacuumFreezerInfo extends MultiblockInfoPage {
                     .aisle("#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#")
                     .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.IV], EnumFacing.NORTH)
                     .where('S', GATileEntities.MEGA_VACUUM_FREEZER, EnumFacing.NORTH)
-                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
+                    .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF)), EnumFacing.NORTH)
                     .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.HV], EnumFacing.NORTH)

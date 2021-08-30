@@ -39,7 +39,7 @@ public class LargeMassFabricatorInfo extends MultiblockInfoPage {
                 .aisle("XHSeX", "#P#P#", "#P#P#", "#P#P#", "XoXoX")
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .where('S', GATileEntities.LARGE_MASS_FABRICATOR, EnumFacing.SOUTH)
-                .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('c', MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR))

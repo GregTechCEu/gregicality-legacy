@@ -46,7 +46,7 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
 			builder.aisle("XHX##", "XSX##", "EXX##")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
 					.where('S', GATileEntities.LARGE_WIREMILL, EnumFacing.SOUTH)
-					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+					.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250)), EnumFacing.SOUTH)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250))
 					.where('#', Blocks.AIR.getDefaultState())
 					.where('G', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX))

@@ -40,7 +40,7 @@ public class LargeRocketEngineInfo extends MultiblockInfoPage {
         }
         builder.aisle("CCC", "CEC", "CCC")
                 .where('S', GATileEntities.LARGE_ROCKET_ENGINE, EnumFacing.NORTH)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.NORTH)
+                .where('M', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.NITINOL_60)), EnumFacing.NORTH)
                 .where('C', METAL_CASING_1.getState(MetalCasing1.CasingType.NITINOL_60))
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.EAST)
                 .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[4], EnumFacing.SOUTH)

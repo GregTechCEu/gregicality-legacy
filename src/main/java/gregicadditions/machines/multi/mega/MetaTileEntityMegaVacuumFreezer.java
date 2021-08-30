@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi.mega;
 
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -23,7 +22,7 @@ public class MetaTileEntityMegaVacuumFreezer extends MegaMultiblockRecipeMapCont
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
             MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS,
-            MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.INPUT_ENERGY, MultiblockAbility.MAINTENANCE_HATCH
     };
 
     public MetaTileEntityMegaVacuumFreezer(ResourceLocation metaTileEntityId) {

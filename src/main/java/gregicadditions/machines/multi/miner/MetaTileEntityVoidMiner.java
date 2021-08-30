@@ -5,10 +5,8 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.multi.GAMultiblockWithDisplayBase;
 import gregtech.api.GTValues;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
@@ -19,6 +17,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
@@ -56,9 +55,9 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.*;
 
-public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //todo soft hammerable
+public class MetaTileEntityVoidMiner extends MultiblockWithDisplayBase { //todo soft hammerable
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, MultiblockAbility.MAINTENANCE_HATCH};
     private final int maxTemperature;
     private static final int CONSUME_START = 100;
     private final int tier;
@@ -126,7 +125,7 @@ public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //tod
 
     @Override
     protected void updateFormedValid() {
-        if (!getWorld().isRemote && this.getNumProblems() < 6) {
+        if (!getWorld().isRemote) {
             if (overheat || !drainEnergy()) {
                 if (temperature > 0) {
                     temperature--;
@@ -169,8 +168,6 @@ public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //tod
                 if (!isActive)
                     setActive(true);
 
-                calculateMaintenance(20);
-
                 if (usingPyrotheum && canDrainPyrotheum != null && canDrainPyrotheum.amount == (int) currentDrillingFluid) {
                     importFluidHandler.drain(pyrotheumFluid, true);
                     temperature += currentDrillingFluid / 100;
@@ -193,8 +190,6 @@ public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //tod
                     return;
                 }
                 usingPyrotheum = !usingPyrotheum;
-
-                currentDrillingFluid += this.getNumProblems();
                 //mine
 
                 int nbOres = temperature / 1000;
@@ -265,7 +260,7 @@ public class MetaTileEntityVoidMiner extends GAMultiblockWithDisplayBase { //tod
 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
-        if (this.isStructureFormed() && !this.hasProblems()) {
+        if (this.isStructureFormed()) {
             if (energyContainer != null && energyContainer.getEnergyCapacity() > 0) {
                 long maxVoltage = energyContainer.getInputVoltage();
                 String voltageName = GTValues.VN[GTUtility.getTierByVoltage(maxVoltage)];

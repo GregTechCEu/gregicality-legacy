@@ -45,7 +45,7 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
             }
             builder.aisle("FIM", "RTR", "GSG")
                     .where('S', GATileEntities.LARGE_CIRCUIT_ASSEMBLY_LINE, EnumFacing.SOUTH)
-                    .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                    .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)), EnumFacing.SOUTH)
                     .where('C', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                     .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.DOWN)

@@ -104,7 +104,6 @@ public class GATileEntities {
     public static TileEntitySteamMixer STEAM_MIXER;
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
     public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
-    public static MetaTileEntityMufflerHatch[] MUFFLER_HATCH = new MetaTileEntityMufflerHatch[8];
     public static TileEntitySteamMiner STEAM_MINER;
     public static TileEntityChemicalPlant CHEMICAL_PLANT;
     public static TileEntityLargeBrewery LARGE_BREWERY;
@@ -117,7 +116,6 @@ public class GATileEntities {
     public static MetaTileEntityMegaDistillationTower MEGA_DISTILLATION_TOWER;
     public static MetaTileEntityMegaBlastFurnace MEGA_BLAST_FURNACE;
     public static MetaTileEntityMegaVacuumFreezer MEGA_VACUUM_FREEZER;
-    public static MetaTileEntityMaintenanceHatch[] MAINTENANCE_HATCH = new MetaTileEntityMaintenanceHatch[3];
 
     public static void init() {
 
@@ -228,11 +226,6 @@ public class GATileEntities {
         FLUID_DRILLING_PLANT[0] = GregTechAPI.registerMetaTileEntity(3954, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_mv"), 2));
         FLUID_DRILLING_PLANT[1] = GregTechAPI.registerMetaTileEntity(3955, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_hv"), 3));
         FLUID_DRILLING_PLANT[2] = GregTechAPI.registerMetaTileEntity(3956, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_ev"), 4));
-        MAINTENANCE_HATCH[0] = GregTechAPI.registerMetaTileEntity(3957, new MetaTileEntityMaintenanceHatch(location("maintenance_hatch"), 1));
-        MAINTENANCE_HATCH[1] = GregTechAPI.registerMetaTileEntity(3958, new MetaTileEntityMaintenanceHatch(location("auto_maintenance_hatch"), 5));
-        MAINTENANCE_HATCH[2] = GregTechAPI.registerMetaTileEntity(3959, new MetaTileEntityMaintenanceHatch(location("fullauto_maintenance_hatch"), 9));
-        for (int i = 1; i <= MUFFLER_HATCH.length; i++)
-            MUFFLER_HATCH[i - 1] = GregTechAPI.registerMetaTileEntity(3960 + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GTValues.VN[i].toLowerCase()), i));
         ROCK_BREAKER[0] = GregTechAPI.registerMetaTileEntity(3976, new MetaTileEntityRockBreaker(location("rock_breaker.lv"), 1));
         ROCK_BREAKER[1] = GregTechAPI.registerMetaTileEntity(3977, new MetaTileEntityRockBreaker(location("rock_breaker.mv"), 2));
         ROCK_BREAKER[2] = GregTechAPI.registerMetaTileEntity(3978, new MetaTileEntityRockBreaker(location("rock_breaker.hv"), 3));

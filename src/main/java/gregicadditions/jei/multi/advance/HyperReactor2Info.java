@@ -43,7 +43,7 @@ public class HyperReactor2Info extends MultiblockInfoPage {
                 .aisle("####CCCCCCC####", "###CC#####CC###", "####CCCCCCC####")
                 .aisle("#######C#######", "#####CCCCC#####", "#######C#######")
                 .where('S', GATileEntities.HYPER_REACTOR_II, EnumFacing.WEST)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CASING)), EnumFacing.WEST)
                 .where('C', GAMetaBlocks.REACTOR_CASING.getState(GAReactorCasing.CasingType.HYPER_CASING))
                 .where('f', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                 .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.EAST)

@@ -1,10 +1,8 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.multi.CasingUtils;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -30,7 +28,7 @@ public class TileEntityLargeExtruder extends LargeSimpleRecipeMapMultiblockContr
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
 			MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-			MultiblockAbility.INPUT_ENERGY, GregicalityCapabilities.MAINTENANCE_HATCH};
+			MultiblockAbility.INPUT_ENERGY, MultiblockAbility.MAINTENANCE_HATCH};
 
 
 	public TileEntityLargeExtruder(ResourceLocation metaTileEntityId) {

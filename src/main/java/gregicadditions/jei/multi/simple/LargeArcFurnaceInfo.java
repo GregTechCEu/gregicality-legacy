@@ -37,7 +37,7 @@ public class LargeArcFurnaceInfo extends MultiblockInfoPage {
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL))
                 .where('S', GATileEntities.LARGE_ARC_FURNACE, EnumFacing.SOUTH)
-                .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                .where('H', maintenanceIfEnabled(METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF)), EnumFacing.SOUTH)
                 .where('X', METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
                 .where('#', Blocks.AIR.getDefaultState())
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.SOUTH)

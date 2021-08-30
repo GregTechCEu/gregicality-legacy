@@ -34,7 +34,7 @@ public class HyperReactor1Info extends MultiblockInfoPage {
                 .aisle("FCCCC", "G###G", "G#H#G", "G###G", "CCCCC")
                 .aisle("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC")
                 .where('S', GATileEntities.HYPER_REACTOR_I, EnumFacing.WEST)
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+                .where('M', maintenanceIfEnabled(METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA)), EnumFacing.WEST)
                 .where('C', METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA))
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)
                 .where('E', MetaTileEntities.ENERGY_OUTPUT_HATCH[8], EnumFacing.EAST)

@@ -10,7 +10,6 @@ import gregtech.api.recipes.MatchingMode;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.util.GTUtility;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
@@ -45,30 +44,24 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
 
     @Override
     protected int[] calculateOverclock(int EUt, long voltage, int duration) {
-        int numMaintenanceProblems = (this.metaTileEntity instanceof GARecipeMapMultiblockController) ?
-                ((GARecipeMapMultiblockController) metaTileEntity).getNumProblems() : 0;
-
-        double maintenanceDurationMultiplier = 1.0 + (0.2 * numMaintenanceProblems);
-        int durationModified = (int) (duration * maintenanceDurationMultiplier);
-
         if (!allowOverclocking) {
-            return new int[]{EUt, durationModified};
+            return new int[]{EUt, duration};
         }
         boolean negativeEU = EUt < 0;
         int tier = getOverclockingTier(voltage);
         if (GTValues.V[tier] <= EUt || tier == 0)
-            return new int[]{EUt, durationModified};
+            return new int[]{EUt, duration};
         if (negativeEU)
             EUt = -EUt;
         if (EUt <= 16) {
             int multiplier = EUt <= 8 ? tier : tier - 1;
             int resultEUt = EUt * (1 << multiplier) * (1 << multiplier);
-            int resultDuration = durationModified / (1 << multiplier);
+            int resultDuration = duration / (1 << multiplier);
             previousRecipeDuration = resultDuration;
             return new int[]{negativeEU ? -resultEUt : resultEUt, resultDuration};
         } else {
             int resultEUt = EUt;
-            double resultDuration = durationModified;
+            double resultDuration = duration;
             //do not overclock further if duration is already too small
             while (resultDuration >= 3 && resultEUt <= GTValues.V[tier - 1]) {
                 resultEUt *= 4;
@@ -85,27 +78,9 @@ public class GAMultiblockRecipeLogic extends MultiblockRecipeLogic {
     }
 
     @Override
-    protected void completeRecipe() {
-        super.completeRecipe();
-        if (metaTileEntity instanceof GARecipeMapMultiblockController) {
-            GARecipeMapMultiblockController gaController = (GARecipeMapMultiblockController) metaTileEntity;
-            if (gaController.hasMufflerHatch()) {
-                gaController.outputRecoveryItems();
-            }
-            if (gaController.hasMaintenanceHatch()) {
-                gaController.calculateMaintenance(previousRecipeDuration);
-                previousRecipeDuration = 0;
-            }
-        }
-    }
-
-    @Override
     protected void trySearchNewRecipe() {
         if (metaTileEntity instanceof GARecipeMapMultiblockController) {
             GARecipeMapMultiblockController controller = (GARecipeMapMultiblockController) metaTileEntity;
-            if (controller.getNumProblems() > 5)
-                return;
-
             if (controller.canDistinct && controller.isDistinct) {
                 trySearchNewRecipeDistinct();
                 return;

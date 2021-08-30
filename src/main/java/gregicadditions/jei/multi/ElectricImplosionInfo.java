@@ -36,10 +36,10 @@ public class ElectricImplosionInfo extends MultiblockInfoPage {
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[1], EnumFacing.WEST)
                 .where('S', getController(), EnumFacing.WEST)
                 .where('G', MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
-                .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                .where('M', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.INCOLOY_MA956)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.INCOLOY_MA956))
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.EAST)
-                .where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
+                .where('m', MetaTileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
                 .build());
         return shape;
     }

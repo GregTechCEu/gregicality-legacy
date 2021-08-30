@@ -38,7 +38,7 @@ public class LargePackagerInfo extends MultiblockInfoPage {
             builder.aisle("XHX", "XSX", "XEX")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                     .where('S', GATileEntities.LARGE_PACKAGER, EnumFacing.SOUTH)
-                    .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+                    .where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.HG_1223)), EnumFacing.SOUTH)
                     .where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.HG_1223))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)

@@ -5,7 +5,6 @@ import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
 import com.google.common.collect.Lists;
 import gregicadditions.GAMaterials;
-import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.components.EmitterCasing;
 import gregicadditions.item.components.FieldGenCasing;
@@ -90,7 +89,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.EXPORT_FLUIDS,
             MultiblockAbility.INPUT_ENERGY,
-            GregicalityCapabilities.MAINTENANCE_HATCH
+            MultiblockAbility.MAINTENANCE_HATCH
     };
 
     private long maxVoltage = 0;

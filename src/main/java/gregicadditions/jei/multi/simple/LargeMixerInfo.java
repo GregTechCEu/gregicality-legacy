@@ -37,7 +37,7 @@ public class LargeMixerInfo extends MultiblockInfoPage {
 			builder.aisle("IXXXi", "I#Y#i", "#XXX#");
 			builder.aisle("#XHX#", "#OSo#", "#XEX#")
 					.where('S', GATileEntities.LARGE_MIXER, EnumFacing.SOUTH)
-					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
+					.where('H', maintenanceIfEnabled(METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY)), EnumFacing.SOUTH)
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
 					.where('I', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.LV], EnumFacing.WEST)
 					.where('O', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.LV], EnumFacing.WEST)
