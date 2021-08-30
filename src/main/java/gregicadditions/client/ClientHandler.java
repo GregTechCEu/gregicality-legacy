@@ -75,7 +75,6 @@ public class ClientHandler {
     public static final TextureArea BRONZE_OUT_SLOT_OVERLAY = TextureArea.fullImage("textures/gui/steam/bronze_out_slot_overlay.png");
     public static final TextureArea BRONZE_TANK_ICON = TextureArea.fullImage("textures/gui/steam/bronze_tank_icon.png");
     public static SimpleOverlayRenderer STEAM_PUMP_OVERLAY = new SimpleOverlayRenderer("overlay/machine/overlay_steam_pump");
-    public static OrientedOverlayRenderer BEE_ATTRACTOR = new OrientedOverlayRenderer("machines/attractor", OverlayFace.FRONT, OverlayFace.SIDE);
     public static OrientedOverlayRenderer FREEZER_OVERLAY = new OrientedOverlayRenderer("machines/freezer", OverlayFace.FRONT);
     public static OrientedOverlayRenderer IMPLOSION_OVERLAY = new OrientedOverlayRenderer("machines/implosion", OverlayFace.FRONT);
     public static OrientedOverlayRenderer ORGANIC_REPLICATOR_OVERLAY = new OrientedOverlayRenderer("machines/organic_replicator", OverlayFace.FRONT, OverlayFace.TOP);

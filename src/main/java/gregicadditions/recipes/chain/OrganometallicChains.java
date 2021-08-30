@@ -33,13 +33,13 @@ public class OrganometallicChains{
                 .fluidOutputs(LithiumCyclopentadienide.getFluid(1000))
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(1800).EUt(120) //2H + 2CfO2 -> Cf2O3 + H2O
-                .blastFurnaceTemp(2500)
-                .fluidInputs(Hydrogen.getFluid(2000))
+        //BLAST_RECIPES.recipeBuilder().duration(1800).EUt(120) //2H + 2CfO2 -> Cf2O3 + H2O
+        //        .blastFurnaceTemp(2500)
+        //        .fluidInputs(Hydrogen.getFluid(2000))
 //                .input(Californium, GAEnums.gregicadditions.materials.GAOrePrefix.dioxide, 6) todo nuclear rework
-                .output(dust, CaliforniumTrioxide, 5)
-                .fluidOutputs(Water.getFluid(1000))
-                .buildAndRegister();
+        //        .output(dust, CaliforniumTrioxide, 5)
+        //        .fluidOutputs(Water.getFluid(1000))
+        //        .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(2000) //6HCl + Cf2O3 -> 2CfCl3 + 3H2O
                 .fluidInputs(HydrochloricAcid.getFluid(6000))

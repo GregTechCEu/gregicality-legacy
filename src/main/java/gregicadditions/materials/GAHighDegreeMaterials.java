@@ -87,7 +87,7 @@ public class GAHighDegreeMaterials {
                 .setFormula("(FeW)12(((FeW)5CrMo2V)6CoMnSi)9((FeW)5CrMo2V)6(Ru2Ir)3((((SiO2)5Fe)3(Bi2Te3)4ZrO2Fe)2Pu");
 
         SuperheavyChargedBlackTitanium = new Material.Builder(19002, "superheavy_charged_black_titanium")
-                .ingot()
+                .ingot().fluid()
                 .color(0x883AFC)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(BlackTitanium, 3, SuperheavyHAlloy, 2, ChargedCesiumCeriumCobaltIndium, 3, RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 6)
@@ -96,7 +96,7 @@ public class GAHighDegreeMaterials {
                 .build();
 
         NeutroniumLegendariumSuperhydride = new Material.Builder(19003, "neutronium_legendarium_superhydride")
-                .ingot()
+                .ingot().fluid()
                 .color(0xE34B5A)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Neutronium, 4, Legendarium, 5, ActiniumSuperhydride, 5, LanthanumFullereneNanotubes, 4, RheniumHassiumThalliumIsophtaloylbisdiethylthioureaHexafluorophosphate, 12)

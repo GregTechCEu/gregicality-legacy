@@ -155,7 +155,7 @@ public class RecipeHandler {
         CasingRecipes.init();
         SuperconductorRecipes.init();
         MiscRecipes.init();
-        MetalCasingRecipes.init();
+        //MetalCasingRecipes.init(); todo broken for some reason
     }
 
     /**
@@ -982,7 +982,7 @@ public class RecipeHandler {
             // Decomposition Recipes
             if (material.hasProperty(PropertyKey.FLUID)) {
                 OrePrefix prefix = material.hasProperty(PropertyKey.DUST) ? dust : null;
-                processDecomposition(prefix, material);
+                //processDecomposition(prefix, material); // todo is this actually needed anymore?
             }
         }
     }

@@ -60,6 +60,8 @@ public class GAMaterialFlagAddition {
         Sulfur.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
         Calcium.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
         Titanium.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
+        Neon.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
+        Potassium.setProperty(PropertyKey.PLASMA, new PlasmaProperty());
 
         // Decomposition
         Barite.addFlag(DISABLE_DECOMPOSITION);

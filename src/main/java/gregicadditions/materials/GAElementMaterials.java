@@ -350,7 +350,7 @@ public class GAElementMaterials {
 
         // MetaStables
         MetastableOganesson = new Material.Builder(3058, "metastable_oganesson")
-                .ingot(7)
+                .ingot(7).fluid()
                 .color(0xE61C24).iconSet(SHINY)
                 .flags(GA_CORE_METAL)
                 .components(Oganesson, 1)
@@ -358,7 +358,7 @@ public class GAElementMaterials {
                 .build();
 
         MetastableFlerovium = new Material.Builder(3059, "metastable_flerovium")
-                .ingot(7)
+                .ingot(7).fluid()
                 .color(0x521973).iconSet(SHINY)
                 .flags(GA_CORE_METAL)
                 .components(Flerovium, 1)
@@ -366,7 +366,7 @@ public class GAElementMaterials {
                 .build();
 
         MetastableHassium = new Material.Builder(3060, "metastable_hassium")
-                .ingot(6)
+                .ingot(6).fluid()
                 .color(0x2D3A9D).iconSet(SHINY)
                 .flags(GA_CORE_METAL)
                 .components(Hassium, 1)

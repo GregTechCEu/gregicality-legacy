@@ -98,7 +98,7 @@ dependencies {
     // Change to "deobfCompile" to add one of these to game
     "deobfProvided"("net.sengir.forestry:forestry_$mcVersion:${config["forestry.version"]}")
 
-    "provided"(files("libs/gregtech-1.12.2-2.0.0.1255-alpha.jar"))
+    "provided"(files("libs/gregtech-1.12.2-2.0.0.1256-alpha.jar"))
     // Change to "compile" to add one of these to game
     "provided"(files("extdeps/appliedenergistics2-rv6-stable-7.jar"))
     "compileOnly"(files("extdeps/refinedstorage-1.6.15.jar"))

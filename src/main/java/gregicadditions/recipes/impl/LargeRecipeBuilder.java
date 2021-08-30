@@ -36,6 +36,10 @@ public class LargeRecipeBuilder extends RecipeBuilder<LargeRecipeBuilder> {
     @Override
     public void buildAndRegister() {
         if (dupeForSimple) {
+            if (simple.getMaxInputs() < inputs.size() || simple.getMaxOutputs() < outputs.size() ||
+                    simple.getMaxFluidInputs() < fluidInputs.size() || simple.getMaxFluidOutputs() < fluidOutputs.size()) {
+                return;
+            }
             RecipeBuilder<?> builder = simple.recipeBuilder()
                     .inputsIngredients(inputs)
                     .fluidInputs(fluidInputs.toArray(new FluidStack[0]))

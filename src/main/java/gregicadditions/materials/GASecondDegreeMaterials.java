@@ -136,7 +136,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         Inconel625 = new Material.Builder(11518, "inconel_a")
-                .ingot(6)
+                .ingot(6).fluid()
                 .color(0x80C880).iconSet(METALLIC)
                 .flags(GA_EXT2_METAL)
                 .components(Nickel, 3, Chrome, 7, Molybdenum, 10, Invar, 10, Nichrome, 13)
@@ -144,7 +144,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         MaragingSteel250 = new Material.Builder(11519, "maraging_steel_a")
-                .ingot(6)
+                .ingot(6).fluid()
                 .color(0x92918D).iconSet(METALLIC)
                 .flags(GA_EXT2_METAL)
                 .components(Steel, 16, Molybdenum, 1, Titanium, 1, Nickel, 4, Cobalt, 2)
@@ -152,7 +152,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         Tumbaga = new Material.Builder(11520, "tumbaga")
-                .ingot(6)
+                .ingot(6).fluid()
                 .color(0xFFB20F).iconSet(METALLIC)
                 .flags(GA_EXT2_METAL)
                 .components(Gold, 7, Bronze, 3)
@@ -160,7 +160,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         Enderium = new Material.Builder(11521, "enderium")
-                .ingot(3)
+                .ingot(3).fluid()
                 .color(0x23524A).iconSet(METALLIC)
                 .flags(GA_EXT2_METAL, DISABLE_DECOMPOSITION)
                 .components(Lead, 3, Platinum, 1, EnderPearl, 1)
@@ -170,7 +170,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         AbyssalAlloy = new Material.Builder(11522, "abyssal_alloy")
-                .ingot(6)
+                .ingot(6).fluid()
                 .color(0x9E706A).iconSet(METALLIC)
                 .flags(GA_EXT2_METAL, DISABLE_DECOMPOSITION)
                 .components(StainlessSteel, 5, TungstenCarbide, 5, Nichrome, 5, Bronze, 5, IncoloyMA956, 5, Iodine, 1, Germanium, 1, Radon, 1)
@@ -178,7 +178,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         Incoloy813 = new Material.Builder(11523, "incoloy813")
-                .ingot()
+                .ingot().fluid()
                 .color(0x37BF7E).iconSet(SHINY)
                 .flags(GA_EXT2_METAL, DISABLE_DECOMPOSITION)
                 .components(VanadiumSteel, 4, Osmiridium, 2, Technetium, 3, Germanium, 4, Iridium, 7, Duranium, 5, Californium252, 1)
@@ -186,7 +186,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         TungstenTitaniumCarbide = new Material.Builder(11524, "tungsten_titanium_carbide")
-                .ingot(7)
+                .ingot(7).fluid()
                 .color(0x800D0D).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(TungstenCarbide, 7, Titanium, 3)
@@ -194,7 +194,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         Inconel792 = new Material.Builder(11525, "inconel_b")
-                .ingot(5)
+                .ingot(5).fluid()
                 .color(0x6CF076).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(Nickel, 2, Niobium, 1, Aluminium, 2, Nichrome, 1)
@@ -202,7 +202,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         Lafium = new Material.Builder(11526, "lafium")
-                .ingot(7)
+                .ingot(7).fluid()
                 .color(0x0D0D60).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(HastelloyN, 8, Naquadah, 4, Samarium, 2, Tungsten, 4, Argon, 2, Aluminium, 6, Nickel, 8, Carbon, 2)
@@ -211,7 +211,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         Zeron100 = new Material.Builder(11527, "zeron")
-                .ingot(5)
+                .ingot(5).fluid()
                 .color(0xB4B414).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(Chrome, 13, Nickel, 3, Molybdenum, 2, Copper, 10, Tungsten, 2, Steel, 20)
@@ -220,7 +220,7 @@ public class GASecondDegreeMaterials {
                 .build();
 
         WoodsGlass = new Material.Builder(11528, "woods_glass")
-                .ingot()
+                .ingot().fluid()
                 .color(0x730099).iconSet(SHINY)
                 .flags(GENERATE_PLATE, DISABLE_DECOMPOSITION)
                 .components(SiliconDioxide, 1, Barium, 1, Oxygen, 1, Garnierite, 1, SodaAsh, 1)

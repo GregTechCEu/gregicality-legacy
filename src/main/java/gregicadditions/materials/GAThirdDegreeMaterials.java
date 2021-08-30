@@ -39,7 +39,7 @@ public class GAThirdDegreeMaterials {
         // Free ID 15503
 
         EglinSteel = new Material.Builder(15504, "eglin_steel")
-                .ingot(6)
+                .ingot(6).fluid()
                 .color(0x8B4513).iconSet(MaterialIconSet.METALLIC)
                 .flags(GA_EXT2_METAL)
                 .components(EglinSteelBase, 10, Sulfur, 1, Silicon, 1, Carbon, 1)
@@ -47,7 +47,7 @@ public class GAThirdDegreeMaterials {
                 .build();
 
         HastelloyX78 = new Material.Builder(15505, "hastelloy_x78")
-                .ingot(2)
+                .ingot(2).fluid()
                 .color(0x6BA3E3).iconSet(MaterialIconSet.SHINY)
                 .flags(GA_EXT2_METAL, DISABLE_DECOMPOSITION)
                 .components(NaquadahAlloy, 10, Rhenium, 5, Naquadria, 4, Gadolinium, 3, Strontium, 2, Polonium, 3, Rutherfordium, 2, Fermium258, 1)
@@ -55,7 +55,7 @@ public class GAThirdDegreeMaterials {
                 .build();
 
         TitanSteel = new Material.Builder(15506, "titan_steel")
-                .ingot(7)
+                .ingot(7).fluid()
                 .color(0xAA0D0D).iconSet(MaterialIconSet.SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(TungstenTitaniumCarbide, 3, Jasper, 3)
@@ -64,7 +64,7 @@ public class GAThirdDegreeMaterials {
                 .build();
 
         Cinobite = new Material.Builder(15507, "cinobite")
-                .ingot(5)
+                .ingot(5).fluid()
                 .color(0x010101).iconSet(MaterialIconSet.SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(Zeron100, 8, Naquadria, 4, Gadolinium, 3, Aluminium, 2, Mercury, 1, Tin, 1, Titanium, 6, Osmiridium, 1)
@@ -133,7 +133,7 @@ public class GAThirdDegreeMaterials {
                 .build();
 
         StrontiumTaraniumTBCCO = new Material.Builder(15518, "strontium_taranium_tbcco")
-                .ingot()
+                .ingot().fluid()
                 .color(0x359FFC)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(TBCCO, 4, StrontiumSuperconductor, 4, Taranium, 1)
@@ -142,7 +142,7 @@ public class GAThirdDegreeMaterials {
                 .build();
 
         ActiniumVibraniumBETSSuperhydride = new Material.Builder(15519, "actinium_vibranium_bets_superhydride")
-                .ingot()
+                .ingot().fluid()
                 .color(0x954FE0)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(ActiniumSuperhydride, 1, BETSPerrhenate, 1, Vibranium, 1, Quantum, 1, TriniumTitanium, 1)
@@ -151,7 +151,7 @@ public class GAThirdDegreeMaterials {
                 .build();
 
         ProtoFullereneBorocarbide = new Material.Builder(15520, "proto_fullerene_borocarbide")
-                .ingot()
+                .ingot().fluid()
                 .color(0x8BF743)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .components(Borocarbide, 2, FullereneSuperconductor, 1, MetastableOganesson, 2, ProtoAdamantium, 2)

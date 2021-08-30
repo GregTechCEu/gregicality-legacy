@@ -41,7 +41,7 @@ import static gregtech.common.items.MetaItems.*;
 public class CasingRecipes {
 
     public static void init() {
-        componentCasings();
+        //componentCasings(); // todo fix
         multiblockCasings();
         coilCasings();
         tieredCasings();
@@ -510,7 +510,8 @@ public class CasingRecipes {
 
     private static <T extends Enum<T> & IStringSerializable> void registerComponentBlockRecipe(int tier, T inputComponent, CraftingComponent.Component inputStack, VariantBlock<T> outputCasing) {
 
-        ItemStack stack = ((MetaItem<?>.MetaValueItem) inputStack.getIngredient(tier)).getStackForm(2);
+        ItemStack stack = ((ItemStack) inputStack.getIngredient(tier)).copy();
+        stack.setCount(2);
         ItemStack hull = (ItemStack) CraftingComponent.HULL.getIngredient(tier);
         UnificationEntry cable = (UnificationEntry) CraftingComponent.CABLE.getIngredient(tier);
 

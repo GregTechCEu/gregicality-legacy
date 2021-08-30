@@ -54,28 +54,29 @@ public class GAUnknownCompositionMaterials {
                 .build();
 
         HeavyQuarkDegenerateMatter = new Material.Builder(9507, "heavy_quark_degenerate_matter")
-                .ingot(6)
+                .ingot(6).fluid()
                 .color(0x5dbd3a).iconSet(SHINY)
                 .flags(GA_CORE_METAL)
                 .blastTemp(13000)
                 .build();
 
         QCDMatter = new Material.Builder(9508, "qcd_confined_matter")
-                .ingot(7)
+                .ingot(7).fluid()
                 .color(0xeb9e3f).iconSet(SHINY)
                 .flags(GENERATE_PLATE, DISABLE_REPLICATION, NO_WORKING, NO_SMELTING, NO_SMASHING, GENERATE_FRAME, GENERATE_ROD)
                 .blastTemp(13100)
                 .build();
 
         CosmicNeutronium = new Material.Builder(9509, "cosmic_neutronium")
-                .ingot(7)
+                .ingot(7).fluid()
                 .color(0x323232).iconSet(SHINY)
                 .flags(GA_CORE_METAL, DISABLE_DECOMPOSITION)
                 .components(Neutronium, 1)
                 .blastTemp(14100)
                 .build();
 
-        // TODO: fill 1 empty id
+        // Free ID 9510
+
         Catalase = new Material.Builder(9511, "catalase")
                 .fluid()
                 .color(0xdb6596)

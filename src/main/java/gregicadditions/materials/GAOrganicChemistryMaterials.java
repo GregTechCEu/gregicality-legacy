@@ -79,42 +79,42 @@ public class GAOrganicChemistryMaterials {
                 .build();
 
         Polyetheretherketone = new Material.Builder(6509, "polyetheretherketone")
-                .ingot()
+                .ingot().fluid()
                 .color(0x403E37).iconSet(DULL)
                 .flags(EXCLUDE_BLOCK_CRAFTING_RECIPES, NO_SMASHING, GENERATE_FOIL, DISABLE_DECOMPOSITION, GENERATE_FINE_WIRE)
                 .components(Carbon, 20, Hydrogen, 12, Oxygen, 3)
                 .build();
 
         Zylon = new Material.Builder(6510, "zylon")
-                .ingot()
+                .ingot().fluid()
                 .color(0xFFE000).iconSet(SHINY)
                 .flags(EXCLUDE_BLOCK_CRAFTING_RECIPES, NO_SMASHING, GENERATE_FOIL, DISABLE_DECOMPOSITION)
                 .components(Carbon, 14, Hydrogen, 6, Nitrogen, 2, Oxygen, 2)
                 .build();
 
         FullerenePolymerMatrix = new Material.Builder(6511, "fullerene_polymer_matrix")
-                .ingot()
+                .ingot().fluid()
                 .color(0x403E37).iconSet(DULL)
                 .flags(EXCLUDE_BLOCK_CRAFTING_RECIPES, NO_SMASHING, GENERATE_FOIL, DISABLE_DECOMPOSITION)
                 .components(Palladium, 1, Carbon, 140, Hydrogen, 21, Oxygen, 2)
                 .build();
 
         CarbonNanotubes = new Material.Builder(6512, "carbon_nanotubes")
-                .ingot()
+                .ingot().fluid()
                 .color(0x2c2c2c).iconSet(SHINY)
                 .flags(EXCLUDE_BLOCK_CRAFTING_RECIPES, NO_SMASHING, GENERATE_FOIL, GENERATE_FINE_WIRE, DISABLE_DECOMPOSITION)
                 .components(Carbon, 1)
                 .build();
 
         Polyurethane = new Material.Builder(6513, "polyurethane")
-                .ingot()
+                .ingot().fluid()
                 .color(0x2c2c2c).iconSet(DULL)
                 .flags(EXCLUDE_BLOCK_CRAFTING_RECIPES, NO_SMASHING, GENERATE_FOIL, DISABLE_DECOMPOSITION)
                 .components(Carbon, 17, Hydrogen, 16, Nitrogen, 2, Oxygen, 4)
                 .build();
 
         PEDOT = new Material.Builder(6514, "pedot")
-                .ingot()
+                .ingot().fluid()
                 .color(0x5cef20).iconSet(DULL)
                 .flags(GENERATE_FINE_WIRE, DISABLE_DECOMPOSITION)
                 .components(Carbon, 6, Hydrogen, 6, Oxygen, 2, Sulfur, 1)
@@ -1037,7 +1037,12 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 6, Hydrogen, 10, Oxygen, 5)
                 .build();
 
-        // Free ID 6635
+        ButylLithium = new Material.Builder(6635, "butyl_lithium")
+                .fluid()
+                .colorAverage()
+                .flags(DISABLE_DECOMPOSITION)
+                .components(Carbon, 4, Hydrogen, 9, Lithium, 1)
+                .build();
 
         // Free ID 6636
 
@@ -1181,8 +1186,9 @@ public class GAOrganicChemistryMaterials {
                 .fluid()
                 .colorAverage()
                 .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 6, Hydrogen, 16, Nitrogen, 2)
-                .build();
+                .components(Carbon, 6, Hydrogen, 12, Nitrogen, 4)
+                .build()
+                .setFormula("(CH2)6N4", true);
 
         Tertbutanol = new Material.Builder(6659, "tertbutanol")
                 .fluid()
@@ -1536,7 +1542,7 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 4, Hydrogen, 6, Oxygen, 4)
                 .build();
         Succinimide = new Material.Builder(6710, "succinimide")
-                .fluid()
+                .dust()
                 .colorAverage().iconSet(METALLIC)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Carbon, 4, Hydrogen, 5, Nitrogen, 1, Oxygen, 2)
@@ -2096,14 +2102,6 @@ public class GAOrganicChemistryMaterials {
                 .flags(DISABLE_DECOMPOSITION, EXPLOSIVE)
                 .components(Carbon, 6, Hydrogen, 6, Nitrogen, 12, Oxygen, 12)
                 .build();
-
-        Hexamethylenediamine = new Material.Builder(6800, "v")
-                .dust()
-                .color(0x7E8D94)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 6, Hydrogen, 12, Nitrogen, 4)
-                .build()
-                .setFormula("(CH2)6N4", true);
 
         Tetraacetyldinitrosohexaazaisowurtzitane = new Material.Builder(6801, "tetraacetyldinitrosohexaazaisowurtzitane")
                 .dust()
