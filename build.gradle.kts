@@ -97,17 +97,11 @@ dependencies {
 
     // Change to "deobfCompile" to add one of these to game
     "deobfProvided"("net.sengir.forestry:forestry_$mcVersion:${config["forestry.version"]}")
-    "provided"("slimeknights.mantle:Mantle:$shortVersion-${config["mantle.version"]}")
-    "provided"("slimeknights:TConstruct:$mcVersion-${config["ticon.version"]}")
-    "provided"("binnie:binnie-mods-$mcVersion:${config["binnie.version"]}")
 
     "provided"(files("libs/gregtech-1.12.2-2.0.0.1255-alpha.jar"))
     // Change to "compile" to add one of these to game
     "provided"(files("extdeps/appliedenergistics2-rv6-stable-7.jar"))
     "compileOnly"(files("extdeps/refinedstorage-1.6.15.jar"))
-    "compileOnly"(files("extdeps/Cucumber-1.12.2-1.1.3.jar"))
-    "compileOnly"(files("extdeps/MysticalAgriculture-1.12.2-1.7.5.jar"))
-    "compileOnly"(files("extdeps/MysticalAgradditions-1.12.2-1.3.2.jar"))
     "compileOnly"(files("extdeps/multiblocktweaker-1.12.2-stable-1.4.0.jar"))
 
     // JUnit testing used for GitHub Actions

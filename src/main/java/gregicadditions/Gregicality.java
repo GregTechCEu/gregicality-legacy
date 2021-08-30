@@ -62,7 +62,7 @@ public class Gregicality {
         }
         CoverBehaviors.init();
         GAConfig.addConfigReservoirs(GAConfig.extraction.reservoirs);
-        PumpjackHandler.oilChance = GAConfig.extraction.reservoirChance;
+        PumpjackHandler.oilChance = GAConfig.Extraction.reservoirChance;
     }
 
     @EventHandler

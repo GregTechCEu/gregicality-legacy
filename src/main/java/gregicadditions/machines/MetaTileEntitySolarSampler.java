@@ -54,7 +54,7 @@ public class MetaTileEntitySolarSampler extends MetaTileEntity implements IWorka
 
     private boolean isPaused = false;
     private boolean isActive = false;
-    private final int maxProgress = 6000 * GAConfig.extraction.timeToScanFactor / 100;
+    private final int maxProgress = 6000 * GAConfig.Extraction.timeToScanFactor / 100;
     private int progressTime = 0;
 
     public MetaTileEntitySolarSampler(ResourceLocation metaTileEntityId) {
