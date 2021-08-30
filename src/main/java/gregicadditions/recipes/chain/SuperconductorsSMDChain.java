@@ -719,7 +719,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         //La2(C60H30)2 + 20 N -> La2(C60)2 + 20 NH3
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(320).EUt(1966080)
+        LARGE_ENGRAVER_RECIPES.recipeBuilder().duration(320).EUt(1966080)
                 .inputs(LanthanumFullereneMix.getItemStack(4))
                 .fluidInputs(Nitrogen.getFluid(20000))
                 .notConsumable(craftingLens, Magenta)

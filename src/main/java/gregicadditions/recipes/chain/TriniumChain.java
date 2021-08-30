@@ -314,7 +314,7 @@ public class TriniumChain {
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder().duration(240).EUt(32700)
-                .fluidInputs(ActiniumRadiumHydroxideSolution.getFluid(13000))
+                .fluidInputs(ActiniumRadiumNitrateSolution.getFluid(13000))
                 .notConsumable(TheonylTrifluoroacetate.getFluid(500))
                 .outputs(ActiniumNitrate.getItemStack(26))
                 .outputs(RadiumNitrate.getItemStack(27))
