@@ -80,9 +80,9 @@ public class MetaTileEntityLargeNaquadahReactor extends FueledMultiblockControll
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.2"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_naquadah_reactor.tooltip.3"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_naquadah_reactor.tooltip.1"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_naquadah_reactor.tooltip.2"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_naquadah_reactor.tooltip.3"));
     }
 
     @Override

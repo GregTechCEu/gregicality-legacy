@@ -83,14 +83,14 @@ public class MetaTileEntityLargeRocketEngine extends FueledMultiblockController 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.2"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.3"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.4"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.5"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.6"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.7"));
-        tooltip.add(I18n.format("gtadditions.multiblock.large_rocket_engine.tooltip.8"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_rocket_engine.tooltip.1"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_rocket_engine.tooltip.2"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_rocket_engine.tooltip.3"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_rocket_engine.tooltip.4"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_rocket_engine.tooltip.5"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_rocket_engine.tooltip.6"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_rocket_engine.tooltip.7"));
+        tooltip.add(I18n.format("gregicality.multiblock.large_rocket_engine.tooltip.8"));
     }
 
     @Override

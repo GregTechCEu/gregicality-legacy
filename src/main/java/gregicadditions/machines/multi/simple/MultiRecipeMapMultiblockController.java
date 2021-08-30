@@ -183,11 +183,11 @@ public abstract class MultiRecipeMapMultiblockController extends LargeSimpleReci
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMapsToString()));
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.2", formatter.format(this.EUtPercentage / 100.0)));
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.3", formatter.format(this.durationPercentage / 100.0)));
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.4", this.stack));
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.5", this.chancePercentage));
+        tooltip.add(I18n.format("gregicality.multiblock.universal.tooltip.1", this.recipeMapsToString()));
+        tooltip.add(I18n.format("gregicality.multiblock.universal.tooltip.2", formatter.format(this.EUtPercentage / 100.0)));
+        tooltip.add(I18n.format("gregicality.multiblock.universal.tooltip.3", formatter.format(this.durationPercentage / 100.0)));
+        tooltip.add(I18n.format("gregicality.multiblock.universal.tooltip.4", this.stack));
+        tooltip.add(I18n.format("gregicality.multiblock.universal.tooltip.5", this.chancePercentage));
     }
 
     @Override
