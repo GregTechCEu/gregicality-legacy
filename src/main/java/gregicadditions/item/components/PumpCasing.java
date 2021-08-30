@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 public class PumpCasing extends ReTexturedCasing<PumpCasing.CasingType> {
 
     public PumpCasing() {
-        super(new ResourceLocation("gtadditions","block/casing/pump"));
+        super(new ResourceLocation("gregicality","block/casing/pump"));
         setTranslationKey("ga_pump_casing");
         setDefaultState(getState(CasingType.PUMP_LV));
     }

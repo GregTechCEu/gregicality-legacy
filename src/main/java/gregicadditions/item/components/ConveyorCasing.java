@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 public class ConveyorCasing extends ReTexturedCasing<ConveyorCasing.CasingType> {
 
     public ConveyorCasing() {
-        super(new ResourceLocation("gtadditions","block/casing/conveyor"));
+        super(new ResourceLocation("gregicality","block/casing/conveyor"));
         setTranslationKey("ga_conveyor_casing");
         setDefaultState(getState(CasingType.CONVEYOR_LV));
     }

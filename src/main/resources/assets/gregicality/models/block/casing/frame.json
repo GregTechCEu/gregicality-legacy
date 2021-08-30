@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"1": "gtadditions:blocks/material_sets/dull/gt_metal_casing"
+		"1": "gregicality:blocks/material_sets/dull/gt_metal_casing"
 	},
 	"elements": [
 		{

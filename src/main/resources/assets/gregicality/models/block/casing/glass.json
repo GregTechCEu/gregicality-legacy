@@ -2,7 +2,7 @@
   "credit": "Made with Blockbench",
   "parent": "minecraft:block/block",
   "textures": {
-    "3": "gtadditions:blocks/casing/glass"
+    "3": "gregicality:blocks/casing/glass"
   },
   "elements": [
     {

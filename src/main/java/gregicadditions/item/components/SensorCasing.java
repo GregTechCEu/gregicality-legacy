@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 public class SensorCasing extends ReTexturedCasing<SensorCasing.CasingType> {
 
     public SensorCasing() {
-        super(new ResourceLocation("gtadditions","block/casing/sensor"));
+        super(new ResourceLocation("gregicality","block/casing/sensor"));
         setTranslationKey("ga_sensor_casing");
         setDefaultState(getState(CasingType.SENSOR_LV));
     }

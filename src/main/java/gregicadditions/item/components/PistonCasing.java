@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 public class PistonCasing extends ReTexturedCasing<PistonCasing.CasingType> {
 
     public PistonCasing() {
-        super(new ResourceLocation("gtadditions","block/casing/piston"));
+        super(new ResourceLocation("gregicality","block/casing/piston"));
         setTranslationKey("ga_piston_casing");
         setDefaultState(getState(CasingType.PISTON_LV));
     }

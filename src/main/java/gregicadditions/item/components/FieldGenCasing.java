@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 public class FieldGenCasing extends ReTexturedCasing<FieldGenCasing.CasingType> {
 
     public FieldGenCasing() {
-        super(new ResourceLocation("gtadditions","block/casing/field_gen"));
+        super(new ResourceLocation("gregicality","block/casing/field_gen"));
         setTranslationKey("ga_field_gen_casing");
         setDefaultState(getState(CasingType.FIELD_GENERATOR_LV));
     }

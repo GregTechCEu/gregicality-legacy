@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 public class MotorCasing extends ReTexturedCasing<MotorCasing.CasingType> {
 
     public MotorCasing() {
-        super(new ResourceLocation("gtadditions","block/casing/motor"));
+        super(new ResourceLocation("gregicality","block/casing/motor"));
         setTranslationKey("ga_motor_casing");
         setDefaultState(getState(CasingType.MOTOR_LV));
     }

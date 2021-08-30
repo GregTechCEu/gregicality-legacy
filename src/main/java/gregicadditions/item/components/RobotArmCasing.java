@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 public class RobotArmCasing extends ReTexturedCasing<RobotArmCasing.CasingType> {
 
     public RobotArmCasing() {
-        super(new ResourceLocation("gtadditions","block/casing/robot_arm"));
+        super(new ResourceLocation("gregicality","block/casing/robot_arm"));
         setTranslationKey("ga_robot_arm_casing");
         setDefaultState(getState(CasingType.ROBOT_ARM_LV));
     }

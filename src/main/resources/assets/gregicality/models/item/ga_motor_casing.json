@@ -1,5 +1,5 @@
 {
-  "parent": "gtadditions:block/casing/motor",
+  "parent": "gregicality:block/casing/motor",
   "display": {
     "thirdperson": {
       "rotation": [ 10, -45, 170 ],

@@ -10,62 +10,62 @@
     "variant": {
       "casing_thorium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/thorium"
+          "all": "gregicality:blocks/casings/thorium"
         }
       },
       "casing_protactinium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/protactinium"
+          "all": "gregicality:blocks/casings/protactinium"
         }
       },
       "casing_uranium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/uranium"
+          "all": "gregicality:blocks/casings/uranium"
         }
       },
       "casing_neptunium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/neptunium"
+          "all": "gregicality:blocks/casings/neptunium"
         }
       },
       "casing_plutonium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/plutonium"
+          "all": "gregicality:blocks/casings/plutonium"
         }
       },
       "casing_americium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/americium"
+          "all": "gregicality:blocks/casings/americium"
         }
       },
       "casing_curium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/curium"
+          "all": "gregicality:blocks/casings/curium"
         }
       },
       "casing_berkelium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/berkelium"
+          "all": "gregicality:blocks/casings/berkelium"
         }
       },
       "casing_californium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/californium"
+          "all": "gregicality:blocks/casings/californium"
         }
       },
       "casing_einsteinium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/einsteinium"
+          "all": "gregicality:blocks/casings/einsteinium"
         }
       },
       "casing_fermium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/fermium"
+          "all": "gregicality:blocks/casings/fermium"
         }
       },
       "casing_mendelevium": {
         "textures": {
-          "all": "gtadditions:blocks/casings/mendelevium"
+          "all": "gregicality:blocks/casings/mendelevium"
         }
       }
     }

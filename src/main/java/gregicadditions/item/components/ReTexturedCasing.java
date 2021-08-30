@@ -34,8 +34,8 @@ import java.util.List;
 
 public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> extends VariantBlock<T> implements IReTexturedModel {
 
-    private final static ResourceLocation FRAME_MODEL = new ResourceLocation("gtadditions","block/casing/frame");
-    private final static ResourceLocation GLASS_MODEL = new ResourceLocation("gtadditions","block/casing/glass");
+    private final static ResourceLocation FRAME_MODEL = new ResourceLocation("gregicality","block/casing/frame");
+    private final static ResourceLocation GLASS_MODEL = new ResourceLocation("gregicality","block/casing/glass");
     private final ResourceLocation CORE_MODEL;
     private ControllerProperty CONTROLLER;
 
@@ -94,7 +94,7 @@ public abstract class ReTexturedCasing<T extends Enum<T> & IStringSerializable> 
             String[] tierS = ((ModelResourceLocation) variant).getVariant().split("_");
             if (tierS.length > 0) {
                 return model.retexture(new ImmutableMap.Builder<String,String>()
-                        .put("0", "gtadditions:blocks/casing/"+tierS[tierS.length-1])
+                        .put("0", "gregicality:blocks/casing/"+tierS[tierS.length-1])
                         .build());
             }
         }
