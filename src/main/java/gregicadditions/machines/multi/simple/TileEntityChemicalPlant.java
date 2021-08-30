@@ -21,6 +21,8 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.multi.electric.MetaTileEntityElectricBlastFurnace;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -69,7 +71,7 @@ public class TileEntityChemicalPlant extends MultiRecipeMapMultiblockController 
 				.where('L', statePredicate(getCasingState()))
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
 				.where('C', MetaTileEntityElectricBlastFurnace.heatingCoilPredicate())
-				.where('P', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
+				.where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE)))
 				.where('#', (tile) -> true)
 				.where('M', motorPredicate())
 				.build();

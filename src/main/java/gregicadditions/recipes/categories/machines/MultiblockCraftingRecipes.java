@@ -25,6 +25,7 @@ import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.blocks.BlockBoilerCasing.BoilerCasingType.*;
 import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.*;
 import static gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.ASSEMBLER_CASING;
 import static gregtech.common.items.MetaItems.*;
@@ -451,7 +452,7 @@ public class MultiblockCraftingRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1200).EUt(7680)
                 .fluidInputs(SolderingAlloy.getFluid(L * 16))
                 .fluidInputs(Polytetrafluoroethylene.getFluid(L * 16))
-                .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(PTFE_PIPE, 4))
+                .inputs(MetaBlocks.BOILER_CASING.getItemVariant(POLYTETRAFLUOROETHYLENE_PIPE, 4))
                 .inputs(GAMetaBlocks.MUTLIBLOCK_CASING.getItemVariant(CHEMICALLY_INERT, 4))
                 .input(pipeLargeFluid, Polytetrafluoroethylene, 8)
                 .input(foil, Polybenzimidazole, 32)

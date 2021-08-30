@@ -9,6 +9,8 @@ import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeBrewery;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -47,7 +49,7 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
                 .where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
                 .where('P', GAMetaBlocks.PUMP_CASING.getDefaultState())
                 .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))
-                .where('p', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE));
+                .where('p', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE));
         shapeInfo.add(builder.build());
         return Lists.newArrayList(shapeInfo);
     }

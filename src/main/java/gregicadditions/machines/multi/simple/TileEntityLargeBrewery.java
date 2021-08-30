@@ -21,6 +21,8 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -63,7 +65,7 @@ public class TileEntityLargeBrewery extends MultiRecipeMapMultiblockController {
                 .where('S', selfPredicate())
                 .where('L', statePredicate(casingState))
                 .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-                .where('p', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
+                .where('p', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE)))
                 .where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS)))
                 .where('A', isAirPredicate())
                 .where('#', (tile) -> true)

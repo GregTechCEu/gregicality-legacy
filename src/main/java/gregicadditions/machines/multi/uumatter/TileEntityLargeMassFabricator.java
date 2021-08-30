@@ -60,7 +60,7 @@ public class TileEntityLargeMassFabricator extends LargeSimpleRecipeMapMultibloc
                 .where('L', statePredicate(casingState))
                 .where('X', statePredicate(casingState).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('C', statePredicate(casingState))
-                .where('P', statePredicate(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE)))
+                .where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE)))
                 .where('p', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
                 .where('G', statePredicate(MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING)))
                 .where('c', statePredicate(MetaBlocks.FUSION_COIL.getState(BlockFusionCoil.CoilType.SUPERCONDUCTOR)))

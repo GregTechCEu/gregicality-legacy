@@ -51,7 +51,7 @@ public class LargeMassFabricatorInfo extends MultiblockInfoPage {
                 .where('s', GAMetaBlocks.SENSOR_CASING.getDefaultState())
                 .where('E', GAMetaBlocks.EMITTER_CASING.getDefaultState())
                 .where('G', MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
-                .where('P', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.PTFE_PIPE))
+                .where('P', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE))
                 .where('p', MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE));
         shapeInfo.add(builder.build());
         return Lists.newArrayList(shapeInfo);
