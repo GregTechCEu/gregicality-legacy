@@ -138,16 +138,16 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
         super.addDisplayText(textList);
         if (isStructureFormed()) {
             textList.add(new TextComponentTranslation("gregtech.multiblock.blast_furnace.max_temperature", blastFurnaceTemperature));
-            textList.add(new TextComponentTranslation("gtadditions.multiblock.blast_furnace.additional_temperature", bonusTemperature));
+            textList.add(new TextComponentTranslation("gregicality.multiblock.blast_furnace.additional_temperature", bonusTemperature));
         }
     }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
-        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.mega_blast_logic.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.mega_blast_logic.tooltip.2"));
+        tooltip.add(I18n.format("gregicality.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
+        tooltip.add(I18n.format("gregicality.multiblock.mega_logic.tooltip.1"));
+        tooltip.add(I18n.format("gregicality.multiblock.mega_blast_logic.tooltip.1"));
+        tooltip.add(I18n.format("gregicality.multiblock.mega_blast_logic.tooltip.2"));
     }
 
     @Override

@@ -105,7 +105,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
 
     @Override
     public String getUid() {
-        return "gtadditions:multiblock_info2";
+        return "gregicality:multiblock_info2";
     }
 
     @Override
@@ -115,7 +115,7 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
 
     @Override
     public String getModName() {
-        return "gtadditions";
+        return "gregicality";
     }
 
     @Override

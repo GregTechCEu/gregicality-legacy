@@ -86,10 +86,10 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
-        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
-        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.1"));
-        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.2"));
-        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.3", (double) ((MegaMultiblockRecipeLogic) this.recipeMapWorkable).getDurationPercentage()/100));
+        tooltip.add(I18n.format("gregicality.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
+        tooltip.add(I18n.format("gregicality.multiblock.mega_logic.tooltip.1"));
+        tooltip.add(I18n.format("gregicality.multiblock.mega_logic.tooltip.2"));
+        tooltip.add(I18n.format("gregicality.multiblock.mega_logic.tooltip.3", (double) ((MegaMultiblockRecipeLogic) this.recipeMapWorkable).getDurationPercentage()/100));
     }
 
     @Override
@@ -113,7 +113,7 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
 
         @Override
         public long getMaxVoltage() {
-            MetaTileEntityMegaBlastFurnace controller = (MetaTileEntityMegaBlastFurnace) this.metaTileEntity;
+            MegaMultiblockRecipeMapController controller = (MegaMultiblockRecipeMapController) this.metaTileEntity;
             return controller.maxVoltage;
         }
 
