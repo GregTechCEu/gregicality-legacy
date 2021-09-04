@@ -1,7 +1,8 @@
 package gregicadditions.jei;
 
+import gregicadditions.GAConfig;
+import gregicadditions.GAEnums;
 import gregicadditions.Gregicality;
-import gregicadditions.capabilities.impl.GAAbstractRecipeLogic;
 import gregicadditions.machines.multi.impl.HotCoolantRecipeLogic;
 import gregicadditions.machines.multi.simple.MultiRecipeMapMultiblockController;
 import gregicadditions.recipes.impl.nuclear.GTHotCoolantRecipeWrapper;
@@ -19,6 +20,11 @@ import gregtech.api.capability.IControllable;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMap;
+import gregtech.api.unification.OreDictUnifier;
+import gregtech.api.unification.material.type.DustMaterial;
+import gregtech.api.unification.material.type.Material;
+import gregtech.api.unification.ore.OrePrefix;
+
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -27,6 +33,7 @@ import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.ingredients.IIngredientRegistry;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.*;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.List;
@@ -118,6 +125,83 @@ public class JEIGAPlugin implements IModPlugin {
                     infoPage.getDescription());
         });
 
+        //Hide Rich, Poor, and Pure ores in JEI
+        if(GAConfig.Misc.oreVariants && GAConfig.Misc.hideOreVariants) {
+            IIngredientBlacklist blacklist = registry.getJeiHelpers().getIngredientBlacklist();
+
+            for(Material mat : Material.MATERIAL_REGISTRY) {
+                if(mat instanceof DustMaterial && mat.hasFlag(DustMaterial.MatFlags.GENERATE_ORE)) {
+
+                    //Hide the ore variants based on defined orePrefixes. JEI will error on an empty itemStack
+                    for(OrePrefix prefix : GAEnums.PURE_ORES) {
+                        ItemStack ore = OreDictUnifier.get(prefix, mat);
+                        if(!ore.isEmpty()) {
+                            blacklist.addIngredientToBlacklist(ore);
+                        }
+                    }
+                    for(OrePrefix prefix : GAEnums.RICH_ORES) {
+                        ItemStack ore = OreDictUnifier.get(prefix, mat);
+                        if(!ore.isEmpty()) {
+                            blacklist.addIngredientToBlacklist(ore);
+                        }
+                    }
+                    for(OrePrefix prefix : GAEnums.POOR_ORES) {
+                        ItemStack ore = OreDictUnifier.get(prefix, mat);
+                        if(!ore.isEmpty()) {
+                            blacklist.addIngredientToBlacklist(ore);
+                        }
+                    }
+                    //This config option will generate ores for all stone types, even those that do not get prefixes in GAEnums
+                    //These ores do not have unique prefixes in GTCE, so we cannot look up by OrePrefix
+                    if(GAConfig.Misc.oreVariantsStoneTypes) {
+                        String name = mat.toString();
+
+                        String[] splitName = name.split("_");
+                        StringBuilder wholeName = new StringBuilder();
+                        for(int i = 0; i < splitName.length; i++) {
+                            splitName[i] = splitName[i].substring(0, 1).toUpperCase() + splitName[i].substring(1);
+                            wholeName.append(splitName[i]);
+                        }
+
+
+                        List<ItemStack> extraPureOres = OreDictUnifier.getAllWithOreDictionaryName("orePure" + wholeName);
+                        List<ItemStack> extraPureSandOres = OreDictUnifier.getAllWithOreDictionaryName("orePureSand" + wholeName);
+
+                        List<ItemStack> extraPoorOres = OreDictUnifier.getAllWithOreDictionaryName("orePoor" + wholeName);
+                        List<ItemStack> extraPoorSandOres = OreDictUnifier.getAllWithOreDictionaryName("orePoorSand" + wholeName);
+
+                        List<ItemStack> extraRichOres = OreDictUnifier.getAllWithOreDictionaryName("oreRich" + wholeName);
+                        List<ItemStack> extraRichSandOres = OreDictUnifier.getAllWithOreDictionaryName("oreRichSand" + wholeName);
+
+
+                        if(!extraPureOres.isEmpty()) {
+                            extraPureOres.forEach(blacklist::addIngredientToBlacklist);
+                        }
+
+                        if(!extraPureSandOres.isEmpty()) {
+                            extraPureSandOres.forEach(blacklist::addIngredientToBlacklist);
+                        }
+
+                        if(!extraPoorOres.isEmpty()) {
+                            extraPoorOres.forEach(blacklist::addIngredientToBlacklist);
+                        }
+
+                        if(!extraPoorSandOres.isEmpty()) {
+                            extraPoorSandOres.forEach(blacklist::addIngredientToBlacklist);
+                        }
+
+                        if(!extraRichOres.isEmpty()) {
+                            extraRichOres.forEach(blacklist::addIngredientToBlacklist);
+                        }
+
+                        if(!extraRichSandOres.isEmpty()) {
+                            extraRichSandOres.forEach(blacklist::addIngredientToBlacklist);
+                        }
+
+                    }
+                }
+            }
+        }
 
     }
 
