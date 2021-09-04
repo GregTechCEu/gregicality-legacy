@@ -10,6 +10,7 @@ import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMaintenanceHa
 import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMufflerHatch;
 import gregicadditions.machines.multi.simple.LargeSimpleRecipeMapMultiblockController;
 import gregtech.api.capability.IEnergyContainer;
+import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.gui.Widget;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
@@ -184,7 +185,8 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
                 maintenance.storeMaintenanceData(maintenance_problems, timeActive);
         }
         super.invalidateStructure();
-        ((GAMultiblockRecipeLogic) this.recipeMapWorkable).invalidate();
+        if (this.recipeMapWorkable instanceof GAMultiblockRecipeLogic)
+            ((GAMultiblockRecipeLogic) this.recipeMapWorkable).invalidate();
     }
 
     @Override
