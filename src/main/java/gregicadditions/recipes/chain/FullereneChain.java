@@ -369,7 +369,7 @@ public class FullereneChain {
                 .buildAndRegister();
 
         //C3H3N + HI + 2 H2O + C8H8 + LiAlH4 -> C11H14O2 + LiI + AlH3 + NH3 (SnMe3Cl cat.)
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(AcryloNitrile.getFluid(1000))
                 .fluidInputs(HydroiodicAcid.getFluid(1000))
                 .fluidInputs(Water.getFluid(2000))
@@ -451,7 +451,7 @@ public class FullereneChain {
                 .buildAndRegister();
 
          // C71H12O2 + C8H8 + CH2Cl2 -> C80H20O2 + 2 HCl
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .notConsumable(Dimethylaminopyridine.getItemStack())
                 .notConsumable(Diisopropylcarbodiimide.getFluid(10))
                 .fluidInputs(PCBA.getFluid(1000))
