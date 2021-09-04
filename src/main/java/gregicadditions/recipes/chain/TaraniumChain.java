@@ -37,11 +37,12 @@ public class TaraniumChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(StoneResidueDust.getItemStack(32))
+                .inputs(StoneResidueDust.getItemStack(24))
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .outputs(UncommonResidues.getItemStack())
-                .fluidOutputs(SodiumHydroxideSolution.getFluid(900))
-                .fluidOutputs(RedMud.getFluid(100))
+                .output(dustSmall, Magnetite)
+                .fluidOutputs(SodiumHydroxideSolution.getFluid(925))
+                .fluidOutputs(RedMud.getFluid(75))
                 .duration(40)
                 .EUt(100)
                 .buildAndRegister();
@@ -64,11 +65,11 @@ public class TaraniumChain {
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(DistilledWater.getFluid(20000))
-                .inputs(PartiallyOxidizedResidues.getItemStack(20))
-                .fluidOutputs(OxidizedResidualSolution.getFluid(20000))
+                .fluidInputs(DistilledWater.getFluid(10000))
+                .inputs(PartiallyOxidizedResidues.getItemStack(10))
+                .fluidOutputs(OxidizedResidualSolution.getFluid(10000))
                 .output(dustTiny, InertResidues)
-                .duration(320)
+                .duration(200)
                 .EUt(100)
                 .buildAndRegister();
 
@@ -131,72 +132,72 @@ public class TaraniumChain {
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .inputs(FerromagneticResidues.getItemStack(30))
+                .inputs(FerromagneticResidues.getItemStack(6))
                 .output(dustSmall, Iron)
                 .output(dustSmall, Nickel)
                 .output(dustSmall, Cobalt)
-                .duration(200)
+                .duration(100)
                 .EUt(3000)
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .inputs(DiamagneticResidues.getItemStack(30))
+                .inputs(DiamagneticResidues.getItemStack(6))
                 .output(dustSmall, Calcium)
                 .output(dustSmall, Zinc)
                 .output(dustSmall, Copper)
                 .output(dustSmall, Gallium)
                 .output(dustSmall, Beryllium)
                 .output(dustSmall, Tin)
-                .duration(200)
+                .duration(100)
                 .EUt(3000)
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .inputs(ParamagneticResidues.getItemStack(30))
+                .inputs(ParamagneticResidues.getItemStack(6))
                 .output(dustSmall, Sodium)
                 .output(dustSmall, Potassium)
                 .output(dustSmall, Magnesium)
                 .output(dustSmall, Titanium)
                 .output(dustSmall, Vanadium)
                 .output(dustSmall, Manganese)
-                .duration(200)
+                .duration(100)
                 .EUt(3000)
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .inputs(HeavyParamagneticResidues.getItemStack(30))
+                .inputs(HeavyParamagneticResidues.getItemStack(6))
                 .output(dustSmall, ThoriumRadioactive.getMaterial())
                 .output(dustSmall, UraniumRadioactive.getMaterial())
                 .output(dustSmall, Tungsten)
                 .output(dustSmall, Hafnium)
                 .output(dustSmall, Tantalum)
                 .output(dustSmall, Thallium)
-                .duration(200)
+                .duration(120)
                 .EUt(3000)
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .inputs(HeavyDiamagneticResidues.getItemStack(30))
+                .inputs(HeavyDiamagneticResidues.getItemStack(6))
                 .output(dustSmall, Lead)
                 .output(dustSmall, Cadmium)
                 .output(dustSmall, Indium)
                 .output(dustSmall, Gold)
                 .output(dustSmall, Bismuth)
                 .fluidOutputs(Mercury.getFluid(36))
-                .duration(200)
+                .duration(120)
                 .EUt(3000)
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
-                .inputs(HeavyFerromagneticResidues.getItemStack(30))
+                .inputs(HeavyFerromagneticResidues.getItemStack(6))
                 .output(dustSmall, Dysprosium)
-                .duration(200)
+                .duration(120)
                 .EUt(3000)
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(DistilledWater.getFluid(2000))
-                .inputs(ExoticHeavyResidues.getItemStack(64))
+                .inputs(ExoticHeavyResidues.getItemStack(16))
                 .input(dust, SodiumHydroxide, 3)
                 .inputs(PROTONATED_FULLERENE_SIEVING_MATRIX.getStackForm())
                 .fluidOutputs(SodiumHydroxideSolution.getFluid(1000))
@@ -303,7 +304,7 @@ public class TaraniumChain {
                 .fluidInputs(TaraniumDepletedHeliumPlasma.getFluid(10000))
                 .notConsumable(SEPARATION_ELECTROMAGNET.getStackForm())
                 .fluidOutputs(Helium3.getPlasma(10000))
-                .outputs(CleanInertResidues.getItemStack())
+                .outputs(CleanInertResidues.getItemStack(2))
                 .duration(160)
                 .EUt(2000)
                 .buildAndRegister();
@@ -316,27 +317,26 @@ public class TaraniumChain {
                 .EUt(3000)
                 .buildAndRegister();
 
-
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(TaraniumRichHelium4.getFluid(1000))
-                .output(dustTiny, Taranium)
-                .fluidOutputs(TaraniumPoorLiquidHelium.getFluid(1000))
-                .duration(80)
+                .fluidInputs(TaraniumRichHelium4.getFluid(400))
+                .output(dust, Taranium)
+                .fluidOutputs(TaraniumPoorLiquidHelium.getFluid(400))
+                .duration(20)
                 .EUt(8000)
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(TaraniumPoorLiquidHelium.getFluid(1000))
-                .fluidInputs(LiquidHelium3.getFluid(100))
-                .fluidOutputs(TaraniumPoorLiquidHeliumMix.getFluid(1100))
+                .fluidInputs(LiquidHelium3.getFluid(200))
+                .fluidOutputs(TaraniumPoorLiquidHeliumMix.getFluid(1200))
                 .duration(80)
                 .EUt(8000)
                 .buildAndRegister();
 
         CENTRIFUGE_RECIPES.recipeBuilder()
-                .fluidInputs(TaraniumPoorLiquidHeliumMix.getFluid(1100))
+                .fluidInputs(TaraniumPoorLiquidHeliumMix.getFluid(1200))
                 .fluidOutputs(LiquidHelium.getFluid(1000))
-                .fluidOutputs(DustyLiquidHelium3.getFluid(100))
+                .fluidOutputs(DustyLiquidHelium3.getFluid(200))
                 .duration(80)
                 .EUt(8000)
                 .buildAndRegister();
