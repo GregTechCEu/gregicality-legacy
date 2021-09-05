@@ -6,7 +6,6 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.energy.GAMetaTileEntityDiode;
 import gregicadditions.machines.energy.GAMetaTileEntityTransformer;
 import gregicadditions.machines.energy.TileEntityLargeTransformer;
@@ -47,15 +46,11 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.SimpleGeneratorMetaTileEntity;
 import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.unification.material.Materials;
-import gregtech.api.unification.material.type.Material;
-import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.common.metatileentities.electric.MetaTileEntityAirCollector;
 import gregtech.common.metatileentities.electric.MetaTileEntityPump;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -64,10 +59,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-
-import static gregicadditions.client.ClientHandler.*;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
-import static gregtech.api.unification.material.Materials.*;
 
 public class GATileEntities {
 
@@ -127,21 +118,18 @@ public class GATileEntities {
     public static MetaTileEntityMonitorScreen MONITOR_SCREEN;
     public static MetaTileEntityCentralMonitor CENTRAL_MONITOR;
     public static TileEntityAssemblyLine ASSEMBLY_LINE;
-    public static TileEntityProcessingArray PROCESSING_ARRAY;
     public static TileEntityLargeThermalCentrifuge LARGE_THERMAL_CENTRIFUGE;
     public static TileEntityLargeElectrolyzer LARGE_ELECTROLYZER;
     public static TileEntityLargeCentrifuge LARGE_CENTRIFUGE;
     public static TileEntityLargeCutting LARGE_CUTTING;
     public static TileEntityLargeMacerator LARGE_MACERATOR;
     public static TileEntityLargeMixer LARGE_MIXER;
-    public static TileEntityLargeMultiUse LARGE_MULTI_USE;
     public static TileEntityLargeBenderAndForming LARGE_BENDER_AND_FORMING;
     public static TileEntityLargeSifter LARGE_SIFTER;
     public static TileEntityLargeWashingPlant LARGE_WASHING_PLANT;
     public static TileEntityLargeWiremill LARGE_WIREMILL;
     public static TileEntityLargeChemicalReactor LARGE_CHEMICAL_REACTOR;
     public static TileEntityLargeExtruder LARGE_EXTRUDER;
-    public static MetaTileEntityVolcanus VOLCANUS;
     public static TileEntityLargeAssembler LARGE_ASSEMBLER;
     public static TileEntityLargeCircuitAssemblyLine LARGE_CIRCUIT_ASSEMBLY_LINE;
     public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3];
@@ -149,8 +137,6 @@ public class GATileEntities {
     public static TileEntityLargeTransformer LARGE_TRANSFORMER;
     public static MetaTileEntityIndustrialPrimitiveBlastFurnace INDUSTRIAL_PRIMITIVE_BLAST_FURNACE;
     public static MetaTileEntityAdvancedDistillationTower ADVANCED_DISTILLATION_TOWER;
-    public static MetaTileEntityCryogenicFreezer CRYOGENIC_FREEZER;
-    public static MetaTileEntityChemicalPlant CHEMICAL_PLANT;
     public static MetaTileEntityLargeRocketEngine LARGE_ROCKET_ENGINE;
     public static TileEntityAlloyBlastFurnace ALLOY_BLAST_FURNACE;
     public static TileEntityLargeForgeHammer LARGE_FORGE_HAMMER;
@@ -163,7 +149,6 @@ public class GATileEntities {
     public static GAMetaTileEntityHull[] GA_HULLS = new GAMetaTileEntityHull[5];
     public static MetaTileEntityStellarForge STELLAR_FORGE;
     public static MetaTileEntityQubitComputer QUBIT_COMPUTER;
-    public static MetaTileEntityDrillingRig DRILLING_RIG;
     public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
     public static MetaTileEntityFluidDrillingPlant[] FLUID_DRILLING_PLANT = new MetaTileEntityFluidDrillingPlant[3];
 
@@ -257,7 +242,7 @@ public class GATileEntities {
     public static MetaTileEntityMufflerHatch[] MUFFLER_HATCH = new MetaTileEntityMufflerHatch[8];
 
     public static TileEntitySteamMiner STEAM_MINER;
-    public static TileEntityAdvancedChemicalReactor ADVANCED_CHEMICAL_REACTOR;
+    public static TileEntityChemicalPlant CHEMICAL_PLANT;
     public static TileEntityLargeBrewery LARGE_BREWERY;
     public static TileEntityLargeElectromagnet LARGE_ELECTROMAGNET;
     public static TileEntityLargeExtractor LARGE_EXTRACTOR;
@@ -830,8 +815,6 @@ public class GATileEntities {
         FUSION_REACTOR[0] = GregTechAPI.registerMetaTileEntity(2504, new TileEntityFusionReactor(location("fusion_reactor.luv"), 6));
         FUSION_REACTOR[1] = GregTechAPI.registerMetaTileEntity(2505, new TileEntityFusionReactor(location("fusion_reactor.zpm"), 7));
         FUSION_REACTOR[2] = GregTechAPI.registerMetaTileEntity(2506, new TileEntityFusionReactor(location("fusion_reactor.uv"), 8));
-
-        PROCESSING_ARRAY = GregTechAPI.registerMetaTileEntity(2507, new TileEntityProcessingArray(location("processing_array")));
         LARGE_THERMAL_CENTRIFUGE = GregTechAPI.registerMetaTileEntity(2508, new TileEntityLargeThermalCentrifuge(location("large_thermal_centrifuge")));
         LARGE_ELECTROLYZER = GregTechAPI.registerMetaTileEntity(2509, new TileEntityLargeElectrolyzer(location("large_electrolyzer")));
         //register 2 times for each recipe seems not working
@@ -840,14 +823,12 @@ public class GATileEntities {
         LARGE_CUTTING = GregTechAPI.registerMetaTileEntity(2513, new TileEntityLargeCutting(location("large_cutting")));
         LARGE_MACERATOR = GregTechAPI.registerMetaTileEntity(2514, new TileEntityLargeMacerator(location("large_macerator")));
         LARGE_MIXER = GregTechAPI.registerMetaTileEntity(2515, new TileEntityLargeMixer(location("large_mixer")));
-        LARGE_MULTI_USE = GregTechAPI.registerMetaTileEntity(2516, new TileEntityLargeMultiUse(location("large_multi_use"), RecipeMaps.COMPRESSOR_RECIPES));
         LARGE_SIFTER = GregTechAPI.registerMetaTileEntity(2526, new TileEntityLargeSifter(location("large_sifter")));
         LARGE_WASHING_PLANT = GregTechAPI.registerMetaTileEntity(2527, new TileEntityLargeWashingPlant(location("large_washing_plant"), RecipeMaps.ORE_WASHER_RECIPES));
         LARGE_WIREMILL = GregTechAPI.registerMetaTileEntity(2529, new TileEntityLargeWiremill(location("large_wiremill")));
         LARGE_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(2530, new TileEntityLargeChemicalReactor(location("large_chemical_reactor")));
         LARGE_EXTRUDER = GregTechAPI.registerMetaTileEntity(2531, new TileEntityLargeExtruder(location("large_extruder")));
         ELECTRIC_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2534, new MetaTileEntityElectricBlastFurnace(location("electric_blast_furnace"))); // Register before Volcanus for JEI tab icon
-        VOLCANUS = GregTechAPI.registerMetaTileEntity(2532, new MetaTileEntityVolcanus(location("volcanus")));
         LARGE_ASSEMBLER = GregTechAPI.registerMetaTileEntity(2533, new TileEntityLargeAssembler(location("large_assembler")));
 
         VACUUM_FREEZER = GregTechAPI.registerMetaTileEntity(2535, new MetaTileEntityVacuumFreezer(location("vacuum_freezer")));
@@ -876,8 +857,6 @@ public class GATileEntities {
         INDUSTRIAL_PRIMITIVE_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2553, new MetaTileEntityIndustrialPrimitiveBlastFurnace(location("industrial_primitive_blast_furnace")));
         ADVANCED_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(2554, new MetaTileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLERY_RECIPES));
         GregTechAPI.registerMetaTileEntity(2555, new MetaTileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLATION_RECIPES));
-        CRYOGENIC_FREEZER = GregTechAPI.registerMetaTileEntity(2556, new MetaTileEntityCryogenicFreezer(location("cryogenic_freezer")));
-        CHEMICAL_PLANT = GregTechAPI.registerMetaTileEntity(2557, new MetaTileEntityChemicalPlant(location("chemical_plant")));
         LARGE_ROCKET_ENGINE = GregTechAPI.registerMetaTileEntity(2558, new MetaTileEntityLargeRocketEngine(location("large_rocket_engine")));
         ALLOY_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(2559, new TileEntityAlloyBlastFurnace(location("alloy_blast_furnace")));
         LARGE_FORGE_HAMMER = GregTechAPI.registerMetaTileEntity(2560, new TileEntityLargeForgeHammer(location("large_forge_hammer")));
@@ -1082,7 +1061,6 @@ public class GATileEntities {
         QUBIT_COMPUTER = GregTechAPI.registerMetaTileEntity(4022, new MetaTileEntityQubitComputer(location("qubit_computer")));
 
 
-        DRILLING_RIG = GregTechAPI.registerMetaTileEntity(4023, new MetaTileEntityDrillingRig(location("drilling_rig")));
         SOLAR_FLUID_SAMPLER = GregTechAPI.registerMetaTileEntity(4024, new MetaTileEntitySolarSampler(location("solar_fluid_sampler")));
 
         ENERGY_INPUT[0] = GregTechAPI.registerMetaTileEntity(4025, new GAMetaTileEntityEnergyHatch(location("energy_hatch.input.uhv"), GAValues.UHV, 2, false));
@@ -1184,7 +1162,7 @@ public class GATileEntities {
         for (int i = 1; i <= MUFFLER_HATCH.length; i++)
             MUFFLER_HATCH[i - 1] = GregTechAPI.registerMetaTileEntity(id + i, new MetaTileEntityMufflerHatch(location("muffler_hatch." + GAValues.VN[i].toLowerCase()), i));
 
-        ADVANCED_CHEMICAL_REACTOR = GregTechAPI.registerMetaTileEntity(4224, new TileEntityAdvancedChemicalReactor(location("advanced_chemical_reactor")));
+        CHEMICAL_PLANT = GregTechAPI.registerMetaTileEntity(4224, new TileEntityChemicalPlant(location("chemical_plant")));
         LARGE_BREWERY = GregTechAPI.registerMetaTileEntity(4225, new TileEntityLargeBrewery(location("large_brewery"), RecipeMaps.BREWING_RECIPES));
         LARGE_ELECTROMAGNET = GregTechAPI.registerMetaTileEntity(4226, new TileEntityLargeElectromagnet(location("large_electromagnet"), RecipeMaps.POLARIZER_RECIPES));
         LARGE_EXTRACTOR = GregTechAPI.registerMetaTileEntity(4227, new TileEntityLargeExtractor(location("large_extractor"), RecipeMaps.FLUID_EXTRACTION_RECIPES));

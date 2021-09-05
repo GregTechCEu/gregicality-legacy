@@ -39,7 +39,6 @@ import net.minecraft.util.ResourceLocation;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregicadditions.machines.GATileEntities.DRILLING_RIG;
 import static gregicadditions.machines.GATileEntities.FLUID_DRILLING_PLANT;
 
 @JEIPlugin

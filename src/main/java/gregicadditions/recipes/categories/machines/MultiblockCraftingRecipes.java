@@ -478,7 +478,7 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, Elite, 4)
                 .input(stickLong, Cupronickel, 32)
                 .inputs(ELECTRIC_MOTOR_IV.getStackForm(4))
-                .outputs(ADVANCED_CHEMICAL_REACTOR.getStackForm())
+                .outputs(CHEMICAL_PLANT.getStackForm())
                 .buildAndRegister();
 
         // Battery Tower
