@@ -2778,6 +2778,7 @@ material.arsenopyrite=Arsenopyrite
 material.gallite=Gallite
 material.bowieite=Bowieite
 material.celestine=Celestine
+material.triniite=Triniite
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
