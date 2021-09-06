@@ -78,7 +78,7 @@ public class InsulationWireAssemblyChain {
                 .outputs(DitertbutylDicarbonate.getItemStack(33))
                 .buildAndRegister();
 
-        // C4H8 + C10H18O5 + 4NH3 + 3C -> 2C4H10O + C6H18N4 + 3CO
+        // C4H8 + C10H18O5 + 4NH3 + 3C -> 2 C4H10O + C6H18N4 + 3CO
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(370).EUt(480)
                 .inputs(DitertbutylDicarbonate.getItemStack(33))
                 .input(dust, Carbon, 3)
@@ -104,8 +104,8 @@ public class InsulationWireAssemblyChain {
                 .input(dust, Potassium,2)
                 .inputs(SodiumAzide.getItemStack(8))
                 .inputs(DitertbutylDicarbonate.getItemStack(33))
-                .outputs(OreDictUnifier.get(dust, Sodium, 2))
-                .outputs(OreDictUnifier.get(dust, Potash, 6))
+                .output(dust, Sodium, 2)
+                .output(dust, Potash, 6)
                 .fluidOutputs(TertButylAzidoformate.getFluid(2000))
                 .buildAndRegister();
 

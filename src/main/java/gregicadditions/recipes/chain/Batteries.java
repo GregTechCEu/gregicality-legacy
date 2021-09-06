@@ -26,9 +26,9 @@ public class Batteries {
                 .outputs(NickelOxideHydroxide.getItemStack(16))
                 .buildAndRegister();
 
-        // 2Co + Li2CO3(H2O) -> 2LiCoO + CO + H2O (H2O lost to dehydrator)
+        // 2CoO + Li2CO3(H2O) -> 2 LiCoO2 + CO + H2O (H2O lost to dehydrator)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(4000)
-                .input(dust, Cobalt, 2)
+                .input(dust, CobaltOxide, 4)
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
                 .notConsumable(Oxygen.getFluid(0))
                 .outputs(LithiumCobaltOxide.getItemStack(6))

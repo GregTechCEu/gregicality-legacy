@@ -607,16 +607,16 @@ public class SuperconductorsSMDChain {
                 .outputs(SodiumBicarbonate.getItemStack(6))
                 .buildAndRegister();
 
-        // 6C3H8O3 + 5HCl + 3HClO + 8N -> 3C6H8O7 + 8NH4Cl
+        // C3H8O3 + 2HCl + 3HCN + HClO + 3H2O -> C6H8O7 + 3NH4Cl
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(7680)
-                .fluidInputs(Glycerol.getFluid(6000))
-                .fluidInputs(HydrochloricAcid.getFluid(5000))
-                .fluidInputs(HypochlorousAcid.getFluid(3000))
-                .fluidInputs(Nitrogen.getFluid(8000))
+                .fluidInputs(Glycerol.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .fluidInputs(HypochlorousAcid.getFluid(1000))
+                .fluidInputs(HydrogenCyanide.getFluid(3000))
                 .notConsumable(dust, PotassiumDichromate)
                 .notConsumable(new IntCircuitIngredient(0))
-                .fluidOutputs(CitricAcid.getFluid(3000))
-                .fluidOutputs(AmmoniumChloride.getFluid(8000))
+                .fluidOutputs(CitricAcid.getFluid(1000))
+                .fluidOutputs(AmmoniumChloride.getFluid(3000))
                 .buildAndRegister();
 
         // 3Cu(NO3)2 + 2Ba(NO3)2 + Y(NO3)3 + 2NH3 + C6H8O7 -> YBa2Cu3O6 + 15NO2 + 6CO + 4H2O + 6H
@@ -735,14 +735,13 @@ public class SuperconductorsSMDChain {
                 .outputs(FullereneSuperconductiveDust.getItemStack(10))
                 .buildAndRegister();
 
-        // O + Si + 3CHCl3 + 7H2O -> C3H9SiCl + 8HClO
+        // Si + 3CH3Cl -> C3H9SiCl + 2 Cl
         CHEMICAL_RECIPES.recipeBuilder().duration(110).EUt(1920)
-                .fluidInputs(Oxygen.getFluid(1000))
-                .fluidInputs(Chloroform.getFluid(3000))
+                .fluidInputs(Chloromethane.getFluid(3000))
                 .fluidInputs(Water.getFluid(7000))
                 .input(dust, Silicon)
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
-                .fluidOutputs(HypochlorousAcid.getFluid(8000))
+                .fluidOutputs(Chlorine.getFluid(8000))
                 .buildAndRegister();
 
         // 2CH2O2 + 2Br + 4Na + 2H2O -> Br2C2H2O2 + 4NaOH + 2H

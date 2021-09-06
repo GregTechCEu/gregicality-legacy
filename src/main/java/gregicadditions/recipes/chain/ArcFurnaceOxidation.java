@@ -31,5 +31,11 @@ public class ArcFurnaceOxidation {
                 .fluidInputs(Oxygen.getFluid(1000))
                 .output(ingotHot, YttriumBariumCuprate, 13)
                 .buildAndRegister();
+
+        ARC_FURNACE_RECIPES.recipeBuilder().EUt(30).duration(100)
+                .input(dust, Cobalt)
+                .fluidInputs(Oxygen.getFluid(1000))
+                .output(dust, CobaltOxide, 2)
+                .buildAndRegister();
     }
 }

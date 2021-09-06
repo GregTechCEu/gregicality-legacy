@@ -328,17 +328,17 @@ public class SensorEmitter {
                 .outputs(PotassiumBromate.getItemStack(5))
                 .buildAndRegister();
 
-        // C8H4O3 + NaI + NaNO2 + [NaOH + H2O] + NH3 + HClO + 2Cl -> C7H5IO2 + N2O + CO2 + 3[H2O + NaCl]
+        // C8H4O3 + NaI + NaNO2 + [NaOH + H2O] + NH3 + HCl + 2Cl -> C7H5IO2 + N2 + CO2 + 3[H2O + NaCl]
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(122880)
                 .input(dust, PhthalicAnhydride, 15)
                 .inputs(SodiumIodide.getItemStack(2))
                 .inputs(SodiumNitrite.getItemStack(4))
                 .fluidInputs(SodiumHydroxideSolution.getFluid(1000))
                 .fluidInputs(Ammonia.getFluid(1000))
-                .fluidInputs(HypochlorousAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(1000))
                 .fluidInputs(Chlorine.getFluid(2000))
                 .fluidOutputs(IodobenzoicAcid.getFluid(1000))
-                .fluidOutputs(NitrousOxide.getFluid(1000))
+                .fluidOutputs(Nitrogen.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .fluidOutputs(SaltWater.getFluid(3000))
                 .buildAndRegister();
@@ -365,13 +365,6 @@ public class SensorEmitter {
                 .inputs(PotassiumBromide.getItemStack(2))
                 .output(dust, Potassium)
                 .fluidOutputs(Bromine.getFluid(1000))
-                .buildAndRegister();
-
-        // Co + O -> CoO
-        CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(100)
-                .input(dust, Cobalt)
-                .fluidInputs(Oxygen.getFluid(1000))
-                .output(dust, CobaltOxide, 2)
                 .buildAndRegister();
 
         // C3H10Si + C6H5Cl + 2CH2O + C7H5IO4 -> 2H + (CH3)3SiCl + C8H8O2 + C7H5IO4
@@ -451,20 +444,18 @@ public class SensorEmitter {
                 .fluidOutputs(Dimethylnaphthalene.getFluid(1000))
                 .buildAndRegister();
 
-        // C12H12 + C9H12Si(MgBr)2 + ICl + 2HClO + C4H4BrNO2 + 2H -> 2MgClBr + H2C18H11I + (CH3)3SiCl + 2H2O + HBr + C4H5NO2
+        // C12H12 + C9H12Si(MgBr)2 + ICl + 2 Cl + C4H4BrNO2 -> 2MgClBr + H2C18H11I + (CH3)3SiCl  + HBr + C4H5NO2
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(290).EUt(122880)
                 .fluidInputs(Dimethylnaphthalene.getFluid(1000))
                 .fluidInputs(AcetylatingReagent.getFluid(1000))
                 .fluidInputs(IodineMonochloride.getFluid(1000))
-                .fluidInputs(HypochlorousAcid.getFluid(2000))
-                .fluidInputs(Hydrogen.getFluid(2000))
+                .fluidInputs(Chlorine.getFluid(2000))
                 .inputs(Bromosuccinimide.getItemStack(12))
                 .notConsumable(RhReNqCatalyst.getItemStack())
                 .outputs(MgClBromide.getItemStack(6))
                 .outputs(Succinimide.getItemStack(12))
                 .fluidOutputs(Dihydroiodotetracene.getFluid(1000))
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
-                .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(HydrobromicAcid.getFluid(1000))
                 .buildAndRegister();
 
