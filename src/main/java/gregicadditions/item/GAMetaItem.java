@@ -315,7 +315,6 @@ public class GAMetaItem extends StandardMetaItem {
 
         // Misc
         PYROLYTIC_CARBON = addItem(1300, "pyrolytic_carbon");
-        COMPRESSED_COKE_CLAY = addItem(1301, "compressed.coke.clay"); // todo
         GRAPHENE_IRON_PLATE = addItem(1302,"graphene_iron_plate");
         MEMORY_FOAM_BLOCK = addItem(1303,"memory_foam_block");
 

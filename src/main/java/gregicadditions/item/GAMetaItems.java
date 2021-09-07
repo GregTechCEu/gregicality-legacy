@@ -302,7 +302,6 @@ public class GAMetaItems {
 
     // Misc
     public static MetaItem<?>.MetaValueItem PYROLYTIC_CARBON;
-    public static MetaItem<?>.MetaValueItem COMPRESSED_COKE_CLAY; // todo is this needed?
     public static MetaItem<?>.MetaValueItem GRAPHENE_IRON_PLATE;
     public static MetaItem<?>.MetaValueItem MEMORY_FOAM_BLOCK;
 

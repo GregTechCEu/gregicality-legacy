@@ -158,40 +158,6 @@ public class RecipeOverride {
 
     private static void gregtechOverride() {
 
-        // GTNH Bricks
-        ModHandler.removeFurnaceSmelting(new ItemStack(Items.CLAY_BALL, 1, W));
-        ModHandler.removeFurnaceSmelting(COMPRESSED_CLAY.getStackForm());
-        ModHandler.removeRecipeByName("gregtech:brick_to_dust");
-        ModHandler.removeRecipeByName("gregtech:brick_block_to_dust");
-        ModHandler.removeRecipeByName("gregtech:compressed_clay");
-        ModHandler.removeRecipeByName("gtadditions:block_compress_clay");
-        ModHandler.removeRecipeByName("gtadditions:block_decompress_clay");
-
-        ModHandler.addShapelessRecipe("clay_brick", COMPRESSED_CLAY.getStackForm(),
-                new ItemStack(Items.CLAY_BALL),
-                "formWood");
-
-        ModHandler.addShapedRecipe("eight_clay_brick", COMPRESSED_CLAY.getStackForm(8),
-                "BBB", "BFB", "BBB",
-                'B', new ItemStack(Items.CLAY_BALL),
-                'F', "formWood");
-
-        ModHandler.addSmeltingRecipe(COMPRESSED_CLAY.getStackForm(), new ItemStack(Items.BRICK));
-
-        ALLOY_SMELTER_RECIPES.recipeBuilder().duration(200).EUt(2)
-                .inputs(new ItemStack(Items.CLAY_BALL))
-                .notConsumable(SHAPE_MOLD_INGOT)
-                .outputs(new ItemStack(Items.BRICK))
-                .buildAndRegister();
-
-        ModHandler.addShapedRecipe("coke_brick", COMPRESSED_COKE_CLAY.getStackForm(3),
-                "BBB", "SFS", "SSS",
-                'B', new ItemStack(Items.CLAY_BALL),
-                'S', new ItemStack(Blocks.SAND),
-                'F', "formWood");
-
-        ModHandler.addSmeltingRecipe(COMPRESSED_COKE_CLAY.getStackForm(), COKE_OVEN_BRICK.getStackForm());
-
         // GTNH Lava todo GTNH lava in CEu?
         removeRecipesByInputs(CENTRIFUGE_RECIPES, Lava.getFluid(100));
         CENTRIFUGE_RECIPES.recipeBuilder().duration(80).EUt(80)
