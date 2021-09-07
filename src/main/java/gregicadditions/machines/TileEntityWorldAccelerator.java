@@ -4,17 +4,15 @@ import codechicken.lib.raytracer.CuboidRayTraceResult;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.client.ClientHandler;
 import gregtech.api.GTValues;
 import gregtech.api.capability.GregtechTileCapabilities;
 import gregtech.api.capability.IControllable;
-import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
-import gregtech.api.gui.widgets.AdvancedTextWidget;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.api.pipenet.block.material.TileEntityMaterialPipeBase;
-import gregtech.api.render.Textures;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +26,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -60,30 +57,19 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
         return new TileEntityWorldAccelerator(metaTileEntityId, getTier());
     }
 
-    void addDisplayText(List<ITextComponent> textList) {
-        textList.add(new TextComponentTranslation(tileMode ? "gregtech.machine.world_accelerator.mode.tile" : "gregtech.machine.world_accelerator.mode.entity"));
-    }
-
 
     @Override
     protected ModularUI createUI(EntityPlayer entityPlayer) {
-        ModularUI.Builder builder = ModularUI.extendedBuilder();
-        builder.image(7, 4, 162, 121, GuiTextures.DISPLAY);
-        builder.label(10, 7, getMetaFullName(), 0xFFFFFF);
-        builder.widget(new AdvancedTextWidget(10, 17, this::addDisplayText, 0xFFFFFF)
-                .setMaxWidthLimit(156));
-        builder.bindPlayerInventory(entityPlayer.inventory, 134);
-        return builder.build(getHolder(), entityPlayer);
-
+        return null;
     }
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
         tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_in", energyContainer.getInputVoltage(), GTValues.VN[getTier()]));
-        tooltip.add(I18n.format("gtadditions.universal.tooltip.amperage_in", getMaxInputOutputAmperage()));
+        tooltip.add(I18n.format("gregtech.universal.tooltip.amperage_in", getMaxInputOutputAmperage()));
         tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", energyContainer.getEnergyCapacity()));
-        tooltip.add(I18n.format("gtadditions.machine.world_accelerator.description"));
-        tooltip.add(I18n.format("gtadditions.machine.world_accelerator.area", getArea(), getArea()));
+        tooltip.add(I18n.format("gregicality.machine.world_accelerator.description"));
+        tooltip.add(I18n.format("gregicality.machine.world_accelerator.area", getArea(), getArea()));
     }
 
     @Override
@@ -111,7 +97,7 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
             energyContainer.removeEnergy(energyPerTick);
             WorldServer world = (WorldServer) this.getWorld();
             BlockPos worldAcceleratorPos = getPos();
-            if (tileMode) {
+            if (isTEMode()) {
                 BlockPos[] neighbours = new BlockPos[]{worldAcceleratorPos.down(), worldAcceleratorPos.up(), worldAcceleratorPos.north(), worldAcceleratorPos.south(), worldAcceleratorPos.east(), worldAcceleratorPos.west()};
                 for (BlockPos neighbour : neighbours) {
                     TileEntity targetTE = world.getTileEntity(neighbour);
@@ -167,17 +153,46 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);
-//        Textures.AMPLIFAB_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isActive); todo need overlay texture
+        if (isTEMode())
+            ClientHandler.WORLD_ACCELERATOR_TE_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isActive);
+        else
+            ClientHandler.WORLD_ACCELERATOR_OVERLAY.render(renderState, translation, pipeline, getFrontFacing(), isActive);
     }
 
+    @Override
+    protected boolean openGUIOnRightClick() {
+        return false;
+    }
 
     @Override
     public boolean onScrewdriverClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
-        tileMode = !tileMode;
-        if (!getWorld().isRemote) {
-            playerIn.sendStatusMessage(new TextComponentTranslation(tileMode ? "gregtech.machine.world_accelerator.mode.tile" : "gregtech.machine.world_accelerator.mode.entity"), false);
+        if (getWorld().isRemote) {
+            scheduleRenderUpdate();
+            return true;
+        }
+
+        if (isTEMode()) {
+            setTEMode(false);
+            playerIn.sendStatusMessage(new TextComponentTranslation("gregtech.machine.world_accelerator.mode.entity"), false);
+        } else {
+            setTEMode(true);
+            playerIn.sendStatusMessage(new TextComponentTranslation("gregtech.machine.world_accelerator.mode.tile"), false);
         }
         return true;
+    }
+
+    public void setTEMode(boolean inverted) {
+        tileMode = inverted;
+        if (!getWorld().isRemote) {
+            reinitializeEnergyContainer();
+            writeCustomData(100, b -> b.writeBoolean(tileMode));
+            getHolder().notifyBlockUpdate();
+            markDirty();
+        }
+    }
+
+    public boolean isTEMode() {
+        return tileMode;
     }
 
     @Override
@@ -195,12 +210,18 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
         isPaused = Boolean.parseBoolean(data.getString("isPaused"));
     }
 
-    protected void setActive(boolean active) {
-        this.isActive = active;
-        markDirty();
-        if (!getWorld().isRemote) {
-            writeCustomData(1, buf -> buf.writeBoolean(active));
-        }
+    @Override
+    public void writeInitialSyncData(PacketBuffer buf) {
+        super.writeInitialSyncData(buf);
+        buf.writeBoolean(tileMode);
+        buf.writeBoolean(isPaused);
+    }
+
+    @Override
+    public void receiveInitialSyncData(PacketBuffer buf) {
+        super.receiveInitialSyncData(buf);
+        this.tileMode = buf.readBoolean();
+        this.isPaused = buf.readBoolean();
     }
 
     @Override
@@ -209,6 +230,18 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
         if (dataId == 1) {
             this.isActive = buf.readBoolean();
             getHolder().scheduleChunkForRenderUpdate();
+        }
+        if (dataId == 100) {
+            this.tileMode = buf.readBoolean();
+            scheduleRenderUpdate();
+        }
+    }
+
+    protected void setActive(boolean active) {
+        this.isActive = active;
+        markDirty();
+        if (!getWorld().isRemote) {
+            writeCustomData(1, buf -> buf.writeBoolean(active));
         }
     }
 
@@ -229,13 +262,5 @@ public class TileEntityWorldAccelerator extends TieredMetaTileEntity implements 
             return GregtechTileCapabilities.CAPABILITY_CONTROLLABLE.cast(this);
         }
         return super.getCapability(capability, side);
-    }
-
-    public boolean isTileMode() {
-        return tileMode;
-    }
-
-    public void setTileMode(boolean tileMode) {
-        this.tileMode = tileMode;
     }
 }

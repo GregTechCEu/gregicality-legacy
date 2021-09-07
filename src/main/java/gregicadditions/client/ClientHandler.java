@@ -83,6 +83,8 @@ public class ClientHandler {
     public static OrientedOverlayRenderer QUBIT_COMPUTER_OVERLAY = new OrientedOverlayRenderer("machines/qubit_computer", OverlayFace.FRONT);
     public static OrientedOverlayRenderer NUCLEAR_REACTOR_OVERLAY = new OrientedOverlayRenderer("machines/nuclear_reactor", OverlayFace.FRONT);
     public static OrientedOverlayRenderer ADVANCED_ALLOY_OVERLAY = new OrientedOverlayRenderer("machines/advanced_alloy_smelter", OverlayFace.FRONT);
+    public static OrientedOverlayRenderer WORLD_ACCELERATOR_OVERLAY = new OrientedOverlayRenderer("machines/world_accelerator", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.SIDE);
+    public static OrientedOverlayRenderer WORLD_ACCELERATOR_TE_OVERLAY = new OrientedOverlayRenderer("machines/world_accelerator_te", OverlayFace.FRONT, OverlayFace.BACK, OverlayFace.SIDE);
     // cover
     public static SimpleOverlayRenderer COVER_INTERFACE_FLUID = new SimpleOverlayRenderer("cover/cover_interface_fluid");
     public static SimpleOverlayRenderer COVER_INTERFACE_FLUID_GLASS = new SimpleOverlayRenderer("cover/cover_interface_fluid_glass");
