@@ -110,7 +110,6 @@ public class GAMaterialFlagAddition {
 
         // Ores
         Tellurium.setProperty(PropertyKey.ORE, new OreProperty());
-        GarnetSand.setProperty(PropertyKey.ORE, new OreProperty());
         Pollucite.setProperty(PropertyKey.ORE, new OreProperty());
         Andradite.setProperty(PropertyKey.ORE, new OreProperty());
         Vermiculite.setProperty(PropertyKey.ORE, new OreProperty());

@@ -163,8 +163,6 @@ public class GATileEntities {
         LARGE_EXTRUDER = GregTechAPI.registerMetaTileEntity(3011, new TileEntityLargeExtruder(location("large_extruder")));
         LARGE_ASSEMBLER = GregTechAPI.registerMetaTileEntity(3012, new TileEntityLargeAssembler(location("large_assembler")));
         ADVANCED_DISTILLATION_TOWER = GregTechAPI.registerMetaTileEntity(3013, new MetaTileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLERY_RECIPES));
-        // todo does this really need its own ID?
-        GregTechAPI.registerMetaTileEntity(3014, new MetaTileEntityAdvancedDistillationTower(location("advanced_distillation_tower"), RecipeMaps.DISTILLATION_RECIPES));
         LARGE_ROCKET_ENGINE = GregTechAPI.registerMetaTileEntity(3015, new MetaTileEntityLargeRocketEngine(location("large_rocket_engine")));
         ALLOY_BLAST_FURNACE = GregTechAPI.registerMetaTileEntity(3016, new TileEntityAlloyBlastFurnace(location("alloy_blast_furnace")));
         LARGE_FORGE_HAMMER = GregTechAPI.registerMetaTileEntity(3017, new TileEntityLargeForgeHammer(location("large_forge_hammer")));
