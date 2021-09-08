@@ -29,7 +29,7 @@ public class RadioactiveMaterial extends EnrichmentProcess {
 
     public RadioactiveMaterial(IngotMaterial from) {
         this.material = from;
-        this.material.addFlag(GENERATE_NUCLEAR_COMPOUND | DISABLE_REPLICATION | GENERATE_METAL_CASING);
+        this.material.addFlag(GENERATE_NUCLEAR_COMPOUND | DISABLE_REPLICATION);
         REGISTRY.put(from, this);
     }
 
