@@ -360,15 +360,6 @@ public class MultiblockCraftingRecipes {
                 .outputs(FLUID_DRILLING_PLANT[2].getStackForm())
                 .buildAndRegister();
 
-        // Solar Fluid Sampler
-        ModHandler.addShapedRecipe("ga_solar_sampler", SOLAR_FLUID_SAMPLER.getStackForm(),
-                "GGG", "PCP", "EDE",
-                'G', new ItemStack(Blocks.GLASS),
-                'P', new UnificationEntry(plate, StainlessSteel),
-                'C', HULL[HV].getStackForm(),
-                'D', new UnificationEntry(toolHeadDrill, StainlessSteel),
-                'E', new UnificationEntry(cableGtSingle, Gold));
-
         // Qubit Computer
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(8000000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 20))

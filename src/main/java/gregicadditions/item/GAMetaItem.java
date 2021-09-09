@@ -372,6 +372,7 @@ public class GAMetaItem extends StandardMetaItem {
         /////////////////////////////////////
 
         MetaItems.TURBINE_ROTOR.setInvisible();
+        // TODO Keep until Fluid Rigs are in CEu
         MetaItems.TOOL_DATA_STICK.addComponents(new DataStickFluidSamplerBehavior());
 
         ////////////////////////////////////

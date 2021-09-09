@@ -84,7 +84,6 @@ public class GAMetaTileEntities {
     public static MetaTileEntityAdvFusionReactor ADVANCED_FUSION_REACTOR;
     public static MetaTileEntityStellarForge STELLAR_FORGE;
     public static MetaTileEntityQubitComputer QUBIT_COMPUTER;
-    public static MetaTileEntitySolarSampler SOLAR_FLUID_SAMPLER;
     public static MetaTileEntityBioReactor BIO_REACTOR;
     public static TileEntityLargePackager LARGE_PACKAGER;
     public static MetaTileEntityCosmicRayDetector COSMIC_RAY_DETECTOR;
@@ -190,7 +189,6 @@ public class GAMetaTileEntities {
         // Misc MTEs
         QBIT_INPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(3603, new MetaTileEntityQubitHatch(location("qubit_hatch.input.16"), 0, 16, false));
         QBIT_OUTPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(3604, new MetaTileEntityQubitHatch(location("qubit_hatch.output.1"), 0, 1, true));
-        SOLAR_FLUID_SAMPLER = GregTechAPI.registerMetaTileEntity(3605, new MetaTileEntitySolarSampler(location("solar_fluid_sampler")));
 
 
 

@@ -889,15 +889,12 @@ gregicality.machine.fusion_casing_3.name=Fusion Casing MK III
 gregicality.machine.fusion_casing_4.name=Fusion Casing MK IV
 
 gregicality.machine.drilling_rig.name=Drilling Rig
-gregicality.machine.solar_fluid_sampler.name=Solar Fluid Sampler
 gregicality.machine.fluid_drilling_plant_mv.name=Fluid Drilling Plant 1
 gregicality.machine.fluid_drilling_plant_hv.name=Fluid Drilling Plant 2
 gregicality.machine.fluid_drilling_plant_ev.name=Fluid Drilling Plant 3
 
 gregicality.machine.cosmic_ray_detector.name=Cosmic Ray Detector
 gregicality.multiblock.cosmic_ray_detector.description=The Cosmic Ray Detector produced Heavy Lepton Mixture based on its height.
-
-gregicality.machine.solar_fluid_sampler.missing_solar=Requires an LV Solar Panel on top.
 
 tile.ga_multiblock_casing.tungstensteel_gearbox_casing.name=Tungstensteel Gear Box Casing
 tile.ga_multiblock_casing.assembly_line_casing.name=Assembly Line Casing

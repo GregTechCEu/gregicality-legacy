@@ -11,6 +11,7 @@ import net.minecraft.world.DimensionType;
 
 import java.util.List;
 
+// TODO keep until Fluid Rigs are moved to CEu
 public class DataStickFluidSamplerBehavior implements IItemBehaviour {
 
     public static DataStickFluidSamplerBehavior getInstanceFor(ItemStack itemStack) {
