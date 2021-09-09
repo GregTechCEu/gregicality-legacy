@@ -52,7 +52,6 @@ public class GATileEntities {
     public static List<MetaTileEntityMultiFluidHatch> OUTPUT_HATCH_MULTI = new ArrayList<>(); // todo move to CEu
     public static MetaTileEntityChunkMiner[] MINER = new MetaTileEntityChunkMiner[3]; // todo move to CEu
     public static SimpleMachineMetaTileEntity[] DISASSEMBLER = new SimpleMachineMetaTileEntity[14]; // todo move to CEu
-    public static TileEntityWorldAccelerator[] WORLD_ACCELERATOR = new TileEntityWorldAccelerator[8]; // todo move to CEu
 
     // TODO Nuclear rework
     public static MetaTileEntityNuclearReactor NUCLEAR_REACTOR;
@@ -231,16 +230,6 @@ public class GATileEntities {
         LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(3988, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE));
         LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(3989, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE));
         BATTERY_TOWER = GregTechAPI.registerMetaTileEntity(3990, new MetaTileEntityBatteryTower(location("battery_tower")));
-        WORLD_ACCELERATOR[0] = GregTechAPI.registerMetaTileEntity(3991, new TileEntityWorldAccelerator(location("world_accelerator.lv"), 1));
-        WORLD_ACCELERATOR[1] = GregTechAPI.registerMetaTileEntity(3992, new TileEntityWorldAccelerator(location("world_accelerator.mv"), 2));
-        WORLD_ACCELERATOR[2] = GregTechAPI.registerMetaTileEntity(3993, new TileEntityWorldAccelerator(location("world_accelerator.hv"), 3));
-        WORLD_ACCELERATOR[3] = GregTechAPI.registerMetaTileEntity(3994, new TileEntityWorldAccelerator(location("world_accelerator.ev"), 4));
-        if (GAConfig.GT5U.highTierWorldAccelerator) {
-            WORLD_ACCELERATOR[4] = GregTechAPI.registerMetaTileEntity(3995, new TileEntityWorldAccelerator(location("world_accelerator.iv"), 5));
-            WORLD_ACCELERATOR[5] = GregTechAPI.registerMetaTileEntity(3996, new TileEntityWorldAccelerator(location("world_accelerator.luv"), 6));
-            WORLD_ACCELERATOR[6] = GregTechAPI.registerMetaTileEntity(3997, new TileEntityWorldAccelerator(location("world_accelerator.zpm"), 7));
-            WORLD_ACCELERATOR[7] = GregTechAPI.registerMetaTileEntity(3998, new TileEntityWorldAccelerator(location("world_accelerator.uv"), 8));
-        }
         // todo this needs to deal with tiered tooltip
         if (GAConfig.Misc.enableDisassembly) registerSimpleMetaTileEntity(DISASSEMBLER, 3900, "disassembler", GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, true, GATileEntities::location);
 

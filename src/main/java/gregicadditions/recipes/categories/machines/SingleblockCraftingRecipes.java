@@ -11,18 +11,6 @@ public class SingleblockCraftingRecipes {
 
     public static void init() {
 
-        registerMachineRecipe(GATileEntities.WORLD_ACCELERATOR,
-                "ABC", "DHE", "FGI",
-                'H', HULL,
-                'A', PISTON,
-                'B', ROBOT_ARM,
-                'C', PUMP,
-                'D', MOTOR,
-                'E', CONVEYOR,
-                'F', EMITTER,
-                'G', SENSOR,
-                'I', FIELD_GENERATOR);
-
         registerMachineRecipe(GATileEntities.MINER,
                 "WPW", "CMC", "SPS",
                 'M', HULL,

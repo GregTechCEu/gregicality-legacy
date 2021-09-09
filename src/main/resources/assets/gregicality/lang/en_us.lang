@@ -847,17 +847,6 @@ gregicality.machine.dehydrator.luv.name=Elite Chemical Dehydrator II
 gregicality.machine.dehydrator.zpm.name=Elite Chemical Dehydrator III
 gregicality.machine.dehydrator.uv.name=Elite Chemical Dehydrator IV
 
-gregicality.machine.world_accelerator.lv.name=Basic World Accelerator
-gregicality.machine.world_accelerator.mv.name=Advanced World Accelerator
-gregicality.machine.world_accelerator.hv.name=Advanced World Accelerator II
-gregicality.machine.world_accelerator.ev.name=Advanced World Accelerator III
-gregicality.machine.world_accelerator.iv.name=Elite World Accelerator
-gregicality.machine.world_accelerator.luv.name=Elite World Accelerator II
-gregicality.machine.world_accelerator.zpm.name=Elite World Accelerator III
-gregicality.machine.world_accelerator.uv.name=Elite World Accelerator IV
-gregicality.machine.world_accelerator.description=Increase tick update per tick. 2 modes: TileEntity or Random Tick. Use screwdriver to change mode.
-gregicality.machine.world_accelerator.area=On TileEntity mode only adjacent blocks are speedup. On Random Tick, it is %dx%d blocks radius.
-
 gregicality.machine.nuclear_reactor.name=Nuclear Reactor
 gregicality.machine.nuclear_breeder.name=Nuclear Breeder Reactor
 gregicality.machine.boiling_water_reactor.uranium.name=Boiling Uranium Nuclear Reactor
@@ -1749,9 +1738,6 @@ gregtech.universal.tooltip.efficiency=Efficiency: %s %%
 gregtech.multiblock.universal.energy_used=Energy Use: %d EU
 gregtech.multiblock.universal.drilling_fluid_amount=Current Drilling Mud: %.2fmB
 gregtech.multiblock.universal.overheat=Overheated!
-
-gregtech.machine.world_accelerator.mode.tile=Tile Entity Mode
-gregtech.machine.world_accelerator.mode.entity=Entity Mode
 
 gregtech.multiblock.universal.framework=Current Max Tiered Voltage: %d EU/t
 gregtech.multiblock.universal.framework.tooltip=The framework casings define the maximum voltage tier the multiblock is able to run at.
