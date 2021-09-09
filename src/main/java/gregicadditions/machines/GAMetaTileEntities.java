@@ -4,7 +4,6 @@ import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
 import gregicadditions.Gregicality;
 import gregicadditions.client.ClientHandler;
-import gregicadditions.machines.energy.TileEntityLargeTransformer;
 import gregicadditions.machines.multi.*;
 import gregicadditions.machines.multi.advance.*;
 import gregicadditions.machines.multi.advance.hyper.*;
@@ -21,7 +20,6 @@ import gregicadditions.machines.multi.miner.MetaTileEntityChunkMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregicadditions.machines.multi.miner.MetaTileEntityVoidMiner;
 import gregicadditions.machines.multi.miner.Miner;
-import gregicadditions.machines.multi.multiblockpart.*;
 import gregicadditions.machines.multi.nuclear.*;
 import gregicadditions.machines.multi.qubit.*;
 import gregicadditions.machines.multi.simple.*;
@@ -34,9 +32,6 @@ import gregtech.api.metatileentity.SimpleMachineMetaTileEntity;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.Textures;
 import net.minecraft.util.ResourceLocation;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMetaTileEntity;
 
@@ -78,7 +73,6 @@ public class GAMetaTileEntities {
     public static TileEntityLargeAssembler LARGE_ASSEMBLER;
     public static TileEntityLargeCircuitAssemblyLine LARGE_CIRCUIT_ASSEMBLY_LINE;
     public static MetaTileEntityVoidMiner[] VOID_MINER = new MetaTileEntityVoidMiner[3];
-    public static TileEntityLargeTransformer LARGE_TRANSFORMER;
     public static MetaTileEntityAdvancedDistillationTower ADVANCED_DISTILLATION_TOWER;
     public static MetaTileEntityLargeRocketEngine LARGE_ROCKET_ENGINE;
     public static TileEntityAlloyBlastFurnace ALLOY_BLAST_FURNACE;
@@ -192,8 +186,6 @@ public class GAMetaTileEntities {
         BIO_REACTOR = GregTechAPI.registerMetaTileEntity(3210, new MetaTileEntityBioReactor(location("bio_reactor")));
         PLASMA_CONDENSER = GregTechAPI.registerMetaTileEntity(3211, new MetaTileEntityPlasmaCondenser(location("plasma_condenser")));
         COSMIC_RAY_DETECTOR = GregTechAPI.registerMetaTileEntity(3212, new MetaTileEntityCosmicRayDetector(location("cosmic_ray_detector")));
-        // todo remove?
-        LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(3213, new TileEntityLargeTransformer(location("large_transformer")));
 
         // Misc MTEs
         QBIT_INPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(3603, new MetaTileEntityQubitHatch(location("qubit_hatch.input.16"), 0, 16, false));

@@ -58,7 +58,6 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     //.put("gas_centrifuge", new MultiblockInfoRecipeWrapper(new GasCentrifugeInfo()))
                     .put("large_circuit_assembly_line", new MultiblockInfoRecipeWrapper(new LargeCircuitAssemblyLineInfo()))
                     .put("void_miner", new MultiblockInfoRecipeWrapper(new VoidMinerInfo()))
-                    .put("large_transformer", new MultiblockInfoRecipeWrapper(new LargeTransformerInfo()))
                     .put("advanced_distillation_tower", new MultiblockInfoRecipeWrapper(new AdvancedDistillationTowerInfo()))
                     .put("large_rocket_engine", new MultiblockInfoRecipeWrapper(new LargeRocketEngineInfo()))
                     .put("alloy_blast_furnace", new MultiblockInfoRecipeWrapper(new AlloyBlastFurnaceInfo()))

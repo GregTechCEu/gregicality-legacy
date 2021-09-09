@@ -502,14 +502,6 @@ public class MultiblockCraftingRecipes {
 
     private static void largeMultiblockInit() {
 
-        // Large Transformer
-        ModHandler.addShapedRecipe("ga_large_transformer", LARGE_TRANSFORMER.getStackForm(),
-                "PPP", "IHO", "PPP",
-                'H', HULL[MV].getStackForm(),
-                'P', new UnificationEntry(plate, Aluminium),
-                'I', MetaTileEntities.TRANSFORMER[1].getStackForm(),
-                'O', MetaTileEntities.TRANSFORMER[0].getStackForm());
-
         // Large Thermal Centrifuge
         ModHandler.addShapedRecipe("ga_large_thermal_centrifuge", LARGE_THERMAL_CENTRIFUGE.getStackForm(),
                 "CBC", "RHR", "CDC",

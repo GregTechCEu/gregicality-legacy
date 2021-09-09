@@ -769,7 +769,6 @@ gregicality.machine.large_washing_plant.name=Large Washing Plant
 gregicality.multiblock.large_washing_plant.description=Large version of the Ore Washer, Chemical Bath, Simple Dust Washer, and Autoclave.
 gregicality.machine.large_turbine.hot_coolant.name=Hot Coolant Turbine
 gregicality.machine.hot_coolant_turbine.description=The Hot Coolant Turbine takes in hot coolant and converts it regular coolant. The rate and power produced from this is based on the rotor holder efficiency and speed.
-gregicality.machine.large_transformer.name=Large Transformer
 gregicality.machine.void_miner.name=Void Ore Miner
 gregicality.multiblock.void_miner.description=The Void Ore Miner produces massive amounts of ores at very fast rates.
 gregicality.machine.advanced_distillation_tower.name=Advanced Distillation Tower
@@ -1685,7 +1684,6 @@ gregicality.multiblock.void_miner.description.3=Temperature will increase if the
 gregicality.multiblock.void_miner.description.4=The First step will be to only feed with Pyrotheum and when the temperature is at the perfect spot, slowly add Cryotheum.
 gregicality.multiblock.void_miner.description.5=If temperature is above the max temperature the Void Ore Miner will stop working and slowly cool down.
 gregicality.multiblock.void_miner.description.6=Consumes Drilling Mud and outputs Used Drilling Mud every second at the same rate as Pyrotheum.
-gregicality.multiblock.large_transformer.description=Large Transformer can convert any GTEU/AMPS by any GTEU/AMPS.
 gregtech.multiblock.advanced_distillation_tower.description1=The Advanced Distillation Tower is built the same as the Distillation Tower but with different casings and titanium pipe casings in the center.
 gregtech.multiblock.advanced_distillation_tower.description2=2 Modes:
 gregtech.multiblock.advanced_distillation_tower.description3=    Distillation Tower => Max 8 Parallel, 2 per overclock
@@ -1767,11 +1765,6 @@ gregtech.multiblock.nuclear_reactor.base_heat=Heat Produced: %d C/sec
 gregtech.multiblock.nuclear_reactor.additional_temperature=Additional Temperature: %d
 gregtech.multiblock.nuclear_reactor.rod_type=Rod Heat Factor: %d%%
 gregtech.multiblock.nuclear_reactor.produce=Produce Hot Coolant !
-
-gregtech.multiblock.large_transformer.input=Input: %s EU / %s Amps
-gregtech.multiblock.large_transformer.output=Output: %s EU / %s Amps
-gregtech.multiblock.large_transformer.input_average=Amps Input/t: %s
-gregtech.multiblock.large_transformer.output_average=Amps Output/t: %s
 
 gregicality.multiblock.not_enough_qubit=Not enough Qubits, recipe slowed.
 
