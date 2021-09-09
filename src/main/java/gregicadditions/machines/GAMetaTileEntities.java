@@ -56,6 +56,7 @@ public class GAMetaTileEntities {
     public static MetaTileEntityNuclearReactor NUCLEAR_BREEDER;
     public static MetaTileEntityGasCentrifuge GAS_CENTRIFUGE;
     public static MetaTileEntityHotCoolantTurbine HOT_COOLANT_TURBINE;
+    public static MetaTileEntityRotorHolderForNuclearCoolant[] ROTOR_HOLDER = new MetaTileEntityRotorHolderForNuclearCoolant[4];
 
     // TODO Organize
     public static SimpleMachineMetaTileEntity[] DEHYDRATOR = new SimpleMachineMetaTileEntity[14];
@@ -63,7 +64,6 @@ public class GAMetaTileEntities {
     public static SimpleMachineMetaTileEntity[] GREEN_HOUSE = new SimpleMachineMetaTileEntity[14];
     public static SimpleGeneratorMetaTileEntity[] NAQUADAH_REACTOR = new SimpleGeneratorMetaTileEntity[8]; // todo idk what but something needs to be done about this
     public static SimpleGeneratorMetaTileEntity[] ROCKET_GENERATOR = new SimpleGeneratorMetaTileEntity[8];
-    public static MetaTileEntityRotorHolderForNuclearCoolant[] ROTOR_HOLDER = new MetaTileEntityRotorHolderForNuclearCoolant[4];
     public static TileEntityLargeThermalCentrifuge LARGE_THERMAL_CENTRIFUGE;
     public static TileEntityLargeElectrolyzer LARGE_ELECTROLYZER;
     public static TileEntityLargeCentrifuge LARGE_CENTRIFUGE;
@@ -196,10 +196,6 @@ public class GAMetaTileEntities {
         LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(3213, new TileEntityLargeTransformer(location("large_transformer")));
 
         // Misc MTEs
-        ROTOR_HOLDER[0] = GregTechAPI.registerMetaTileEntity(3600, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.hv"), GTValues.HV, 1.1f));
-        ROTOR_HOLDER[1] = GregTechAPI.registerMetaTileEntity(3601, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.luv"), GTValues.LuV, 1.35f));
-        ROTOR_HOLDER[2] = GregTechAPI.registerMetaTileEntity(3602, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.uhv"), GTValues.UHV, 1.7f));
-
         QBIT_INPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(3603, new MetaTileEntityQubitHatch(location("qubit_hatch.input.16"), 0, 16, false));
         QBIT_OUTPUT_HATCH[0] = GregTechAPI.registerMetaTileEntity(3604, new MetaTileEntityQubitHatch(location("qubit_hatch.output.1"), 0, 1, true));
         SOLAR_FLUID_SAMPLER = GregTechAPI.registerMetaTileEntity(3605, new MetaTileEntitySolarSampler(location("solar_fluid_sampler")));
@@ -232,6 +228,9 @@ public class GAMetaTileEntities {
         //HOT_COOLANT_TURBINE = GregTechAPI.registerMetaTileEntity(2544, new MetaTileEntityHotCoolantTurbine(location("large_turbine.hot_coolant"), MetaTileEntityHotCoolantTurbine.TurbineType.HOT_COOLANT));
         //NUCLEAR_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new MetaTileEntityNuclearReactor(location("nuclear_reactor"), GARecipeMaps.NUCLEAR_REACTOR_RECIPES));
         //NUCLEAR_BREEDER = GregTechAPI.registerMetaTileEntity(2546, new MetaTileEntityNuclearReactor(location("nuclear_breeder"), GARecipeMaps.NUCLEAR_BREEDER_RECIPES));
+        //ROTOR_HOLDER[0] = GregTechAPI.registerMetaTileEntity(3600, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.hv"), GTValues.HV, 1.1f));
+        //ROTOR_HOLDER[1] = GregTechAPI.registerMetaTileEntity(3601, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.luv"), GTValues.LuV, 1.35f));
+        //ROTOR_HOLDER[2] = GregTechAPI.registerMetaTileEntity(3602, new MetaTileEntityRotorHolderForNuclearCoolant(location("rotor_holder.uhv"), GTValues.UHV, 1.7f));
     }
 
     public static ResourceLocation location(String name) {
