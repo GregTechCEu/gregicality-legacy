@@ -2,11 +2,9 @@ package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeBrewery;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -24,7 +22,7 @@ import java.util.List;
 public class LargeBreweryInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_BREWERY;
+        return GAMetaTileEntities.LARGE_BREWERY;
     }
 
     @Override
@@ -37,7 +35,7 @@ public class LargeBreweryInfo extends MultiblockInfoPage {
                 .aisle("EXXXX", "X###X", "X###X", "X###X", "XXXXX")
                 .aisle("#IHi#", "#XSX#", "#XGX#", "#OXo#", "#####")
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
-                .where('S', GATileEntities.LARGE_BREWERY, EnumFacing.SOUTH)
+                .where('S', GAMetaTileEntities.LARGE_BREWERY, EnumFacing.SOUTH)
                 .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM))
                 .where('m', MetaTileEntities.MUFFLER_HATCH[0], EnumFacing.UP)

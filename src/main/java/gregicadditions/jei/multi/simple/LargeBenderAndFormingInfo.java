@@ -4,8 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeBenderAndForming;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -30,7 +29,7 @@ import static gregtech.common.blocks.MetaBlocks.METAL_CASING;
 public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_BENDER_AND_FORMING;
+        return GAMetaTileEntities.LARGE_BENDER_AND_FORMING;
     }
 
     @Override
@@ -44,7 +43,7 @@ public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
             }
             builder.aisle("EXXX", "XSHX", "XXIX")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
-                    .where('S', GATileEntities.LARGE_BENDER_AND_FORMING, EnumFacing.SOUTH)
+                    .where('S', GAMetaTileEntities.LARGE_BENDER_AND_FORMING, EnumFacing.SOUTH)
                     .where('H', maintenanceIfEnabled(METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE)), EnumFacing.SOUTH)
                     .where('X', METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE))
                     .where('#', Blocks.AIR.getDefaultState())

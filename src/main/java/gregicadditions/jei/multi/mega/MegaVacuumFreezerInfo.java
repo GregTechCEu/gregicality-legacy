@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.*;
@@ -21,7 +21,7 @@ import java.util.List;
 public class MegaVacuumFreezerInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.MEGA_VACUUM_FREEZER;
+        return GAMetaTileEntities.MEGA_VACUUM_FREEZER;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class MegaVacuumFreezerInfo extends MultiblockInfoPage {
             builder.aisle("XXXXXXX", "XPFFFPX", "XPFFFPX", "XPPPPPX", "XPFFFPX", "XPFFFPX", "XXXXXXX")
                     .aisle("#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#")
                     .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.IV], EnumFacing.NORTH)
-                    .where('S', GATileEntities.MEGA_VACUUM_FREEZER, EnumFacing.NORTH)
+                    .where('S', GAMetaTileEntities.MEGA_VACUUM_FREEZER, EnumFacing.NORTH)
                     .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF)), EnumFacing.NORTH)
                     .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                     .where('#', Blocks.AIR.getDefaultState())

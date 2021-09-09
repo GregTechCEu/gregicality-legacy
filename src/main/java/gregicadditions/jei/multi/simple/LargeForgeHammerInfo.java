@@ -3,8 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeForgeHammer;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -22,7 +21,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 public class LargeForgeHammerInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_FORGE_HAMMER;
+        return GAMetaTileEntities.LARGE_FORGE_HAMMER;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class LargeForgeHammerInfo extends MultiblockInfoPage {
             for (int j = 0; j < i; j++) {
                 builder.aisle("OXX", "X#X", "IpX", "XXX");
             }
-            builder.where('S', GATileEntities.LARGE_FORGE_HAMMER, EnumFacing.NORTH)
+            builder.where('S', GAMetaTileEntities.LARGE_FORGE_HAMMER, EnumFacing.NORTH)
                     .where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.IRON))
                     .where('M', maintenanceIfEnabled(METAL_CASING_2.getState(MetalCasing2.CasingType.IRON)), EnumFacing.NORTH)
                     .where('#', Blocks.AIR.getDefaultState())

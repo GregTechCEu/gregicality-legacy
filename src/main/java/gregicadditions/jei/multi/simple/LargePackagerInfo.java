@@ -3,8 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargePackager;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -23,7 +22,7 @@ public class LargePackagerInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_PACKAGER;
+        return GAMetaTileEntities.LARGE_PACKAGER;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class LargePackagerInfo extends MultiblockInfoPage {
             }
             builder.aisle("XHX", "XSX", "XEX")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
-                    .where('S', GATileEntities.LARGE_PACKAGER, EnumFacing.SOUTH)
+                    .where('S', GAMetaTileEntities.LARGE_PACKAGER, EnumFacing.SOUTH)
                     .where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.HG_1223)), EnumFacing.SOUTH)
                     .where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.HG_1223))
                     .where('#', Blocks.AIR.getDefaultState())

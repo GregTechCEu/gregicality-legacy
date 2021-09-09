@@ -1,16 +1,13 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.common.metatileentities.MetaTileEntities;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import gregicadditions.recipes.helper.GACraftingComponents;
 
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.common.items.MetaItems.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -55,7 +52,7 @@ public class DigitalInterfaces {
                     .inputs(MetaTileEntities.HULL[tier].getStackForm())
                     .input(wireFine, AnnealedCopper, 8)
                     .fluidInputs(fluidStack)
-                    .outputs(GATileEntities.MONITOR_SCREEN.getStackForm())
+                    .outputs(GAMetaTileEntities.MONITOR_SCREEN.getStackForm())
                     .buildAndRegister();
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(500)
@@ -63,7 +60,7 @@ public class DigitalInterfaces {
                     .inputs(MetaTileEntities.HULL[tier].getStackForm())
                     .input(circuit, MarkerMaterials.Tier.Advanced, 2)
                     .fluidInputs(fluidStack)
-                    .outputs(GATileEntities.CENTRAL_MONITOR.getStackForm())
+                    .outputs(GAMetaTileEntities.CENTRAL_MONITOR.getStackForm())
                     .buildAndRegister();
 
             ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(500)

@@ -3,8 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeExtruder;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -24,7 +23,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 public class LargeExtruderInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.LARGE_EXTRUDER;
+		return GAMetaTileEntities.LARGE_EXTRUDER;
 	}
 
 	@Override
@@ -38,7 +37,7 @@ public class LargeExtruderInfo extends MultiblockInfoPage {
 			}
 			builder.aisle("EHXX", "XSXX", "XXX#")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
-					.where('S', GATileEntities.LARGE_EXTRUDER, EnumFacing.SOUTH)
+					.where('S', GAMetaTileEntities.LARGE_EXTRUDER, EnumFacing.SOUTH)
 					.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.INCONEL_625)), EnumFacing.SOUTH)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.INCONEL_625))
 					.where('#', Blocks.AIR.getDefaultState())

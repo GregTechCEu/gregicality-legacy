@@ -8,7 +8,7 @@ import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockFusionCoil;
@@ -26,7 +26,7 @@ import java.util.List;
 public class CosmicRayDetectorInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.COSMIC_RAY_DETECTOR;
+        return GAMetaTileEntities.COSMIC_RAY_DETECTOR;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class CosmicRayDetectorInfo extends MultiblockInfoPage {
                 .aisle("###############", "###############", "###############", "###############", "###############", "###############", "#######x#######", "####xxx#xxx####", "###x#######x###", "###############")
                 .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "####xx###xx####", "###############")
                 .aisle("###############", "###############", "###############", "###############", "###############", "###############", "###############", "###############", "######xxx######", "###############")
-                .where('S', GATileEntities.COSMIC_RAY_DETECTOR, EnumFacing.NORTH)
+                .where('S', GAMetaTileEntities.COSMIC_RAY_DETECTOR, EnumFacing.NORTH)
                 .where('M', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.QUANTUM)), EnumFacing.NORTH)
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UHV], EnumFacing.NORTH)
                 .where('f', MetaTileEntities.FLUID_EXPORT_HATCH[0], EnumFacing.NORTH)

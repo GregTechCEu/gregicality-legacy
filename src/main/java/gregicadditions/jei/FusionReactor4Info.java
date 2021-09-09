@@ -5,7 +5,7 @@ import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -22,7 +22,7 @@ public class FusionReactor4Info extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.ADVANCED_FUSION_REACTOR;
+        return GAMetaTileEntities.ADVANCED_FUSION_REACTOR;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class FusionReactor4Info extends MultiblockInfoPage {
                     .aisle("#######C#######", "##C##ffdFF##C##","##Cvv#####vvC##","##Cvv#####vvC##","##C##bbbbb##C##","#######C#######")
                     .aisle("###############", "#######S#######","###ccvvvvvcc###","###ccvvvvvcc###","#######C#######","###############")
                     .aisle("###############", "###############","#####ccCcc#####","#####ccCcc#####","###############","###############")
-                    .where('S', GATileEntities.ADVANCED_FUSION_REACTOR, EnumFacing.SOUTH)
+                    .where('S', GAMetaTileEntities.ADVANCED_FUSION_REACTOR, EnumFacing.SOUTH)
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('C', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.values()[i + 4]))
                     .where('X', GAMetaBlocks.FUSION_CASING.getState(GAFusionCasing.CasingType.ADV_FUSION_CASING))

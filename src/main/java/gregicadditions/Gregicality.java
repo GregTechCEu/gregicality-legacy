@@ -3,7 +3,7 @@ package gregicadditions;
 import gregicadditions.capabilities.GregicalityCapabilities;
 import gregicadditions.covers.CoverBehaviors;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregicadditions.network.IPSaveData;
 import gregicadditions.network.NetworkHandler;
 import gregicadditions.theoneprobe.TheOneProbeCompatibility;
@@ -50,7 +50,7 @@ public class Gregicality {
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
 
         GAMetaBlocks.init();
-        GATileEntities.init();
+        GAMetaTileEntities.init();
     }
 
     @EventHandler

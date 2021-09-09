@@ -1,6 +1,6 @@
 package gregicadditions.recipes.categories.machines;
 
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
@@ -111,25 +111,17 @@ public class MachineCraftingRecipes {
     private static void misc() {
 
         // Hot Coolant Rotor Holders
-        ModHandler.addShapedRecipe("ga_rotor_holder_hv",  GATileEntities.ROTOR_HOLDER[0].getStackForm(), "WHW", "WRW", "WWW", 'H', MetaTileEntities.HULL[HV].getStackForm(),  'W', new UnificationEntry(wireGtHex, Gold),                 'R', new UnificationEntry(gear, BlackSteel));
-        ModHandler.addShapedRecipe("ga_rotor_holder_luv", GATileEntities.ROTOR_HOLDER[1].getStackForm(), "WHW", "WRW", "WWW", 'H', MetaTileEntities.HULL[LuV].getStackForm(), 'W', new UnificationEntry(wireGtHex, YttriumBariumCuprate), 'R', new UnificationEntry(gear, RhodiumPlatedPalladium));
-        ModHandler.addShapedRecipe("ga_rotor_holder_uhv", GATileEntities.ROTOR_HOLDER[2].getStackForm(), "WHW", "WRW", "WWW", 'H', MetaTileEntities.HULL[UHV].getStackForm(), 'W', new UnificationEntry(wireGtHex, Duranium),             'R', new UnificationEntry(gear, Seaborgium));
+        ModHandler.addShapedRecipe("ga_rotor_holder_hv",  GAMetaTileEntities.ROTOR_HOLDER[0].getStackForm(), "WHW", "WRW", "WWW", 'H', MetaTileEntities.HULL[HV].getStackForm(),  'W', new UnificationEntry(wireGtHex, Gold),                 'R', new UnificationEntry(gear, BlackSteel));
+        ModHandler.addShapedRecipe("ga_rotor_holder_luv", GAMetaTileEntities.ROTOR_HOLDER[1].getStackForm(), "WHW", "WRW", "WWW", 'H', MetaTileEntities.HULL[LuV].getStackForm(), 'W', new UnificationEntry(wireGtHex, YttriumBariumCuprate), 'R', new UnificationEntry(gear, RhodiumPlatedPalladium));
+        ModHandler.addShapedRecipe("ga_rotor_holder_uhv", GAMetaTileEntities.ROTOR_HOLDER[2].getStackForm(), "WHW", "WRW", "WWW", 'H', MetaTileEntities.HULL[UHV].getStackForm(), 'W', new UnificationEntry(wireGtHex, Duranium),             'R', new UnificationEntry(gear, Seaborgium));
 
         // Custom Hatches
-        ModHandler.addShapedRecipe("ga_qubit_input_hatch",  GATileEntities.QBIT_INPUT_HATCH[0].getStackForm(),  "   ", "CM ", "   ", 'M', MetaTileEntities.HULL[ZPM].getStackForm(), 'C', new UnificationEntry(opticalFiberHex));
-        ModHandler.addShapedRecipe("ga_qubit_output_hatch", GATileEntities.QBIT_OUTPUT_HATCH[0].getStackForm(), "   ", " MC", "   ", 'M', MetaTileEntities.HULL[ZPM].getStackForm(), 'C', new UnificationEntry(opticalFiberSingle));
+        ModHandler.addShapedRecipe("ga_qubit_input_hatch",  GAMetaTileEntities.QBIT_INPUT_HATCH[0].getStackForm(),  "   ", "CM ", "   ", 'M', MetaTileEntities.HULL[ZPM].getStackForm(), 'C', new UnificationEntry(opticalFiberHex));
+        ModHandler.addShapedRecipe("ga_qubit_output_hatch", GAMetaTileEntities.QBIT_OUTPUT_HATCH[0].getStackForm(), "   ", " MC", "   ", 'M', MetaTileEntities.HULL[ZPM].getStackForm(), 'C', new UnificationEntry(opticalFiberSingle));
 
         //Steam Machines
-        ModHandler.addShapedRecipe("ga_steam_mixer", GATileEntities.STEAM_MIXER.getStackForm(), "GRG", "GPG", "PMP", 'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL), 'P', new UnificationEntry(pipeSmallFluid, Bronze), 'R', new UnificationEntry(rotor, Bronze), 'G', Blocks.GLASS);
-        ModHandler.addShapedRecipe("ga_steam_pump", GATileEntities.STEAM_PUMP.getStackForm(), "NLN", "NMN", "LRL", 'N', new UnificationEntry(pipeNormalFluid, Bronze), 'L', new UnificationEntry(pipeLargeFluid, Bronze), 'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL), 'R', new UnificationEntry(rotor, Bronze));
-        ModHandler.addShapedRecipe("ga_steam_miner", GATileEntities.STEAM_MINER.getStackForm(), "DSD", "SMS", "RSR", 'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL), 'S', new UnificationEntry(pipeNormalFluid, Bronze), 'D', Items.DIAMOND, 'R', new UnificationEntry(rotor, Bronze));
-
-        //Quadruple and Nonuple Inputs and Outputs
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(120).duration(100).inputs(MetaTileEntities.HULL[HV].getStackForm()).input(pipeLargeFluid, Titanium, 4).circuitMeta(0).outputs(GATileEntities.INPUT_HATCH_MULTI.get(0).getStackForm()).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(120).duration(100).inputs(MetaTileEntities.HULL[HV].getStackForm()).input(pipeLargeFluid, Titanium, 4).circuitMeta(1).outputs(GATileEntities.OUTPUT_HATCH_MULTI.get(0).getStackForm()).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(1920).duration(100).inputs(MetaTileEntities.HULL[IV].getStackForm()).input(pipeLargeFluid, TungstenSteel, 9).circuitMeta(0).outputs(GATileEntities.INPUT_HATCH_MULTI.get(1).getStackForm()).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(1920).duration(100).inputs(MetaTileEntities.HULL[IV].getStackForm()).input(pipeLargeFluid, TungstenSteel, 9).circuitMeta(1).outputs(GATileEntities.OUTPUT_HATCH_MULTI.get(1).getStackForm()).buildAndRegister();
-
-
+        ModHandler.addShapedRecipe("ga_steam_mixer", GAMetaTileEntities.STEAM_MIXER.getStackForm(), "GRG", "GPG", "PMP", 'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL), 'P', new UnificationEntry(pipeSmallFluid, Bronze), 'R', new UnificationEntry(rotor, Bronze), 'G', Blocks.GLASS);
+        ModHandler.addShapedRecipe("ga_steam_pump", GAMetaTileEntities.STEAM_PUMP.getStackForm(), "NLN", "NMN", "LRL", 'N', new UnificationEntry(pipeNormalFluid, Bronze), 'L', new UnificationEntry(pipeLargeFluid, Bronze), 'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL), 'R', new UnificationEntry(rotor, Bronze));
+        ModHandler.addShapedRecipe("ga_steam_miner", GAMetaTileEntities.STEAM_MINER.getStackForm(), "DSD", "SMS", "RSR", 'M', MetaBlocks.STEAM_CASING.getItemVariant(BlockSteamCasing.SteamCasingType.BRONZE_HULL), 'S', new UnificationEntry(pipeNormalFluid, Bronze), 'D', Items.DIAMOND, 'R', new UnificationEntry(rotor, Bronze));
     }
 }

@@ -4,7 +4,7 @@ import gregicadditions.item.CellCasing;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class BatteryTowerInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.BATTERY_TOWER;
+        return GAMetaTileEntities.BATTERY_TOWER;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class BatteryTowerInfo extends MultiblockInfoPage {
                 .aisle("SCCCC", "GRRRG", "GRRRG", "GRRRG", "GRRRG", "CCCCC")
                 .aisle("MCCCC", "GRRRG", "GRRRG", "GRRRG", "GRRRG", "CCCCC")
                 .aisle("CCCCC", "GGGGG", "GGGGG", "GGGGG", "GGGGG", "CCCCC")
-                .where('S', GATileEntities.BATTERY_TOWER, EnumFacing.WEST)
+                .where('S', GAMetaTileEntities.BATTERY_TOWER, EnumFacing.WEST)
                 .where('M', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE)), EnumFacing.WEST)
                 .where('C', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE))
                 .where('G', GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.BOROSILICATE_GLASS))

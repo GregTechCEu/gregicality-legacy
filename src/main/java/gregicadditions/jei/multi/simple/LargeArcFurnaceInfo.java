@@ -2,8 +2,7 @@ package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeArcFurnace;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.*;
@@ -22,7 +21,7 @@ import static gregtech.common.blocks.MetaBlocks.METAL_CASING;
 public class LargeArcFurnaceInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_ARC_FURNACE;
+        return GAMetaTileEntities.LARGE_ARC_FURNACE;
     }
 
     @Override
@@ -36,7 +35,7 @@ public class LargeArcFurnaceInfo extends MultiblockInfoPage {
                 .aisle("#IHi#", "#XSX#", "#OXo#")
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
                 .where('C', MetaBlocks.WIRE_COIL.getState(BlockWireCoil.CoilType.CUPRONICKEL))
-                .where('S', GATileEntities.LARGE_ARC_FURNACE, EnumFacing.SOUTH)
+                .where('S', GAMetaTileEntities.LARGE_ARC_FURNACE, EnumFacing.SOUTH)
                 .where('H', maintenanceIfEnabled(METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF)), EnumFacing.SOUTH)
                 .where('X', METAL_CASING.getState(BlockMetalCasing.MetalCasingType.INVAR_HEATPROOF))
                 .where('#', Blocks.AIR.getDefaultState())

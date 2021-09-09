@@ -10,7 +10,7 @@ import gregicadditions.jei.multi.mega.MegaVacuumFreezerInfo;
 import gregicadditions.jei.multi.miner.*;
 import gregicadditions.jei.multi.quantum.*;
 import gregicadditions.jei.multi.simple.*;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoRecipeWrapper;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
@@ -49,9 +49,9 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("large_extruder", new MultiblockInfoRecipeWrapper(new LargeExtruderInfo()))
                     .put("large_assembler", new MultiblockInfoRecipeWrapper(new LargeAssemblerInfo()))
                     .put("large_bending_forming", new MultiblockInfoRecipeWrapper(new LargeBenderAndFormingInfo()))
-                    .put("large_miner_1", new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[0])))
-                    .put("large_miner_2", new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[1])))
-                    .put("large_miner_3", new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GATileEntities.LARGE_MINER[2])))
+                    .put("large_miner_1", new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GAMetaTileEntities.LARGE_MINER[0])))
+                    .put("large_miner_2", new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GAMetaTileEntities.LARGE_MINER[1])))
+                    .put("large_miner_3", new MultiblockInfoRecipeWrapper(new LargeMinerInfo(GAMetaTileEntities.LARGE_MINER[2])))
                     //.put("hot_coolant_turbine", new MultiblockInfoRecipeWrapper(new HotCoolantTurbineInfo(GATileEntities.HOT_COOLANT_TURBINE)))
                     //.put("nuclear_reactor", new MultiblockInfoRecipeWrapper(new NuclearReactorInfo(GATileEntities.NUCLEAR_REACTOR)))
                     //.put("nuclear_breeder", new MultiblockInfoRecipeWrapper(new NuclearReactorInfo(GATileEntities.NUCLEAR_BREEDER)))
@@ -79,9 +79,9 @@ public class GAMultiblockInfoCategory implements IRecipeCategory<MultiblockInfoR
                     .put("large_packager", new MultiblockInfoRecipeWrapper(new LargePackagerInfo()))
                     .put("cosmic_ray_detector", new MultiblockInfoRecipeWrapper(new CosmicRayDetectorInfo()))
                     .put("electric_implosion", new MultiblockInfoRecipeWrapper(new ElectricImplosionInfo()))
-                    .put("fluid_drilling_plant_1", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[0])))
-                    .put("fluid_drilling_plant_2", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[1])))
-                    .put("fluid_drilling_plant_3", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GATileEntities.FLUID_DRILLING_PLANT[2])))
+                    .put("fluid_drilling_plant_1", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GAMetaTileEntities.FLUID_DRILLING_PLANT[0])))
+                    .put("fluid_drilling_plant_2", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GAMetaTileEntities.FLUID_DRILLING_PLANT[1])))
+                    .put("fluid_drilling_plant_3", new MultiblockInfoRecipeWrapper(new FluidDrillingPlantInfo(GAMetaTileEntities.FLUID_DRILLING_PLANT[2])))
                     .put("mega_blast_furnace", new MultiblockInfoRecipeWrapper(new MegaBlastFurnaceInfo()))
                     .put("mega_vacuum_freezer", new MultiblockInfoRecipeWrapper(new MegaVacuumFreezerInfo()))
                     .put("mega_distillation_tower", new MultiblockInfoRecipeWrapper(new MegaDistillationTowerInfo()))

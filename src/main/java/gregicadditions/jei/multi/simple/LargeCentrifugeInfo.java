@@ -3,8 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeCentrifuge;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -24,7 +23,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 public class LargeCentrifugeInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.LARGE_CENTRIFUGE;
+		return GAMetaTileEntities.LARGE_CENTRIFUGE;
 	}
 
 	@Override
@@ -37,7 +36,7 @@ public class LargeCentrifugeInfo extends MultiblockInfoPage {
 					.aisle("OXXXX", "o###X", "XXXXX")
 					.aisle("#XHX#", "XXSXX", "#XXX#")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
-					.where('S', GATileEntities.LARGE_CENTRIFUGE, EnumFacing.SOUTH)
+					.where('S', GAMetaTileEntities.LARGE_CENTRIFUGE, EnumFacing.SOUTH)
 					.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA)), EnumFacing.SOUTH)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA))
 					.where('#', Blocks.AIR.getDefaultState())
@@ -58,7 +57,7 @@ public class LargeCentrifugeInfo extends MultiblockInfoPage {
 				.aisle("OXXXX", "o###X", "XXXXX")
 				.aisle("#XHX#", "XXSXX", "#XXX#")
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
-				.where('S', GATileEntities.LARGE_CENTRIFUGE, EnumFacing.SOUTH)
+				.where('S', GAMetaTileEntities.LARGE_CENTRIFUGE, EnumFacing.SOUTH)
 				.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA)), EnumFacing.SOUTH)
 				.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA))
 				.where('#', Blocks.AIR.getDefaultState())
@@ -79,7 +78,7 @@ public class LargeCentrifugeInfo extends MultiblockInfoPage {
 				.aisle("OXXXX", "o###X", "XXXXX")
 				.aisle("#XHX#", "XXSXX", "#XXX#")
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
-				.where('S', GATileEntities.LARGE_CENTRIFUGE, EnumFacing.SOUTH)
+				.where('S', GAMetaTileEntities.LARGE_CENTRIFUGE, EnumFacing.SOUTH)
 				.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA)), EnumFacing.SOUTH)
 				.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA))
 				.where('#', Blocks.AIR.getDefaultState())
@@ -99,7 +98,7 @@ public class LargeCentrifugeInfo extends MultiblockInfoPage {
 				.aisle("OXXXX", "o###X", "XXXXX")
 				.aisle("#XHX#", "XXSXX", "#XXX#")
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
-				.where('S', GATileEntities.LARGE_CENTRIFUGE, EnumFacing.SOUTH)
+				.where('S', GAMetaTileEntities.LARGE_CENTRIFUGE, EnumFacing.SOUTH)
 				.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA)), EnumFacing.SOUTH)
 				.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.TUMBAGA))
 				.where('#', Blocks.AIR.getDefaultState())

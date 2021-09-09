@@ -7,8 +7,7 @@ import gregicadditions.item.components.FieldGenCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.uumatter.TileEntityLargeReplicator;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockFusionCoil;
@@ -30,7 +29,7 @@ import java.util.List;
 public class LargeReplicatorInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_REPLICATOR;
+        return GAMetaTileEntities.LARGE_REPLICATOR;
     }
 
     @Override
@@ -53,7 +52,7 @@ public class LargeReplicatorInfo extends MultiblockInfoPage {
                 .aisle("###XXXXXXXXX###", "###XXCCCCCXX###", "#####XPXPX#####")
                 .aisle("#####XXEXX#####", "#####XXEXX#####", "#######X#######")
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.NORTH)
-                .where('S', GATileEntities.LARGE_REPLICATOR, EnumFacing.SOUTH)
+                .where('S', GAMetaTileEntities.LARGE_REPLICATOR, EnumFacing.SOUTH)
                 .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM))
                 .where('#', Blocks.AIR.getDefaultState())

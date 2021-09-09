@@ -3,7 +3,7 @@ package gregicadditions.jei.multi.advance;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregicadditions.machines.multi.advance.MetaTileEntityAdvancedDistillationTower;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -21,7 +21,7 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.ADVANCED_DISTILLATION_TOWER;
+        return GAMetaTileEntities.ADVANCED_DISTILLATION_TOWER;
     }
 
 
@@ -34,7 +34,7 @@ public class AdvancedDistillationTowerInfo extends MultiblockInfoPage {
                 .where('#', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.TIERED_HULL_IV))
                 .where('X', MetaTileEntityAdvancedDistillationTower.casingState)
                 .where('M', maintenanceIfEnabled(MetaTileEntityAdvancedDistillationTower.casingState), EnumFacing.WEST)
-                .where('S', GATileEntities.ADVANCED_DISTILLATION_TOWER, EnumFacing.WEST)
+                .where('S', GAMetaTileEntities.ADVANCED_DISTILLATION_TOWER, EnumFacing.WEST)
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.EV], EnumFacing.SOUTH)
                 .where('C', MetaTileEntities.ITEM_IMPORT_BUS[GTValues.EV], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ITEM_EXPORT_BUS[GTValues.EV], EnumFacing.WEST)

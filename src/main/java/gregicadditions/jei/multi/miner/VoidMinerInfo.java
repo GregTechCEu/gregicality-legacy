@@ -3,7 +3,7 @@ package gregicadditions.jei.multi.miner;
 import com.google.common.collect.Lists;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -24,7 +24,7 @@ public class VoidMinerInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.VOID_MINER[0];
+        return GAMetaTileEntities.VOID_MINER[0];
     }
 
     @Override
@@ -39,7 +39,7 @@ public class VoidMinerInfo extends MultiblockInfoPage {
                 .aisle("M#######C", "C#######C", "#########", "####D####", "###DDD###", "C##DDD##C", "F#DD#DD#F", "F#D###D#F", "##D###D##", "#########")
                 .aisle("C#######C", "C#######C", "#########", "#########", "#########", "C###D###C", "F##DDD##F", "F##DDD##F", "###DDD###", "#########")
                 .aisle("CCCCCCCCC", "CCCCCCCCC", "C#######C", "C#######C", "C#######C", "CCCCCCCCC", "CFFFFFFFC", "CFFFFFFFC", "C#######C", "C#######C")
-                .where('S', GATileEntities.VOID_MINER[0], EnumFacing.WEST)
+                .where('S', GAMetaTileEntities.VOID_MINER[0], EnumFacing.WEST)
                 .where('M', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N)), EnumFacing.WEST)
                 .where('C', METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N))
                 .where('D', METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY))

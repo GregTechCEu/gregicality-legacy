@@ -2,10 +2,8 @@ package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.uumatter.TileEntityLargeMassFabricator;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.*;
@@ -22,7 +20,7 @@ import java.util.List;
 public class LargeMassFabricatorInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_MASS_FABRICATOR;
+        return GAMetaTileEntities.LARGE_MASS_FABRICATOR;
     }
 
     @Override
@@ -38,7 +36,7 @@ public class LargeMassFabricatorInfo extends MultiblockInfoPage {
                 .aisle("IXXXX", "PXGXP", "PXGXP", "PXGXP", "iXXXX")
                 .aisle("XHSeX", "#P#P#", "#P#P#", "#P#P#", "XoXoX")
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
-                .where('S', GATileEntities.LARGE_MASS_FABRICATOR, EnumFacing.SOUTH)
+                .where('S', GAMetaTileEntities.LARGE_MASS_FABRICATOR, EnumFacing.SOUTH)
                 .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.TRITANIUM))
                 .where('#', Blocks.AIR.getDefaultState())

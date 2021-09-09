@@ -2,7 +2,7 @@ package gregicadditions.jei.multi.advance;
 
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMultiblockCasing;
@@ -12,7 +12,6 @@ import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
@@ -28,7 +27,7 @@ public class LargeRocketEngineInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_ROCKET_ENGINE;
+        return GAMetaTileEntities.LARGE_ROCKET_ENGINE;
     }
 
     @Override
@@ -39,7 +38,7 @@ public class LargeRocketEngineInfo extends MultiblockInfoPage {
             builder.aisle("CCC", "C#F", "CAC");
         }
         builder.aisle("CCC", "CEC", "CCC")
-                .where('S', GATileEntities.LARGE_ROCKET_ENGINE, EnumFacing.NORTH)
+                .where('S', GAMetaTileEntities.LARGE_ROCKET_ENGINE, EnumFacing.NORTH)
                 .where('M', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.NITINOL_60)), EnumFacing.NORTH)
                 .where('C', METAL_CASING_1.getState(MetalCasing1.CasingType.NITINOL_60))
                 .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.EAST)

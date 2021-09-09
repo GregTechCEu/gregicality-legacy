@@ -3,7 +3,6 @@ package gregicadditions.jei.multi.nuclear;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
-import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityNuclearReactor;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;

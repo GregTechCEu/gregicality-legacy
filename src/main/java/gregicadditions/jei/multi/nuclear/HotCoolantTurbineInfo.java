@@ -1,7 +1,7 @@
 package gregicadditions.jei.multi.nuclear;
 
 import com.google.common.collect.Lists;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregicadditions.machines.multi.impl.MetaTileEntityRotorHolderForNuclearCoolant;
 import gregicadditions.machines.multi.nuclear.MetaTileEntityHotCoolantTurbine;
 import gregtech.api.GTValues;
@@ -38,7 +38,7 @@ public class HotCoolantTurbineInfo extends MultiblockInfoPage {
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MetaTileEntityHolder holder = new MetaTileEntityHolder();
-        holder.setMetaTileEntity(GATileEntities.ROTOR_HOLDER[2]);
+        holder.setMetaTileEntity(GAMetaTileEntities.ROTOR_HOLDER[2]);
         holder.getMetaTileEntity().setFrontFacing(EnumFacing.WEST);
         ItemStack rotorStack = MetaItems.TURBINE_ROTOR.getStackForm();
         TurbineRotorBehavior.getInstanceFor(rotorStack).setPartMaterial(rotorStack, Materials.Darmstadtium);

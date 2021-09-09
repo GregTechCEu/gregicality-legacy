@@ -5,7 +5,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockWireCoil;
@@ -27,7 +27,7 @@ public class AlloyBlastFurnaceInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.ALLOY_BLAST_FURNACE;
+        return GAMetaTileEntities.ALLOY_BLAST_FURNACE;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class AlloyBlastFurnaceInfo extends MultiblockInfoPage {
                     .aisle("#OXX#", "#ccc#", "#ccc#", "#XXX#")
                     .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.WEST)
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.WEST)
-                    .where('S', GATileEntities.ALLOY_BLAST_FURNACE, EnumFacing.WEST)
+                    .where('S', GAMetaTileEntities.ALLOY_BLAST_FURNACE, EnumFacing.WEST)
                     .where('M', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.ZIRCONIUM_CARBIDE)), EnumFacing.WEST)
                     .where('C', MetaBlocks.WIRE_COIL.getState(coilType))
                     .where('c', METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY))
@@ -60,7 +60,7 @@ public class AlloyBlastFurnaceInfo extends MultiblockInfoPage {
                     .aisle("#OXX#", "#ccc#", "#ccc#", "#XXX#")
                     .where('O', MetaTileEntities.FLUID_EXPORT_HATCH[4], EnumFacing.WEST)
                     .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.WEST)
-                    .where('S', GATileEntities.ALLOY_BLAST_FURNACE, EnumFacing.WEST)
+                    .where('S', GAMetaTileEntities.ALLOY_BLAST_FURNACE, EnumFacing.WEST)
                     .where('M', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.ZIRCONIUM_CARBIDE)), EnumFacing.WEST)
                     .where('C', GAMetaBlocks.HEATING_COIL.getState(coilType))
                     .where('c', METAL_CASING_2.getState(MetalCasing2.CasingType.STABALLOY))

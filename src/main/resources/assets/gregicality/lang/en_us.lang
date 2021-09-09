@@ -874,13 +874,6 @@ gregicality.machine.rotor_holder.zpm.name=Hot Coolant Rotor Holder (ZPM)
 gregicality.machine.rotor_holder.uv.name=Hot Coolant Rotor Holder (UV)
 gregicality.machine.rotor_holder.uhv.name=Hot Coolant Rotor Holder (UHV)
 
-gregicality.machine.multi_fluid_input_4x.name=Quadruple Input Hatch
-gregicality.machine.multi_fluid_input_9x.name=Nonuple Input Hatch
-gregicality.machine.multi_fluid_output_4x.name=Quadruple Output Hatch
-gregicality.machine.multi_fluid_output_9x.name=Nonuple Output Hatch
-gregicality.machine.multi_fluid_hatch_universal.tooltip.1=Capacity: §b16000mB§7 per tank.
-gregicality.machine.multi_fluid_hatch_universal.tooltip.2=Tank Count: §b%d
-
 gregicality.machine.gas_centrifuge.name=Gas Centrifuge
 gregicality.multiblock.gas_centrifuge.description=The Gas Centrifuge primarily separates hexafluoride gases into different isotopes.
 gregicality.machine.qubit_computer.name=Quantum Computer

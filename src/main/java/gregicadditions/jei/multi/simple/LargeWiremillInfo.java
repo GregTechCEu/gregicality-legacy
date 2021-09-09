@@ -1,12 +1,9 @@
 package gregicadditions.jei.multi.simple;
 
-import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.CasingUtils;
-import gregicadditions.machines.multi.simple.TileEntityLargeWiremill;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockTurbineCasing;
@@ -31,7 +28,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 public class LargeWiremillInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.LARGE_WIREMILL;
+		return GAMetaTileEntities.LARGE_WIREMILL;
 	}
 
 	@Override
@@ -45,7 +42,7 @@ public class LargeWiremillInfo extends MultiblockInfoPage {
 			}
 			builder.aisle("XHX##", "XSX##", "EXX##")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
-					.where('S', GATileEntities.LARGE_WIREMILL, EnumFacing.SOUTH)
+					.where('S', GAMetaTileEntities.LARGE_WIREMILL, EnumFacing.SOUTH)
 					.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250)), EnumFacing.SOUTH)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.MARAGING_STEEL_250))
 					.where('#', Blocks.AIR.getDefaultState())

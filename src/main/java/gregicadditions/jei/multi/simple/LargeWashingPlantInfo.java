@@ -1,13 +1,10 @@
 package gregicadditions.jei.multi.simple;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.CasingUtils;
-import gregicadditions.machines.multi.simple.TileEntityLargeWashingPlant;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -32,7 +29,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 public class LargeWashingPlantInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.LARGE_WASHING_PLANT;
+		return GAMetaTileEntities.LARGE_WASHING_PLANT;
 	}
 
 	@Override
@@ -47,7 +44,7 @@ public class LargeWashingPlantInfo extends MultiblockInfoPage {
 					.aisle("XXXXX", "XP#PX", "X###X")
 					.aisle("IOMEX", "XHSXX", "XXXXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
-					.where('S', GATileEntities.LARGE_WASHING_PLANT, EnumFacing.SOUTH)
+					.where('S', GAMetaTileEntities.LARGE_WASHING_PLANT, EnumFacing.SOUTH)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM))
 					.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.GRISIUM)), EnumFacing.SOUTH)
 					.where('#', Blocks.WATER.getDefaultState())

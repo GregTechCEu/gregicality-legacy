@@ -6,7 +6,7 @@ import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.EmitterCasing;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockTurbineCasing;
@@ -28,7 +28,7 @@ import java.util.List;
 public class LargeEngraverInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_LASER_ENGRAVER;
+        return GAMetaTileEntities.LARGE_LASER_ENGRAVER;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class LargeEngraverInfo extends MultiblockInfoPage {
             }
             builder.aisle("eHX", "XSX","XOX","#T#")
                     .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
-                    .where('S', GATileEntities.LARGE_LASER_ENGRAVER, EnumFacing.SOUTH)
+                    .where('S', GAMetaTileEntities.LARGE_LASER_ENGRAVER, EnumFacing.SOUTH)
                     .where('H', maintenanceIfEnabled(GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.LASER_ENGRAVER)), EnumFacing.SOUTH)
                     .where('X', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.LASER_ENGRAVER))
                     .where('#', Blocks.AIR.getDefaultState())

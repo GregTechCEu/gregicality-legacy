@@ -40,7 +40,7 @@ import java.util.List;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerSimpleMetaTileEntity;
 
-public class GATileEntities {
+public class GAMetaTileEntities {
 
     // TODO Move to CEu
     public static MetaTileEntityMonitorScreen MONITOR_SCREEN; // todo move to CEu
@@ -48,8 +48,6 @@ public class GATileEntities {
     public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3]; // todo move to CEu
     public static MetaTileEntityBatteryTower BATTERY_TOWER; // todo move to CEu, and rework
     public static MetaTileEntityFluidDrillingPlant[] FLUID_DRILLING_PLANT = new MetaTileEntityFluidDrillingPlant[3]; // todo move to CEu
-    public static List<MetaTileEntityMultiFluidHatch> INPUT_HATCH_MULTI = new ArrayList<>(); // todo move to CEu
-    public static List<MetaTileEntityMultiFluidHatch> OUTPUT_HATCH_MULTI = new ArrayList<>(); // todo move to CEu
     public static MetaTileEntityChunkMiner[] MINER = new MetaTileEntityChunkMiner[3]; // todo move to CEu
     public static SimpleMachineMetaTileEntity[] DISASSEMBLER = new SimpleMachineMetaTileEntity[14]; // todo move to CEu
 
@@ -99,8 +97,8 @@ public class GATileEntities {
     public static TileEntityLargeLaserEngraver LARGE_LASER_ENGRAVER;
     public static MetaTileEntityQubitHatch[] QBIT_INPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
     public static MetaTileEntityQubitHatch[] QBIT_OUTPUT_HATCH = new MetaTileEntityQubitHatch[GAValues.QUBIT.length];
-    public static SteamPump STEAM_PUMP;
-    public static TileEntitySteamMixer STEAM_MIXER;
+    public static MetaTileEntitySteamPump STEAM_PUMP;
+    public static MetaTileEntitySteamMixer STEAM_MIXER;
     public static MetaTileEntityPlasmaCondenser PLASMA_CONDENSER;
     public static MetaTileEntityElectricImplosion ELECTRIC_IMPLOSION;
     public static TileEntitySteamMiner STEAM_MINER;
@@ -127,9 +125,9 @@ public class GATileEntities {
         // todo comment this better for ID range clarity
 
         // Simple Machines
-        registerSimpleMetaTileEntity(DEHYDRATOR, 2000, "dehydrator", GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, true, GATileEntities::location);
-        registerSimpleMetaTileEntity(DECAY_CHAMBER, 2015, "decay_chamber", GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.REPLICATOR_OVERLAY, true, GATileEntities::location);
-        registerSimpleMetaTileEntity(GREEN_HOUSE, 2030, "green_house", GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, true, GATileEntities::location);
+        registerSimpleMetaTileEntity(DEHYDRATOR, 2000, "dehydrator", GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES, Textures.SIFTER_OVERLAY, true, GAMetaTileEntities::location);
+        registerSimpleMetaTileEntity(DECAY_CHAMBER, 2015, "decay_chamber", GARecipeMaps.DECAY_CHAMBERS_RECIPES, Textures.REPLICATOR_OVERLAY, true, GAMetaTileEntities::location);
+        registerSimpleMetaTileEntity(GREEN_HOUSE, 2030, "green_house", GARecipeMaps.GREEN_HOUSE_RECIPES, Textures.FERMENTER_OVERLAY, true, GAMetaTileEntities::location);
 
         // Simple Generators
         NAQUADAH_REACTOR[4] = GregTechAPI.registerMetaTileEntity(2051, new SimpleGeneratorMetaTileEntity(location("naquadah_reactor.mk2"), GARecipeMaps.NAQUADAH_REACTOR_FUELS, ClientHandler.NAQADAH_OVERLAY, 5));
@@ -141,8 +139,8 @@ public class GATileEntities {
         ROCKET_GENERATOR[5] = GregTechAPI.registerMetaTileEntity(2067, new SimpleGeneratorMetaTileEntity(location("rocket_generator.mk3"), GARecipeMaps.ROCKET_FUEL_RECIPES, ClientHandler.ROCKET_OVERLAY, 6));
 
         // Steam Machines
-        STEAM_PUMP = GregTechAPI.registerMetaTileEntity(2075, new SteamPump(location("pump.steam")));
-        STEAM_MIXER = GregTechAPI.registerMetaTileEntity(2077, new TileEntitySteamMixer(location("steam_mixer")));
+        STEAM_PUMP = GregTechAPI.registerMetaTileEntity(2075, new MetaTileEntitySteamPump(location("pump.steam")));
+        STEAM_MIXER = GregTechAPI.registerMetaTileEntity(2077, new MetaTileEntitySteamMixer(location("steam_mixer")));
         STEAM_MINER = GregTechAPI.registerMetaTileEntity(2079, new TileEntitySteamMiner(location("steam_miner")));
 
         // Multiblocks
@@ -216,10 +214,6 @@ public class GATileEntities {
         // TODO Move to CEu
         CENTRAL_MONITOR = GregTechAPI.registerMetaTileEntity(3948, new MetaTileEntityCentralMonitor(location("central_monitor")));
         MONITOR_SCREEN = GregTechAPI.registerMetaTileEntity(3949, new MetaTileEntityMonitorScreen(location("monitor_screen")));
-        INPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(3950, new MetaTileEntityMultiFluidHatch(location("multi_fluid_input_4x"), 2, false)));
-        INPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(3951, new MetaTileEntityMultiFluidHatch(location("multi_fluid_input_9x"), 3, false)));
-        OUTPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(3952, new MetaTileEntityMultiFluidHatch(location("multi_fluid_output_4x"), 2, true)));
-        OUTPUT_HATCH_MULTI.add(GregTechAPI.registerMetaTileEntity(3953, new MetaTileEntityMultiFluidHatch(location("multi_fluid_output_9x"), 3, true)));
         FLUID_DRILLING_PLANT[0] = GregTechAPI.registerMetaTileEntity(3954, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_mv"), 2));
         FLUID_DRILLING_PLANT[1] = GregTechAPI.registerMetaTileEntity(3955, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_hv"), 3));
         FLUID_DRILLING_PLANT[2] = GregTechAPI.registerMetaTileEntity(3956, new MetaTileEntityFluidDrillingPlant(location("fluid_drilling_plant_ev"), 4));
@@ -231,7 +225,7 @@ public class GATileEntities {
         LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(3989, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE));
         BATTERY_TOWER = GregTechAPI.registerMetaTileEntity(3990, new MetaTileEntityBatteryTower(location("battery_tower")));
         // todo this needs to deal with tiered tooltip
-        if (GAConfig.Misc.enableDisassembly) registerSimpleMetaTileEntity(DISASSEMBLER, 3900, "disassembler", GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, true, GATileEntities::location);
+        if (GAConfig.Misc.enableDisassembly) registerSimpleMetaTileEntity(DISASSEMBLER, 3900, "disassembler", GARecipeMaps.DISASSEMBLER_RECIPES, Textures.ASSEMBLER_OVERLAY, true, GAMetaTileEntities::location);
 
         // TODO Nuclear Rework
         //GAS_CENTRIFUGE = GregTechAPI.registerMetaTileEntity(4020, new MetaTileEntityGasCentrifuge(location("gas_centrifuge")));

@@ -4,8 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeElectromagnet;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -21,7 +20,7 @@ import java.util.List;
 public class LargeElectromagnetInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_ELECTROMAGNET;
+        return GAMetaTileEntities.LARGE_ELECTROMAGNET;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class LargeElectromagnetInfo extends MultiblockInfoPage {
                 .aisle("XXXXX", "XAAAX", "XGXGX")
                 .aisle("#XHX#", "#ISO#", "#XEX#")
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
-                .where('S', GATileEntities.LARGE_ELECTROMAGNET, EnumFacing.SOUTH)
+                .where('S', GAMetaTileEntities.LARGE_ELECTROMAGNET, EnumFacing.SOUTH)
                 .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.BABBITT_ALLOY))
                 .where('#', Blocks.AIR.getDefaultState())

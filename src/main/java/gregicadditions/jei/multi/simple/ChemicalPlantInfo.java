@@ -3,7 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ChemicalPlantInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.CHEMICAL_PLANT;
+		return GAMetaTileEntities.CHEMICAL_PLANT;
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class ChemicalPlantInfo extends MultiblockInfoPage {
 					.aisle("XXXXX", "XCCCX", "XPPPX", "XCCCX", "XXXXX")
 					.aisle("H###X", "SXXIO", "X###X", "XXXXX", "X###X")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
-					.where('S', GATileEntities.CHEMICAL_PLANT, EnumFacing.SOUTH)
+					.where('S', GAMetaTileEntities.CHEMICAL_PLANT, EnumFacing.SOUTH)
 					.where('H', maintenanceIfEnabled(GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CHEMICALLY_INERT)), EnumFacing.SOUTH)
 					.where('X', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CHEMICALLY_INERT))
 					.where('#', Blocks.AIR.getDefaultState())

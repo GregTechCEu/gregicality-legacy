@@ -3,11 +3,10 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
-import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.RobotArmCasing;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.MetaBlocks;
@@ -28,7 +27,7 @@ import java.util.List;
 public class LargeAssemblerInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_ASSEMBLER;
+        return GAMetaTileEntities.LARGE_ASSEMBLER;
     }
 
     @Override
@@ -44,7 +43,7 @@ public class LargeAssemblerInfo extends MultiblockInfoPage {
                 builder.aisle("XXXX", "RCPX", "G#PX", "GGGX");
             }
             shapeInfo.add(builder.aisle("XXXX", "XXXX", "XXXX", "XXXX")
-                    .where('S', GATileEntities.LARGE_ASSEMBLER, EnumFacing.WEST)
+                    .where('S', GAMetaTileEntities.LARGE_ASSEMBLER, EnumFacing.WEST)
                     .where('X', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.LARGE_ASSEMBLER))
                     .where('#', Blocks.AIR.getDefaultState())
                     .where('R', GAMetaBlocks.ROBOT_ARM_CASING.getDefaultState())

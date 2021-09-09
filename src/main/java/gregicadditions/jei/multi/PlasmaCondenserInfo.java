@@ -4,7 +4,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -27,7 +27,7 @@ import java.util.List;
 public class PlasmaCondenserInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.PLASMA_CONDENSER;
+        return GAMetaTileEntities.PLASMA_CONDENSER;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class PlasmaCondenserInfo extends MultiblockInfoPage {
                 .aisle("#XXX#", "H#P#X", "SPPPX", "EpPpX", "#XXX#")
                 .aisle("#XXX#", "IG#GX", "F#P#X", "XGpGX", "#XXX#")
                 .aisle("#####", "#XXX#", "#XXX#", "#XXX#", "#####")
-                .where('S', GATileEntities.PLASMA_CONDENSER, EnumFacing.WEST)
+                .where('S', GAMetaTileEntities.PLASMA_CONDENSER, EnumFacing.WEST)
                 .where('H', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N)), EnumFacing.WEST)
                 .where('X', GAMetaBlocks.METAL_CASING_1.getState(MetalCasing1.CasingType.HASTELLOY_N))
                 .where('G', MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX))

@@ -3,7 +3,7 @@ package gregicadditions.recipes.categories.machines;
 import gregicadditions.GAMaterials;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
@@ -18,7 +18,7 @@ import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.item.GAMultiblockCasing.CasingType.*;
 import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
-import static gregicadditions.machines.GATileEntities.*;
+import static gregicadditions.machines.GAMetaTileEntities.*;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLY_LINE_RECIPES;
@@ -625,7 +625,7 @@ public class MultiblockCraftingRecipes {
                 'M', new UnificationEntry(plate, HG1223));
 
         // Large Assembler
-        ModHandler.addShapedRecipe("ga_large_assembler", GATileEntities.LARGE_ASSEMBLER.getStackForm(),
+        ModHandler.addShapedRecipe("ga_large_assembler", GAMetaTileEntities.LARGE_ASSEMBLER.getStackForm(),
                 "SCE", "RHR", "KCK",
                 'S', SENSOR_LUV,
                 'C', new UnificationEntry(circuit, Master),

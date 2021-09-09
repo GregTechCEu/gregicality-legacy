@@ -6,7 +6,7 @@ import gregicadditions.client.renderer.RenderHelper;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregicadditions.item.behaviors.monitorPlugin.MonitorPluginBaseBehavior;
 import gregicadditions.item.behaviors.monitorPlugin.ProxyHolderPluginBehavior;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregicadditions.utils.BlockPatternChecker;
 import gregicadditions.utils.Tuple;
 import gregicadditions.widgets.WidgetARGB;
@@ -773,7 +773,7 @@ public class MetaTileEntityMonitorScreen extends MetaTileEntityMultiblockPart {
     @Override
     public boolean onRightClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
         if (!(!playerIn.isSneaking() && playerIn.getHeldItemMainhand().hasCapability(GregtechCapabilities.CAPABILITY_SCREWDRIVER, (EnumFacing)null))
-        && !GATileEntities.MONITOR_SCREEN.getStackForm().isItemEqual(playerIn.getHeldItemMainhand())) {
+        && !GAMetaTileEntities.MONITOR_SCREEN.getStackForm().isItemEqual(playerIn.getHeldItemMainhand())) {
             if (playerIn.world.getTotalWorldTime() - lastClickTime < 2 &&
                     playerIn.getPersistentID().equals(lastClickUUID)) {
                 return true;

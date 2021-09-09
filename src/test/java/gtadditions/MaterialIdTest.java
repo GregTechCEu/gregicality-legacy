@@ -4,7 +4,7 @@ import gregicadditions.GAEnums;
 import gregicadditions.GAMaterials;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaBlocks;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.MaterialRegistry;
 import gregtech.api.unification.material.Materials;
@@ -42,7 +42,7 @@ public class MaterialIdTest {
         MetaBlocks.init();
         GAMetaBlocks.init();
         MetaTileEntities.init();
-        GATileEntities.init();
+        GAMetaTileEntities.init();
     }
 
     /**
@@ -77,7 +77,7 @@ public class MaterialIdTest {
         );
         assertNotNull(
                 "Gregicality MetaTileEntity is still null!",
-                GATileEntities.ALLOY_BLAST_FURNACE
+                GAMetaTileEntities.ALLOY_BLAST_FURNACE
         );
     }
 }

@@ -4,7 +4,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
 import gregtech.common.blocks.BlockFusionCoil;
@@ -26,7 +26,7 @@ public class LargeNaquadahReactorInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_NAQUADAH_REACTOR;
+        return GAMetaTileEntities.LARGE_NAQUADAH_REACTOR;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class LargeNaquadahReactorInfo extends MultiblockInfoPage {
                 .aisle("CCCCf", "GAFAG", "CAFAC", "CAFAC", "CAFAC", "CAFAC", "GAFAG", "#CCC#")
                 .aisle("CCCCC", "CPAPC", "CgAgC", "#PAP#", "#PAP#", "CgAgC", "CPAPC", "#CCC#")
                 .aisle("#CEC#", "#CGC#", "#CCC#", "##C##", "##C##", "#CCC#", "#CGC#", "#CCC#")
-                .where('S', GATileEntities.LARGE_NAQUADAH_REACTOR, EnumFacing.NORTH)
+                .where('S', GAMetaTileEntities.LARGE_NAQUADAH_REACTOR, EnumFacing.NORTH)
                 .where('M', maintenanceIfEnabled(GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA)), EnumFacing.NORTH)
                 .where('C', GAMetaBlocks.METAL_CASING_2.getState(MetalCasing2.CasingType.NAQUADRIA))
                 .where('f', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.EAST)

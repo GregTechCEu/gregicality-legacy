@@ -1,7 +1,7 @@
 package gregicadditions.jei.multi.nuclear;
 
 import com.google.common.collect.Lists;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -19,7 +19,7 @@ import java.util.List;
 public class GasCentrifugeInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.GAS_CENTRIFUGE;
+        return GAMetaTileEntities.GAS_CENTRIFUGE;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class GasCentrifugeInfo extends MultiblockInfoPage {
                 .aisle("OYYYY", "YYYYY", "#CCC#", "#####", "#####", "#####", "#####")
                 .aisle("OYYYY", "YYYYY", "#ZCZ#", "#Z#Z#", "#Z#Z#", "#Z#Z#", "#Z#Z#")
                 .aisle("#IYY#", "#YYY#", "#####", "#####", "#####", "#####", "#####")
-                .where('S', GATileEntities.GAS_CENTRIFUGE, EnumFacing.NORTH)
+                .where('S', GAMetaTileEntities.GAS_CENTRIFUGE, EnumFacing.NORTH)
                 .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.NORTH)
                 .where('Y', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                 .where('Z', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))

@@ -1,13 +1,9 @@
 package gregicadditions.jei.multi.simple;
 
-import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.MotorCasing;
-import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.CasingUtils;
-import gregicadditions.machines.multi.simple.TileEntityLargeThermalCentrifuge;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -29,13 +25,12 @@ import net.minecraft.util.text.TextFormatting;
 import java.util.ArrayList;
 import java.util.List;
 
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_THERMAL_CENTRIFUGE;
+        return GAMetaTileEntities.LARGE_THERMAL_CENTRIFUGE;
     }
 
     @Override
@@ -50,7 +45,7 @@ public class LargeThermalCentrifugeInfo extends MultiblockInfoPage {
                     .aisle("XXXXX", "XCCCX", "O###X", "#XXX#")
                     .aisle("#XXX#", "#XGX#", "#XXX#", "#####")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
-                    .where('S', GATileEntities.LARGE_THERMAL_CENTRIFUGE, EnumFacing.WEST)
+                    .where('S', GAMetaTileEntities.LARGE_THERMAL_CENTRIFUGE, EnumFacing.WEST)
                     .where('H', maintenanceIfEnabled(METAL_CASING_2.getState(MetalCasing2.CasingType.RED_STEEL)), EnumFacing.WEST)
                     .where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.RED_STEEL))
                     .where('#', Blocks.AIR.getDefaultState())

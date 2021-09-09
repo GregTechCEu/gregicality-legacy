@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -26,7 +26,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MegaDistillationTowerInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.MEGA_DISTILLATION_TOWER;
+        return GAMetaTileEntities.MEGA_DISTILLATION_TOWER;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class MegaDistillationTowerInfo extends MultiblockInfoPage {
             }
             builder.aisle("#XXX#", "XXXXX", "XXXXX", "XXXXX", "#XEX#")
                     .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.IV], EnumFacing.SOUTH)
-                    .where('S', GATileEntities.MEGA_DISTILLATION_TOWER, EnumFacing.SOUTH)
+                    .where('S', GAMetaTileEntities.MEGA_DISTILLATION_TOWER, EnumFacing.SOUTH)
                     .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN)), EnumFacing.SOUTH)
                     .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
                     .where('#', Blocks.AIR.getDefaultState())

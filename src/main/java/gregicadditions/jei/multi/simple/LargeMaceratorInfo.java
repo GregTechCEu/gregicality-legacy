@@ -3,8 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing2;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeMacerator;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -22,7 +21,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 public class LargeMaceratorInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.LARGE_MACERATOR;
+		return GAMetaTileEntities.LARGE_MACERATOR;
 	}
 
 	@Override
@@ -33,7 +32,7 @@ public class LargeMaceratorInfo extends MultiblockInfoPage {
 					.aisle("XXX", "XMX","X#X","XPX", "X#X", "XXX")
 					.aisle("XSX", "XHX","XEX","XIX", "XOX", "XXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.SOUTH)
-					.where('S', GATileEntities.LARGE_MACERATOR, EnumFacing.SOUTH)
+					.where('S', GAMetaTileEntities.LARGE_MACERATOR, EnumFacing.SOUTH)
 					.where('H', maintenanceIfEnabled(METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE)), EnumFacing.SOUTH)
 					.where('X', METAL_CASING_2.getState(MetalCasing2.CasingType.STELLITE))
 					.where('#', Blocks.AIR.getDefaultState())

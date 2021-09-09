@@ -25,7 +25,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static gregicadditions.machines.GATileEntities.FLUID_DRILLING_PLANT;
+import static gregicadditions.machines.GAMetaTileEntities.FLUID_DRILLING_PLANT;
 
 @JEIPlugin
 public class JEIGAPlugin implements IModPlugin {

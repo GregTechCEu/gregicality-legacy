@@ -49,7 +49,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.List;
 
-public class SteamPump extends MetaTileEntity {
+public class MetaTileEntitySteamPump extends MetaTileEntity {
 
     private static final Cuboid6 PIPE_CUBOID = new Cuboid6(4 / 16.0, 0.0, 4 / 16.0, 12 / 16.0, 1.0, 12 / 16.0);
     private static final int MAX_PUMP_RANGE = 16;
@@ -62,13 +62,13 @@ public class SteamPump extends MetaTileEntity {
     private int pumpHeadY;
     protected FluidTank steamFluidTank;
 
-    public SteamPump(ResourceLocation metaTileEntityId) {
+    public MetaTileEntitySteamPump(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-        return new SteamPump(metaTileEntityId);
+        return new MetaTileEntitySteamPump(metaTileEntityId);
     }
 
     @Override

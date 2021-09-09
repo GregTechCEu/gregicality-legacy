@@ -8,7 +8,7 @@ import gregicadditions.item.components.FieldGenCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.components.SensorCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
@@ -25,7 +25,7 @@ import java.util.List;
 public class BioReactorInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.BIO_REACTOR;
+        return GAMetaTileEntities.BIO_REACTOR;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class BioReactorInfo extends MultiblockInfoPage {
                 .where('o', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.SOUTH)
                 .where('I', MetaTileEntities.ITEM_IMPORT_BUS[4], EnumFacing.SOUTH)
                 .where('i', MetaTileEntities.ITEM_EXPORT_BUS[4], EnumFacing.SOUTH)
-                .where('S', GATileEntities.BIO_REACTOR, EnumFacing.SOUTH)
+                .where('S', GAMetaTileEntities.BIO_REACTOR, EnumFacing.SOUTH)
                 .where('M', maintenanceIfEnabled(GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.BIO_REACTOR)), EnumFacing.SOUTH)
                 .where('X', GAMetaBlocks.MUTLIBLOCK_CASING2.getState(GAMultiblockCasing2.CasingType.BIO_REACTOR))
                 .where('e', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.NORTH)

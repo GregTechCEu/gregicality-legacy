@@ -3,7 +3,7 @@ package gregicadditions.jei.multi;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMultiblockCasing;
@@ -21,7 +21,7 @@ public class ElectricImplosionInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.ELECTRIC_IMPLOSION;
+        return GAMetaTileEntities.ELECTRIC_IMPLOSION;
     }
 
     @Override

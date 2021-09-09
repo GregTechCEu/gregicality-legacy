@@ -3,8 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeCanningMachine;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -23,7 +22,7 @@ import java.util.List;
 public class LargeCanningMachineInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_CANNING_MACHINE;
+        return GAMetaTileEntities.LARGE_CANNING_MACHINE;
     }
 
     @Override
@@ -37,7 +36,7 @@ public class LargeCanningMachineInfo extends MultiblockInfoPage {
             }
             builder.aisle("PPP", "PSP", "PPP")
                     .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.NORTH)
-                    .where('S', GATileEntities.LARGE_CANNING_MACHINE, EnumFacing.SOUTH)
+                    .where('S', GAMetaTileEntities.LARGE_CANNING_MACHINE, EnumFacing.SOUTH)
                     .where('H', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)), EnumFacing.NORTH)
                     .where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                     .where('#', Blocks.AIR.getDefaultState())

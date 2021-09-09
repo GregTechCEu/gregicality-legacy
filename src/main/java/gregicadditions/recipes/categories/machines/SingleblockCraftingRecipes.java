@@ -1,6 +1,6 @@
 package gregicadditions.recipes.categories.machines;
 
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.common.items.MetaItems;
 
 import static gregicadditions.recipes.helper.GACraftingComponents.*;
@@ -11,7 +11,7 @@ public class SingleblockCraftingRecipes {
 
     public static void init() {
 
-        registerMachineRecipe(GATileEntities.MINER,
+        registerMachineRecipe(GAMetaTileEntities.MINER,
                 "WPW", "CMC", "SPS",
                 'M', HULL,
                 'P', PISTON,
@@ -19,7 +19,7 @@ public class SingleblockCraftingRecipes {
                 'W', MetaItems.COMPONENT_GRINDER_DIAMOND,
                 'S', SENSOR);
 
-        registerMachineRecipe(GATileEntities.DEHYDRATOR,
+        registerMachineRecipe(GAMetaTileEntities.DEHYDRATOR,
                 "WCW", "MHM", "GAG",
                 'C', CIRCUIT,
                 'M', CABLE_QUAD,
@@ -28,7 +28,7 @@ public class SingleblockCraftingRecipes {
                 'A', ROBOT_ARM,
                 'W', COIL_HEATING_DOUBLE);
 
-        registerMachineRecipe(GATileEntities.DECAY_CHAMBER,
+        registerMachineRecipe(GAMetaTileEntities.DECAY_CHAMBER,
                 "RCR", "FMF", "QCQ",
                 'M', HULL,
                 'Q', CABLE_DOUBLE,
@@ -36,7 +36,7 @@ public class SingleblockCraftingRecipes {
                 'F', FIELD_GENERATOR,
                 'R', STICK_RADIOACTIVE);
 
-        registerMachineRecipe(GATileEntities.GREEN_HOUSE,
+        registerMachineRecipe(GAMetaTileEntities.GREEN_HOUSE,
                 "GGG", "AMA", "CQC",
                 'M', HULL,
                 'Q', CABLE,
@@ -44,7 +44,7 @@ public class SingleblockCraftingRecipes {
                 'G', GLASS,
                 'A', ROBOT_ARM);
 
-        registerMachineRecipe(GATileEntities.DISASSEMBLER,
+        registerMachineRecipe(GAMetaTileEntities.DISASSEMBLER,
                 "RSV", "PMV", "ICI",
                 'M', HULL,
                 'C', CABLE,
@@ -54,7 +54,7 @@ public class SingleblockCraftingRecipes {
                 'V', CONVEYOR,
                 'I', CIRCUIT);
 
-        registerMachineRecipe(GATileEntities.NAQUADAH_REACTOR,
+        registerMachineRecipe(GAMetaTileEntities.NAQUADAH_REACTOR,
                 "RCR", "FMF", "QCQ",
                 'M', HULL,
                 'Q', CABLE_QUAD,
@@ -62,7 +62,7 @@ public class SingleblockCraftingRecipes {
                 'F', FIELD_GENERATOR,
                 'R', STICK_RADIOACTIVE);
 
-        registerMachineRecipe(GATileEntities.ROCKET_GENERATOR,
+        registerMachineRecipe(GAMetaTileEntities.ROCKET_GENERATOR,
                 "PCP", "MHM", "GAG",
                 'C', CIRCUIT,
                 'M', MOTOR,

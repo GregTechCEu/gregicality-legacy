@@ -3,7 +3,7 @@ package gregicadditions.jei.multi.simple;
 import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
@@ -23,7 +23,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 public class LargeElectrolyzerInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.LARGE_ELECTROLYZER;
+		return GAMetaTileEntities.LARGE_ELECTROLYZER;
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class LargeElectrolyzerInfo extends MultiblockInfoPage {
 			}
 			builder.aisle("EXHXX", "XXSXX", "XXCXX", "XX#XX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
-					.where('S', GATileEntities.LARGE_ELECTROLYZER, EnumFacing.SOUTH)
+					.where('S', GAMetaTileEntities.LARGE_ELECTROLYZER, EnumFacing.SOUTH)
 					.where('H', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE)), EnumFacing.SOUTH)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.TALONITE))
 					.where('#', Blocks.AIR.getDefaultState())

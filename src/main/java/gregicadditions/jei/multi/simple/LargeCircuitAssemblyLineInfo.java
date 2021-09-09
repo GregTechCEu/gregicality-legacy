@@ -3,7 +3,7 @@ package gregicadditions.jei.multi.simple;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeCircuitAssemblyLine;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -31,7 +31,7 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
 
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_CIRCUIT_ASSEMBLY_LINE;
+        return GAMetaTileEntities.LARGE_CIRCUIT_ASSEMBLY_LINE;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class LargeCircuitAssemblyLineInfo extends MultiblockInfoPage {
                 else builder.aisle("CIC", "RTR", "GAG");
             }
             builder.aisle("FIM", "RTR", "GSG")
-                    .where('S', GATileEntities.LARGE_CIRCUIT_ASSEMBLY_LINE, EnumFacing.SOUTH)
+                    .where('S', GAMetaTileEntities.LARGE_CIRCUIT_ASSEMBLY_LINE, EnumFacing.SOUTH)
                     .where('M', maintenanceIfEnabled(MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID)), EnumFacing.SOUTH)
                     .where('C', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID))
                     .where('F', MetaTileEntities.FLUID_IMPORT_HATCH[4], EnumFacing.WEST)

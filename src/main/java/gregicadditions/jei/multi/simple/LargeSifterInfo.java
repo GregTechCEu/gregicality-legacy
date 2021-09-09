@@ -4,8 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.components.PistonCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.machines.GATileEntities;
-import gregicadditions.machines.multi.simple.TileEntityLargeSifter;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockMultiblockCasing;
@@ -29,7 +28,7 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 public class LargeSifterInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.LARGE_SIFTER;
+		return GAMetaTileEntities.LARGE_SIFTER;
 	}
 
 	@Override
@@ -42,7 +41,7 @@ public class LargeSifterInfo extends MultiblockInfoPage {
 					.aisle("OXXXX", "X###X", "XGGGX")
 					.aisle("XXXXX", "PXXXP", "XXXXX")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.HV], EnumFacing.WEST)
-					.where('S', GATileEntities.LARGE_SIFTER, EnumFacing.WEST)
+					.where('S', GAMetaTileEntities.LARGE_SIFTER, EnumFacing.WEST)
 					.where('G', MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.GRATE_CASING))
 					.where('M', maintenanceIfEnabled(METAL_CASING_1.getState(MetalCasing1.CasingType.EGLIN_STEEL)), EnumFacing.WEST)
 					.where('X', METAL_CASING_1.getState(MetalCasing1.CasingType.EGLIN_STEEL))

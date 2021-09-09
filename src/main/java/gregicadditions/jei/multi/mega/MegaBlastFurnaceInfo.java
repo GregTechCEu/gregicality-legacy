@@ -1,12 +1,11 @@
 package gregicadditions.jei.multi.mega;
 
 import com.google.common.collect.Lists;
-import gregicadditions.GAConfig;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.jei.GAMultiblockShapeInfo;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregicadditions.machines.multi.mega.MetaTileEntityMegaBlastFurnace;
 import gregtech.api.GTValues;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
@@ -19,7 +18,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static gregtech.api.util.RelativeDirection.*;
@@ -27,7 +25,7 @@ import static gregtech.api.util.RelativeDirection.*;
 public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.MEGA_BLAST_FURNACE;
+        return GAMetaTileEntities.MEGA_BLAST_FURNACE;
     }
 
     @Override
@@ -49,7 +47,7 @@ public class MegaBlastFurnaceInfo extends MultiblockInfoPage {
                     .aisle("#####XXGXX#####", "#F#XXX#R#XXX###", "##GXR#X#X#RXG##", "#XXX##X#X##XXX#", "#GR#X##X##X#RG#", "iX###X#X#X###XX", "HXXX##XXX##XXXX", "GGGpXXXPXXX##RG", "iXXX##XXX##XXXX", "XX###X#X#X###XX", "#GR#X##X##X#RG#", "#XXX##X#X##XXX#", "##GXR#X#X#RXG##", "###XXX#R#XXX###", "#####XXGXX#####")
                     .aisle("#####XXXXX#####", "#F#XXXBBBXXX###", "##XXBBXBXBBXX##", "#XXXBBXBXBBXXX#", "#XBBXBBXBBXBBX#", "IXBBBXBXBXBBBXX", "MXXXBBXXXBBXXBX", "SGGpXXXPXXXBBBX", "IXXXBBXXXBBXXBX", "XXBBBXBXBXBBBXX", "#XBBXBBXBBXBBX#", "#XXXBBXBXBBXXX#", "##XXBBXBXBBXX##", "###XXXBBBXXX###", "#####XXXXX#####")
                     .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GTValues.UV], EnumFacing.WEST)
-                    .where('S', GATileEntities.MEGA_BLAST_FURNACE, EnumFacing.WEST)
+                    .where('S', GAMetaTileEntities.MEGA_BLAST_FURNACE, EnumFacing.WEST)
                     .where('M', maintenanceIfEnabled(MetaTileEntityMegaBlastFurnace.casingState), EnumFacing.WEST)
                     .where('T', MetaTileEntityMegaBlastFurnace.secondaryCasingState)
                     .where('X', MetaTileEntityMegaBlastFurnace.casingState)

@@ -6,7 +6,7 @@ import gregicadditions.item.fusion.GACryostatCasing;
 import gregicadditions.item.fusion.GADivertorCasing;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
@@ -31,7 +31,7 @@ public class FusionComponents {
                 .inputs(OreDictUnifier.get(wireGtQuadruple, EnrichedNaquadahTriniumEuropiumDuranide, 64))
                 .input(circuit, MarkerMaterials.Tier.Infinite, 4)
                 .fluidInputs(SolderingAlloy.getFluid(2880 * 2))
-                .outputs(GATileEntities.ADVANCED_FUSION_REACTOR.getStackForm())
+                .outputs(GAMetaTileEntities.ADVANCED_FUSION_REACTOR.getStackForm())
                 .buildAndRegister();
 
         RecipeMaps.ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(500000)

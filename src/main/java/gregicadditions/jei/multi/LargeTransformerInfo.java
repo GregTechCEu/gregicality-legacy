@@ -1,7 +1,7 @@
 package gregicadditions.jei.multi;
 
 import com.google.common.collect.Lists;
-import gregicadditions.machines.GATileEntities;
+import gregicadditions.machines.GAMetaTileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -14,14 +14,14 @@ import java.util.List;
 public class LargeTransformerInfo extends MultiblockInfoPage {
     @Override
     public MultiblockControllerBase getController() {
-        return GATileEntities.LARGE_TRANSFORMER;
+        return GAMetaTileEntities.LARGE_TRANSFORMER;
     }
 
     @Override
     public List<MultiblockShapeInfo> getMatchingShapes() {
         MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
                 .aisle("ISO")
-                .where('S', GATileEntities.LARGE_TRANSFORMER, EnumFacing.SOUTH)
+                .where('S', GAMetaTileEntities.LARGE_TRANSFORMER, EnumFacing.SOUTH)
                 .where('O', MetaTileEntities.ENERGY_OUTPUT_HATCH[0], EnumFacing.WEST)
                 .where('I', MetaTileEntities.ENERGY_INPUT_HATCH[0], EnumFacing.WEST)
                 .build();
