@@ -24,7 +24,7 @@ public class CosmicComponents {
                 .input(wireFine, Cinobite, 8)
                 .input(plate, SuperheavyHAlloy, 4)
                 .input(plate, Vibranium, 4)
-                .fluidInputs(Polybenzimidazole.getFluid(L * 9))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(L * 9))
                 .outputs(SMD_DIODE_COSMIC.getStackForm(32))
                 .buildAndRegister();
 
@@ -51,7 +51,7 @@ public class CosmicComponents {
                 .input(wireFine, Cinobite, 8)
                 .input(plate, SuperheavyLAlloy, 4)
                 .input(plate, TriniumTitanium, 4)
-                .fluidInputs(Zylon.getFluid(L * 9))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(L * 9))
                 .outputs(SMD_RESISTOR_COSMIC.getStackForm(32))
                 .buildAndRegister();
 

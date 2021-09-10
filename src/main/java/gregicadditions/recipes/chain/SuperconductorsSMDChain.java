@@ -35,13 +35,12 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(HydroselenicAcid.getFluid(1000))
                 .buildAndRegister();
 
-        // 2H2Se + 2O + CuInGa -> CuInGaSe2 + 2H2O
+        // 2H2Se + CuInGa -> CuInGaSe2 + 4 H
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(480)
                 .fluidInputs(HydroselenicAcid.getFluid(2000))
-                .fluidInputs(Oxygen.getFluid(2000))
                 .inputs(CopperGalliumIndiumMix.getItemStack(3))
                 .outputs(CopperGalliumIndiumSelenide.getItemStack(5))
-                .fluidOutputs(Water.getFluid(2000))
+                .fluidOutputs(Hydrogen.getFluid(4000))
                 .buildAndRegister();
 
         // MnO2 + 2KOH + O -> K2MnO4 + H2O
@@ -173,27 +172,26 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
-        // C4Br4S + C2H4O2 + CH4O + CO -> C6H8S + 4Br + 2CO2
+        // 2 C4Br4S + 4 C2H5ONa + C2H4O2 + 2H2O -> 2 C8H12O2S + 4 NaBr + 4 HBr + 2 CO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(480)
                 .notConsumable(dust, Zinc)
-                .notConsumable(dust, SodiumHydroxide)
-                .notConsumable(new IntCircuitIngredient(10))
                 .fluidInputs(Perbromothiophene.getFluid(1000))
-                .fluidInputs(AceticAcid.getFluid(1000))
-                .fluidInputs(Methanol.getFluid(1000))
-                .fluidInputs(CarbonMonoxde.getFluid(1000))
-                .fluidOutputs(Dimethylthiophene.getFluid(1000))
-                .fluidOutputs(Bromine.getFluid(4000))
-                .fluidOutputs(CarbonDioxide.getFluid(2000))
+                .fluidInputs(AceticAcid.getFluid(500))
+                .inputs(SodiumEthoxide.getItemStack(18))
+                .fluidInputs(Water.getFluid(1000))
+                .fluidOutputs(Diethoxythiophene.getFluid(1000))
+                .fluidOutputs(HydrobromicAcid.getFluid(2000))
+                .fluidOutputs(CarbonDioxide.getFluid(1000))
+                .outputs(SodiumBromide.getItemStack(8))
                 .buildAndRegister();
 
         // C2H6O2 + C6H8S -> C6H6O2S + 2CH4
         CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(120)
                 .notConsumable(GELLED_TOLUENE)
                 .fluidInputs(EthyleneGlycol.getFluid(1000))
-                .fluidInputs(Dimethylthiophene.getFluid(1000))
+                .fluidInputs(Diethoxythiophene.getFluid(1000))
                 .fluidOutputs(EDOT.getFluid(1000))
-                .fluidOutputs(Methane.getFluid(2000))
+                .fluidOutputs(Ethanol.getFluid(2000))
                 .buildAndRegister();
 
         // (C8H8)n + H2SO4 + C6H6O2S (aka: EDOT) -> PEDOT + Dilute H2SO4
@@ -852,18 +850,18 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
-        // 4B + C -> B4C
+        // 4B + 3C -> B4C3
         BLAST_RECIPES.recipeBuilder().duration(550).EUt(120).blastFurnaceTemp(4000)
                 .input(dust, Boron, 4)
-                .input(dust, Carbon)
-                .outputs(BoronCarbide.getItemStack(5))
+                .input(dust, Carbon, 3)
+                .outputs(BoronCarbide.getItemStack(7))
                 .buildAndRegister();
 
-        // 2Fr2C2 + B4C -> Fr4B4C5
+        // 2Fr2C2 + B4C3 -> Fr4B4C7
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(1920)
                 .inputs(FranciumCarbide.getItemStack(8))
-                .inputs(BoronCarbide.getItemStack(5))
-                .outputs(BoronFranciumCarbide.getItemStack(13))
+                .inputs(BoronCarbide.getItemStack(7))
+                .outputs(BoronFranciumCarbide.getItemStack(15))
                 .buildAndRegister();
 
         // At + H2O + SO3 -> [At + H2O + SO3]
@@ -885,10 +883,9 @@ public class SuperconductorsSMDChain {
                 .outputs(MixedAstatideSalts.getItemStack(7))
                 .buildAndRegister();
 
-        // Fr4B4C5 + 2[3At + Ho + Th + Cn + Fl] + 2 C = B4C7Fr4At6Ho2Th2Fl2Cn2
+        // Fr4B4C7 + 2[3At + Ho + Th + Cn + Fl] = B4C7Fr4At6Ho2Th2Fl2Cn2
         BLAST_RECIPES.recipeBuilder().duration(15000).EUt(120).blastFurnaceTemp(11300)
-                .inputs(BoronFranciumCarbide.getItemStack(13))
-                .input(dust, Carbon, 2)
+                .inputs(BoronFranciumCarbide.getItemStack(15))
                 .inputs(MixedAstatideSalts.getItemStack(14))
                 .outputs(BorocarbideDust.getItemStack(29))
                 .buildAndRegister();
@@ -953,15 +950,13 @@ public class SuperconductorsSMDChain {
                 .outputs(StrontiumChloride.getItemStack(3))
                 .buildAndRegister();
 
-        // Na2O4Ru + NaSgO3 + 2SrCl2 + O -> 3NaCl + RuSgSr2O8 + Cl
+        // Na2O4Ru + Na2SgO4 + 2SrCl2 -> 4NaCl + RuSgSr2O8
         BLAST_RECIPES.recipeBuilder().duration(1360).EUt(120).blastFurnaceTemp(4500)
                 .input(dust, SodiumRuthenate, 7)
                 .inputs(SodiumSeaborgate.getItemStack(5))
                 .inputs(StrontiumChloride.getItemStack(6))
-                .fluidInputs(Oxygen.getFluid(1000))
-                .output(dust, Salt, 6)
+                .output(dust, Salt, 8)
                 .outputs(StrontiumSuperconductorDust.getItemStack(12))
-                .fluidOutputs(Chlorine.getFluid(1000))
                 .buildAndRegister();
 
         // Os + 4O -> OsO4

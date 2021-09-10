@@ -8,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaItems.DEGENERATE_RHENIUM_DUST;
 import static gregicadditions.recipes.GARecipeMaps.BLAST_ALLOY_RECIPES;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_MIXER_RECIPES;
 import static gregtech.api.GTValues.L;
