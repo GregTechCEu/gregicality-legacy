@@ -358,9 +358,9 @@ public class FullereneChain {
                 .duration(160)
                 .buildAndRegister();
 
-        //2 I + N2H4 -> 2 N + 4 HI
+        //4 I + N2H4 -> 2 N + 4 HI
         CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, Iodine, 2)
+                .input(dust, Iodine, 4)
                 .fluidInputs(Hydrazine.getFluid(1000))
                 .fluidOutputs(Nitrogen.getFluid(2000))
                 .fluidOutputs(HydroiodicAcid.getFluid(4000))
