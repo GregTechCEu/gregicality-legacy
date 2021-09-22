@@ -14,7 +14,14 @@ import gregtech.common.blocks.BlockMetalCasing;
 import gregtech.common.blocks.BlockWireCoil;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.List;
+
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.recipes.RecipeMaps.DISTILLATION_RECIPES;
 
@@ -32,6 +39,14 @@ public class MetaTileEntityMegaDistillationTower extends MegaMultiblockRecipeMap
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
         return new MetaTileEntityMegaDistillationTower(metaTileEntityId);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
+        tooltip.add(I18n.format("gtadditions.multiblock.universal.tooltip.1", this.recipeMap.getLocalizedName()));
+        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.1"));
+        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.2"));
+        tooltip.add(I18n.format("gtadditions.multiblock.mega_logic.tooltip.3", 1.0));
     }
 
     @Override

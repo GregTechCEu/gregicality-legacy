@@ -13,6 +13,7 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
@@ -50,6 +51,6 @@ public class LargeExtractorInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{};
+        return new String[]{I18n.format("gtadditions.multiblock.large_extractor.description")};
     }
 }

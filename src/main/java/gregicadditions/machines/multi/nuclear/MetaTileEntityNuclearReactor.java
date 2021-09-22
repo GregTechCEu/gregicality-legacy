@@ -1,6 +1,7 @@
 package gregicadditions.machines.multi.nuclear;
 
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.fluid.GAMetaFluids;

@@ -117,7 +117,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
         blastFurnaceTemperature = context.getOrDefault("blastFurnaceTemperature", 0);
 
         int energyTier = GAUtility.getTierByVoltage(getEnergyContainer().getInputVoltage());
-        this.bonusTemperature = Math.max(0, 100 * (energyTier - 2));
+        this.bonusTemperature = Math.max(0, 100 * Math.min(GAUtility.getTierByVoltage(this.maxVoltage), energyTier - 2));
         this.blastFurnaceTemperature += this.bonusTemperature;
     }
 

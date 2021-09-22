@@ -186,6 +186,7 @@ public class RecipeHandler {
         MiscRecipes.init();
         StagedRemovalRecipes.init();
         MetalCasingRecipes.init();
+        PlasmaCondenserPlasmaRecipes.init();
     }
 
     /**

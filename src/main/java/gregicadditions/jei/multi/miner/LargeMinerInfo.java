@@ -50,7 +50,7 @@ public class LargeMinerInfo extends MultiblockInfoPage {
 
     @Override
     public String[] getDescription() {
-        return new String[]{I18n.format("gtadditions.machine.miner.multi.description")};
+        return new String[]{I18n.format("gtadditions.machine.miner.multi.description", largeMiner.type.chunk, largeMiner.type.chunk, largeMiner.type.fortuneString)};
     }
 
     @Override

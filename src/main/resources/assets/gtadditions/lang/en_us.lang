@@ -1602,8 +1602,9 @@ gtadditions.multiblock.large_electrolyzer.description=Larger version of the Elec
 gtadditions.machine.large_extruder.name=Large Extruder
 gtadditions.multiblock.large_extruder.description=Larger version of the Extruder. Can be extended up to 4 blocks longer to accommodate extra hatches.
 gtadditions.machine.large_centrifuge.name=Large Centrifuge
+gtadditions.multiblock.large_centrifuge.description=The Large Centrifuge is a multiblock version of the Centrifuge. Requires at least 16 primary casings.
 gtadditions.machine.large_chemical_reactor.name=Large Chemical Reactor
-gtadditions.multiblock.large_chemical_reactor.description=The Large Chemical Reactor performs reactions at larger scales with 100% or greater overclocking efficiency.
+gtadditions.multiblock.large_chemical_reactor.description=The Large Chemical Reactor performs reactions at larger scales with 100%% or greater overclocking efficiency.
 gtadditions.machine.large_cutting.name=Large Cutting Machine
 gtadditions.multiblock.large_cutting.description=Larger version of the Cutting Machine and Lathe. Can be extended up to 8 blocks longer to accommodate extra hatches.
 gtadditions.machine.large_macerator.name=Large Macerator
@@ -1653,10 +1654,13 @@ gtadditions.multiblock.advanced_chemical_reactor.description=The Advanced Chemic
 gtadditions.machine.large_brewery.name=Large Brewery
 gtadditions.multiblock.large_brewery.description=The Large Brewery is a multiblock version of the Brewery, Fermenter, and Chemical Dehydrator.
 gtadditions.machine.large_electromagnet.name=Large Electromagnet
+gtadditions.multiblock.large_electromagnet.description=The Large Electromagnet is a multiblock Polarizer and Electromagnetic Separator.
 gtadditions.machine.large_extractor.name=Large Extractor
+gtadditions.multiblock.large_extractor.description=The Large Extractor is a multiblock Extractor and Fluid Extractor.
 gtadditions.machine.large_arc_furnace.name=Large Arc Furnace
 gtadditions.multiblock.large_arc_furnace.description=The Large Arc Furnace is a large version of the regular and plasma arc furance.
 gtadditions.machine.large_canning_machine.name=Large Canning Machine
+gtadditions.multiblock.large_canning_machine.description=The Large Canning Machine performs Canning, Fluid Canning, and Fluid Solidification. Only one of the steel pipes may be exchanged with an input, output or maintenance hatch. It will only form with at least 8 normal steel casings as well.
 gtadditions.machine.large_mass_fabricator.name=Large Mass Fabricator
 gtadditions.multiblock.large_mass_fabricator.description=Mass Fabrication machine for turning materials into matter.
 gtadditions.machine.large_replicator.name=Large Replicator
@@ -2808,7 +2812,6 @@ material.celestine=Celestine
 material.triniite=Triniite
 material.inert_residues=Inert Residues
 
-
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride
 gregtech.fluid.hexafluoride=%s Hexafluoride
@@ -2934,7 +2937,7 @@ item.ga_seed.material.name=%s Seed
 item.ga_essence.material.name=%s Essence
 
 gtadditions.multiblock.battery_tower.description=The Battery Tower can be 4-16 layers high. You can put energy hatches anywhere, and the hatch tier cannot be higher than the tier of the cell casings.
-gregtech.multiblock.large_forge_hammer.description=Uses Lubricant to process items.
+gregtech.multiblock.large_forge_hammer.description=Uses 1mb of Lubricant per parallel recipe to process items.
 gregtech.multiblock.chemical_plant.description=The Chemical Plant is a 5x5 structure with Tiered Casings which define the maximum voltage tier of the multiblock.
 gregtech.multiblock.coke_oven.description=The Coke Oven is a 3x3 multiblock structure used for turning Coal into Coal Coke and Logs into Charcoal, with Creosote Oil as a byproduct.
 gregtech.multiblock.assembly_line.description=The Assembly Line is a large multiblock structure consisting of 5 to 16 "slices". It is a complex Assembling Machine used for creating advanced crafting components.
@@ -4640,6 +4643,7 @@ gtadditions.multiblock.large_chemical_reactor.tooltip.5=Coils above §e5400K§7 
 gtadditions.multiblock.pyrolyse_oven.tooltip.1=For every tier higher of coil used, this multiblock will process one more recipe at a time.
 gtadditions.multiblock.pyrolyse_oven.tooltip.2=The coil's energy discount also applies to this multiblock as well.
 
-gtadditions.multiblock.electric_blast_furnace.tooltip.1=For every 900K that the coils can handle above a recipe's temperature, a small EU/t discount is applied.
-gtadditions.multiblock.electric_blast_furnace.tooltip.2=For every 1800K above the recipe's temperature, the EU/t may be increased by 4x, while the duration may be decreased by 4x, if there is enough power.
+gtadditions.multiblock.electric_blast_furnace.tooltip.1=For every §a900K§7 above the recipe temperature, a multiplicative §a95%%§7 energy multiplier is applied pre-overclocking.
+gtadditions.multiblock.electric_blast_furnace.tooltip.2=For every §a1800K§7 above the recipe temperature, one overclock becomes §a100%%§7 efficient.
+gtadditions.multiblock.electric_blast_furnace.tooltip.3=For every voltage tier above §aMV§7, temperature is increased by §a100K§7.
 
