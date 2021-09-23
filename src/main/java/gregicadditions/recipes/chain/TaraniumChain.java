@@ -344,7 +344,7 @@ public class TaraniumChain {
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
                 .fluidInputs(TaraniumRichHelium4.getPlasma(1000))
                 .fluidOutputs(TaraniumRichHelium4.getFluid(1000))
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(1))
                 .duration(80)
                 .EUt(8000)
                 .buildAndRegister();

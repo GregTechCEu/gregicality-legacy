@@ -800,7 +800,7 @@ public class SuperconductorsSMDChain {
                 .fluidOutputs(Butane.getFluid(1000))
                 .buildAndRegister();
 
-        // TiCl4 + C3H4 + C2H2 -> HCl + C5H5Cl3Ti
+        // TiCl4 + 2 C3H4 + 2 C2H2 -> 2 HCl + (C5H5)2Cl2Ti
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(7680)
                 .fluidInputs(TitaniumTetrachloride.getFluid(1000))
                 .fluidInputs(Propadiene.getFluid(1000))

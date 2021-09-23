@@ -120,7 +120,7 @@ public class TriniumChain {
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
-        ELECTROLYZER_RECIPES.recipeBuilder().duration(175).EUt(32)
+        ELECTROLYZER_RECIPES.recipeBuilder().duration(175).EUt(30)
                 .inputs(CaesiumNitrate.getItemStack(5))
                 .output(dust, Caesium)
                 .fluidOutputs(Nitrogen.getFluid(1000))
