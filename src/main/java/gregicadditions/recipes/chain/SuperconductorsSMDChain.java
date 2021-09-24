@@ -803,11 +803,11 @@ public class SuperconductorsSMDChain {
         // TiCl4 + 2 C3H4 + 2 C2H2 -> 2 HCl + (C5H5)2Cl2Ti
         CHEMICAL_RECIPES.recipeBuilder().duration(260).EUt(7680)
                 .fluidInputs(TitaniumTetrachloride.getFluid(1000))
-                .fluidInputs(Propadiene.getFluid(1000))
-                .fluidInputs(Acetylene.getFluid(1000))
+                .fluidInputs(Propadiene.getFluid(2000))
+                .fluidInputs(Acetylene.getFluid(2000))
                 .notConsumable(ScandiumTriflate.getItemStack())
-                .fluidOutputs(HydrochloricAcid.getFluid(1000))
-                .outputs(TitaniumCyclopentadienyl.getItemStack(14))
+                .fluidOutputs(HydrochloricAcid.getFluid(2000))
+                .outputs(TitaniumCyclopentadienyl.getItemStack(23))
                 .buildAndRegister();
 
         // C2F4 + 2C4H4S2Li2Se2 -> C10H8S4Se4 + 4LiF

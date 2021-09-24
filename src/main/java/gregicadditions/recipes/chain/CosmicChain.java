@@ -123,19 +123,20 @@ public class CosmicChain { // TODO
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        // 2H2O + AgBF4 + 8C6H5Na + 2C8H20NBr + AgClO4 + C5H5Cl3Ti + 8C10H7F2N -> 2AgCl + 2NaBr + 6H2ONaCl + ?
+        // 6 H2O + 2 HCl + 2 AgBF4 + 8 C6H5Na + 2C8H20NBr + 2 AgClO4 + 3 (C5H5)2Cl2Ti + 6 C10H7F2N -> 2AgCl + 2NaBr + 6H2ONaCl + [3 (C5H5)2(C10H6F2N)2Ti + 2 (C6H5)4NBF4 + 8 C2H5OH]
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(350).EUt(30720)
-                .fluidInputs(Water.getFluid(2000))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidInputs(Silvertetrafluoroborate.getFluid(2000))
                 .fluidInputs(Phenylsodium.getFluid(8000))
                 .fluidInputs(TetraethylammoniumBromide.getFluid(2000))
-                .inputs(SilverPerchlorate.getItemStack(6))
-                .inputs(TitaniumCyclopentadienyl.getItemStack(14))
-                .fluidInputs(NDifluorophenylpyrrole.getFluid(8000))
+                .inputs(SilverPerchlorate.getItemStack(12))
+                .inputs(TitaniumCyclopentadienyl.getItemStack(69))
+                .input(dust, Ice, 42)
+                .fluidInputs(NDifluorophenylpyrrole.getFluid(6000))
                 .output(dust, SilverChloride, 4)
                 .outputs(SodiumBromide.getItemStack(4))
                 .fluidOutputs(SaltWater.getFluid(6000))
-                .fluidOutputs(PhotopolymerSolution.getFluid(6000))
+                .fluidOutputs(PhotopolymerSolution.getFluid(8000))
                 .buildAndRegister();
 
         // 3NaClO -> 2NaCl + NaClO3
