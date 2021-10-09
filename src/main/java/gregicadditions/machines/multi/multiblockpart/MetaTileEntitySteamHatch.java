@@ -3,6 +3,7 @@ package gregicadditions.machines.multi.multiblockpart;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
+import gregicadditions.GAConfig;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregtech.api.capability.impl.FilteredFluidHandler;
 import gregtech.api.capability.impl.FluidTankList;
@@ -135,7 +136,9 @@ public class MetaTileEntitySteamHatch extends MetaTileEntityMultiblockPart imple
     @Override
     public ICubeRenderer getBaseTexture() {
         MultiblockControllerBase controller = getController();
-        return controller == null ? Textures.VOLTAGE_CASINGS[6] : controller.getBaseTexture(this);
+        if (controller == null)
+            return GAConfig.multis.steamMultis.useSteelMultis ? Textures.SOLID_STEEL_CASING : Textures.BRONZE_PLATED_BRICKS;
+        return controller.getBaseTexture(this);
     }
 
     @Override

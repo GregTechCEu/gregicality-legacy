@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import java.io.IOException;
 
 @Mod(modid = Gregicality.MODID, name = Gregicality.NAME, version = Gregicality.VERSION,
-        dependencies = "required-after:gregtech@[1.15.0.721,);" +
+        dependencies = "required-after:gregtech@[1.17.0.721,2.0);" +
                 "after:forestry;" +
                 "after:tconstruct;" +
                 "after:exnihilocreatio;" +
@@ -78,7 +78,7 @@ public class Gregicality {
     public static CommonProxy proxy;
 
     public Gregicality() {
-        GAEnums.preInit();
+        GAEnums.onConstruction();
         try {
             GAEnums.addSlotsToGTCEMaps(
                     RecipeMaps.DISTILLERY_RECIPES,
@@ -121,6 +121,7 @@ public class Gregicality {
         MinecraftForge.EVENT_BUS.register(new GAEventHandler());
 
         GAMetaBlocks.init();
+        GAEnums.preInit();
         GATileEntities.init();
         if (GAConfig.GregsConstruct.EnableGregsConstruct && Loader.isModLoaded(GAValues.MODID_TCON))
             TinkersMaterials.preInit();

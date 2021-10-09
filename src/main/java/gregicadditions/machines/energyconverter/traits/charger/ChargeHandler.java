@@ -135,7 +135,7 @@ public abstract class ChargeHandler extends MTETrait implements EnergyConverterC
     public IElectricItem getBatteryContainer(final ItemStack s, final boolean wrap) {
         final IElectricItem i = s.getCapability(GregtechCapabilities.CAPABILITY_ELECTRIC_ITEM, null);
         if (i != null && i.canProvideChargeExternally()) {
-            return (GAConfig.energyConverter.PermitOnlyExactVoltage && i.getTier() != this.energyConverter.getTier()) ? null : i;
+            return (GAConfig.EnergyConversion.PermitOnlyExactVoltage && i.getTier() != this.energyConverter.getTier()) ? null : i;
         }
         if (wrap) {
             return this.getWrappedBatteryContainer(s);

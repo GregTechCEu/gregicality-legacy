@@ -11,6 +11,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 
@@ -62,11 +63,17 @@ public class FusionReactor4Info extends MultiblockInfoPage {
                 .build();
             shapeInfo.add(builder.build());
         }
-        return Lists.newArrayList(shapeInfo);
+        return shapeInfo;
     }
 
     @Override
     public String[] getDescription() {
-        return new String[] {"Temporary Placeholder"};
+        return new String[] {I18n.format("gtadditions.machine.multiblock.description")};
+    }
+
+
+    @Override
+    public float getDefaultZoom() {
+        return 0.5f;
     }
 }

@@ -2,9 +2,10 @@ package gregicadditions.jei.multi.override;
 
 import com.google.common.collect.Lists;
 import gregicadditions.GAValues;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.machines.GATileEntities;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
 import gregtech.integration.jei.multiblock.MultiblockShapeInfo;
@@ -14,7 +15,6 @@ import net.minecraft.util.EnumFacing;
 
 import java.util.List;
 
-import static gregtech.api.unification.material.Materials.StainlessSteel;
 
 public class DistillationTowerInfo extends MultiblockInfoPage {
 
@@ -27,10 +27,12 @@ public class DistillationTowerInfo extends MultiblockInfoPage {
 	public List<MultiblockShapeInfo> getMatchingShapes() {
 		MultiblockShapeInfo shapeInfo = MultiblockShapeInfo.builder()
 				.aisle("EXX", "XXX", "XXX", "XXX", "XXX", "XXX")
-				.aisle("SFX", "X#X", "X#X", "X#X", "X#X", "XXX")
+				.aisle("SFX", "M#X", "X#X", "X#X", "X#X", "XmX")
 				.aisle("IXX", "HXX", "HXX", "HXX", "HXX", "HXX")
 				.where('#', Blocks.AIR.getDefaultState())
-				.where('X', GAMetaBlocks.getMetalCasingBlockState(StainlessSteel))
+				.where('X', MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STAINLESS_CLEAN))
+				.where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
+				.where('m', GATileEntities.MUFFLER_HATCH[0], EnumFacing.UP)
 				.where('S', GATileEntities.DISTILLATION_TOWER, EnumFacing.WEST)
 				.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.EV], EnumFacing.WEST)
 				.where('I', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.EV], EnumFacing.WEST)
@@ -43,5 +45,10 @@ public class DistillationTowerInfo extends MultiblockInfoPage {
 	@Override
 	public String[] getDescription() {
 		return new String[]{I18n.format("gregtech.multiblock.distillation_tower.description")};
+	}
+
+	@Override
+	public float getDefaultZoom() {
+		return 0.7f;
 	}
 }

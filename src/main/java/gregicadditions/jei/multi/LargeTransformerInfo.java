@@ -32,4 +32,9 @@ public class LargeTransformerInfo extends MultiblockInfoPage {
     public String[] getDescription() {
         return new String[]{I18n.format("gtadditions.multiblock.large_transformer.description")};
     }
+
+    @Override
+    public float getDefaultZoom() {
+        return 1.4f;
+    }
 }

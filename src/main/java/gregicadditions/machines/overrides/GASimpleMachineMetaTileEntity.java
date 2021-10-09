@@ -118,7 +118,7 @@ public class GASimpleMachineMetaTileEntity extends GAWorkableTieredMetaTileEntit
         super.update();
         if (!getWorld().isRemote) {
             ((EnergyContainerHandler) this.energyContainer).dischargeOrRechargeEnergyContainers(chargerInventory, 0);
-            if (getTimer() % 5 == 0) {
+            if (getOffsetTimer() % 5 == 0) {
                 EnumFacing outputFacing = getOutputFacing();
                 if (autoOutputFluids) {
                     pushFluidsIntoNearbyHandlers(outputFacing);

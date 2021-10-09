@@ -1,5 +1,6 @@
 package gregicadditions.widgets.monitor;
 
+import gregicadditions.client.renderer.WorldRenderEventRenderer;
 import gregicadditions.covers.CoverDigitalInterface;
 import gregtech.api.gui.IRenderContext;
 import gregtech.api.gui.Widget;
@@ -7,16 +8,20 @@ import gregtech.api.gui.widgets.LabelWidget;
 import gregtech.api.gui.widgets.ScrollableListWidget;
 import gregtech.api.gui.widgets.SlotWidget;
 import gregtech.api.gui.widgets.WidgetGroup;
+import gregtech.api.pipenet.tile.PipeCoverableImplementation;
 import gregtech.api.util.Position;
 import gregtech.api.util.RenderUtil;
 import gregtech.api.util.Size;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.HashMap;
@@ -35,11 +40,22 @@ public class WidgetCoverList extends ScrollableListWidget {
         this.onSelected = onSelected;
         for (CoverDigitalInterface cover: covers) {
             ItemStack itemStack = cover.coverHolder.getStackForm();
+            BlockPos pos = cover.coverHolder.getPos();
+            if (cover.coverHolder instanceof PipeCoverableImplementation) {
+                itemStack = null;
+                pos = pos.offset(cover.attachedSide);
+                TileEntity tileEntity = cover.coverHolder.getWorld().getTileEntity(pos);
+                IBlockState state = cover.coverHolder.getWorld().getBlockState(pos);
+                if (tileEntity != null) {
+                    itemStack = tileEntity.getBlockType().getItem(cover.coverHolder.getWorld(), pos, state);
+                }
+                if (itemStack == null) continue;
+            }
             ItemStackHandler itemStackHandler = new ItemStackHandler(1);
             itemStackHandler.insertItem(0, itemStack, false);
             WidgetGroup widgetGroup = new WidgetGroup();
             widgetGroup.addWidget(new SlotWidget(itemStackHandler, 0, 0, 0, false, false));
-            widgetGroup.addWidget(new LabelWidget(20, 5, String.format("(%d, %d, %d)", cover.coverHolder.getPos().getX(), cover.coverHolder.getPos().getY(), cover.coverHolder.getPos().getZ()), 0XFFFFFFFF));
+            widgetGroup.addWidget(new LabelWidget(20, 5, String.format("(%d, %d, %d)", pos.getX(), pos.getY(), pos.getZ()), 0XFFFFFFFF));
             widgetMap.put(widgetGroup, cover);
             if (widgetGroup.getSize().width + this.scrollPaneWidth > this.getSize().width)
                 this.setSize(new Size(widgetGroup.getSize().width + this.scrollPaneWidth, this.getSize().height));
@@ -68,6 +84,25 @@ public class WidgetCoverList extends ScrollableListWidget {
         if (!result && mouseY >= this.getPosition().y && mouseY <= this.getPosition().y + this.getSize().height) {
             Widget widget = this.widgets.stream().filter(it -> it.isMouseOverElement(mouseX, mouseY)).findFirst().orElse(null);
             if (widget instanceof WidgetGroup) {
+                List<Widget> children = ((WidgetGroup) widget).getContainedWidgets(true);
+                if (children.get(0).isMouseOverElement(mouseX, mouseY)) {
+                    try {
+                        String posString = ObfuscationReflectionHelper.getPrivateValue(LabelWidget.class, (LabelWidget)children.get(1),"text");
+                        String[] posSplit = posString.split("[,() ]");
+                        WorldRenderEventRenderer.renderBlockBoxHighLight(
+                                new BlockPos(Integer.parseInt(posSplit[1]), Integer.parseInt(posSplit[3])
+                                        , Integer.parseInt(posSplit[5])), 5000);
+                        Minecraft.getMinecraft().player.closeScreen();
+                        Minecraft.getMinecraft().player.sendMessage(new TextComponentString(
+                                ((SlotWidget)children.get(0)).getHandle().getStack().getDisplayName() +
+                                        ": "
+                                        + posString
+                        ));
+                        return false;
+                    } catch (Throwable e) {
+                        e.printStackTrace();
+                    }
+                }
                 if (widget == this.selected) {
                     this.selected = null;
                 } else {

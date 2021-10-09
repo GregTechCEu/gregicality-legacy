@@ -68,13 +68,13 @@ public class WaferRecipes {
                 .buildAndRegister();
 
         // Hassium Boule
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(850000).blastFurnaceTemp(50000*3/4)
+        BLAST_RECIPES.recipeBuilder().duration(120).EUt(850000).blastFurnaceTemp(11800)
                 .input(dustTiny, MetastableHassium)
                 .fluidInputs(Nitrogen.getFluid(1000))
                 .outputs(HASSIUM_SEED_CRYSTAL.getStackForm())
                 .buildAndRegister();
 
-        BLAST_RECIPES.recipeBuilder().duration(240).EUt(17000000).blastFurnaceTemp(50000)
+        BLAST_RECIPES.recipeBuilder().duration(240).EUt(17000000).blastFurnaceTemp(11200)
                 .input(dust, MetastableHassium, 2)
                 .inputs(HASSIUM_SEED_CRYSTAL.getStackForm())
                 .fluidInputs(Xenon.getFluid(1000))
@@ -105,7 +105,7 @@ public class WaferRecipes {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(4)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(8)).buildAndRegister();
 
-        // NAND Memory Water
+        // NAND Memory Wafer
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(craftingLens, LightBlue).outputs(NAND_MEMORY_CHIP_WAFER.getStackForm(8)) .buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(craftingLens, LightBlue).outputs(NAND_MEMORY_CHIP_WAFER.getStackForm(12)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(craftingLens, LightBlue).outputs(NAND_MEMORY_CHIP_WAFER.getStackForm(16)).buildAndRegister();

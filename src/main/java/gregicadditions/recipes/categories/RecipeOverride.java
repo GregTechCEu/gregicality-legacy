@@ -104,7 +104,7 @@ public class RecipeOverride {
         MIXER_RECIPES.recipeBuilder().duration(20).EUt(16)
                 .input(dust, Clay)
                 .input(dust, Stone, 3)
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(3))
                 .fluidInputs(Water.getFluid(500))
                 .fluidOutputs(Concrete.getFluid(L * 4))
                 .buildAndRegister();
@@ -114,7 +114,7 @@ public class RecipeOverride {
         MIXER_RECIPES.recipeBuilder().EUt(30).duration(764)
                 .input(dust, Iridium, 3)
                 .input(dust, Osmium)
-                .notConsumable(new IntCircuitIngredient(0))
+                .notConsumable(new IntCircuitIngredient(2))
                 .output(dust, Osmiridium, 4)
                 .buildAndRegister();
 
@@ -124,7 +124,7 @@ public class RecipeOverride {
                 .input(dust, HSSG, 6)
                 .input(dust, Iridium, 2)
                 .input(dust, Osmium)
-                .notConsumable(new IntCircuitIngredient(1))
+                .notConsumable(new IntCircuitIngredient(3))
                 .output(dust, HSSS, 9)
                 .buildAndRegister();
 

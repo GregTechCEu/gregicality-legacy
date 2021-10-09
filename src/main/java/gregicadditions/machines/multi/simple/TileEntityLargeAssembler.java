@@ -1,9 +1,11 @@
 package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAConfig;
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
+import gregicadditions.item.GATransparentCasing;
 import gregicadditions.item.components.ConveyorCasing;
 import gregicadditions.item.components.RobotArmCasing;
 import gregtech.api.metatileentity.MetaTileEntity;
@@ -17,6 +19,9 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockWireCoil;
+import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -24,9 +29,11 @@ import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
+
 public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockController {
 
-	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
 	public TileEntityLargeAssembler(ResourceLocation metaTileEntityId) {
@@ -40,15 +47,19 @@ public class TileEntityLargeAssembler extends LargeSimpleRecipeMapMultiblockCont
 
 	@Override
 	protected BlockPattern createStructurePattern() {
-		return FactoryBlockPattern.start()
-				.aisle("XXX", "XXX", "XXX")
-				.aisle("XXX", "X#X", "XXX")
-				.aisle("XRX", "CSC", "XRX")
+		return FactoryBlockPattern.start(FRONT, UP, RIGHT)
+				.aisle("XXXX", "XXXX", "XXXX", "XXXX")
+				.aisle("XXXX", "SCRX", "XPPX", "XXXX")
+				.aisle("XXXX", "RCPX", "G#PX", "GGGX").setRepeatable(0, 9)
+				.aisle("XXXX", "XXXX", "XXXX", "XXXX")
+				.setAmountAtLeast('X', 25)
 				.where('S', selfPredicate())
 				.where('X', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
-				.where('#', isAirPredicate())
+				.where('#', state -> true)
 				.where('R', robotArmPredicate())
 				.where('C', conveyorPredicate())
+				.where('G', statePredicate(GAMetaBlocks.TRANSPARENT_CASING.getState(GATransparentCasing.CasingType.OSMIRIDIUM_GLASS)))
+				.where('P', statePredicate(MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)))
 				.build();
 	}
 

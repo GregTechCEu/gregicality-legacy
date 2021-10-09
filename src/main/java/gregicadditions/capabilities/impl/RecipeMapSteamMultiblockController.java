@@ -4,6 +4,7 @@ import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.capability.impl.ItemHandlerList;
+import gregtech.api.metatileentity.MTETrait;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
@@ -123,5 +124,10 @@ public abstract class RecipeMapSteamMultiblockController extends MultiblockWithD
                 .stream().map(it -> (IItemHandler) it).mapToInt(IItemHandler::getSlots).sum();
         return itemInputsCount >= recipeMap.getMinInputs() &&
                 abilities.containsKey(GregicAdditionsCapabilities.STEAM);
+    }
+
+    @Override
+    protected boolean shouldUpdate(MTETrait trait) {
+        return !(trait instanceof SteamMultiblockRecipeLogic);
     }
 }

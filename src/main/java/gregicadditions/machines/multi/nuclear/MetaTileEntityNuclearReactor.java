@@ -1,11 +1,14 @@
 package gregicadditions.machines.multi.nuclear;
 
+import gregicadditions.capabilities.GregicAdditionsCapabilities;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.fluid.GAMetaFluids;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GATransparentCasing;
+import gregicadditions.item.metal.NuclearCasing;
 import gregtech.api.capability.impl.AbstractRecipeLogic;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -45,22 +48,24 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import static gregicadditions.GAMaterials.*;
+import static gregicadditions.item.GAMetaBlocks.NUCLEAR_CASING;
 
 
 public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockController {
 
     public enum RodType implements IStringSerializable {
-        THORIUM(0, GAMetaBlocks.getMetalCasingBlockState(ThoriumRadioactive.getMaterial())),
-        URANIUM(2, GAMetaBlocks.getMetalCasingBlockState(UraniumRadioactive.getMaterial())),
-        PLUTONIUM(10, GAMetaBlocks.getMetalCasingBlockState(PlutoniumRadioactive.getMaterial())),
-        AMERICIUM(15, GAMetaBlocks.getMetalCasingBlockState(AmericiumRadioactive.getMaterial())),
-        CURIUM(25, GAMetaBlocks.getMetalCasingBlockState(Curium.getMaterial())),
-        BERKELIUM(35, GAMetaBlocks.getMetalCasingBlockState(Berkelium.getMaterial())),
-        CALIFORNIUM(50, GAMetaBlocks.getMetalCasingBlockState(Californium.getMaterial())),
-        EINSTEINIUM(75, GAMetaBlocks.getMetalCasingBlockState(Einsteinium.getMaterial())),
-        FERMIUM(100, GAMetaBlocks.getMetalCasingBlockState(Fermium.getMaterial())),
-        MENDELEVIUM(200, GAMetaBlocks.getMetalCasingBlockState(Mendelevium.getMaterial()));
+        THORIUM(0, NUCLEAR_CASING.getState(NuclearCasing.CasingType.THORIUM)),
+        PROTACTINIUM(1, NUCLEAR_CASING.getState(NuclearCasing.CasingType.PROTACTINIUM)),
+        URANIUM(2, NUCLEAR_CASING.getState(NuclearCasing.CasingType.URANIUM)),
+        NEPTUNIUM(7, NUCLEAR_CASING.getState(NuclearCasing.CasingType.NEPTUNIUM)),
+        PLUTONIUM(10, NUCLEAR_CASING.getState(NuclearCasing.CasingType.PLUTONIUM)),
+        AMERICIUM(15, NUCLEAR_CASING.getState(NuclearCasing.CasingType.AMERICIUM)),
+        CURIUM(25, NUCLEAR_CASING.getState(NuclearCasing.CasingType.CURIUM)),
+        BERKELIUM(35, NUCLEAR_CASING.getState(NuclearCasing.CasingType.BERKELIUM)),
+        CALIFORNIUM(50, NUCLEAR_CASING.getState(NuclearCasing.CasingType.CALIFORNIUM)),
+        EINSTEINIUM(75, NUCLEAR_CASING.getState(NuclearCasing.CasingType.EINSTEINIUM)),
+        FERMIUM(100, NUCLEAR_CASING.getState(NuclearCasing.CasingType.FERMIUM)),
+        MENDELEVIUM(200, NUCLEAR_CASING.getState(NuclearCasing.CasingType.MENDELEVIUM));
 
 
         public final int additionalTemperature;
@@ -89,7 +94,7 @@ public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockControlle
         return new MetaTileEntityNuclearReactor(metaTileEntityId, recipeMap);
     }
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     @Override
     protected BlockPattern createStructurePattern() {
@@ -203,7 +208,7 @@ public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockControlle
                 notEnoughCoolant = false;
                 return;
             }
-            if (getTimer() % 20 == 0) {
+            if (getOffsetTimer() % 20 == 0) {
                 FluidStack fluidStack = inputFluidInventory.drain(Integer.MAX_VALUE, false);
                 if (fluidStack != null) {
                     coolant = MetaFluids.getMaterialFromFluid(fluidStack.getFluid());

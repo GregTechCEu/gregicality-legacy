@@ -35,6 +35,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.pipeline.LightUtil;
 import net.minecraftforge.fml.relauncher.Side;
@@ -173,7 +174,7 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
             buffer.writeFloat(spin);
             buffer.writeBoolean(connect);
         });
-        markDirty();
+        markAsDirty();
     }
 
     @Override
@@ -381,11 +382,11 @@ public class AdvancedMonitorPluginBehavior extends ProxyHolderPluginBehavior {
 
 
     @Override
-    public void renderPlugin(float partialTicks) {
+    public void renderPlugin(float partialTicks, RayTraceResult rayTraceResult) {
         if (worldSceneRenderer != null && this.screen != null) {
             GlStateManager.pushMatrix();
             GlStateManager.translate(-0.5, -0.5, 0.01);
-            Tuple<Double, Double> mousePos = this.screen.checkLookingAt(partialTicks);
+            Tuple<Double, Double> mousePos = this.screen.checkLookingAt(rayTraceResult);
             if (mousePos != null) {
                 worldSceneRenderer.render(0, 0, 1, 1, (int)(mousePos.getKey()*1080), (int) (1080 - mousePos.getValue()*1080));
             } else {
