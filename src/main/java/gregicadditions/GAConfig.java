@@ -123,8 +123,6 @@ public class GAConfig {
         public boolean highTierWiremills = true;
         @Config.Name("Should higher tier Scanners be registered?")
         public boolean highTierScanners = true;
-
-        // TODO These 4
         @Config.Name("Should higher tier Chemical Dehydrators be registered?")
         public boolean highTierChemicalDehydrator = true;
         @Config.Name("Should higher tier Decay Chambers be registered?")

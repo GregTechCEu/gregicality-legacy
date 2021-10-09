@@ -74,6 +74,8 @@ public class GAMaterialFlagAddition {
         Scheelite.addFlag(DISABLE_DECOMPOSITION);
         Tungstate.addFlag(DISABLE_DECOMPOSITION);
 
+        Spessartine.addFlag(GENERATE_LENS);
+
         //todo
         // Fine Wires
 //        Plutonium.addFlag(GENERATE_FINE_WIRE);

@@ -178,7 +178,6 @@ public class OpticalComponents {
                 .input(ingot, ErbiumDopedZBLAN)
                 .outputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm())
                 .buildAndRegister();
-/* todo wtf?
         CHEMICAL_BATH_RECIPES.recipeBuilder().EUt(30).duration(150)
                 .inputs(CLADDED_OPTICAL_FIBER_CORE.getStackForm())
                 .fluidInputs(Polytetrafluoroethylene.getFluid(144))
@@ -199,6 +198,6 @@ public class OpticalComponents {
 
         ModHandler.addShapelessRecipe("ga_optical_hex", OreDictUnifier.get(opticalFiberHex.toString()),
                 OreDictUnifier.get(opticalFiberOctal.toString()),
-                OreDictUnifier.get(opticalFiberOctal.toString()));*/
+                OreDictUnifier.get(opticalFiberOctal.toString()));
     }
 }

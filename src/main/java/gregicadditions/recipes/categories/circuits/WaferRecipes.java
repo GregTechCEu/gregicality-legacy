@@ -98,10 +98,10 @@ public class WaferRecipes {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(craftingLens, Red).outputs(INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(NEUTRONIUM_WAFER.getStackForm())   .notConsumable(craftingLens, Red).outputs(INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(20)).buildAndRegister();
 
-        // ARAM Wafer todo find replacement for magneto resonatic
-//        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(1)).buildAndRegister();
-//        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(4)).buildAndRegister();
-//        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(NEUTRONIUM_WAFER.getStackForm())   .notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(8)).buildAndRegister();
+        // ARAM Wafer
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, Spessartine).outputs(ARAM_WAFER.getStackForm(1)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, Spessartine).outputs(ARAM_WAFER.getStackForm(4)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(NEUTRONIUM_WAFER.getStackForm())   .notConsumable(lens, Spessartine).outputs(ARAM_WAFER.getStackForm(8)).buildAndRegister();
 
         // NAND Memory Water
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(craftingLens, LightBlue).outputs(NAND_MEMORY_CHIP_WAFER.getStackForm(8)) .buildAndRegister();
@@ -146,9 +146,9 @@ public class WaferRecipes {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, CubicZirconia).outputs(HASOC_WAFER.getStackForm(4)).buildAndRegister();
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(122880).inputs(NEUTRONIUM_WAFER.getStackForm())   .notConsumable(lens, CubicZirconia).outputs(HASOC_WAFER.getStackForm(8)).buildAndRegister();
 
-        // UHASoC Wafer todo find replacement for prasiolite
-//        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, Prasiolite).outputs(UHASOC_WAFER.getStackForm(1)).buildAndRegister();
-//        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(122880).inputs(NEUTRONIUM_WAFER.getStackForm())   .notConsumable(lens, Prasiolite).outputs(UHASOC_WAFER.getStackForm(4)).buildAndRegister();
+        // UHASoC Wafer
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, Pyrope).outputs(UHASOC_WAFER.getStackForm(1)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(122880).inputs(NEUTRONIUM_WAFER.getStackForm())   .notConsumable(lens, Pyrope).outputs(UHASOC_WAFER.getStackForm(4)).buildAndRegister();
 
         // Misc Cutting Recipes
         CUTTER_RECIPES.recipeBuilder().inputs(UHPIC_WAFER.getStackForm()) .outputs(UHPIC.getStackForm(2)) .EUt(48).duration(600).buildAndRegister();
