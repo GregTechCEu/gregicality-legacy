@@ -519,7 +519,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material RhodiumSaltSolution;
     public static Material RhodiumFilterCakeSolution;
     public static Material EglinSteelBase;
-    public static Material MicaPulp;
     public static Material Zirkelite;
     public static Material PalladiumRawPowder;
     public static Material RarestMetalResidue;
@@ -783,7 +782,6 @@ public class GAMaterials implements IMaterialHandler {
     public static Material BenzenediazoniumTetrafluoroborate;
     public static Material FluoroBenzene;
     public static Material Fluorotoluene;
-    public static Material OrthoXylene;
     public static Material OrthoXyleneZeoliteMixture;
     public static Material ParaXylene;
     public static Material Dibromomethylbenzene;

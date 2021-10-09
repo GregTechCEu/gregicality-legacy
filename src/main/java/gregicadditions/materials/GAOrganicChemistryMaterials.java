@@ -1,5 +1,6 @@
 package gregicadditions.materials;
 
+import gregicadditions.GAMaterials;
 import gregtech.api.GTValues;
 import gregtech.api.unification.material.Material;
 
@@ -352,14 +353,6 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 7, Hydrogen, 7, Fluorine, 1)
                 .build()
                 .setFormula("C7H7F", true);
-
-        OrthoXylene = new Material.Builder(6544, "orthoxylene")
-                .fluid()
-                .color(0xB9575E)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Carbon, 8, Hydrogen, 10)
-                .build()
-                .setFormula("C6H4(CH3)2", true);
 
         OrthoXyleneZeoliteMixture = new Material.Builder(6545, "ortho_xylene_zeolite")
                 .fluid()
@@ -1432,7 +1425,7 @@ public class GAOrganicChemistryMaterials {
                 .components(Carbon, 2, Hydrogen, 6, Oxygen, 1)
                 .build();
 
-        Dimethoxyethane = new Material.Builder(6694, "dimethyoxyethane")
+        Dimethoxyethane = new Material.Builder(6694, "dimethoxyethane")
                 .fluid()
                 .color(0x2ACBB4)
                 .flags(DISABLE_DECOMPOSITION)
@@ -2051,7 +2044,7 @@ public class GAOrganicChemistryMaterials {
                 .build()
                 .setFormula("NH4CH3CO2", true);
 
-        Acetamide = new Material.Builder(6793, "acetamine")
+        Acetamide = new Material.Builder(6793, "acetamide")
                 .dust()
                 .color(0xA6BEBF)
                 .flags(DISABLE_DECOMPOSITION)

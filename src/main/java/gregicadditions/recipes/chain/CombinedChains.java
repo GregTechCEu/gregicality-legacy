@@ -1,8 +1,11 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAMaterials;
+
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.Dimethylbenzene;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class CombinedChains {
@@ -87,7 +90,7 @@ public class CombinedChains {
         // C6H4(CH3)2 + 2CH3Cl + 12O + 2C6H5NH2 + C2H5OH -> C22H14N2O7 + 2CH4 + 6H2O + 2HCl
         CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(80).EUt(491520) // UV
                 .notConsumable(dust, Tin)
-                .fluidInputs(OrthoXylene.getFluid(1000))
+                .fluidInputs(Dimethylbenzene.getFluid(1000))
                 .fluidInputs(Chloromethane.getFluid(2000))
                 .fluidInputs(Oxygen.getFluid(12000))
                 .fluidInputs(Aniline.getFluid(2000))
@@ -132,7 +135,7 @@ public class CombinedChains {
                 .notConsumable(dustTiny, AuPdCCatalyst)
                 .fluidInputs(Resorcinol.getFluid(1000))
                 .fluidInputs(NitricAcid.getFluid(2000))
-                .fluidInputs(OrthoXylene.getFluid(1000))
+                .fluidInputs(Dimethylbenzene.getFluid(1000))
                 .output(dust, Zylon)
                 .fluidOutputs(Water.getFluid(6000))
                 .buildAndRegister();

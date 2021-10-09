@@ -1,15 +1,18 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAMaterials;
+
 import static gregicadditions.GAMaterials.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.Dimethylbenzene;
 import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class ZylonChain {
     public static void init() {
 
         MIXER_RECIPES.recipeBuilder()
-                .fluidInputs(OrthoXylene.getFluid(1000))
+                .fluidInputs(Dimethylbenzene.getFluid(1000))
                 .input(dust, Zeolite)
                 .fluidOutputs(OrthoXyleneZeoliteMixture.getFluid(1000))
                 .EUt(480)

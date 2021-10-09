@@ -57,14 +57,7 @@ public class GASecondDegreeMaterials {
                 .components(Iron, 4, Kanthal, 1, Invar, 5)
                 .build();
 
-        MicaPulp = new Material.Builder(11506, "mica_based")
-                .dust(1)
-                .color(0x917445).iconSet(SAND)
-                .flags(DISABLE_DECOMPOSITION)
-                .components(Mica, 1, RareEarth, 1)
-                .build();
-
-        // Free ID 11507
+        // Free IDs 11506-7
 
         Zirkelite = new Material.Builder(11508, "zirkelite")
                 .dust(4).ore()
@@ -728,7 +721,7 @@ public class GASecondDegreeMaterials {
                 .components(FluoroniobicAcid, 1, FluorotantalicAcid, 1)
                 .build();
 
-        REEThUSulfateSolution = new Material.Builder(11608, "reethu_sulfate_soltion")
+        REEThUSulfateSolution = new Material.Builder(11608, "reethu_sulfate_solution")
                 .fluid()
                 .color(0x89BE5C)
                 .flags(DISABLE_DECOMPOSITION)
@@ -763,14 +756,14 @@ public class GASecondDegreeMaterials {
                 .components(Water, 1, Barite, 1)
                 .build();
 
-        BentoniteClaySlurry = new Material.Builder(11613, "bentontie_clay_solution")
+        BentoniteClaySlurry = new Material.Builder(11613, "bentonite_clay_solution")
                 .fluid()
                 .color(0xDBC9C5)
                 .flags(DISABLE_DECOMPOSITION)
                 .components(Water, 1, RareEarth, 1)
                 .build();
 
-        AstatideSolution = new Material.Builder(11614, "astadide_solution")
+        AstatideSolution = new Material.Builder(11614, "astatide_solution")
                 .fluid()
                 .color(0x6DF63F)
                 .flags(DISABLE_DECOMPOSITION)
@@ -969,7 +962,7 @@ public class GASecondDegreeMaterials {
                 .build()
                 .setFormula("(UO2)CO3", true);
 
-        UraniumPeroxideThoriumOxide = new Material.Builder(11644, "uranium_peroixide_thorium_oxide")
+        UraniumPeroxideThoriumOxide = new Material.Builder(11644, "uranium_peroxide_thorium_oxide")
                 .dust()
                 .color(0x202020).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)
@@ -1318,7 +1311,7 @@ public class GASecondDegreeMaterials {
                 .components(Thallium, 1, Barium, 2, Calcium, 2, Copper, 3, Oxygen, 10)
                 .build();
 
-        StrontiumSuperconductor = new Material.Builder(11695, "strontium_superconductor_dust")
+        StrontiumSuperconductor = new Material.Builder(11695, "strontium_superconductor")
                 .dust()
                 .color(0x45ABF4).iconSet(SHINY)
                 .flags(DISABLE_DECOMPOSITION)

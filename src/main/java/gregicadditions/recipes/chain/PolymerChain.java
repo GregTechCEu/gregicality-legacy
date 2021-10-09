@@ -1,9 +1,12 @@
 package gregicadditions.recipes.chain;
 
+import gregicadditions.GAMaterials;
+
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.Dimethylbenzene;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class PolymerChain {
@@ -17,7 +20,7 @@ public class PolymerChain {
 
         // C6H4(CH3)2 + 2CH3Cl -> C6H2(CH3)4 + 2HCl
         CHEMICAL_RECIPES.recipeBuilder()
-                .fluidInputs(OrthoXylene.getFluid(1000))
+                .fluidInputs(Dimethylbenzene.getFluid(1000))
                 .fluidInputs(Chloromethane.getFluid(2000))
                 .output(dust, Durene, 24)
                 .fluidOutputs(HydrochloricAcid.getFluid(2000))
