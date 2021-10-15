@@ -5,10 +5,6 @@ buildscript {
     repositories {
         mavenCentral()
         maven {
-            name = "Jitpack"
-            setUrl("https://jitpack.io")
-        }
-        maven {
             name = "Forge"
             setUrl("https://maven.minecraftforge.net")
         }
