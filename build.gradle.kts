@@ -14,7 +14,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath("com.github.GregTechCE:ForgeGradle:FG_2.3-SNAPSHOT")
+        classpath("net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT")
     }
 }
 
