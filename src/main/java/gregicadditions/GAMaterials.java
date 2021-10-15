@@ -1003,6 +1003,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial TaraniumPoorLiquidHeliumMix = new SimpleFluidMaterial("taranium_poor_liquid_helium_mix", TaraniumPoorLiquidHelium.rgb*10/11+LiquidHelium.rgb/11);
     public static final SimpleFluidMaterial HydroiodicAcid = new SimpleFluidMaterial("hydroiodic_acid",Hydrogen.materialRGB/2+Iodine.materialRGB/2, "HI");
     public static final SimpleFluidMaterial ChlorodiisopropylPhosphine = new SimpleFluidMaterial("chlorodiisopropyl_phosphine", 0xa2c122);
+    public static final SimpleFluidMaterial CesiumBromideSolution = new SimpleFluidMaterial("cesium_bromide_solution", (Caesium.materialRGB-10+SaltWater.materialRGB)/2, "CsBr(H2O)");
 
 
 
@@ -1266,8 +1267,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial NdYAGNanoparticles = new SimpleDustMaterial("nd_yag_nanoparticles",0x6f20af,(short) 269,MaterialIconSet.SHINY, "Nd:YAG");
     public static final SimpleDustMaterial PotassiumPermanganate = new SimpleDustMaterial("potassium_permanganate",PotassiumManganate.rgb-15,(short) 270,MaterialIconSet.ROUGH, "KMnO4");
     public static final SimpleDustMaterial Urea = new SimpleDustMaterial("urea",0x30cf20,(short) 271,MaterialIconSet.ROUGH, "CH4N2O");
-    public static final SimpleDustMaterial CesiumBromide = new SimpleDustMaterial("cesium_bromide", CaesiumHydroxide.rgb, (short) 272,MaterialIconSet.SHINY, "CsBr");
-    //FREE IDs 273-274
+    //FREE IDs 272-274
     public static final SimpleDustMaterial FluoroapatiteSolidResidue = new SimpleDustMaterial("fluoroapatite_solid_residue",0x3cb290,(short) 275,MaterialIconSet.SHINY, "Ca6PO4SiO3F");
     public static final SimpleDustMaterial ApatiteSolidResidue = new SimpleDustMaterial("apatite_solid_residue",0x3cb290,(short) 319,MaterialIconSet.FINE, "Ca6PO4SiO3");
     public static final SimpleDustMaterial AmmoniumBifluoride = new SimpleDustMaterial("ammonium_bifluoride",0x20cfcf,(short) 276,MaterialIconSet.ROUGH, "NH4HF2");
@@ -1345,8 +1345,8 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial ManganeseFluoride = new SimpleDustMaterial("manganese_fluoride",Pyrolusite.materialRGB,(short) 349,MaterialIconSet.ROUGH, "MnF2");
     public static final SimpleDustMaterial GermaniumSulfide = new SimpleDustMaterial("germanium_sulfide",GermaniumOxide.rgb,(short) 350,MaterialIconSet.ROUGH, "GeS2");
     public static final SimpleDustMaterial BismuthGermanate = new SimpleDustMaterial("bismuth_germanate",0x94cf5c,(short) 351,MaterialIconSet.ROUGH, "Bi12GeO20");
-    public static final SimpleDustMaterial CesiumIodide = new SimpleDustMaterial("cesium_iodide",CesiumBromide.rgb,(short) 352, MaterialIconSet.SHINY, "CsI");
-    public static final SimpleDustMaterial TlTmCesiumIodide = new SimpleDustMaterial("tl_tm_cesium_iodide",CesiumBromide.rgb*9/10+Thallium.materialRGB/10,(short) 353,MaterialIconSet.SHINY, "CsITlTm");
+    public static final SimpleDustMaterial CesiumIodide = new SimpleDustMaterial("cesium_iodide",CaesiumHydroxide.rgb,(short) 352, MaterialIconSet.SHINY, "CsI");
+    public static final SimpleDustMaterial TlTmCesiumIodide = new SimpleDustMaterial("tl_tm_cesium_iodide",CaesiumHydroxide.rgb*9/10+Thallium.materialRGB/10,(short) 353,MaterialIconSet.SHINY, "CsITlTm");
     public static final SimpleDustMaterial CadmiumTungstate = new SimpleDustMaterial("cadmium_tungstate",CalciumTungstate.materialRGB,(short) 354,MaterialIconSet.SHINY, "CdWO4");
     public static final SimpleDustMaterial PolycyclicAromaticMix = new SimpleDustMaterial("polycyclic_aromatic_mix",Tetracene.rgb,(short) 355,MaterialIconSet.ROUGH, "C18H12");
     public static final SimpleDustMaterial SodiumOxide = new SimpleDustMaterial("sodium_oxide", 0x0373fc, (short) 356, MaterialIconSet.SHINY, "Na2O");
