@@ -167,6 +167,15 @@ public class RecipeOverride {
                 .fluidOutputs(Hydrogen.getFluid(2000))
                 .fluidOutputs(Styrene.getFluid(1000))
                 .buildAndRegister();
+
+        // Raw Rubber (from Isoprene)
+        removeRecipesByInputs(CHEMICAL_RECIPES, Isoprene.getFluid(144), Oxygen.getFluid(2000));
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(Isoprene.getFluid(144))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .output(dust, RawRubber, 3)
+                .buildAndRegister();
     }
 
     private static void brewingOverride() {
