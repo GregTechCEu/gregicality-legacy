@@ -11,6 +11,16 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class HNIWChain {
 
     public static void init() {
+        //(NH4)2SO4 + CaCO3 -> (NH4)2CO3 + CaSO4
+
+        BLAST_RECIPES.recipeBuilder().duration(270).EUt(120).blastFurnaceTemp(700)
+                .fluidInputs(AmmoniumSulfate.getFluid(1000))
+                .input(dust, Calcite, 5)
+                .output(dust, Gypsum, 6)
+                .outputs(AmmoniumCarbonate.getItemStack(14))
+                .buildAndRegister();
+
+
         //K2CO3 + 2 SO2 + H2O -> 2 KHSO3 + CO2
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(SulfurDioxide.getFluid(2000))
@@ -290,7 +300,7 @@ public class HNIWChain {
 
         //C14N8H18O6 + 6 NO2BF4 + 4 H2O -> C6H6N12O12 + 2 NOBF4 + 4 CH3COOH + 4 HBF4
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(DibenzylTetraacetylhexaazaisowurtzitane.getItemStack())
+                .inputs(Tetraacetyldinitrosohexaazaisowurtzitane.getItemStack())
                 .inputs(NitroniumTetrafluoroborate.getItemStack(48))
                 .fluidInputs(Water.getFluid(2000))
                 .outputs(CrudeHexanitroHexaaxaisowurtzitane.getItemStack())
