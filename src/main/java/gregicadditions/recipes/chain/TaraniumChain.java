@@ -83,9 +83,9 @@ public class TaraniumChain {
 
         BLAST_RECIPES.recipeBuilder()
                 .inputs(OxidizedResidues.getItemStack(10))
-                .fluidInputs(Hydrogen.getFluid(6000))
+                .fluidInputs(Hydrogen.getFluid(60000))
                 .outputs(MetallicResidues.getItemStack())
-                .fluidOutputs(DiluteHydrofluoricAcid.getFluid(4000))
+                .fluidOutputs(DiluteHydrofluoricAcid.getFluid(40000))
                 .duration(1600)
                 .EUt(2000)
                 .blastFurnaceTemp(3500)
@@ -93,9 +93,9 @@ public class TaraniumChain {
 
         BLAST_RECIPES.recipeBuilder()
                 .inputs(HeavyOxidizedResidues.getItemStack(10))
-                .fluidInputs(Hydrogen.getFluid(6000))
+                .fluidInputs(Hydrogen.getFluid(60000))
                 .outputs(HeavyMetallicResidues.getItemStack())
-                .fluidOutputs(DiluteHydrofluoricAcid.getFluid(4000))
+                .fluidOutputs(DiluteHydrofluoricAcid.getFluid(40000))
                 .duration(1600)
                 .EUt(2000)
                 .blastFurnaceTemp(3500)
