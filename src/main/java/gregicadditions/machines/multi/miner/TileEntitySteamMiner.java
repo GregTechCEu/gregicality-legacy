@@ -211,6 +211,10 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
                 }
             }
 
+            if (y.get() < 0) {
+                return;
+            }
+
             // if sufficient amounts of steam and drilling fluid aren't present, do nothing
             if ((importFluids.getTankAt(0).getFluidAmount() < 1) || (importFluids.getTankAt(1).getFluidAmount() < 16)) {
                 return;
@@ -222,13 +226,10 @@ public class TileEntitySteamMiner extends MetaTileEntity implements Miner {
             WorldServer world = (WorldServer) this.getWorld();
             Chunk chuck = world.getChunk(getPos());
             ChunkPos chunkPos = chuck.getPos();
-            if (x.get() == Long.MAX_VALUE || x.get() == 0) {
+            // reset coordinates if they are outside of normal working range
+            if (x.get() < chunkPos.getXStart() || x.get() > chunkPos.getXEnd()+1 || z.get() < chunkPos.getZStart() || z.get() > chunkPos.getZEnd()+1 || y.get() > getPos().getY()) {
                 x.set(chunkPos.getXStart());
-            }
-            if (z.get() == Long.MAX_VALUE || z.get() == 0) {
                 z.set(chunkPos.getZStart());
-            }
-            if (y.get() == Long.MAX_VALUE || y.get() == 0) {
                 y.set(getPos().getY());
             }
 
