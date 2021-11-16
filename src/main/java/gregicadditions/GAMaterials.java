@@ -923,7 +923,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial BenzoylPeroxide = new SimpleFluidMaterial("benzoyl_peroxide", (Barium.materialRGB + BenzoylChloride.rgb)/2, "C14H10O4");
     public static final SimpleFluidMaterial Iron2Chloride = new SimpleFluidMaterial("iron_ii_chloride", (IronChloride.materialRGB-10), "FeCl2");
     public static final SimpleFluidMaterial Propadiene = new SimpleFluidMaterial("propadiene", (Butanol.rgb-20), "C3H4");
-    public static final SimpleFluidMaterial FluorophosphoricAcid = new SimpleFluidMaterial("fluorophosphoric_acid", PhosphorusTrichloride.rgb, "FH2O3P");
+    public static final SimpleFluidMaterial FluorophosphoricAcid = new SimpleFluidMaterial("fluorophosphoric_acid", PhosphorusTrichloride.rgb, "HPF6");
     public static final SimpleFluidMaterial PhenylenedioxydiaceticAcid = new SimpleFluidMaterial("phenylenedioxydiacetic_acid", 0x99546a, "C10H10O6");
     public static final SimpleFluidMaterial Diethylthiourea = new SimpleFluidMaterial("diethylthiourea", 0x2acaa4, "(C2H5NH)2CS");
     public static final SimpleFluidMaterial Isophthaloylbisdiethylthiourea = new SimpleFluidMaterial("isophthaloylbisdiethylthiourea", 0x8a7b9c, "C18H26N4O2S2");
