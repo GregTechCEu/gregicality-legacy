@@ -593,6 +593,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .fluidInputs(NitricAcid.getFluid(6000))
                 .input(dust, YttriumOxide, 5)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(Water.getFluid(3000))
                 .outputs(YttriumNitrate.getItemStack(26))
                 .buildAndRegister();
