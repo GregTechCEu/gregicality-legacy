@@ -792,7 +792,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(ButylLithium.getFluid(2000))
                 .input(dust, Selenium, 2)
                 .fluidOutputs(Bromobutane.getFluid(2000))
-                .fluidOutputs(Lithiumthiinediselenide.getFluid(1000))
+                .outputs(Lithiumthiinediselenide.getItemStack(14))
                 .buildAndRegister();
 
         // C3H6 + C4H8 -> C3H4 + C4H10
@@ -816,10 +816,11 @@ public class SuperconductorsSMDChain {
 
         // C2F4 + 2C4H4S2Li2Se2 -> C10H8S4Se4 + 4LiF
         BLAST_RECIPES.recipeBuilder().duration(7920).EUt(120).blastFurnaceTemp(3500)
-                .fluidInputs(Lithiumthiinediselenide.getFluid(2000))
+                .inputs(Lithiumthiinediselenide.getItemStack(28))
+                .fluidInputs(Tetrafluoroethylene.getFluid(1000))
                 .notConsumable(TitaniumCyclopentadienyl.getItemStack())
                 .output(dust, LithiumFluoride, 8)
-                .outputs(BETS.getItemStack())
+                .outputs(BETS.getItemStack(26))
                 .buildAndRegister();
 
         // This is correct
