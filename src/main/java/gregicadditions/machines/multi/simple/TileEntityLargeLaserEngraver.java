@@ -39,8 +39,11 @@ public class TileEntityLargeLaserEngraver extends LargeSimpleRecipeMapMultiblock
         return new TileEntityLargeLaserEngraver(metaTileEntityId);
     }
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS,
-            MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
+            MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
+            MultiblockAbility.INPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS,
+            MultiblockAbility.EXPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+    };
 
 
     @Override
