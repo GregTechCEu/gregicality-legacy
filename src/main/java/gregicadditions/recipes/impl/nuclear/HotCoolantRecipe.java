@@ -31,8 +31,8 @@ public class HotCoolantRecipe {
     @ZenMethod("create")
     @Method(modid = GTValues.MODID_CT)
     @SuppressWarnings("unused")
-    public static FuelRecipe craftTweakerCreate(ILiquidStack liquidStack, int duration, long minVoltage) {
-        return new FuelRecipe(CraftTweakerMC.getLiquidStack(liquidStack), duration, minVoltage);
+    public static HotCoolantRecipe craftTweakerCreate(ILiquidStack input, int duration, long minVoltage,ILiquidStack output) {
+        return new HotCoolantRecipe(CraftTweakerMC.getLiquidStack(input), duration, minVoltage,CraftTweakerMC.getLiquidStack(output));
     }
 
     public FluidStack getRecipeFluid() {
