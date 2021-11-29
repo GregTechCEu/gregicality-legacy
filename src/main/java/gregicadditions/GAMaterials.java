@@ -796,7 +796,6 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Trimethylchlorosilane = new SimpleFluidMaterial("trimethylchlorosilane", Dimethyldichlorosilane.materialRGB, "(CH3)3SiCl");
     public static final SimpleFluidMaterial Dibromoacrolein = new SimpleFluidMaterial("dibromoacrolein", 0x4a4a4a, "C2H2Br2O2");
     public static final SimpleFluidMaterial Bromohydrothiine = new SimpleFluidMaterial("bromodihydrothiine", 0x40ff3a, "C4H4S2Br2");
-    public static final SimpleFluidMaterial Lithiumthiinediselenide = new SimpleFluidMaterial("lithiumthiinediselenide", 0x7ada00, "C4H4S2Li2Se2");
     public static final SimpleFluidMaterial Bromobutane = new SimpleFluidMaterial("bromobutane", 0xff3333, "CH3(CH2)3Br");
     public static final SimpleFluidMaterial AstatideSolution = new SimpleFluidMaterial("astatide_solution", 0x6df63f, "At(H2O)(SO3)");
     public static final SimpleFluidMaterial Biperfluoromethanedisulfide = new SimpleFluidMaterial("biperfluoromethanedisulfide", 0x3ada40, "C2F6S2");
@@ -923,7 +922,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial BenzoylPeroxide = new SimpleFluidMaterial("benzoyl_peroxide", (Barium.materialRGB + BenzoylChloride.rgb)/2, "C14H10O4");
     public static final SimpleFluidMaterial Iron2Chloride = new SimpleFluidMaterial("iron_ii_chloride", (IronChloride.materialRGB-10), "FeCl2");
     public static final SimpleFluidMaterial Propadiene = new SimpleFluidMaterial("propadiene", (Butanol.rgb-20), "C3H4");
-    public static final SimpleFluidMaterial FluorophosphoricAcid = new SimpleFluidMaterial("fluorophosphoric_acid", PhosphorusTrichloride.rgb, "FH2O3P");
+    public static final SimpleFluidMaterial FluorophosphoricAcid = new SimpleFluidMaterial("fluorophosphoric_acid", PhosphorusTrichloride.rgb, "HPF6");
     public static final SimpleFluidMaterial PhenylenedioxydiaceticAcid = new SimpleFluidMaterial("phenylenedioxydiacetic_acid", 0x99546a, "C10H10O6");
     public static final SimpleFluidMaterial Diethylthiourea = new SimpleFluidMaterial("diethylthiourea", 0x2acaa4, "(C2H5NH)2CS");
     public static final SimpleFluidMaterial Isophthaloylbisdiethylthiourea = new SimpleFluidMaterial("isophthaloylbisdiethylthiourea", 0x8a7b9c, "C18H26N4O2S2");
@@ -1083,7 +1082,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial RoastedSpodumene = new SimpleDustMaterial("roasted_spodumene", 0x3d3d29, (short) 110, MaterialIconSet.DULL, "LiAlSi2O6");
     public static final SimpleDustMaterial RoastedLepidolite = new SimpleDustMaterial("roasted_lepidolite", 0x470024, (short) 111, MaterialIconSet.DULL, "KLi3Al4O11");
     public static final SimpleDustMaterial LithiumChloride = new SimpleDustMaterial("lithium_chloride", (Lithium.materialRGB+Chlorine.materialRGB)/2, (short) 112, MaterialIconSet.METALLIC, "LiCl");
-    // FREE ID 113
+    public static final SimpleDustMaterial Lithiumthiinediselenide = new SimpleDustMaterial("lithiumthiinediselenide", 0x7ada00, (short) 113, MaterialIconSet.METALLIC, "C4H4S2Li2Se2");
     public static final SimpleDustMaterial NickelChloride = new SimpleDustMaterial("nickel_chloride", Nickel.materialRGB+10, (short) 114, MaterialIconSet.ROUGH, "NiCl2");
     public static final SimpleDustMaterial PotassiumSulfate = new SimpleDustMaterial("potassium_sulfate", (Potassium.materialRGB+Sulfur.materialRGB)/2, (short) 115, MaterialIconSet.FINE, "K2SO4");
     public static final SimpleDustMaterial AluminiumSulfate = new SimpleDustMaterial("aluminium_sulfate", (Aluminium.materialRGB+Sulfur.materialRGB)/2, (short) 116, MaterialIconSet.SHINY, "Al2(SO4)3");

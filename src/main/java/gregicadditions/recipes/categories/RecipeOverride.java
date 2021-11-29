@@ -7,6 +7,7 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
+import gregtech.common.items.MetaItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -185,6 +186,28 @@ public class RecipeOverride {
                 .fluidInputs(AceticAcid.getFluid(1000))
                 .fluidOutputs(MethylAcetate.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))
+                .buildAndRegister();
+
+        // Hot Iridium
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Iridium));
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, Iridium)
+                .notConsumable(new IntCircuitIngredient(0))
+                .output(ingotHot, Iridium)
+                .blastFurnaceTemp(2719)
+                .duration(2088)
+                .EUt(120)
+                .buildAndRegister();
+
+        // Acetic Acid
+        removeRecipesByInputs(CHEMICAL_RECIPES, Methanol.getFluid(1000), CarbonMonoxde.getFluid(1000));
+        CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(Methanol.getFluid(1000))
+                .fluidInputs(CarbonMonoxde.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidOutputs(AceticAcid.getFluid(1000))
+                .duration(300)
+                .EUt(30)
                 .buildAndRegister();
     }
 

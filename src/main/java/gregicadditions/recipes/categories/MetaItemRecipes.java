@@ -275,6 +275,7 @@ public class MetaItemRecipes {
         ASSEMBLER_RECIPES.recipeBuilder().duration(180).EUt(4)
                 .input(circuit, Basic, 2)
                 .input(plate, Steel, 2)
+                .circuitMeta(1)
                 .outputs(SCHEMATIC.getStackForm())
                 .buildAndRegister();
 
