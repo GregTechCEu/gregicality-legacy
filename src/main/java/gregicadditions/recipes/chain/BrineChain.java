@@ -281,6 +281,7 @@ public class BrineChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(110).EUt(120)
                 .input(dust, Sodium)
                 .fluidInputs(Ammonia.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(Hydrogen.getFluid(1000))
                 .outputs(SodiumAzanide.getItemStack(4))
                 .buildAndRegister();

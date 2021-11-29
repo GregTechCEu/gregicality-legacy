@@ -138,16 +138,17 @@ public abstract class GARecipeMapMultiblockController extends RecipeMapMultibloc
         if (getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).isEmpty())
             return;
         MetaTileEntityMaintenanceHatch maintenanceHatch = getAbilities(GregicAdditionsCapabilities.MAINTENANCE_HATCH).get(0);
-        if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance) {
+        if (maintenanceHatch.getType() == 2 || !GAConfig.GT5U.enableMaintenance)
             return;
-        }
 
         timeActive += duration;
-        if (minimumMaintenanceTime - timeActive <= 0)
-            if(XSTR_RAND.nextFloat() - 0.75f >= 0) {
+        if (minimumMaintenanceTime - timeActive <= 0) {
+            if (XSTR_RAND.nextFloat() - 0.75f >= 0) {
                 causeProblems();
                 maintenanceHatch.setTaped(false);
+                timeActive -= minimumMaintenanceTime;
             }
+        }
     }
 
     @Override

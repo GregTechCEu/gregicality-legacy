@@ -591,6 +591,7 @@ public class SuperconductorsSMDChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .fluidInputs(NitricAcid.getFluid(6000))
                 .input(dust, YttriumOxide, 5)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(Water.getFluid(3000))
                 .outputs(YttriumNitrate.getItemStack(26))
                 .buildAndRegister();
@@ -788,7 +789,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(ButylLithium.getFluid(2000))
                 .input(dust, Selenium, 2)
                 .fluidOutputs(Bromobutane.getFluid(2000))
-                .fluidOutputs(Lithiumthiinediselenide.getFluid(1000))
+                .outputs(Lithiumthiinediselenide.getItemStack(14))
                 .buildAndRegister();
 
         // C3H6 + C4H8 -> C3H4 + C4H10
@@ -812,10 +813,11 @@ public class SuperconductorsSMDChain {
 
         // C2F4 + 2C4H4S2Li2Se2 -> C10H8S4Se4 + 4LiF
         BLAST_RECIPES.recipeBuilder().duration(7920).EUt(120).blastFurnaceTemp(3500)
-                .fluidInputs(Lithiumthiinediselenide.getFluid(2000))
+                .inputs(Lithiumthiinediselenide.getItemStack(28))
+                .fluidInputs(Tetrafluoroethylene.getFluid(1000))
                 .notConsumable(TitaniumCyclopentadienyl.getItemStack())
                 .output(dust, LithiumFluoride, 8)
-                .outputs(BETS.getItemStack())
+                .outputs(BETS.getItemStack(26))
                 .buildAndRegister();
 
         // This is correct
@@ -921,16 +923,14 @@ public class SuperconductorsSMDChain {
                 .output(dust, Salt, 2)
                 .buildAndRegister();
 
-        // 2NaIO4 + 2Ru + 4NaOH + 2CO -> 2NaI + 2Na2O4Ru + 2H2O + 2CO2
+        // 3NaIO4 + 4Ru + 8NaOH -> 3NaI + 4Na2RuO4 + 4H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(480)
-                .inputs(SodiumPeriodate.getItemStack(12))
-                .input(dust, Ruthenium, 2)
-                .input(dust, SodiumHydroxide, 12)
-                .fluidInputs(CarbonMonoxde.getFluid(2000))
-                .outputs(SodiumIodide.getItemStack(4))
-                .output(dust, SodiumRuthenate, 14)
-                .fluidOutputs(Water.getFluid(2000))
-                .fluidOutputs(CarbonDioxide.getFluid(2000))
+                .inputs(SodiumPeriodate.getItemStack(18))
+                .input(dust, Ruthenium, 4)
+                .input(dust, SodiumHydroxide, 24)
+                .outputs(SodiumIodide.getItemStack(6))
+                .output(dust, SodiumRuthenate, 28)
+                .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
         // Sg + 2 NaOH + 6 F + 2H2O -> 6HF + Na2SgO4

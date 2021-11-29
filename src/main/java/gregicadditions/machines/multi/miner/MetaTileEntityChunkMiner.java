@@ -170,33 +170,30 @@ public class MetaTileEntityChunkMiner extends TieredMetaTileEntity implements Mi
         super.update();
         if (!getWorld().isRemote) {
             fillInternalTankFromFluidContainer(containerInventory, containerInventory, 0, 1);
-            if (!drainEnergy()) {
-                return;
-            }
 
-            WorldServer world = (WorldServer) this.getWorld();
-            Chunk chuck = world.getChunk(getPos());
-            ChunkPos chunkPos = chuck.getPos();
-            if (x.get() == Long.MAX_VALUE || x.get() == 0) {
-                x.set(chunkPos.getXStart());
-            }
-            if (z.get() == Long.MAX_VALUE || z.get() == 0) {
-                z.set(chunkPos.getZStart());
-            }
-            if (y.get() == Long.MAX_VALUE || y.get() == 0) {
-                y.set(getPos().getY());
-            }
+            if (y.get() >= 0 && drainEnergy()) {
+                WorldServer world = (WorldServer) this.getWorld();
+                Chunk chuck = world.getChunk(getPos());
+                ChunkPos chunkPos = chuck.getPos();
 
-            List<BlockPos> blockPos = Miner.getBlockToMinePerChunk(this, x, y, z, chuck.getPos());
-            blockPos.forEach(blockPos1 -> {
-                NonNullList<ItemStack> itemStacks = NonNullList.create();
-                IBlockState blockState = this.getWorld().getBlockState(blockPos1);
-                blockState.getBlock().getDrops(itemStacks, world, blockPos1, blockState, 0);
-                if (addItemsToItemHandler(exportItems, true, itemStacks)) {
-                    addItemsToItemHandler(exportItems, false, itemStacks);
-                    world.destroyBlock(blockPos1, false);
+                // reset coordinates if they are outside of normal working range
+                if (x.get() < chunkPos.getXStart() || x.get() > chunkPos.getXEnd()+1 || z.get() < chunkPos.getZStart() || z.get() > chunkPos.getZEnd()+1 || y.get() > getPos().getY()) {
+                    x.set(chunkPos.getXStart());
+                    z.set(chunkPos.getZStart());
+                    y.set(getPos().getY());
                 }
-            });
+
+                List<BlockPos> blockPos = Miner.getBlockToMinePerChunk(this, x, y, z, chuck.getPos());
+                blockPos.forEach(blockPos1 -> {
+                    NonNullList<ItemStack> itemStacks = NonNullList.create();
+                    IBlockState blockState = this.getWorld().getBlockState(blockPos1);
+                    blockState.getBlock().getDrops(itemStacks, world, blockPos1, blockState, 0);
+                    if (addItemsToItemHandler(exportItems, true, itemStacks)) {
+                        addItemsToItemHandler(exportItems, false, itemStacks);
+                        world.destroyBlock(blockPos1, false);
+                    }
+                });
+            }
 
             if (!getWorld().isRemote && getTimer() % 5 == 0) {
                 pushItemsIntoNearbyHandlers(getFrontFacing());

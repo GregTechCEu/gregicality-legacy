@@ -256,6 +256,7 @@ public class VariousChains {
         CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(60)
                 .fluidInputs(CarbonMonoxde.getFluid(1000))
                 .input(dust, SodiumHydroxide, 3)
+                .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(SodiumFormate.getFluid(1000))
                 .buildAndRegister();
 

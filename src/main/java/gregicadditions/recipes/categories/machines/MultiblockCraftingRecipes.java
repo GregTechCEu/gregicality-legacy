@@ -574,7 +574,7 @@ public class MultiblockCraftingRecipes {
         // Large Bending and Forming Machine
         ModHandler.addShapedRecipe("ga_large_bender_and_forming", LARGE_BENDER_AND_FORMING.getStackForm(),
                 "CBC", "RHR", "CBC",
-                'H', GAConfig.GT5U.highTierThermalCentrifuges ?
+                'H', GAConfig.GT5U.highTierBenders ?
                         GATileEntities.BENDER[EV].getMetaTileEntity().getStackForm() :
                         MetaTileEntities.BENDER[EV - 1].getStackForm(),
                 'R', new UnificationEntry(gear, Titanium),

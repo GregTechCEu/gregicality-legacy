@@ -205,7 +205,7 @@ public class HNIWChain {
         //6 CH2O + 4 NH3 -> C6H12N4 + 6 H2O
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Formaldehyde.getFluid(4000))
-                .fluidOutputs(Ammonia.getFluid(6000))
+                .fluidInputs(Ammonia.getFluid(6000))
                 .outputs(Hexamethylenetetramine.getItemStack(22))
                 .fluidOutputs(Water.getFluid(6000))
                 .EUt(480)
