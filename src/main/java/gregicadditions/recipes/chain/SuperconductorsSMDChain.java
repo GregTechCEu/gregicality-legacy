@@ -927,16 +927,14 @@ public class SuperconductorsSMDChain {
                 .output(dust, Salt, 2)
                 .buildAndRegister();
 
-        // 2NaIO4 + 2Ru + 4NaOH + 2CO -> 2NaI + 2Na2O4Ru + 2H2O + 2CO2
+        // 3NaIO4 + 4Ru + 8NaOH -> 3NaI + 4Na2RuO4 + 4H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(480)
-                .inputs(SodiumPeriodate.getItemStack(12))
-                .input(dust, Ruthenium, 2)
-                .input(dust, SodiumHydroxide, 12)
-                .fluidInputs(CarbonMonoxde.getFluid(2000))
-                .outputs(SodiumIodide.getItemStack(4))
-                .output(dust, SodiumRuthenate, 14)
-                .fluidOutputs(Water.getFluid(2000))
-                .fluidOutputs(CarbonDioxide.getFluid(2000))
+                .inputs(SodiumPeriodate.getItemStack(18))
+                .input(dust, Ruthenium, 4)
+                .input(dust, SodiumHydroxide, 24)
+                .outputs(SodiumIodide.getItemStack(6))
+                .output(dust, SodiumRuthenate, 28)
+                .fluidOutputs(Water.getFluid(4000))
                 .buildAndRegister();
 
         // Sg + 2 NaOH + 6 F + 2H2O -> 6HF + Na2SgO4
