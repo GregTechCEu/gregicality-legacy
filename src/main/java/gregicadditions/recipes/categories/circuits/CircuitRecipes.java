@@ -781,10 +781,10 @@ public class CircuitRecipes {
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(32))
                 .inputs(SMD_RESISTOR_BIOWARE.getStackForm(32))
                 .inputs(NEURO_PROCESSOR.getStackForm())
-                .input(wireGtSingle, UHVSuperconductor, 2)
+                .input(wireGtSingle, UVSuperconductor, 2)
                 .inputs(UHPIC.getStackForm(16))
                 .inputs(ARAM.getStackForm(64))
-                .input(plate, Tritanium, 2)
+                .input(plate, Seaborgium, 2)
                 .input(foil, Polybenzimidazole, 16)
                 .inputs(GRAVI_STAR.getStackForm(2))
                 .fluidInputs(SterileGrowthMedium.getFluid(1000))
@@ -839,7 +839,7 @@ public class CircuitRecipes {
                 .inputs(SMD_DIODE_OPTICAL.getStackForm(64))
                 .inputs(SMD_RESISTOR_OPTICAL.getStackForm(64))
                 .inputs(OPTICAL_PROCESSING_CORE.getStackForm(2))
-                .input(wireGtSingle, UVSuperconductor, 4)
+                .input(wireGtSingle, UHVSuperconductor, 4)
                 .inputs(ARAM.getStackForm(32))
                 .inputs(HIGH_POWER_INTEGRATED_CIRCUIT.getStackForm(32))
                 .input(plate, HDCS, 2)
@@ -898,17 +898,17 @@ public class CircuitRecipes {
 
     private static void exoticCircuits() {
 
-            //Exotic Processor
-            CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt((int)2E+6).qubit(8)
-                    .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(8))
-                    .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(8))
-                    .inputs(EXOTIC_PROCESSING_CORE.getStackForm())
-                    .input(wireFine, Cinobite, 4)
-                    .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
-                    .inputs(HASOC.getStackForm(1))
-                    .solderMultiplier(4)
-                    .outputs(EXOTIC_PROCESSOR.getStackForm())
-                    .buildAndRegister();
+        //Exotic Processor
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt((int)2E+6).qubit(8)
+                .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(8))
+                .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(8))
+                .inputs(EXOTIC_PROCESSING_CORE.getStackForm())
+                .input(wireFine, Cinobite, 4)
+                .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
+                .inputs(HASOC.getStackForm(1))
+                .solderMultiplier(4)
+                .outputs(EXOTIC_PROCESSOR.getStackForm())
+                .buildAndRegister();
 
         //Exotic Assembly
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt((int)2E+6).qubit(8)
