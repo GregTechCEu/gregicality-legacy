@@ -68,7 +68,7 @@ public class TaraniumChain {
                 .fluidInputs(DistilledWater.getFluid(10000))
                 .inputs(PartiallyOxidizedResidues.getItemStack(10))
                 .fluidOutputs(OxidizedResidualSolution.getFluid(10000))
-                .output(dustTiny, InertResidues)
+                .outputs(InertResidues.getItemStack())
                 .duration(200)
                 .EUt(100)
                 .buildAndRegister();
@@ -131,7 +131,7 @@ public class TaraniumChain {
                 .EUt(8000)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(FerromagneticResidues.getItemStack(6))
                 .output(dustSmall, Iron)
                 .output(dustSmall, Nickel)
@@ -140,7 +140,7 @@ public class TaraniumChain {
                 .EUt(3000)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(DiamagneticResidues.getItemStack(6))
                 .output(dustSmall, Calcium)
                 .output(dustSmall, Zinc)
@@ -152,7 +152,7 @@ public class TaraniumChain {
                 .EUt(3000)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(ParamagneticResidues.getItemStack(6))
                 .output(dustSmall, Sodium)
                 .output(dustSmall, Potassium)
@@ -164,7 +164,7 @@ public class TaraniumChain {
                 .EUt(3000)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(HeavyParamagneticResidues.getItemStack(6))
                 .output(dustSmall, ThoriumRadioactive.getMaterial())
                 .output(dustSmall, UraniumRadioactive.getMaterial())
@@ -176,7 +176,7 @@ public class TaraniumChain {
                 .EUt(3000)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(HeavyDiamagneticResidues.getItemStack(6))
                 .output(dustSmall, Lead)
                 .output(dustSmall, Cadmium)
@@ -188,14 +188,14 @@ public class TaraniumChain {
                 .EUt(3000)
                 .buildAndRegister();
 
-        LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
+        CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(HeavyFerromagneticResidues.getItemStack(6))
                 .output(dustSmall, Dysprosium)
                 .duration(120)
                 .EUt(3000)
                 .buildAndRegister();
 
-        LARGE_MIXER_RECIPES.recipeBuilder()
+        MIXER_RECIPES.recipeBuilder()
                 .fluidInputs(DistilledWater.getFluid(2000))
                 .inputs(ExoticHeavyResidues.getItemStack(16))
                 .input(dust, SodiumHydroxide, 3)
@@ -207,7 +207,7 @@ public class TaraniumChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .input(dust, InertResidues, 10)
+                .inputs(InertResidues.getItemStack(10))
                 .fluidInputs(FluoroantimonicAcid.getFluid(1000))
                 .outputs(CleanInertResidues.getItemStack(10))
                 .outputs(AntimonyTrifluoride.getItemStack(4))
@@ -271,15 +271,13 @@ public class TaraniumChain {
                 .EUt(3000)
                 .buildAndRegister();
 
-        ADV_FUSION_RECIPES.recipeBuilder()
+        FUSION_RECIPES.recipeBuilder()
                 .fluidInputs(TaraniumEnrichedLHelium3.getFluid(1000))
                 .fluidInputs(Helium3.getFluid(1000))
                 .fluidOutputs(TaraniumRichDustyHeliumPlasma.getFluid(3000))
                 .duration(160)
-                .EUt(32700)
-                .euStart(100000000)
-                .euReturn(5000)
-                .coilTier(1)
+                .EUt(7680)
+                .EUToStart(100000000)
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
@@ -342,8 +340,16 @@ public class TaraniumChain {
                 .buildAndRegister();
 
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
-                .fluidInputs(TaraniumRichHelium4.getPlasma(1000))
-                .fluidOutputs(TaraniumRichHelium4.getFluid(1000))
+                .fluidInputs(TaraniumRichHelium4.getPlasma(100))
+                .fluidOutputs(TaraniumRichHelium4.getFluid(100))
+                .notConsumable(new IntCircuitIngredient(1))
+                .duration(80)
+                .EUt(8000)
+                .buildAndRegister();
+
+        PLASMA_CONDENSER_RECIPES.recipeBuilder()
+                .fluidInputs(Hydrogen.getPlasma(100))
+                .fluidOutputs(Hydrogen.getFluid(100))
                 .notConsumable(new IntCircuitIngredient(1))
                 .duration(80)
                 .EUt(8000)

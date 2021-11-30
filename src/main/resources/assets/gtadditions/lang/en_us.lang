@@ -911,6 +911,8 @@ metaitem.californiumtrichloride.name=Californium Trichloride
 metaitem.iridiumtrioxide.name=Iridium Trioxide
 metaitem.iridium_cyclooctadienyl_chloride_dimer.name=Irium Cyclooctadienyl Chloride Dimer
 metaitem.finely_powdered_rutile.name=Finely Powdered Rutile
+metaitem.inert_residues.name=Inert Residues
+metaitem.silver_nitrate.name=Silver Nitrate
 
 metaitem.unstable.star.name=Unstable Star
 
@@ -2811,7 +2813,6 @@ material.gallite=Gallite
 material.bowieite=Bowieite
 material.celestine=Celestine
 material.triniite=Triniite
-material.inert_residues=Inert Residues
 
 gregtech.fluid.hot=Hot %s
 gregtech.fluid.hexachloride=%s Hexachloride

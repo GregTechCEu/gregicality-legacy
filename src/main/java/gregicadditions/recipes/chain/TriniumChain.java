@@ -190,15 +190,15 @@ public class TriniumChain {
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(350).EUt(32750)
-                .input(wireFine, CarbonNanotubes)
+                .input(wireFine, CarbonNanotubes,6)
                 .inputs(Fullerene.getItemStack())
                 .inputs(Fluorocarborane.getItemStack(125))
                 .fluidInputs(Perfluorobenzene.getFluid(2000))
-                .output(PROTONATED_FULLERENE_SIEVING_MATRIX.getMetaItem())
+                .outputs(PROTONATED_FULLERENE_SIEVING_MATRIX.getStackForm())
                 .buildAndRegister();
 
         //C65H70B55F55 + 6 Ra + 2 Ke3Ac2(OH)12? -> 2 Ra3Ac2(OH)12? + Ke6C65H70B55F55
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(210).EUt(262000)
+        MIXER_RECIPES.recipeBuilder().duration(210).EUt(262000)
                 .input(dust, Radium, 6)
                 .inputs(ActiniumTriniumHydroxides.getItemStack(58))
                 .inputs(PROTONATED_FULLERENE_SIEVING_MATRIX.getStackForm())
@@ -208,7 +208,7 @@ public class TriniumChain {
                 .buildAndRegister();
 
         //Ke6C65H70B55F55 + 13 H2SbF7 + 59 KrF2 -> 59 Kr + 13 SbF3 + 6 KeF4 + 32 C2H2 + CF4 + 55 BF3 + 32 HF
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(131000)
+        CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(131000)
                 .inputs(SATURATED_FULLERENE_SIEVING_MATRIX.getStackForm())
                 .fluidInputs(FluoroantimonicAcid.getFluid(13000))
                 .fluidInputs(KryptonDifluoride.getFluid(59000))
@@ -255,7 +255,6 @@ public class TriniumChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(500)
                 .fluidInputs(Benzene.getFluid(1000))
                 .fluidInputs(Acetylene.getFluid(2000))
-                .notConsumable(OreDictUnifier.get(gemChipped, Jasper))
                 .notConsumable(UVA_HALIDE_LAMP.getStackForm())
                 .fluidOutputs(Naphthalene.getFluid(1000))
                 .fluidOutputs(Hydrogen.getFluid(2000))
