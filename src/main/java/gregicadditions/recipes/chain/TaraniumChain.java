@@ -277,7 +277,7 @@ public class TaraniumChain {
                 .fluidOutputs(TaraniumRichDustyHeliumPlasma.getFluid(3000))
                 .duration(160)
                 .EUt(7680)
-                .EUToStart(100000000)
+                .EUToStart(480000000)
                 .buildAndRegister();
 
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
@@ -340,16 +340,20 @@ public class TaraniumChain {
                 .buildAndRegister();
 
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
-                .fluidInputs(TaraniumRichHelium4.getPlasma(100))
-                .fluidOutputs(TaraniumRichHelium4.getFluid(100))
+                .fluidInputs(LiquidHelium.getFluid(100))
+                .fluidInputs(TaraniumRichHelium4.getPlasma(1000))
+                .fluidOutputs(TaraniumRichHelium4.getFluid(1000))
+                .fluidOutputs(Helium.getFluid(100))
                 .notConsumable(new IntCircuitIngredient(1))
                 .duration(80)
                 .EUt(8000)
                 .buildAndRegister();
 
         PLASMA_CONDENSER_RECIPES.recipeBuilder()
-                .fluidInputs(Hydrogen.getPlasma(100))
-                .fluidOutputs(Hydrogen.getFluid(100))
+                .fluidInputs(LiquidHelium.getFluid(100))
+                .fluidInputs(Hydrogen.getPlasma(1000))
+                .fluidOutputs(Hydrogen.getFluid(1000))
+                .fluidOutputs(Helium.getFluid(100))
                 .notConsumable(new IntCircuitIngredient(1))
                 .duration(80)
                 .EUt(8000)
