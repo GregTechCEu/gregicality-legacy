@@ -514,9 +514,9 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial HyperFuelII = new SimpleFluidMaterial("hyper_fluid_ii", 0xd8db67, "Nq(Nq+)(*Nq*)DbCm");
     public static final SimpleFluidMaterial HyperFuelIII = new SimpleFluidMaterial("hyper_fluid_iii", 0x8f9146, "Nq(Nq+)(*Nq*)AdCf");
     public static final SimpleFluidMaterial HyperFuelIV = new SimpleFluidMaterial("hyper_fluid_iv", 0x4d4e31, "Nq(Nq+)(*Nq*)AdCfNtTn");
-    public static final SimpleFluidMaterial AcidicSaltWater = new SimpleFluidMaterial("acidic_salt_water", 0x006960, "Na(H2O)(H2SO4)Cl");
-    public static final SimpleFluidMaterial SulfuricBromineSolution = new SimpleFluidMaterial("sulfuric_bromine_solution", 0xff5100, "Br(H2SO4)?");
-    public static final SimpleFluidMaterial HotVapourMixture = new SimpleFluidMaterial("hot_vapour_mixture", 0xff5100, "Br(H2SO4)(H2O)?");
+    public static final SimpleFluidMaterial AcidicSaltWater = new SimpleFluidMaterial("acidic_salt_water", 0x006960, "H2SO4(NaCl)3(H2O)3Cl2");
+    public static final SimpleFluidMaterial SulfuricBromineSolution = new SimpleFluidMaterial("sulfuric_bromine_solution", 0xff5100, "H2SO4Br(H2O)Cl2");
+    public static final SimpleFluidMaterial HotVapourMixture = new SimpleFluidMaterial("hot_vapour_mixture", 0xff5100, "H2SO4Br(H2O)2Cl2");
     public static final SimpleFluidMaterial DampBromine = new SimpleFluidMaterial("damp_bromine", 0xe17594, "Br(H2O)");
     public static final SimpleFluidMaterial Butyraldehyde = new SimpleFluidMaterial("butyraldehyde", 0xe7cf6e, "CH3(CH2)3CH(CH2CH3)CH2OH");
     public static final SimpleFluidMaterial Ethylhexanol = new SimpleFluidMaterial("ethylhexanol", 0xfeea9a, "C8H18O");
