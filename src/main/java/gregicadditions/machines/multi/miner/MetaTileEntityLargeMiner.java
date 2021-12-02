@@ -113,7 +113,6 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 break;
             }
         }
-        reinitializeStructurePattern();
     }
 
     @Override

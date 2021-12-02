@@ -8,8 +8,10 @@ import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PistonCasing;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.simple.TileEntityLargeBenderAndForming;
+import gregicadditions.machines.multi.simple.TileEntityLargeThermalCentrifuge;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -45,7 +47,6 @@ public class LargeBenderAndFormingInfo extends MultiblockInfoPage {
                     .where('S', GATileEntities.LARGE_BENDER_AND_FORMING, EnumFacing.SOUTH)
                     .where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
                     .where('X', TileEntityLargeBenderAndForming.casingState)
-                    .where('#', Blocks.AIR.getDefaultState())
                     .where('i', MetaTileEntities.ITEM_IMPORT_BUS[GAValues.LV], EnumFacing.WEST)
                     .where('O', MetaTileEntities.ITEM_EXPORT_BUS[GAValues.LV], EnumFacing.EAST)
                     .where('M', GAMetaBlocks.MOTOR_CASING.getDefaultState())
