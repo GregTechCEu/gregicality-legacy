@@ -132,7 +132,9 @@ public class GATileEntities {
     public static TileEntityLargeExtruder LARGE_EXTRUDER;
     public static TileEntityLargeAssembler LARGE_ASSEMBLER;
     public static TileEntityLargeCircuitAssemblyLine LARGE_CIRCUIT_ASSEMBLY_LINE;
-    public static MetaTileEntityLargeMiner[] LARGE_MINER = new MetaTileEntityLargeMiner[3];
+    public static MetaTileEntityLargeMiner BASIC_LARGE_MINER;
+    public static MetaTileEntityLargeMiner2 LARGE_MINER;
+    public static MetaTileEntityLargeMiner3 ADVANCED_LARGE_MINER;
     public static MetaTileEntityVoidMiner[] VOID_MINER = new MetaTileEntityVoidMiner[3];
     public static TileEntityLargeTransformer LARGE_TRANSFORMER;
     public static MetaTileEntityIndustrialPrimitiveBlastFurnace INDUSTRIAL_PRIMITIVE_BLAST_FURNACE;
@@ -846,11 +848,9 @@ public class GATileEntities {
         NUCLEAR_REACTOR = GregTechAPI.registerMetaTileEntity(2545, new MetaTileEntityNuclearReactor(location("nuclear_reactor"), GARecipeMaps.NUCLEAR_REACTOR_RECIPES));
         NUCLEAR_BREEDER = GregTechAPI.registerMetaTileEntity(2546, new MetaTileEntityNuclearReactor(location("nuclear_breeder"), GARecipeMaps.NUCLEAR_BREEDER_RECIPES));
 
-        LARGE_MINER[0] = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC));
-
-        LARGE_MINER[1] = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner(location("miner.large"), Miner.Type.LARGE));
-
-        LARGE_MINER[2] = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner(location("miner.advance"), Miner.Type.ADVANCE));
+        BASIC_LARGE_MINER = GregTechAPI.registerMetaTileEntity(2548, new MetaTileEntityLargeMiner(location("miner.basic"), Miner.Type.BASIC));
+        LARGE_MINER = GregTechAPI.registerMetaTileEntity(2549, new MetaTileEntityLargeMiner2(location("miner.large"), Miner.Type.LARGE));
+        ADVANCED_LARGE_MINER = GregTechAPI.registerMetaTileEntity(2550, new MetaTileEntityLargeMiner3(location("miner.advance"), Miner.Type.ADVANCE));
 
         VOID_MINER[0] = GregTechAPI.registerMetaTileEntity(2551, new MetaTileEntityVoidMiner(location("void_miner"), GAValues.UV, GAConfig.multis.voidMiner.maxTemp));
         LARGE_TRANSFORMER = GregTechAPI.registerMetaTileEntity(2552, new TileEntityLargeTransformer(location("large_transformer")));

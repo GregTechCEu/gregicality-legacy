@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.multi.miner.MetaTileEntityLargeMiner;
 import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
+import gregtech.api.unification.material.type.SolidMaterial;
 import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.metatileentities.MetaTileEntities;
 import gregtech.integration.jei.multiblock.MultiblockInfoPage;
@@ -36,13 +37,13 @@ public class LargeMinerInfo extends MultiblockInfoPage {
                 .aisle("#####", "#####", "PPPPP", "#SPE#", "##F##", "##F##", "##F##", "##F##", "##F##", "##F##")
                 .aisle("#####", "#####", "PPPPP", "#IPP#", "##F##", "##F##", "##F##", "#####", "#####", "#####")
                 .aisle("F###F", "F###F", "PPPPP", "#####", "#####", "#####", "#####", "#####", "#####", "#####")
-                .where('S', largeMiner, EnumFacing.WEST)
+                .where('S', getController(), EnumFacing.WEST)
                 .where('M', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.WEST)
                 .where('P', largeMiner.getCasingState())
                 .where('E', MetaTileEntities.ENERGY_INPUT_HATCH[4], EnumFacing.EAST)
                 .where('O', MetaTileEntities.ITEM_EXPORT_BUS[0], EnumFacing.EAST)
                 .where('I', MetaTileEntities.FLUID_IMPORT_HATCH[0], EnumFacing.WEST)
-                .where('F', MetaBlocks.FRAMES.get(largeMiner.getMaterial()).getDefaultState())
+                .where('F', largeMiner.getFrameState())
                 .where('#', Blocks.AIR.getDefaultState())
                 .build();
         return Lists.newArrayList(shapeInfo);
