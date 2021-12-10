@@ -612,6 +612,7 @@ public class SuperconductorsSMDChain {
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .fluidInputs(HypochlorousAcid.getFluid(1000))
                 .fluidInputs(HydrogenCyanide.getFluid(3000))
+                .fluidInputs(Water.getFluid(3000))
                 .notConsumable(dust, PotassiumDichromate)
                 .notConsumable(new IntCircuitIngredient(0))
                 .fluidOutputs(CitricAcid.getFluid(1000))

@@ -138,7 +138,7 @@ public class Dyes {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder().duration(450).EUt(480)
-                .inputs(FinelyPowderedRutile.getItemStack())
+                .inputs(FinelyPowderedRutile.getItemStack(3))
                 .input(dust, Carbon)
                 .fluidInputs(Chlorine.getFluid(4000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))

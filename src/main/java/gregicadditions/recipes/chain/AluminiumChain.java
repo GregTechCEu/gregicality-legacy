@@ -81,14 +81,14 @@ public class AluminiumChain {
                 .outputs(AluminiumHydroxide.getItemStack(56))
                 .buildAndRegister();
 
-        // 8 Red Mud [Contains Total: 4TiO2 + 24 NaOH + 6 H2O] + 36 HCl = 8 Neutralized Mud [Contains Total: 4TiO2 + 24NaCl + 30 H2O]
+        // 8 Red Mud [Contains Total: 4TiO2 + 24 NaOH + 6 H2O] + 36 HCl = 8 Neutralized Mud [Contains Total: 4TiO2 + 24NaCl + 30 H2O + 12HCl]
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .fluidInputs(RedMud.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(4500))
                 .fluidOutputs(NeutralisedRedMud.getFluid(2000))
                 .buildAndRegister();
 
-        // 8 Neutralized Mud [Contains Total: 4TiO2 + 24NaCl + 30 H2O] = 4 Red Slurry [Contains Total: 4TiO2] + 4 Ferric REE Chloride [Contains Total: 12 HCl + 6 H2O] + 24 [NaCl + H2O]
+        // 8 Neutralized Mud [Contains Total: 4TiO2 + 24NaCl + 30 H2O + 12 HCl] = 4 Red Slurry [Contains Total: 4TiO2] + 4 Ferric REE Chloride [Contains Total: 12 HCl + 6 H2O] + 24 [NaCl + H2O]
         CENTRIFUGE_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .fluidInputs(NeutralisedRedMud.getFluid(2000))
                 .fluidOutputs(RedSlurry.getFluid(1000))
@@ -96,12 +96,12 @@ public class AluminiumChain {
                 .fluidOutputs(SaltWater.getFluid(6000))
                 .buildAndRegister();
 
-        // 4 Ferric REE Chloride [Contains Total: 12 HCl + 6 H2O] = 2 Rare Earth Chlorides [Contains Total: REECl3 + 3 H2O] + 2 Iron III Chloride [Contains Total: FeCl3] + 12 H
+        // 4 Ferric REE Chloride [Contains Total: 12 HCl + 6 H2O] = 2 Rare Earth Chlorides [Contains Total: REECl3 + 3 H2O] + 2 Iron III Chloride [Contains Total: FeCl3] + 6 H2O
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(480)
                 .fluidInputs(FerricREEChloride.getFluid(2000))
                 .fluidOutputs(RareEarthChloridesSolution.getFluid(1000))
                 .fluidOutputs(IronChloride.getFluid(1000))
-                .fluidOutputs(Hydrogen.getFluid(6000))
+                .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
         // 4 Red Slurry [Contains Total: 4TiO2] + 4 H2SO4 = 4 TiO(SO4) + 4H2O
