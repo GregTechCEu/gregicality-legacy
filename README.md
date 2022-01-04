@@ -2,11 +2,11 @@
 
 [![Downloads](http://cf.way2muchnoise.eu/full_gregicality_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/gregicality) [![MCVersion](http://cf.way2muchnoise.eu/versions/gregicality.svg)](https://www.curseforge.com/minecraft/mc-mods/gregicality)
 
-[![GitHub issues](https://img.shields.io/github/issues/Gregicality/gregicality.svg)](https://github.com/Gregicality/gregicality/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/Gregicality/gregicality.svg)](https://github.com/Gregicality/gregicality/pulls) [![license](https://img.shields.io/github/license/Gregicality/gregicality.svg)](../master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/GregTechCEu/gregicality.svg)](https://github.com/GregTechCEu/gregicality/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/GregTechCEu/gregicality.svg)](https://github.com/GregTechCEu/gregicality/pulls) [![license](https://img.shields.io/github/license/GregTechCEu/gregicality.svg)](../master/LICENSE)
 
 ----
 
-Join us on [Discord](https://discord.gg/y5dkPtF)
+Join us on [Discord](https://discord.gg/bWSWuYvURP)
 
 A work in progress wiki can be found [here](https://gregicality.miraheze.org/wiki/Gregicality_Wiki)
 
