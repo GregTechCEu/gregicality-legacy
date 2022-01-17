@@ -769,7 +769,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Bender And Forming.")
             @Config.Name("Large Bending and Forming casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "titanium";
@@ -859,7 +859,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Cutting.")
             @Config.Name("Large Cutting Machine casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "maraging_steel_250";
@@ -890,7 +890,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Electrolyzer.")
             @Config.Name("Large Electrolyzer casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "potin";
@@ -921,7 +921,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Extruder.")
             @Config.Name("Large Extruder casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "inconel_625";
@@ -952,7 +952,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Forge Hammer.")
             @Config.Name("Large Forge Hammer casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "iron";
@@ -983,7 +983,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 200;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Macerator.")
             @Config.Name("Large Macerator casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "stellite";
@@ -1014,7 +1014,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Mixer.")
             @Config.Name("Large Mixer casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "staballoy";
@@ -1045,7 +1045,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Multi Use.")
             @Config.Name("Large Multiuse casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "staballoy";
@@ -1076,7 +1076,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 200;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Sifter.")
             @Config.Name("Large Sifter casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "eglin_steel";
@@ -1107,8 +1107,8 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 150;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
-            @Config.Name("Large Centrifuge casing material")
+            @Config.Comment("The casing material to use for the Large Thermal Centrifuge.")
+            @Config.Name("Large Thermal Centrifuge casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "red_steel";
         }
@@ -1138,7 +1138,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Washing Plant.")
             @Config.Name("Large Washing Plant casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "grisium";
@@ -1169,7 +1169,7 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public int chancedBoostPercentage = 100;
 
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
+            @Config.Comment("The casing material to use for the Large Wiremill.")
             @Config.Name("Large Wiremill casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "maraging_steel_250";
