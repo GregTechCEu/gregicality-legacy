@@ -228,7 +228,6 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 			} else {
 				int resultEUt = EUt;
 				double resultDuration = durationModified;
-				previousRecipeDuration = (int) resultDuration;
 
 				// Do not overclock further if duration is already too small
 				// Apply Super Overclocks for every 1800k above the base recipe temperature
@@ -249,6 +248,7 @@ public class MetaTileEntityElectricBlastFurnace extends GARecipeMapMultiblockCon
 				if (resultDuration < 3)
 					resultDuration = 3;
 
+				previousRecipeDuration = (int) resultDuration;
 				return new int[]{negativeEU ? -resultEUt : resultEUt, (int) Math.ceil(resultDuration)};
 			}
 		}
