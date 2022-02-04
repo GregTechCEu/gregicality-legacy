@@ -202,16 +202,16 @@ public class TaraniumChain {
                 .inputs(PROTONATED_FULLERENE_SIEVING_MATRIX.getStackForm())
                 .fluidOutputs(SodiumHydroxideSolution.getFluid(1000))
                 .outputs(SATURATED_FULLERENE_SIEVING_MATRIX.getStackForm())
-                .duration(80)
-                .EUt(500000)
+                .duration(40)
+                .EUt(2000000)
                 .buildAndRegister();
 
-        CHEMICAL_RECIPES.recipeBuilder()
+        LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(InertResidues.getItemStack(10))
-                .fluidInputs(FluoroantimonicAcid.getFluid(1000))
+                .notConsumable(FluoroantimonicAcid.getFluid(0))
                 .outputs(CleanInertResidues.getItemStack(10))
                 .outputs(AntimonyTrifluoride.getItemStack(4))
-                .fluidOutputs(FluoronaquadricAcid.getFluid(1000))
+                .output(dust, NaquadricCompound)
                 .duration(320)
                 .EUt(200)
                 .buildAndRegister();

@@ -312,7 +312,7 @@ public class GAMaterials implements IMaterialHandler {
     // FREE ID 849
     public static final DustMaterial ChromiumTrioxide = new DustMaterial(848, "chromium_trioxide", 0xFFE4E1, MaterialIconSet.DULL, 0, of(new MaterialStack(Chrome, 1), new MaterialStack(Oxygen, 3)), 0);
     public static final DustMaterial PotassiumDichromate = new DustMaterial(845, "potassium_dichromate", 0xFF084E, MaterialIconSet.DULL, 0, of(new MaterialStack(Potassium, 2), new MaterialStack(Chrome, 2), new MaterialStack(Oxygen, 7)), 0);
-    public static final DustMaterial Triniite = new DustMaterial(836,"triniite",0x5F5A76, MaterialIconSet.SHINY, 7, of(new MaterialStack(Trinium, 3), new MaterialStack(Actinium, 3), new MaterialStack(Selenium, 4), new MaterialStack(Astatine, 4)), GENERATE_ORE);
+    public static final DustMaterial Triniite = new DustMaterial(836,"triniite",0x5F5A76, MaterialIconSet.SHINY, 7, of(new MaterialStack(Trinium, 3), new MaterialStack(Actinium, 3), new MaterialStack(Selenium, 4), new MaterialStack(Astatine, 4)), GENERATE_ORE | DISABLE_DECOMPOSITION);
     public static final DustMaterial SilverOxide = new DustMaterial(835, "silver_oxide", 0x4D4D4D, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 2), new MaterialStack(Oxygen, 1)), 0);
     public static final DustMaterial SilverChloride = new DustMaterial(834, "silver_chloride", 0xFEFEFE, MaterialIconSet.DULL, 2, of(new MaterialStack(Silver, 1), new MaterialStack(Chlorine, 1)), DISABLE_DECOMPOSITION | GENERATE_FLUID_BLOCK);
     public static final DustMaterial PotassiumMetabisulfite = new DustMaterial(832, "potassium_metabisulfite", 0xFFFFFF, MaterialIconSet.DULL, 2, of(new MaterialStack(Potassium, 2), new MaterialStack(Sulfur, 2), new MaterialStack(Oxygen, 5)), 0);

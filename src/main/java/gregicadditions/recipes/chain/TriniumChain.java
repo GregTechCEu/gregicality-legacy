@@ -1,5 +1,6 @@
 package gregicadditions.recipes.chain;
 
+import gregtech.api.GTValues;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 
@@ -149,7 +150,7 @@ public class TriniumChain {
                 .buildAndRegister();
 
         //2 Ke3Ac2Se4At4 + 8 HNO3 + 8 SO2 + NaClO4 ->  8 SeO2 + 8At + [NaCl + 4 H2O + 2 Ke3Ac2S4(NO3)4 + ?]
-        BLAST_RECIPES.recipeBuilder().duration(265).EUt(130500).blastFurnaceTemp(10000)
+        BLAST_RECIPES.recipeBuilder().duration(265).EUt(130500).blastFurnaceTemp(9400)
                 .input(dust, Triniite, 16)
                 .inputs(PureCrystallineNitricAcid.getItemStack(40))
                 .inputs(SodiumPerchlorate.getItemStack(6))
@@ -226,6 +227,17 @@ public class TriniumChain {
                 .fluidOutputs(BoronFluoride.getFluid(55000))
                 .fluidOutputs(CarbonFluoride.getFluid(1000))
                 .fluidOutputs(HydrofluoricAcid.getFluid(32000))
+                .buildAndRegister();
+
+        CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(30)
+                .input(dust, Calcium)
+                .fluidInputs(Fluorine.getFluid(2000))
+                .output(dust, Fluorite, 3)
+                .buildAndRegister();
+
+        FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(40).EUt(30)
+                .input(dust, Fluorite)
+                .fluidOutputs(Fluorite.getFluid(GTValues.L))
                 .buildAndRegister();
 
         MIXER_RECIPES.recipeBuilder().duration(160).EUt(30)
