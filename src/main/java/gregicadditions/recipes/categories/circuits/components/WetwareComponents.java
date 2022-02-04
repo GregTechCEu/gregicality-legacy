@@ -5,18 +5,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.DepletedGrowthMedium;
 import static gregicadditions.item.GAMetaItems.*;
-import static gregicadditions.item.GAMetaItems.CONTAMINATED_PETRI_DISH;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.common.items.MetaItems.ELECTRIC_PUMP_ZPM;
-import static gregtech.common.items.MetaItems.SHAPE_MOLD_CYLINDER;
+import static gregtech.common.items.MetaItems.*;
 
 public class WetwareComponents {
 
@@ -28,37 +23,37 @@ public class WetwareComponents {
     private static void components() {
 
         // SMD Capacitor
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(31616)
-                .input(wireFine, PEDOT, 8)
-                .input(foil, Polytetrafluoroethylene, 4)
-                .input(foil, BariumTitanate, 4)
-                .fluidInputs(Polyimide.getFluid(L * 2))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(30720)
+                .input(wireFine, NaquadahAlloy, 8)
+                .fluidInputs(Polytetrafluoroethylene.getFluid(L))
+                .input(foil, NaquadahEnriched, 4)
+                .input(foil, Polybenzimidazole, 4)
                 .outputs(SMD_CAPACITOR_WETWARE.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Resistor
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(31616)
-                .input(wireFine, NaquadahAlloy, 6)
-                .input(plate, BismuthRuthenate)
-                .input(plate, BismuthIridiate)
-                .fluidInputs(Polyimide.getFluid(L * 2))
-                .outputs(SMD_RESISTOR_WETWARE.getStackForm(24))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(30720)
+                .input(wireFine, NaquadahAlloy, 8)
+                .fluidInputs(Polytetrafluoroethylene.getFluid(L))
+                .input(plate, Naquadria)
+                .input(plate, RutheniumDioxide)
+                .outputs(SMD_RESISTOR_WETWARE.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Transistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(30720)
-                .input(wireFine, Dubnium, 8)
-                .input(plate, GermaniumTungstenNitride, 4)
-                .fluidInputs(Polyimide.getFluid(L * 2))
+                .input(wireFine, NaquadahAlloy, 8)
+                .fluidInputs(Polytetrafluoroethylene.getFluid(L))
+                .input(plate, NaquadahEnriched)
                 .outputs(SMD_TRANSISTOR_WETWARE.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Diode
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7680)
-                .input(wireFine, Osmiridium, 8)
-                .inputs(AluminiumComplex.getItemStack())
-                .inputs(CopperGalliumIndiumSelenide.getItemStack())
-                .fluidInputs(Polyimide.getFluid(L * 2))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(30720)
+                .input(wireFine, NaquadahAlloy, 8)
+                .fluidInputs(Polytetrafluoroethylene.getFluid(L))
+                .input(dust, Naquadria)
+                .inputs(LanthanumCalciumManganate.getItemStack())
                 .outputs(SMD_DIODE_WETWARE.getStackForm(32))
                 .buildAndRegister();
 
@@ -66,7 +61,7 @@ public class WetwareComponents {
         ASSEMBLY_LINE_RECIPES.recipeBuilder()
                 .input(wireFine, NaquadahAlloy, 16)
                 .input(plate, Tritanium, 2)
-                .inputs(ELECTRIC_PUMP_ZPM.getStackForm())
+                .inputs(ELECTRIC_PUMP_LUV.getStackForm())
                 .input(pipeSmall, Polybenzimidazole, 2)
                 .inputs(Shewanella.getItemStack(2))
                 .fluidInputs(Polybenzimidazole.getFluid(L * 8))

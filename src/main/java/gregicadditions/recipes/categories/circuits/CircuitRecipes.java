@@ -636,7 +636,7 @@ public class CircuitRecipes {
                 .inputs(CYBER_PROCESSING_UNIT.getStackForm())
                 .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm())
                 .input(wireFine, YttriumBariumCuprate, 2)
-                .outputs(WETWARE_PROCESSOR_LUV.getStackForm())
+                .outputs(WETWARE_PROCESSOR_LUV.getStackForm(4))
                 .buildAndRegister();
 
         CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(56000)
@@ -646,11 +646,11 @@ public class CircuitRecipes {
                 .inputs(CYBER_PROCESSING_UNIT.getStackForm())
                 .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm())
                 .input(wireFine, YttriumBariumCuprate, 2)
-                .outputs(WETWARE_PROCESSOR_LUV.getStackForm())
+                .outputs(WETWARE_PROCESSOR_LUV.getStackForm(4))
                 .buildAndRegister();
 
         // ASoC Recipe
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(120000)
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(480000)
                 .inputs(CYBER_PROCESSING_UNIT.getStackForm())
                 .inputs(ADVANCED_SYSTEM_ON_CHIP.getStackForm(4))
                 .input(wireFine, NaquadahAlloy, 8)
@@ -735,7 +735,7 @@ public class CircuitRecipes {
                 .input(wireGtSingle, UVSuperconductor, 64)
                 .input(foil, Polytetrafluoroethylene, 64)
                 .fluidInputs(SterileGrowthMedium.getFluid(2000))
-                .fluidInputs(UUMatter.getFluid(1000))
+                .fluidInputs(UUMatter.getFluid(100))
                 .outputs(WETWARE_MAINFRAME_MAX.getStackForm())
                 .buildAndRegister();
     }
@@ -750,7 +750,7 @@ public class CircuitRecipes {
                 .inputs(NEURO_PROCESSOR.getStackForm())
                 .inputs(HASOC.getStackForm())
                 .input(wireFine, NaquadahAlloy, 4)
-                .outputs(BIOWARE_PROCESSOR.getStackForm())
+                .outputs(BIOWARE_PROCESSOR.getStackForm(4))
                 .solderMultiplier(4)
                 .buildAndRegister();
 
@@ -827,7 +827,7 @@ public class CircuitRecipes {
                 .inputs(OPTICAL_PROCESSING_CORE.getStackForm())
                 .inputs(HASOC.getStackForm())
                 .input(wireFine, Pikyonium, 4)
-                .outputs(OPTICAL_PROCESSOR.getStackForm())
+                .outputs(OPTICAL_PROCESSOR.getStackForm(4))
                 .solderMultiplier(4)
                 .buildAndRegister();
 
@@ -880,7 +880,7 @@ public class CircuitRecipes {
                 .inputs(SMD_DIODE_OPTICAL.getStackForm(64))
                 .inputs(SMD_RESISTOR_OPTICAL.getStackForm(64))
                 .inputs(OPTICAL_PROCESSING_CORE.getStackForm())
-                .input(wireGtSingle, UEVSuperconductor, 6)
+                .input(wireGtSingle, UHVSuperconductor, 6)
                 .inputs(UHPIC.getStackForm(64))
                 .inputs(UHASOC.getStackForm(64))
                 .input(plate, EnrichedNaquadahAlloy, 4)
@@ -899,7 +899,7 @@ public class CircuitRecipes {
     private static void exoticCircuits() {
 
         //Exotic Processor
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt((int)2E+6).qubit(8)
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt((int)4E+6).qubit(8)
                 .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(8))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(8))
                 .inputs(EXOTIC_PROCESSING_CORE.getStackForm())
@@ -907,11 +907,11 @@ public class CircuitRecipes {
                 .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
                 .inputs(HASOC.getStackForm(1))
                 .solderMultiplier(4)
-                .outputs(EXOTIC_PROCESSOR.getStackForm())
+                .outputs(EXOTIC_PROCESSOR.getStackForm(4))
                 .buildAndRegister();
 
         //Exotic Assembly
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt((int)2E+6).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt((int)4E+6).qubit(8)
                 .inputs(SMD_RESISTOR_EXOTIC.getStackForm(16))
                 .inputs(SMD_DIODE_EXOTIC.getStackForm(16))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(16))
@@ -930,7 +930,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         //Exotic Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt((int)2E+6).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(300).EUt((int)4E+6).qubit(8)
                 .inputs(SMD_DIODE_EXOTIC.getStackForm(32))
                 .inputs(SMD_RESISTOR_EXOTIC.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
@@ -941,7 +941,7 @@ public class CircuitRecipes {
                 .inputs(UHPIC.getStackForm(4))
                 .inputs(ARAM.getStackForm(8))
                 .input(wireGtSingle, UEVSuperconductor, 4)
-                .fluidInputs(Polyetheretherketone.getFluid(1000))
+                .fluidInputs(Polyetheretherketone.getFluid(144))
                 .fluidInputs(Vibranium.getFluid(144))
                 .fluidInputs(EnrichedNaquadahAlloy.getFluid(144))
                 .fluidInputs(TriniumTitanium.getFluid(144))
@@ -949,7 +949,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         //Exotic Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt((int)1E+7).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt((int)1E+7).qubit(8)
                 .inputs(SMD_RESISTOR_EXOTIC.getStackForm(64))
                 .inputs(SMD_DIODE_EXOTIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(64))
@@ -961,7 +961,7 @@ public class CircuitRecipes {
                 .input(frameGt, TriniumTitanium)
                 .inputs(UHPIC.getStackForm(2))
                 .inputs(ARAM.getStackForm(16))
-                .input(wireGtSingle, UIVSuperconductor, 8)
+                .input(wireGtSingle, UEVSuperconductor, 8)
                 .fluidInputs(LiquidEnrichedHelium.getFluid(100))
                 .fluidInputs(FullerenePolymerMatrix.getFluid(144))
                 .fluidInputs(Quantum.getFluid(144))
@@ -973,26 +973,24 @@ public class CircuitRecipes {
     private static void cosmicCircuits() {
 
         // Cosmic Processor
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(1920000).qubit(16)
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(30_720_000).qubit(16)
                 .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
                 .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(32))
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(16))
                 .inputs(COSMIC_PROCESSING_CORE.getStackForm())
                 .inputs(UHASOC.getStackForm())
                 .input(wireFine, Cinobite, 4)
-                .outputs(COSMIC_PROCESSOR.getStackForm())
+                .outputs(COSMIC_PROCESSOR.getStackForm(4))
                 .solderMultiplier(4)
                 .buildAndRegister();
 
         // Cosmic Assembly
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(3840000).qubit(16)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(30_720_000).qubit(16)
                 .inputs(COSMIC_PROCESSOR.getStackForm(3))
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(64))
                 .inputs(SMD_DIODE_COSMIC.getStackForm(64))
                 .inputs(SMD_RESISTOR_COSMIC.getStackForm(64))
-                .inputs(NEURO_PROCESSOR.getStackForm(4))
-                .inputs(OPTICAL_PROCESSING_CORE.getStackForm(2))
                 .input(wireGtSingle, UHVSuperconductor, 4)
                 .inputs(ARAM.getStackForm(64))
                 .inputs(ARAM.getStackForm(64))
@@ -1005,13 +1003,12 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Cosmic Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7680000).qubit(16)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(30_720_000).qubit(16)
                 .inputs(COSMIC_ASSEMBLY.getStackForm(4))
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(64))
                 .inputs(SMD_DIODE_COSMIC.getStackForm(64))
                 .inputs(SMD_RESISTOR_COSMIC.getStackForm(64))
-                .inputs(OPTICAL_PROCESSING_CORE.getStackForm(10))
                 .input(wireGtDouble, UEVSuperconductor, 2)
                 .inputs(UHPIC.getStackForm(64))
                 .inputs(ARAM.getStackForm(64))
@@ -1027,14 +1024,12 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Cosmic Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(24000000).qubit(32)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(30_720_000).qubit(32)
                 .inputs(COSMIC_COMPUTER.getStackForm(2))
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(64))
                 .inputs(SMD_DIODE_COSMIC.getStackForm(64))
                 .inputs(SMD_RESISTOR_COSMIC.getStackForm(64))
-                .inputs(OPTICAL_PROCESSING_CORE.getStackForm(4))
-                .inputs(COSMIC_PROCESSING_CORE.getStackForm(2))
                 .input(wireGtQuadruple, UIVSuperconductor, 6)
                 .inputs(UHASOC.getStackForm(64))
                 .inputs(UHPIC.getStackForm(64))
@@ -1054,19 +1049,19 @@ public class CircuitRecipes {
     private static void supracausalCircuits() {
 
         // Supracausal Processor
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(2097152).qubit(32)
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(122_880_000).qubit(32)
                 .inputs(UHASOC.getStackForm(16))
                 .inputs(MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
                 .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
                 .input(plate, SuperheavyHAlloy, 4)
                 .input(wireGtSingle, UHVSuperconductor, 8)
-                .outputs(SUPRACAUSAL_PROCESSOR.getStackForm())
+                .outputs(SUPRACAUSAL_PROCESSOR.getStackForm(4))
                 .solderMultiplier(4)
                 .buildAndRegister();
 
         // Supracausal Assembly
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(8388608).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(50).EUt(122_880_000).qubit(8)
                 .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(16))
                 .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(16))
                 .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(16))
@@ -1085,7 +1080,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Supracausal Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(33554432).qubit(16)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(491_520_000).qubit(16)
                 .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(32))
                 .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(32))
@@ -1107,7 +1102,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Supracausal Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(134217728).qubit(32)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(983_040_000).qubit(32)
                 .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(64))
                 .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(64))

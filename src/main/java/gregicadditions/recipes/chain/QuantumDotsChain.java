@@ -11,7 +11,7 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 public class QuantumDotsChain{
     public static void init(){
 
-        FluidStack[] Oils = {SeedOil.getFluid(1000), FishOil.getFluid(1000)};
+        FluidStack[] Oils = {SeedOil.getFluid(100), FishOil.getFluid(100)};
         for (FluidStack Oil : Oils){
             CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(2000)
                     .fluidInputs(Oil)

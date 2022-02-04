@@ -64,7 +64,7 @@ public class SupracausalComponents {
                 .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(16))
                 .inputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(16))
                 .fluidInputs(FullerenePolymerMatrix.getFluid(L * 9))
-                .outputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
+                .outputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm(8))
                 .buildAndRegister();
 
         // Topological Manipulator Unit

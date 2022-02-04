@@ -23,13 +23,6 @@ public class CrystalComponents {
         // SMD Transistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904)
                 .input(wireFine, Rutherfordium, 12)
-                .inputs(SMD_TRANSISTOR_QUANTUM.getStackForm())
-                .fluidInputs(Plastic.getFluid(L))
-                .outputs(SMD_TRANSISTOR_CRYSTAL.getStackForm(16))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904)
-                .input(wireFine, Rutherfordium, 12)
                 .input(plate, NetherStar)
                 .fluidInputs(Plastic.getFluid(L))
                 .outputs(SMD_TRANSISTOR_CRYSTAL.getStackForm(32))
@@ -38,27 +31,13 @@ public class CrystalComponents {
         // SMD Resistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904)
                 .input(wireFine, NaquadahAlloy, 8)
-                .inputs(SMD_RESISTOR_QUANTUM.getStackForm())
-                .fluidInputs(Plastic.getFluid(L))
-                .outputs(SMD_RESISTOR_CRYSTAL.getStackForm(12))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(80).EUt(7904)
-                .input(wireFine, NaquadahAlloy, 8)
                 .input(plate, Graphene)
-                .input(plate, RutheniumDioxide)
+                .inputs(SiliconCarbide.getItemStack())
                 .fluidInputs(Plastic.getFluid(L))
                 .outputs(SMD_RESISTOR_CRYSTAL.getStackForm(24))
                 .buildAndRegister();
 
         // SMD Capacitor
-        ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(7680)
-                .input(foil, Polybenzimidazole, 4)
-                .inputs(SMD_CAPACITOR_QUANTUM.getStackForm())
-                .fluidInputs(Plastic.getFluid(L))
-                .outputs(SMD_CAPACITOR_CRYSTAL.getStackForm(8))
-                .buildAndRegister();
-
         ASSEMBLER_RECIPES.recipeBuilder().duration(60).EUt(7680)
                 .input(foil, Polybenzimidazole, 4)
                 .input(foil, NaquadahAlloy)
@@ -69,14 +48,7 @@ public class CrystalComponents {
         // SMD Diode
         ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920)
                 .input(wireFine, HSSS, 8)
-                .inputs(SMD_DIODE_QUANTUM.getStackForm())
-                .fluidInputs(Plastic.getFluid(L))
-                .outputs(SMD_DIODE_CRYSTAL.getStackForm(16))
-                .buildAndRegister();
-
-        ASSEMBLER_RECIPES.recipeBuilder().duration(600).EUt(1920)
-                .input(wireFine, HSSS, 8)
-                .inputs(LanthanumCalciumManganate.getItemStack())
+                .inputs(GermaniumSulfide.getItemStack())
                 .fluidInputs(Plastic.getFluid(L))
                 .outputs(SMD_DIODE_CRYSTAL.getStackForm(32))
                 .buildAndRegister();

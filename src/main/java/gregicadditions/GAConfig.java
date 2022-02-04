@@ -444,6 +444,11 @@ public class GAConfig {
         @Config.RequiresMcRestart
         public boolean harderSuperconductors = false;
 
+        @Config.Comment({"Whether to enable Magneto Resonatic Circuits. When false, they will have no recipes and will be hidden from JEI.", "default = true"})
+        @Config.Name("Enable Magneto Circuits")
+        @Config.RequiresMcRestart
+        public boolean enableMagnetoCircuits = true;
+
     }
 
     @Config.Comment({"Configs for Armor and Tools", "Tiers are from ULV-0 to MAX-14"})

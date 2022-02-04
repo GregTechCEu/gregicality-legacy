@@ -44,27 +44,27 @@ public class ExoticComponents{
 
         }
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(foil, Cinobite, 3)
-                .input(foil, Quantum, 2)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(72))
+                .input(foil, Cinobite)
+                .input(foil, Quantum)
                 .outputs(SMD_CAPACITOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(wireFine, Cinobite, 5)
-                .input(foil, TriniumTitanium, 3)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(72))
+                .input(wireFine, Cinobite)
+                .input(foil, TriniumTitanium)
                 .outputs(SMD_RESISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(plate, Vibranium, 5)
-                .input(plate, Quantum, 4)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(72))
+                .input(plate, Vibranium)
+                .input(plate, Quantum)
                 .outputs(SMD_DIODE_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(2))
-                .input(foil, TriniumTitanium, 3)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(72))
+                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
+                .input(foil, TriniumTitanium)
                 .outputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
@@ -121,7 +121,7 @@ public class ExoticComponents{
                 .inputs(RYDBERG_SPINORIAL_ASSEMBLY.getStackForm())
                 .inputs(X_RAY_LASER.getStackForm())
                 .fluidInputs(QuantumDots.getFluid(10))
-                .outputs(EXOTIC_PROCESSING_CORE.getStackForm())
+                .outputs(EXOTIC_PROCESSING_CORE.getStackForm(6))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(5000)

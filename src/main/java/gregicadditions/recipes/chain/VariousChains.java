@@ -183,7 +183,7 @@ public class VariousChains {
                 .input(dust, Redstone)
                 .input(dust, Sulfur)
                 .input(dust, Blaze, 2)
-                .output(dust, Pyrotheum, 2)
+                .output(dust, Pyrotheum, 4)
                 .buildAndRegister();
 
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(24)
@@ -203,7 +203,7 @@ public class VariousChains {
                 .input(dust, Redstone)
                 .input(dust, Snow)
                 .input(dust, Blizz, 2)
-                .output(dust, Cryotheum, 2)
+                .output(dust, Cryotheum, 4)
                 .buildAndRegister();
 
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(32).EUt(24)
@@ -285,6 +285,13 @@ public class VariousChains {
                 .fluidOutputs(Water.getFluid(1000))
                 .fluidOutputs(CarbonDioxide.getFluid(1000))
                 .output(dust, CalciumChloride, 3)
+                .buildAndRegister();
+
+        // Zr + 4Cl -> ZrCl4
+        CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
+                .input(dust, Zirconium)
+                .fluidInputs(Chlorine.getFluid(4000))
+                .outputs(ZirconiumTetrachloride.getItemStack(5))
                 .buildAndRegister();
 
         // ZrCl4 -> Zr + 4Cl
@@ -711,6 +718,15 @@ public class VariousChains {
                 .circuitMeta(1)
                 .fluidInputs(SulfuricCoalTarOil.getFluid(800))
                 .fluidOutputs(Naphthalene.getFluid(800))
+                .buildAndRegister();
+
+        // Radon Production ==========================================
+        CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(122880)
+                .input(ingot, Plutonium,  8)
+                .input(dust, Uranium)
+                .fluidInputs(Air.getFluid(10000))
+                .output(dust, Plutonium, 8)
+                .fluidOutputs(Radon.getFluid(1000))
                 .buildAndRegister();
     }
 }
