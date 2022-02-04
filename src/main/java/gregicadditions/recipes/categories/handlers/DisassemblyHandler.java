@@ -53,6 +53,7 @@ public class DisassemblyHandler {
             MetaItems.WETWARE_MAINFRAME_MAX.getStackForm(),
             GAMetaItems.BIOWARE_MAINFRAME.getStackForm(),
             GAMetaItems.OPTICAL_MAINFRAME.getStackForm(),
+            GAMetaItems.EXOTIC_MAINFRAME.getStackForm(),
             GAMetaItems.COSMIC_MAINFRAME.getStackForm(),
             GAMetaItems.SUPRACAUSAL_MAINFRAME.getStackForm()));
 
