@@ -26,6 +26,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecipeMapMultiblockController {
 
@@ -153,27 +154,29 @@ public abstract class MegaMultiblockRecipeMapController extends LargeSimpleRecip
             List<FluidStack> outputF = new ArrayList<>();
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, multiplier);
 
-            // determine if there is enough room in the output to fit all of this
-            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(outputI, this.getOutputInventory());
-            // if there isn't, we can't process this recipe.
-            if (!canFitOutputs)
-                return null;
-
             // Get EUt for the recipe, pre overclocking
             long totalEUt = (long) multiplier * EUt;
 
             EUt = (int) (totalEUt / OVERCLOCK_FACTOR);
             duration /= OVERCLOCK_FACTOR;
 
-            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
-                    .inputsIngredients(newRecipeInputs)
+            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder();
+            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
+
+            // determine if there is enough room in the output to fit all of this
+            // if there isn't, we can't process this recipe.
+            List<ItemStack> totalOutputs = newRecipe.getChancedOutputs().stream().map(Recipe.ChanceEntry::getItemStack).collect(Collectors.toList());
+            totalOutputs.addAll(outputI);
+            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(totalOutputs, this.getOutputInventory());
+            if (!canFitOutputs)
+                return matchingRecipe;
+
+            newRecipe.inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt(Math.max(1, EUt * this.getEUtPercentage() / 100))
                     .duration((int) Math.max(3, duration * (this.getDurationPercentage() / 100.0)));
-
-            copyChancedItemOutputs(newRecipe, matchingRecipe, multiplier);
 
             return newRecipe.build().getResult();
         }

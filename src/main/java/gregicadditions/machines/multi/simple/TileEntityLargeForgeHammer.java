@@ -37,6 +37,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static gregicadditions.client.ClientHandler.IRON_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
@@ -162,22 +163,23 @@ public class TileEntityLargeForgeHammer extends MultiRecipeMapMultiblockControll
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, minMultiplier);
             newFluidInputs.add(Materials.Lubricant.getFluid(minMultiplier)); // Here's the important part!
 
+            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder();
+            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
+
             // determine if there is enough room in the output to fit all of this
-            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(outputI, this.getOutputInventory());
             // if there isn't, we can't process this recipe.
+            List<ItemStack> totalOutputs = newRecipe.getChancedOutputs().stream().map(Recipe.ChanceEntry::getItemStack).collect(Collectors.toList());
+            totalOutputs.addAll(outputI);
+            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(totalOutputs, this.getOutputInventory());
             if (!canFitOutputs)
-                return null;
+                return matchingRecipe;
 
-
-            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
-                    .inputsIngredients(newRecipeInputs)
+            newRecipe.inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
-                    .EUt((int) Math.max(1, EUt * GAConfig.multis.largeForgeHammer.euPercentage / 100))
-                    .duration((int) Math.max(3, duration * (GAConfig.multis.largeForgeHammer.durationPercentage / 100.0)));
-
-            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
+                    .EUt(Math.max(1, EUt * this.getEUtPercentage() / 100))
+                    .duration((int) Math.max(3, duration * (this.getDurationPercentage() / 100.0)));
 
             return newRecipe.build().getResult();
         }
