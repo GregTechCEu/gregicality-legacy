@@ -87,7 +87,7 @@ public class ExoticComponents{
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(2000)
                 .inputs(HIGH_FREQUENCY_LASER.getStackForm())
-                .input(plate, SuperheavyLAlloy)
+                .input(plate, MetastableHassium)
                 .inputs(HIGHLY_REFLECTIVE_MIRROR.getStackForm())
                 .fluidInputs(Zylon.getFluid(72))
                 .outputs(EXCITATION_MAINTAINER.getStackForm())
