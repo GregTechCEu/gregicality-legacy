@@ -6,6 +6,7 @@ import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAReactorCasing;
 import gregicadditions.machines.multi.GABoostableWorkableHandler;
+import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
@@ -36,7 +37,7 @@ import java.util.Objects;
 import static gregtech.api.unification.material.Materials.Naquadria;
 import static gregtech.api.unification.material.Materials.Radon;
 
-public class MetaTileEntityHyperReactorII extends FueledMultiblockController {
+public class MetaTileEntityHyperReactorII extends GAFueledMultiblockController {
 
     public static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH

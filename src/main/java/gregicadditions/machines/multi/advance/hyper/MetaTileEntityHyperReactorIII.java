@@ -7,6 +7,7 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAReactorCasing;
 import gregicadditions.item.GATransparentCasing;
 import gregicadditions.machines.multi.GABoostableWorkableHandler;
+import gregicadditions.machines.multi.GAFueledMultiblockController;
 import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
@@ -36,7 +37,7 @@ import java.util.Objects;
 
 import static gregtech.api.unification.material.Materials.*;
 
-public class MetaTileEntityHyperReactorIII extends FueledMultiblockController {
+public class MetaTileEntityHyperReactorIII extends GAFueledMultiblockController {
 
 
     public MetaTileEntityHyperReactorIII(ResourceLocation metaTileEntityId, long maxVoltage) {
