@@ -67,13 +67,13 @@ public class FusionElementsChain {
                 .output(dust, SodaAsh, 6)
                 .buildAndRegister();
 
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(340).EUt(7680)
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(340).EUt(1920)
                 .fluidInputs(Carbon.getFluid(10000))
                 .fluidOutputs(Carbon12.getFluid(9893))
                 .fluidOutputs(Carbon13.getFluid(107))
                 .buildAndRegister();
 
-        CENTRIFUGE_RECIPES.recipeBuilder().duration(3400).EUt(7680)
+        CENTRIFUGE_RECIPES.recipeBuilder().duration(340).EUt(1920)
                 .fluidInputs(Nitrogen.getFluid(100000))
                 .fluidOutputs(Nitrogen14.getFluid(99636))
                 .fluidOutputs(NItrogen15.getFluid(364))
@@ -547,6 +547,13 @@ public class FusionElementsChain {
                 .fluidInputs(Plutonium.getFluid(144))
                 .fluidInputs(Calcium.getFluid(144))
                 .fluidOutputs(Seaborgium.getFluid(288))
+                .buildAndRegister();
+
+        // Carbon-Burning Process (lossy)
+        FUSION_RECIPES.recipeBuilder().duration(100).EUt(7680).EUToStart(120000000)
+                .fluidInputs(Carbon12.getFluid(125))
+                .fluidInputs(Carbon12.getFluid(125))
+                .fluidOutputs(Neon.getPlasma(125))
                 .buildAndRegister();
     }
 }
