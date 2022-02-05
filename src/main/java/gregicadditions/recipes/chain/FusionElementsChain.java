@@ -312,7 +312,7 @@ public class FusionElementsChain {
 
         // Other Advanced Fusion Materials
         ADV_FUSION_RECIPES.recipeBuilder().duration(50).EUt(1000000).euStart(1000000000).coilTier(1).euReturn(40)
-                .fluidInputs(Curium247.getMaterial().getFluid(144))
+                .fluidInputs(Curium.getMaterial().getFluid(144))
                 .fluidInputs(Sodium.getFluid(144))
                 .fluidOutputs(Bohrium.getFluid(288))
                 .buildAndRegister();

@@ -1,6 +1,7 @@
 package gregicadditions.recipes.categories.circuits;
 
 import gregicadditions.GAConfig;
+import gregtech.api.unification.material.MarkerMaterials;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -179,25 +180,25 @@ public class MagnetoRecipes {
 
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(600).EUt(30)
                 .input(gemChipped, MagnetoResonatic, 3)
-                .notConsumable(craftingLens, Magenta)
+                .notConsumable(craftingLens, MarkerMaterials.Color.White)
                 .output(gemFlawed, MagnetoResonatic)
                 .buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(600).EUt(120)
                 .input(gemFlawed, MagnetoResonatic, 3)
-                .notConsumable(craftingLens, Magenta)
+                .notConsumable(craftingLens, MarkerMaterials.Color.White)
                 .output(gem, MagnetoResonatic)
                 .buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(1200).EUt(480)
                 .input(gem, MagnetoResonatic, 4)
-                .notConsumable(craftingLens, Magenta)
+                .notConsumable(craftingLens, MarkerMaterials.Color.White)
                 .output(gemFlawless, MagnetoResonatic)
                 .buildAndRegister();
 
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(2400).EUt(1920)
                 .input(gemFlawless, MagnetoResonatic, 4)
-                .notConsumable(craftingLens, Magenta)
+                .notConsumable(craftingLens, MarkerMaterials.Color.White)
                 .output(gemExquisite, MagnetoResonatic)
                 .buildAndRegister();
 
