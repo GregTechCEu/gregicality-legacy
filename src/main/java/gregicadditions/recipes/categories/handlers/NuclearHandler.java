@@ -59,7 +59,7 @@ public class NuclearHandler {
                 .buildAndRegister();
 
         // HNO3 + [Fuel + O] + O = [Fuel + NO3 + H2O]
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(32).duration(1000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(1000)
                 .notConsumable(dust, Boron)
                 .fluidInputs(NitricAcid.getFluid(1000))
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelOxide, 1))
@@ -67,7 +67,7 @@ public class NuclearHandler {
                 .buildAndRegister();
 
         // [Fuel + NO3 + H2O] + N2H4 + RP1 + C12H27O4P = Fuel2N3 + Red Oil [N2H4 + RP1 + C12H27O4P]
-        LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(32).duration(1000)
+        LARGE_CHEMICAL_RECIPES.recipeBuilder().EUt(30).duration(1000)
                 .fluidInputs(isotopeMaterial.getFluidDepletedFuelNitrateSolution(1000))
                 .notConsumable(Hydrazine.getFluid(1000))
                 .notConsumable(RP1.getFluid(1000))
@@ -78,7 +78,7 @@ public class NuclearHandler {
                 .buildAndRegister();
 
         // Fuel2N3 = Waste + 3N
-        ELECTROLYZER_RECIPES.recipeBuilder().EUt(32).duration(1000)
+        ELECTROLYZER_RECIPES.recipeBuilder().EUt(30).duration(1000)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.depletedFuelNitride, 1))
                 .fluidOutputs(Nitrogen.getFluid(3000))
                 .outputs(isotopeMaterial.getRadioactiveMaterial().waste.getStackForm())
@@ -150,37 +150,37 @@ public class NuclearHandler {
                 .fluidOutputs(NitrogenDioxide.getFluid(1000))
                 .buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(32).duration(200)
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.carbide, 1))
                 .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelCarbide, 1))
                 .buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(32).duration(200)
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.zirconiumAlloy, 1))
                 .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelZirconiumAlloy, 1))
                 .buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(32).duration(200)
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.nitride, 1))
                 .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelNitride, 1))
                 .buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(32).duration(200)
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.oxide, 1))
                 .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelOxide, 1))
                 .buildAndRegister();
 
-        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(32).duration(200)
+        ALLOY_SMELTER_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .input(ingot, isotopeMaterial.getMaterial())
                 .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .outputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelPure, 1))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(480).duration(200)
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(30).duration(200)
                 .inputs(isotopeMaterial.getItemStack(GAEnums.GAOrePrefix.fuelCarbide, 1))
                 .notConsumable(SHAPE_MOLD_BALL.getStackForm())
                 .inputs(PYROLYTIC_CARBON.getStackForm())
