@@ -31,6 +31,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
@@ -39,20 +40,25 @@ import static gregtech.api.unification.material.Materials.*;
 
 public class MetaTileEntityHyperReactorIII extends GAFueledMultiblockController {
 
+    private long maxVoltage;
+    private FluidStack booster;
 
     public MetaTileEntityHyperReactorIII(ResourceLocation metaTileEntityId, long maxVoltage) {
         super(metaTileEntityId, GARecipeMaps.HYPER_REACTOR_FUELS, maxVoltage);
         this.maxVoltage = maxVoltage;
+        if (getWorld() != null && !getWorld().isRemote)
+            this.booster = getBooster();
+    }
+
+    @Nonnull
+    private FluidStack getBooster() {
         Fluid temp = FluidRegistry.getFluid(GAConfig.multis.hyperReactors.boosterFluid[2]);
         if (temp == null) {
             temp = Helium.getMaterialPlasma();
             GALog.logger.warn("Incorrect fluid given to hyper reactor: " + GAConfig.multis.hyperReactors.boosterFluid[2]);
         }
-        booster = new FluidStack(temp, GAConfig.multis.hyperReactors.boosterFluidAmounts[2]);
+        return new FluidStack(Objects.requireNonNull(temp), GAConfig.multis.hyperReactors.boosterFluidAmounts[2]);
     }
-
-    long maxVoltage;
-    FluidStack booster;
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
@@ -64,7 +70,7 @@ public class MetaTileEntityHyperReactorIII extends GAFueledMultiblockController 
         int fuelMultiplier = GAConfig.multis.hyperReactors.boostedFuelAmount[2];
         int euMultiplier = GAConfig.multis.hyperReactors.boostedEuAmount[2];
         return new GABoostableWorkableHandler(this, recipeMap, () -> energyContainer, () -> importFluidHandler,
-                maxVoltage, booster, fuelMultiplier, euMultiplier);
+                maxVoltage, getBooster(), fuelMultiplier, euMultiplier);
     }
 
     @Override

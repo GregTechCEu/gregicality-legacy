@@ -7,7 +7,6 @@ import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAReactorCasing;
 import gregicadditions.machines.multi.GABoostableWorkableHandler;
 import gregicadditions.machines.multi.GAFueledMultiblockController;
-import gregicadditions.recipes.impl.BoostableWorkableHandler;
 import gregicadditions.recipes.GARecipeMaps;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.impl.FuelRecipeLogic;
@@ -19,7 +18,6 @@ import gregtech.api.multiblock.BlockPattern;
 import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.multi.electric.generator.FueledMultiblockController;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -30,6 +28,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
@@ -43,20 +42,24 @@ public class MetaTileEntityHyperReactorII extends GAFueledMultiblockController {
             MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
+    private long maxVoltage;
+    private FluidStack booster;
+
     public MetaTileEntityHyperReactorII(ResourceLocation metaTileEntityId, long maxVoltage) {
         super(metaTileEntityId, GARecipeMaps.HYPER_REACTOR_FUELS, maxVoltage);
         this.maxVoltage = maxVoltage;
+        this.booster = getBooster();
+    }
+
+    @Nonnull
+    private FluidStack getBooster() {
         Fluid temp = FluidRegistry.getFluid(GAConfig.multis.hyperReactors.boosterFluid[1]);
         if (temp == null) {
             temp = Radon.getMaterialPlasma();
             GALog.logger.warn("Incorrect fluid given to hyper reactor: " + GAConfig.multis.hyperReactors.boosterFluid[1]);
         }
-        booster = new FluidStack(temp, GAConfig.multis.hyperReactors.boosterFluidAmounts[1]);
+        return new FluidStack(Objects.requireNonNull(temp), GAConfig.multis.hyperReactors.boosterFluidAmounts[1]);
     }
-
-    long maxVoltage;
-    FluidStack booster;
-
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
@@ -68,7 +71,7 @@ public class MetaTileEntityHyperReactorII extends GAFueledMultiblockController {
         int fuelMultiplier = GAConfig.multis.hyperReactors.boostedFuelAmount[1];
         int euMultiplier = GAConfig.multis.hyperReactors.boostedEuAmount[1];
         return new GABoostableWorkableHandler(this, recipeMap, () -> energyContainer, () -> importFluidHandler,
-                maxVoltage, booster, fuelMultiplier, euMultiplier);
+                maxVoltage, getBooster(), fuelMultiplier, euMultiplier);
     }
 
     @Override

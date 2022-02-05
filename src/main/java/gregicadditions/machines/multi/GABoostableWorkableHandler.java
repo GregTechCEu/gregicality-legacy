@@ -39,9 +39,10 @@ public class GABoostableWorkableHandler extends GAFuelRecipeLogic {
 
     @Override
     protected int calculateFuelAmount(FuelRecipe currentRecipe) {
-
         FluidStack drainBooster = fluidTank.get().drain(booster, false);
+        System.out.println("Booster " + drainBooster);
         this.boosted = drainBooster != null && drainBooster.amount >= booster.amount;
+        System.out.println("Boosted " + boosted);
         return super.calculateFuelAmount(currentRecipe) * (boosted ? this.fuelMultiplier : 1);
     }
 
