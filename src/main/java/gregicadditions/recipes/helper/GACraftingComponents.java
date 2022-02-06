@@ -161,9 +161,11 @@ public enum GACraftingComponents {
                 case 11:
                     return new UnificationEntry(cableGtSingle, BlackTitanium);
                 case 12:
-                case 13:
                     return new UnificationEntry(cableGtSingle, NaquadriaticTaranium);
+                case 13:
+                    return new UnificationEntry(cableGtSingle, Neutronium);
                 case 14:
+                    return new UnificationEntry(cableGtSingle, CosmicNeutronium);
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
@@ -198,9 +200,11 @@ public enum GACraftingComponents {
                 case 11:
                     return new UnificationEntry(cableGtDouble, BlackTitanium);
                 case 12:
-                case 13:
                     return new UnificationEntry(cableGtDouble, NaquadriaticTaranium);
+                case 13:
+                    return new UnificationEntry(cableGtDouble, Neutronium);
                 case 14:
+                    return new UnificationEntry(cableGtDouble, CosmicNeutronium);
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
@@ -235,9 +239,11 @@ public enum GACraftingComponents {
                 case 11:
                     return new UnificationEntry(cableGtQuadruple, BlackTitanium);
                 case 12:
-                case 13:
                     return new UnificationEntry(cableGtQuadruple, NaquadriaticTaranium);
+                case 13:
+                    return new UnificationEntry(cableGtQuadruple, Neutronium);
                 case 14:
+                    return new UnificationEntry(cableGtQuadruple, CosmicNeutronium);
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
@@ -272,9 +278,11 @@ public enum GACraftingComponents {
                 case 11:
                     return new UnificationEntry(cableGtOctal, BlackTitanium);
                 case 12:
-                case 13:
                     return new UnificationEntry(cableGtOctal, NaquadriaticTaranium);
+                case 13:
+                    return new UnificationEntry(cableGtOctal, Neutronium);
                 case 14:
+                    return new UnificationEntry(cableGtOctal, CosmicNeutronium);
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
@@ -309,9 +317,11 @@ public enum GACraftingComponents {
                 case 11:
                     return new UnificationEntry(cableGtHex, BlackTitanium);
                 case 12:
-                case 13:
                     return new UnificationEntry(cableGtHex, NaquadriaticTaranium);
+                case 13:
+                    return new UnificationEntry(cableGtHex, Neutronium);
                 case 14:
+                    return new UnificationEntry(cableGtHex, CosmicNeutronium);
                 default:
                     return new UnificationEntry(wireGtQuadruple, MarkerMaterials.Tier.Superconductor);
             }
@@ -474,6 +484,8 @@ public enum GACraftingComponents {
                     return new UnificationEntry(plate, Bohrium);
                 case 11:
                     return new UnificationEntry(plate, Quantum);
+                case 12:
+                    return new UnificationEntry(plate, BlackTitanium);
                 default:
                     return new UnificationEntry(plate, Neutronium);
 
@@ -915,19 +927,22 @@ public enum GACraftingComponents {
         public Object getIngredient(int tier) {
             switch (tier) {
                 case 2:
-                    return new UnificationEntry(stick, Uranium235);
                 case 3:
-                    return new UnificationEntry(stick, Plutonium241);
                 case 4:
-                    return new UnificationEntry(stick, Curium247.getMaterial());
                 case 5:
-                    return new UnificationEntry(stick, Californium253.getMaterial());
+                    return new UnificationEntry(stick, Uranium235);
                 case 6:
-                    return new UnificationEntry(stick, Fermium259.getMaterial());
+                    return new UnificationEntry(stick, Plutonium241);
                 case 7:
-                    return new UnificationEntry(stick, Naquadria);
+                    return new UnificationEntry(stick, Americium243.getMaterial());
+                case 8:
+                    return new UnificationEntry(stick, Curium247.getMaterial());
+                case 9:
+                    return new UnificationEntry(stick, Californium253.getMaterial());
+                case 10:
+                    return new UnificationEntry(stick, Fermium259.getMaterial());
                 default:
-                    return new UnificationEntry(stick, Tritanium);
+                    return new UnificationEntry(stick, Mendelevium261.getMaterial());
             }
         }
     },
