@@ -12,9 +12,11 @@ import forestry.core.utils.NetworkUtil;
 import gregicadditions.integrations.bees.alveary.gui.ContainerGTAlveary;
 import gregicadditions.integrations.bees.alveary.gui.GuiGTAlveary;
 import gregicadditions.integrations.bees.effects.GTBeesEffects;
+import gregicadditions.item.behaviors.WasteBehavior;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.items.metaitem.stats.IItemBehaviour;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
@@ -253,10 +255,11 @@ public class TileGTAlveary extends TileAlveary implements IActivatable, IEnergyC
     private int checkNuclearWaste() {
         for (int slot = 0; slot < itemStackHandler.getSlots(); slot++) {
             ItemStack itemStack = itemStackHandler.getStackInSlot(slot);
-            if (itemStack.getItem() instanceof MetaItem && itemStack.getCount() > 0){
+            if (!itemStack.isEmpty() && itemStack.getItem() instanceof MetaItem) {
                 MetaItem<?> metaItem = (MetaItem<?>) itemStack.getItem();
-                if (311 <= metaItem.getItem(itemStack).getMetaValue() && metaItem.getItem(itemStack).getMetaValue() <= 332) { //nuclear waste
-                    return slot;
+                for (IItemBehaviour behaviour : metaItem.getBehaviours(itemStack)) {
+                    if (behaviour instanceof WasteBehavior)
+                        return slot;
                 }
             }
         }
