@@ -33,11 +33,11 @@ public class MegaVacuumFreezerInfo extends MultiblockInfoPage {
 //        for (BlockWireCoil.CoilType coilType : BlockWireCoil.CoilType.values()) {
             GAMultiblockShapeInfo.Builder builder = GAMultiblockShapeInfo.builder();
             builder.aisle("#HXMIO#", "#XXSfE#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#")
-                    .aisle("XXXXXXX", "XPFFFPX", "XPFFFPX", "XPPPPPX", "XPFFFPX", "XPFFFPX", "XXXXXXX");
+                    .aisle("XXXXXXX", "XP#F#PX", "XP###PX", "XPPPPPX", "XP###PX", "XP#F#PX", "XXXXXXX");
             for (int i = 0; i < 3; i++) {
-                builder.aisle("XXXXXXX", "XFAAAFX", "XFAAAFX", "XPGGGPX", "XFAAAFX", "XFAAAFX", "XXXXXXX");
+                builder.aisle("XXXXXXX", "X#####X", "X#####X", "XPGGGPX", "X#####X", "X#####X", "XXXXXXX");
             }
-            builder.aisle("XXXXXXX", "XPFFFPX", "XPFFFPX", "XPPPPPX", "XPFFFPX", "XPFFFPX", "XXXXXXX")
+            builder.aisle("XXXXXXX", "XP#F#PX", "XP###PX", "XPPPPPX", "XP###PX", "XP#F#PX", "XXXXXXX")
                     .aisle("#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#")
                     .where('H', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.IV], EnumFacing.NORTH)
                     .where('S', GATileEntities.MEGA_VACUUM_FREEZER, EnumFacing.NORTH)
