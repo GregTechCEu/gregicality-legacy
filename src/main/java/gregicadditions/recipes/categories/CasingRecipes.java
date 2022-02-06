@@ -188,7 +188,7 @@ public class CasingRecipes {
                 .input(gear, Vibranium, 8)
                 .input(plate, Vibranium, 8)
                 .input(cableGtOctal, NaquadriaticTaranium)
-                .inputs(GATileEntities.GA_HULLS[2].getStackForm())
+                .inputs(GATileEntities.GA_HULLS[3].getStackForm())
                 .fluidInputs(Naquadria.getFluid(L * 2))
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(TIERED_HULL_UMV))
                 .buildAndRegister();
