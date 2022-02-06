@@ -45,9 +45,9 @@ public class MetaTileEntityMegaVacuumFreezer extends MegaMultiblockRecipeMapCont
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#")
-                .aisle("XXXXXXX", "XPFFFPX", "XPFFFPX", "XPPPPPX", "XPFFFPX", "XPFFFPX", "XXXXXXX")
-                .aisle("XXXXXXX", "XFAAAFX", "XFAAAFX", "XPGGGPX", "XFAAAFX", "XFAAAFX", "XXXXXXX").setRepeatable(3)
-                .aisle("XXXXXXX", "XPFFFPX", "XPFFFPX", "XPPPPPX", "XPFFFPX", "XPFFFPX", "XXXXXXX")
+                .aisle("XXXXXXX", "XPAFAPX", "XPAAAPX", "XPPPPPX", "XPAAAPX", "XPAFAPX", "XXXXXXX")
+                .aisle("XXXXXXX", "XAAAAAX", "XAAAAAX", "XPGGGPX", "XAAAAAX", "XAAAAAX", "XXXXXXX").setRepeatable(3)
+                .aisle("XXXXXXX", "XPAFAPX", "XPAAAPX", "XPPPPPX", "XPAAAPX", "XPAFAPX", "XXXXXXX")
                 .aisle("#XXXXX#", "#XXSXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#", "#XXXXX#")
                 .setAmountAtLeast('L', 100)
                 .where('S', selfPredicate())

@@ -602,20 +602,17 @@ public class GAConfig {
 
         public VoidMiner voidMiner = new VoidMiner();
         public LargeMiner largeMiner = new LargeMiner();
-        public Volcanus volcanus = new Volcanus();
-        public CryogenicFreezer cryogenicFreezer = new CryogenicFreezer();
         public DistillationTower distillationTower = new DistillationTower();
         public LargeAssembler largeAssembler = new LargeAssembler();
         public LargeBenderAndForming largeBenderAndForming = new LargeBenderAndForming();
         public LargeCentrifuge largeCentrifuge = new LargeCentrifuge();
-        public AdvancedChemicalReactor advancedChemicalReactor = new AdvancedChemicalReactor();
+        public ChemicalPlant chemicalPlant = new ChemicalPlant();
         public LargeCutting largeCutting = new LargeCutting();
         public LargeElectrolyzer largeElectrolyzer = new LargeElectrolyzer();
         public LargeExtruder largeExtruder = new LargeExtruder();
         public LargeForgeHammer largeForgeHammer = new LargeForgeHammer();
         public LargeMacerator largeMacerator = new LargeMacerator();
         public LargeMixer largeMixer = new LargeMixer();
-        public LargeMultiUse largeMultiUse = new LargeMultiUse();
         public LargePackager largePackager = new LargePackager();
         public LargeSifter largeSifter = new LargeSifter();
         public LargeThermalCentrifuge largeThermalCentrifuge = new LargeThermalCentrifuge();
@@ -633,7 +630,6 @@ public class GAConfig {
         public LargeEngraver largeEngraver = new LargeEngraver();
         public HeatingCoils heatingCoils = new HeatingCoils();
         public SteamMultis steamMultis = new SteamMultis();
-        public ProcessingArray processingArray = new ProcessingArray();
         public HyperReactors hyperReactors = new HyperReactors();
         public CentralMonitor centralMonitor = new CentralMonitor();
     }
@@ -807,7 +803,7 @@ public class GAConfig {
             public String casingMaterial = "tumbaga";
         }
 
-        public static class AdvancedChemicalReactor {
+        public static class ChemicalPlant {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Advanced Chemical Reactor.")
             @Config.RangeInt(min = 1)
             @Config.Name("Advanced Chemical Reactor EU/t percentage cost")
@@ -1016,37 +1012,6 @@ public class GAConfig {
 
             @Config.Comment("The casing material to use for the Large Centrifuge.")
             @Config.Name("Large Mixer casing material")
-            @Config.RequiresMcRestart
-            public String casingMaterial = "staballoy";
-        }
-
-        public static class LargeMultiUse {
-            @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Multi Use.")
-            @Config.RangeInt(min = 1)
-            @Config.Name("Large Multi Use EU/t percentage cost")
-            @Config.RequiresMcRestart
-            public int euPercentage = 80;
-
-            @Config.Comment("The amount of recipes processed at the same time per voltage tier difference.")
-            @Config.RangeInt(min = 1)
-            @Config.Name("Large Multi Use parallel recipes per voltage tier difference")
-            @Config.RequiresMcRestart
-            public int stack = 4;
-
-            @Config.Comment("The duration percentage of a recipe when done in the Large Multiuse.")
-            @Config.RangeInt(min = 1)
-            @Config.Name("Large Multi Use duration decrease percentage")
-            @Config.RequiresMcRestart
-            public int durationPercentage = 200;
-
-            @Config.Comment("The boost given to chanced outputs for a recipe when run in the Large Multi Use.")
-            @Config.RangeInt(min = 1)
-            @Config.Name("Large Multi Use chanced output boost percentage")
-            @Config.RequiresMcRestart
-            public int chancedBoostPercentage = 100;
-
-            @Config.Comment("The casing material to use for the Large Centrifuge.")
-            @Config.Name("Large Multiuse casing material")
             @Config.RequiresMcRestart
             public String casingMaterial = "staballoy";
         }
@@ -1502,36 +1467,6 @@ public class GAConfig {
 
         }
 
-        public static class Volcanus {
-            @Config.Comment("The duration percentage of a recipe when done in the Volcanus.")
-            @Config.RangeInt(min = 1)
-            @Config.RequiresMcRestart
-            @Config.Name("Volcanus recipe duration decrease factor")
-            public int durationDecreasePercentage = 66;
-
-            @Config.Comment("The amount by which the EU/t for recipes in the Volanus is decreased. E.g. EU/t * 0.75.")
-            @Config.RangeInt(min = 1, max = 100)
-            @Config.RequiresMcRestart
-            @Config.Name("Volcanus recipe EU/t discount")
-            public int energyDecreasePercentage = 90;
-
-        }
-
-        public static class CryogenicFreezer {
-            @Config.Comment("The amount by which the EU/t for recipes in the Cryogenic Freezer is decreased. E.g. EU/t * 0.75.")
-            @Config.RangeInt(min = 1, max = 100)
-            @Config.RequiresMcRestart
-            @Config.Name("Cryogenic Freezer recipe EU/t discount")
-            public int energyDecreasePercentage = 90;
-
-            @Config.Comment("The duration percentage of a recipe when done in the Cryogenic Freezer.")
-            @Config.RangeInt(min = 1)
-            @Config.RequiresMcRestart
-            @Config.Name("Cryogenic Freezer duration decrease factor")
-            public int durationDecreasePercentage = 75;
-
-        }
-
         public static class LargePackager {
             @Config.Comment("The cost in percentage for a recipe's EU/t when run in the Large Packager.")
             @Config.RangeInt(min = 1)
@@ -1577,22 +1512,6 @@ public class GAConfig {
             @Config.RequiresMcRestart
             public String[] gregicalityheatingCoilsBlacklist = new String[]{
                     ""
-            };
-        }
-
-        public static class ProcessingArray {
-            @Config.Comment("Number of machines the Processing Array can use at a time. Default: 16")
-            @Config.Name("Processing Array Machine Limit")
-            @Config.RangeInt(min=1, max=64)
-            public int processingArrayMachineLimit = 64;
-
-            @Config.Comment({"Blacklist of machines for the Processing Array.",
-                    "Add the unlocalized Recipe Map name to blacklist the machine."})
-            @Config.Name("Processing Array Blacklist")
-            public String[] machineBlackList = new String[]{
-                    "mass_fab",
-                    "replicator",
-                    "circuit_assembler"
             };
         }
 
@@ -1685,12 +1604,6 @@ public class GAConfig {
 
             @Config.Comment({"The chance that a chunk contains a fluid reservoir, default=0.5"})
             public static float reservoirChance = 0.5F;
-
-            @Config.Name("Drilling mud per tick")
-            @Config.Comment("The amount of drilling mud the Drilling Rig consumes every tick.")
-            @Config.RangeInt(min = 0)
-            @Config.RequiresMcRestart
-            public static int drillingMud = 5;
 
             @Config.Comment({"This is the time scan coefficient, 100 mean 100% of the time, default=100"})
             @Config.RangeInt(min = 1, max = 1000)

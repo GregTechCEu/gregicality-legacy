@@ -19,17 +19,11 @@ import static gregtech.api.unification.ore.OrePrefix.plate;
 public class MetalCasingRecipes {
 
     public static void init() {
-        Arrays.stream(NuclearCasing.CasingType.values()).forEach(casing -> {
-            registerMetalCasingRecipe(casing.getMaterial(), NUCLEAR_CASING, casing);
-        });
+        Arrays.stream(NuclearCasing.CasingType.values()).forEach(casing -> registerMetalCasingRecipe(casing.getMaterial(), NUCLEAR_CASING, casing));
 
-        Arrays.stream(MetalCasing1.CasingType.values()).forEach(casing -> {
-            registerMetalCasingRecipe(casing.getMaterial(), METAL_CASING_1, casing);
-        });
+        Arrays.stream(MetalCasing1.CasingType.values()).forEach(casing -> registerMetalCasingRecipe(casing.getMaterial(), METAL_CASING_1, casing));
 
-        Arrays.stream(MetalCasing2.CasingType.values()).forEach(casing -> {
-            registerMetalCasingRecipe(casing.getMaterial(), METAL_CASING_2, casing);
-        });
+        Arrays.stream(MetalCasing2.CasingType.values()).forEach(casing -> registerMetalCasingRecipe(casing.getMaterial(), METAL_CASING_2, casing));
     }
 
     private static <T extends Enum<T> & IStringSerializable> void registerMetalCasingRecipe(Material inputMaterial, VariantBlock<T> outputCasingType, T outputCasing) {

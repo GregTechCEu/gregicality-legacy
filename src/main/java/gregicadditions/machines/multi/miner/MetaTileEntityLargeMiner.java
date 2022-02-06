@@ -69,9 +69,6 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     public final Miner.Type type;
-    private final IBlockState casingState;
-    private final ICubeRenderer casingTexture;
-    private Material material;
     private AtomicLong x = new AtomicLong(Long.MAX_VALUE), y = new AtomicLong(Long.MAX_VALUE), z = new AtomicLong(Long.MAX_VALUE);
     private AtomicInteger currentChunk = new AtomicInteger(0);
     private IEnergyContainer energyContainer;
@@ -81,39 +78,11 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
     private boolean isActive = false;
     private boolean done = false;
     private boolean silktouch = false;
-    protected boolean wasActiveAndNeedsUpdate;
 
 
     public MetaTileEntityLargeMiner(ResourceLocation metaTileEntityId, Miner.Type type) {
         super(metaTileEntityId);
         this.type = type;
-        switch (this.type) {
-            case LARGE: {
-                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.largeMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_G));
-                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSS_G_CASING);
-
-                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.largeMinerCasingMaterial, HSSG);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag(SolidMaterial.MatFlags.GENERATE_FRAME) ? possibleMaterial : HSSG;
-                break;
-            }
-            case ADVANCE: {
-                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.HSS_S));
-                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSS_S_CASING);
-
-                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.advancedMinerCasingMaterial, HSSS);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag(SolidMaterial.MatFlags.GENERATE_FRAME) ? possibleMaterial : HSSS;
-                break;
-            }
-            default: {
-                this.casingState = CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.basicMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.BLACK_STEEL));
-                this.casingTexture = CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
-
-                Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
-                this.material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag(SolidMaterial.MatFlags.GENERATE_FRAME) ? possibleMaterial : BlackSteel;
-                break;
-            }
-        }
-        reinitializeStructurePattern();
     }
 
     @Override
@@ -238,7 +207,7 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
 
     @Override
     protected BlockPattern createStructurePattern() {
-        return material == null || type == null ? null : FactoryBlockPattern.start()
+        return FactoryBlockPattern.start()
                 .aisle("F###F", "F###F", "PPPPP", "#####", "#####", "#####", "#####", "#####", "#####", "#####")
                 .aisle("#####", "#####", "PPPPP", "#CCC#", "#####", "#####", "#####", "#####", "#####", "#####")
                 .aisle("#####", "#####", "PPPPP", "#CPC#", "#FFF#", "#FFF#", "#FFF#", "##F##", "##F##", "##F##")
@@ -249,9 +218,15 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
                 .where('L', statePredicate(getCasingState()))
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .where('P', statePredicate(getCasingState()))
-                .where('F', statePredicate(MetaBlocks.FRAMES.get((SolidMaterial) getMaterial()).getDefaultState()))
+                .where('F', statePredicate(getFrameState()))
                 .where('#', blockWorldState -> true)
                 .build();
+    }
+
+    public IBlockState getFrameState() {
+        Material possibleMaterial = CasingUtils.getCasingMaterial(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BlackSteel);
+        Material material = possibleMaterial instanceof SolidMaterial && possibleMaterial.hasFlag(SolidMaterial.MatFlags.GENERATE_FRAME) ? possibleMaterial : BlackSteel;
+        return MetaBlocks.FRAMES.get((SolidMaterial) material).getDefaultState();
     }
 
     @Override
@@ -291,16 +266,12 @@ public class MetaTileEntityLargeMiner extends GAMultiblockWithDisplayBase implem
     }
 
     public IBlockState getCasingState() {
-        return casingState;
+        return CasingUtils.getConfigCasingBlockState(GAConfig.multis.largeMiner.basicMinerCasingMaterial, METAL_CASING_2.getState(MetalCasing2.CasingType.BLACK_STEEL));
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return casingTexture;
-    }
-
-    public Material getMaterial() {
-        return material;
+        return CasingUtils.getConfigCasingTexture(GAConfig.multis.largeMiner.basicMinerCasingMaterial, BLACK_STEEL_CASING);
     }
 
     @Override

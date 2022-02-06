@@ -43,7 +43,7 @@ public class TileEntityLargeBenderAndForming extends MultiRecipeMapMultiblockCon
 
     public TileEntityLargeBenderAndForming(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, GAConfig.multis.largeBenderAndForming.euPercentage, GAConfig.multis.largeBenderAndForming.durationPercentage, GAConfig.multis.largeBenderAndForming.chancedBoostPercentage, GAConfig.multis.largeBenderAndForming.stack,
-                new RecipeMap[]{RecipeMaps.BENDER_RECIPES, RecipeMaps.FORMING_PRESS_RECIPES, GARecipeMaps.CLUSTER_MILL_RECIPES});
+                new RecipeMap[]{RecipeMaps.BENDER_RECIPES, RecipeMaps.FORMING_PRESS_RECIPES, GARecipeMaps.CLUSTER_MILL_RECIPES}, false, true, true);
     }
 
     @Override

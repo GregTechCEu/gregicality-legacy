@@ -18,10 +18,10 @@ import net.minecraft.util.EnumFacing;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdvancedChemicalReactorInfo extends MultiblockInfoPage {
+public class ChemicalPlantInfo extends MultiblockInfoPage {
 	@Override
 	public MultiblockControllerBase getController() {
-		return GATileEntities.ADVANCED_CHEMICAL_REACTOR;
+		return GATileEntities.CHEMICAL_PLANT;
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class AdvancedChemicalReactorInfo extends MultiblockInfoPage {
 					.aisle("XXXXX", "XCCCX", "XPPPX", "XCCCX", "XXXXX")
 					.aisle("H###X", "SXXIO", "X###X", "XXXXX", "X###X")
 					.where('E', MetaTileEntities.ENERGY_INPUT_HATCH[GAValues.HV], EnumFacing.NORTH)
-					.where('S', GATileEntities.ADVANCED_CHEMICAL_REACTOR, EnumFacing.SOUTH)
+					.where('S', GATileEntities.CHEMICAL_PLANT, EnumFacing.SOUTH)
 					.where('H', GATileEntities.MAINTENANCE_HATCH[0], EnumFacing.SOUTH)
 					.where('X', GAMetaBlocks.MUTLIBLOCK_CASING.getState(GAMultiblockCasing.CasingType.CHEMICALLY_INERT))
 					.where('#', Blocks.AIR.getDefaultState())
@@ -55,6 +55,11 @@ public class AdvancedChemicalReactorInfo extends MultiblockInfoPage {
 
 	@Override
 	public String[] getDescription() {
-		return new String[]{I18n.format("gtadditions.multiblock.advanced_chemical_reactor.description")};
+		return new String[]{I18n.format("gtadditions.multiblock.chemical_plant.description")};
+	}
+
+	@Override
+	public float getDefaultZoom() {
+		return 0.8f;
 	}
 }
