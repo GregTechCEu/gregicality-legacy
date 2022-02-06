@@ -85,9 +85,9 @@ public class MultiblockCraftingRecipes {
                 .input(wireGtSingle, UVSuperconductor, 64)
                 .input(wireGtSingle, UVSuperconductor, 64)
                 .input(wireGtSingle, UVSuperconductor, 64)
-                .inputs(LARGE_MINER[0].getStackForm())
-                .inputs(LARGE_MINER[1].getStackForm())
-                .inputs(LARGE_MINER[2].getStackForm())
+                .inputs(BASIC_LARGE_MINER.getStackForm())
+                .inputs(LARGE_MINER.getStackForm())
+                .inputs(ADVANCED_LARGE_MINER.getStackForm())
                 .input(circuit, Superconductor, 4)
                 .outputs(VOID_MINER[0].getStackForm())
                 .buildAndRegister();
@@ -420,7 +420,7 @@ public class MultiblockCraftingRecipes {
                 'I', ROBOT_ARM_IV);
 
         // Large Miner Mk1
-        ModHandler.addShapedRecipe("ga_large_miner.basic", LARGE_MINER[0].getStackForm(),
+        ModHandler.addShapedRecipe("ga_large_miner.basic", BASIC_LARGE_MINER.getStackForm(),
                 "GCG", "IHI", "SCS",
                 'H', HULL[EV].getStackForm(),
                 'C', new UnificationEntry(circuit, Extreme),
@@ -429,7 +429,7 @@ public class MultiblockCraftingRecipes {
                 'S', SENSOR_EV);
 
         // Large Miner Mk2
-        ModHandler.addShapedRecipe("ga_large_miner.large", LARGE_MINER[1].getStackForm(),
+        ModHandler.addShapedRecipe("ga_large_miner.large", LARGE_MINER.getStackForm(),
                 "GCG", "IHI", "SCS",
                 'H', HULL[IV].getStackForm(),
                 'C', new UnificationEntry(circuit, Elite),
@@ -438,7 +438,7 @@ public class MultiblockCraftingRecipes {
                 'S', SENSOR_IV);
 
         // Large Miner Mk3
-        ModHandler.addShapedRecipe("ga_large_miner.advance", LARGE_MINER[2].getStackForm(),
+        ModHandler.addShapedRecipe("ga_large_miner.advance", ADVANCED_LARGE_MINER.getStackForm(),
                 "GCG", "IHI", "SCS",
                 'H', HULL[LuV].getStackForm(),
                 'C', new UnificationEntry(circuit, Master),
@@ -478,7 +478,7 @@ public class MultiblockCraftingRecipes {
                 .input(circuit, Elite, 4)
                 .input(stickLong, Cupronickel, 32)
                 .inputs(ELECTRIC_MOTOR_IV.getStackForm(4))
-                .outputs(ADVANCED_CHEMICAL_REACTOR.getStackForm())
+                .outputs(CHEMICAL_PLANT.getStackForm())
                 .buildAndRegister();
 
         // Battery Tower

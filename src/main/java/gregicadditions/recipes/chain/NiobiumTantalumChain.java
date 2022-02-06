@@ -11,7 +11,7 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class NiobiumTantalumChain {
     public static void init() {
 
-        // MnO2 + sugar(tiny) -> H2SO4 + CO2 + MnSO4
+        // MnO2 + sugar(tiny) + H2SO4 -> + CO2 + MnSO4
         // weird, but probably fine
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(120).blastFurnaceTemp(1500)
                 .input(dust, Pyrolusite, 3)
@@ -21,7 +21,7 @@ public class NiobiumTantalumChain {
                 .outputs(ManganeseSulfate.getItemStack(6))
                 .buildAndRegister();
 
-        // MnCO3 + sugar(tiny) -> H2SO4 + CO2 + MnSO4
+        // MnCO3 + sugar(tiny) + H2SO4 -> CO2 + MnSO4
         // weird, but probably fine
         BLAST_RECIPES.recipeBuilder().duration(340).EUt(120).blastFurnaceTemp(1500)
                 .input(dust, Rhodocrosite, 5)
@@ -39,7 +39,7 @@ public class NiobiumTantalumChain {
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .buildAndRegister();
 
-        // SnO2 + C -> H2O? + CokePellets
+        // SnO2 + C + H2O -> (SnO2)C
         MIXER_RECIPES.recipeBuilder().duration(340).EUt(30)
                 .input(dust, Cassiterite, 2)
                 .input(dust, Coke)

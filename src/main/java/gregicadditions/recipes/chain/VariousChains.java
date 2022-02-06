@@ -54,12 +54,13 @@ public class VariousChains {
                 .outputs(SodiumHypochlorite.getItemStack(3))
                 .buildAndRegister();
 
-        // NaClO + HCl -> NaCl + HClO
+        // 2 NaClO + CO2 + H2O -> 2 HClO + Na2CO3
         CHEMICAL_RECIPES.recipeBuilder().duration(90).EUt(120)
-                .inputs(SodiumHypochlorite.getItemStack(3))
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .output(dust, Salt, 2)
-                .fluidOutputs(HypochlorousAcid.getFluid(1000))
+                .inputs(SodiumHypochlorite.getItemStack(6))
+                .fluidInputs(CarbonDioxide.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
+                .output(dust, SodaAsh, 6)
+                .fluidOutputs(HypochlorousAcid.getFluid(2000))
                 .buildAndRegister();
 
         // Lignite Processing ==========================================================================================
@@ -500,14 +501,15 @@ public class VariousChains {
                 .fluidOutputs(EthyleneGlycol.getFluid(1000))
                 .buildAndRegister();
 
-        // C7H8 + 2COCl2 + 2HNO3 -> C9H6N2O2 + 4HClO + 2O
+        // C7H8 + 2COCl2 + 2HNO3 + 12 H -> C9H6N2O2 + 4 HCl + 6 H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(125).EUt(480)
                 .fluidInputs(Toluene.getFluid(1000))
                 .fluidInputs(Phosgene.getFluid(2000))
                 .fluidInputs(NitricAcid.getFluid(2000))
+                .fluidInputs(Hydrogen.getFluid(10000))
                 .fluidOutputs(TolueneDiisocyanate.getFluid(2000))
-                .fluidOutputs(HypochlorousAcid.getFluid(4000))
-                .fluidOutputs(Oxygen.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(4000))
+                .fluidOutputs(Water.getFluid(6000))
                 .buildAndRegister();
 
         // C9H6N2O2 + 4C2H6O2 + O -> C17H16N2O4 + 7H2O

@@ -209,6 +209,17 @@ public class RecipeOverride {
                 .duration(300)
                 .EUt(30)
                 .buildAndRegister();
+
+        // Hot Vanadium
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Vanadium));
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, Vanadium)
+                .notConsumable(new IntCircuitIngredient(0))
+                .output(ingotHot, Vanadium)
+                .blastFurnaceTemp(2183)
+                .duration(2226)
+                .EUt(120)
+                .buildAndRegister();
     }
 
     private static void brewingOverride() {
@@ -933,6 +944,15 @@ public class RecipeOverride {
                 .input(dust, Ilmenite, 5)
                 .output(ingot, WroughtIron)
                 .output(dust, Rutile, 3)
+                .buildAndRegister();
+
+        // Phenol in LCR
+        removeRecipesByInputs(CHEMICAL_RECIPES, Benzene.getFluid(1000), Oxygen.getFluid(1000));
+        CHEMICAL_RECIPES.recipeBuilder().duration(400).EUt(2000)
+                .notConsumable(new IntCircuitIngredient(0))
+                .fluidInputs(Benzene.getFluid(1000))
+                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidOutputs(Phenol.getFluid(1000))
                 .buildAndRegister();
     }
 

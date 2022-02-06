@@ -15,11 +15,11 @@ public class UraniumChain {
         // Pitchblende Processing was removed to save 2 steps
         // and was simplified to just electrolysis into Uraninite.
 
-        // UO2 + HCl + HClO -> [UO2Cl2 + H2O + ?]
+        // UO2 + 2 Cl + H2O -> [UO2Cl2 + H2O + ?]
         CHEMICAL_RECIPES.recipeBuilder().duration(50).EUt(120)
                 .input(dust, Uraninite, 3)
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidInputs(HypochlorousAcid.getFluid(1000))
+                .fluidInputs(Chlorine.getFluid(2000))
+                .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(UranylChlorideSolution.getFluid(1000))
                 .buildAndRegister();
 

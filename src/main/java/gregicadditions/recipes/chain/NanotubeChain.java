@@ -74,7 +74,6 @@ public class NanotubeChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .input(dust, Thallium, 2)
                 .fluidInputs(HydrochloricAcid.getFluid(2000))
-                .fluidInputs(Oxygen.getFluid(1000))
                 .outputs(ThalliumChloride.getItemStack(4))
                 .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();

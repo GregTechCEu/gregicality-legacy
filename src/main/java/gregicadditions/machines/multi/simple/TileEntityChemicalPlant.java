@@ -34,25 +34,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockController { //todo chemical plant coil requirements
+public class TileEntityChemicalPlant extends MultiRecipeMapMultiblockController { //todo chemical plant coil requirements
 
 	private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.EXPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
 
-	public TileEntityAdvancedChemicalReactor(ResourceLocation metaTileEntityId) {
+	public TileEntityChemicalPlant(ResourceLocation metaTileEntityId) {
 		super(metaTileEntityId,
 				GARecipeMaps.LARGE_CHEMICAL_RECIPES,
-				GAConfig.multis.advancedChemicalReactor.euPercentage,
-				GAConfig.multis.advancedChemicalReactor.durationPercentage,
-				GAConfig.multis.advancedChemicalReactor.chancedBoostPercentage,
-				GAConfig.multis.advancedChemicalReactor.stack,
+				GAConfig.multis.chemicalPlant.euPercentage,
+				GAConfig.multis.chemicalPlant.durationPercentage,
+				GAConfig.multis.chemicalPlant.chancedBoostPercentage,
+				GAConfig.multis.chemicalPlant.stack,
 				new RecipeMap[]{GARecipeMaps.LARGE_CHEMICAL_RECIPES, GARecipeMaps.CHEMICAL_PLANT_RECIPES});
 		this.recipeMapWorkable = new AdvancedChemicalReactorWorkableHandler(this);
 	}
 
 	@Override
 	public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
-		return new TileEntityAdvancedChemicalReactor(metaTileEntityId);
+		return new TileEntityChemicalPlant(metaTileEntityId);
 	}
 
 	@Override
@@ -105,23 +105,23 @@ public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockC
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World player, List<String> tooltip, boolean advanced) {
 		super.addInformation(stack, player, tooltip, advanced);
-		tooltip.add(I18n.format("gtadditions.multiblock.advanced_chemical_reactor.tooltip.1"));
+		tooltip.add(I18n.format("gtadditions.multiblock.chemical_plant.tooltip.1"));
 	}
 
 	protected static class AdvancedChemicalReactorWorkableHandler extends MultiRecipeMapMultiblockRecipeLogic {
 
 		public AdvancedChemicalReactorWorkableHandler(RecipeMapMultiblockController tileEntity) {
 			super(tileEntity,
-					GAConfig.multis.advancedChemicalReactor.euPercentage,
-					GAConfig.multis.advancedChemicalReactor.durationPercentage,
-					GAConfig.multis.advancedChemicalReactor.chancedBoostPercentage,
-					GAConfig.multis.advancedChemicalReactor.stack,
-					((TileEntityAdvancedChemicalReactor) tileEntity).recipeMaps);
+					GAConfig.multis.chemicalPlant.euPercentage,
+					GAConfig.multis.chemicalPlant.durationPercentage,
+					GAConfig.multis.chemicalPlant.chancedBoostPercentage,
+					GAConfig.multis.chemicalPlant.stack,
+					((TileEntityChemicalPlant) tileEntity).recipeMaps);
 		}
 
 		@Override
 		protected int getMinRatioItem(Set<ItemStack> countIngredients, Recipe r, int maxItemsLimit) {
-			if (((TileEntityAdvancedChemicalReactor) metaTileEntity).getRecipeMapIndex() == 1)
+			if (((TileEntityChemicalPlant) metaTileEntity).getRecipeMapIndex() == 1)
 				return 1;
 			int minMultiplier = Integer.MAX_VALUE;
 			for (CountableIngredient ci : r.getInputs()) {
@@ -143,7 +143,7 @@ public class TileEntityAdvancedChemicalReactor extends MultiRecipeMapMultiblockC
 
 		@Override
 		protected int getMinRatioFluid(Map<String, Integer> countFluid, Recipe r, int maxItemsLimit) {
-			if (((TileEntityAdvancedChemicalReactor) metaTileEntity).getRecipeMapIndex() == 1)
+			if (((TileEntityChemicalPlant) metaTileEntity).getRecipeMapIndex() == 1)
 				return 1;
 			int minMultiplier = Integer.MAX_VALUE;
 			for (FluidStack fs : r.getFluidInputs()) {

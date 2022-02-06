@@ -116,17 +116,6 @@ public class GARecipeMaps {
 
 
     @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> CRACKER_UNIT_RECIPES = new RecipeMap<>("cracker_unit",
-            0, 0, 0, 0, 2, 2, 1, 1, new SimpleRecipeBuilder());
-
-
-    @ZenProperty
-    public static final RecipeMap<SimpleRecipeBuilder> PROCESSING_ARRAY_RECIPES = new RecipeMap<>("processing_array",
-            0, 9, 0, 6, 0, 3, 0, 2, new SimpleRecipeBuilder())
-            .setProgressBar(GuiTextures.PROGRESS_BAR_BENDING, ProgressWidget.MoveType.HORIZONTAL);
-
-
-    @ZenProperty
     public static final LargeRecipeMap LARGE_CHEMICAL_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_chemical_reactor",
             0, 3, 0, 3, 0, 5, 0, 4, (new LargeRecipeBuilder(RecipeMaps.CHEMICAL_RECIPES))
             .EUt(30))
@@ -171,7 +160,7 @@ public class GARecipeMaps {
 
     @ZenProperty
     public static final LargeRecipeMap LARGE_CENTRIFUGE_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_centrifuge",
-            0, 1, 0, 6, 0, 2, 0, 6, new LargeRecipeBuilder(RecipeMaps.CENTRIFUGE_RECIPES))
+            0, 2, 0, 6, 0, 2, 0, 6, new LargeRecipeBuilder(RecipeMaps.CENTRIFUGE_RECIPES))
             .setSlotOverlay(false, false, true, GuiTextures.EXTRACTOR_OVERLAY)
             .setSlotOverlay(false, true, true, GuiTextures.DARK_CANISTER_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, ProgressWidget.MoveType.HORIZONTAL);

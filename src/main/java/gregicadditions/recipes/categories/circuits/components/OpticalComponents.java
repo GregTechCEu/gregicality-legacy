@@ -21,37 +21,35 @@ public class OpticalComponents {
 
         // SMD Diode
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
-                .input(wireFine, Pikyonium, 8)
-                .input(plate, LithiumNiobate, 4)
-                .input(plate, Vibranium, 4)
-                .fluidInputs(Polybenzimidazole.getFluid(L * 9))
+                .input(wireFine, Pikyonium, 4)
+                .input(plate, LithiumNiobate, 3)
+                .input(plate, Adamantium)
+                .fluidInputs(Polybenzimidazole.getFluid(L * 6))
                 .outputs(SMD_DIODE_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Transistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
-                .input(wireFine, Pikyonium, 8)
-                .input(plate, MetastableFlerovium, 4)
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
-                .fluidInputs(Polybenzimidazole.getFluid(L * 9))
+                .input(wireFine, Pikyonium, 4)
+                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(2))
+                .fluidInputs(Polybenzimidazole.getFluid(L * 4))
                 .outputs(SMD_TRANSISTOR_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Capacitor
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
-                .input(wireFine, Pikyonium, 8)
-                .input(foil, Quantum, 4)
-                .input(foil, Zylon, 4)
-                .fluidInputs(Polybenzimidazole.getFluid(L * 9))
+                .input(wireFine, Pikyonium, 4)
+                .input(foil, Zylon, 2)
+                .fluidInputs(Polybenzimidazole.getFluid(L * 4))
                 .outputs(SMD_CAPACITOR_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Resistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
-                .input(wireFine, Cinobite, 8)
-                .inputs(SodiumSeaborgate.getItemStack(5))
-                .input(dust, TriniumTitanium, 4)
-                .fluidInputs(Polybenzimidazole.getFluid(L * 9))
+                .input(wireFine, Cinobite, 6)
+                .inputs(SodiumSeaborgate.getItemStack(4))
+                .input(dust, TriniumTitanium, 2)
+                .fluidInputs(Polybenzimidazole.getFluid(L * 6))
                 .outputs(SMD_RESISTOR_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 

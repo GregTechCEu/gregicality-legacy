@@ -45,26 +45,26 @@ public class ExoticComponents{
         }
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(foil, Cinobite)
-                .input(foil, Quantum)
+                .input(foil, Cinobite, 3)
+                .input(foil, Quantum, 2)
                 .outputs(SMD_CAPACITOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(wireFine, Cinobite)
-                .input(foil, TriniumTitanium)
+                .input(wireFine, Cinobite, 5)
+                .input(foil, TriniumTitanium, 3)
                 .outputs(SMD_RESISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(plate, Vibranium)
-                .input(plate, Quantum)
+                .input(plate, Vibranium, 5)
+                .input(plate, Quantum, 4)
                 .outputs(SMD_DIODE_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
-                .input(foil, TriniumTitanium)
+                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(2))
+                .input(foil, TriniumTitanium, 3)
                 .outputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 

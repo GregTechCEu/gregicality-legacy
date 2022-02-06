@@ -25,11 +25,7 @@ public class MetaTileEntityGasCentrifuge extends GARecipeMapMultiblockController
 
     public MetaTileEntityGasCentrifuge(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GAS_CENTRIFUGE_RECIPES);
-        this.recipeMapWorkable = new GAMultiblockRecipeLogic(this) {
-            {
-                allowOverclocking = false;
-            }
-        };
+        this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
     }
 
     @Override

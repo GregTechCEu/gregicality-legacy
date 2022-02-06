@@ -471,6 +471,8 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem COSMIC_FABRIC;
     public static MetaItem<?>.MetaValueItem COSMIC_MESH;
     public static MetaItem<?>.MetaValueItem ROD_FIELD_SHAPE;
+
+
     // monitor
     public static MetaItem<?>.MetaValueItem COVER_DIGITAL_INTERFACE;
     public static MetaItem<?>.MetaValueItem PLUGIN_TEXT;
@@ -512,6 +514,9 @@ public class GAMetaItems {
     public static MetaItem<?>.MetaValueItem RYDBERG_SPINORIAL_ASSEMBLY;
     public static MetaItem<?>.MetaValueItem X_RAY_LASER;
     public static MetaItem<?>.MetaValueItem EXOTIC_PROCESSING_CORE;
+
+    public static MetaItem<?>.MetaValueItem PROTONATED_FULLERENE_SIEVING_MATRIX;
+    public static MetaItem<?>.MetaValueItem SATURATED_FULLERENE_SIEVING_MATRIX;
     // GA oredict items
     //public static final GAOredictItem.OreDictItem Test = new GAOredictItem.OreDictItem(0, "test", Materials.Iron.materialRGB, MaterialIconSet.SHINY, OrePrefix.plateDense);
 

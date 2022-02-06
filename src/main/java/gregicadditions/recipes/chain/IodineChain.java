@@ -25,9 +25,7 @@ public class IodineChain {
                 .fluidOutputs(SulfuricAcid.getFluid(3000))
                 .buildAndRegister();
 
-        // 5[NaNO3·KNO3·KCl·NaI] + [NaNO3·KNO3·KCl·NaIO3 + H2O] ->  6[NaNO3·KNO3·KCl·NaOH + H2O + I]
-        // 167/833 = ~0.2, ratio changed to cleaner 1:5
-        // This is correct
+        // 5[NaNO3·KNO3·KCl·NaI] + [NaNO3·KNO3·KCl·NaIO3 + H2O] -> 6[NaNO3·KNO3·KCl·NaOH + H2O + I]
         MIXER_RECIPES.recipeBuilder().duration(140).EUt(120)
                 .fluidInputs(CalicheIodateBrine.getFluid(1000))
                 .fluidInputs(IodideSolution.getFluid(5000))
