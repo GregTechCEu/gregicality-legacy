@@ -32,8 +32,10 @@ public class MetaTileEntityQubitComputer extends QubitRecipeMapMultiblockControl
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("CCCC", "CCCC", "CCCC")
-                .aisle("CCCC", "CSCC", "CCCC")
+                .aisle("CCCC", "CCCC", "CCCC", "CCCC")
+                .aisle("CCCC", "CSCC", "CCCC", "CCCC")
+                .setAmountAtLeast('L', 24)
+                .where('L', statePredicate(getCasingState()))
                 .where('S', selfPredicate())
                 .where('C', statePredicate(getCasingState()).or(abilityPartPredicate(ALLOWED_ABILITIES)))
                 .build();

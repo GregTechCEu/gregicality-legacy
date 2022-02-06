@@ -9,10 +9,11 @@ import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.ADV_FUSION_COIL_1;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.GTValues.L;
-import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.common.items.MetaItems.*;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.NEUTRON_REFLECTOR;
+import static gregtech.common.items.MetaItems.TOOL_DATA_ORB;
 
 public class SupracausalComponents {
 
@@ -100,7 +101,7 @@ public class SupracausalComponents {
                 .buildAndRegister();
 
         // CTC Guidance Unit
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(134217728).qubit(32)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(134217728).qubit(8)
                 .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
                 .inputs(TOOL_DATA_ORB.getStackForm())
                 .inputs(NUCLEAR_CLOCK.getStackForm())

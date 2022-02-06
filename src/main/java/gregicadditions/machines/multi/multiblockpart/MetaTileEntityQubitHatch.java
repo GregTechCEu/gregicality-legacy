@@ -13,6 +13,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.api.util.PipelineUtil;
@@ -37,9 +38,9 @@ public class MetaTileEntityQubitHatch extends MetaTileEntityMultiblockPart imple
         this.parallel = parallel;
         this.isExportHatch = isExportHatch;
         if (isExportHatch) {
-            this.qubitContainer = QubitContainerHandler.emitterContainer(this, GAValues.QUBIT[tier] * parallel, GAValues.QUBIT[tier], parallel);
+            this.qubitContainer = QubitContainerHandler.emitterContainer(this, (long) GAValues.QUBIT[tier] * parallel, GAValues.QUBIT[tier], parallel);
         } else {
-            this.qubitContainer = QubitContainerHandler.receiverContainer(this, GAValues.QUBIT[tier] * parallel, GAValues.QUBIT[tier], parallel);
+            this.qubitContainer = QubitContainerHandler.receiverContainer(this, (long) GAValues.QUBIT[tier] * parallel, GAValues.QUBIT[tier], parallel);
         }
     }
 
@@ -55,6 +56,11 @@ public class MetaTileEntityQubitHatch extends MetaTileEntityMultiblockPart imple
             SimpleOverlayRenderer renderer = isExportHatch ? Textures.ENERGY_OUT_MULTI : Textures.ENERGY_IN_MULTI;
             renderer.renderSided(getFrontFacing(), renderState, translation, PipelineUtil.color(pipeline, GTValues.VC[getTier()]));
         }
+    }
+
+    @Override
+    public ICubeRenderer getBaseTexture() {
+        return Textures.VOLTAGE_CASINGS[GTValues.ZPM];
     }
 
     @Override
