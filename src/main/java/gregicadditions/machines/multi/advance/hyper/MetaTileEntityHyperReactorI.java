@@ -30,6 +30,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
@@ -37,6 +38,7 @@ import java.util.Objects;
 import static gregicadditions.client.ClientHandler.NAQUADRIA_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 import static gregtech.api.unification.material.Materials.Helium;
+import static gregtech.api.unification.material.Materials.Radon;
 
 public class MetaTileEntityHyperReactorI extends GAFueledMultiblockController {
 
@@ -44,19 +46,24 @@ public class MetaTileEntityHyperReactorI extends GAFueledMultiblockController {
             MultiblockAbility.OUTPUT_ENERGY, MultiblockAbility.IMPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
+    private long maxVoltage;
+    private FluidStack booster;
+
     public MetaTileEntityHyperReactorI(ResourceLocation metaTileEntityId, long maxVoltage) {
         super(metaTileEntityId, GARecipeMaps.HYPER_REACTOR_FUELS, maxVoltage);
         this.maxVoltage = maxVoltage;
+        this.booster = getBooster();
+    }
+
+    @Nonnull
+    private FluidStack getBooster() {
         Fluid temp = FluidRegistry.getFluid(GAConfig.multis.hyperReactors.boosterFluid[0]);
         if (temp == null) {
             temp = Helium.getMaterialPlasma();
             GALog.logger.warn("Incorrect fluid given to hyper reactor: " + GAConfig.multis.hyperReactors.boosterFluid[0]);
         }
-        booster = new FluidStack(temp, GAConfig.multis.hyperReactors.boosterFluidAmounts[0]);
+        return new FluidStack(Objects.requireNonNull(temp), GAConfig.multis.hyperReactors.boosterFluidAmounts[0]);
     }
-
-    long maxVoltage;
-    FluidStack booster;
 
     @Override
     public MetaTileEntity createMetaTileEntity(MetaTileEntityHolder holder) {
@@ -68,7 +75,7 @@ public class MetaTileEntityHyperReactorI extends GAFueledMultiblockController {
         int fuelMultiplier = GAConfig.multis.hyperReactors.boostedFuelAmount[0];
         int euMultiplier = GAConfig.multis.hyperReactors.boostedEuAmount[0];
         return new GABoostableWorkableHandler(this, recipeMap, () -> energyContainer, () -> importFluidHandler,
-                maxVoltage, booster, fuelMultiplier, euMultiplier);
+                maxVoltage, getBooster(), fuelMultiplier, euMultiplier);
     }
 
     @Override
