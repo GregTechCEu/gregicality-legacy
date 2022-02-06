@@ -356,11 +356,8 @@ public class MetaItemRecipes {
                 .buildAndRegister();
 
         // Cooling Containers
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(380).EUt(1150000)
-                .input(plateB, Steel, 64)
-                .input(plateB, Steel, 64)
-                .input(plate, Steel, 64)
-                .input(plate, Steel, 64)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(380).EUt(1150000)
+                .input(plateB, Steel, 32)
                 .inputs(LASER_COOLING_UNIT.getStackForm())
                 .inputs(MAGNETIC_TRAP.getStackForm())
                 .fluidInputs(SolderingAlloy.getFluid(L))
@@ -388,7 +385,7 @@ public class MetaItemRecipes {
                 .input(wireFine, Gold, 4)
                 .inputs(MetaBlocks.METAL_CASING.getItemVariant(BlockMetalCasing.MetalCasingType.ALUMINIUM_FROSTPROOF))
                 .inputs(LASER_DIODE.getStackForm())
-                .input(circuit, Ultimate)
+                .input(circuit, Advanced)
                 .outputs(LASER_COOLING_UNIT.getStackForm())
                 .buildAndRegister();
 

@@ -2,12 +2,14 @@ package gregicadditions.recipes.categories;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
+import gregicadditions.machines.GATileEntities;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
 import gregtech.common.items.MetaItems;
+import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -954,6 +956,30 @@ public class RecipeOverride {
                 .fluidInputs(Oxygen.getFluid(1000))
                 .fluidOutputs(Phenol.getFluid(1000))
                 .buildAndRegister();
+
+        // remove neutron reflector
+        removeRecipesByInputs(ASSEMBLER_RECIPES, new ItemStack[]{
+                OreDictUnifier.get(plate, Beryllium, 32),
+                        OreDictUnifier.get(plate, TungstenCarbide, 4),
+                        PLATE_IRIDIUM_ALLOY.getStackForm()
+                },
+                new FluidStack[]{TinAlloy.getFluid(4608)});
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(4000).EUt(120)
+                .input(plate, Beryllium, 32)
+                .input(plate, TungstenCarbide, 4)
+                .inputs(PLATE_IRIDIUM_ALLOY.getStackForm())
+                .fluidInputs(SolderingAlloy.getFluid(144))
+                .outputs(NEUTRON_REFLECTOR.getStackForm())
+                .buildAndRegister();
+
+        // Fix MAX Rotor Holder
+        removeRecipeByName("gregtech:rotor_holder_max");
+        ModHandler.addShapedRecipe("rotor_holder_max_new", MetaTileEntities.ROTOR_HOLDER[2].getStackForm(),
+                "WHW", "WGW", "WWW",
+                'H', GATileEntities.GA_HULLS[0].getStackForm(),
+                'W', new UnificationEntry(wireGtHex, AbyssalAlloy),
+                'G', new UnificationEntry(gear, HSSS));
     }
 
     private static void vanillaOverride() {

@@ -2,8 +2,8 @@ package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
+import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
@@ -15,9 +15,9 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.common.items.MetaItems.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.common.items.MetaItems.*;
 
 public class UltimateMaterials {
     public static void init() {
@@ -262,7 +262,7 @@ public class UltimateMaterials {
                 .outputs(HIGHLY_DENSE_POLYMER_PLATE.getStackForm())
                 .buildAndRegister();
 
-        STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(800000000)
+        STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(100000000)
                 .inputs(HIGHLY_DENSE_POLYMER_PLATE.getStackForm())
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.QCD_CHARGE))
                 .fluidOutputs(CosmicMeshPlasma.getFluid(1000))

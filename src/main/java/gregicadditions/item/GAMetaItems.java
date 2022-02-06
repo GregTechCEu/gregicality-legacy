@@ -1,5 +1,6 @@
 package gregicadditions.item;
 
+import gregicadditions.GAConfig;
 import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.unification.OreDictUnifier;
@@ -548,5 +549,20 @@ public class GAMetaItems {
         OreDictUnifier.registerOre(new ItemStack(Blocks.SNOW), block, Snow);
         OreDictionary.registerOre("formWood", WOODEN_FORM_BRICK.getStackForm());
         OreDictionary.registerOre("ingotPyroliticCarbon", PYROLYTIC_CARBON.getStackForm()); // for NC compatibility
+        if (!GAConfig.Misc.enableMagnetoCircuits) {
+            RAW_IMPRINT_SUPPORTED_BOARD.setInvisible();
+            IMPRINT_SUPPORTED_BOARD.setInvisible();
+            CIRCUIT_MAGNETIC_ULV.setInvisible();
+            CIRCUIT_MAGNETIC_LV.setInvisible();
+            CIRCUIT_MAGNETIC_MV.setInvisible();
+            CIRCUIT_MAGNETIC_HV.setInvisible();
+            CIRCUIT_MAGNETIC_EV.setInvisible();
+            CIRCUIT_MAGNETIC_IV.setInvisible();
+            CIRCUIT_MAGNETIC_LUV.setInvisible();
+            CIRCUIT_MAGNETIC_ZPM.setInvisible();
+            CIRCUIT_MAGNETIC_UV.setInvisible();
+            CIRCUIT_MAGNETIC_UHV.setInvisible();
+            CIRCUIT_MAGNETIC_UEV.setInvisible();
+        }
     }
 }

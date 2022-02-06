@@ -216,7 +216,7 @@ public class WetwareChain { // TODO
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, Meat)
-                .fluidOutputs(Blood.getFluid(250))
+                .fluidOutputs(Blood.getFluid(1000))
                 .EUt(30)
                 .duration(50)
                 .buildAndRegister();
@@ -231,9 +231,9 @@ public class WetwareChain { // TODO
 
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(BloodPlasma.getFluid(1000))
-                .fluidOutputs(Catalase.getFluid(10))
-                .fluidOutputs(BFGF.getFluid(10))
-                .fluidOutputs(EGF.getFluid(10))
+                .fluidOutputs(Catalase.getFluid(200))
+                .fluidOutputs(BFGF.getFluid(200))
+                .fluidOutputs(EGF.getFluid(200))
                 .EUt(480)
                 .duration(50)
                 .buildAndRegister();

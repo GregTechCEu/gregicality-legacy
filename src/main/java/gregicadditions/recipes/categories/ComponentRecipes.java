@@ -159,6 +159,28 @@ public class ComponentRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
                 .outputs(EMITTER_UEV.getStackForm())
                 .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
+                .input(frameGt, HDCS)
+                .inputs(LEPTON_TRAP_CRYSTAL.getStackForm(4))
+                .input(foil, TriniumTitanium, 64)
+                .input(cableGtSingle, BlackTitanium, 8)
+                .input(gemExquisite, Diamond, 2)
+                .input(circuit, UIV, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .outputs(EMITTER_UIV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15728640)
+                .input(frameGt, HDCS)
+                .inputs(CHARGED_LEPTON_TRAP_CRYSTAL.getStackForm(4))
+                .input(foil, ProtoAdamantium, 64)
+                .input(cableGtSingle, NaquadriaticTaranium, 8)
+                .input(gemExquisite, Diamond, 2)
+                .input(circuit, UMV, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 8))
+                .outputs(EMITTER_UMV.getStackForm())
+                .buildAndRegister();
     }
 
     private static void sensorInit() {
@@ -274,7 +296,7 @@ public class ComponentRecipes {
                 .input(foil, Osmiridium, 64)
                 .input(cableGtSingle, TungstenTitaniumCarbide, 8)
                 .input(gemExquisite, Diamond, 2)
-                .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(1))
+                .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm())
                 .input(circuit, Infinite, 2)
                 .fluidInputs(SolderingAlloy.getFluid(L * 2))
                 .outputs(SENSOR_UHV.getStackForm())
@@ -291,6 +313,30 @@ public class ComponentRecipes {
                 .input(circuit, UEV, 2)
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
                 .outputs(SENSOR_UEV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
+                .input(frameGt, HDCS)
+                .input(foil, TriniumTitanium, 64)
+                .input(cableGtSingle, BlackTitanium, 8)
+                .input(gemExquisite, Diamond, 2)
+                .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(8))
+                .input(circuit, UIV, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .fluidInputs(LiquidCrystalDetector.getFluid(2500))
+                .outputs(SENSOR_UIV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15728640)
+                .input(frameGt, HDCS)
+                .input(foil, ProtoAdamantium, 64)
+                .input(cableGtSingle, NaquadriaticTaranium, 8)
+                .input(gemExquisite, Diamond, 2)
+                .inputs(BOSE_EINSTEIN_COOLING_CONTAINER.getStackForm(8))
+                .input(circuit, UMV, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .fluidInputs(FreeElectronGas.getFluid(2500))
+                .outputs(SENSOR_UMV.getStackForm())
                 .buildAndRegister();
     }
 
@@ -405,13 +451,35 @@ public class ComponentRecipes {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
                 .input(frameGt, Bohrium)
-                .inputs(GRAVI_STAR.getStackForm())
+                .inputs(UNSTABLE_STAR.getStackForm())
                 .input(wireFine, Osmium, 64)
                 .input(wireFine, Osmium, 64)
                 .input(cableGtSingle, Pikyonium, 4)
                 .input(circuit, UEV, 2)
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
                 .outputs(FIELD_GENERATOR_UEV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
+                .input(frameGt, Trinium)
+                .inputs(UNSTABLE_STAR.getStackForm())
+                .input(wireFine, Trinium, 64)
+                .input(wireFine, Trinium, 64)
+                .input(cableGtSingle, BlackTitanium, 4)
+                .input(circuit, UIV, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .outputs(FIELD_GENERATOR_UIV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15728640)
+                .input(frameGt, Adamantium)
+                .inputs(UNSTABLE_STAR.getStackForm())
+                .input(wireFine, Adamantium, 64)
+                .input(wireFine, Adamantium, 64)
+                .input(cableGtSingle, NaquadriaticTaranium, 4)
+                .input(circuit, UMV, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .outputs(FIELD_GENERATOR_UMV.getStackForm())
                 .buildAndRegister();
     }
 
@@ -553,6 +621,32 @@ public class ComponentRecipes {
                 .fluidInputs(Lubricant.getFluid(2000))
                 .outputs(ROBOT_ARM_UEV.getStackForm())
                 .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
+                .input(cableGtDouble, BlackTitanium, 16)
+                .input(screw, HDCS, 16)
+                .input(stick, HDCS, 16)
+                .input(ingot, HDCS)
+                .inputs(ELECTRIC_MOTOR_UIV.getStackForm(2))
+                .inputs(ELECTRIC_PISTON_UIV.getStackForm())
+                .input(circuit, Infinite, 8)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .fluidInputs(Lubricant.getFluid(2000))
+                .outputs(ROBOT_ARM_UIV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15728640)
+                .input(cableGtDouble, NaquadriaticTaranium, 16)
+                .input(screw, HDCS, 16)
+                .input(stick, HDCS, 16)
+                .input(ingot, HDCS)
+                .inputs(ELECTRIC_MOTOR_UMV.getStackForm(2))
+                .inputs(ELECTRIC_PISTON_UMV.getStackForm())
+                .input(circuit, UEV, 8)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .fluidInputs(Lubricant.getFluid(2000))
+                .outputs(ROBOT_ARM_UMV.getStackForm())
+                .buildAndRegister();
     }
 
     private static void conveyorInit() {
@@ -667,6 +761,30 @@ public class ComponentRecipes {
                 .fluidInputs(StyreneButadieneRubber.getFluid(L * 10))
                 .fluidInputs(Lubricant.getFluid(2000))
                 .outputs(CONVEYOR_MODULE_UEV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
+                .inputs(ELECTRIC_MOTOR_UIV.getStackForm(2))
+                .input(plate, HDCS, 8)
+                .input(gear, HDCS, 4)
+                .input(stick, HDCS, 4)
+                .input(ingot, HDCS, 2)
+                .input(cableGtSingle, BlackTitanium, 2)
+                .fluidInputs(StyreneButadieneRubber.getFluid(L * 10))
+                .fluidInputs(Lubricant.getFluid(2000))
+                .outputs(CONVEYOR_MODULE_UIV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15728640)
+                .inputs(ELECTRIC_MOTOR_UMV.getStackForm(2))
+                .input(plate, HDCS, 8)
+                .input(gear, HDCS, 4)
+                .input(stick, HDCS, 4)
+                .input(ingot, HDCS, 2)
+                .input(cableGtSingle, NaquadriaticTaranium, 2)
+                .fluidInputs(StyreneButadieneRubber.getFluid(L * 10))
+                .fluidInputs(Lubricant.getFluid(2000))
+                .outputs(CONVEYOR_MODULE_UMV.getStackForm())
                 .buildAndRegister();
     }
 
@@ -809,6 +927,30 @@ public class ComponentRecipes {
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
                 .fluidInputs(Lubricant.getFluid(2000))
                 .outputs(ELECTRIC_PISTON_UEV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
+                .inputs(ELECTRIC_MOTOR_UIV.getStackForm())
+                .input(plate, HDCS, 8)
+                .input(gearSmall, HDCS, 8)
+                .input(stick, HDCS, 4)
+                .input(ingot, HDCS, 2)
+                .input(cableGtSingle, BlackTitanium, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .fluidInputs(Lubricant.getFluid(2000))
+                .outputs(ELECTRIC_PISTON_UIV.getStackForm())
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15728640)
+                .inputs(ELECTRIC_MOTOR_UMV.getStackForm())
+                .input(plate, HDCS, 8)
+                .input(gearSmall, HDCS, 8)
+                .input(stick, HDCS, 4)
+                .input(ingot, HDCS, 2)
+                .input(cableGtSingle, NaquadriaticTaranium, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .fluidInputs(Lubricant.getFluid(2000))
+                .outputs(ELECTRIC_PISTON_UMV.getStackForm())
                 .buildAndRegister();
     }
 
@@ -964,6 +1106,38 @@ public class ComponentRecipes {
                 .input(wireFine, Pikyonium, 64)
                 .input(cableGtQuadruple, Pikyonium, 2)
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .fluidInputs(Lubricant.getFluid(3000))
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
+                .outputs(ELECTRIC_MOTOR_UIV.getStackForm())
+                .input(stickLong, NeodymiumMagnetic, 64)
+                .input(stickLong, NeodymiumMagnetic, 64)
+                .input(stickLong, HDCS, 2)
+                .input(ring, HDCS, 4)
+                .input(roundOrScrew, HDCS, 16)
+                .input(wireFine, CarbonNanotubes, 64)
+                .input(wireFine, CarbonNanotubes, 64)
+                .input(wireFine, CarbonNanotubes, 64)
+                .input(wireFine, CarbonNanotubes, 64)
+                .input(cableGtQuadruple, BlackTitanium, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
+                .fluidInputs(Lubricant.getFluid(3000))
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15728640)
+                .outputs(ELECTRIC_MOTOR_UMV.getStackForm())
+                .input(stickLong, NeodymiumMagnetic, 64)
+                .input(stickLong, NeodymiumMagnetic, 64)
+                .input(stickLong, HDCS, 2)
+                .input(ring, HDCS, 4)
+                .input(roundOrScrew, HDCS, 16)
+                .input(wireFine, CarbonNanotubes, 64)
+                .input(wireFine, CarbonNanotubes, 64)
+                .input(wireFine, CarbonNanotubes, 64)
+                .input(wireFine, CarbonNanotubes, 64)
+                .input(cableGtQuadruple, NaquadriaticTaranium, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 6))
                 .fluidInputs(Lubricant.getFluid(3000))
                 .buildAndRegister();
     }
@@ -1126,12 +1300,36 @@ public class ComponentRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(3932160)
                 .outputs(ELECTRIC_PUMP_UEV.getStackForm())
                 .inputs(ELECTRIC_MOTOR_UEV.getStackForm())
-                .input(pipeLarge, Lafium, 64)
-                .input(pipeLarge, Lafium, 64)
+                .input(pipeMedium, Lafium, 64)
+                .input(pipeMedium, Lafium, 64)
                 .input(screw, HDCS, 8)
                 .input(ring, SiliconeRubber, 16)
                 .input(rotor, HDCS, 2)
                 .input(cableGtSingle, Pikyonium, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .fluidInputs(Lubricant.getFluid(2000))
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(7864320)
+                .outputs(ELECTRIC_PUMP_UIV.getStackForm())
+                .inputs(ELECTRIC_MOTOR_UIV.getStackForm())
+                .input(pipeLarge, TantalumHafniumSeaborgiumCarbide, 64)
+                .input(screw, HDCS, 8)
+                .input(ring, SiliconeRubber, 16)
+                .input(rotor, HDCS, 2)
+                .input(cableGtSingle, BlackTitanium, 2)
+                .fluidInputs(SolderingAlloy.getFluid(L * 4))
+                .fluidInputs(Lubricant.getFluid(2000))
+                .buildAndRegister();
+
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(15728640)
+                .outputs(ELECTRIC_PUMP_UMV.getStackForm())
+                .inputs(ELECTRIC_MOTOR_UMV.getStackForm())
+                .input(pipeLarge, EnrichedNaquadahAlloy, 64)
+                .input(screw, HDCS, 8)
+                .input(ring, SiliconeRubber, 16)
+                .input(rotor, HDCS, 2)
+                .input(cableGtSingle, NaquadriaticTaranium, 2)
                 .fluidInputs(SolderingAlloy.getFluid(L * 4))
                 .fluidInputs(Lubricant.getFluid(2000))
                 .buildAndRegister();

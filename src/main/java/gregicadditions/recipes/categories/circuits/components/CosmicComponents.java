@@ -72,7 +72,7 @@ public class CosmicComponents {
                 .fluidInputs(Quantum.getFluid(L * 3))
                 .fluidInputs(SolderingAlloy.getFluid(L * 9))
                 .fluidInputs(ProtoAdamantium.getFluid(L * 3))
-                .outputs(COSMIC_PROCESSING_CORE.getStackForm())
+                .outputs(COSMIC_PROCESSING_CORE.getStackForm(8))
                 .buildAndRegister();
 
         CHEMICAL_BATH_RECIPES.recipeBuilder().duration(240).EUt(695000)

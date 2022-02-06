@@ -5,7 +5,7 @@ import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
 import net.minecraft.item.ItemStack;
 
-import static gregicadditions.GAEnums.GAOrePrefix.*;
+import static gregicadditions.GAEnums.GAOrePrefix.plateCurved;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -187,7 +187,6 @@ public class Batteries {
                 .input(plateB, Vanadium, 4)
                 .input(cableGtSingle, Platinum, 8)
                 .inputs(LithiumCobaltOxide.getItemStack(3))
-                .inputs(AEROGRAPHENE.getStackForm())
                 .EUt(7680)
                 .duration(100)
                 .outputs(BATTERY_SMALL_LITHIUM_ION_EMPTY.getStackForm())
@@ -198,7 +197,6 @@ public class Batteries {
                 .input(plateB, Vanadium, 6)
                 .input(cableGtSingle, NiobiumTitanium, 8)
                 .inputs(LithiumCobaltOxide.getItemStack(6))
-                .inputs(AEROGRAPHENE.getStackForm(2))
                 .EUt(7680 * 4)
                 .duration(100)
                 .outputs(BATTERY_MEDIUM_LITHIUM_ION_EMPTY.getStackForm())
@@ -209,7 +207,6 @@ public class Batteries {
                 .input(plateB, Naquadria, 2)
                 .input(cableGtSingle, Naquadah, 8)
                 .inputs(LithiumCobaltOxide.getItemStack(9))
-                .inputs(AEROGRAPHENE.getStackForm(4))
                 .EUt(7680 * 16)
                 .duration(100)
                 .outputs(BATTERY_LARGE_LITHIUM_ION_EMPTY.getStackForm())
@@ -271,7 +268,7 @@ public class Batteries {
 
         ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plateB, CosmicNeutronium, 4)
-                .input(cableGtSingle, UXVSuperconductor, 8)
+                .input(wireGtSingle, UXVSuperconductor, 8)
                 .input(plateB, Neutronium, 6)
                 .input(plate, Neutronium, 4)
                 .inputs(LanthanumNickelOxide.getItemStack(28))

@@ -1,7 +1,6 @@
 package gregicadditions.recipes.categories.circuits.components;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAEnums;
 import gregicadditions.GAUtility;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -10,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class ExoticComponents{
@@ -44,27 +43,27 @@ public class ExoticComponents{
 
         }
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(foil, Cinobite, 3)
-                .input(foil, Quantum, 2)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(144 * 4))
+                .input(foil, Cinobite)
+                .input(foil, Quantum)
                 .outputs(SMD_CAPACITOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(wireFine, Cinobite, 5)
-                .input(foil, TriniumTitanium, 3)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(144 * 4))
+                .input(wireFine, Cinobite)
+                .input(foil, TriniumTitanium)
                 .outputs(SMD_RESISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .input(plate, Vibranium, 5)
-                .input(plate, Quantum, 4)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(144 * 4))
+                .input(plate, Vibranium)
+                .input(plate, Quantum)
                 .outputs(SMD_DIODE_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Zylon.getFluid(72))
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(2))
-                .input(foil, TriniumTitanium, 3)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(144 * 4))
+                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
+                .input(foil, TriniumTitanium)
                 .outputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
@@ -87,7 +86,7 @@ public class ExoticComponents{
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(2000)
                 .inputs(HIGH_FREQUENCY_LASER.getStackForm())
-                .input(plate, SuperheavyLAlloy)
+                .input(plate, MetastableHassium)
                 .inputs(HIGHLY_REFLECTIVE_MIRROR.getStackForm())
                 .fluidInputs(Zylon.getFluid(72))
                 .outputs(EXCITATION_MAINTAINER.getStackForm())
@@ -121,7 +120,7 @@ public class ExoticComponents{
                 .inputs(RYDBERG_SPINORIAL_ASSEMBLY.getStackForm())
                 .inputs(X_RAY_LASER.getStackForm())
                 .fluidInputs(QuantumDots.getFluid(10))
-                .outputs(EXOTIC_PROCESSING_CORE.getStackForm())
+                .outputs(EXOTIC_PROCESSING_CORE.getStackForm(6))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt(5000)

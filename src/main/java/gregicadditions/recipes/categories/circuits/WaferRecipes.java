@@ -101,9 +101,9 @@ public class WaferRecipes {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(craftingLens, Red).outputs(INTEGRATED_LOGIC_CIRCUIT_WAFER.getStackForm(20)).buildAndRegister();
 
         // ARAM Wafer
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(1)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(4)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(8)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(122_880) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(1)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(50).EUt(491_520) .inputs(WAFER_DUBNIUM.getStackForm())       .notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(4)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(1_966_080).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(lens, MagnetoResonatic).outputs(ARAM_WAFER.getStackForm(8)).buildAndRegister();
 
         // NAND Memory Wafer
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(craftingLens, LightBlue).outputs(NAND_MEMORY_CHIP_WAFER.getStackForm(8)) .buildAndRegister();
@@ -139,24 +139,24 @@ public class WaferRecipes {
         LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(craftingLens, Blue).outputs(POWER_INTEGRATED_CIRCUIT_WAFER.getStackForm(16)).buildAndRegister();
 
         // UHPIC Wafer
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, Amethyst).outputs(UHPIC_WAFER.getStackForm(1)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, Amethyst).outputs(UHPIC_WAFER.getStackForm(2)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(lens, Amethyst).outputs(UHPIC_WAFER.getStackForm(4)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(491_520) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, Amethyst).outputs(UHPIC_WAFER.getStackForm(1)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(1_966_080) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, Amethyst).outputs(UHPIC_WAFER.getStackForm(2)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(7_864_320).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(lens, Amethyst).outputs(UHPIC_WAFER.getStackForm(4)).buildAndRegister();
 
         // HASoC Wafer
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(7680) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, CubicZirconia).outputs(HASOC_WAFER.getStackForm(1)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, CubicZirconia).outputs(HASOC_WAFER.getStackForm(4)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(lens, CubicZirconia).outputs(HASOC_WAFER.getStackForm(8)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(100).EUt(491_520) .inputs(WAFER_RUTHERFORDIUM.getStackForm()).notConsumable(lens, CubicZirconia).outputs(HASOC_WAFER.getStackForm(1)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(1_966_080).inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, CubicZirconia).outputs(HASOC_WAFER.getStackForm(4)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(7_864_320).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(lens, CubicZirconia).outputs(HASOC_WAFER.getStackForm(8)).buildAndRegister();
 
         // UHASoC Wafer
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(30720) .inputs(WAFER_DUBNIUM.getStackForm())      .notConsumable(lens, Prasiolite).outputs(UHASOC_WAFER.getStackForm(1)).buildAndRegister();
-        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(122880).inputs(WAFER_NEUTRONIUM.getStackForm())   .notConsumable(lens, Prasiolite).outputs(UHASOC_WAFER.getStackForm(4)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(25).EUt(1_966_080).inputs(WAFER_DUBNIUM.getStackForm())  .notConsumable(lens, Prasiolite).outputs(UHASOC_WAFER.getStackForm(1)).buildAndRegister();
+        LASER_ENGRAVER_RECIPES.recipeBuilder().duration(12).EUt(7_864_320).inputs(WAFER_NEUTRONIUM.getStackForm()).notConsumable(lens, Prasiolite).outputs(UHASOC_WAFER.getStackForm(4)).buildAndRegister();
 
         // Misc Cutting Recipes
-        CUTTER_RECIPES.recipeBuilder().inputs(UHPIC_WAFER.getStackForm()) .outputs(UHPIC.getStackForm(2)) .EUt(48).duration(600).buildAndRegister();
-        CUTTER_RECIPES.recipeBuilder().inputs(ARAM_WAFER.getStackForm())  .outputs(ARAM.getStackForm(16)) .EUt(48).duration(600).buildAndRegister();
-        CUTTER_RECIPES.recipeBuilder().inputs(HASOC_WAFER.getStackForm()) .outputs(HASOC.getStackForm(6)) .EUt(48).duration(600).buildAndRegister();
-        CUTTER_RECIPES.recipeBuilder().inputs(UHASOC_WAFER.getStackForm()).outputs(UHASOC.getStackForm(6)).EUt(48).duration(600).buildAndRegister();
+        CUTTER_RECIPES.recipeBuilder().inputs(UHPIC_WAFER.getStackForm()) .outputs(UHPIC.getStackForm(2)) .EUt(491_520).duration(600).buildAndRegister();
+        CUTTER_RECIPES.recipeBuilder().inputs(ARAM_WAFER.getStackForm())  .outputs(ARAM.getStackForm(16)) .EUt(122_880).duration(600).buildAndRegister();
+        CUTTER_RECIPES.recipeBuilder().inputs(HASOC_WAFER.getStackForm()) .outputs(HASOC.getStackForm(6)) .EUt(491_520).duration(600).buildAndRegister();
+        CUTTER_RECIPES.recipeBuilder().inputs(UHASOC_WAFER.getStackForm()).outputs(UHASOC.getStackForm(6)).EUt(1_966_080).duration(600).buildAndRegister();
 
         // Optical SoC
         FLUID_EXTRACTION_RECIPES.recipeBuilder().duration(260).EUt(30)

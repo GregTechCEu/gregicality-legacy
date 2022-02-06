@@ -2,10 +2,12 @@ package gregicadditions.recipes.categories.handlers;
 
 import forestry.core.fluids.Fluids;
 import gregicadditions.GAConfig;
+import gregicadditions.GAValues;
 import gregtech.api.unification.material.Materials;
 import net.minecraftforge.fml.common.Loader;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.GAMaterials.MAX;
 import static gregicadditions.fluid.GAMetaFluids.getHotFluid;
 import static gregtech.api.GTValues.*;
 import static gregicadditions.recipes.helper.HelperMethods.*;
@@ -137,14 +139,15 @@ public class FuelHandler {
         registerHyperReactorFuel(HyperFuelIV .getFluid(1), 6000, UV);
 
         // Qubit Generator
-        registerQubitGeneratorFuel(circuit, Elite,           1, UV);
-        registerQubitGeneratorFuel(circuit, Master,          4, UV);
-        registerQubitGeneratorFuel(circuit, Ultimate,       15, UV);
-        registerQubitGeneratorFuel(circuit, Superconductor, 50, UV);
-        registerQubitGeneratorFuel(circuit, Infinite,      200, UV);
-        registerQubitGeneratorFuel(circuit, UEV,           800, UV);
-        registerQubitGeneratorFuel(circuit, UIV,          3200, UV);
-        registerQubitGeneratorFuel(circuit, UMV,         12800, UV);
-        registerQubitGeneratorFuel(circuit, UXV,         51200, UV);
+        registerQubitGeneratorFuel(circuit, Elite,           100, UV);
+        registerQubitGeneratorFuel(circuit, Master,          200, UV);
+        registerQubitGeneratorFuel(circuit, Ultimate,       400, UV);
+        registerQubitGeneratorFuel(circuit, Superconductor, 800, UV);
+        registerQubitGeneratorFuel(circuit, Infinite,      1600, UV);
+        registerQubitGeneratorFuel(circuit, UEV,           3200, UV);
+        registerQubitGeneratorFuel(circuit, UIV,         6400, UV);
+        registerQubitGeneratorFuel(circuit, UMV,         12_800, UV);
+        registerQubitGeneratorFuel(circuit, UXV,       25_600, UV);
+        registerQubitGeneratorFuel(circuit, MAX,       51_200, UV);
     }
 }

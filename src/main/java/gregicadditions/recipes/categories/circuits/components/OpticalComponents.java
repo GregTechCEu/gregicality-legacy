@@ -21,35 +21,37 @@ public class OpticalComponents {
 
         // SMD Diode
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
-                .input(wireFine, Pikyonium, 4)
-                .input(plate, LithiumNiobate, 3)
-                .input(plate, Adamantium)
-                .fluidInputs(Polybenzimidazole.getFluid(L * 6))
+                .input(wireFine, Pikyonium, 8)
+                .input(plate, LithiumNiobate, 4)
+                .input(plate, Polyetheretherketone, 4)
+                .fluidInputs(Polybenzimidazole.getFluid(L * 4))
                 .outputs(SMD_DIODE_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Transistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
-                .input(wireFine, Pikyonium, 4)
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(2))
+                .input(wireFine, Pikyonium, 8)
+                .input(plate, LeadZirconateTitanate, 4)
+                .input(plate, LithiumTitanate, 4)
                 .fluidInputs(Polybenzimidazole.getFluid(L * 4))
                 .outputs(SMD_TRANSISTOR_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Capacitor
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
-                .input(wireFine, Pikyonium, 4)
-                .input(foil, Zylon, 2)
+                .input(wireFine, Pikyonium, 8)
+                .input(foil, CarbonNanotubes, 4)
+                .input(foil, Polyetheretherketone, 4)
                 .fluidInputs(Polybenzimidazole.getFluid(L * 4))
                 .outputs(SMD_CAPACITOR_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
         // SMD Resistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(1200000)
-                .input(wireFine, Cinobite, 6)
-                .inputs(SodiumSeaborgate.getItemStack(4))
-                .input(dust, TriniumTitanium, 2)
-                .fluidInputs(Polybenzimidazole.getFluid(L * 6))
+                .input(wireFine, Pikyonium, 8)
+                .inputs(SodiumSeaborgate.getItemStack(5))
+                .inputs(TBCCODust.getItemStack(4))
+                .fluidInputs(Polybenzimidazole.getFluid(L * 4))
                 .outputs(SMD_RESISTOR_OPTICAL.getStackForm(32))
                 .buildAndRegister();
 
@@ -72,7 +74,7 @@ public class OpticalComponents {
                 .fluidInputs(EnrichedNaquadahAlloy.getFluid(L * 3))
                 .fluidInputs(SolderingAlloy.getFluid(L * 9))
                 .fluidInputs(FullereneDopedNanotubes.getFluid(L))
-                .outputs(OPTICAL_PROCESSING_CORE.getStackForm())
+                .outputs(OPTICAL_PROCESSING_CORE.getStackForm(6))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(750000)
