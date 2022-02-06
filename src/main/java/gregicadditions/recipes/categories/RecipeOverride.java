@@ -209,6 +209,17 @@ public class RecipeOverride {
                 .duration(300)
                 .EUt(30)
                 .buildAndRegister();
+
+        // Hot Vanadium
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, Vanadium));
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, Vanadium)
+                .notConsumable(new IntCircuitIngredient(0))
+                .output(ingotHot, Vanadium)
+                .blastFurnaceTemp(2183)
+                .duration(2226)
+                .EUt(120)
+                .buildAndRegister();
     }
 
     private static void brewingOverride() {
