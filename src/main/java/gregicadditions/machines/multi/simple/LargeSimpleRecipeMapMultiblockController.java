@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeMapMultiblockController {
@@ -338,6 +339,7 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             maxItemsLimit *= currentTier - tierNeeded;
             maxItemsLimit = Math.max(1, maxItemsLimit);
 
+            forceRecipeRecheck();
 
             Set<ItemStack> countIngredients = new HashSet<>();
             if (matchingRecipe.getInputs().size() != 0) {
@@ -366,22 +368,24 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             List<FluidStack> outputF = new ArrayList<>();
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, minMultiplier);
 
+
+            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder();
+            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
+
             // determine if there is enough room in the output to fit all of this
-            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(outputI, this.getOutputInventory());
             // if there isn't, we can't process this recipe.
+            List<ItemStack> totalOutputs = newRecipe.getChancedOutputs().stream().map(Recipe.ChanceEntry::getItemStack).collect(Collectors.toList());
+            totalOutputs.addAll(outputI);
+            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(totalOutputs, this.getOutputInventory());
             if (!canFitOutputs)
-                return null;
+                return matchingRecipe;
 
-
-            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
-                    .inputsIngredients(newRecipeInputs)
+            newRecipe.inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
-                    .EUt((int) Math.max(1, EUt * this.EUtPercentage / 100))
+                    .EUt(Math.max(1, EUt * this.EUtPercentage / 100))
                     .duration((int) Math.max(3, duration * (this.durationPercentage / 100.0)));
-
-            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
 
             return newRecipe.build().getResult();
         }
@@ -401,14 +405,12 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
         protected void findIngredients(Set<ItemStack> countIngredients, IItemHandlerModifiable inputs) {
             for (int slot = 0; slot < inputs.getSlots(); slot++) {
                 ItemStack wholeItemStack = inputs.getStackInSlot(slot);
-                String name = wholeItemStack.getItem().getUnlocalizedNameInefficiently(wholeItemStack);
                 // skip empty slots
-                if (name.equals("tile.air")) {
+                if (wholeItemStack.isEmpty())
                     continue;
-                }
                 boolean found = false;
                 for (ItemStack i : countIngredients) {
-                    if (ItemStack.areItemsEqual(i, wholeItemStack)) {
+                    if (wholeItemStack.isItemEqual(wholeItemStack)) {
                         i.setCount(i.getCount() + wholeItemStack.getCount());
                         found = true;
                         break;

@@ -18,6 +18,7 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
+import gregtech.api.recipes.RecipeBuilder;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
@@ -40,6 +41,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
@@ -279,31 +281,32 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
                 duration /= 2.8;
             }
 
+            if (duration < 3)
+                duration = 3;
+
             List<CountableIngredient> newRecipeInputs = new ArrayList<>();
             List<FluidStack> newFluidInputs = new ArrayList<>();
             List<ItemStack> outputI = new ArrayList<>();
             List<FluidStack> outputF = new ArrayList<>();
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, multiplier);
 
+            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder();
+            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
+
             // determine if there is enough room in the output to fit all of this
-            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(outputI, this.getOutputInventory());
             // if there isn't, we can't process this recipe.
+            List<ItemStack> totalOutputs = newRecipe.getChancedOutputs().stream().map(Recipe.ChanceEntry::getItemStack).collect(Collectors.toList());
+            totalOutputs.addAll(outputI);
+            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(totalOutputs, this.getOutputInventory());
             if (!canFitOutputs)
-                return null;
+                return matchingRecipe;
 
-            if (duration < 3)
-                duration = 3;
-
-            BlastRecipeBuilder newRecipe = ((BlastRecipeBuilder) recipeMap.recipeBuilder())
-                    .inputsIngredients(newRecipeInputs)
+            newRecipe.inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
                     .EUt((int) Math.max(1, EUt))
-                    .duration(duration)
-                    .blastFurnaceTemp(recipeTemp);
-
-            copyChancedItemOutputs(newRecipe, matchingRecipe, multiplier);
+                    .duration(duration);
 
             return newRecipe.build().getResult();
         }

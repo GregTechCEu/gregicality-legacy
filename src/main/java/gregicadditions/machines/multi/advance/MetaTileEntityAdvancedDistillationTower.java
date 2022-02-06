@@ -38,6 +38,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static gregicadditions.client.ClientHandler.BABBITT_ALLOY_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
@@ -140,6 +141,8 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
             tierNeeded = Math.max(1, GAUtility.getTierByVoltage(matchingRecipe.getEUt()));
             maxItemsLimit *= currentTier - tierNeeded;
 
+            forceRecipeRecheck();
+
             if (mode == 0) { // Distillation tower = 2 parallel/oc, max 8
                 maxItemsLimit *= 2;
                 maxItemsLimit = Math.max(1, maxItemsLimit);
@@ -177,22 +180,23 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
             List<FluidStack> outputF = new ArrayList<>();
             this.multiplyInputsAndOutputs(newRecipeInputs, newFluidInputs, outputI, outputF, matchingRecipe, minMultiplier);
 
+            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder();
+            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
+
             // determine if there is enough room in the output to fit all of this
-            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(outputI, this.getOutputInventory());
             // if there isn't, we can't process this recipe.
+            List<ItemStack> totalOutputs = newRecipe.getChancedOutputs().stream().map(Recipe.ChanceEntry::getItemStack).collect(Collectors.toList());
+            totalOutputs.addAll(outputI);
+            boolean canFitOutputs = InventoryUtils.simulateItemStackMerge(totalOutputs, this.getOutputInventory());
             if (!canFitOutputs)
-                return null;
+                return matchingRecipe;
 
-
-            RecipeBuilder<?> newRecipe = recipeMap.recipeBuilder()
-                    .inputsIngredients(newRecipeInputs)
+            newRecipe.inputsIngredients(newRecipeInputs)
                     .fluidInputs(newFluidInputs)
                     .outputs(outputI)
                     .fluidOutputs(outputF)
-                    .EUt((int) Math.max(1, EUt * this.getEUtPercentage() / 100))
+                    .EUt(Math.max(1, EUt * this.getEUtPercentage() / 100))
                     .duration((int) Math.max(3, duration * (this.getDurationPercentage() / 100.0)));
-
-            copyChancedItemOutputs(newRecipe, matchingRecipe, minMultiplier);
 
             return newRecipe.build().getResult();
         }
