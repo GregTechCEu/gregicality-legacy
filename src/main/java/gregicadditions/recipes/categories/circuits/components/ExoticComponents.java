@@ -1,7 +1,6 @@
 package gregicadditions.recipes.categories.circuits.components;
 
 import gregicadditions.GAConfig;
-import gregicadditions.GAEnums;
 import gregicadditions.GAUtility;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -10,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregicadditions.item.GAMetaItems.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
 public class ExoticComponents{
@@ -44,25 +43,25 @@ public class ExoticComponents{
 
         }
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(72))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(144 * 4))
                 .input(foil, Cinobite)
                 .input(foil, Quantum)
                 .outputs(SMD_CAPACITOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(72))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(144 * 4))
                 .input(wireFine, Cinobite)
                 .input(foil, TriniumTitanium)
                 .outputs(SMD_RESISTOR_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(72))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(144 * 4))
                 .input(plate, Vibranium)
                 .input(plate, Quantum)
                 .outputs(SMD_DIODE_EXOTIC.getStackForm(32))
                 .buildAndRegister();
 
-        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(72))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(160).EUt((int)1E+6).fluidInputs(Polyetheretherketone.getFluid(144 * 4))
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
                 .input(foil, TriniumTitanium)
                 .outputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
