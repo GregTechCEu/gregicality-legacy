@@ -871,7 +871,7 @@ public class CircuitRecipes {
                 .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(64))
                 .inputs(SMD_DIODE_OPTICAL.getStackForm(64))
                 .inputs(SMD_RESISTOR_OPTICAL.getStackForm(64))
-                .input(wireGtSingle, UHVSuperconductor, 6)
+                .input(wireGtSingle, UVSuperconductor, 6)
                 .inputs(UHPIC.getStackForm(64))
                 .inputs(UHASOC.getStackForm(64))
                 .input(plate, EnrichedNaquadahAlloy, 4)
