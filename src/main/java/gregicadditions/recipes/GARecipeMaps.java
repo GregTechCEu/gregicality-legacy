@@ -171,7 +171,7 @@ public class GARecipeMaps {
 
     @ZenProperty
     public static final LargeRecipeMap LARGE_CENTRIFUGE_RECIPES = (LargeRecipeMap) new LargeRecipeMap("large_centrifuge",
-            0, 1, 0, 6, 0, 2, 0, 6, new LargeRecipeBuilder(RecipeMaps.CENTRIFUGE_RECIPES))
+            0, 2, 0, 6, 0, 2, 0, 6, new LargeRecipeBuilder(RecipeMaps.CENTRIFUGE_RECIPES))
             .setSlotOverlay(false, false, true, GuiTextures.EXTRACTOR_OVERLAY)
             .setSlotOverlay(false, true, true, GuiTextures.DARK_CANISTER_OVERLAY)
             .setProgressBar(GuiTextures.PROGRESS_BAR_EXTRACT, ProgressWidget.MoveType.HORIZONTAL);

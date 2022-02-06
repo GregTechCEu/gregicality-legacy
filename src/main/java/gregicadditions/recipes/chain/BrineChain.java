@@ -90,21 +90,21 @@ public class BrineChain {
                 .fluidOutputs(Formamide.getFluid(100))
                 .buildAndRegister();
 
-        // 3NH4NO3 + 8SO2 + 7H2O + 2NH3 -> 4(NH3OH)2SO4
+        // NH4NO3 + 2 SO2 + 3 H2O + 2 NH3 = [(NH3OH)2SO4 + (NH4)2SO4]
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
-                .fluidInputs(AmmoniumNitrate.getFluid(3000))
-                .fluidInputs(SulfurDioxide.getFluid(8000))
-                .fluidInputs(Water.getFluid(7000))
+                .fluidInputs(AmmoniumNitrate.getFluid(1000))
+                .fluidInputs(SulfurDioxide.getFluid(2000))
+                .fluidInputs(Water.getFluid(3000))
                 .fluidInputs(Ammonia.getFluid(2000))
-                .fluidOutputs(HydroxylamineDisulfate.getFluid(4000))
+                .fluidOutputs(HydroxylamineDisulfate.getFluid(2000))
                 .buildAndRegister();
 
-        // (NH3OH)2SO4 + 2NH3 -> 2H3NO + (NH4)2SO4
+        // [(NH3OH)2SO4 + (NH4)2SO4] + 2 NH3 -> 2H3NO + 2 (NH4)2SO4
         CHEMICAL_RECIPES.recipeBuilder().duration(180).EUt(120)
-                .fluidInputs(HydroxylamineDisulfate.getFluid(1000))
+                .fluidInputs(HydroxylamineDisulfate.getFluid(2000))
                 .fluidInputs(Ammonia.getFluid(2000))
                 .fluidOutputs(Hydroxylamine.getFluid(2000))
-                .fluidOutputs(AmmoniumSulfate.getFluid(1000))
+                .fluidOutputs(AmmoniumSulfate.getFluid(2000))
                 .buildAndRegister();
 
         // CH3NO + H3NO -> H3N2O(CH) + H2O
@@ -311,13 +311,14 @@ public class BrineChain {
                 .fluidOutputs(SodiumHydroxideSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // C6H12O6 + LiAlH4 + NaNH2 + H2SO4 + O -> LiOH(H2O) + C6H13NO5 + AlH3 + NaHSO4
+        // C6H12O6 + LiAlH4 + NaN3 + H2SO4 + H2O -> LiOH(H2O) + C6H11O5NH2 + AlH3 + NaHSO4 + 2 N
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(250).EUt(120)
                 .inputs(Glucose.getItemStack(24))
                 .inputs(LithiumAluminiumHydride.getItemStack(6))
-                .inputs(SodiumAzanide.getItemStack(4))
+                .inputs(SodiumAzide.getItemStack(4))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
-                .fluidInputs(Oxygen.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
+                .fluidOutputs(Nitrogen.getFluid(2000))
                 .fluidOutputs(LithiumHydroxideSolution.getFluid(1000))
                 .outputs(Glucosamine.getItemStack(25))
                 .outputs(AluminiumHydride.getItemStack(4))
@@ -484,22 +485,22 @@ public class BrineChain {
                 .fluidOutputs(Water.getFluid(1000))
                 .buildAndRegister();
 
-        // 12Na2MoO4 + H3PO4 -> Mo12Na3O40P + 21Na + H2O + H + 11O (H2O and H lost to dehydrator)
+        // 12Na2MoO4 + H3PO4 -> Mo12Na3O40P + 10 Na2O + H2O + NaOH (H2O lost to dehydrator)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(180).EUt(1920)
                 .inputs(SodiumMolybdate.getItemStack(84))
                 .fluidInputs(PhosphoricAcid.getFluid(1000))
                 .outputs(SodiumPhosphomolybdate.getItemStack(56))
-                .output(dust, Sodium, 21)
-                .fluidOutputs(Oxygen.getFluid(11000))
+                .output(dust, SodiumHydroxide, 3)
+                .outputs(SodiumOxide.getItemStack(30))
                 .buildAndRegister();
 
-        // 12Na2WO4 + H3PO4 -> Na3O40PW12 + 21Na + H2O + H + 11O (H2O and H lost to dehydrator)
+        // 12Na2WO4 + H3PO4 -> Na3O40PW12 + 10 Na2O + H2O + NaOH (H2O lost to dehydrator)
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(180).EUt(1920)
                 .fluidInputs(SodiumTungstate.getFluid(12000))
                 .fluidInputs(PhosphoricAcid.getFluid(1000))
                 .outputs(SodiumPhosphotungstate.getItemStack(56))
-                .output(dust, Sodium, 21)
-                .fluidOutputs(Oxygen.getFluid(11000))
+                .output(dust, SodiumHydroxide, 3)
+                .outputs(SodiumOxide.getItemStack(30))
                 .buildAndRegister();
 
         // C3H6 + H2O -> C3H8O

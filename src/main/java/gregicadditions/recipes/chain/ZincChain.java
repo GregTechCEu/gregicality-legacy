@@ -185,14 +185,14 @@ public class ZincChain {
         CHEMICAL_RECIPES.recipeBuilder().duration(120).EUt(120)
                 .inputs(ThalliumResidue.getItemStack())
                 .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(ThalliumSulfateSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // Thallium Sulfate Solution [Contains: Tl2SO4] + HCl + HClO = 2TlCl + H2SO4 + H2O (because solution)
+        // Thallium Sulfate Solution [Contains: Tl2SO4 + H2O] + 2 HCl  = 2TlCl + H2SO4 + H2O (because solution)
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(120)
                 .fluidInputs(ThalliumSulfateSolution.getFluid(1000))
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidInputs(HypochlorousAcid.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
                 .outputs(ThalliumChloride.getItemStack(4))
                 .fluidOutputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(Water.getFluid(1000))

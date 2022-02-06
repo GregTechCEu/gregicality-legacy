@@ -166,6 +166,8 @@ public class RecipeHandler {
         OrganometallicChains.init();
         QuantumDotsChain.init();
         HNIWChain.init();
+        TriniumChain.init();
+        TaraniumChain.init();
         CasingConversion.init();
     }
 

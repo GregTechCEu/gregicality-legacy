@@ -141,6 +141,7 @@ public class REEChain {
                 .output(dust, SodiumHydroxide, 3)
                 .buildAndRegister();
 
+
         // 2 [REECl3 + 3 H2O] + C16H35O4P(cat.) -> [REE2O3](sep.) + 6 HCl + 3 H2O
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder()
                 .fluidInputs(RareEarthChloridesSolution.getFluid(6000))

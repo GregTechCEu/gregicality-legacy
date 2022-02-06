@@ -27,7 +27,7 @@ public class OrganometallicChains{
 
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(2000) //C5H6 + LiC4H9 -> LiC5H5 + C4H10
                 .fluidInputs(Cyclopentadiene.getFluid(1000))
-                .fluidInputs(Dimethoxyethane.getFluid(1000))
+                .fluidInputs(Dimethoxyethane.getFluid(500))
                 .fluidInputs(ButylLithium.getFluid(1000))
                 .fluidOutputs(Butane.getFluid(1000))
                 .fluidOutputs(LithiumCyclopentadienide.getFluid(1000))

@@ -51,8 +51,7 @@ public class ZylonChain {
         // Au + Pd + C -> AuPdC
         MIXER_RECIPES.recipeBuilder()
                 .input(dust, Gold)
-                .input(dust, Palladium)
-                .input(dust, Carbon)
+                .inputs(PdCCatalyst.getItemStack(2))
                 .outputs(AuPdCCatalyst.getItemStack(3))
                 .EUt(2000000)
                 .duration(60)

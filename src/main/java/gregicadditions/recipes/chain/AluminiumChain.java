@@ -44,79 +44,80 @@ public class AluminiumChain {
                 .fluidOutputs(SodiumHexafluoroaluminate.getFluid(1000))
                 .buildAndRegister();
 
-        // 24[H2O + NaOH] + (TiO2)2Al16H10O11 -> [24H2O + 24NaOH + (TiO2)2Al16H10O11 + ?]
+        // 24[H2O + NaOH] + (TiO2)2Al16H10O29 -> [24H2O + 24NaOH + (TiO2)2Al16H10O29 + ?]
         MIXER_RECIPES.recipeBuilder().duration(240).EUt(30)
                 .fluidInputs(SodiumHydroxideSolution.getFluid(24000))
                 .input(dust, Bauxite, 39)
                 .fluidOutputs(SodiumHydroxideBauxite.getFluid(24000))
                 .buildAndRegister();
 
-        // [24H2O + 24NaOH + (TiO2)2Al16H10O11 + ?] = [4TiO2 + 16Al(OH)3 + 12H + 11H2O + 24Na] - Increase to 4 TiO2 to make process worth doing
+        // [24H2O + 24NaOH + (TiO2)2Al16H10O29 + ?] = [4TiO2 + 16Al(OH)3 + 24NaOH + 5 H2O] - Increase to 4 TiO2 to make process worth doing
         FLUID_HEATER_RECIPES.recipeBuilder().duration(30).EUt(30)
                 .circuitMeta(0)
                 .fluidInputs(SodiumHydroxideBauxite.getFluid(1000))
                 .fluidOutputs(ImpureAluminiumHydroxideSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // [4TiO2 + 16Al(OH)3 + 12H + 11H2O + 24Na] + 5H2O = 8 Red Mud [Contains Total: 4TiO2 + 24Na + 12H] + 16[Al(OH)3 + H2O]
+        // [4TiO2 + 16Al(OH)3 + 24NaOH + 5 H2O] + 9 H2O = 8 Red Mud [Contains Total: 4TiO2 + 24NaOH + 6 H2O] + 8 [2 Al(OH)3 + H2O]
         CHEMICAL_RECIPES.recipeBuilder().duration(230).EUt(120)
-                .fluidInputs(Water.getFluid(5000))
+                .fluidInputs(Water.getFluid(9000))
                 .fluidInputs(ImpureAluminiumHydroxideSolution.getFluid(24000))
                 .fluidOutputs(RedMud.getFluid(8000))
                 .fluidOutputs(PureAluminiumHydroxideSolution.getFluid(16000))
                 .buildAndRegister();
 
-        // [Al(OH)3 + H2O] = Al(OH)3 + H2O
+        // [2 Al(OH)3 + H2O] = 2 Al(OH)3 + H2O
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(120)
                 .fluidInputs(PureAluminiumHydroxideSolution.getFluid(1000))
                 .notConsumable(new IntCircuitIngredient(0))
-                .outputs(AluminiumHydroxide.getItemStack(7))
+                .outputs(AluminiumHydroxide.getItemStack(14))
                 .buildAndRegister();
 
-        // [Al(OH)3 + H2O] = Al(OH)3 + H2O
+        // [2 Al(OH)3 + H2O] = 2 Al(OH)3 + H2O
         CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(240)
-                .fluidInputs(PureAluminiumHydroxideSolution.getFluid(8000))
+                .fluidInputs(PureAluminiumHydroxideSolution.getFluid(4000))
+                .notConsumable(AluminiumHydroxide.getItemStack())
                 .notConsumable(new IntCircuitIngredient(1))
                 .outputs(AluminiumHydroxide.getItemStack(56))
                 .buildAndRegister();
 
-        // 8 Red Mud [Contains Total: 4TiO2 + 24Na + 12H] + 8HCl = 8 Neutralized Mud [Contains Total: 4TiO2 + 24Na + 12H + 8HCl] --- This is supposed to be 1B output
+        // 8 Red Mud [Contains Total: 4TiO2 + 24 NaOH + 6 H2O] + 36 HCl = 8 Neutralized Mud [Contains Total: 4TiO2 + 24NaCl + 30 H2O + 12HCl]
         MIXER_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .fluidInputs(RedMud.getFluid(1000))
-                .fluidInputs(HydrochloricAcid.getFluid(1000))
-                .fluidOutputs(NeutralisedRedMud.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(4500))
+                .fluidOutputs(NeutralisedRedMud.getFluid(2000))
                 .buildAndRegister();
 
-        // 8 Neutralized Mud [Contains Total: 4TiO2 + 24Na + 12H + 8HCl] = 4 Red Slurry [Contains Total: 4TiO2] + 4 Ferric REE Chloride [Contains Total: 12H + 8HCl] + 24 Na
+        // 8 Neutralized Mud [Contains Total: 4TiO2 + 24NaCl + 30 H2O + 12 HCl] = 4 Red Slurry [Contains Total: 4TiO2] + 4 Ferric REE Chloride [Contains Total: 12 HCl + 6 H2O] + 24 [NaCl + H2O]
         CENTRIFUGE_RECIPES.recipeBuilder().duration(100).EUt(120)
                 .fluidInputs(NeutralisedRedMud.getFluid(2000))
                 .fluidOutputs(RedSlurry.getFluid(1000))
                 .fluidOutputs(FerricREEChloride.getFluid(1000))
-                .output(dust, Sodium, 6)
+                .fluidOutputs(SaltWater.getFluid(6000))
                 .buildAndRegister();
 
-        // 4 Ferric REE Chloride [Contains Total: 12H + 8HCl] = 2 Rare Earth Chlorides [Contains Total: 2Cl] + 2 Iron III Chloride [Contains Total: 6Cl] + 20H (total, increased to 22 total)
+        // 4 Ferric REE Chloride [Contains Total: 12 HCl + 6 H2O] = 2 Rare Earth Chlorides [Contains Total: REECl3 + 3 H2O] + 2 Iron III Chloride [Contains Total: FeCl3] + 6 H2O
         CENTRIFUGE_RECIPES.recipeBuilder().duration(320).EUt(480)
                 .fluidInputs(FerricREEChloride.getFluid(2000))
                 .fluidOutputs(RareEarthChloridesSolution.getFluid(1000))
                 .fluidOutputs(IronChloride.getFluid(1000))
-                .fluidOutputs(Hydrogen.getFluid(11000))
+                .fluidOutputs(Water.getFluid(3000))
                 .buildAndRegister();
 
-        // 4 Red Slurry [Contains Total: 4TiO2] + 8H2SO4 = 4Ti(SO4)2 + 8H2O (decreased to 5H2O total for in/out balancing)
+        // 4 Red Slurry [Contains Total: 4TiO2] + 4 H2SO4 = 4 TiO(SO4) + 4H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(120)
                 .fluidInputs(RedSlurry.getFluid(2000))
-                .fluidInputs(SulfuricAcid.getFluid(4000))
-                .fluidOutputs(TitaniumDisulfate.getFluid(2000))
-                .fluidOutputs(Water.getFluid(2500))
+                .fluidInputs(SulfuricAcid.getFluid(2000))
+                .fluidOutputs(TitanylSulfate.getFluid(2000))
+                .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        // Ti(SO4)2 + 4HCl = TiCl4 + 2H2SO4
+        // TiO(SO4) + 4HCl = TiCl4 + H2SO4 + H2O (water voided)
         CHEMICAL_RECIPES.recipeBuilder().duration(160).EUt(960)
-                .fluidInputs(TitaniumDisulfate.getFluid(1000))
+                .fluidInputs(TitanylSulfate.getFluid(1000))
                 .fluidInputs(HydrochloricAcid.getFluid(4000))
                 .fluidOutputs(TitaniumTetrachloride.getFluid(1000))
-                .fluidOutputs(SulfuricAcid.getFluid(2000))
+                .fluidOutputs(SulfuricAcid.getFluid(2100))
                 .buildAndRegister();
     }
 }

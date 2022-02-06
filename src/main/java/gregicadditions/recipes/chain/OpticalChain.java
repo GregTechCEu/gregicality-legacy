@@ -298,17 +298,15 @@ public class OpticalChain {
                 .fluidOutputs(Glycine.getFluid(3000))
                 .buildAndRegister();
 
-        // O + 3C2H5NO2 + 2HBr + 2CsOH -> 2CsBr + 2H2O + 2C3H7NO2 + HNO3
+        // C2H5NO2 + CH4 + 2 Br + 2 CsOH -> 2 [CsBr + H2O] + C3H7NO2
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(100).EUt(480)
                 .notConsumable(WHITE_HALIDE_LAMP.getStackForm())
                 .inputs(CaesiumHydroxide.getItemStack(6))
-                .fluidInputs(Glycine.getFluid(3000))
-                .fluidInputs(Oxygen.getFluid(1000))
-                .fluidInputs(HydrobromicAcid.getFluid(2000))
-                .fluidOutputs(Water.getFluid(2000))
-                .fluidOutputs(NitricAcid.getFluid(1000))
-                .outputs(CesiumBromide.getItemStack(4))
-                .outputs(Sarcosine.getItemStack(26))
+                .fluidInputs(Glycine.getFluid(1000))
+                .fluidInputs(Methane.getFluid(1000))
+                .fluidInputs(Bromine.getFluid(2000))
+                .fluidOutputs(CesiumBromideSolution.getFluid(2000))
+                .outputs(Sarcosine.getItemStack(13))
                 .buildAndRegister();
 
         // 2Cs + H2O2 -> 2CsOH
@@ -318,11 +316,12 @@ public class OpticalChain {
                 .outputs(CaesiumHydroxide.getItemStack(6))
                 .buildAndRegister();
 
-        // CsBr -> Cs + Br
+        // [CsBr + H2O] -> CsOH + Br + H
         ELECTROLYZER_RECIPES.recipeBuilder().duration(250).EUt(120)
-                .inputs(CesiumBromide.getItemStack(2))
+                .fluidInputs(CesiumBromideSolution.getFluid(1000))
                 .fluidOutputs(Bromine.getFluid(1000))
-                .output(dust, Caesium)
+                .fluidOutputs(Hydrogen.getFluid(1000))
+                .outputs(CaesiumHydroxide.getItemStack(3))
                 .buildAndRegister();
 
         // 2Pr + H2SO4 -> Pr2O3 + H2S + O

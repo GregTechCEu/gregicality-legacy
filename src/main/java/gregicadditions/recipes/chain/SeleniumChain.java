@@ -1,6 +1,7 @@
 package gregicadditions.recipes.chain;
 
 import static gregicadditions.GAMaterials.*;
+import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_DEHYDRATOR_RECIPES;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregicadditions.recipes.GARecipeMaps.LARGE_CHEMICAL_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
@@ -44,33 +45,32 @@ public class SeleniumChain {
                 .chancedOutput(AnodicSlime.getItemStack(), 7500, 0)
                 .buildAndRegister();
 
-        // TeSe + 2Na2CO3 + 4H -> TeSe(H2Na2CO3)2
+        // TeSe + 2Na2CO3 + 4O -> TeO2SeO2(Na2CO3)2
         BLAST_RECIPES.recipeBuilder().duration(320).EUt(120).blastFurnaceTemp(2100)
                 .inputs(AnodicSlime.getItemStack())
                 .input(dust, SodaAsh, 12)
-                .fluidInputs(Hydrogen.getFluid(4000))
+                .fluidInputs(Oxygen.getFluid(4000))
                 .output(dustTiny, PreciousMetal, 5)
-                .fluidOutputs(SelenateTellurateMix.getFluid(1000))
+                .fluidOutputs(SeleniteTelluriteMix.getFluid(1000))
                 .buildAndRegister();
 
-        // TeSe(H2Na2CO3)2 + H2SO4 -> TeO2 + 4Na + 2H2O + SO2 + CO + SeH2CO3
+        // TeO2SeO2(Na2CO3)2 + H2SO4 -> TeO2 + Na2SO4 + Na2SeO3 + CO2 + H2O
         LARGE_CHEMICAL_RECIPES.recipeBuilder().duration(270).EUt(1920)
-                .fluidInputs(SelenateTellurateMix.getFluid(1000))
+                .fluidInputs(SeleniteTelluriteMix.getFluid(1000))
                 .fluidInputs(SulfuricAcid.getFluid(1000))
                 .outputs(TelluriumOxide.getItemStack(3))
                 .output(dust, Sodium, 4)
                 .fluidOutputs(Water.getFluid(2000))
                 .fluidOutputs(SulfurDioxide.getFluid(1000))
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
-                .fluidOutputs(SelenateSolution.getFluid(1000))
+                .fluidOutputs(SeleniteSolution.getFluid(1000))
                 .buildAndRegister();
 
-        // SeH2CO3 + 2Cl -> 2HCl + CO + SeO2
-        CHEMICAL_RECIPES.recipeBuilder().duration(240).EUt(480)
-                .fluidInputs(SelenateSolution.getFluid(1000))
-                .fluidInputs(Chlorine.getFluid(2000))
-                .fluidOutputs(HydrochloricAcid.getFluid(2000))
-                .fluidOutputs(CarbonMonoxde.getFluid(1000))
+        // Na2SeO3 + 2HCl -> 2NaCl + SeO2 + H2O
+        CHEMICAL_DEHYDRATOR_RECIPES.recipeBuilder().duration(240).EUt(480)
+                .fluidInputs(SeleniteSolution.getFluid(1000))
+                .fluidInputs(HydrochloricAcid.getFluid(2000))
+                .output(dust, Salt, 4)
                 .outputs(SeleniumOxide.getItemStack(3))
                 .buildAndRegister();
 
