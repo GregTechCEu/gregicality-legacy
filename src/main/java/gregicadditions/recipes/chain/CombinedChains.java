@@ -2,9 +2,9 @@ package gregicadditions.recipes.chain;
 
 import static gregicadditions.GAEnums.GAOrePrefix.dioxide;
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.recipes.GARecipeMaps.*;
+import static gregicadditions.recipes.GARecipeMaps.CHEMICAL_PLANT_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class CombinedChains {
 
@@ -140,7 +140,7 @@ public class CombinedChains {
 
         // Fullerene Polymer Matrix
         // 2Pd + 2CH3COOH + 2C10H10Fe + 2C60 + C2H4 + 2C3H7NO2 -> 2PdC60 + 4O
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(503316480) // UXV
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(31457280 * 4) // UXV
                 .inputs(Fullerene.getItemStack(2))
                 .inputs(Sarcosine.getItemStack(26))
                 .input(dust, Palladium, 2)
@@ -157,7 +157,7 @@ public class CombinedChains {
 
 
         // 7C8H8 + 8CH2Cl2 + 8C60 + 8C11H14O2 + 8C2H6S + 8C6H5Cl -> 8C7H8 + 8H2S + 8C80H21O2 + 24HCl
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(503316480) // UXV
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(31457280 * 4) // UXV
                 .notConsumable(Dimethylaminopyridine.getItemStack())
                 .inputs(Fullerene.getItemStack(8))
                 .fluidInputs(Styrene.getFluid(7000))

@@ -1538,6 +1538,7 @@ public class GAMaterials implements IMaterialHandler {
         addCableAboveGTCELimit(BlackTitanium, new WireProperties(GAValues.V[GAValues.UIV], 2, 32));
         addCableAboveGTCELimit(NaquadriaticTaranium, new WireProperties(GAValues.V[GAValues.UMV], 2, 32));
         addCableAboveGTCELimit(Neutronium, new WireProperties(GAValues.V[GAValues.UXV], 2, 32));
+        addCableAboveGTCELimit(CosmicNeutronium, new WireProperties(GAValues.V[GAValues.MAX], 32, 32));
         addCableAboveGTCELimit(UHVSuperconductor, new WireProperties(GAValues.V[GAValues.UHV], 4, 0));
         addCableAboveGTCELimit(UEVSuperconductor, new WireProperties(GAValues.V[GAValues.UEV], 4, 0));
         addCableAboveGTCELimit(UIVSuperconductor, new WireProperties(GAValues.V[GAValues.UIV], 4, 0));

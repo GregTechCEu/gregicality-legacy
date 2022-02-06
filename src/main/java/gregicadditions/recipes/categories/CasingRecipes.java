@@ -2,7 +2,8 @@ package gregicadditions.recipes.categories;
 
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
-import gregicadditions.item.*;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.components.*;
 import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.machines.GATileEntities;
@@ -10,12 +11,12 @@ import gregicadditions.recipes.helper.GACraftingComponents;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.material.type.IngotMaterial;
-import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.blocks.*;
+import gregtech.common.blocks.BlockMachineCasing;
+import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.VariantBlock;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -23,7 +24,6 @@ import net.minecraft.util.IStringSerializable;
 
 import java.util.Arrays;
 
-import static gregicadditions.GAEnums.GAOrePrefix.gtMetalCasing;
 import static gregicadditions.GAEnums.GAOrePrefix.plateDouble;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.GAValues.*;
@@ -34,16 +34,17 @@ import static gregicadditions.item.GAMultiblockCasing.CasingType.*;
 import static gregicadditions.item.GAMultiblockCasing2.CasingType.*;
 import static gregicadditions.item.GAQuantumCasing.CasingType.COMPUTER;
 import static gregicadditions.item.GAReactorCasing.CasingType.*;
+import static gregicadditions.item.GATransparentCasing.CasingType.*;
 import static gregicadditions.item.fusion.GAFusionCasing.CasingType.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
-import static gregicadditions.recipes.helper.HelperMethods.*;
+import static gregicadditions.recipes.helper.HelperMethods.removeRecipeByName;
+import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
 import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregicadditions.item.GATransparentCasing.CasingType.*;
 import static gregtech.common.blocks.BlockMetalCasing.MetalCasingType.*;
 import static gregtech.common.blocks.BlockMultiblockCasing.MultiblockCasingType.*;
 import static gregtech.common.blocks.BlockWireCoil.CoilType.*;
@@ -182,6 +183,16 @@ public class CasingRecipes {
                 .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(TIERED_HULL_UIV))
                 .buildAndRegister();
 
+        ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt(30720 * 4096)
+                .input(circuit, GAMaterials.UMV, 2)
+                .input(gear, Vibranium, 8)
+                .input(plate, Vibranium, 8)
+                .input(cableGtOctal, NaquadriaticTaranium)
+                .inputs(GATileEntities.GA_HULLS[2].getStackForm())
+                .fluidInputs(Naquadria.getFluid(L * 2))
+                .outputs(GAMetaBlocks.MUTLIBLOCK_CASING2.getItemVariant(TIERED_HULL_UMV))
+                .buildAndRegister();
+
         // Battery Tower Cells
         ASSEMBLER_RECIPES.recipeBuilder().EUt(240).duration(1200)
                 .input(plateDouble, Lead, 4)
@@ -237,6 +248,20 @@ public class CasingRecipes {
                 .fluidInputs(FreeAlphaGas.getFluid(4000))
                 .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UHV))
                 .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UEV))
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(3932160 * 4).duration(1200)
+                .input(plateDouble, Adamantium, 4)
+                .fluidInputs(LiquidCrystalDetector.getFluid(4000))
+                .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UEV))
+                .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UIV))
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(3932160 * 16).duration(1200)
+                .input(plateDouble, Vibranium, 4)
+                .fluidInputs(HeavyLeptonMix.getFluid(4000))
+                .inputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UIV))
+                .outputs(GAMetaBlocks.CELL_CASING.getItemVariant(CELL_UMV))
                 .buildAndRegister();
     }
 
@@ -353,7 +378,7 @@ public class CasingRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(30720).duration(400)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(2))
                 .inputs(FIELD_GENERATOR_LUV.getStackForm())
-                .input(cableGtQuadruple, LuVSuperconductor, 4)
+                .input(wireGtQuadruple, LuVSuperconductor, 4)
                 .input(plate, Osmiridium, 2)
                 .input(circuit, Master)
                 .fluidInputs(Helium.getFluid(4000))
@@ -363,7 +388,7 @@ public class CasingRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(122880).duration(400)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(4))
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm())
-                .input(cableGtQuadruple, ZPMSuperconductor, 4)
+                .input(wireGtQuadruple, ZPMSuperconductor, 4)
                 .input(plate, Rutherfordium, 2)
                 .input(circuit, Ultimate)
                 .fluidInputs(Helium.getFluid(4000))
@@ -373,7 +398,7 @@ public class CasingRecipes {
         ASSEMBLY_LINE_RECIPES.recipeBuilder().EUt(491520).duration(400)
                 .inputs(NEUTRON_REFLECTOR.getStackForm(6))
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm(2))
-                .input(cableGtQuadruple, UVSuperconductor, 4)
+                .input(wireGtQuadruple, UVSuperconductor, 4)
                 .input(plate, Tritanium, 2)
                 .input(circuit, Superconductor)
                 .fluidInputs(Helium.getFluid(4000))
@@ -480,6 +505,13 @@ public class CasingRecipes {
                 .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .fluidInputs(Cinobite.getFluid(L))
                 .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(NEUTRONIUM_COIL))
+                .buildAndRegister();
+
+        ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(32000000)
+                .input(wireGtDouble, CosmicNeutronium, 8)
+                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
+                .fluidInputs(Neutronium.getFluid(L))
+                .outputs(GAMetaBlocks.HEATING_COIL.getItemVariant(COSMIC_NEUTRONIUM_COIL))
                 .buildAndRegister();
 
         ASSEMBLER_RECIPES.recipeBuilder().duration(1000).EUt(9001)
@@ -737,11 +769,11 @@ public class CasingRecipes {
 
         // Qubit Computer Casing
         ASSEMBLER_RECIPES.recipeBuilder().duration(120).EUt(6000000)
-                .fluidInputs(SolderingAlloy.getFluid(L * 10))
-                .inputs(FIELD_GENERATOR_UEV.getStackForm(2))
+                .fluidInputs(SolderingAlloy.getFluid(L))
+                .inputs(FIELD_GENERATOR_UEV.getStackForm())
                 .inputs(ROBOT_ARM_UEV.getStackForm())
-                .input(circuit, GAMaterials.UEV, 7)
-                .input(frameGt, Bohrium, 5)
+                .input(circuit, Infinite, 4)
+                .input(frameGt, Bohrium)
                 .outputs(GAMetaBlocks.QUANTUM_CASING.getItemVariant(COMPUTER, 3))
                 .buildAndRegister();
 

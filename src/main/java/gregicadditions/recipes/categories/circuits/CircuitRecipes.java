@@ -1,18 +1,12 @@
 package gregicadditions.recipes.categories.circuits;
 
-import gregicadditions.GAConfig;
-import gregicadditions.GAUtility;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.type.IngotMaterial;
 import gregtech.api.unification.stack.MaterialStack;
 import gregtech.api.unification.stack.UnificationEntry;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -21,7 +15,7 @@ import static gregicadditions.recipes.GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES;
 import static gregicadditions.recipes.helper.HelperMethods.removeRecipeByName;
 import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
 import static gregtech.api.GTValues.L;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
@@ -825,7 +819,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Optical Assembly
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(960000).qubit(4)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(960000)
                 .inputs(OPTICAL_PROCESSOR.getStackForm(3))
                 .inputs(SMD_CAPACITOR_OPTICAL.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(64))
@@ -843,7 +837,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Optical Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(1920000).qubit(4)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(600).EUt(1920000)
                 .inputs(OPTICAL_ASSEMBLY.getStackForm(4))
                 .inputs(SMD_CAPACITOR_OPTICAL.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(32))
@@ -865,7 +859,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Optical Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(6000000).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(6000000)
                 .inputs(OPTICAL_COMPUTER.getStackForm(2))
                 .inputs(SMD_CAPACITOR_OPTICAL.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_OPTICAL.getStackForm(64))

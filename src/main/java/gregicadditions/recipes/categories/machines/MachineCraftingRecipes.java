@@ -2,13 +2,14 @@ package gregicadditions.recipes.categories.machines;
 
 import gregicadditions.GAConfig;
 import gregicadditions.GAValues;
-import gregicadditions.item.*;
+import gregicadditions.item.GAMachineCasing;
+import gregicadditions.item.GAMetaBlocks;
+import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.GATileEntities;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterCraftingHelper;
 import gregicadditions.machines.energyconverter.utils.EnergyConverterType;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.GTValues;
-import gregtech.api.block.machines.BlockMachine;
 import gregtech.api.recipes.ModHandler;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
@@ -26,19 +27,13 @@ import net.minecraftforge.fluids.FluidStack;
 import static gregicadditions.GAEnums.GAOrePrefix.*;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.GAValues.ZPM;
-import static gregicadditions.recipes.helper.HelperMethods.*;
-import static gregtech.api.GTValues.EV;
-import static gregtech.api.GTValues.HV;
-import static gregtech.api.GTValues.IV;
-import static gregtech.api.GTValues.L;
-import static gregtech.api.GTValues.LV;
-import static gregtech.api.GTValues.LuV;
-import static gregtech.api.GTValues.MV;
-import static gregtech.api.GTValues.ULV;
-import static gregtech.api.GTValues.UV;
+import static gregicadditions.recipes.helper.HelperMethods.removeRecipesByInputs;
+import static gregicadditions.recipes.helper.HelperMethods.removeTieredRecipeByName;
+import static gregtech.api.GTValues.*;
 import static gregtech.api.recipes.RecipeMaps.ASSEMBLER_RECIPES;
 import static gregtech.api.recipes.ingredients.IntCircuitIngredient.getIntegratedCircuit;
-import static gregtech.api.unification.material.MarkerMaterials.Tier.*;
+import static gregtech.api.unification.material.MarkerMaterials.Tier.Elite;
+import static gregtech.api.unification.material.MarkerMaterials.Tier.Superconductor;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 
@@ -108,9 +103,11 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_hull_uhv", GATileEntities.GA_HULLS[0].getStackForm(), "PHP", "CMC", 'M', GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UHV),  'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide), 'H', new UnificationEntry(plate, Seaborgium), 'P', new UnificationEntry(plate, Polyetheretherketone));
         ModHandler.addShapedRecipe("ga_hull_uev", GATileEntities.GA_HULLS[1].getStackForm(), "PHP", "CMC", 'M', GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV),  'C', new UnificationEntry(cableGtQuadruple, Pikyonium),            'H', new UnificationEntry(plate, Bohrium),    'P', new UnificationEntry(plate, Polyetheretherketone));
         ModHandler.addShapedRecipe("ga_hull_uiv", GATileEntities.GA_HULLS[2].getStackForm(), "PHP", "CMC", 'M', GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV),  'C', new UnificationEntry(cableGtQuadruple, Cinobite),             'H', new UnificationEntry(plate, Quantum),    'P', new UnificationEntry(plate, Zylon));
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UHV)).input(cableGtSingle, TungstenTitaniumCarbide, 2).fluidInputs(Polyetheretherketone.getFluid(L * 2)).outputs(GATileEntities.GA_HULLS[0].getStackForm()).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV)).input(cableGtQuadruple, Pikyonium, 2)           .fluidInputs(Polyetheretherketone.getFluid(L * 2)).outputs(GATileEntities.GA_HULLS[1].getStackForm()).buildAndRegister();
-        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV)).input(cableGtQuadruple, Cinobite, 2)            .fluidInputs(Zylon.getFluid(L * 2))               .outputs(GATileEntities.GA_HULLS[2].getStackForm()).buildAndRegister();
+        ModHandler.addShapedRecipe("ga_hull_umv", GATileEntities.GA_HULLS[3].getStackForm(), "PHP", "CMC", 'M', GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UMV),  'C', new UnificationEntry(cableGtQuadruple, NaquadriaticTaranium), 'H', new UnificationEntry(plate, Quantum),    'P', new UnificationEntry(plate, FullerenePolymerMatrix));
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UHV)).input(cableGtSingle, TungstenTitaniumCarbide, 2).fluidInputs(Polyetheretherketone.getFluid(L * 2))  .outputs(GATileEntities.GA_HULLS[0].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UEV)).input(cableGtQuadruple, Pikyonium, 2)           .fluidInputs(Polyetheretherketone.getFluid(L * 2))  .outputs(GATileEntities.GA_HULLS[1].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UIV)).input(cableGtQuadruple, Cinobite, 2)            .fluidInputs(Zylon.getFluid(L * 2))                 .outputs(GATileEntities.GA_HULLS[2].getStackForm()).buildAndRegister();
+        ASSEMBLER_RECIPES.recipeBuilder().EUt(16).duration(50).inputs(GAMetaBlocks.MACHINE_CASING.getItemVariant(GAMachineCasing.CasingType.CASING_UMV)).input(cableGtQuadruple, NaquadriaticTaranium, 2)            .fluidInputs(FullerenePolymerMatrix.getFluid(L * 2)).outputs(GATileEntities.GA_HULLS[3].getStackForm()).buildAndRegister();
 
 
         // Casing Overrides
@@ -218,9 +215,11 @@ public class MachineCraftingRecipes {
         ModHandler.addShapedRecipe("ga_energy_input_hatch_uhv",  GATileEntities.ENERGY_INPUT[0].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[0].getStackForm(), 'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide));
         ModHandler.addShapedRecipe("ga_energy_input_hatch_uev",  GATileEntities.ENERGY_INPUT[1].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[1].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Pikyonium));
         ModHandler.addShapedRecipe("ga_energy_input_hatch_uiv",  GATileEntities.ENERGY_INPUT[2].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[2].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Cinobite));
+        ModHandler.addShapedRecipe("ga_energy_input_hatch_umv",  GATileEntities.ENERGY_INPUT[3].getStackForm(),  "   ", "CM ", "   ", 'M', GATileEntities.GA_HULLS[3].getStackForm(), 'C', new UnificationEntry(cableGtSingle, NaquadriaticTaranium));
         ModHandler.addShapedRecipe("ga_energy_output_hatch_uhv", GATileEntities.ENERGY_OUTPUT[0].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[0].getStackForm(), 'C', new UnificationEntry(cableGtSingle, TungstenTitaniumCarbide));
         ModHandler.addShapedRecipe("ga_energy_output_hatch_uev", GATileEntities.ENERGY_OUTPUT[1].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[1].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Pikyonium));
         ModHandler.addShapedRecipe("ga_energy_output_hatch_uiv", GATileEntities.ENERGY_OUTPUT[2].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[2].getStackForm(), 'C', new UnificationEntry(cableGtSingle, Cinobite));
+        ModHandler.addShapedRecipe("ga_energy_output_hatch_umv", GATileEntities.ENERGY_OUTPUT[3].getStackForm(), "   ", " MC", "   ", 'M', GATileEntities.GA_HULLS[3].getStackForm(), 'C', new UnificationEntry(cableGtSingle, NaquadriaticTaranium));
 
         // Maintenance Hatches
         ModHandler.addShapedRecipe("ga_maintenance_hatch", GATileEntities.MAINTENANCE_HATCH[0].getStackForm(), "dwx", "hHc", "fsr", 'H', MetaTileEntities.HULL[1].getStackForm());
