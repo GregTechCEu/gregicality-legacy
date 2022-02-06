@@ -1491,6 +1491,8 @@ public class GAMaterials implements IMaterialHandler {
         Ultimet.setFluidPipeProperties(1500, 12000, true);
         Zeron100.setFluidPipeProperties(1750, 15000, true);
         Lafium.setFluidPipeProperties(2000, 23000, true);
+        EnrichedNaquadahAlloy.setFluidPipeProperties(2200, 25000, true);
+        TantalumHafniumSeaborgiumCarbide.setFluidPipeProperties(2400, 500000, true);
         Neutronium.setFluidPipeProperties(2800, 1000000, true);
 
         // Cables
@@ -1534,7 +1536,8 @@ public class GAMaterials implements IMaterialHandler {
         addCableAboveGTCELimit(TitanSteel, new WireProperties(GAValues.V[GAValues.UEV], 2, 16));
         addCableAboveGTCELimit(Cinobite, new WireProperties(GAValues.V[GAValues.UIV], 4, 64));
         addCableAboveGTCELimit(BlackTitanium, new WireProperties(GAValues.V[GAValues.UIV], 2, 32));
-        addCableAboveGTCELimit(Neutronium, new WireProperties(GAValues.V[GAValues.UMV], 2, 32));
+        addCableAboveGTCELimit(NaquadriaticTaranium, new WireProperties(GAValues.V[GAValues.UMV], 2, 32));
+        addCableAboveGTCELimit(Neutronium, new WireProperties(GAValues.V[GAValues.UXV], 2, 32));
         addCableAboveGTCELimit(UHVSuperconductor, new WireProperties(GAValues.V[GAValues.UHV], 4, 0));
         addCableAboveGTCELimit(UEVSuperconductor, new WireProperties(GAValues.V[GAValues.UEV], 4, 0));
         addCableAboveGTCELimit(UIVSuperconductor, new WireProperties(GAValues.V[GAValues.UIV], 4, 0));
