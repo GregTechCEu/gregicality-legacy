@@ -184,7 +184,7 @@ public class MultiblockCraftingRecipes {
         // Naquadah Reactor
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(1000).EUt(90000)
                 .fluidInputs(SolderingAlloy.getFluid(L * 20))
-                .fluidInputs(Protactinium233.getMaterial().getFluid(L * 2))
+                .fluidInputs(Einsteinium253.getMaterial().getFluid(L * 2))
                 .input(plate, Tritanium, 8)
                 .input(foil, EnrichedNaquadahAlloy, 24)
                 .input(gear, Duranium, 16)
