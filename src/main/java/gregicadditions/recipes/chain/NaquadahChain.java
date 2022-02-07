@@ -723,7 +723,7 @@ public class NaquadahChain {
                 .fluidInputs(HeavyENaquadahFuel.getFluid(400))
                 .fluidInputs(NaquadriaSolution.getFluid(300))
                 .input(dust, Adamantium)
-                .fluidInputs(Californium256.getMaterial().getFluid(144))
+                .fluidInputs(Fermium258.getMaterial().getFluid(144))
                 .fluidOutputs(HyperFuelIII.getFluid(2000))
                 .EUt(30720)
                 .duration(200)
