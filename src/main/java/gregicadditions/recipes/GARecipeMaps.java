@@ -3,11 +3,8 @@ package gregicadditions.recipes;
 import crafttweaker.annotations.ZenRegister;
 import gregicadditions.gui.GAGuiTextures;
 import gregicadditions.integrations.exnihilocreatio.SieveRecipeMap;
-import gregicadditions.recipes.impl.LargeRecipeBuilder;
 import gregicadditions.recipes.impl.*;
 import gregicadditions.recipes.impl.nuclear.HotCoolantRecipeMap;
-import gregicadditions.recipes.impl.QubitConsumerRecipeBuilder;
-import gregicadditions.recipes.impl.QubitProducerRecipeBuilder;
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
@@ -48,8 +45,8 @@ public class GARecipeMaps {
 
 
     @ZenProperty
-    public static final RecipeMap<QubitConsumerRecipeBuilder> CIRCUIT_ASSEMBLER_RECIPES = new RecipeMap<>("circuit_assembler",
-            1, 6, 1, 1, 0, 1, 0, 0, new QubitConsumerRecipeBuilder())
+    public static final RecipeMap<CircuitAssemblerRecipeBuilder> CIRCUIT_ASSEMBLER_RECIPES = new RecipeMap<>("circuit_assembler",
+            1, 6, 1, 1, 0, 1, 0, 0, new CircuitAssemblerRecipeBuilder())
             .setSlotOverlay(false, false, GuiTextures.CIRCUIT_OVERLAY)
             .setProgressBar(GAGuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER, ProgressWidget.MoveType.HORIZONTAL);
 

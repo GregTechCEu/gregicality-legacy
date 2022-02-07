@@ -17,7 +17,6 @@ import gregtech.api.unification.material.type.FluidMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
@@ -29,7 +28,10 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Some Helper Methods for Recipe Addition and Removal
@@ -466,9 +468,9 @@ public class HelperMethods {
         GARecipeMaps.HOT_COOLANT_TURBINE_FUELS.addRecipe(new HotCoolantRecipe(input, duration, GAValues.V[tier], output.getFluid(input.amount)));
     }
 
-    public static void registerQubitGeneratorFuel(OrePrefix prefix, Material material, int duration, int tier) {
+    public static void registerQubitGeneratorFuel(OrePrefix prefix, Material material, int duration, int tier, int qubit) {
         GARecipeMaps.SIMPLE_QUBIT_GENERATOR.recipeBuilder()
-                .qubit(1)
+                .qubit(qubit)
                 .input(prefix, material)
                 .duration(duration)
                 .EUt(GAValues.V[tier])

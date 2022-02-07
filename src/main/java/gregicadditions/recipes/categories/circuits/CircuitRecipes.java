@@ -884,7 +884,7 @@ public class CircuitRecipes {
     private static void exoticCircuits() {
 
         //Exotic Processor
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt((int)4E+6).qubit(8)
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(100).EUt((int)4E+6)
                 .inputs(SMD_CAPACITOR_EXOTIC.getStackForm(8))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(8))
                 .inputs(EXOTIC_PROCESSING_CORE.getStackForm())
@@ -896,7 +896,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         //Exotic Assembly
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt((int)4E+6).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt((int)4E+6).qubit(2)
                 .inputs(SMD_RESISTOR_EXOTIC.getStackForm(16))
                 .inputs(SMD_DIODE_EXOTIC.getStackForm(16))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(16))
@@ -915,7 +915,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         //Exotic Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(300).EUt((int)4E+6).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(300).EUt((int)4E+6).qubit(2)
                 .inputs(SMD_DIODE_EXOTIC.getStackForm(32))
                 .inputs(SMD_RESISTOR_EXOTIC.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(32))
@@ -934,7 +934,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         //Exotic Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt((int)1E+7).qubit(8)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt((int)1E+7).qubit(4)
                 .inputs(SMD_RESISTOR_EXOTIC.getStackForm(64))
                 .inputs(SMD_DIODE_EXOTIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_EXOTIC.getStackForm(64))
@@ -958,7 +958,7 @@ public class CircuitRecipes {
     private static void cosmicCircuits() {
 
         // Cosmic Processor
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(30_720_000).qubit(16)
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(30_720_000)
                 .inputs(QBIT_CENTRAL_PROCESSING_UNIT.getStackForm(4))
                 .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(32))
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(16))
@@ -970,7 +970,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Cosmic Assembly
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(30_720_000).qubit(16)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(30_720_000).qubit(4)
                 .inputs(COSMIC_PROCESSOR.getStackForm(3))
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(64))
@@ -988,7 +988,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Cosmic Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(30_720_000).qubit(16)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(30_720_000).qubit(4)
                 .inputs(COSMIC_ASSEMBLY.getStackForm(4))
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(64))
@@ -1009,7 +1009,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Cosmic Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(30_720_000).qubit(32)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(30_720_000).qubit(8)
                 .inputs(COSMIC_COMPUTER.getStackForm(2))
                 .inputs(SMD_CAPACITOR_COSMIC.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_COSMIC.getStackForm(64))
@@ -1034,7 +1034,7 @@ public class CircuitRecipes {
     private static void supracausalCircuits() {
 
         // Supracausal Processor
-        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(122_880_000).qubit(32)
+        CIRCUIT_ASSEMBLER_RECIPES.recipeBuilder().duration(50).EUt(122_880_000)
                 .inputs(UHASOC.getStackForm(16))
                 .inputs(MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
@@ -1065,7 +1065,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Supracausal Computer
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(491_520_000).qubit(16)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(491_520_000).qubit(8)
                 .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(32))
                 .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(32))
                 .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(32))
@@ -1086,7 +1086,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Supracausal Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(983_040_000).qubit(32)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(983_040_000).qubit(16)
                 .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(64))
                 .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(64))
