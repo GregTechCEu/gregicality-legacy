@@ -16,6 +16,13 @@ public class NuclearChain {
         //NUCLEAR PROCESSING
 
         THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(30)
+                .inputs(PROTACTINIUM_WASTE.getStackForm())
+                .chancedOutput(NUCLEAR_WASTE.getStackForm(), 560, 0)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Protactinium233.getMaterial(), 1), 8000, 200)
+                .chancedOutput(OreDictUnifier.get(dustTiny, Thorium, 3), 8000, 200)
+                .buildAndRegister();
+
+        THERMAL_CENTRIFUGE_RECIPES.recipeBuilder().duration(300).EUt(30)
                 .inputs(THORIUM_WASTE.getStackForm())
                 .chancedOutput(NUCLEAR_WASTE.getStackForm(), 560, 0)
                 .chancedOutput(OreDictUnifier.get(dustTiny, Protactinium233.getMaterial(), 1), 8000, 200)
