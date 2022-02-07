@@ -179,9 +179,10 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
             if (!canSeeSky)
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.cosmic_ray_detector.tooltip.1")
                         .setStyle(new Style().setColor(TextFormatting.RED)));
-            if (!hasEnoughEnergy)
-                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy")
-                        .setStyle(new Style().setColor(TextFormatting.RED)));
+            if (exportFluidHandler.fill(GAMaterials.HeavyLeptonMix.getFluid(1), false) < 1)
+                textList.add(new TextComponentTranslation("gtadditions.multiblock.cosmic_ray_detector.tooltip.8").setStyle(new Style().setColor(TextFormatting.RED)));
+            else if (!hasEnoughEnergy)
+                textList.add(new TextComponentTranslation("gregtech.multiblock.not_enough_energy").setStyle(new Style().setColor(TextFormatting.RED)));
             if (hasEnoughEnergy && canSeeSky) {
                 textList.add(new TextComponentTranslation("gtadditions.multiblock.cosmic_ray_detector.tooltip.5", this.amount));
             }
@@ -195,6 +196,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.3"));
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.4"));
         tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.6"));
+        tooltip.add(I18n.format("gtadditions.multiblock.cosmic_ray_detector.tooltip.7"));
     }
 
     @Override
@@ -214,7 +216,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
         amount = Math.max(amount, 0);
         amount *= 35;
         amount *= getOverclock();
-        amount += 5;
+        amount += 15;
         return (int) amount;
     }
 
@@ -240,7 +242,7 @@ public class MetaTileEntityCosmicRayDetector extends MultiblockWithDisplayBase {
 
     public long getOverclock() {
         int tierDifference = GAUtility.getTierByVoltage(energyContainer.getInputVoltage()) - GAValues.UHV;
-        return (long) Math.floor(Math.pow(2, tierDifference));
+        return (long) Math.floor(Math.pow(4, tierDifference));
     }
 
     private long getVoltage() {
