@@ -2201,6 +2201,7 @@ gtadditions.recipe.drilling_rig.size=Size: %s
 gregtech.recipe.base_heat_production=Heat: %dC
 gregtech.recipe.hot_coolant=Hot Coolant Temperature: %dC
 gregtech.recipe.coil_tier=Coil Tier: %d
+gregtech.recipe.eu_return=Energy Return: %d
 
 material.brick=Brick
 material.fireclay=Fireclay

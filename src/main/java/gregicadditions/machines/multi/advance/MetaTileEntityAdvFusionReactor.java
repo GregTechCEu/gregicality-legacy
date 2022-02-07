@@ -14,6 +14,7 @@ import gregicadditions.item.fusion.GAFusionCasing;
 import gregicadditions.item.fusion.GAVacuumCasing;
 import gregicadditions.machines.multi.multiblockpart.GAMetaTileEntityEnergyHatch;
 import gregicadditions.recipes.GARecipeMaps;
+import gregicadditions.recipes.impl.AdvFusionRecipeBuilder;
 import gregtech.api.capability.IEnergyContainer;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.EnergyContainerHandler;
@@ -31,7 +32,6 @@ import gregtech.api.multiblock.FactoryBlockPattern;
 import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.recipeproperties.FusionEUToStartProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import net.minecraft.block.state.IBlockState;
@@ -58,7 +58,7 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
     private int divertorTier;
     private boolean canWork;
 
-    private static List<Fluid> HOT = Arrays.asList(SupercriticalSteam.fluid, SupercriticalDeuterium.fluid,
+    private static final List<Fluid> HOT = Arrays.asList(SupercriticalSteam.fluid, SupercriticalDeuterium.fluid,
             SupercriticalSodiumPotassiumAlloy.fluid, SupercriticalSodium.fluid,
             SupercriticalFLiNaK.fluid, SupercriticalFLiBe.fluid, SupercriticalLeadBismuthEutectic.fluid);
 
@@ -306,7 +306,7 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
         protected Recipe findRecipe(long maxVoltage, IItemHandlerModifiable inputs, IMultipleTankHandler fluidInputs) {
             Recipe recipe = super.findRecipe(maxVoltage, inputs, fluidInputs);
             RecipeBuilder<?> newRecipe;
-            if (recipe == null || recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) > energyContainer.getEnergyCapacity()) {
+            if (recipe == null || (long) recipe.getProperty("eu_to_start") > energyContainer.getEnergyCapacity()) {
                 return null;
             } else {
                 int recipeTier = recipe.getIntegerProperty("coil_tier");
@@ -331,13 +331,16 @@ public class MetaTileEntityAdvFusionReactor extends RecipeMapMultiblockControlle
                     newOutput.amount = (int) (newOutput.amount * (1 + divertorTierDifference * GAConfig.multis.advFusion.vacuumCoolantIncrease));
                     newRecipe.fluidOutputs(newOutput);
                 }
+                ((AdvFusionRecipeBuilder) newRecipe).euStart(recipe.getProperty("eu_to_start"));
+                ((AdvFusionRecipeBuilder) newRecipe).euReturn(recipe.getIntegerProperty("eu_return"));
+                ((AdvFusionRecipeBuilder) newRecipe).coilTier(recipe.getIntegerProperty("coil_tier"));
             }
             return newRecipe.build().getResult();
         }
 
         @Override
         protected boolean setupAndConsumeRecipeInputs(Recipe recipe) {
-            long heatDiff = recipe.getRecipePropertyStorage().getRecipePropertyValue(FusionEUToStartProperty.getInstance(), 0L) - heat;
+            long heatDiff = (long) recipe.getProperty("eu_to_start") - heat;
             if (heatDiff <= 0) {
                 return super.setupAndConsumeRecipeInputs(recipe);
             }
