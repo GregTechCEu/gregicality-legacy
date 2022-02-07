@@ -1,10 +1,9 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAConfig;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
+import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GASimpleBlock;
-import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 
@@ -142,18 +141,6 @@ public class UHVMaterials {
                 .outputs(PLASMA_CONTAINMENT_CELL.getStackForm())
                 .EUt(10000000)
                 .duration(500)
-                .buildAndRegister();
-
-        CENTRIFUGE_RECIPES.recipeBuilder()
-                .input(dust, Stone)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
-                .chancedOutput(OreDictUnifier.get(dustTiny, Taranium), 10, 10)
-                .EUt(491520)
-                .duration(2)
                 .buildAndRegister();
     }
 }
