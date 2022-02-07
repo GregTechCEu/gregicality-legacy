@@ -1,19 +1,13 @@
 package gregicadditions.recipes.categories.circuits.components;
 
-import gregtech.api.unification.material.MarkerMaterials;
-
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.GAMaterials.TriniumTitanium;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.ASSEMBLY_LINE_RECIPES;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
 import static gregtech.api.unification.material.MarkerMaterials.Color.White;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.material.Materials.SolderingAlloy;
 import static gregtech.api.unification.ore.OrePrefix.*;
-import static gregtech.api.unification.ore.OrePrefix.wireFine;
 
 public class CosmicComponents {
 
@@ -56,7 +50,7 @@ public class CosmicComponents {
                 .buildAndRegister();
 
         // Cosmic Processing Core
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(11796480).qubit(32)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(320).EUt(11796480).qubit(2)
                 .inputs(COSMIC_PROCESSING_UNIT_CORE.getStackForm())
                 .inputs(SMD_DIODE_COSMIC.getStackForm(2))
                 .inputs(SMD_RESISTOR_COSMIC.getStackForm(2))

@@ -6,6 +6,7 @@ import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.recipes.Recipe;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
 
 public class QubitConsumeRecipeLogic extends GAMultiblockRecipeLogic {
 
@@ -45,8 +46,7 @@ public class QubitConsumeRecipeLogic extends GAMultiblockRecipeLogic {
 
     @Override
     public void updateRecipeProgress() {
-        boolean drawQubit = this.drawQubit(this.recipeQubit);
-        if (drawQubit || this.recipeQubit == 0) {
+        if (this.recipeQubit == 0 || this.drawQubit(this.recipeQubit)) {
             super.updateRecipeProgress();
             hasEnoughQubit = true;
         } else {
@@ -87,4 +87,15 @@ public class QubitConsumeRecipeLogic extends GAMultiblockRecipeLogic {
         }
     }
 
+    @Override
+    public void writeInitialData(PacketBuffer buf) {
+        super.writeInitialData(buf);
+        buf.writeBoolean(this.hasEnoughQubit);
+    }
+
+    @Override
+    public void receiveInitialData(PacketBuffer buf) {
+        super.receiveInitialData(buf);
+        this.hasEnoughQubit = buf.readBoolean();
+    }
 }

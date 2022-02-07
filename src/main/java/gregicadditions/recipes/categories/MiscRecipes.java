@@ -179,5 +179,12 @@ public class MiscRecipes {
                 .output(dust, BatteryAlloy, 5)
                 .notConsumable(new IntCircuitIngredient(2))
                 .buildAndRegister();
+     
+        //Uranium recipe for EV Super conductor Base
+        MIXER_RECIPES.recipeBuilder().duration(820).EUt(30)
+            .input(dust, Platinum, 3)
+            .input(dust, UraniumRadioactive.getMaterial())
+            .output(dust, EVSuperconductorBase, 4)
+            .buildAndRegister();
     }
 }
