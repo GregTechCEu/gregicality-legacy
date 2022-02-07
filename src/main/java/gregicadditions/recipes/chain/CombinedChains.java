@@ -139,20 +139,19 @@ public class CombinedChains {
                 .buildAndRegister();
 
         // Fullerene Polymer Matrix
-        // 2Pd + 2CH3COOH + 2C10H10Fe + 2C60 + C2H4 + 2C3H7NO2 -> 2PdC60 + 4O
-        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(31457280 * 4) // UXV
-                .inputs(Fullerene.getItemStack(2))
-                .inputs(Sarcosine.getItemStack(26))
-                .input(dust, Palladium, 2)
-                .fluidInputs(Ferrocene.getFluid(2000))
-                .fluidInputs(Ethylene.getFluid(1000))
-                .fluidInputs(AceticAcid.getFluid(2000))
+        // Pd + C10H10Fe + C60 + C3H7NO2 -> PdC73H15NFe + H2O + O (voided water)
+        CHEMICAL_PLANT_RECIPES.recipeBuilder().duration(60).EUt(31457280 * 2) // UXV
+                .inputs(Fullerene.getItemStack(1))
+                .inputs(Sarcosine.getItemStack(13))
+                .input(dust, Palladium, 1)
+                .fluidInputs(Ferrocene.getFluid(1000))
+                .notConsumable(AceticAcid.getFluid(500))
                 .notConsumable(SodiumEthoxide.getItemStack())
                 .notConsumable(AluminiumChloride.getItemStack())
                 .notConsumable(Chloroform)
                 .notConsumable(Toluene)
-                .outputs(PdFullereneMatrix.getItemStack(2))
-                .fluidOutputs(Oxygen.getFluid(4000))
+                .outputs(PdFullereneMatrix.getItemStack())
+                .fluidOutputs(Oxygen.getFluid(1000))
                 .buildAndRegister();
 
 
