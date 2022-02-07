@@ -9,6 +9,7 @@ import gregicadditions.client.ClientHandler;
 import gregicadditions.item.GAMetaItems;
 import gregicadditions.machines.multi.IMaintenance;
 import gregicadditions.tools.GTToolTypes;
+import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.ModularUI;
 import gregtech.api.gui.widgets.ClickButtonWidget;
 import gregtech.api.gui.widgets.SlotWidget;
@@ -22,10 +23,8 @@ import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
-import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.electric.multiblockpart.MetaTileEntityMultiblockPart;
 import net.minecraft.entity.player.EntityPlayer;
-import gregtech.api.gui.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
@@ -33,11 +32,11 @@ import net.minecraft.util.*;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.ItemStackHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import static gregicadditions.capabilities.MultiblockDataCodes.IS_TAPED;
+import static gregicadditions.capabilities.MultiblockDataCodes.STORE_MAINTENANCE;
 import static gregicadditions.client.ClientHandler.MAINTENANCE_ICON;
-import static gregicadditions.capabilities.MultiblockDataCodes.*;
 
 public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart implements IMultiblockAbilityPart<MetaTileEntityMaintenanceHatch> {
 
@@ -175,7 +174,7 @@ public class MetaTileEntityMaintenanceHatch extends MetaTileEntityMultiblockPart
                 break;
             }
             case 1: { // Consume Duct Tape for auto taping repair, then fix everything
-                if(!consumeDuctTape(this.inventory, 0)) //todo make this do something (redstone?) if it fails or is out of tape
+                if(consumeDuctTape(this.inventory, 0)) //todo make this do something (redstone?) if it fails or is out of tape
                     fixEverything();
                     break;
             }
