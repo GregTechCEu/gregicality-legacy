@@ -789,7 +789,7 @@ public class CircuitRecipes {
                 .inputs(SMD_TRANSISTOR_BIOWARE.getStackForm(64))
                 .inputs(SMD_DIODE_BIOWARE.getStackForm(64))
                 .inputs(SMD_RESISTOR_BIOWARE.getStackForm(64))
-                .input(wireGtSingle, UHVSuperconductor, 6)
+                .input(wireGtSingle, UVSuperconductor, 6)
                 .inputs(UHPIC.getStackForm(32))
                 .input(plate, Adamantium, 2)
                 .input(frameGt, Adamantium)

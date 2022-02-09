@@ -7,7 +7,8 @@ import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
+import static gregtech.api.unification.ore.OrePrefix.dustSmall;
 
 
 public class TaraniumChain {
@@ -210,7 +211,6 @@ public class TaraniumChain {
                 .inputs(InertResidues.getItemStack(10))
                 .notConsumable(FluoroantimonicAcid.getFluid(0))
                 .outputs(CleanInertResidues.getItemStack(10))
-                .outputs(AntimonyTrifluoride.getItemStack(4))
                 .output(dust, NaquadricCompound)
                 .duration(320)
                 .EUt(200)
