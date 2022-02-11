@@ -6,6 +6,9 @@
 
 ----
 
+**Gregicality for GTCE is no longer being updated.**
+Only crashes and critical vulnerabilities will be addressed.
+
 Join us on [Discord](https://discord.gg/bWSWuYvURP)
 
 A work in progress wiki can be found [here](https://gregicality.miraheze.org/wiki/Gregicality_Wiki)
