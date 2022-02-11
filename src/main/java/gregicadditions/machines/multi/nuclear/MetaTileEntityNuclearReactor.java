@@ -1,7 +1,6 @@
 package gregicadditions.machines.multi.nuclear;
 
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.client.ClientHandler;
 import gregicadditions.fluid.GAMetaFluids;
@@ -84,7 +83,7 @@ public class MetaTileEntityNuclearReactor extends GARecipeMapMultiblockControlle
 
 
     public MetaTileEntityNuclearReactor(ResourceLocation metaTileEntityId, RecipeMap<?> recipe) {
-        super(metaTileEntityId, recipe);
+        super(metaTileEntityId, recipe, false, true, true);
         recipeMapWorkable.setAllowOverclocking(false);
         reinitializeStructurePattern();
     }
