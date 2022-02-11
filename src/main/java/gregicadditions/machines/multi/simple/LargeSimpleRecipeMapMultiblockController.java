@@ -406,11 +406,12 @@ abstract public class LargeSimpleRecipeMapMultiblockController extends GARecipeM
             for (int slot = 0; slot < inputs.getSlots(); slot++) {
                 ItemStack wholeItemStack = inputs.getStackInSlot(slot);
                 // skip empty slots
-                if (wholeItemStack.isEmpty())
+                String name = wholeItemStack.getItem().getUnlocalizedNameInefficiently(wholeItemStack);
+                if (name.equals("tile.air"))
                     continue;
                 boolean found = false;
                 for (ItemStack i : countIngredients) {
-                    if (wholeItemStack.isItemEqual(wholeItemStack)) {
+                    if (i.isItemEqual(wholeItemStack)) {
                         i.setCount(i.getCount() + wholeItemStack.getCount());
                         found = true;
                         break;
