@@ -13,6 +13,7 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
 import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
+import gregtech.api.metatileentity.multiblock.MultiblockControllerBase;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.SimpleOverlayRenderer;
 import gregtech.api.render.Textures;
@@ -60,7 +61,8 @@ public class MetaTileEntityQubitHatch extends MetaTileEntityMultiblockPart imple
 
     @Override
     public ICubeRenderer getBaseTexture() {
-        return Textures.VOLTAGE_CASINGS[GTValues.ZPM];
+        MultiblockControllerBase controller = this.getController();
+        return controller == null ? Textures.VOLTAGE_CASINGS[GTValues.ZPM] : controller.getBaseTexture(this);
     }
 
     @Override
