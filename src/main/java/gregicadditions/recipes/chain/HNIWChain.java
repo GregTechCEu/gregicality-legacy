@@ -145,6 +145,13 @@ public class HNIWChain {
                 .duration(200)
                 .buildAndRegister();
 
+        // Se + 2O -> SeO2
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Selenium)
+                .fluidInputs(Oxygen.getFluid(2000))
+                .outputs(SeleniumOxide.getItemStack(3))
+                .duration(100).EUt(30).buildAndRegister();
+
         //SeO2 + H2O -> H2SeO3
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(SeleniumOxide.getItemStack())
