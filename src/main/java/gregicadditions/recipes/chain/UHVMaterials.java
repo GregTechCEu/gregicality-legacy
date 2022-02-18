@@ -20,7 +20,7 @@ import static gregtech.common.items.MetaItems.GELLED_TOLUENE;
 public class UHVMaterials {
     public static void init() {
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        ASSEMBLER_RECIPES.recipeBuilder()
                 .input(dust, Naquadria)
                 .inputs(GELLED_TOLUENE.getStackForm(2))
                 .input(plate, Uranium238Isotope.getMaterial(), 1)
@@ -84,17 +84,17 @@ public class UHVMaterials {
                 .duration(50)
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder()
+        ASSEMBLER_RECIPES.recipeBuilder()
                 .input(plate, Mendelevium.getMaterial())
                 .inputs(GELLED_TOLUENE.getStackForm(4))
                 .input(stickLong, NaquadriaticTaranium)
                 .input(dust, Taranium)
+                .input(plate, Tritanium)
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm())
-                .fluidInputs(Tritanium.getFluid(144))
                 .fluidInputs(Glyceryl.getFluid(2500))
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
-                .EUt(125000000)
-                .duration(5)
+                .EUt(7_864_320)
+                .duration(20)
                 .buildAndRegister();
 
         BLAST_ALLOY_RECIPES.recipeBuilder()
@@ -103,7 +103,7 @@ public class UHVMaterials {
                 .input(dust, Rutherfordium)
                 .input(dust, Dubnium)
                 .fluidOutputs(SuperheavyMix.getFluid(4000))
-                .EUt(100000000)
+                .EUt(25_000_000)
                 .duration(40)
                 .blastFurnaceTemp(12800)
                 .buildAndRegister();

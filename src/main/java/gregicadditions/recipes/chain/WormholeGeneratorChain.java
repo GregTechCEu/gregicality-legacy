@@ -77,11 +77,11 @@ public class WormholeGeneratorChain {
                 .outputs(CONTAINED_KERR_SINGULARITY.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(100000)
-                .fluidInputs(Trinium.getFluid(576))
+        ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(100000)
                 .fluidInputs(FreeElectronGas.getFluid(1000))
                 .input(plate, MetastableOganesson, 1)
                 .input(plate, Vibranium, 1)
+                .input(plate, Trinium)
                 .input(dustSmall, Mendelevium.getMaterial(), 1)
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))

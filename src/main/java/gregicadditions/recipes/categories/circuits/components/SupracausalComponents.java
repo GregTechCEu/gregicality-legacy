@@ -137,15 +137,15 @@ public class SupracausalComponents {
                 .buildAndRegister();
 
         // QCD Charge
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(33550000)
+        ASSEMBLER_RECIPES.recipeBuilder().duration(200).EUt(33550000)
                 .input(plate, ProtoAdamantium, 3)
                 .inputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
                 .inputs(EXPLOSIVE.getItemVariant(LEPTONIC_CHARGE))
                 .input(plate, HeavyQuarkDegenerateMatter, 2)
-                .fluidInputs(Taranium.getFluid(L / 2))
+                .input(plate, SuperheavyHAlloy)
+                .input(plate, SuperheavyLAlloy)
+                .input(plate, Taranium, 2)
                 .fluidInputs(Gluons.getFluid(L * 9))
-                .fluidInputs(SuperheavyHAlloy.getFluid(L))
-                .fluidInputs(SuperheavyLAlloy.getFluid(L))
                 .outputs(EXPLOSIVE.getItemVariant(QCD_CHARGE))
                 .buildAndRegister();
 
