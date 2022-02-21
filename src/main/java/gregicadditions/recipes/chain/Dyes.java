@@ -409,7 +409,7 @@ public class Dyes {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        // C7H8 + H2SO4 + NaCl -> C7H7SO3Na + (H2O)(HCl)
+        // C7H8 + SO3 + NaCl -> C7H7SO3Na + HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(950)
                 .input(dust, Salt, 2)
                 .fluidInputs(Toluene.getFluid(1000))
