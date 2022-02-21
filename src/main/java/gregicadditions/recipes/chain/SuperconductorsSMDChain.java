@@ -1,8 +1,8 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.GAEnums;
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
+import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.materials.SimpleDustMaterial;
 import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
@@ -12,10 +12,10 @@ import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.unification.material.MarkerMaterials.Color.Magenta;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
-import static gregtech.api.unification.material.MarkerMaterials.Color.Magenta;
 
 public class SuperconductorsSMDChain {
     public static void init() {
@@ -735,13 +735,12 @@ public class SuperconductorsSMDChain {
                 .outputs(FullereneSuperconductiveDust.getItemStack(10))
                 .buildAndRegister();
 
-        // Si + 3CH3Cl -> C3H9SiCl + 2 Cl
+        // (CH3)2SiHCl + CH4 -> (CH3)3SiCl + 2H
         CHEMICAL_RECIPES.recipeBuilder().duration(110).EUt(1920)
-                .fluidInputs(Chloromethane.getFluid(3000))
-                .fluidInputs(Water.getFluid(7000))
-                .input(dust, Silicon)
+                .fluidInputs(Dimethyldichlorosilane.getFluid(1000))
+                .fluidInputs(Methane.getFluid(1000))
                 .fluidOutputs(Trimethylchlorosilane.getFluid(1000))
-                .fluidOutputs(Chlorine.getFluid(8000))
+                .fluidOutputs(Hydrogen.getFluid(2000))
                 .buildAndRegister();
 
         // 2CH2O2 + 2Br + 4Na + 2H2O -> Br2C2H2O2 + 4NaOH + 2H
