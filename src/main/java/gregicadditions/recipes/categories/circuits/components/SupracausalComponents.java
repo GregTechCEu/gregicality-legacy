@@ -23,6 +23,7 @@ public class SupracausalComponents {
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(FullerenePolymerMatrix.getFluid(L))
                 .input(plate, ProtoAdamantium)
+                .inputs(MICA_INSULATOR_FOIL.getStackForm(8))
                 .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(32))
                 .buildAndRegister();
@@ -31,6 +32,7 @@ public class SupracausalComponents {
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(FullerenePolymerMatrix.getFluid(L))
                 .input(plate, Vibranium)
+                .inputs(Tetracene.getItemStack())
                 .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(SMD_DIODE_SUPRACAUSAL.getStackForm(32))
                 .buildAndRegister();
@@ -39,6 +41,7 @@ public class SupracausalComponents {
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(FullerenePolymerMatrix.getFluid(L))
                 .input(plate, Neutronium)
+                .inputs(Tetracene.getItemStack())
                 .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(32))
                 .buildAndRegister();
@@ -46,7 +49,8 @@ public class SupracausalComponents {
         // SMD Resistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(400).EUt(134217728)
                 .fluidInputs(FullerenePolymerMatrix.getFluid(L))
-                .input(foil, FullerenePolymerMatrix)
+                .input(foil, TitanSteel)
+                .inputs(ChargedCesiumCeriumCobaltIndium.getItemStack())
                 .notConsumable(MICROWORMHOLE_GENERATOR.getStackForm())
                 .outputs(SMD_RESISTOR_SUPRACAUSAL.getStackForm(32))
                 .buildAndRegister();
@@ -54,9 +58,9 @@ public class SupracausalComponents {
         // Supracausal Processing Core
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(33550000)
                 .inputs(NUCLEAR_CLOCK.getStackForm())
-                .inputs(TOPOLOGICAL_MANIPULATOR_UNIT.getStackForm(2))
-                .inputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm(2))
-                .inputs(GRAVITON_TRANSDUCER.getStackForm(4))
+                .inputs(TOPOLOGICAL_MANIPULATOR_UNIT.getStackForm(1))
+                .inputs(RELATIVISTIC_SPINORIAL_MEMORY_SYSTEM.getStackForm(1))
+                .inputs(GRAVITON_TRANSDUCER.getStackForm(1))
                 .inputs(QCD_PROTECTIVE_PLATING.getStackForm(3))
                 .input(plate, Neutronium)
                 .input(wireGtSingle, UMVSuperconductor, 2)

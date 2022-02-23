@@ -1,7 +1,7 @@
 package gregicadditions.recipes.chain;
 
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
+import gregicadditions.item.GAMetaBlocks;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -116,7 +116,7 @@ public class WormholeGeneratorChain {
                 .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(600).EUt(5000000)
-                .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
+                .inputs(DEGENERATE_RHENIUM_DUST.getStackForm())
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
                 .inputs(CONTAINED_HIGH_DENSITY_PROTONIC_MATTER.getStackForm())
                 .outputs(CONTAINED_EXOTIC_MATTER.getStackForm())

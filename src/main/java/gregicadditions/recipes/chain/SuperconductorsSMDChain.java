@@ -875,7 +875,7 @@ public class SuperconductorsSMDChain {
                 .buildAndRegister();
 
         // 3[At + H2O + SO3] + Ho + Th + Cn + Fl -> 3H2SO4 + [3At + Ho + Th + Cn + Fl]
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(380).EUt(30720)
+        MIXER_RECIPES.recipeBuilder().duration(380).EUt(30720)
                 .fluidInputs(AstatideSolution.getFluid(3000))
                 .input(dust, Holmium)
                 .input(dust, Thulium)

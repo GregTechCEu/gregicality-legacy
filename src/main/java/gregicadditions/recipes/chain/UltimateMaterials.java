@@ -6,7 +6,6 @@ import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.fusion.GAFusionCasing;
 import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
 
@@ -205,7 +204,7 @@ public class UltimateMaterials {
 
         ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(150).EUt(15000000)
                 .input(frameGt, QCDMatter)
-                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_4))
+                .inputs(GAMetaBlocks.FUSION_CASING.getItemVariant(GAFusionCasing.CasingType.ADV_FUSION_COIL_3))
                 .inputs(ELECTRIC_PUMP_UMV.getStackForm(2))
                 .input(circuit, UIV)
                 .input(pipeLarge, Neutronium, 4)
@@ -222,7 +221,7 @@ public class UltimateMaterials {
                 .fluidInputs(HeavyLeptonMix.getFluid(6000))
                 .fluidInputs(Gluons.getFluid(6000))
                 .fluidInputs(Periodicium.getFluid(2736))
-                .fluidOutputs(DenseNeutronPlasma.getFluid(6000))
+                .fluidOutputs(DenseNeutronPlasma.getFluid(18000))
                 .buildAndRegister();
 
         FLUID_CANNER_RECIPES.recipeBuilder().duration(90).EUt(62500000)
