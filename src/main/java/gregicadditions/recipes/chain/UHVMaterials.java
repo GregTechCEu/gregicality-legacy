@@ -4,6 +4,7 @@ import gregicadditions.GAConfig;
 import gregicadditions.item.GAExplosive;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GASimpleBlock;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.common.items.MetaItems;
 
@@ -117,6 +118,7 @@ public class UHVMaterials {
                 .input(dust, Bohrium)
                 .input(dust, Rutherfordium)
                 .input(dust, Dubnium)
+                .notConsumable(new IntCircuitIngredient(1))
                 .fluidOutputs(SuperheavyMix.getFluid(4000))
                 .EUt(25_000_000)
                 .duration(40)
