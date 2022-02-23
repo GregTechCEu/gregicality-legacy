@@ -2,12 +2,12 @@ package gregicadditions.machines.multi.simple;
 
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
-import gregicadditions.capabilities.impl.QubitConsumeRecipeLogic;
+import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
+import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
 import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAMultiblockCasing;
 import gregicadditions.item.GAMultiblockCasing2;
 import gregicadditions.item.GATransparentCasing;
-import gregicadditions.machines.multi.qubit.QubitRecipeMapMultiblockController;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -41,9 +41,8 @@ import java.util.function.Predicate;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.render.Textures.SOLID_STEEL_CASING;
-import static gregtech.api.unification.material.Materials.Steel;
 
-public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblockController {
+public class TileEntityLargeCircuitAssemblyLine extends GARecipeMapMultiblockController {
 
     public static final List<GAMultiblockCasing.CasingType> CASING1_ALLOWED = Arrays.asList(
             GAMultiblockCasing.CasingType.TIERED_HULL_IV,
@@ -61,8 +60,8 @@ public class TileEntityLargeCircuitAssemblyLine extends QubitRecipeMapMultiblock
     private long maxVoltage = 0;
 
     public TileEntityLargeCircuitAssemblyLine(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES, true);
-        this.recipeMapWorkable = new QubitConsumeRecipeLogic(this);
+        super(metaTileEntityId, GARecipeMaps.CIRCUIT_ASSEMBLER_RECIPES);
+        this.recipeMapWorkable = new GAMultiblockRecipeLogic(this);
     }
 
     @Override
