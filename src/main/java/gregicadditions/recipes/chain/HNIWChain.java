@@ -1,6 +1,7 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.item.GAMetaItems;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
@@ -12,8 +13,15 @@ import static gregtech.api.unification.ore.OrePrefix.dust;
 public class HNIWChain {
 
     public static void init() {
-        //(NH4)2SO4 + CaCO3 -> (NH4)2CO3 + CaSO4
+        // 2NH3 + H2SO4 -> (NH4)2SO4
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(480)
+                .fluidInputs(Ammonia.getFluid(2000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(1))
+                .fluidOutputs(AmmoniumSulfate.getFluid(1000))
+                .buildAndRegister();
 
+        //(NH4)2SO4 + CaCO3 -> (NH4)2CO3 + CaSO4
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(120).blastFurnaceTemp(700)
                 .fluidInputs(AmmoniumSulfate.getFluid(1000))
                 .input(dust, Calcite, 5)
