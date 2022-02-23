@@ -8,7 +8,6 @@ import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.ore.OrePrefix;
 import gregtech.api.unification.stack.UnificationEntry;
-import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -220,6 +219,17 @@ public class RecipeOverride {
                 .output(ingotHot, Vanadium)
                 .blastFurnaceTemp(2183)
                 .duration(2226)
+                .EUt(120)
+                .buildAndRegister();
+
+        // Hot Hassium
+        removeRecipesByInputs(BLAST_RECIPES, OreDictUnifier.get(dust, MetastableHassium));
+        BLAST_RECIPES.recipeBuilder()
+                .input(dust, MetastableHassium)
+                .notConsumable(new IntCircuitIngredient(0))
+                .output(ingotHot, MetastableHassium)
+                .blastFurnaceTemp(11240)
+                .duration(62268)
                 .EUt(120)
                 .buildAndRegister();
     }
