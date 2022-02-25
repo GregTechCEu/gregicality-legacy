@@ -18,7 +18,7 @@ public class CosmicComponents {
                 .input(wireFine, Cinobite, 8)
                 .input(plate, SuperheavyHAlloy, 4)
                 .input(plate, Vibranium, 4)
-                .fluidInputs(FullerenePolymerMatrix.getFluid(L * 9))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(L))
                 .outputs(SMD_DIODE_COSMIC.getStackForm(32))
                 .buildAndRegister();
 
@@ -27,7 +27,7 @@ public class CosmicComponents {
                 .input(wireFine, Cinobite, 8)
                 .input(plate, MetastableHassium, 4)
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
-                .fluidInputs(Zylon.getFluid(L * 9))
+                .fluidInputs(Zylon.getFluid(L))
                 .outputs(SMD_TRANSISTOR_COSMIC.getStackForm(32))
                 .buildAndRegister();
 
@@ -36,7 +36,7 @@ public class CosmicComponents {
                 .input(wireFine, Cinobite, 8)
                 .input(foil, Quantum, 4)
                 .input(foil, FullerenePolymerMatrix, 4)
-                .fluidInputs(Zylon.getFluid(L * 9))
+                .fluidInputs(Zylon.getFluid(L))
                 .outputs(SMD_CAPACITOR_COSMIC.getStackForm(32))
                 .buildAndRegister();
 
@@ -45,7 +45,7 @@ public class CosmicComponents {
                 .input(wireFine, Cinobite, 8)
                 .input(plate, SuperheavyLAlloy, 4)
                 .input(plate, TriniumTitanium, 4)
-                .fluidInputs(FullerenePolymerMatrix.getFluid(L * 9))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(L))
                 .outputs(SMD_RESISTOR_COSMIC.getStackForm(32))
                 .buildAndRegister();
 
