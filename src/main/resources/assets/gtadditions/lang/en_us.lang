@@ -3003,7 +3003,7 @@ gregtech.multiblock.advanced_distillation_tower.description3=    Distillation To
 gregtech.multiblock.advanced_distillation_tower.description4=    Distillery & Fluid Heater => Max 64 Parallel, 8 per overclock
 gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amounts of power.
 gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as quickly as you can supply it.
-gtadditions.multiblock.large_rocket_engine.tooltip.3=It Consumes 37500mB of Air and 10mB of Carbon Dioxide per Second.
+gtadditions.multiblock.large_rocket_engine.tooltip.3=It Consumes 37500mB of Air per Second.
 gtadditions.multiblock.large_rocket_engine.tooltip.4=Use Liquid Hydrogen to boost the output energy by 3x. Uses 4mB/second per 1B fuel.
 gtadditions.multiblock.large_rocket_engine.tooltip.5=Default Efficiency is 60%%.
 gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
