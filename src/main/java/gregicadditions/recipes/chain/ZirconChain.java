@@ -32,7 +32,7 @@ public class ZirconChain {
                 .notConsumable(PdCCatalyst.getItemStack())
                 .input(dust, Carbon)
                 .fluidInputs(MesitylOxide.getFluid(1000))
-                .fluidInputs(WaterAgarMix.getFluid(1000))
+                .fluidInputs(Water.getFluid(1000))
                 .fluidOutputs(MethylIsobutylKetone.getFluid(1000))
                 .fluidOutputs(CarbonMonoxde.getFluid(1000))
                 .buildAndRegister();
