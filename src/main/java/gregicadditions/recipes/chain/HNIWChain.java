@@ -41,6 +41,14 @@ public class HNIWChain {
                 .duration(100)
                 .buildAndRegister();
 
+        // K + HNO3 -> KNO3 + H
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Potassium)
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .output(dust, Saltpeter, 5)
+                .fluidOutputs(Hydrogen.getFluid(1000))
+                .duration(100).EUt(30).buildAndRegister();
+
         //KNO3 + Pb -> PbO + KNO2
         BLAST_RECIPES.recipeBuilder()
                 .input(dust, Saltpeter, 5)
