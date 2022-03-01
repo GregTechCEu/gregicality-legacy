@@ -280,7 +280,6 @@ public class HNIWChain {
                 .outputs(DibenzylTetraacetylhexaazaisowurtzitane.getItemStack())
                 .outputs(Succinimide.getItemStack(48))
                 .fluidOutputs(Toluene.getFluid(4000))
-                .fluidOutputs(Oxydianiline.getFluid(4000))
                 .fluidOutputs(Oxygen.getFluid(4000))
                 .EUt(30720)
                 .duration(100)
