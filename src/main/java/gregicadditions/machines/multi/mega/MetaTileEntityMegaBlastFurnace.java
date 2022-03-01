@@ -19,7 +19,6 @@ import gregtech.api.multiblock.PatternMatchContext;
 import gregtech.api.recipes.CountableIngredient;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeBuilder;
-import gregtech.api.recipes.builders.BlastRecipeBuilder;
 import gregtech.api.recipes.recipeproperties.BlastTemperatureProperty;
 import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.Textures;
@@ -45,7 +44,8 @@ import java.util.stream.Collectors;
 
 import static gregtech.api.multiblock.BlockPattern.RelativeDirection.*;
 import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
-import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.material.Materials.BlackSteel;
+import static gregtech.api.unification.material.Materials.BlueSteel;
 
 public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapController {
 
@@ -256,7 +256,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             EUt *= Math.pow(0.95, bonusAmount);
 
             // Get parallel recipes to run: [0, 256]
-            int multiplier = Math.min(minMultiplier, (int) (getMaxVoltage() / EUt));
+            int multiplier = Math.min(256, Math.min(minMultiplier, (int) (getMaxVoltage() / EUt)));
 
             // Change EUt to be the parallel amount
             EUt *= multiplier;
