@@ -1,7 +1,6 @@
 package gregicadditions;
 
 import com.google.common.collect.ImmutableList;
-import gregicadditions.item.GAOredictItem;
 import gregicadditions.materials.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.unification.Element;
@@ -1413,13 +1412,13 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleDustMaterial Hexabenzylhexaazaisowurtzitane = new SimpleDustMaterial("hexabenzylhexaazaisowurtzitane", 0x624573, (short) 916, MaterialIconSet.DULL, "C48N6H48");
     public static final SimpleDustMaterial SuccinimidylAcetate = new SimpleDustMaterial("succinimidyl_acetate", 0xbd93a6, (short) 917, MaterialIconSet.DULL, "C6H7NO4");
     public static final SimpleDustMaterial DibenzylTetraacetylhexaazaisowurtzitane = new SimpleDustMaterial("dibenzyltetraacetylhexaazaisowurtzitane", 0xb3c98b, (short) 918, MaterialIconSet.DULL, "C28N6H32O4");
-    public static final SimpleDustMaterial HexanitroHexaaxaisowurtzitane = new SimpleDustMaterial("hexanitrohexaaxaisowurtzitane", 0x414a4f, (short) 919, MaterialIconSet.SHINY, "C6H6N12O12");
+    public static final SimpleDustMaterial HexanitroHexaazaisowurtzitane = new SimpleDustMaterial("hexanitrohexaazaisowurtzitane", 0x414a4f, (short) 919, MaterialIconSet.SHINY, "C6H6N12O12");
     public static final SimpleDustMaterial NitroniumTetrafluoroborate = new SimpleDustMaterial("nitronium_tetrafluoroborate", 0x686c6e, (short) 920, MaterialIconSet.DULL, "NO2BF4");
     public static final SimpleDustMaterial NitrosoniumTetrafluoroborate = new SimpleDustMaterial("nitrosonium_tetrafluoroborate", 0x7e8d94, (short) 921, MaterialIconSet.DULL, "NOBF4");
     public static final SimpleDustMaterial Hexamethylenetetramine = new SimpleDustMaterial("hexamethylenetetramine", 0x7e8d94, (short) 922, MaterialIconSet.DULL, "(CH2)6N4");
     public static final SimpleDustMaterial PdCCatalyst = new SimpleDustMaterial("pdc_catalyst", (Palladium.materialRGB + Carbon.materialRGB)/2, (short) 923, MaterialIconSet.DULL, "PdC");
     public static final SimpleDustMaterial Tetraacetyldinitrosohexaazaisowurtzitane = new SimpleDustMaterial("tetraacetyldinitrosohexaazaisowurtzitane",(DibenzylTetraacetylhexaazaisowurtzitane.rgb+Hexabenzylhexaazaisowurtzitane.rgb)/2,(short) 924, MaterialIconSet.DULL, "C14N8H18O6");
-    public static final SimpleDustMaterial CrudeHexanitroHexaaxaisowurtzitane = new SimpleDustMaterial("crude_hexanitrohexaaxaisowurtzitane", HexanitroHexaaxaisowurtzitane.rgb*5/7, (short) 925, MaterialIconSet.DULL, "C6H6N12O12");
+    public static final SimpleDustMaterial CrudeHexanitroHexaazaisowurtzitane = new SimpleDustMaterial("crude_hexanitrohexaazaisowurtzitane", HexanitroHexaazaisowurtzitane.rgb*5/7, (short) 925, MaterialIconSet.DULL, "C6H6N12O12");
     public static final SimpleDustMaterial PotassiumBisulfite = new SimpleDustMaterial("potassium_bisulfite", 0xF0EAD6, (short) 926, MaterialIconSet.DULL, "KHSO3");
     public static final SimpleDustMaterial PotassiumNitrite = new SimpleDustMaterial("potassium_nitrite", 0xF0EAD6, (short) 927, MaterialIconSet.DULL, "KNO2");
     public static final SimpleDustMaterial HydroxylammoniumSulfate = new SimpleDustMaterial("hydroxylammonium_sulfate", 0xF0EAD6, (short) 928, MaterialIconSet.DULL, "(NH3OH)2SO4");
