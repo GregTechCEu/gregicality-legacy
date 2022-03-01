@@ -35,6 +35,8 @@ import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
 
 public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockController {
 
+    public long maxVoltage;
+
     public MetaTileEntityPlasmaCondenser(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, GARecipeMaps.PLASMA_CONDENSER_RECIPES, false, true, true);
         this.recipeMapWorkable = new GAMultiblockRecipeLogic(this) {
@@ -50,8 +52,6 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
             MultiblockAbility.EXPORT_ITEMS, MultiblockAbility.EXPORT_FLUIDS,
             MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
-
-    public long maxVoltage;
 
     @Override
     protected BlockPattern createStructurePattern() {
@@ -73,7 +73,8 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
                 .build();
     }
 
-    public static Predicate<BlockWorldState> pumpPredicate() {
+    @Nonnull
+    private static Predicate<BlockWorldState> pumpPredicate() {
         return (blockWorldState) -> {
             IBlockState blockState = blockWorldState.getBlockState();
             if (!(blockState.getBlock() instanceof PumpCasing)) {
@@ -95,6 +96,12 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     }
 
     @Override
+    public void invalidateStructure() {
+        super.invalidateStructure();
+        this.maxVoltage = 0;
+    }
+
+    @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         if (isStructureFormed() && !hasProblems())
@@ -102,14 +109,8 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     }
 
     @Override
-    public void invalidateStructure() {
-        super.invalidateStructure();
-        this.maxVoltage = 0;
-    }
-
-    @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        return recipe.getEUt() < maxVoltage;
+        return recipe.getEUt() <= maxVoltage;
     }
 
     private IBlockState getCasingState() {
