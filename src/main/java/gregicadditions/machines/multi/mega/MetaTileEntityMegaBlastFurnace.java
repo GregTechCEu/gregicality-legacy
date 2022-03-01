@@ -237,7 +237,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             if (matchingRecipe.getFluidInputs().size() != 0) {
 
                 this.findFluid(countFluid, fluidInputs);
-                minMultiplier = this.getMinRatioFluid(countFluid, matchingRecipe, MAX_ITEMS_LIMIT);
+                minMultiplier = Math.min(minMultiplier, this.getMinRatioFluid(countFluid, matchingRecipe, MAX_ITEMS_LIMIT));
             }
 
             if (minMultiplier == Integer.MAX_VALUE) {
@@ -256,7 +256,7 @@ public class MetaTileEntityMegaBlastFurnace extends MegaMultiblockRecipeMapContr
             EUt *= Math.pow(0.95, bonusAmount);
 
             // Get parallel recipes to run: [0, 256]
-            int multiplier = Math.min(256, Math.min(minMultiplier, (int) (getMaxVoltage() / EUt)));
+            int multiplier = Math.min(minMultiplier, (int) (getMaxVoltage() / EUt));
 
             // Change EUt to be the parallel amount
             EUt *= multiplier;
