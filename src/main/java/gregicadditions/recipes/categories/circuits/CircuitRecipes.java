@@ -1086,7 +1086,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Supracausal Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(983_040_000).qubit(16)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(Integer.MAX_VALUE).qubit(16)
                 .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(64))
                 .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(64))
@@ -1097,13 +1097,13 @@ public class CircuitRecipes {
                 .inputs(CTC_COMPUTATIONAL_UNIT.getStackForm())
                 .inputs(COSMIC_MESH.getStackForm(64))
                 .input(frameGt, Neutronium, 1)
-                .input(wireGtSingle, UXVSuperconductor, 16)
+                .input(wireGtSingle, UXVSuperconductor, 64)
                 .inputs(COSMIC_FABRIC.getStackForm(64))
-                .input(plate, QCDMatter, 8)
-                .fluidInputs(Taranium.getFluid(L * 4))
-                .fluidInputs(TriniumTitanium.getFluid(L * 4))
-                .fluidInputs(ProtoAdamantium.getFluid(L * 4))
-                .fluidInputs(FullerenePolymerMatrix.getFluid(L * 4))
+                .input(plate, QCDMatter, 64)
+                .fluidInputs(Taranium.getFluid(L * 64))
+                .fluidInputs(TriniumTitanium.getFluid(L * 64))
+                .fluidInputs(ProtoAdamantium.getFluid(L * 64))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(L * 64))
                 .outputs(SUPRACAUSAL_MAINFRAME.getStackForm())
                 .buildAndRegister();
     }

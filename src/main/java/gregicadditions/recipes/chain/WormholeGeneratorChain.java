@@ -34,7 +34,7 @@ public class WormholeGeneratorChain {
                 .fluidOutputs(FreeElectronGas.getFluid(1000))
                 .buildAndRegister();
 
-        FLUID_CANNER_RECIPES.recipeBuilder().duration(200).EUt(50000)
+        CHEMICAL_BATH_RECIPES.recipeBuilder().duration(200).EUt(50000)
                 .inputs(TRIPLET_NEUTRONIUM_SPHERE.getStackForm())
                 .fluidInputs(FreeAlphaGas.getFluid(1000))
                 .outputs(CHARGED_TRIPLET_NEUTRONIUM_SPHERE.getStackForm())
@@ -58,6 +58,16 @@ public class WormholeGeneratorChain {
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(4))
                 .buildAndRegister();
 
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(12800000)
+                .fluidInputs(Tritanium.getFluid(144))
+                .input(stick, NaquadahAlloy, 4)
+                .input(wireGtSingle, UEVSuperconductor, 2)
+                .inputs(QCD_PROTECTIVE_PLATING.getStackForm())
+                .inputs(FIELD_GENERATOR_UHV.getStackForm(2))
+                .inputs(CHARGED_LEPTON_TRAP_CRYSTAL.getStackForm(2))
+                .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(16))
+                .buildAndRegister();
+
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(200).EUt(288566)
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.TARANIUM_CHARGE))
                 .inputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(64))
@@ -65,7 +75,7 @@ public class WormholeGeneratorChain {
                 .outputs(CONTAINED_REISSNER_NORDSTROM_SINGULARITY.getStackForm(64))
                 .buildAndRegister();
 
-        STELLAR_FORGE_RECIPES.recipeBuilder().duration(6000).EUt(6000000)
+        STELLAR_FORGE_RECIPES.recipeBuilder().duration(600).EUt(6000000)
                 .inputs(CONTAINED_REISSNER_NORDSTROM_SINGULARITY.getStackForm(64))
                 .outputs(CONTAINED_KERR_NEWMANN_SINGULARITY.getStackForm())
                 .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm(63))
@@ -87,7 +97,7 @@ public class WormholeGeneratorChain {
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(100000)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(100000)
                 .fluidInputs(Tritanium.getFluid(576))
                 .inputs(EMITTER_ZPM.getStackForm(2))
                 .inputs(FIELD_GENERATOR_ZPM.getStackForm())
@@ -103,7 +113,7 @@ public class WormholeGeneratorChain {
                 .outputs(CONTAINED_HIGH_DENSITY_PROTONIC_MATTER.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(1000000)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(200).EUt(1000000)
                 .fluidInputs(NaquadahAlloy.getFluid(576))
                 .inputs(CONTAINED_HIGH_DENSITY_PROTONIC_MATTER.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
@@ -122,7 +132,7 @@ public class WormholeGeneratorChain {
                 .outputs(CONTAINED_EXOTIC_MATTER.getStackForm())
                 .buildAndRegister();
 
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(800).EUt(6000000)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(400).EUt(6000000)
                 .fluidInputs(Naquadria.getFluid(288))
                 .fluidInputs(EnrichedNaquadahAlloy.getFluid(144))
                 .fluidInputs(Neutronium.getFluid(144))

@@ -25,7 +25,7 @@ public class CosmicComponents {
         // SMD Transistor
         ASSEMBLER_RECIPES.recipeBuilder().duration(250).EUt(6000000)
                 .input(wireFine, Cinobite, 8)
-                .input(plate, MetastableHassium, 4)
+                .input(plate, MetastableHassium)
                 .inputs(DEGENERATE_RHENIUM_PLATE.getStackForm(4))
                 .fluidInputs(Zylon.getFluid(L))
                 .outputs(SMD_TRANSISTOR_COSMIC.getStackForm(32))

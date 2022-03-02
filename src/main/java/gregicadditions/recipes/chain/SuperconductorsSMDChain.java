@@ -866,11 +866,10 @@ public class SuperconductorsSMDChain {
                 .outputs(BoronFranciumCarbide.getItemStack(15))
                 .buildAndRegister();
 
-        // At + H2O + SO3 -> [At + H2O + SO3]
-        CHEMICAL_RECIPES.recipeBuilder().duration(140).EUt(7680)
+        // At + H2SO4 -> [At + H2O + SO3]
+        MIXER_RECIPES.recipeBuilder().duration(140).EUt(7680)
                 .input(dust, Astatine)
                 .fluidInputs(Water.getFluid(1000))
-                .fluidInputs(SulfurTrioxide.getFluid(1000))
                 .fluidOutputs(AstatideSolution.getFluid(1000))
                 .buildAndRegister();
 

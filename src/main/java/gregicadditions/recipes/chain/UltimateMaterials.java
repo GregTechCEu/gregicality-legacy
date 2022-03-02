@@ -291,6 +291,7 @@ public class UltimateMaterials {
                 .fluidOutputs(Helium.getFluid(24000))
                 .notConsumable(PLATE_FIELD_SHAPE.getStackForm())
                 .outputs(COSMIC_MESH.getStackForm())
+                .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
                 .buildAndRegister();
 
         PLASMA_CONDENSER_RECIPES.recipeBuilder().duration(500).EUt(10000000)
@@ -300,6 +301,7 @@ public class UltimateMaterials {
                 .fluidOutputs(Helium.getFluid(24000))
                 .notConsumable(WIRE_FIELD_SHAPE.getStackForm())
                 .outputs(COSMIC_FABRIC.getStackForm())
+                .outputs(TIME_DILATION_CONTAINMENT_UNIT.getStackForm())
                 .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(10).EUt(10000000)
