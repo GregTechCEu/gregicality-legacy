@@ -185,7 +185,7 @@ public class TileEntityLargeCircuitAssemblyLine extends GARecipeMapMultiblockCon
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        return recipe.getEUt() < maxVoltage;
+        return recipe.getEUt() <= maxVoltage;
     }
 
     @Override

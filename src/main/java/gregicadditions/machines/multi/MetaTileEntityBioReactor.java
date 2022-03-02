@@ -157,7 +157,7 @@ public class MetaTileEntityBioReactor extends GARecipeMapMultiblockController {
 
     @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        return recipe.getEUt() < maxVoltage;
+        return recipe.getEUt() <= maxVoltage;
     }
 
     private IBlockState getCasingState() {
