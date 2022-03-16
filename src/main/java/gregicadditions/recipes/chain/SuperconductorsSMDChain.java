@@ -869,7 +869,7 @@ public class SuperconductorsSMDChain {
         // At + H2SO4 -> [At + H2O + SO3]
         MIXER_RECIPES.recipeBuilder().duration(140).EUt(7680)
                 .input(dust, Astatine)
-                .fluidInputs(Water.getFluid(1000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
                 .fluidOutputs(AstatideSolution.getFluid(1000))
                 .buildAndRegister();
 
