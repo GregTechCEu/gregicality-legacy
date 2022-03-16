@@ -3,8 +3,10 @@ package gregicadditions.machines.multi.override;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.multiblock.BlockPattern;
@@ -27,7 +29,7 @@ import static gregtech.api.render.Textures.CLEAN_STAINLESS_STEEL_CASING;
 
 public class MetaTileEntityDistillationTower extends GARecipeMapMultiblockController {
 
-    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, MultiblockAbility.EXPORT_FLUIDS, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+    private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH};
 
     public MetaTileEntityDistillationTower(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, DISTILLATION_RECIPES, true, true, false);
@@ -45,7 +47,7 @@ public class MetaTileEntityDistillationTower extends GARecipeMapMultiblockContro
 
     @Override
     protected BlockPattern createStructurePattern() {
-        Predicate<BlockWorldState> fluidExportPredicate = this.countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS));
+        Predicate<BlockWorldState> fluidExportPredicate = this.countMatch("HatchesAmount", fluidHatchPredicate());
         Predicate<PatternMatchContext> exactlyOneHatch = (context) -> context.getInt("HatchesAmount") == 1;
 
         return FactoryBlockPattern.start(BlockPattern.RelativeDirection.RIGHT, BlockPattern.RelativeDirection.FRONT, BlockPattern.RelativeDirection.UP)
@@ -60,6 +62,11 @@ public class MetaTileEntityDistillationTower extends GARecipeMapMultiblockContro
                 .validateLayer(1, exactlyOneHatch)
                 .validateLayer(2, exactlyOneHatch)
                 .build();
+    }
+
+    @Nonnull
+    private static Predicate<BlockWorldState> fluidHatchPredicate() {
+        return tilePredicate((state, tile) -> tile instanceof IMultiblockAbilityPart && !(tile instanceof MetaTileEntityMultiFluidHatch) && ((IMultiblockAbilityPart<?>) tile).getAbility() == MultiblockAbility.EXPORT_FLUIDS);
     }
 
     public IBlockState getCasingState() {
