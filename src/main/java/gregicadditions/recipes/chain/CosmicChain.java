@@ -1,8 +1,7 @@
 package gregicadditions.recipes.chain;
 
-import gregicadditions.item.GAMetaBlocks;
 import gregicadditions.item.GAExplosive;
-import gregtech.api.unification.material.MarkerMaterials;
+import gregicadditions.item.GAMetaBlocks;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
@@ -14,6 +13,12 @@ import static gregtech.api.unification.ore.OrePrefix.*;
 public class CosmicChain { // TODO
 
     public static void init() {
+
+        STELLAR_FORGE_RECIPES.recipeBuilder().duration(60).EUt(14000000)
+                .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
+                .inputs(DEGENERATE_RHENIUM_DUST.getStackForm())
+                .fluidOutputs(QuarkGluonPlasma.getFluid(4000))
+                .buildAndRegister();
 
         STELLAR_FORGE_RECIPES.recipeBuilder().duration(60).EUt(14000000)
                 .inputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.LEPTONIC_CHARGE))
@@ -33,9 +38,9 @@ public class CosmicChain { // TODO
         LARGE_CENTRIFUGE_RECIPES.recipeBuilder().duration(200).EUt(1200000)
                 .fluidInputs(QuarkGluonPlasma.getFluid(1000))
                 .notConsumable(SEPARATION_ELECTROMAGNET.getStackForm())
-                .fluidOutputs(HeavyQuarks.getFluid(200))
-                .fluidOutputs(Gluons.getFluid(200))
-                .fluidOutputs(LightQuarks.getFluid(600))
+                .fluidOutputs(HeavyQuarks.getFluid(750))
+                .fluidOutputs(Gluons.getFluid(500))
+                .fluidOutputs(LightQuarks.getFluid(250))
                 .buildAndRegister();
 
         LARGE_MIXER_RECIPES.recipeBuilder().duration(100).EUt(2400000)

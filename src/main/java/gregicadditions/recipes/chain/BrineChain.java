@@ -475,7 +475,8 @@ public class BrineChain {
                 .fluidInputs(Dimethylamine.getFluid(1000))
                 .fluidInputs(MethylFormate.getFluid(1000))
                 .fluidOutputs(Dimethylformamide.getFluid(1000))
-                .fluidOutputs(Methanol.getFluid(1000));
+                .fluidOutputs(Methanol.getFluid(1000))
+                .buildAndRegister();
 
         // MoO3 + 2NaOH -> Na2MoO4 + H2O
         CHEMICAL_RECIPES.recipeBuilder().duration(80).EUt(30)

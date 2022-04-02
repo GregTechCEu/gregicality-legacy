@@ -1,7 +1,6 @@
 package gregicadditions;
 
 import com.google.common.collect.ImmutableList;
-import gregicadditions.item.GAOredictItem;
 import gregicadditions.materials.*;
 import gregicadditions.utils.GALog;
 import gregtech.api.unification.Element;
@@ -907,7 +906,7 @@ public class GAMaterials implements IMaterialHandler {
     public static final SimpleFluidMaterial Octanol = new SimpleFluidMaterial("octanol",0xa2b8c2, "C8H18O");
     public static final SimpleFluidMaterial Trioctylamine = new SimpleFluidMaterial("trioctylamine",0x87a2bc, "C24H51N");
     public static final SimpleFluidMaterial RheniumSeparationMixture = new SimpleFluidMaterial("rhenium_separation_mixture",0xed2c3a, "C11H24");
-    public static final SimpleFluidMaterial RheniumScrubbedSolution = new SimpleFluidMaterial("rhenium_scrubbed_solution",0xed2c3a, "Re?");
+    public static final SimpleFluidMaterial RheniumScrubbedSolution = new SimpleFluidMaterial("rhenium_scrubbed_solution",0xedccca, "Re?");
     public static final SimpleFluidMaterial NeutroniumDopedNanotubes = new SimpleFluidMaterial("neutronium_doped_nanotubes",(Neutronium.materialRGB+CarbonNanotubes.materialRGB)/2, "Nt?");
     public static final SimpleFluidMaterial SupercriticalSteam = new SimpleFluidMaterial("supercritical_steam", Steam.materialRGB, "H2O");
     public static final SimpleFluidMaterial SupercriticalDeuterium = new SimpleFluidMaterial("supercritical_deuterium", Deuterium.materialRGB, "H_2");

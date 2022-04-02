@@ -409,13 +409,13 @@ public class Dyes {
                 .fluidOutputs(Water.getFluid(2000))
                 .buildAndRegister();
 
-        // C7H8 + H2SO4 + NaCl -> C7H7SO3Na + (H2O)(HCl)
+        // C7H8 + SO3 + NaCl -> C7H7SO3Na + HCl
         CHEMICAL_RECIPES.recipeBuilder().duration(220).EUt(950)
                 .input(dust, Salt, 2)
                 .fluidInputs(Toluene.getFluid(1000))
-                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .fluidInputs(SulfurTrioxide.getFluid(1000))
                 .fluidOutputs(Toluenesulfonate.getFluid(1000))
-                .fluidOutputs(DilutedHydrochloricAcid.getFluid(2000))
+                .fluidOutputs(HydrochloricAcid.getFluid(1000))
                 .buildAndRegister();
 
         // C6H4(OH)2 + C8H4O3 -> C14H8O4 + H2O

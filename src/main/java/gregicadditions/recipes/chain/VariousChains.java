@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
@@ -28,7 +27,7 @@ public class VariousChains {
     private static void misc() {
 
         // UU-Matter ===================================================================================================
-        LARGE_MIXER_RECIPES.recipeBuilder().duration(100).EUt(7680)
+        LARGE_MIXER_RECIPES.recipeBuilder().duration(50).EUt(491520)
                 .fluidInputs(BosonicUUMatter.getFluid(1000))
                 .fluidInputs(FermionicUUMatter.getFluid(1000))
                 .fluidInputs(FreeElectronGas.getFluid(2000))

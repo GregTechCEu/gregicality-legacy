@@ -1,17 +1,14 @@
 package gregicadditions.recipes.categories.circuits;
 
 import gregtech.api.recipes.ingredients.IntCircuitIngredient;
-import gregtech.api.unification.material.MarkerMaterials;
-import gregtech.api.unification.ore.OrePrefix;
-import gregtech.common.items.MetaItems;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.item.GAMetaItems.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.GTValues.L;
 import static gregtech.api.recipes.RecipeMaps.*;
-import static gregtech.api.unification.material.MarkerMaterials.Color.*;
 import static gregtech.api.unification.material.MarkerMaterials.Color.Silver;
+import static gregtech.api.unification.material.MarkerMaterials.Color.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static gregtech.common.items.MetaItems.*;
@@ -68,7 +65,7 @@ public class WaferRecipes {
                 .buildAndRegister();
 
         // Hassium Boule
-        BLAST_RECIPES.recipeBuilder().duration(120).EUt(850000).blastFurnaceTemp(11800)
+        AUTOCLAVE_RECIPES.recipeBuilder().duration(120).EUt(3400000)
                 .input(dustTiny, MetastableHassium)
                 .fluidInputs(Nitrogen.getFluid(1000))
                 .outputs(HASSIUM_SEED_CRYSTAL.getStackForm())

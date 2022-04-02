@@ -40,7 +40,7 @@ public class Batteries {
                 .inputs(BariumTriflate.getItemStack(17))
                 .fluidInputs(LithiumCarbonateSolution.getFluid(1000))
                 .outputs(BariumCarbonate.getItemStack(5))
-                .outputs(LithiumTriflate.getItemStack(20))
+                .outputs(LithiumTriflate.getItemStack(18))
                 .buildAndRegister();
 
         // Algae + 6Na2CO3(H2O) -> 4C6H10O5 + 2C5H10O5 + 6NaC6H7O6(H2O) + 6CO2 + 6H2O
@@ -286,7 +286,7 @@ public class Batteries {
                 .buildAndRegister();
 
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(2))
+                .inputs(LithiumTriflate.getItemStack())
                 .inputs(BATTERY_SMALL_LITHIUM_ION_EMPTY.getStackForm())
                 .EUt(480 * 4)
                 .duration(60)
@@ -294,7 +294,7 @@ public class Batteries {
                 .buildAndRegister();
 
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(4))
+                .inputs(LithiumTriflate.getItemStack(2))
                 .inputs(BATTERY_MEDIUM_LITHIUM_ION_EMPTY.getStackForm())
                 .EUt(480 * 16)
                 .duration(60)
@@ -302,7 +302,7 @@ public class Batteries {
                 .buildAndRegister();
 
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(8))
+                .inputs(LithiumTriflate.getItemStack(4))
                 .inputs(BATTERY_LARGE_LITHIUM_ION_EMPTY.getStackForm())
                 .EUt(480 * 64)
                 .duration(60)
@@ -310,7 +310,7 @@ public class Batteries {
                 .buildAndRegister();
 
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(16))
+                .inputs(LithiumTriflate.getItemStack(4))
                 .inputs(BATTERY_SMALL_LIS_EMPTY.getStackForm())
                 .EUt(30720 * 4)
                 .duration(60)
@@ -318,7 +318,7 @@ public class Batteries {
                 .buildAndRegister();
 
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(32))
+                .inputs(LithiumTriflate.getItemStack(8))
                 .inputs(BATTERY_MEDIUM_LIS_EMPTY.getStackForm())
                 .EUt(30720 * 16)
                 .duration(60)
@@ -326,7 +326,7 @@ public class Batteries {
                 .buildAndRegister();
 
         CANNER_RECIPES.recipeBuilder()
-                .inputs(LithiumTriflate.getItemStack(64))
+                .inputs(LithiumTriflate.getItemStack(16))
                 .inputs(BATTERY_LARGE_LIS_EMPTY.getStackForm())
                 .EUt(30720 * 64)
                 .duration(60)
