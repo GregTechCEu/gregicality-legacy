@@ -3,10 +3,8 @@ package gregicadditions.machines.multi;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.capabilities.impl.GAMultiblockRecipeLogic;
 import gregicadditions.capabilities.impl.GARecipeMapMultiblockController;
-import gregicadditions.item.components.MotorCasing;
 import gregicadditions.item.components.PumpCasing;
 import gregicadditions.item.metal.MetalCasing1;
-import gregicadditions.item.metal.MetalCasing2;
 import gregicadditions.recipes.GARecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
@@ -21,7 +19,6 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.render.OrientedOverlayRenderer;
 import gregtech.api.render.Textures;
 import gregtech.common.blocks.BlockBoilerCasing;
-import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -33,15 +30,15 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static gregicadditions.client.ClientHandler.ENRICHED_NAQUADAH_ALLOY_CASING;
 import static gregicadditions.client.ClientHandler.HASTELLOY_N_CASING;
 import static gregicadditions.item.GAMetaBlocks.METAL_CASING_1;
-import static gregicadditions.item.GAMetaBlocks.METAL_CASING_2;
 
 public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockController {
 
+    public long maxVoltage;
+
     public MetaTileEntityPlasmaCondenser(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, GARecipeMaps.PLASMA_CONDENSER_RECIPES);
+        super(metaTileEntityId, GARecipeMaps.PLASMA_CONDENSER_RECIPES, false, true, true);
         this.recipeMapWorkable = new GAMultiblockRecipeLogic(this) {
             @Override
             protected long getMaxVoltage() {
@@ -56,11 +53,9 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
             MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
     };
 
-    public long maxVoltage;
-
     @Override
     protected BlockPattern createStructurePattern() {
-        return  FactoryBlockPattern.start()
+        return FactoryBlockPattern.start()
                 .aisle("#####", "#XXX#", "#XXX#", "#XXX#", "#####")
                 .aisle("#XXX#", "XGAGX", "XAPAX", "XGpGX", "#XXX#")
                 .aisle("#XXX#", "XAPAX", "XPPPX", "XpPpX", "#XXX#")
@@ -78,7 +73,8 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
                 .build();
     }
 
-    public static Predicate<BlockWorldState> pumpPredicate() {
+    @Nonnull
+    private static Predicate<BlockWorldState> pumpPredicate() {
         return (blockWorldState) -> {
             IBlockState blockState = blockWorldState.getBlockState();
             if (!(blockState.getBlock() instanceof PumpCasing)) {
@@ -100,6 +96,12 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     }
 
     @Override
+    public void invalidateStructure() {
+        super.invalidateStructure();
+        this.maxVoltage = 0;
+    }
+
+    @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         if (isStructureFormed() && !hasProblems())
@@ -107,14 +109,8 @@ public class MetaTileEntityPlasmaCondenser extends GARecipeMapMultiblockControll
     }
 
     @Override
-    public void invalidateStructure() {
-        super.invalidateStructure();
-        this.maxVoltage = 0;
-    }
-
-    @Override
     public boolean checkRecipe(Recipe recipe, boolean consumeIfSuccess) {
-        return recipe.getEUt() < maxVoltage;
+        return recipe.getEUt() <= maxVoltage;
     }
 
     private IBlockState getCasingState() {
