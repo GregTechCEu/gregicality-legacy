@@ -1,18 +1,27 @@
 package gregicadditions.recipes.chain;
 
 import gregicadditions.item.GAMetaItems;
+import gregtech.api.recipes.ingredients.IntCircuitIngredient;
 
 import static gregicadditions.GAMaterials.*;
 import static gregicadditions.recipes.GARecipeMaps.*;
-import static gregtech.api.recipes.RecipeMaps.*;
+import static gregtech.api.recipes.RecipeMaps.BLAST_RECIPES;
+import static gregtech.api.recipes.RecipeMaps.CHEMICAL_RECIPES;
 import static gregtech.api.unification.material.Materials.*;
-import static gregtech.api.unification.ore.OrePrefix.*;
+import static gregtech.api.unification.ore.OrePrefix.dust;
 
 public class HNIWChain {
 
     public static void init() {
-        //(NH4)2SO4 + CaCO3 -> (NH4)2CO3 + CaSO4
+        // 2NH3 + H2SO4 -> (NH4)2SO4
+        CHEMICAL_RECIPES.recipeBuilder().duration(200).EUt(480)
+                .fluidInputs(Ammonia.getFluid(2000))
+                .fluidInputs(SulfuricAcid.getFluid(1000))
+                .notConsumable(new IntCircuitIngredient(1))
+                .fluidOutputs(AmmoniumSulfate.getFluid(1000))
+                .buildAndRegister();
 
+        //(NH4)2SO4 + CaCO3 -> (NH4)2CO3 + CaSO4
         BLAST_RECIPES.recipeBuilder().duration(270).EUt(120).blastFurnaceTemp(700)
                 .fluidInputs(AmmoniumSulfate.getFluid(1000))
                 .input(dust, Calcite, 5)
@@ -32,6 +41,14 @@ public class HNIWChain {
                 .duration(100)
                 .buildAndRegister();
 
+        // K + HNO3 -> KNO3 + H
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Potassium)
+                .fluidInputs(NitricAcid.getFluid(1000))
+                .output(dust, Saltpeter, 5)
+                .fluidOutputs(Hydrogen.getFluid(1000))
+                .duration(100).EUt(30).buildAndRegister();
+
         //KNO3 + Pb -> PbO + KNO2
         BLAST_RECIPES.recipeBuilder()
                 .input(dust, Saltpeter, 5)
@@ -43,7 +60,7 @@ public class HNIWChain {
                 .duration(200)
                 .buildAndRegister();
 
-        //KNO2 + CH3COOH + NaCl > HNO2 + CH3COONa + KCl
+        //KNO2 + CH3COOH + NaCl -> HNO2 + CH3COONa + KCl
         CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(PotassiumNitrite.getItemStack(4))
                 .fluidInputs(AceticAcid.getFluid(1000))
@@ -107,19 +124,17 @@ public class HNIWChain {
                 .duration(75)
                 .buildAndRegister();
 
-        //C4H4O3 + H4NOCl + Na -> C4H5NO3 + H2O + NaCl + H
-        CHEMICAL_PLANT_RECIPES.recipeBuilder()
-                .inputs(SuccinicAnhydride.getItemStack(66))
-                .fluidInputs(HydroxylamineHydrochloride.getFluid(6000))
-                .fluidInputs(Toluene.getFluid(6000))
-                .input(dust, Sodium, 6)
-                .fluidInputs(Methanol.getFluid(40000))
-                .output(dust, Salt, 12)
+        //C4H4O3 + NH3OHCl + Na -> C4H5NO3 + H2O + NaCl + H
+        CHEMICAL_RECIPES.recipeBuilder()
+                .inputs(SuccinicAnhydride.getItemStack(11))
+                .input(dust, Sodium)
+                .fluidInputs(HydroxylamineHydrochloride.getFluid(1000))
+                .output(dust, Salt, 2)
                 .outputs(NHydroxysuccinimide.getItemStack(13))
-                .fluidOutputs(Water.getFluid(6000))
-                .fluidOutputs(Hydrogen.getFluid(6000))
+                .fluidOutputs(Water.getFluid(1000))
+                .fluidOutputs(Hydrogen.getFluid(1000))
                 .EUt(1920)
-                .duration(400)
+                .duration(200)
                 .buildAndRegister();
 
         //NH3 + 3 C2H5OH -> (C2H5)3N + 3 H2O
@@ -143,6 +158,13 @@ public class HNIWChain {
                 .EUt(1920)
                 .duration(200)
                 .buildAndRegister();
+
+        // Se + 2O -> SeO2
+        CHEMICAL_RECIPES.recipeBuilder()
+                .input(dust, Selenium)
+                .fluidInputs(Oxygen.getFluid(2000))
+                .outputs(SeleniumOxide.getItemStack(3))
+                .duration(100).EUt(30).buildAndRegister();
 
         //SeO2 + H2O -> H2SeO3
         CHEMICAL_RECIPES.recipeBuilder()
@@ -229,9 +251,9 @@ public class HNIWChain {
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(Glyoxal.getFluid(3000))
                 .fluidInputs(Benzylamine.getFluid(6000))
-                .notConsumable(Hydrogen.getFluid(1000))
-                .inputs(Acetonitrile.getItemStack())
+                .notConsumable(Acetonitrile.getItemStack())
                 .outputs(Hexabenzylhexaazaisowurtzitane.getItemStack())
+                .fluidOutputs(Water.getFluid(6000))
                 .EUt(7680)
                 .duration(100)
                 .buildAndRegister();
@@ -246,18 +268,19 @@ public class HNIWChain {
                 .duration(100)
                 .buildAndRegister();
 
-        //C48N6H48 + 4 C6H7NO4 + 4H -> 4 C7H8 + C28N6H32O4 + C4H5NO2
+        //C48N6H48 + 4C6H7NO4 + 8H -> 4C7H8 + C28N6H32O4 + 4C4H5NO2 + 4O
         CHEMICAL_PLANT_RECIPES.recipeBuilder()
-                .fluidInputs(Hydrogen.getFluid(4000))
+                .inputs(Hexabenzylhexaazaisowurtzitane.getItemStack())
+                .inputs(SuccinimidylAcetate.getItemStack(72))
+                .fluidInputs(Hydrogen.getFluid(8000))
                 .notConsumable(PdCCatalyst.getItemStack())
                 .notConsumable(EthylBenzene.getFluid(1000))
                 .notConsumable(HydrobromicAcid.getFluid(1000))
                 .notConsumable(Dimethylformamide.getFluid(1000))
-                .inputs(SuccinimidylAcetate.getItemStack(72))
-                .inputs(Hexabenzylhexaazaisowurtzitane.getItemStack())
                 .outputs(DibenzylTetraacetylhexaazaisowurtzitane.getItemStack())
                 .outputs(Succinimide.getItemStack(48))
                 .fluidOutputs(Toluene.getFluid(4000))
+                .fluidOutputs(Oxygen.getFluid(4000))
                 .EUt(30720)
                 .duration(100)
                 .buildAndRegister();
@@ -302,10 +325,10 @@ public class HNIWChain {
         LARGE_CHEMICAL_RECIPES.recipeBuilder()
                 .inputs(Tetraacetyldinitrosohexaazaisowurtzitane.getItemStack())
                 .inputs(NitroniumTetrafluoroborate.getItemStack(48))
-                .fluidInputs(Water.getFluid(2000))
+                .fluidInputs(Water.getFluid(4000))
                 .outputs(CrudeHexanitroHexaazaisowurtzitane.getItemStack())
                 .outputs(NitrosoniumTetrafluoroborate.getItemStack(14))
-                .fluidOutputs(TetrafluoroboricAcid.getFluid(6000))
+                .fluidOutputs(TetrafluoroboricAcid.getFluid(4000))
                 .fluidOutputs(AceticAcid.getFluid(4000))
                 .EUt(491520)
                 .duration(100)
@@ -315,11 +338,12 @@ public class HNIWChain {
                 .inputs(CrudeHexanitroHexaazaisowurtzitane.getItemStack())
                 .fluidInputs(Ethylenediamine.getFluid(1000))
                 .inputs(SilicaGel.getItemStack())
-                .outputs(HexanitroHexaazaisowurtzitane.getItemStack())
+                .outputs(HexanitroHexaazaisowurtzitane.getItemStack(8))
                 .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
 
+        // HBF4 + 3H2O -> 4HF + H3BO3
         CHEMICAL_RECIPES.recipeBuilder()
                 .fluidInputs(TetrafluoroboricAcid.getFluid(1000))
                 .fluidInputs(Water.getFluid(3000))

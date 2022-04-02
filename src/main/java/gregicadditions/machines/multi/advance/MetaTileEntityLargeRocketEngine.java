@@ -1,6 +1,5 @@
 package gregicadditions.machines.multi.advance;
 
-import gregicadditions.GAConfig;
 import gregicadditions.GAMaterials;
 import gregicadditions.GAValues;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
@@ -23,7 +22,6 @@ import gregtech.api.render.ICubeRenderer;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.BlockMultiblockCasing;
 import gregtech.common.blocks.MetaBlocks;
-import gregtech.common.metatileentities.multi.electric.generator.FueledMultiblockController;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
@@ -201,7 +199,7 @@ public class MetaTileEntityLargeRocketEngine extends GAFueledMultiblockControlle
             } else return 0;
 
             // Check boosted status and drain if needed
-            oxygenNeededToBoost = 4 * (int)Math.ceil(fuelUsed / 1000.0);
+            oxygenNeededToBoost = 4 * (int) Math.ceil(fuelUsed / 1000.0);
             if (checkBoost()) {
                 fluidTank.get().drain(GAMaterials.LiquidOxygen.getFluid(oxygenNeededToBoost), true);
                 EUt *= 3;

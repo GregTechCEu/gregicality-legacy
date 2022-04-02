@@ -3,7 +3,7 @@ package gregicadditions.recipes.chain;
 import gregtech.api.unification.OreDictUnifier;
 
 import static gregicadditions.GAMaterials.*;
-import static gregicadditions.item.GAMetaItems.*;
+import static gregicadditions.item.GAMetaItems.UVA_HALIDE_LAMP;
 import static gregicadditions.recipes.GARecipeMaps.*;
 import static gregtech.api.recipes.RecipeMaps.*;
 import static gregtech.api.unification.material.Materials.*;
@@ -245,7 +245,7 @@ public class RheniumChain {
         // C6H12O6 + bacteria -> C5H12O
         BIO_REACTOR_RECIPES.recipeBuilder()
                 .inputs(Glucose.getItemStack(24))
-                .inputs(SelectivelyMutatedCupriavidiusNecator.getItemStack())
+                .notConsumable(SelectivelyMutatedCupriavidiusNecator.getItemStack())
                 .fluidInputs(Ammonia.getFluid(10))
                 .fluidOutputs(IsoamylAlcohol.getFluid(1000))
                 .EUt(491520)
@@ -285,13 +285,13 @@ public class RheniumChain {
 
         // 2C12H26 + 0.5C24H51N + 0.25C8H18O + 0.5C6H12O + 0.375CH3COOH + 0.375C5H12O -> ~4C11H24
         LARGE_MIXER_RECIPES.recipeBuilder()
-                .fluidInputs(Kerosene.getFluid(2000))
+                .fluidInputs(Kerosene.getFluid(8000))
                 .fluidInputs(Trioctylamine.getFluid(500))
-                .fluidInputs(Octanol.getFluid(250))
-                .fluidInputs(MethylIsobutylKetone.getFluid(500))
-                .fluidInputs(AceticAcid.getFluid(375))
-                .fluidInputs(IsoamylAlcohol.getFluid(375))
-                .fluidOutputs(RheniumSeparationMixture.getFluid(4000))
+                .fluidInputs(Octanol.getFluid(500))
+                .fluidInputs(MethylIsobutylKetone.getFluid(250))
+                .fluidInputs(AceticAcid.getFluid(250))
+                .fluidInputs(IsoamylAlcohol.getFluid(250))
+                .fluidOutputs(RheniumSeparationMixture.getFluid(10000))
                 .EUt(7680)
                 .duration(90)
                 .buildAndRegister();
@@ -299,10 +299,10 @@ public class RheniumChain {
         // ? + RSM -> ? + ?(20%) + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .input(dust, PlatinumSalt, 2)
-                .fluidInputs(RheniumSeparationMixture.getFluid(200))
-                .output(dust, PlatinumSaltRefined, 2)
-                .chancedOutput(OreDictUnifier.get(dust, PlatinumSaltRefined, 2), 2000, 0)
-                .fluidOutputs(RheniumScrubbedSolution.getFluid(200))
+                .fluidInputs(RheniumSeparationMixture.getFluid(250))
+                .chancedOutput(OreDictUnifier.get(dust, PlatinumSaltRefined, 2), 9500, 0)
+                .fluidOutputs(RheniumScrubbedSolution.getFluid(250))
+                .fluidOutputs(RheniumSeparationMixture.getFluid(200))
                 .EUt(7680)
                 .duration(50)
                 .buildAndRegister();
@@ -310,9 +310,10 @@ public class RheniumChain {
         // ? + 0.2? -> ? + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(LeachedColumbite.getItemStack(17))
-                .fluidInputs(RheniumSeparationMixture.getFluid(200))
+                .fluidInputs(RheniumSeparationMixture.getFluid(250))
                 .outputs(PurifiedColumbite.getItemStack())
-                .fluidOutputs(RheniumScrubbedSolution.getFluid(200))
+                .fluidOutputs(RheniumScrubbedSolution.getFluid(250))
+                .fluidOutputs(RheniumSeparationMixture.getFluid(200))
                 .EUt(7680)
                 .duration(50)
                 .buildAndRegister();
@@ -320,9 +321,10 @@ public class RheniumChain {
         //  + 0.2? -> ? + Re
         CENTRIFUGE_RECIPES.recipeBuilder()
                 .inputs(LeachedPyrochlore.getItemStack())
-                .fluidInputs(RheniumSeparationMixture.getFluid(200))
+                .fluidInputs(RheniumSeparationMixture.getFluid(250))
                 .outputs(PurifiedPyrochlore.getItemStack())
-                .fluidOutputs(RheniumScrubbedSolution.getFluid(200))
+                .fluidOutputs(RheniumScrubbedSolution.getFluid(250))
+                .fluidOutputs(RheniumSeparationMixture.getFluid(200))
                 .EUt(7680)
                 .duration(50)
                 .buildAndRegister();

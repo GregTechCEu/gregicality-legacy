@@ -329,7 +329,7 @@ public class FusionElementsChain {
                 .fluidOutputs(Vibranium.getFluid(288))
                 .buildAndRegister();
 
-        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(900000).coilTier(2).euStart(5000000000L).euReturn(50)
+        ADV_FUSION_RECIPES.recipeBuilder().duration(100).EUt(900000).coilTier(2).euStart(2500000000L).euReturn(50)
                 .fluidInputs(ScandiumTitanium50Mix.getFluid(36))
                 .fluidInputs(RadonRadiumMix.getFluid(144))
                 .fluidOutputs(MetastableHassium.getFluid(144))

@@ -1039,7 +1039,7 @@ public class CircuitRecipes {
                 .inputs(MANIFOLD_OSCILLATORY_POWER_CELL.getStackForm())
                 .inputs(MICROWORMHOLE_GENERATOR.getStackForm())
                 .inputs(SUPRACAUSAL_PROCESSING_CORE.getStackForm())
-                .input(plate, SuperheavyHAlloy, 4)
+                .input(plate, SuperheavyHAlloy)
                 .input(wireGtSingle, UHVSuperconductor, 8)
                 .outputs(SUPRACAUSAL_PROCESSOR.getStackForm(4))
                 .solderMultiplier(4)
@@ -1086,7 +1086,7 @@ public class CircuitRecipes {
                 .buildAndRegister();
 
         // Supracausal Mainframe
-        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(983_040_000).qubit(16)
+        ASSEMBLY_LINE_RECIPES.recipeBuilder().duration(100).EUt(Integer.MAX_VALUE).qubit(16)
                 .inputs(SMD_CAPACITOR_SUPRACAUSAL.getStackForm(64))
                 .inputs(SMD_DIODE_SUPRACAUSAL.getStackForm(64))
                 .inputs(SMD_TRANSISTOR_SUPRACAUSAL.getStackForm(64))
@@ -1095,15 +1095,15 @@ public class CircuitRecipes {
                 .inputs(UHPIC.getStackForm(8))
                 .inputs(ARAM.getStackForm(16))
                 .inputs(CTC_COMPUTATIONAL_UNIT.getStackForm())
-                .input(foil, FullerenePolymerMatrix, 48)
+                .inputs(COSMIC_MESH.getStackForm(64))
                 .input(frameGt, Neutronium, 1)
-                .input(wireGtSingle, UMVSuperconductor, 16)
-                .input(plate, MetastableOganesson, 4)
-                .input(plate, QCDMatter, 8)
-                .fluidInputs(Taranium.getFluid(L * 4))
-                .fluidInputs(TriniumTitanium.getFluid(L * 4))
-                .fluidInputs(ProtoAdamantium.getFluid(L * 4))
-                .fluidInputs(FullerenePolymerMatrix.getFluid(L * 4))
+                .input(wireGtSingle, UXVSuperconductor, 64)
+                .inputs(COSMIC_FABRIC.getStackForm(64))
+                .input(plate, QCDMatter, 64)
+                .fluidInputs(Taranium.getFluid(L * 64))
+                .fluidInputs(TriniumTitanium.getFluid(L * 64))
+                .fluidInputs(ProtoAdamantium.getFluid(L * 64))
+                .fluidInputs(FullerenePolymerMatrix.getFluid(L * 64))
                 .outputs(SUPRACAUSAL_MAINFRAME.getStackForm())
                 .buildAndRegister();
     }

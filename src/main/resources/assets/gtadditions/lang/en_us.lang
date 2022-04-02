@@ -1657,7 +1657,7 @@ gtadditions.multiblock.large_extractor.description=The Large Extractor is a mult
 gtadditions.machine.large_arc_furnace.name=Large Arc Furnace
 gtadditions.multiblock.large_arc_furnace.description=The Large Arc Furnace is a large version of the regular and plasma arc furance.
 gtadditions.machine.large_canning_machine.name=Large Canning Machine
-gtadditions.multiblock.large_canning_machine.description=The Large Canning Machine performs Canning, Fluid Canning, and Fluid Solidification. Only one of the steel pipes may be exchanged with an input, output or maintenance hatch. It will only form with at least 8 normal steel casings as well.
+gtadditions.multiblock.large_canning_machine.description=The Large Canning Machine performs Canning, Fluid Canning, and Fluid Solidification. It will only form with at least 8 normal steel casings.
 gtadditions.machine.large_mass_fabricator.name=Large Mass Fabricator
 gtadditions.multiblock.large_mass_fabricator.description=Mass Fabrication machine for turning materials into matter.
 gtadditions.machine.large_replicator.name=Large Replicator
@@ -3003,7 +3003,7 @@ gregtech.multiblock.advanced_distillation_tower.description3=    Distillation To
 gregtech.multiblock.advanced_distillation_tower.description4=    Distillery & Fluid Heater => Max 64 Parallel, 8 per overclock
 gtadditions.multiblock.large_rocket_engine.tooltip.1=The Large Rocket Engine will produce large amounts of power.
 gtadditions.multiblock.large_rocket_engine.tooltip.2=It will consume Rocket Fuel as quickly as you can supply it.
-gtadditions.multiblock.large_rocket_engine.tooltip.3=It Consumes 37500mB of Air and 10mB of Carbon Dioxide per Second.
+gtadditions.multiblock.large_rocket_engine.tooltip.3=It Consumes 37500mB of Air per Second.
 gtadditions.multiblock.large_rocket_engine.tooltip.4=Use Liquid Hydrogen to boost the output energy by 3x. Uses 4mB/second per 1B fuel.
 gtadditions.multiblock.large_rocket_engine.tooltip.5=Default Efficiency is 60%%.
 gtadditions.multiblock.large_rocket_engine.tooltip.6=Above LuV is 40%%
@@ -4238,7 +4238,7 @@ fluid.free_electrons=Free Electrons
 fluid.oxydianiline=Oxydianiline
 fluid.polyamic_acid=Poly(amic acid)
 fluid.hexafluoropropylene=Hexafluoropropylene
-
+fluid.dietoxythiophene=Diethoxythiophene
 fluid.dimethylether=Dimethylether
 fluid.dimethoxyethane=Dimethoxyethane
 fluid.lithiumcyclopentadienide=Lithium Cyclopentadienide
