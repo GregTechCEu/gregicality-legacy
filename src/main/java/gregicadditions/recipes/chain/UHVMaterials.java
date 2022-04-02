@@ -27,7 +27,7 @@ public class UHVMaterials {
                 .input(plate, Uranium238Isotope.getMaterial(), 1)
                 .input(bolt, Osmium, 1)
                 .input(bolt, Titanium, 4)
-                .inputs(HexanitroHexaaxaisowurtzitane.getItemStack())
+                .inputs(HexanitroHexaazaisowurtzitane.getItemStack())
                 .fluidInputs(Glyceryl.getFluid(1000))
                 .outputs(GAMetaBlocks.EXPLOSIVE.getItemVariant(GAExplosive.ExplosiveType.NAQUADRIA_CHARGE))
                 .EUt(1966080)

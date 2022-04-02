@@ -326,7 +326,7 @@ public class HNIWChain {
                 .inputs(Tetraacetyldinitrosohexaazaisowurtzitane.getItemStack())
                 .inputs(NitroniumTetrafluoroborate.getItemStack(48))
                 .fluidInputs(Water.getFluid(4000))
-                .outputs(CrudeHexanitroHexaaxaisowurtzitane.getItemStack())
+                .outputs(CrudeHexanitroHexaazaisowurtzitane.getItemStack())
                 .outputs(NitrosoniumTetrafluoroborate.getItemStack(14))
                 .fluidOutputs(TetrafluoroboricAcid.getFluid(4000))
                 .fluidOutputs(AceticAcid.getFluid(4000))
@@ -335,10 +335,10 @@ public class HNIWChain {
                 .buildAndRegister();
 
         CHEMICAL_RECIPES.recipeBuilder()
-                .inputs(CrudeHexanitroHexaaxaisowurtzitane.getItemStack())
+                .inputs(CrudeHexanitroHexaazaisowurtzitane.getItemStack())
                 .fluidInputs(Ethylenediamine.getFluid(1000))
                 .inputs(SilicaGel.getItemStack())
-                .outputs(HexanitroHexaaxaisowurtzitane.getItemStack(8))
+                .outputs(HexanitroHexaazaisowurtzitane.getItemStack(8))
                 .EUt(1920)
                 .duration(100)
                 .buildAndRegister();
