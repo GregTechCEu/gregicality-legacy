@@ -5,11 +5,13 @@ import gregicadditions.GAUtility;
 import gregicadditions.capabilities.GregicAdditionsCapabilities;
 import gregicadditions.item.metal.MetalCasing1;
 import gregicadditions.machines.multi.CasingUtils;
+import gregicadditions.machines.multi.multiblockpart.MetaTileEntityMultiFluidHatch;
 import gregicadditions.machines.multi.simple.MultiRecipeMapMultiblockController;
 import gregicadditions.utils.GALog;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntityHolder;
+import gregtech.api.metatileentity.multiblock.IMultiblockAbilityPart;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
@@ -48,8 +50,8 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
 
     private static final MultiblockAbility<?>[] ALLOWED_ABILITIES = {
             MultiblockAbility.IMPORT_ITEMS, MultiblockAbility.EXPORT_ITEMS,
-            MultiblockAbility.IMPORT_FLUIDS, MultiblockAbility.INPUT_ENERGY,
-            GregicAdditionsCapabilities.MAINTENANCE_HATCH};
+            MultiblockAbility.INPUT_ENERGY, GregicAdditionsCapabilities.MAINTENANCE_HATCH
+    };
 
     public MetaTileEntityAdvancedDistillationTower(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         super(metaTileEntityId, recipeMap, 100, 100, 100, GAConfig.multis.distillationTower.distillationMultiplier,
@@ -66,7 +68,7 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
 
     @Override
     protected BlockPattern createStructurePattern() {
-        Predicate<BlockWorldState> fluidExportPredicate = this.countMatch("HatchesAmount", abilityPartPredicate(MultiblockAbility.EXPORT_FLUIDS));
+        Predicate<BlockWorldState> fluidExportPredicate = this.countMatch("HatchesAmount", fluidHatchPredicate());
         Predicate<PatternMatchContext> exactlyOneHatch = (context) -> context.getInt("HatchesAmount") == 1;
 
         return FactoryBlockPattern.start(RIGHT, FRONT, UP)
@@ -80,6 +82,11 @@ public class MetaTileEntityAdvancedDistillationTower extends MultiRecipeMapMulti
                 .validateLayer(1, exactlyOneHatch)
                 .validateLayer(2, exactlyOneHatch)
                 .build();
+    }
+
+    @Nonnull
+    private static Predicate<BlockWorldState> fluidHatchPredicate() {
+        return tilePredicate((state, tile) -> tile instanceof IMultiblockAbilityPart && !(tile instanceof MetaTileEntityMultiFluidHatch) && ((IMultiblockAbilityPart<?>) tile).getAbility() == MultiblockAbility.EXPORT_FLUIDS);
     }
 
     @Override
