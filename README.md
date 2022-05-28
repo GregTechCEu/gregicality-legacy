@@ -30,3 +30,5 @@ SMD texture are from hjae78,
 powercell are from hjae78
 
 Gregicality is under the LGPL3.0 License.
+
+Just share some my own idea.And try to understand this game.
